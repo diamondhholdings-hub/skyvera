@@ -1,0 +1,132 @@
+{
+  "total_revenue": 7388524.3100000005,
+  "top_80_count": 7,
+  "top_80_revenue": 5990111.18,
+  "customers": [
+    {
+      "customer_name": "NS Solutions Corporation",
+      "rr": 2456101.0,
+      "nrr": 0,
+      "total": 2456101.0,
+      "subscriptions": [
+        {
+          "sub_id": 1434525.0,
+          "arr": 2412645.0,
+          "renewal_qtr": "Next Yr",
+          "will_renew": "Yes",
+          "projected_arr": 3015806.25
+        },
+        {
+          "sub_id": 1432999.0,
+          "arr": 43456.0,
+          "renewal_qtr": "Next Yr",
+          "will_renew": "Yes",
+          "projected_arr": 54320.0
+        }
+      ],
+      "rank": 1,
+      "pct_of_total": 33.24210487709689
+    },
+    {
+      "customer_name": "HCL TECHNOLOGIES UK LIMITED",
+      "rr": 2082880.43,
+      "nrr": 0,
+      "total": 2082880.43,
+      "subscriptions": [
+        {
+          "sub_id": 1642857.0,
+          "arr": 2082880.43,
+          "renewal_qtr": "Q2'26",
+          "will_renew": "No",
+          "projected_arr": 0.0
+        }
+      ],
+      "rank": 2,
+      "pct_of_total": 28.190750177013356
+    },
+    {
+      "customer_name": "Vodafone GmbH",
+      "rr": 482727.54,
+      "nrr": 0,
+      "total": 482727.54,
+      "subscriptions": [
+        {
+          "sub_id": 1619199.0,
+          "arr": 482727.54,
+          "renewal_qtr": "Q2'26",
+          "will_renew": "Yes",
+          "projected_arr": 603409.4249999999
+        }
+      ],
+      "rank": 3,
+      "pct_of_total": 6.533477048274068
+    },
+    {
+      "customer_name": "Mobile Interim Company 1 S.A.L. (MIC1)",
+      "rr": 277875.1,
+      "nrr": 0,
+      "total": 277875.1,
+      "subscriptions": [
+        {
+          "sub_id": 1717984.0,
+          "arr": 138937.55,
+          "renewal_qtr": "Q1'26",
+          "will_renew": "No (SF)",
+          "projected_arr": 0.0
+        },
+        {
+          "sub_id": 1717984.0,
+          "arr": 138937.55,
+          "renewal_qtr": null,
+          "will_renew": null,
+          "projected_arr": 138938.0
+        }
+      ],
+      "rank": 4,
+      "pct_of_total": 3.7609012076188186
+    },
+    {
+      "customer_name": "Vodafone Egypt",
+      "rr": 0,
+      "nrr": 274576.0,
+      "total": 274576.0,
+      "subscriptions": [],
+      "rank": 5,
+      "pct_of_total": 3.716249530753726
+    },
+    {
+      "customer_name": "Nokia Solutions and Networks Oy",
+      "rr": 215951.11,
+      "nrr": 0,
+      "total": 215951.11,
+      "subscriptions": [
+        {
+          "sub_id": 1596237.0,
+          "arr": 215951.11,
+          "renewal_qtr": "Q4'25",
+          "will_renew": "Yes",
+          "projected_arr": 269938.88749999995
+        }
+      ],
+      "rank": 6,
+      "pct_of_total": 2.9227908163978142
+    },
+    {
+      "customer_name": "Telecom Argentina S.A.",
+      "rr": 200000.0,
+      "nrr": 0,
+      "total": 200000.0,
+      "subscriptions": [
+        {
+          "sub_id": 1553713.0,
+          "arr": 200000.0,
+          "renewal_qtr": "Next Yr",
+          "will_renew": "Yes",
+          "projected_arr": 250000.0
+        }
+      ],
+      "rank": 7,
+      "pct_of_total": 2.7069004798334353
+    }
+  ]
+}
