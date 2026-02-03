@@ -5,17 +5,26 @@ import json
 from pathlib import Path
 
 def load_all_customers():
-    """Load and aggregate customer data from all BUs."""
+    """Load and aggregate customer data from all BUs (100% of customers)."""
     data_dir = Path(__file__).parent.parent / 'data'
+    output_dir = Path(__file__).parent.parent / 'output'
 
     all_customers = []
     bu_data = {}
 
     bu_files = {
-        'CloudSense': 'customers_top80.json',
-        'Kandy': 'customers_kandy_top80.json',
-        'STL': 'customers_stl_top80.json',
-        'NewNet': 'customers_newnet_top80.json'
+        'CloudSense': 'customers_cloudsense_all.json',
+        'Kandy': 'customers_kandy_all.json',
+        'STL': 'customers_stl_all.json',
+        'NewNet': 'customers_newnet_all.json'
+    }
+
+    # Map of BU to output directory for dashboard links
+    bu_paths = {
+        'CloudSense': '',
+        'Kandy': 'kandy/',
+        'STL': 'stl/',
+        'NewNet': 'newnet/'
     }
 
     for bu_name, filename in bu_files.items():
@@ -24,10 +33,17 @@ def load_all_customers():
             data = json.load(f)
             bu_data[bu_name] = data
 
-            # Add BU name to each customer
+            # Add BU name and dashboard info to each customer
             for customer in data['customers']:
                 customer_with_bu = customer.copy()
                 customer_with_bu['bu'] = bu_name
+
+                # Check if dashboard exists for this customer
+                dashboard_filename = customer['customer_name'].replace('/', '-').replace(' ', '_') + '.html'
+                dashboard_path = output_dir / bu_paths[bu_name] / dashboard_filename
+                customer_with_bu['has_dashboard'] = dashboard_path.exists()
+                customer_with_bu['dashboard_url'] = bu_paths[bu_name] + dashboard_filename if customer_with_bu['has_dashboard'] else None
+
                 all_customers.append(customer_with_bu)
 
     return all_customers, bu_data
@@ -524,17 +540,23 @@ def generate_html(customers_data):
             const sorted = [...filtered].sort((a, b) => b.total - a.total);
 
             const tbody = document.getElementById('customerTableBody');
-            tbody.innerHTML = sorted.map((customer, idx) => `
+            tbody.innerHTML = sorted.map((customer, idx) => {{
+                const customerNameDisplay = customer.has_dashboard
+                    ? `<a href="${{customer.dashboard_url}}" style="color: var(--secondary); text-decoration: none; font-weight: 500;">${{customer.customer_name}}</a>`
+                    : customer.customer_name;
+
+                return `
                 <tr>
                     <td>${{idx + 1}}</td>
-                    <td>${{customer.customer_name}}</td>
+                    <td>${{customerNameDisplay}}</td>
                     <td><span class="bu-badge bu-${{customer.bu.toLowerCase()}}">${{customer.bu}}</span></td>
                     <td><span class="region-badge">${{customer.region}}</span></td>
                     <td>$$${{(customer.rr/1000000).toFixed(2)}}M</td>
                     <td>$$${{(customer.nrr/1000000).toFixed(2)}}M</td>
                     <td><strong>$$${{(customer.total/1000000).toFixed(2)}}M</strong></td>
                 </tr>
-            `).join('');
+                `;
+            }}).join('');
         }}
 
         function applyFilters() {{

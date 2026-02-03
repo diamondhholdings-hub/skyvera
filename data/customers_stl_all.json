@@ -1,0 +1,419 @@
+{
+  "bu_name": "STL",
+  "total_revenue": 3879361.6799999997,
+  "customer_count": 21,
+  "customers": [
+    {
+      "customer_name": "One Albania",
+      "rr": 1620914.02,
+      "nrr": 218000.0,
+      "total": 1838914.02,
+      "subscriptions": [
+        {
+          "sub_id": 1587517.0,
+          "arr": 1620914.02,
+          "renewal_qtr": "Q4'26",
+          "will_renew": "No",
+          "projected_arr": 0.0
+        }
+      ],
+      "rank": 1,
+      "pct_of_total": 47.40248967969391,
+      "region": "EMEA"
+    },
+    {
+      "customer_name": "Commverge Solutions Philippines Inc.",
+      "rr": 346253.1,
+      "nrr": 0,
+      "total": 346253.1,
+      "subscriptions": [
+        {
+          "sub_id": 1442994.0,
+          "arr": 346253.1,
+          "renewal_qtr": "Next Yr",
+          "will_renew": "Yes",
+          "projected_arr": 432816.375
+        },
+        {
+          "sub_id": "AMC starting in Q4",
+          "arr": null,
+          "renewal_qtr": null,
+          "will_renew": null,
+          "projected_arr": null
+        }
+      ],
+      "rank": 2,
+      "pct_of_total": 8.925517354700478,
+      "region": "APAC"
+    },
+    {
+      "customer_name": "Teleindia Networks Private Limited",
+      "rr": 116350.34,
+      "nrr": 225000.0,
+      "total": 341350.33999999997,
+      "subscriptions": [
+        {
+          "sub_id": 1568751.0,
+          "arr": 116350.34,
+          "renewal_qtr": "Next Yr",
+          "will_renew": "Yes",
+          "projected_arr": 145437.925
+        },
+        {
+          "sub_id": "MS",
+          "arr": null,
+          "renewal_qtr": null,
+          "will_renew": null,
+          "projected_arr": null
+        },
+        {
+          "sub_id": "AMC",
+          "arr": null,
+          "renewal_qtr": null,
+          "will_renew": null,
+          "projected_arr": 51180.0
+        },
+        {
+          "sub_id": "incorrect numbers above - not subscription revenue. Showijng in teleindia and bharti directly.",
+          "arr": null,
+          "renewal_qtr": null,
+          "will_renew": null,
+          "projected_arr": 0.0
+        }
+      ],
+      "rank": 3,
+      "pct_of_total": 8.799136769325411,
+      "region": "APAC"
+    },
+    {
+      "customer_name": "PT. Supra Primatama Nusantara",
+      "rr": 274722.0,
+      "nrr": 0,
+      "total": 274722.0,
+      "subscriptions": [
+        {
+          "sub_id": 1417507.0,
+          "arr": 274722.0,
+          "renewal_qtr": "Q4'26",
+          "will_renew": "Yes",
+          "projected_arr": 343402.5
+        }
+      ],
+      "rank": 4,
+      "pct_of_total": 7.081628954998598,
+      "region": "APAC"
+    },
+    {
+      "customer_name": "Ericsson Telecommunications, Inc.",
+      "rr": 176902.02,
+      "nrr": 0,
+      "total": 176902.02,
+      "subscriptions": [
+        {
+          "sub_id": 1676954.0,
+          "arr": 176902.02,
+          "renewal_qtr": "Q1'26",
+          "will_renew": "Yes",
+          "projected_arr": 221127.525
+        }
+      ],
+      "rank": 5,
+      "pct_of_total": 4.560080616149201,
+      "region": "APAC"
+    },
+    {
+      "customer_name": "PT. Sisindokom Lintasbuana",
+      "rr": 175228.13,
+      "nrr": 0,
+      "total": 175228.13,
+      "subscriptions": [
+        {
+          "sub_id": 1776471.0,
+          "arr": 175228.13,
+          "renewal_qtr": "Q4'26",
+          "will_renew": "Yes",
+          "projected_arr": 219035.1625
+        }
+      ],
+      "rank": 6,
+      "pct_of_total": 4.516932022692971,
+      "region": "APAC"
+    },
+    {
+      "customer_name": "Sterlite Technologies Ltd",
+      "rr": 112721.13,
+      "nrr": 0,
+      "total": 112721.13,
+      "subscriptions": [
+        {
+          "sub_id": 1520263.0,
+          "arr": 112721.13,
+          "renewal_qtr": "Next Yr",
+          "will_renew": "Yes",
+          "projected_arr": 140901.4125
+        }
+      ],
+      "rank": 7,
+      "pct_of_total": 2.905661789183833,
+      "region": "Americas"
+    },
+    {
+      "customer_name": "Asianet Satellite Communications Ltd",
+      "rr": 105869.01,
+      "nrr": 0,
+      "total": 105869.01,
+      "subscriptions": [
+        {
+          "sub_id": 1698412.0,
+          "arr": 0.0,
+          "renewal_qtr": "Q2'26",
+          "will_renew": "Yes",
+          "projected_arr": 0.0
+        },
+        {
+          "sub_id": 1698413.0,
+          "arr": 105869.01,
+          "renewal_qtr": "Q4'26",
+          "will_renew": "No (SF)",
+          "projected_arr": 0.0
+        }
+      ],
+      "rank": 8,
+      "pct_of_total": 2.7290316998749136,
+      "region": "APAC"
+    },
+    {
+      "customer_name": "MTN Zambia",
+      "rr": 97500.0,
+      "nrr": 0,
+      "total": 97500.0,
+      "subscriptions": [
+        {
+          "sub_id": 1641950.0,
+          "arr": 97500.0,
+          "renewal_qtr": "Q1'26",
+          "will_renew": "No (SF)",
+          "projected_arr": 0.0
+        }
+      ],
+      "rank": 9,
+      "pct_of_total": 2.5133000746658922,
+      "region": "Americas"
+    },
+    {
+      "customer_name": "Synaptic Technologies",
+      "rr": 74388.59,
+      "nrr": 0,
+      "total": 74388.59,
+      "subscriptions": [
+        {
+          "sub_id": 1512236.0,
+          "arr": 74388.59,
+          "renewal_qtr": "Next Yr",
+          "will_renew": "Yes",
+          "projected_arr": 92985.73749999999
+        }
+      ],
+      "rank": 10,
+      "pct_of_total": 1.9175471671927222,
+      "region": "Americas"
+    },
+    {
+      "customer_name": "Bharti Airtel Limited - Mumbai",
+      "rr": 62556.12,
+      "nrr": 0,
+      "total": 62556.12,
+      "subscriptions": [
+        {
+          "sub_id": 1603669.0,
+          "arr": 35356.12,
+          "renewal_qtr": "Q1'26",
+          "will_renew": "No",
+          "projected_arr": 0.0
+        },
+        {
+          "sub_id": 1758832.0,
+          "arr": 27200.0,
+          "renewal_qtr": "Q3'26",
+          "will_renew": "No",
+          "projected_arr": 0.0
+        }
+      ],
+      "rank": 11,
+      "pct_of_total": 1.612536421198036,
+      "region": "Americas"
+    },
+    {
+      "customer_name": "HITACHI SYSTEMS INDIA PRIVATE LIMITED",
+      "rr": 46611.5,
+      "nrr": 0,
+      "total": 46611.5,
+      "subscriptions": [
+        {
+          "sub_id": 1674848.0,
+          "arr": 46611.5,
+          "renewal_qtr": "Next Yr",
+          "will_renew": "Yes",
+          "projected_arr": 58264.375
+        }
+      ],
+      "rank": 12,
+      "pct_of_total": 1.2015249890286075,
+      "region": "APAC"
+    },
+    {
+      "customer_name": "Tata Teleservices Limited",
+      "rr": 43015.58,
+      "nrr": 0,
+      "total": 43015.58,
+      "subscriptions": [
+        {
+          "sub_id": 1520262.0,
+          "arr": 43015.58,
+          "renewal_qtr": "Q4'25",
+          "will_renew": "No (SF)",
+          "projected_arr": 0.0
+        }
+      ],
+      "rank": 13,
+      "pct_of_total": 1.1088313889825299,
+      "region": "Americas"
+    },
+    {
+      "customer_name": "ERICSSON (THAILAND) LTD",
+      "rr": 38000.0,
+      "nrr": 0,
+      "total": 38000.0,
+      "subscriptions": [
+        {
+          "sub_id": 1673648.0,
+          "arr": 38000.0,
+          "renewal_qtr": "Q1'26",
+          "will_renew": "Yes",
+          "projected_arr": 47500.0
+        }
+      ],
+      "rank": 14,
+      "pct_of_total": 0.9795425932031169,
+      "region": "APAC"
+    },
+    {
+      "customer_name": "Bharti Airtel Limited - Chennai",
+      "rr": 34000.0,
+      "nrr": 0,
+      "total": 34000.0,
+      "subscriptions": [
+        {
+          "sub_id": 1782185.0,
+          "arr": 34000.0,
+          "renewal_qtr": "Q4'26",
+          "will_renew": "No",
+          "projected_arr": 0.0
+        }
+      ],
+      "rank": 15,
+      "pct_of_total": 0.8764328465501573,
+      "region": "Americas"
+    },
+    {
+      "customer_name": "Bharti Airtel Limited - Gurgaon",
+      "rr": 33450.14,
+      "nrr": 0,
+      "total": 33450.14,
+      "subscriptions": [
+        {
+          "sub_id": 1619999.0,
+          "arr": 33450.14,
+          "renewal_qtr": "Q1'26",
+          "will_renew": "No",
+          "projected_arr": 0.0
+        }
+      ],
+      "rank": 16,
+      "pct_of_total": 0.8622588652265081,
+      "region": "Americas"
+    },
+    {
+      "customer_name": "Atom Myanmar Ltd",
+      "rr": 32000.0,
+      "nrr": 0,
+      "total": 32000.0,
+      "subscriptions": [
+        {
+          "sub_id": 1565589.0,
+          "arr": 32000.0,
+          "renewal_qtr": "Q4'25",
+          "will_renew": "No (SF)",
+          "projected_arr": 0.0
+        }
+      ],
+      "rank": 17,
+      "pct_of_total": 0.8248779732236774,
+      "region": "Americas"
+    },
+    {
+      "customer_name": "Wipro Ltd.",
+      "rr": 24375.0,
+      "nrr": 0,
+      "total": 24375.0,
+      "subscriptions": [
+        {
+          "sub_id": 1738672.0,
+          "arr": 24375.0,
+          "renewal_qtr": "Q2'26",
+          "will_renew": "No",
+          "projected_arr": 0.0
+        }
+      ],
+      "rank": 18,
+      "pct_of_total": 0.6283250186664731,
+      "region": "Americas"
+    },
+    {
+      "customer_name": "Mavenir Systems Private Limited",
+      "rr": 21505.0,
+      "nrr": 0,
+      "total": 21505.0,
+      "subscriptions": [
+        {
+          "sub_id": 1759834.0,
+          "arr": 21505.0,
+          "renewal_qtr": "Q2'26",
+          "will_renew": "No",
+          "projected_arr": 0.0
+        }
+      ],
+      "rank": 19,
+      "pct_of_total": 0.5543437754429744,
+      "region": "Americas"
+    },
+    {
+      "customer_name": "4iG",
+      "rr": 0,
+      "nrr": 0,
+      "total": 0,
+      "subscriptions": [],
+      "rank": 20,
+      "pct_of_total": 0.0,
+      "region": "Americas"
+    },
+    {
+      "customer_name": "MTN Sudan Company Limited",
+      "rr": 0,
+      "nrr": 0,
+      "total": 0,
+      "subscriptions": [
+        {
+          "sub_id": 1384348.0,
+          "arr": null,
+          "renewal_qtr": "Q3'26",
+          "will_renew": "No",
+          "projected_arr": 0.0
+        }
+      ],
+      "rank": 21,
+      "pct_of_total": 0.0,
+      "region": "Americas"
+    }
+  ]
+}

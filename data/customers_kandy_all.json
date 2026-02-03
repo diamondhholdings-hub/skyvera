@@ -1,0 +1,547 @@
+{
+  "bu_name": "Kandy",
+  "total_revenue": 13602782.420000004,
+  "customer_count": 27,
+  "customers": [
+    {
+      "customer_name": "EMIRCOM",
+      "rr": 9586308.0,
+      "nrr": 0,
+      "total": 9586308.0,
+      "subscriptions": [
+        {
+          "sub_id": 1599547.0,
+          "arr": 9586308.0,
+          "renewal_qtr": "Q2'26",
+          "will_renew": "Yes",
+          "projected_arr": 9586308.0
+        }
+      ],
+      "rank": 1,
+      "pct_of_total": 70.4731407443919,
+      "region": "EMEA"
+    },
+    {
+      "customer_name": "AT&T SERVICES, INC.",
+      "rr": 2518275.31,
+      "nrr": 0,
+      "total": 2518275.31,
+      "subscriptions": [
+        {
+          "sub_id": 1211972.0,
+          "arr": 1798094.55,
+          "renewal_qtr": "Q1'26",
+          "will_renew": "Yes",
+          "projected_arr": 1798094.55
+        },
+        {
+          "sub_id": 1248555.0,
+          "arr": 682730.45,
+          "renewal_qtr": "Q1'26",
+          "will_renew": "Yes",
+          "projected_arr": 682730.45
+        },
+        {
+          "sub_id": 1248569.0,
+          "arr": 15120.0,
+          "renewal_qtr": "Q1'26",
+          "will_renew": "Yes",
+          "projected_arr": 15120.0
+        },
+        {
+          "sub_id": 1248553.0,
+          "arr": 13191.14,
+          "renewal_qtr": "Q1'26",
+          "will_renew": "No",
+          "projected_arr": 0.0
+        },
+        {
+          "sub_id": 1329832.0,
+          "arr": 7239.17,
+          "renewal_qtr": "Q3'26",
+          "will_renew": "BU decision required",
+          "projected_arr": 0.0
+        },
+        {
+          "sub_id": 1248559.0,
+          "arr": 1900.0,
+          "renewal_qtr": "Q1'26",
+          "will_renew": "Yes",
+          "projected_arr": 1900.0
+        },
+        {
+          "sub_id": null,
+          "arr": null,
+          "renewal_qtr": null,
+          "will_renew": null,
+          "projected_arr": null
+        }
+      ],
+      "rank": 2,
+      "pct_of_total": 18.51294266309377,
+      "region": "Americas"
+    },
+    {
+      "customer_name": "PIONEER TELEPHONE COOPERATIVE (OK)",
+      "rr": 301771.06,
+      "nrr": 0,
+      "total": 301771.06,
+      "subscriptions": [
+        {
+          "sub_id": 1211894.0,
+          "arr": 301771.06,
+          "renewal_qtr": "Q1'26",
+          "will_renew": "Yes",
+          "projected_arr": 377213.825
+        }
+      ],
+      "rank": 3,
+      "pct_of_total": 2.2184509807075186,
+      "region": "Americas"
+    },
+    {
+      "customer_name": "ISSQUARED, INC.",
+      "rr": 295121.61,
+      "nrr": 0,
+      "total": 295121.61,
+      "subscriptions": [
+        {
+          "sub_id": 1212274.0,
+          "arr": 295121.61,
+          "renewal_qtr": "Q1'26",
+          "will_renew": "Yes",
+          "projected_arr": 368902.01249999995
+        }
+      ],
+      "rank": 4,
+      "pct_of_total": 2.1695679669630406,
+      "region": "Americas"
+    },
+    {
+      "customer_name": "HARGRAY COMMUNICATIONS GROUP",
+      "rr": 158226.87,
+      "nrr": 0,
+      "total": 158226.87,
+      "subscriptions": [
+        {
+          "sub_id": 1211883.0,
+          "arr": 158226.87,
+          "renewal_qtr": "Q1'26",
+          "will_renew": "Yes",
+          "projected_arr": 197783.5875
+        }
+      ],
+      "rank": 5,
+      "pct_of_total": 1.1631948899466404,
+      "region": "Americas"
+    },
+    {
+      "customer_name": "COMPORIUM, INC.",
+      "rr": 127573.75,
+      "nrr": 0,
+      "total": 127573.75,
+      "subscriptions": [
+        {
+          "sub_id": 1211875.0,
+          "arr": 73104.65,
+          "renewal_qtr": "Q1'26",
+          "will_renew": "No",
+          "projected_arr": 0.0
+        },
+        {
+          "sub_id": 1422393.0,
+          "arr": 54469.1,
+          "renewal_qtr": "Q1'26",
+          "will_renew": "No",
+          "projected_arr": 0.0
+        }
+      ],
+      "rank": 6,
+      "pct_of_total": 0.9378504048732698,
+      "region": "Americas"
+    },
+    {
+      "customer_name": "YADKIN VALLEY TEL MEMBERSHIP CORP",
+      "rr": 96738.75,
+      "nrr": 0,
+      "total": 96738.75,
+      "subscriptions": [
+        {
+          "sub_id": 1211903.0,
+          "arr": 49606.51,
+          "renewal_qtr": "Q1'26",
+          "will_renew": "Yes",
+          "projected_arr": 62008.137500000004
+        },
+        {
+          "sub_id": 1418220.0,
+          "arr": 47132.24,
+          "renewal_qtr": "Q1'26",
+          "will_renew": "Yes",
+          "projected_arr": 58915.299999999996
+        }
+      ],
+      "rank": 7,
+      "pct_of_total": 0.7111688404114015,
+      "region": "Americas"
+    },
+    {
+      "customer_name": "RAZORLINE, LLC",
+      "rr": 82547.3,
+      "nrr": 0,
+      "total": 82547.3,
+      "subscriptions": [
+        {
+          "sub_id": 1211895.0,
+          "arr": 82547.3,
+          "renewal_qtr": "Q1'26",
+          "will_renew": "Yes",
+          "projected_arr": 103184.125
+        }
+      ],
+      "rank": 8,
+      "pct_of_total": 0.6068412876959034,
+      "region": "Americas"
+    },
+    {
+      "customer_name": "WHOLESALE CARRIER SERVICES INC.",
+      "rr": 73785.88,
+      "nrr": 0,
+      "total": 73785.88,
+      "subscriptions": [
+        {
+          "sub_id": 1211902.0,
+          "arr": 73785.88,
+          "renewal_qtr": "Q1'26",
+          "will_renew": "Yes",
+          "projected_arr": 92232.35
+        }
+      ],
+      "rank": 9,
+      "pct_of_total": 0.542432259237739,
+      "region": "Americas"
+    },
+    {
+      "customer_name": "NUWAVE COMMUNICATIONS, INC.",
+      "rr": 72730.96,
+      "nrr": 0,
+      "total": 72730.96,
+      "subscriptions": [
+        {
+          "sub_id": 1211892.0,
+          "arr": 72730.96,
+          "renewal_qtr": "Q1'26",
+          "will_renew": "Yes",
+          "projected_arr": 90913.70000000001
+        }
+      ],
+      "rank": 10,
+      "pct_of_total": 0.5346770811614584,
+      "region": "Americas"
+    },
+    {
+      "customer_name": "Juxto - Ontario",
+      "rr": 48793.63,
+      "nrr": 0,
+      "total": 48793.63,
+      "subscriptions": [
+        {
+          "sub_id": 1211888.0,
+          "arr": 48793.63,
+          "renewal_qtr": "Q1'26",
+          "will_renew": "No",
+          "projected_arr": 0.0
+        }
+      ],
+      "rank": 11,
+      "pct_of_total": 0.3587033041729707,
+      "region": "Americas"
+    },
+    {
+      "customer_name": "VOICEFLEX LIMITED",
+      "rr": 46972.52,
+      "nrr": 0,
+      "total": 46972.52,
+      "subscriptions": [
+        {
+          "sub_id": 1234295.0,
+          "arr": 46972.52,
+          "renewal_qtr": "Q1'26",
+          "will_renew": "Yes",
+          "projected_arr": 58715.649999999994
+        }
+      ],
+      "rank": 12,
+      "pct_of_total": 0.3453155284681822,
+      "region": "Americas"
+    },
+    {
+      "customer_name": "HERTZ EUROPE LIMITED",
+      "rr": 46534.91,
+      "nrr": 0,
+      "total": 46534.91,
+      "subscriptions": [
+        {
+          "sub_id": 1337076.0,
+          "arr": 46534.91,
+          "renewal_qtr": "Q1'26",
+          "will_renew": "No",
+          "projected_arr": 0.0
+        }
+      ],
+      "rank": 13,
+      "pct_of_total": 0.3420984660577993,
+      "region": "Americas"
+    },
+    {
+      "customer_name": "Coordinadora de Carriers SA de CV Vivaro",
+      "rr": 35394.27,
+      "nrr": 0,
+      "total": 35394.27,
+      "subscriptions": [
+        {
+          "sub_id": 1211898.0,
+          "arr": 35394.27,
+          "renewal_qtr": "Q1'26",
+          "will_renew": "Yes",
+          "projected_arr": 44242.837499999994
+        }
+      ],
+      "rank": 14,
+      "pct_of_total": 0.2601987513081165,
+      "region": "Americas"
+    },
+    {
+      "customer_name": "CROSS TELEPHONE COMPANY LLC (OK)",
+      "rr": 34655.89,
+      "nrr": 0,
+      "total": 34655.89,
+      "subscriptions": [
+        {
+          "sub_id": 1211877.0,
+          "arr": 34655.89,
+          "renewal_qtr": "Q1'26",
+          "will_renew": "Yes",
+          "projected_arr": 43319.8625
+        }
+      ],
+      "rank": 15,
+      "pct_of_total": 0.2547705971466975,
+      "region": "Americas"
+    },
+    {
+      "customer_name": "COEO SOLUTIONS LLC",
+      "rr": 22551.22,
+      "nrr": 0,
+      "total": 22551.22,
+      "subscriptions": [
+        {
+          "sub_id": 1211874.0,
+          "arr": 22551.22,
+          "renewal_qtr": "Q1'26",
+          "will_renew": "Yes",
+          "projected_arr": 28189.025
+        }
+      ],
+      "rank": 16,
+      "pct_of_total": 0.16578387644312548,
+      "region": "Americas"
+    },
+    {
+      "customer_name": "EVOLUTIO CLOUD ENABLER S.A.",
+      "rr": 20787.42,
+      "nrr": 0,
+      "total": 20787.42,
+      "subscriptions": [
+        {
+          "sub_id": 1234297.0,
+          "arr": 20787.42,
+          "renewal_qtr": "Q1'26",
+          "will_renew": "Yes",
+          "projected_arr": 25984.274999999998
+        }
+      ],
+      "rank": 17,
+      "pct_of_total": 0.15281741160129497,
+      "region": "Americas"
+    },
+    {
+      "customer_name": "EMPIRE TELEPHONE CORPORATION",
+      "rr": 16935.51,
+      "nrr": 0,
+      "total": 16935.51,
+      "subscriptions": [
+        {
+          "sub_id": 1211880.0,
+          "arr": 16935.51,
+          "renewal_qtr": "Q1'26",
+          "will_renew": "Yes",
+          "projected_arr": 21169.387499999997
+        }
+      ],
+      "rank": 18,
+      "pct_of_total": 0.12450033733613151,
+      "region": "Americas"
+    },
+    {
+      "customer_name": "VODAFONE FIJI LIMITED",
+      "rr": 10823.16,
+      "nrr": 0,
+      "total": 10823.16,
+      "subscriptions": [
+        {
+          "sub_id": 1211899.0,
+          "arr": 10823.16,
+          "renewal_qtr": "Q1'26",
+          "will_renew": "No",
+          "projected_arr": 0.0
+        }
+      ],
+      "rank": 19,
+      "pct_of_total": 0.07956578048390188,
+      "region": "EMEA"
+    },
+    {
+      "customer_name": "ISSQUARED, Inc.",
+      "rr": 3986.16,
+      "nrr": 0,
+      "total": 3986.16,
+      "subscriptions": [
+        {
+          "sub_id": 1421367.0,
+          "arr": 3986.16,
+          "renewal_qtr": "Q1'26",
+          "will_renew": "Yes",
+          "projected_arr": 4982.7
+        }
+      ],
+      "rank": 20,
+      "pct_of_total": 0.02930400470229677,
+      "region": "Americas"
+    },
+    {
+      "customer_name": "AGT",
+      "rr": 2268.24,
+      "nrr": 0,
+      "total": 2268.24,
+      "subscriptions": [
+        {
+          "sub_id": 1211871.0,
+          "arr": 2268.24,
+          "renewal_qtr": "Q1'26",
+          "will_renew": "Yes",
+          "projected_arr": 2835.2999999999997
+        }
+      ],
+      "rank": 21,
+      "pct_of_total": 0.01667482379682141,
+      "region": "Americas"
+    },
+    {
+      "customer_name": "VR3CLOUD INTERNATIONAL, LLC",
+      "rr": 0,
+      "nrr": 0,
+      "total": 0,
+      "subscriptions": [
+        {
+          "sub_id": 1211901.0,
+          "arr": null,
+          "renewal_qtr": "Q1'26",
+          "will_renew": "No",
+          "projected_arr": 0.0
+        }
+      ],
+      "rank": 22,
+      "pct_of_total": 0.0,
+      "region": "Americas"
+    },
+    {
+      "customer_name": "DIGITAL SPACE GROUP LIMITED",
+      "rr": 0,
+      "nrr": 0,
+      "total": 0,
+      "subscriptions": [
+        {
+          "sub_id": 1234294.0,
+          "arr": 0.0,
+          "renewal_qtr": "Q1'26",
+          "will_renew": "No",
+          "projected_arr": 0.0
+        }
+      ],
+      "rank": 23,
+      "pct_of_total": 0.0,
+      "region": "Americas"
+    },
+    {
+      "customer_name": "Ribbon Communications Operating Company, Inc.",
+      "rr": 0,
+      "nrr": 0,
+      "total": 0,
+      "subscriptions": [],
+      "rank": 24,
+      "pct_of_total": 0.0,
+      "region": "Americas"
+    },
+    {
+      "customer_name": "CITY OF LOS ANGELES",
+      "rr": 0,
+      "nrr": 0,
+      "total": 0,
+      "subscriptions": [
+        {
+          "sub_id": 1211872.0,
+          "arr": null,
+          "renewal_qtr": "Q1'26",
+          "will_renew": "No (SF)",
+          "projected_arr": 0.0
+        },
+        {
+          "sub_id": 1391684.0,
+          "arr": 0.0,
+          "renewal_qtr": "Q1'26",
+          "will_renew": "No",
+          "projected_arr": 0.0
+        }
+      ],
+      "rank": 25,
+      "pct_of_total": 0.0,
+      "region": "Americas"
+    },
+    {
+      "customer_name": "At&T Services, Inc.",
+      "rr": 0,
+      "nrr": 0,
+      "total": 0,
+      "subscriptions": [],
+      "rank": 26,
+      "pct_of_total": 0.0,
+      "region": "Americas"
+    },
+    {
+      "customer_name": "Los Angeles Public Library",
+      "rr": 0,
+      "nrr": 0,
+      "total": 0,
+      "subscriptions": [
+        {
+          "sub_id": 1211873.0,
+          "arr": 0.0,
+          "renewal_qtr": "Q1'26",
+          "will_renew": "No (SF)",
+          "projected_arr": 0.0
+        },
+        {
+          "sub_id": 1421164.0,
+          "arr": 0.0,
+          "renewal_qtr": "Q1'26",
+          "will_renew": "No",
+          "projected_arr": 0.0
+        }
+      ],
+      "rank": 27,
+      "pct_of_total": 0.0,
+      "region": "Americas"
+    }
+  ]
+}
