@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skyvera Master Analytics | Multi-BU Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        :root {
+            --ink: #1a1a1a;
+            --paper: #fafaf8;
+            --accent: #c84b31;
+            --secondary: #2d4263;
+            --muted: #8b8b8b;
+            --border: #e8e6e1;
+            --highlight: #ecdbba;
+            --cloudsense: #2d4263;
+            --kandy: #e65100;
+            --stl: #1976d2;
+            --newnet: #388e3c;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'DM Sans', sans-serif; background: var(--paper); color: var(--ink); line-height: 1.6; }
+        h1, h2, h3 { font-family: 'Cormorant Garamond', serif; }
+
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #1a2332 100%);
+            color: var(--paper);
+            padding: 3rem 2rem 2rem;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+        }
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .filter-bar {
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .filter-bar label {
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+        .filter-bar select {
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            border: 2px solid var(--border);
+            border-radius: 6px;
+            background: white;
+            cursor: pointer;
+            min-width: 150px;
+        }
+        .filter-bar select:hover {
+            border-color: var(--accent);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .stat-card {
+            background: white;
+            border: 2px solid var(--border);
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .stat-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+        .stat-subvalue {
+            font-size: 0.95rem;
+            color: var(--muted);
+            margin-top: 0.5rem;
+        }
+
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        .chart-card {
+            background: white;
+            border: 2px solid var(--border);
+            padding: 2rem;
+            border-radius: 8px;
+        }
+        .chart-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+        }
+        .chart-container {
+            position: relative;
+            height: 300px;
+        }
+
+        .table-card {
+            background: white;
+            border: 2px solid var(--border);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+        .table-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        thead {
+            background: var(--secondary);
+            color: white;
+        }
+        th {
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+        tbody tr:hover {
+            background: var(--highlight);
+        }
+        .bu-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: white;
+        }
+        .bu-cloudsense { background: var(--cloudsense); }
+        .bu-kandy { background: var(--kandy); }
+        .bu-stl { background: var(--stl); }
+        .bu-newnet { background: var(--newnet); }
+
+        .region-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            background: var(--border);
+            color: var(--ink);
+        }
+
+        .amount {
+            text-align: right;
+            font-weight: 600;
+        }
+
+        .no-data {
+            text-align: center;
+            padding: 3rem;
+            color: var(--muted);
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Skyvera Master Analytics</h1>
+        <p>Multi-Business Unit Revenue Analysis Dashboard</p>
+    </div>
+
+    <div class="container">
+        <!-- Filters -->
+        <div class="filter-bar">
+            <div>
+                <label for="bu-filter">Business Unit:</label>
+                <select id="bu-filter" onchange="applyFilters()">
+                    <option value="all">All BUs</option>
+                    <option value="CloudSense">CloudSense</option>
+                    <option value="Kandy">Kandy</option>
+                    <option value="STL">STL</option>
+                    <option value="NewNet">NewNet</option>
+                </select>
+            </div>
+            <div>
+                <label for="region-filter">Region:</label>
+                <select id="region-filter" onchange="applyFilters()">
+                    <option value="all">All Regions</option>
+                    <option value="Americas">Americas</option>
+                    <option value="EMEA">EMEA</option>
+                    <option value="APAC">APAC</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Key Metrics -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-label">Total Customers</div>
+                <div class="stat-value" id="total-customers">0</div>
+                <div class="stat-subvalue" id="customers-subtitle">Loading...</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Total Revenue</div>
+                <div class="stat-value" id="total-revenue">$0</div>
+                <div class="stat-subvalue" id="revenue-subtitle">Loading...</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Recurring Revenue</div>
+                <div class="stat-value" id="total-rr">$0</div>
+                <div class="stat-subvalue" id="rr-subtitle">Loading...</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Non-Recurring Revenue</div>
+                <div class="stat-value" id="total-nrr">$0</div>
+                <div class="stat-subvalue" id="nrr-subtitle">Loading...</div>
+            </div>
+        </div>
+
+        <!-- Charts -->
+        <div class="charts-grid">
+            <div class="chart-card">
+                <h3>Revenue by Business Unit</h3>
+                <div class="chart-container">
+                    <canvas id="bu-chart"></canvas>
+                </div>
+            </div>
+            <div class="chart-card">
+                <h3>Revenue by Region</h3>
+                <div class="chart-container">
+                    <canvas id="region-chart"></canvas>
+                </div>
+            </div>
+            <div class="chart-card">
+                <h3>RR vs NRR Mix by BU</h3>
+                <div class="chart-container">
+                    <canvas id="mix-chart"></canvas>
+                </div>
+            </div>
+            <div class="chart-card">
+                <h3>Top 10 Customers by Revenue</h3>
+                <div class="chart-container">
+                    <canvas id="top-customers-chart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Customer Table -->
+        <div class="table-card">
+            <h3>Customer Drill-Down</h3>
+            <table id="customer-table">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Customer Name</th>
+                        <th>Business Unit</th>
+                        <th>Region</th>
+                        <th class="amount">RR</th>
+                        <th class="amount">NRR</th>
+                        <th class="amount">Total Revenue</th>
+                    </tr>
+                </thead>
+                <tbody id="customer-table-body">
+                    <tr><td colspan="7" class="no-data">Loading data...</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // Embedded data from all BU JSON files
+        const buData = {
+            CloudSense: {
+                "total_revenue": 33221382.41000001,
+                "top_80_count": 24,
+                "top_80_revenue": 33221382.41000001,
+                "customers": [
+                    {"customer_name":"Liquid Telecom","rr":1073619.8,"nrr":1416000.0,"total":2489619.8,"subscriptions":[{"sub_id":1797503.0,"arr":1073619.8,"renewal_qtr":"Q4'26","will_renew":"Yes","projected_arr":1342024.75}],"rank":1,"pct_of_total":7.494028301635625,"region":"Americas"},
+                    {"customer_name":"Masergy Communications, Inc.","rr":349943.99,"nrr":1924000.0,"total":2273943.99,"subscriptions":[{"sub_id":1781385.0,"arr":349943.99,"renewal_qtr":"Next Yr","will_renew":"Yes","projected_arr":437429.9875}],"rank":2,"pct_of_total":6.844820489214554,"region":"Americas"},
+                    {"customer_name":"Telefonica UK Limited","rr":2104857.01,"nrr":0,"total":2104857.01,"subscriptions":[{"sub_id":1664529.0,"arr":2104857.01,"renewal_qtr":"Q1'26","will_renew":"Yes","projected_arr":2631071.2624999997}],"rank":3,"pct_of_total":6.335850158259561,"region":"EMEA"},
+                    {"customer_name":"Telstra Corporation Limited","rr":1972000.0,"nrr":0,"total":1972000.0,"subscriptions":[{"sub_id":1558381.0,"arr":1972000.0,"renewal_qtr":"Next Yr","will_renew":"Yes","projected_arr":2465000.0}],"rank":4,"pct_of_total":5.935936005499897,"region":"APAC"},
+                    {"customer_name":"Vodafone Netherlands","rr":1843190.03,"nrr":0,"total":1843190.03,"subscriptions":[{"sub_id":1693696.0,"arr":1843190.03,"renewal_qtr":"Next Yr","will_renew":"Yes","projected_arr":2303987.5375}],"rank":5,"pct_of_total":5.548203886437848,"region":"EMEA"},
+                    {"customer_name":"Spotify","rr":1587300.0,"nrr":0,"total":1587300.0,"subscriptions":[{"sub_id":1780181.0,"arr":1587300.0,"renewal_qtr":"Next Yr","will_renew":"Yes","projected_arr":1587300.0}],"rank":6,"pct_of_total":4.777946866901615,"region":"Americas"},
+                    {"customer_name":"British Telecommunications plc","rr":1404790.63,"nrr":0,"total":1404790.63,"subscriptions":[{"sub_id":1674347.0,"arr":1404790.63,"renewal_qtr":"Q1'26","will_renew":"No (SF)","projected_arr":0}],"rank":7,"pct_of_total":4.228573671808257,"region":"EMEA"},
+                    {"customer_name":"Maxis Broadband Sdn Bhd","rr":1364195.25,"nrr":0,"total":1364195.25,"subscriptions":[{"sub_id":1558377.0,"arr":1234734.0,"renewal_qtr":"Q4'25","will_renew":"Yes","projected_arr":1543417.5},{"sub_id":1558755.0,"arr":129461.25,"renewal_qtr":"Q4'25","will_renew":"Yes","projected_arr":161826.5625}],"rank":8,"pct_of_total":4.106377131342258,"region":"APAC"},
+                    {"customer_name":"DPLAY ENTERTAINMENT LTD","rr":427660.68,"nrr":800000.04,"total":1227660.72,"subscriptions":[{"sub_id":1729540.0,"arr":427660.68,"renewal_qtr":"Q2'26","will_renew":"Yes","projected_arr":534575.85}],"rank":9,"pct_of_total":3.6953932405608145,"region":"Americas"},
+                    {"customer_name":"Centrica Services Ltd","rr":1053982.65,"nrr":0,"total":1053982.65,"subscriptions":[{"sub_id":1690990.0,"arr":1053982.65,"renewal_qtr":"Q2'26","will_renew":"Yes","projected_arr":1053982.65}],"rank":10,"pct_of_total":3.172603225815008,"region":"Americas"},
+                    {"customer_name":"StarHub Ltd","rr":919238.9,"nrr":0,"total":919238.9,"subscriptions":[{"sub_id":1788495.0,"arr":749638.9,"renewal_qtr":"Q4'26","will_renew":"Yes","projected_arr":937048.625},{"sub_id":1788494.0,"arr":169600.0,"renewal_qtr":"Q4'26","will_renew":"Yes","projected_arr":212000.0}],"rank":11,"pct_of_total":2.767009778988904,"region":"APAC"},
+                    {"customer_name":"Elisa Oyj","rr":897155.47,"nrr":0,"total":897155.47,"subscriptions":[{"sub_id":1785589.0,"arr":723512.49,"renewal_qtr":"Next Yr","will_renew":"Yes","projected_arr":904390.6125},{"sub_id":1785891.0,"arr":173642.98,"renewal_qtr":"Next Yr","will_renew":"Yes","projected_arr":217053.725}],"rank":12,"pct_of_total":2.700536235752628,"region":"EMEA"},
+                    {"customer_name":"New Sales Ps - Go Get","rr":0,"nrr":834000.0,"total":834000.0,"subscriptions":[],"rank":13,"pct_of_total":2.5104313532388,"region":"EMEA"},
+                    {"customer_name":"Abbott Laboratories","rr":816927.6,"nrr":0,"total":816927.6,"subscriptions":[{"sub_id":1665729.0,"arr":816927.6,"renewal_qtr":"Next Yr","will_renew":"Yes","projected_arr":1021159.5}],"rank":14,"pct_of_total":2.4590415591919967,"region":"Americas"},
+                    {"customer_name":"A1 Telekom Austria AG.","rr":550573.91,"nrr":210248.76,"total":760822.67,"subscriptions":[{"sub_id":1558386.0,"arr":520967.79,"renewal_qtr":"Q2'26","will_renew":"Yes","projected_arr":651209.7374999999},{"sub_id":1558395.0,"arr":29606.12,"renewal_qtr":"Q3'26","will_renew":"Yes","projected_arr":37007.65}],"rank":15,"pct_of_total":2.2901595743679346,"region":"EMEA"},
+                    {"customer_name":"Advance Publications US","rr":659200.0,"nrr":0,"total":659200.0,"subscriptions":[{"sub_id":1780082.0,"arr":659200.0,"renewal_qtr":"Next Yr","will_renew":"Yes","projected_arr":659200.0}],"rank":16,"pct_of_total":1.9842642063009797,"region":"Americas"},
+                    {"customer_name":"Virgin Media Limited","rr":655607.51,"nrr":0,"total":655607.51,"subscriptions":[{"sub_id":1558418.0,"arr":655607.51,"renewal_qtr":"Q2'26","will_renew":"Yes","projected_arr":819509.3875}],"rank":17,"pct_of_total":1.9734504178930696,"region":"EMEA"},
+                    {"customer_name":"Foxtel Management Pty Limited","rr":640260.52,"nrr":0,"total":640260.52,"subscriptions":[{"sub_id":1786391.0,"arr":640260.52,"renewal_qtr":"Next Yr","will_renew":"Yes","projected_arr":800325.65}],"rank":18,"pct_of_total":1.9272542969412203,"region":"APAC"},
+                    {"customer_name":"PostNL Holding BV","rr":576494.75,"nrr":0,"total":576494.75,"subscriptions":[{"sub_id":1558410.0,"arr":576494.75,"renewal_qtr":"Next Yr","will_renew":"Yes","projected_arr":1152989.5}],"rank":19,"pct_of_total":1.7353123445774146,"region":"EMEA"},
+                    {"customer_name":"Thryv Australia Pty Ltd","rr":567978.58,"nrr":0,"total":567978.58,"subscriptions":[{"sub_id":1664230.0,"arr":567978.58,"renewal_qtr":"Q1'26","will_renew":"No","projected_arr":0}],"rank":20,"pct_of_total":1.7096777400480239,"region":"APAC"},
+                    {"customer_name":"Luminus Hasselt NV/SA","rr":541643.21,"nrr":0,"total":541643.21,"subscriptions":[{"sub_id":1558957.0,"arr":493023.17,"renewal_qtr":"Next Yr","will_renew":"Yes","projected_arr":616278.9625},{"sub_id":1757129.0,"arr":48620.04,"renewal_qtr":"Next Yr","will_renew":"Yes","projected_arr":60775.05}],"rank":21,"pct_of_total":1.6304053916701529,"region":"EMEA"},
+                    {"customer_name":"Telefonica Germany GmbH & Co. OHG","rr":460063.27,"nrr":0,"total":460063.27,"subscriptions":[{"sub_id":1675050.0,"arr":460063.27,"renewal_qtr":"Next Yr","will_renew":"Yes","projected_arr":575079.0875}],"rank":22,"pct_of_total":1.384840836308834,"region":"EMEA"},
+                    {"customer_name":"CoreSite","rr":456285.2,"nrr":0,"total":456285.2,"subscriptions":[{"sub_id":1796301.0,"arr":456285.2,"renewal_qtr":"Q3'26","will_renew":"No","projected_arr":0}],"rank":23,"pct_of_total":1.3734684317731853,"region":"Americas"},
+                    {"customer_name":"Telstra - Ges(a)","rr":0,"nrr":431900.0,"total":431900.0,"subscriptions":[],"rank":24,"pct_of_total":1.3000663087096376,"region":"APAC"}
+                ]
+            },
+            Kandy: {
+                "total_revenue": 13602782.420000004,
+                "top_80_count": 2,
+                "top_80_revenue": 12104583.31,
+                "customers": [
+                    {"customer_name":"EMIRCOM","rr":9586308.0,"nrr":0,"total":9586308.0,"subscriptions":[{"sub_id":1599547.0,"arr":9586308.0,"renewal_qtr":"Q2'26","will_renew":"Yes","projected_arr":9586308.0}],"rank":1,"pct_of_total":70.4731407443919,"region":"Americas"},
+                    {"customer_name":"AT&T SERVICES, INC.","rr":2518275.31,"nrr":0,"total":2518275.31,"subscriptions":[{"sub_id":1211972.0,"arr":1798094.55,"renewal_qtr":"Q1'26","will_renew":"Yes","projected_arr":1798094.55},{"sub_id":1248555.0,"arr":682730.45,"renewal_qtr":"Q1'26","will_renew":"Yes","projected_arr":682730.45},{"sub_id":1248569.0,"arr":15120.0,"renewal_qtr":"Q1'26","will_renew":"Yes","projected_arr":15120.0},{"sub_id":1248553.0,"arr":13191.14,"renewal_qtr":"Q1'26","will_renew":"No","projected_arr":0.0},{"sub_id":1329832.0,"arr":7239.17,"renewal_qtr":"Q3'26","will_renew":"BU decision required","projected_arr":0.0},{"sub_id":1248559.0,"arr":1900.0,"renewal_qtr":"Q1'26","will_renew":"Yes","projected_arr":1900.0},{"sub_id":null,"arr":null,"renewal_qtr":null,"will_renew":null,"projected_arr":null}],"rank":2,"pct_of_total":18.51294266309377,"region":"Americas"}
+                ]
+            },
+            STL: {
+                "total_revenue": 3879361.6799999997,
+                "top_80_count": 6,
+                "top_80_revenue": 3153369.61,
+                "customers": [
+                    {"customer_name":"One Albania","rr":1620914.02,"nrr":218000.0,"total":1838914.02,"subscriptions":[{"sub_id":1587517.0,"arr":1620914.02,"renewal_qtr":"Q4'26","will_renew":"No","projected_arr":0.0}],"rank":1,"pct_of_total":47.40248967969391,"region":"Americas"},
+                    {"customer_name":"Commverge Solutions Philippines Inc.","rr":346253.1,"nrr":0,"total":346253.1,"subscriptions":[{"sub_id":1442994.0,"arr":346253.1,"renewal_qtr":"Next Yr","will_renew":"Yes","projected_arr":432816.375},{"sub_id":"AMC starting in Q4","arr":null,"renewal_qtr":null,"will_renew":null,"projected_arr":null}],"rank":2,"pct_of_total":8.925517354700478,"region":"APAC"},
+                    {"customer_name":"Teleindia Networks Private Limited","rr":116350.34,"nrr":225000.0,"total":341350.33999999997,"subscriptions":[{"sub_id":1568751.0,"arr":116350.34,"renewal_qtr":"Next Yr","will_renew":"Yes","projected_arr":145437.925},{"sub_id":"MS","arr":null,"renewal_qtr":null,"will_renew":null,"projected_arr":null},{"sub_id":"AMC","arr":null,"renewal_qtr":null,"will_renew":null,"projected_arr":51180.0},{"sub_id":"incorrect numbers above - not subscription revenue. Showijng in teleindia and bharti directly.","arr":null,"renewal_qtr":null,"will_renew":null,"projected_arr":0.0}],"rank":3,"pct_of_total":8.799136769325411,"region":"APAC"},
+                    {"customer_name":"PT. Supra Primatama Nusantara","rr":274722.0,"nrr":0,"total":274722.0,"subscriptions":[{"sub_id":1417507.0,"arr":274722.0,"renewal_qtr":"Q4'26","will_renew":"Yes","projected_arr":343402.5}],"rank":4,"pct_of_total":7.081628954998598,"region":"APAC"},
+                    {"customer_name":"Ericsson Telecommunications, Inc.","rr":176902.02,"nrr":0,"total":176902.02,"subscriptions":[{"sub_id":1676954.0,"arr":176902.02,"renewal_qtr":"Q1'26","will_renew":"Yes","projected_arr":221127.525}],"rank":5,"pct_of_total":4.560080616149201,"region":"Americas"},
+                    {"customer_name":"PT. Sisindokom Lintasbuana","rr":175228.13,"nrr":0,"total":175228.13,"subscriptions":[{"sub_id":1776471.0,"arr":175228.13,"renewal_qtr":"Q4'26","will_renew":"Yes","projected_arr":219035.1625}],"rank":6,"pct_of_total":4.516932022692971,"region":"APAC"}
+                ]
+            },
+            NewNet: {
+                "total_revenue": 7388524.3100000005,
+                "top_80_count": 7,
+                "top_80_revenue": 5990111.18,
+                "customers": [
+                    {"customer_name":"NS Solutions Corporation","rr":2456101.0,"nrr":0,"total":2456101.0,"subscriptions":[{"sub_id":1434525.0,"arr":2412645.0,"renewal_qtr":"Next Yr","will_renew":"Yes","projected_arr":3015806.25},{"sub_id":1432999.0,"arr":43456.0,"renewal_qtr":"Next Yr","will_renew":"Yes","projected_arr":54320.0}],"rank":1,"pct_of_total":33.24210487709689,"region":"Americas"},
+                    {"customer_name":"HCL TECHNOLOGIES UK LIMITED","rr":2082880.43,"nrr":0,"total":2082880.43,"subscriptions":[{"sub_id":1642857.0,"arr":2082880.43,"renewal_qtr":"Q2'26","will_renew":"No","projected_arr":0.0}],"rank":2,"pct_of_total":28.190750177013356,"region":"EMEA"},
+                    {"customer_name":"Vodafone GmbH","rr":482727.54,"nrr":0,"total":482727.54,"subscriptions":[{"sub_id":1619199.0,"arr":482727.54,"renewal_qtr":"Q2'26","will_renew":"Yes","projected_arr":603409.4249999999}],"rank":3,"pct_of_total":6.533477048274068,"region":"EMEA"},
+                    {"customer_name":"Mobile Interim Company 1 S.A.L. (MIC1)","rr":277875.1,"nrr":0,"total":277875.1,"subscriptions":[{"sub_id":1717984.0,"arr":138937.55,"renewal_qtr":"Q1'26","will_renew":"No (SF)","projected_arr":0.0},{"sub_id":1717984.0,"arr":138937.55,"renewal_qtr":null,"will_renew":null,"projected_arr":138938.0}],"rank":4,"pct_of_total":3.7609012076188186,"region":"Americas"},
+                    {"customer_name":"Vodafone Egypt","rr":0,"nrr":274576.0,"total":274576.0,"subscriptions":[],"rank":5,"pct_of_total":3.716249530753726,"region":"EMEA"},
+                    {"customer_name":"Nokia Solutions and Networks Oy","rr":215951.11,"nrr":0,"total":215951.11,"subscriptions":[{"sub_id":1596237.0,"arr":215951.11,"renewal_qtr":"Q4'25","will_renew":"Yes","projected_arr":269938.88749999995}],"rank":6,"pct_of_total":2.9227908163978142,"region":"Americas"},
+                    {"customer_name":"Telecom Argentina S.A.","rr":200000.0,"nrr":0,"total":200000.0,"subscriptions":[{"sub_id":1553713.0,"arr":200000.0,"renewal_qtr":"Next Yr","will_renew":"Yes","projected_arr":250000.0}],"rank":7,"pct_of_total":2.7069004798334353,"region":"Americas"}
+                ]
+            }
+        };
+
+        // Chart instances
+        let buChart, regionChart, mixChart, topCustomersChart;
+
+        // Filtered data cache
+        let filteredData = [];
+
+        // Initialize dashboard
+        function initDashboard() {
+            applyFilters();
+        }
+
+        // Apply filters and update all visualizations
+        function applyFilters() {
+            const buFilter = document.getElementById('bu-filter').value;
+            const regionFilter = document.getElementById('region-filter').value;
+
+            // Aggregate and filter data
+            filteredData = [];
+            let allCustomers = [];
+
+            // Collect all customers from all BUs
+            Object.keys(buData).forEach(buName => {
+                const bu = buData[buName];
+                bu.customers.forEach(customer => {
+                    allCustomers.push({
+                        ...customer,
+                        bu: buName
+                    });
+                });
+            });
+
+            // Apply filters
+            filteredData = allCustomers.filter(customer => {
+                const matchesBU = buFilter === 'all' || customer.bu === buFilter;
+                const matchesRegion = regionFilter === 'all' || customer.region === regionFilter;
+                return matchesBU && matchesRegion;
+            });
+
+            // Sort by total revenue descending
+            filteredData.sort((a, b) => b.total - a.total);
+
+            // Update all components
+            updateStats();
+            updateCharts();
+            updateTable();
+        }
+
+        // Update statistics cards
+        function updateStats() {
+            const totalCustomers = filteredData.length;
+            const totalRevenue = filteredData.reduce((sum, c) => sum + c.total, 0);
+            const totalRR = filteredData.reduce((sum, c) => sum + c.rr, 0);
+            const totalNRR = filteredData.reduce((sum, c) => sum + c.nrr, 0);
+
+            document.getElementById('total-customers').textContent = totalCustomers.toLocaleString();
+            document.getElementById('total-revenue').textContent = '$' + (totalRevenue / 1000000).toFixed(1) + 'M';
+            document.getElementById('total-rr').textContent = '$' + (totalRR / 1000000).toFixed(1) + 'M';
+            document.getElementById('total-nrr').textContent = '$' + (totalNRR / 1000000).toFixed(1) + 'M';
+
+            const rrPct = totalRevenue > 0 ? (totalRR / totalRevenue * 100).toFixed(1) : 0;
+            const nrrPct = totalRevenue > 0 ? (totalNRR / totalRevenue * 100).toFixed(1) : 0;
+
+            document.getElementById('customers-subtitle').textContent = 'Across filtered BUs/regions';
+            document.getElementById('revenue-subtitle').textContent = 'Total quarterly revenue';
+            document.getElementById('rr-subtitle').textContent = rrPct + '% of total revenue';
+            document.getElementById('nrr-subtitle').textContent = nrrPct + '% of total revenue';
+        }
+
+        // Update all charts
+        function updateCharts() {
+            updateBUChart();
+            updateRegionChart();
+            updateMixChart();
+            updateTopCustomersChart();
+        }
+
+        // Revenue by BU chart
+        function updateBUChart() {
+            const buRevenue = {};
+            filteredData.forEach(customer => {
+                if (!buRevenue[customer.bu]) buRevenue[customer.bu] = 0;
+                buRevenue[customer.bu] += customer.total;
+            });
+
+            const labels = Object.keys(buRevenue);
+            const data = Object.values(buRevenue);
+            const colors = labels.map(bu => {
+                switch(bu) {
+                    case 'CloudSense': return getComputedStyle(document.documentElement).getPropertyValue('--cloudsense');
+                    case 'Kandy': return getComputedStyle(document.documentElement).getPropertyValue('--kandy');
+                    case 'STL': return getComputedStyle(document.documentElement).getPropertyValue('--stl');
+                    case 'NewNet': return getComputedStyle(document.documentElement).getPropertyValue('--newnet');
+                    default: return '#999';
+                }
+            });
+
+            if (buChart) buChart.destroy();
+
+            const ctx = document.getElementById('bu-chart').getContext('2d');
+            buChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Revenue',
+                        data: data,
+                        backgroundColor: colors,
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return '$' + (context.parsed.y / 1000000).toFixed(2) + 'M';
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return '$' + (value / 1000000).toFixed(1) + 'M';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Revenue by Region chart
+        function updateRegionChart() {
+            const regionRevenue = {};
+            filteredData.forEach(customer => {
+                if (!regionRevenue[customer.region]) regionRevenue[customer.region] = 0;
+                regionRevenue[customer.region] += customer.total;
+            });
+
+            const labels = Object.keys(regionRevenue);
+            const data = Object.values(regionRevenue);
+
+            if (regionChart) regionChart.destroy();
+
+            const ctx = document.getElementById('region-chart').getContext('2d');
+            regionChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: data,
+                        backgroundColor: ['#2d4263', '#e65100', '#1976d2', '#388e3c', '#c84b31'],
+                        borderWidth: 2,
+                        borderColor: '#fff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'right' },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const label = context.label || '';
+                                    const value = '$' + (context.parsed / 1000000).toFixed(2) + 'M';
+                                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                    const pct = ((context.parsed / total) * 100).toFixed(1) + '%';
+                                    return label + ': ' + value + ' (' + pct + ')';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // RR vs NRR Mix chart
+        function updateMixChart() {
+            const buMix = {};
+            filteredData.forEach(customer => {
+                if (!buMix[customer.bu]) {
+                    buMix[customer.bu] = { rr: 0, nrr: 0 };
+                }
+                buMix[customer.bu].rr += customer.rr;
+                buMix[customer.bu].nrr += customer.nrr;
+            });
+
+            const labels = Object.keys(buMix);
+            const rrData = labels.map(bu => buMix[bu].rr);
+            const nrrData = labels.map(bu => buMix[bu].nrr);
+
+            if (mixChart) mixChart.destroy();
+
+            const ctx = document.getElementById('mix-chart').getContext('2d');
+            mixChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Recurring Revenue',
+                            data: rrData,
+                            backgroundColor: '#2d4263',
+                            stack: 'Stack 0'
+                        },
+                        {
+                            label: 'Non-Recurring Revenue',
+                            data: nrrData,
+                            backgroundColor: '#c84b31',
+                            stack: 'Stack 0'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom' },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.dataset.label + ': $' + (context.parsed.y / 1000000).toFixed(2) + 'M';
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: { stacked: true },
+                        y: {
+                            stacked: true,
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return '$' + (value / 1000000).toFixed(1) + 'M';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Top 10 Customers chart
+        function updateTopCustomersChart() {
+            const top10 = filteredData.slice(0, 10);
+            const labels = top10.map(c => c.customer_name);
+            const data = top10.map(c => c.total);
+            const colors = top10.map(c => {
+                switch(c.bu) {
+                    case 'CloudSense': return getComputedStyle(document.documentElement).getPropertyValue('--cloudsense');
+                    case 'Kandy': return getComputedStyle(document.documentElement).getPropertyValue('--kandy');
+                    case 'STL': return getComputedStyle(document.documentElement).getPropertyValue('--stl');
+                    case 'NewNet': return getComputedStyle(document.documentElement).getPropertyValue('--newnet');
+                    default: return '#999';
+                }
+            });
+
+            if (topCustomersChart) topCustomersChart.destroy();
+
+            const ctx = document.getElementById('top-customers-chart').getContext('2d');
+            topCustomersChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Revenue',
+                        data: data,
+                        backgroundColor: colors,
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return '$' + (context.parsed.x / 1000000).toFixed(2) + 'M';
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return '$' + (value / 1000000).toFixed(1) + 'M';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Update customer table
+        function updateTable() {
+            const tbody = document.getElementById('customer-table-body');
+
+            if (filteredData.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="7" class="no-data">No customers match the selected filters</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = filteredData.map((customer, index) => `
+                <tr>
+                    <td>${index + 1}</td>
+                    <td>${customer.customer_name}</td>
+                    <td><span class="bu-badge bu-${customer.bu.toLowerCase()}">${customer.bu}</span></td>
+                    <td><span class="region-badge">${customer.region}</span></td>
+                    <td class="amount">$${(customer.rr / 1000).toFixed(0)}K</td>
+                    <td class="amount">$${(customer.nrr / 1000).toFixed(0)}K</td>
+                    <td class="amount">$${(customer.total / 1000).toFixed(0)}K</td>
+                </tr>
+            `).join('');
+        }
+
+        // Format currency
+        function formatCurrency(value) {
+            if (value >= 1000000) {
+                return '$' + (value / 1000000).toFixed(2) + 'M';
+            } else if (value >= 1000) {
+                return '$' + (value / 1000).toFixed(0) + 'K';
+            } else {
+                return '$' + value.toFixed(0);
+            }
+        }
+
+        // Initialize on page load
+        window.addEventListener('DOMContentLoaded', initDashboard);
+    </script>
+</body>
+</html>
