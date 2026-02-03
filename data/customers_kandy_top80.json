@@ -1,0 +1,83 @@
+{
+  "total_revenue": 13602782.420000004,
+  "top_80_count": 2,
+  "top_80_revenue": 12104583.31,
+  "customers": [
+    {
+      "customer_name": "EMIRCOM",
+      "rr": 9586308.0,
+      "nrr": 0,
+      "total": 9586308.0,
+      "subscriptions": [
+        {
+          "sub_id": 1599547.0,
+          "arr": 9586308.0,
+          "renewal_qtr": "Q2'26",
+          "will_renew": "Yes",
+          "projected_arr": 9586308.0
+        }
+      ],
+      "rank": 1,
+      "pct_of_total": 70.4731407443919
+    },
+    {
+      "customer_name": "AT&T SERVICES, INC.",
+      "rr": 2518275.31,
+      "nrr": 0,
+      "total": 2518275.31,
+      "subscriptions": [
+        {
+          "sub_id": 1211972.0,
+          "arr": 1798094.55,
+          "renewal_qtr": "Q1'26",
+          "will_renew": "Yes",
+          "projected_arr": 1798094.55
+        },
+        {
+          "sub_id": 1248555.0,
+          "arr": 682730.45,
+          "renewal_qtr": "Q1'26",
+          "will_renew": "Yes",
+          "projected_arr": 682730.45
+        },
+        {
+          "sub_id": 1248569.0,
+          "arr": 15120.0,
+          "renewal_qtr": "Q1'26",
+          "will_renew": "Yes",
+          "projected_arr": 15120.0
+        },
+        {
+          "sub_id": 1248553.0,
+          "arr": 13191.14,
+          "renewal_qtr": "Q1'26",
+          "will_renew": "No",
+          "projected_arr": 0.0
+        },
+        {
+          "sub_id": 1329832.0,
+          "arr": 7239.17,
+          "renewal_qtr": "Q3'26",
+          "will_renew": "BU decision required",
+          "projected_arr": 0.0
+        },
+        {
+          "sub_id": 1248559.0,
+          "arr": 1900.0,
+          "renewal_qtr": "Q1'26",
+          "will_renew": "Yes",
+          "projected_arr": 1900.0
+        },
+        {
+          "sub_id": null,
+          "arr": null,
+          "renewal_qtr": null,
+          "will_renew": null,
+          "projected_arr": null
+        }
+      ],
+      "rank": 2,
+      "pct_of_total": 18.51294266309377
+    }
+  ]
+}
