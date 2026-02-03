@@ -1,0 +1,137 @@
+{
+  "total_revenue": 3879361.6799999997,
+  "top_80_count": 6,
+  "top_80_revenue": 3153369.61,
+  "customers": [
+    {
+      "customer_name": "One Albania",
+      "rr": 1620914.02,
+      "nrr": 218000.0,
+      "total": 1838914.02,
+      "subscriptions": [
+        {
+          "sub_id": 1587517.0,
+          "arr": 1620914.02,
+          "renewal_qtr": "Q4'26",
+          "will_renew": "No",
+          "projected_arr": 0.0
+        }
+      ],
+      "rank": 1,
+      "pct_of_total": 47.40248967969391
+    },
+    {
+      "customer_name": "Commverge Solutions Philippines Inc.",
+      "rr": 346253.1,
+      "nrr": 0,
+      "total": 346253.1,
+      "subscriptions": [
+        {
+          "sub_id": 1442994.0,
+          "arr": 346253.1,
+          "renewal_qtr": "Next Yr",
+          "will_renew": "Yes",
+          "projected_arr": 432816.375
+        },
+        {
+          "sub_id": "AMC starting in Q4",
+          "arr": null,
+          "renewal_qtr": null,
+          "will_renew": null,
+          "projected_arr": null
+        }
+      ],
+      "rank": 2,
+      "pct_of_total": 8.925517354700478
+    },
+    {
+      "customer_name": "Teleindia Networks Private Limited",
+      "rr": 116350.34,
+      "nrr": 225000.0,
+      "total": 341350.33999999997,
+      "subscriptions": [
+        {
+          "sub_id": 1568751.0,
+          "arr": 116350.34,
+          "renewal_qtr": "Next Yr",
+          "will_renew": "Yes",
+          "projected_arr": 145437.925
+        },
+        {
+          "sub_id": "MS",
+          "arr": null,
+          "renewal_qtr": null,
+          "will_renew": null,
+          "projected_arr": null
+        },
+        {
+          "sub_id": "AMC",
+          "arr": null,
+          "renewal_qtr": null,
+          "will_renew": null,
+          "projected_arr": 51180.0
+        },
+        {
+          "sub_id": "incorrect numbers above - not subscription revenue. Showijng in teleindia and bharti directly.",
+          "arr": null,
+          "renewal_qtr": null,
+          "will_renew": null,
+          "projected_arr": 0.0
+        }
+      ],
+      "rank": 3,
+      "pct_of_total": 8.799136769325411
+    },
+    {
+      "customer_name": "PT. Supra Primatama Nusantara",
+      "rr": 274722.0,
+      "nrr": 0,
+      "total": 274722.0,
+      "subscriptions": [
+        {
+          "sub_id": 1417507.0,
+          "arr": 274722.0,
+          "renewal_qtr": "Q4'26",
+          "will_renew": "Yes",
+          "projected_arr": 343402.5
+        }
+      ],
+      "rank": 4,
+      "pct_of_total": 7.081628954998598
+    },
+    {
+      "customer_name": "Ericsson Telecommunications, Inc.",
+      "rr": 176902.02,
+      "nrr": 0,
+      "total": 176902.02,
+      "subscriptions": [
+        {
+          "sub_id": 1676954.0,
+          "arr": 176902.02,
+          "renewal_qtr": "Q1'26",
+          "will_renew": "Yes",
+          "projected_arr": 221127.525
+        }
+      ],
+      "rank": 5,
+      "pct_of_total": 4.560080616149201
+    },
+    {
+      "customer_name": "PT. Sisindokom Lintasbuana",
+      "rr": 175228.13,
+      "nrr": 0,
+      "total": 175228.13,
+      "subscriptions": [
+        {
+          "sub_id": 1776471.0,
+          "arr": 175228.13,
+          "renewal_qtr": "Q4'26",
+          "will_renew": "Yes",
+          "projected_arr": 219035.1625
+        }
+      ],
+      "rank": 6,
+      "pct_of_total": 4.516932022692971
+    }
+  ]
+}
