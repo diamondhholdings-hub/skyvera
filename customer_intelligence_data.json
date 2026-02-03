@@ -1,0 +1,550 @@
+{
+  "report_metadata": {
+    "generated_date": "2026-02-01",
+    "total_customers": 129,
+    "total_arr": 52655941.27,
+    "total_projected_arr": 51224931.98,
+    "arr_change": -1431009.29,
+    "arr_change_pct": -2.7,
+    "total_ar_90_days": 11468030.10,
+    "ar_90_pct_of_arr": 21.8
+  },
+  "risk_summary": {
+    "high_risk_count": 33,
+    "high_risk_arr": 11144550.34,
+    "medium_risk_count": 3,
+    "medium_risk_arr": 468995.42,
+    "low_risk_count": 86,
+    "low_risk_arr": 41042395.51,
+    "will_not_renew_count": 35,
+    "will_not_renew_arr": 11566934.26
+  },
+  "expansion_summary": {
+    "total_expansion_pipeline": 7354633.15,
+    "expansion_customers": 45
+  },
+  "business_units": [
+    {
+      "name": "Cloudsense",
+      "arr": 26227408.82,
+      "projected_arr": 28288629.41,
+      "change": 2061220.59,
+      "customer_count": 50,
+      "at_risk_count": 9,
+      "at_risk_arr": 3358141.01
+    },
+    {
+      "name": "Kandy",
+      "arr": 13602782.42,
+      "projected_arr": 13664745.07,
+      "change": 61962.65,
+      "customer_count": 25,
+      "at_risk_count": 9,
+      "at_risk_arr": 2752000.76
+    },
+    {
+      "name": "NewNet",
+      "arr": 6963948.28,
+      "projected_arr": 5690318.10,
+      "change": -1273630.18,
+      "customer_count": 20,
+      "at_risk_count": 5,
+      "at_risk_arr": 2666204.12
+    },
+    {
+      "name": "STL",
+      "arr": 3436361.68,
+      "projected_arr": 1752651.01,
+      "change": -1683710.67,
+      "customer_count": 20,
+      "at_risk_count": 13,
+      "at_risk_arr": 2537788.31
+    },
+    {
+      "name": "VoltDelta",
+      "arr": 1558755.71,
+      "projected_arr": 1235829.30,
+      "change": -322926.41,
+      "customer_count": 2,
+      "at_risk_count": 1,
+      "at_risk_arr": 322926.41
+    },
+    {
+      "name": "Mobilogy",
+      "arr": 393729.89,
+      "projected_arr": 1566.00,
+      "change": -392163.89,
+      "customer_count": 8,
+      "at_risk_count": 7,
+      "at_risk_arr": 392477.09
+    },
+    {
+      "name": "Service Gateway",
+      "arr": 319092.18,
+      "projected_arr": 398865.22,
+      "change": 79773.04,
+      "customer_count": 3,
+      "at_risk_count": 0,
+      "at_risk_arr": 0
+    },
+    {
+      "name": "ResponseTek",
+      "arr": 153862.29,
+      "projected_arr": 192327.86,
+      "change": 38465.57,
+      "customer_count": 1,
+      "at_risk_count": 0,
+      "at_risk_arr": 0
+    }
+  ],
+  "renewal_pipeline": [
+    {
+      "quarter": "Q4'25",
+      "renewal_count": 8,
+      "arr": 2302440.81,
+      "at_risk_arr": 677007.21
+    },
+    {
+      "quarter": "Q1'26",
+      "renewal_count": 41,
+      "arr": 9611365.44,
+      "at_risk_arr": 5638054.96
+    },
+    {
+      "quarter": "Q2'26",
+      "renewal_count": 18,
+      "arr": 16247852.50,
+      "at_risk_arr": 2568290.34
+    },
+    {
+      "quarter": "Q3'26",
+      "renewal_count": 14,
+      "arr": 5536788.09,
+      "at_risk_arr": 3589499.16
+    },
+    {
+      "quarter": "Q4'26",
+      "renewal_count": 13,
+      "arr": 5111862.93,
+      "at_risk_arr": 1925291.85
+    },
+    {
+      "quarter": "Next Yr",
+      "renewal_count": 39,
+      "arr": 17482177.02,
+      "at_risk_arr": 462603.44
+    }
+  ],
+  "top_at_risk_customers": [
+    {
+      "rank": 1,
+      "name": "HCL TECHNOLOGIES UK LIMITED",
+      "arr": 2082880.43,
+      "risk_score": 9,
+      "at_risk_amount": 2082880.43,
+      "renewal_quarter": "Q2'26",
+      "business_unit": "NewNet",
+      "status": "CONFIRMED LOSS"
+    },
+    {
+      "rank": 2,
+      "name": "AT&T SERVICES, INC.",
+      "arr": 2518275.31,
+      "risk_score": 9,
+      "at_risk_amount": 20430.31,
+      "renewal_quarter": "Q1'26, Q3'26",
+      "business_unit": "Kandy",
+      "status": "MIXED - DECISION REQUIRED"
+    },
+    {
+      "rank": 3,
+      "name": "British Telecommunications plc",
+      "arr": 1404790.63,
+      "risk_score": 9,
+      "at_risk_amount": 1404790.63,
+      "renewal_quarter": "Q1'26",
+      "business_unit": "Cloudsense",
+      "status": "CONFIRMED LOSS"
+    },
+    {
+      "rank": 4,
+      "name": "One Albania",
+      "arr": 1620914.02,
+      "risk_score": 8,
+      "at_risk_amount": 1620914.02,
+      "renewal_quarter": "Q4'26",
+      "business_unit": "STL",
+      "status": "CONFIRMED LOSS"
+    },
+    {
+      "rank": 5,
+      "name": "Thryv Australia Pty Ltd",
+      "arr": 567978.58,
+      "risk_score": 9,
+      "at_risk_amount": 567978.58,
+      "renewal_quarter": "Q1'26",
+      "business_unit": "Cloudsense",
+      "status": "CONFIRMED LOSS"
+    },
+    {
+      "rank": 6,
+      "name": "CoreSite",
+      "arr": 456285.20,
+      "risk_score": 6,
+      "at_risk_amount": 456285.20,
+      "renewal_quarter": "Q3'26",
+      "business_unit": "Cloudsense",
+      "status": "CONFIRMED LOSS"
+    },
+    {
+      "rank": 7,
+      "name": "DPG Media BV",
+      "arr": 358970.62,
+      "risk_score": 6,
+      "at_risk_amount": 358970.62,
+      "renewal_quarter": "Q3'26",
+      "business_unit": "Cloudsense",
+      "status": "CONFIRMED LOSS"
+    },
+    {
+      "rank": 8,
+      "name": "Konnektio Oy.",
+      "arr": 322926.41,
+      "risk_score": 6,
+      "at_risk_amount": 322926.41,
+      "renewal_quarter": "Q4'25",
+      "business_unit": "VoltDelta",
+      "status": "CONFIRMED LOSS"
+    },
+    {
+      "rank": 9,
+      "name": "Sun Corporation",
+      "arr": 272477.09,
+      "risk_score": 7,
+      "at_risk_amount": 272477.09,
+      "renewal_quarter": "Q1'26",
+      "business_unit": "Mobilogy",
+      "status": "CONFIRMED LOSS"
+    },
+    {
+      "rank": 10,
+      "name": "PropertyGuru Pte Ltd",
+      "arr": 262147.67,
+      "risk_score": 6.5,
+      "at_risk_amount": 262147.67,
+      "renewal_quarter": "Q2'26",
+      "business_unit": "Cloudsense",
+      "status": "CONFIRMED LOSS"
+    }
+  ],
+  "top_expansion_opportunities": [
+    {
+      "rank": 1,
+      "name": "NS Solutions Corporation",
+      "current_arr": 2456101.00,
+      "projected_arr": 3070126.25,
+      "growth": 614025.25,
+      "growth_pct": 25.0,
+      "business_unit": "NewNet"
+    },
+    {
+      "rank": 2,
+      "name": "PostNL Holding BV",
+      "current_arr": 576494.75,
+      "projected_arr": 1152989.50,
+      "growth": 576494.75,
+      "growth_pct": 100.0,
+      "business_unit": "Cloudsense"
+    },
+    {
+      "rank": 3,
+      "name": "Telefonica UK Limited",
+      "current_arr": 2104857.01,
+      "projected_arr": 2631071.26,
+      "growth": 526214.25,
+      "growth_pct": 25.0,
+      "business_unit": "Cloudsense"
+    },
+    {
+      "rank": 4,
+      "name": "Telstra Corporation Limited",
+      "current_arr": 1972000.00,
+      "projected_arr": 2465000.00,
+      "growth": 493000.00,
+      "growth_pct": 25.0,
+      "business_unit": "Cloudsense"
+    },
+    {
+      "rank": 5,
+      "name": "Vodafone Netherlands",
+      "current_arr": 1843190.03,
+      "projected_arr": 2303987.54,
+      "growth": 460797.51,
+      "growth_pct": 25.0,
+      "business_unit": "Cloudsense"
+    },
+    {
+      "rank": 6,
+      "name": "Maxis Broadband Sdn Bhd",
+      "current_arr": 1364195.25,
+      "projected_arr": 1705244.06,
+      "growth": 341048.81,
+      "growth_pct": 25.0,
+      "business_unit": "Cloudsense"
+    },
+    {
+      "rank": 7,
+      "name": "Liquid Telecom",
+      "current_arr": 1073619.80,
+      "projected_arr": 1342024.75,
+      "growth": 268404.95,
+      "growth_pct": 25.0,
+      "business_unit": "Cloudsense"
+    },
+    {
+      "rank": 8,
+      "name": "StarHub Ltd",
+      "current_arr": 919238.90,
+      "projected_arr": 1149048.62,
+      "growth": 229809.72,
+      "growth_pct": 25.0,
+      "business_unit": "Cloudsense"
+    },
+    {
+      "rank": 9,
+      "name": "Elisa Oyj",
+      "current_arr": 897155.47,
+      "projected_arr": 1121444.34,
+      "growth": 224288.87,
+      "growth_pct": 25.0,
+      "business_unit": "Cloudsense"
+    },
+    {
+      "rank": 10,
+      "name": "Abbott Laboratories",
+      "current_arr": 816927.60,
+      "projected_arr": 1021159.50,
+      "growth": 204231.90,
+      "growth_pct": 25.0,
+      "business_unit": "Cloudsense"
+    }
+  ],
+  "tier1_customers": [
+    {
+      "name": "EMIRCOM",
+      "arr": 9586308.00,
+      "projected_arr": 9586308.00,
+      "health_score": 3,
+      "risk_score": 7,
+      "business_unit": "Kandy",
+      "will_renew": "Yes",
+      "renewal_quarter": "Q2'26",
+      "ar_90_days": 3849107.95,
+      "key_risk": "AR >90 days = 40% of ARR, $3.8M write-off noted"
+    },
+    {
+      "name": "AT&T SERVICES, INC.",
+      "arr": 2518275.31,
+      "projected_arr": 2497845.00,
+      "health_score": 1,
+      "risk_score": 9,
+      "business_unit": "Kandy",
+      "will_renew": "Mixed",
+      "renewal_quarter": "Q1'26, Q3'26",
+      "ar_90_days": 58312.82,
+      "key_risk": "Mixed renewal signals, BU decision required"
+    },
+    {
+      "name": "NS Solutions Corporation",
+      "arr": 2456101.00,
+      "projected_arr": 3070126.25,
+      "health_score": 5,
+      "risk_score": 5,
+      "business_unit": "NewNet",
+      "will_renew": "Yes",
+      "renewal_quarter": "Next Yr",
+      "ar_90_days": 0,
+      "key_risk": "Low risk, expansion opportunity"
+    },
+    {
+      "name": "Telefonica UK Limited",
+      "arr": 2104857.01,
+      "projected_arr": 2631071.26,
+      "health_score": 4,
+      "risk_score": 6,
+      "business_unit": "Cloudsense",
+      "will_renew": "Yes",
+      "renewal_quarter": "Q1'26",
+      "ar_90_days": 0,
+      "key_risk": "Q1'26 renewal imminent"
+    },
+    {
+      "name": "HCL TECHNOLOGIES UK LIMITED",
+      "arr": 2082880.43,
+      "projected_arr": 0,
+      "health_score": 1,
+      "risk_score": 9,
+      "business_unit": "NewNet",
+      "will_renew": "No",
+      "renewal_quarter": "Q2'26",
+      "ar_90_days": 0,
+      "key_risk": "CONFIRMED LOSS - $2.08M churning"
+    }
+  ],
+  "tier2_customers": [
+    {
+      "name": "Telstra Corporation Limited",
+      "arr": 1972000.00,
+      "projected_arr": 2465000.00,
+      "health_score": 5,
+      "business_unit": "Cloudsense",
+      "will_renew": "Yes"
+    },
+    {
+      "name": "Vodafone Netherlands",
+      "arr": 1843190.03,
+      "projected_arr": 2303987.54,
+      "health_score": 5,
+      "business_unit": "Cloudsense",
+      "will_renew": "Yes"
+    },
+    {
+      "name": "One Albania",
+      "arr": 1620914.02,
+      "projected_arr": 0,
+      "health_score": 2,
+      "business_unit": "STL",
+      "will_renew": "No"
+    },
+    {
+      "name": "Spotify",
+      "arr": 1587300.00,
+      "projected_arr": 1587300.00,
+      "health_score": 5,
+      "business_unit": "Cloudsense",
+      "will_renew": "Yes"
+    },
+    {
+      "name": "British Telecommunications plc",
+      "arr": 1404790.63,
+      "projected_arr": 0,
+      "health_score": 1,
+      "business_unit": "Cloudsense",
+      "will_renew": "No"
+    },
+    {
+      "name": "Maxis Broadband Sdn Bhd",
+      "arr": 1364195.25,
+      "projected_arr": 1705244.06,
+      "health_score": 5,
+      "business_unit": "Cloudsense",
+      "will_renew": "Yes"
+    },
+    {
+      "name": "TRANSCOM",
+      "arr": 1235829.30,
+      "projected_arr": 1235829.30,
+      "health_score": 5,
+      "business_unit": "VoltDelta",
+      "will_renew": "Yes"
+    },
+    {
+      "name": "Liquid Telecom",
+      "arr": 1073619.80,
+      "projected_arr": 1342024.75,
+      "health_score": 5,
+      "business_unit": "Cloudsense",
+      "will_renew": "Yes"
+    },
+    {
+      "name": "Centrica Services Ltd",
+      "arr": 1053982.65,
+      "projected_arr": 1053982.65,
+      "health_score": 4,
+      "business_unit": "Cloudsense",
+      "will_renew": "Yes"
+    }
+  ],
+  "ar_aging_critical": [
+    {
+      "customer": "EMIRCOM",
+      "ar_90_days": 3849107.95,
+      "arr": 9586308.00,
+      "pct_of_arr": 40.2,
+      "notes": "$3.8M for write-off per AR notes"
+    },
+    {
+      "customer": "COGNITY UK LIMITED",
+      "ar_90_days": 871213.51,
+      "arr": 0,
+      "pct_of_arr": null,
+      "notes": "Churned customer - collection risk"
+    },
+    {
+      "customer": "STERLITE TECHNOLOGIES LTD",
+      "ar_90_days": 515578.12,
+      "arr": 112721.13,
+      "pct_of_arr": 457.4,
+      "notes": "AR exceeds ARR significantly"
+    },
+    {
+      "customer": "BHARTI AIRTEL LIMITED - GURGAON",
+      "ar_90_days": 392879.98,
+      "arr": 33450.14,
+      "pct_of_arr": 1174.5,
+      "notes": "Critical AR to ARR ratio"
+    },
+    {
+      "customer": "HERTZ EUROPE LIMITED",
+      "ar_90_days": 386035.01,
+      "arr": 46534.91,
+      "pct_of_arr": 829.6,
+      "notes": "Critical AR to ARR ratio"
+    }
+  ],
+  "customer_concentration": {
+    "top_10_arr": 27176616.43,
+    "top_10_pct": 51.6,
+    "top_20_arr": 36492633.43,
+    "top_20_pct": 69.3,
+    "hhi_index": 510,
+    "hhi_interpretation": "LOW concentration"
+  },
+  "executive_actions": [
+    {
+      "priority": 1,
+      "action": "AT&T Executive Escalation",
+      "owner": "Sales Leadership",
+      "timeline": "This Week",
+      "impact": "$2.5M ARR at risk"
+    },
+    {
+      "priority": 2,
+      "action": "Accept BT & Thryv Losses, Plan Transition",
+      "owner": "Customer Success",
+      "timeline": "30 Days",
+      "impact": "$1.97M confirmed losses"
+    },
+    {
+      "priority": 3,
+      "action": "EMIRCOM AR Write-off Decision & Renewal Lock",
+      "owner": "Finance + Sales",
+      "timeline": "30 Days",
+      "impact": "$9.6M ARR, $3.8M AR"
+    },
+    {
+      "priority": 4,
+      "action": "Accelerate Cloudsense Expansion Pipeline",
+      "owner": "Sales",
+      "timeline": "90 Days",
+      "impact": "$2.06M growth opportunity"
+    },
+    {
+      "priority": 5,
+      "action": "STL Business Unit Stabilization Plan",
+      "owner": "BU Leadership",
+      "timeline": "90 Days",
+      "impact": "$1.68M decline projected"
+    }
+  ]
+}

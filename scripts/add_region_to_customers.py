@@ -21,36 +21,55 @@ def classify_region(customer_name):
     """
     name_lower = customer_name.lower()
 
-    # High priority APAC patterns (check first - specific company names)
-    apac_priority = [
-        'telstra', 'starhub', 'maxis', 'pty', 'sdn bhd', 'singapore',
-        'australia', 'philippines', 'indonesia', 'thailand', 'malaysia',
-        'pt.', 'pt ', 'india', 'teleindia'
-    ]
+    # Specific company mappings (highest priority - exact matches)
+    company_mappings = {
+        'emircom': 'EMEA',  # UAE
+        'liquid telecom': 'EMEA',  # Africa
+        'liquid intelligent': 'EMEA',  # Africa
+        'ns solutions': 'APAC',  # Japan
+        'one albania': 'EMEA',  # Albania
+        'dplay entertainment': 'EMEA',  # Europe
+        'centrica': 'EMEA',  # UK
+        'mobile interim company': 'EMEA',  # Lebanon (S.A.L.)
+        'ericsson telecommunications': 'APAC',  # Philippines office
+        'commverge': 'APAC',  # Philippines
+        'hcl technologies': 'EMEA',  # UK office (HCL TECHNOLOGIES UK LIMITED)
+    }
 
-    # High priority Americas patterns (specific company names)
-    americas_priority = [
-        'at&t', 'comcast', 'verizon'
-    ]
+    # Check specific company mappings first
+    for company, region in company_mappings.items():
+        if company in name_lower:
+            return region
 
-    # EMEA patterns
-    emea_keywords = [
-        'uk', 'plc', 'gmbh', 'ag', 'nv', 'sa', 'oyj',
+    # High priority EMEA patterns (specific identifiers)
+    emea_priority = [
+        'uk', 'plc', 'gmbh', 'ag.', 'nv/', 'sa/', 's.a.l', 'oyj',
+        'albania', 'germany', 'austria', 'belgium', 'netherlands', 'finland',
+        'africa', 'egypt', 'uae', 'middle east', 'emirates',
         'telekom', 'vodafone', 'telefonica', 'elisa', 'luminus', 'ziggo',
-        'british', 'virgin media', 'a1', 'postnl', 'orange', 'europe'
+        'british', 'virgin media', 'a1 ', 'postnl', 'orange'
     ]
 
-    # APAC patterns (general)
-    apac_keywords = [
-        'japan', 'korea', 'india', 'china', 'asia', 'taiwan'
+    # High priority APAC patterns (check before generic patterns)
+    apac_priority = [
+        'telstra', 'starhub', 'maxis', 'pty', 'sdn bhd', 'pt.', 'pt ',
+        'singapore', 'australia', 'philippines', 'indonesia', 'thailand',
+        'malaysia', 'japan', 'japanese', 'korea', 'korean', 'india', 'indian',
+        'china', 'chinese', 'taiwan', 'asia', 'hong kong', 'vietnam'
     ]
 
-    # Americas patterns (general)
-    americas_keywords = [
-        'inc.', 'inc', 'llc', 'corp', 'us', 'usa', 'canada', 'america', 'latin'
+    # High priority Americas patterns (specific identifiers)
+    americas_priority = [
+        'at&t', 'comcast', 'verizon', 'us', 'usa', 'canada', 'canadian',
+        'latin america', 'argentina', 'brazil', 'mexico', 'chile'
     ]
 
-    # Check high priority APAC first
+    # Check high priority EMEA first
+    for keyword in emea_priority:
+        if keyword in name_lower:
+            return 'EMEA'
+
+    # Check high priority APAC
     for keyword in apac_priority:
         if keyword in name_lower:
             return 'APAC'
@@ -60,26 +79,12 @@ def classify_region(customer_name):
         if keyword in name_lower:
             return 'Americas'
 
-    # Check EMEA (more specific patterns)
-    for keyword in emea_keywords:
-        if keyword in name_lower:
-            return 'EMEA'
-
-    # Check APAC general patterns
-    for keyword in apac_keywords:
-        if keyword in name_lower:
-            return 'APAC'
-
-    # Check Americas general patterns
-    for keyword in americas_keywords:
-        if keyword in name_lower:
-            return 'Americas'
-
-    # Check for generic patterns last (lowest priority)
-    if 'limited' in name_lower or 'ltd' in name_lower:
-        # Could be anywhere, default to Americas
+    # Generic patterns (lowest priority)
+    # Inc/LLC/Corp could be anywhere, but likely Americas
+    if any(x in name_lower for x in ['inc.', 'llc', 'corp', 'corporation']):
         return 'Americas'
 
+    # Limited/Ltd is too generic - default to Americas
     # Default to Americas if no match
     return 'Americas'
 

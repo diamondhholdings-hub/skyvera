@@ -1,0 +1,1374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skyvera - Top 3 Customer Intelligence Report</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .date {
+            margin-top: 10px;
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+
+        nav {
+            background: #f8f9fa;
+            padding: 15px 40px;
+            border-bottom: 2px solid #e9ecef;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        nav button {
+            padding: 10px 20px;
+            border: none;
+            background: #667eea;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        nav button:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+        }
+
+        nav button.active {
+            background: #1e3c72;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .metric-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .metric-card.danger {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .metric-card.warning {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+
+        .metric-card.success {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .metric-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+
+        .metric-value {
+            font-size: 2.5em;
+            font-weight: 700;
+        }
+
+        .metric-subtitle {
+            font-size: 0.85em;
+            opacity: 0.8;
+            margin-top: 5px;
+        }
+
+        .customer-profile {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px 0;
+            border-left: 5px solid #667eea;
+        }
+
+        .customer-profile.danger {
+            border-left-color: #f5576c;
+        }
+
+        .customer-profile.warning {
+            border-left-color: #fee140;
+        }
+
+        .customer-profile.success {
+            border-left-color: #00f2fe;
+        }
+
+        .customer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .customer-name {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #1e3c72;
+        }
+
+        .health-score {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 1.1em;
+        }
+
+        .health-score.caution {
+            background: #fee140;
+            color: #333;
+        }
+
+        .health-score.strong {
+            background: #00f2fe;
+            color: #333;
+        }
+
+        .health-score.good {
+            background: #4facfe;
+            color: white;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .info-item {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .info-label {
+            font-size: 0.85em;
+            color: #6c757d;
+            margin-bottom: 5px;
+        }
+
+        .info-value {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #1e3c72;
+        }
+
+        .section-header {
+            font-size: 1.5em;
+            color: #1e3c72;
+            margin: 30px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #1e3c72;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        tr:hover {
+            background: #f8f9fa;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        .badge.critical {
+            background: #f5576c;
+            color: white;
+        }
+
+        .badge.high {
+            background: #fa709a;
+            color: white;
+        }
+
+        .badge.medium {
+            background: #fee140;
+            color: #333;
+        }
+
+        .badge.low {
+            background: #00f2fe;
+            color: #333;
+        }
+
+        .badge.immediate {
+            background: #f5576c;
+            color: white;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .chart-container {
+            position: relative;
+            height: 400px;
+            margin: 30px 0;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .alert {
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-weight: 500;
+        }
+
+        .alert.critical {
+            background: #ffe5e5;
+            border-left: 5px solid #f5576c;
+            color: #c92a2a;
+        }
+
+        .alert.warning {
+            background: #fff9db;
+            border-left: 5px solid #fee140;
+            color: #7c6300;
+        }
+
+        .alert.info {
+            background: #e3f2fd;
+            border-left: 5px solid #4facfe;
+            color: #0d47a1;
+        }
+
+        .opportunity-card {
+            background: #e8f5e9;
+            border-left: 5px solid #4caf50;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        .risk-card {
+            background: #ffebee;
+            border-left: 5px solid #f44336;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        ul {
+            margin: 15px 0;
+            padding-left: 25px;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        .action-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .action-item {
+            background: white;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+            border-left: 5px solid #667eea;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .action-timeline {
+            display: inline-block;
+            padding: 5px 15px;
+            background: #667eea;
+            color: white;
+            border-radius: 15px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .action-timeline.immediate {
+            background: #f5576c;
+        }
+
+        .footer {
+            background: #1e3c72;
+            color: white;
+            padding: 30px 40px;
+            text-align: center;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .footer h3 {
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .footer ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer li {
+            margin: 8px 0;
+            opacity: 0.9;
+        }
+
+        .copyright {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Top 3 Customer Intelligence Report</h1>
+            <div class="subtitle">Comprehensive Analysis of Skyvera's Largest Customer Accounts</div>
+            <div class="date">Analysis Date: February 1, 2026</div>
+        </header>
+
+        <nav>
+            <button onclick="showSection('executive')" class="active">Executive Summary</button>
+            <button onclick="showSection('emircom')">Customer 1: EMIRCOM</button>
+            <button onclick="showSection('nssolutions')">Customer 2: NS Solutions</button>
+            <button onclick="showSection('telefonica')">Customer 3: Telefonica UK</button>
+            <button onclick="showSection('risks')">Risk Analysis</button>
+            <button onclick="showSection('actions')">Action Plan</button>
+        </nav>
+
+        <div class="content">
+            <!-- Executive Summary Section -->
+            <div id="executive" class="section active">
+                <h2 class="section-header">Executive Summary</h2>
+
+                <div class="alert critical">
+                    <strong>CRITICAL FINDING:</strong> EMIRCOM represents 18.2% of total company ARR with $3.85M in AR >90 days and ongoing pricing disputes. This is the highest-priority account requiring immediate executive attention.
+                </div>
+
+                <div class="metric-grid">
+                    <div class="metric-card">
+                        <div class="metric-label">Total Company ARR</div>
+                        <div class="metric-value">$52.7M</div>
+                    </div>
+                    <div class="metric-card danger">
+                        <div class="metric-label">Top 3 Customer ARR</div>
+                        <div class="metric-value">$14.1M</div>
+                        <div class="metric-subtitle">26.9% concentration</div>
+                    </div>
+                    <div class="metric-card warning">
+                        <div class="metric-label">Top Customer (EMIRCOM)</div>
+                        <div class="metric-value">$9.6M</div>
+                        <div class="metric-subtitle">18.2% of total ARR</div>
+                    </div>
+                    <div class="metric-card danger">
+                        <div class="metric-label">AR >90 Days</div>
+                        <div class="metric-value">$11.5M</div>
+                        <div class="metric-subtitle">Collection risk</div>
+                    </div>
+                </div>
+
+                <h3 class="section-header">Top 3 Customers Overview</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Customer</th>
+                            <th>Product</th>
+                            <th>ARR</th>
+                            <th>% of Total</th>
+                            <th>Health Score</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td><strong>EMIRCOM</strong></td>
+                            <td>Kandy</td>
+                            <td><strong>$9,586,308</strong></td>
+                            <td>18.2%</td>
+                            <td><span class="badge medium">5/10 CAUTION</span></td>
+                            <td><span class="badge critical">High Risk</span></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><strong>NS Solutions (SoftBank)</strong></td>
+                            <td>NewNet</td>
+                            <td><strong>$2,456,101</strong></td>
+                            <td>4.7%</td>
+                            <td><span class="badge low">8/10 STRONG</span></td>
+                            <td><span class="badge low">Healthy</span></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><strong>Telefonica UK (O2)</strong></td>
+                            <td>Cloudsense</td>
+                            <td><strong>$2,104,857</strong></td>
+                            <td>4.0%</td>
+                            <td><span class="badge low">7/10 GOOD</span></td>
+                            <td><span class="badge immediate">RENEWAL DUE NOW</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="chart-container">
+                    <canvas id="customerARRChart"></canvas>
+                </div>
+
+                <div class="chart-container">
+                    <canvas id="concentrationChart"></canvas>
+                </div>
+            </div>
+
+            <!-- EMIRCOM Section -->
+            <div id="emircom" class="section">
+                <div class="customer-profile danger">
+                    <div class="customer-header">
+                        <div class="customer-name">1. EMIRCOM LLC</div>
+                        <span class="health-score caution">Health Score: 5/10 CAUTION</span>
+                    </div>
+
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <div class="info-label">Headquarters</div>
+                            <div class="info-value">Abu Dhabi, UAE</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Industry</div>
+                            <div class="info-value">ICT/Telecom</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Parent Company</div>
+                            <div class="info-value">IHC (Oct 2024)</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Skyvera Product</div>
+                            <div class="info-value">Kandy</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Contract ARR</div>
+                            <div class="info-value">$9,586,308</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">% of Skyvera ARR</div>
+                            <div class="info-value">18.2%</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Contract Period</div>
+                            <div class="info-value">Apr 2023 - May 2026</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Renewal Date</div>
+                            <div class="info-value">June 1, 2026</div>
+                        </div>
+                    </div>
+
+                    <div class="alert critical">
+                        <strong>CRITICAL: Extreme AR Risk</strong><br>
+                        $3,849,108 outstanding >90 days. $3.8M recommended for write-off. Customer has disputed invoices and requires detailed PO documentation for all payments.
+                    </div>
+
+                    <h3 class="section-header">Key Findings</h3>
+                    <ul>
+                        <li><strong>AR Crisis:</strong> $3.85M >90 days (40% of ARR), $3.8M write-off recommended</li>
+                        <li><strong>Pricing Disputes:</strong> Customer rejected invoices without PO reference, BU reversed pricing increase</li>
+                        <li><strong>Parent Acquisition:</strong> IHC acquired EMIRCOM for $79.49M in Oct 2024 (strong financial backing)</li>
+                        <li><strong>Renewal Status:</strong> "Outreach" stage - NOT guaranteed despite "Yes" status</li>
+                        <li><strong>Legal Involvement:</strong> Direct exec escalation required</li>
+                    </ul>
+
+                    <h3 class="section-header">Churn Risk Assessment: 6/10 (ELEVATED)</h3>
+                    <div class="chart-container">
+                        <canvas id="emircomRiskChart"></canvas>
+                    </div>
+
+                    <div class="risk-card">
+                        <h4>Top Risks</h4>
+                        <ul>
+                            <li><strong>Non-renewal (35% probability):</strong> $9.6M ARR loss</li>
+                            <li><strong>Pricing concession (60% probability):</strong> 10-20% ARR reduction</li>
+                            <li><strong>Further write-offs (40% probability):</strong> Additional $1-2M loss</li>
+                        </ul>
+                    </div>
+
+                    <div class="opportunity-card">
+                        <h4>Opportunities</h4>
+                        <ul>
+                            <li><strong>Stabilize Relationship:</strong> Resolve AR disputes in Q1'26 to de-risk June renewal</li>
+                            <li><strong>Process Alignment:</strong> Implement PO/documentation workflow</li>
+                            <li><strong>Executive Engagement:</strong> Explore relationship at IHC holding company level</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NS Solutions Section -->
+            <div id="nssolutions" class="section">
+                <div class="customer-profile success">
+                    <div class="customer-header">
+                        <div class="customer-name">2. NS Solutions Corporation</div>
+                        <span class="health-score strong">Health Score: 8/10 STRONG</span>
+                    </div>
+
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <div class="info-label">Headquarters</div>
+                            <div class="info-value">Tokyo, Japan</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Industry</div>
+                            <div class="info-value">IT Services</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Parent Company</div>
+                            <div class="info-value">Nippon Steel (63.4%)</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">End User</div>
+                            <div class="info-value">SoftBank Corp.</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Skyvera Product</div>
+                            <div class="info-value">NewNet</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Contract ARR</div>
+                            <div class="info-value">$2,456,101</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">% of Skyvera ARR</div>
+                            <div class="info-value">4.7%</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Renewal Date</div>
+                            <div class="info-value">April 2027</div>
+                        </div>
+                    </div>
+
+                    <div class="alert info">
+                        <strong>HEALTHY ACCOUNT:</strong> Strong financial backing from Nippon Steel, no AR issues, clean payment history. Expansion opportunity identified: +25% ($614K additional ARR).
+                    </div>
+
+                    <h3 class="section-header">Key Findings</h3>
+                    <ul>
+                        <li><strong>Financial Strength:</strong> Backed by Nippon Steel, Japan's largest steel producer</li>
+                        <li><strong>Strategic End-User:</strong> SoftBank investing heavily in AI infrastructure with NVIDIA</li>
+                        <li><strong>Clean AR:</strong> Zero outstanding >90 days, excellent payment behavior</li>
+                        <li><strong>Expansion Identified:</strong> +25% upsell projected ($614K ARR)</li>
+                        <li><strong>Long Contract:</strong> Active through March 2027</li>
+                    </ul>
+
+                    <h3 class="section-header">Churn Risk Assessment: 2/10 (LOW)</h3>
+                    <div class="chart-container">
+                        <canvas id="nssolutionsRiskChart"></canvas>
+                    </div>
+
+                    <div class="opportunity-card">
+                        <h4>Expansion Opportunity: $614K ARR</h4>
+                        <ul>
+                            <li><strong>Current ARR:</strong> $2,456,101</li>
+                            <li><strong>Projected ARR:</strong> $3,070,126 (+25%)</li>
+                            <li><strong>Opportunity:</strong> Position for SoftBank's AI infrastructure buildout</li>
+                            <li><strong>Cross-sell:</strong> Explore Cloudsense or other Skyvera products</li>
+                        </ul>
+                    </div>
+
+                    <div class="risk-card">
+                        <h4>Minimal Risks</h4>
+                        <ul>
+                            <li><strong>Non-renewal (5% probability):</strong> $2.5M ARR loss - maintain engagement</li>
+                            <li><strong>Expansion failure (30% probability):</strong> $614K opportunity loss</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Telefonica UK Section -->
+            <div id="telefonica" class="section">
+                <div class="customer-profile warning">
+                    <div class="customer-header">
+                        <div class="customer-name">3. Telefonica UK Limited (O2)</div>
+                        <span class="health-score good">Health Score: 7/10 GOOD</span>
+                    </div>
+
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <div class="info-label">Headquarters</div>
+                            <div class="info-value">Slough, UK</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Industry</div>
+                            <div class="info-value">Telecommunications</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Parent</div>
+                            <div class="info-value">Virgin Media O2 JV</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Skyvera Product</div>
+                            <div class="info-value">Cloudsense</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Contract ARR</div>
+                            <div class="info-value">$2,104,857</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">% of Skyvera ARR</div>
+                            <div class="info-value">4.0%</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Contract Period</div>
+                            <div class="info-value">Feb 2025 - Jan 2026</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Renewal Date</div>
+                            <div class="info-value">Feb 1, 2026 (TODAY)</div>
+                        </div>
+                    </div>
+
+                    <div class="alert warning">
+                        <strong>URGENT: RENEWAL DUE IMMEDIATELY</strong><br>
+                        Contract ends January 31, 2026. Renewal date is February 1, 2026 (TODAY). Salesforce shows "Proposal" stage with close date January 2, 2026. This renewal should be near completion or already closed.
+                    </div>
+
+                    <h3 class="section-header">Key Findings</h3>
+                    <ul>
+                        <li><strong>URGENT Renewal:</strong> Contract ends Jan 31, 2026 - at Proposal stage</li>
+                        <li><strong>VMO2 Performance:</strong> Q3 2025 EBITDA up 2.7% to £1,015M, margin improving</li>
+                        <li><strong>Telefonica Strategy:</strong> "Transform & Grow" 5-year plan launched Nov 2025</li>
+                        <li><strong>Clean AR:</strong> No payment issues or disputes</li>
+                        <li><strong>Expansion Opportunity:</strong> +25% upsell projected ($526K additional ARR)</li>
+                    </ul>
+
+                    <h3 class="section-header">Churn Risk Assessment: 3/10 (LOW)</h3>
+                    <div class="chart-container">
+                        <canvas id="telefonicaRiskChart"></canvas>
+                    </div>
+
+                    <div class="opportunity-card">
+                        <h4>Expansion at Renewal: $526K ARR</h4>
+                        <ul>
+                            <li><strong>Current ARR:</strong> $2,104,857</li>
+                            <li><strong>Projected ARR:</strong> $2,631,071 (+25%)</li>
+                            <li><strong>Telefonica Germany:</strong> Another renewal opportunity in Jan 2027</li>
+                            <li><strong>VMO2 Expansion:</strong> Explore B2B opportunities</li>
+                        </ul>
+                    </div>
+
+                    <div class="risk-card">
+                        <h4>Moderate Risks</h4>
+                        <ul>
+                            <li><strong>Renewal delay (20% probability):</strong> Cash flow impact</li>
+                            <li><strong>Price pressure (40% probability):</strong> 10-15% ARR reduction</li>
+                            <li><strong>Expansion failure (25% probability):</strong> $526K opportunity loss</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Risk Analysis Section -->
+            <div id="risks" class="section">
+                <h2 class="section-header">Consolidated Risk Analysis</h2>
+
+                <div class="alert critical">
+                    <strong>CRITICAL RISK:</strong> Customer concentration at 18.2% for single customer (EMIRCOM) exceeds industry best practice of <10%. Combined with AR issues, this creates existential risk to the company.
+                </div>
+
+                <h3 class="section-header">Customer Concentration Risk</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Metric</th>
+                            <th>Value</th>
+                            <th>Assessment</th>
+                            <th>Industry Benchmark</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Top Customer (EMIRCOM)</td>
+                            <td><strong>18.2% of ARR</strong></td>
+                            <td><span class="badge critical">CRITICAL</span></td>
+                            <td>&lt;10%</td>
+                        </tr>
+                        <tr>
+                            <td>Top 3 Customers</td>
+                            <td><strong>26.9% of ARR</strong></td>
+                            <td><span class="badge high">HIGH</span></td>
+                            <td>&lt;25%</td>
+                        </tr>
+                        <tr>
+                            <td>Top 5 Customers</td>
+                            <td><strong>35.6% of ARR</strong></td>
+                            <td><span class="badge high">ELEVATED</span></td>
+                            <td>&lt;30%</td>
+                        </tr>
+                        <tr>
+                            <td>Top 10 Customers</td>
+                            <td><strong>51.6% of ARR</strong></td>
+                            <td><span class="badge high">ELEVATED</span></td>
+                            <td>&lt;50%</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="chart-container">
+                    <canvas id="concentrationRiskChart"></canvas>
+                </div>
+
+                <h3 class="section-header">AR Collection Risk</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Customer</th>
+                            <th>AR >90 Days</th>
+                            <th>ARR</th>
+                            <th>AR as % of ARR</th>
+                            <th>Risk Level</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>EMIRCOM</strong></td>
+                            <td>$3,849,108</td>
+                            <td>$9,586,308</td>
+                            <td>40.2%</td>
+                            <td><span class="badge critical">CRITICAL</span></td>
+                        </tr>
+                        <tr>
+                            <td>Cognity UK</td>
+                            <td>$871,214</td>
+                            <td>$0</td>
+                            <td>N/A</td>
+                            <td><span class="badge critical">CRITICAL</span></td>
+                        </tr>
+                        <tr>
+                            <td>Sterlite Technologies</td>
+                            <td>$515,578</td>
+                            <td>$112,721</td>
+                            <td>457.4%</td>
+                            <td><span class="badge critical">CRITICAL</span></td>
+                        </tr>
+                        <tr>
+                            <td>Bharti Airtel</td>
+                            <td>$392,880</td>
+                            <td>$33,450</td>
+                            <td>1174.6%</td>
+                            <td><span class="badge critical">CRITICAL</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>TOTAL</strong></td>
+                            <td><strong>$11,468,030</strong></td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3 class="section-header">Q1-Q2 2026 Renewal Pipeline Risk</h3>
+                <div class="alert warning">
+                    <strong>WARNING:</strong> $8.78M in ARR is confirmed churning in Q1-Q2 2026, representing 16.7% of total company ARR.
+                </div>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Quarter</th>
+                            <th>Total ARR at Risk</th>
+                            <th>Confirmed Churn</th>
+                            <th>% Churn Rate</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Q1'26</td>
+                            <td>$9,437,989</td>
+                            <td>$3,377,560</td>
+                            <td>35.8%</td>
+                        </tr>
+                        <tr>
+                            <td>Q2'26</td>
+                            <td>$16,112,377</td>
+                            <td>$2,082,880</td>
+                            <td>12.9%</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="chart-container">
+                    <canvas id="churnRiskChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Action Plan Section -->
+            <div id="actions" class="section">
+                <h2 class="section-header">Strategic Action Plan</h2>
+
+                <div class="alert critical">
+                    <strong>IMMEDIATE ACTIONS REQUIRED:</strong> Two critical items need executive attention this week - EMIRCOM stabilization and Telefonica UK renewal closure.
+                </div>
+
+                <ul class="action-list">
+                    <li class="action-item">
+                        <span class="action-timeline immediate">PRIORITY 1: IMMEDIATE</span>
+                        <h3>EMIRCOM Stabilization</h3>
+                        <p><strong>What:</strong> Executive engagement to reset relationship and resolve AR disputes</p>
+                        <p><strong>Why:</strong> 18.2% of ARR at elevated churn risk with ongoing legal/pricing disputes</p>
+                        <p><strong>Who:</strong> CEO/CFO + Account Executive + Legal</p>
+                        <p><strong>When:</strong> This week</p>
+                        <p><strong>Success Metric:</strong> Written renewal commitment by March 2026</p>
+                        <p><strong>Action Items:</strong></p>
+                        <ul>
+                            <li>Schedule exec-to-exec call with EMIRCOM/IHC leadership</li>
+                            <li>Prepare AR resolution proposal with legal team</li>
+                            <li>Document value delivered over contract term</li>
+                            <li>Establish clear PO/documentation protocol for future invoices</li>
+                        </ul>
+                    </li>
+
+                    <li class="action-item">
+                        <span class="action-timeline immediate">PRIORITY 2: IMMEDIATE</span>
+                        <h3>Telefonica UK Renewal Closure</h3>
+                        <p><strong>What:</strong> Close renewal with expansion (+25%)</p>
+                        <p><strong>Why:</strong> Contract ends January 31, 2026 - at Proposal stage</p>
+                        <p><strong>Who:</strong> Account Executive</p>
+                        <p><strong>When:</strong> Immediate (contract ended yesterday)</p>
+                        <p><strong>Success Metric:</strong> Signed renewal with $2.6M ARR</p>
+                        <p><strong>Action Items:</strong></p>
+                        <ul>
+                            <li>Confirm current renewal status with account team</li>
+                            <li>Finalize expansion terms (+25% / $526K additional ARR)</li>
+                            <li>Execute contract if not already closed</li>
+                            <li>Establish QBR cadence for new contract term</li>
+                        </ul>
+                    </li>
+
+                    <li class="action-item">
+                        <span class="action-timeline">PRIORITY 3: Q1'26</span>
+                        <h3>Churn Prevention Campaign</h3>
+                        <p><strong>What:</strong> Targeted save efforts for confirmed churning accounts</p>
+                        <p><strong>Why:</strong> $8.8M ARR confirmed churning (16.7% of total ARR)</p>
+                        <p><strong>Who:</strong> Customer Success + Sales</p>
+                        <p><strong>When:</strong> Q1'26</p>
+                        <p><strong>Success Metric:</strong> Save 25% of at-risk ARR ($2.2M)</p>
+                        <p><strong>Key At-Risk Accounts:</strong></p>
+                        <ul>
+                            <li>HCL Technologies UK: $2,082,880 (Will Not Renew)</li>
+                            <li>British Telecommunications: $1,404,791 (Will Not Renew)</li>
+                            <li>Thryv Australia: $567,979 (Will Not Renew)</li>
+                        </ul>
+                    </li>
+
+                    <li class="action-item">
+                        <span class="action-timeline">PRIORITY 4: Q2'26</span>
+                        <h3>NS Solutions Expansion Initiative</h3>
+                        <p><strong>What:</strong> Execute 25% upsell opportunity</p>
+                        <p><strong>Why:</strong> Healthy account with identified expansion potential ($614K)</p>
+                        <p><strong>Who:</strong> Account Executive + Solutions Engineering</p>
+                        <p><strong>When:</strong> Q2'26</p>
+                        <p><strong>Success Metric:</strong> Close $614K expansion by end of Q2</p>
+                        <p><strong>Action Items:</strong></p>
+                        <ul>
+                            <li>Develop expansion value proposition tied to SoftBank AI initiatives</li>
+                            <li>Schedule strategic account review with NS Solutions</li>
+                            <li>Explore cross-sell opportunities (Cloudsense, other products)</li>
+                            <li>Begin 2027 renewal discussions (12 months early)</li>
+                        </ul>
+                    </li>
+
+                    <li class="action-item">
+                        <span class="action-timeline">PRIORITY 5: 2026 Annual Planning</span>
+                        <h3>Customer Concentration Reduction Initiative</h3>
+                        <p><strong>What:</strong> Strategic initiative to reduce EMIRCOM dependency</p>
+                        <p><strong>Why:</strong> 18.2% concentration creates existential risk</p>
+                        <p><strong>Who:</strong> Sales Leadership + Marketing</p>
+                        <p><strong>When:</strong> 2026 annual planning</p>
+                        <p><strong>Success Metric:</strong> No single customer >12% by end of 2026</p>
+                        <p><strong>Strategies:</strong></p>
+                        <ul>
+                            <li>Accelerate new customer acquisition in other verticals</li>
+                            <li>Expand existing healthy accounts (NS Solutions, etc.)</li>
+                            <li>Geographic diversification to reduce regional concentration</li>
+                            <li>Product mix optimization (cross-sell existing customers)</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h3 class="section-header">Success Metrics Dashboard</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Metric</th>
+                            <th>Current State</th>
+                            <th>Target (Q2'26)</th>
+                            <th>Target (EOY'26)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Top Customer Concentration</td>
+                            <td>18.2%</td>
+                            <td>&lt;15%</td>
+                            <td>&lt;12%</td>
+                        </tr>
+                        <tr>
+                            <td>AR >90 Days</td>
+                            <td>$11.5M</td>
+                            <td>&lt;$8M</td>
+                            <td>&lt;$5M</td>
+                        </tr>
+                        <tr>
+                            <td>EMIRCOM Renewal Status</td>
+                            <td>Outreach</td>
+                            <td>Contract Signed</td>
+                            <td>Active + Healthy</td>
+                        </tr>
+                        <tr>
+                            <td>Expansion ARR (NS Solutions)</td>
+                            <td>$0</td>
+                            <td>$614K</td>
+                            <td>$614K</td>
+                        </tr>
+                        <tr>
+                            <td>Churn Mitigation</td>
+                            <td>$8.8M at risk</td>
+                            <td>Save $2.2M</td>
+                            <td>75% retention</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="footer-grid">
+                <div>
+                    <h3>Report Details</h3>
+                    <ul>
+                        <li>Analysis Date: February 1, 2026</li>
+                        <li>Data Source: Q1'26 Budget File</li>
+                        <li>Analyst: Athena (Customer Intelligence)</li>
+                        <li>Report Type: Top 3 Customer Analysis</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Data Sources</h3>
+                    <ul>
+                        <li>Skyvera Budget File (Dec 11, 2025)</li>
+                        <li>Salesforce CRM Data</li>
+                        <li>AR Aging Reports</li>
+                        <li>External Company Research</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Key Contacts</h3>
+                    <ul>
+                        <li>Executive Team: Immediate action required</li>
+                        <li>Account Executives: EMIRCOM, Telefonica</li>
+                        <li>Customer Success: Churn prevention</li>
+                        <li>Finance: AR collection</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2026 Skyvera Customer Intelligence Report | Confidential
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Navigation
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+            document.getElementById(sectionId).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // Customer ARR Chart
+        const ctx1 = document.getElementById('customerARRChart').getContext('2d');
+        new Chart(ctx1, {
+            type: 'bar',
+            data: {
+                labels: ['EMIRCOM', 'NS Solutions', 'Telefonica UK', 'Others'],
+                datasets: [{
+                    label: 'ARR ($M)',
+                    data: [9.59, 2.46, 2.10, 38.51],
+                    backgroundColor: [
+                        'rgba(245, 87, 108, 0.8)',
+                        'rgba(0, 242, 254, 0.8)',
+                        'rgba(79, 172, 254, 0.8)',
+                        'rgba(102, 126, 234, 0.8)'
+                    ],
+                    borderColor: [
+                        'rgb(245, 87, 108)',
+                        'rgb(0, 242, 254)',
+                        'rgb(79, 172, 254)',
+                        'rgb(102, 126, 234)'
+                    ],
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'ARR Distribution by Customer',
+                        font: { size: 16, weight: 'bold' }
+                    },
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'ARR ($ Millions)'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Concentration Chart
+        const ctx2 = document.getElementById('concentrationChart').getContext('2d');
+        new Chart(ctx2, {
+            type: 'doughnut',
+            data: {
+                labels: ['EMIRCOM (18.2%)', 'NS Solutions (4.7%)', 'Telefonica UK (4.0%)', 'Others (73.1%)'],
+                datasets: [{
+                    data: [18.2, 4.7, 4.0, 73.1],
+                    backgroundColor: [
+                        'rgba(245, 87, 108, 0.8)',
+                        'rgba(0, 242, 254, 0.8)',
+                        'rgba(79, 172, 254, 0.8)',
+                        'rgba(102, 126, 234, 0.8)'
+                    ],
+                    borderColor: [
+                        'rgb(245, 87, 108)',
+                        'rgb(0, 242, 254)',
+                        'rgb(79, 172, 254)',
+                        'rgb(102, 126, 234)'
+                    ],
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Customer Concentration (% of Total ARR)',
+                        font: { size: 16, weight: 'bold' }
+                    },
+                    legend: {
+                        position: 'right'
+                    }
+                }
+            }
+        });
+
+        // EMIRCOM Risk Chart
+        const ctx3 = document.getElementById('emircomRiskChart').getContext('2d');
+        new Chart(ctx3, {
+            type: 'radar',
+            data: {
+                labels: ['Product Engagement', 'Financial Health', 'Relationship', 'Expansion Potential', 'Payment Behavior'],
+                datasets: [{
+                    label: 'Risk Score',
+                    data: [7, 6, 4, 3, 3],
+                    backgroundColor: 'rgba(245, 87, 108, 0.2)',
+                    borderColor: 'rgb(245, 87, 108)',
+                    borderWidth: 2,
+                    pointBackgroundColor: 'rgb(245, 87, 108)'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        beginAtZero: true,
+                        max: 10
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'EMIRCOM Health Dimensions (out of 10)',
+                        font: { size: 16, weight: 'bold' }
+                    }
+                }
+            }
+        });
+
+        // NS Solutions Risk Chart
+        const ctx4 = document.getElementById('nssolutionsRiskChart').getContext('2d');
+        new Chart(ctx4, {
+            type: 'radar',
+            data: {
+                labels: ['Product Engagement', 'Financial Health', 'Relationship', 'Expansion Potential', 'Payment Behavior'],
+                datasets: [{
+                    label: 'Health Score',
+                    data: [8, 9, 8, 7, 9],
+                    backgroundColor: 'rgba(0, 242, 254, 0.2)',
+                    borderColor: 'rgb(0, 242, 254)',
+                    borderWidth: 2,
+                    pointBackgroundColor: 'rgb(0, 242, 254)'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        beginAtZero: true,
+                        max: 10
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'NS Solutions Health Dimensions (out of 10)',
+                        font: { size: 16, weight: 'bold' }
+                    }
+                }
+            }
+        });
+
+        // Telefonica Risk Chart
+        const ctx5 = document.getElementById('telefonicaRiskChart').getContext('2d');
+        new Chart(ctx5, {
+            type: 'radar',
+            data: {
+                labels: ['Product Engagement', 'Financial Health', 'Relationship', 'Expansion Potential', 'Payment Behavior'],
+                datasets: [{
+                    label: 'Health Score',
+                    data: [7, 7, 7, 8, 8],
+                    backgroundColor: 'rgba(79, 172, 254, 0.2)',
+                    borderColor: 'rgb(79, 172, 254)',
+                    borderWidth: 2,
+                    pointBackgroundColor: 'rgb(79, 172, 254)'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        beginAtZero: true,
+                        max: 10
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Telefonica UK Health Dimensions (out of 10)',
+                        font: { size: 16, weight: 'bold' }
+                    }
+                }
+            }
+        });
+
+        // Concentration Risk Chart
+        const ctx6 = document.getElementById('concentrationRiskChart').getContext('2d');
+        new Chart(ctx6, {
+            type: 'bar',
+            data: {
+                labels: ['Top 1', 'Top 3', 'Top 5', 'Top 10'],
+                datasets: [{
+                    label: 'Actual % of ARR',
+                    data: [18.2, 26.9, 35.6, 51.6],
+                    backgroundColor: 'rgba(245, 87, 108, 0.8)',
+                    borderColor: 'rgb(245, 87, 108)',
+                    borderWidth: 2
+                }, {
+                    label: 'Industry Best Practice',
+                    data: [10, 25, 30, 50],
+                    backgroundColor: 'rgba(0, 242, 254, 0.8)',
+                    borderColor: 'rgb(0, 242, 254)',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Customer Concentration vs. Industry Benchmarks',
+                        font: { size: 16, weight: 'bold' }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 60,
+                        title: {
+                            display: true,
+                            text: '% of Total ARR'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Churn Risk Chart
+        const ctx7 = document.getElementById('churnRiskChart').getContext('2d');
+        new Chart(ctx7, {
+            type: 'bar',
+            data: {
+                labels: ['Q1 2026', 'Q2 2026'],
+                datasets: [{
+                    label: 'Total ARR at Risk',
+                    data: [9.44, 16.11],
+                    backgroundColor: 'rgba(102, 126, 234, 0.8)',
+                    borderColor: 'rgb(102, 126, 234)',
+                    borderWidth: 2
+                }, {
+                    label: 'Confirmed Churn',
+                    data: [3.38, 2.08],
+                    backgroundColor: 'rgba(245, 87, 108, 0.8)',
+                    borderColor: 'rgb(245, 87, 108)',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Q1-Q2 2026 Renewal Pipeline Risk ($M)',
+                        font: { size: 16, weight: 'bold' }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'ARR ($ Millions)'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -315,11 +315,12 @@ def create_simple_dashboard(customer, all_customers):
         <a href="../index.html" class="global-nav-logo">SKYVERA</a>
         <div class="global-nav-controls">
             <select class="global-nav-bu-selector" onchange="window.location.href=this.value">
-                <option value="">Switch Business Unit...</option>
-                <option value="../output/index.html">CloudSense</option>
-                <option value="index.html" selected>Kandy</option>
-                <option value="../stl/index.html">STL</option>
-                <option value="../newnet/index.html">NewNet</option>
+                <option value="">Navigate to...</option>
+                <option value="../index.html">CloudSense Overview</option>
+                <option value="index.html" selected>Kandy Overview</option>
+                <option value="../stl/index.html">STL Overview</option>
+                <option value="../newnet/index.html">NewNet Overview</option>
+                <option value="../analytics.html">📊 Master Analytics</option>
             </select>
             <select class="global-nav-select" onchange="window.location.href=this.value">
                 <option value="">Select Customer Account...</option>

@@ -81,32 +81,21 @@ def generate_index_html(data):
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
         }}
-        .global-nav h1 {{
+        .global-nav-logo {{
             font-size: 1.5rem;
-            font-weight: 400;
-        }}
-        .bu-selector {{
-            display: flex;
-            gap: 1rem;
-            margin-top: 0.5rem;
-        }}
-        .bu-link {{
-            color: var(--paper);
+            font-weight: 700;
+            color: var(--accent);
             text-decoration: none;
-            padding: 0.5rem 1rem;
+        }}
+        .global-nav-select {{
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            border: 1px solid var(--border);
             border-radius: 4px;
-            transition: all 0.2s;
-            opacity: 0.7;
-        }}
-        .bu-link:hover {{
-            opacity: 1;
-            background: rgba(255,255,255,0.1);
-        }}
-        .bu-link.active {{
-            opacity: 1;
-            background: var(--accent);
+            background: white;
+            cursor: pointer;
+            min-width: 300px;
         }}
 
         .header {{
@@ -252,15 +241,17 @@ def generate_index_html(data):
     </style>
 </head>
 <body>
-    <nav class="global-nav">
-        <h1>Skyvera Customer Account Planning</h1>
-        <div class="bu-selector">
-            <a href="../index.html" class="bu-link">CloudSense</a>
-            <a href="../kandy/index.html" class="bu-link">Kandy</a>
-            <a href="../stl/index.html" class="bu-link">STL</a>
-            <a href="index.html" class="bu-link active">NewNet</a>
-        </div>
-    </nav>
+    <div class="global-nav">
+        <a href="../index.html" class="global-nav-logo">SKYVERA</a>
+        <select class="global-nav-select" onchange="window.location.href=this.value">
+            <option value="">Navigate to...</option>
+            <option value="../index.html">CloudSense Overview</option>
+            <option value="../kandy/index.html">Kandy Overview</option>
+            <option value="../stl/index.html">STL Overview</option>
+            <option value="index.html" selected>NewNet Overview</option>
+            <option value="../analytics.html">📊 Master Analytics</option>
+        </select>
+    </div>
 
     <div class="header">
         <h1>NewNet Business Unit</h1>

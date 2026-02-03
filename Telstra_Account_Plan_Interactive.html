@@ -1,0 +1,1970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telstra Account Plan | CloudSense Strategic Analysis</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #1a1a1a;
+            --paper: #fafaf8;
+            --accent: #c84b31;
+            --secondary: #2d4263;
+            --muted: #8b8b8b;
+            --border: #e8e6e1;
+            --highlight: #ecdbba;
+            --success: #4caf50;
+            --warning: #ff9800;
+            --critical: #e53935;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--paper);
+            color: var(--ink);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        h1 { font-size: 3.5rem; font-weight: 300; letter-spacing: -0.02em; }
+        h2 { font-size: 1.75rem; margin-bottom: 1.5rem; color: var(--secondary); }
+        h3 { font-size: 1.25rem; margin-bottom: 1rem; }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #1a2332 100%);
+            color: var(--paper);
+            padding: 4rem 2rem 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 60%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)" /></svg>');
+            opacity: 0.5;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.85;
+            margin-bottom: 2rem;
+        }
+
+        .header-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem;
+            border-radius: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.7;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+        }
+
+        .stat-change {
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            opacity: 0.8;
+        }
+
+        /* Navigation Tabs */
+        .nav-tabs {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            background: white;
+            border-bottom: 2px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .nav-tabs-list {
+            display: flex;
+            gap: 0;
+            list-style: none;
+            overflow-x: auto;
+        }
+
+        .nav-tab {
+            padding: 1.25rem 2rem;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            font-weight: 500;
+            color: var(--muted);
+        }
+
+        .nav-tab:hover {
+            color: var(--secondary);
+            background: var(--highlight);
+        }
+
+        .nav-tab.active {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+            background: var(--paper);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        /* Alert Banner */
+        .alert-banner {
+            background: linear-gradient(135deg, var(--critical) 0%, #c62828 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            margin: -1rem 0 3rem;
+            border-left: 4px solid #8b1a1a;
+            box-shadow: 0 4px 12px rgba(197, 75, 49, 0.2);
+        }
+
+        .alert-banner h3 {
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Cards */
+        .grid {
+            display: grid;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .grid-2 { grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); }
+        .grid-3 { grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); }
+
+        .card {
+            background: white;
+            border: 1px solid var(--border);
+            padding: 2rem;
+            position: relative;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--secondary));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.6s ease;
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        /* Chart Container */
+        .chart-container {
+            position: relative;
+            height: 350px;
+            margin-top: 1.5rem;
+        }
+
+        .chart-container.tall { height: 450px; }
+
+        /* Tables */
+        .data-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-top: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .data-table thead {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .data-table th {
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .data-table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .data-table tbody tr:hover {
+            background: var(--highlight);
+        }
+
+        .data-table .highlight-row {
+            background: rgba(200, 75, 49, 0.08);
+            font-weight: 600;
+        }
+
+        /* Badges */
+        .badge {
+            display: inline-block;
+            padding: 0.35rem 0.8rem;
+            border-radius: 2px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .badge-critical { background: var(--critical); color: white; }
+        .badge-high { background: var(--warning); color: white; }
+        .badge-medium { background: #ffc107; color: var(--ink); }
+        .badge-success { background: var(--success); color: white; }
+        .badge-neutral { background: var(--muted); color: white; }
+
+        /* Decision Maker Matrix */
+        .decision-matrix {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .matrix-quadrant {
+            border: 2px solid var(--border);
+            padding: 1.5rem;
+            min-height: 200px;
+            position: relative;
+        }
+
+        .matrix-quadrant h4 {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .matrix-quadrant.supporter-dm {
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.1), rgba(76, 175, 80, 0.05));
+            border-color: var(--success);
+        }
+
+        .matrix-quadrant.detractor-dm {
+            background: linear-gradient(135deg, rgba(229, 57, 53, 0.1), rgba(229, 57, 53, 0.05));
+            border-color: var(--critical);
+        }
+
+        .matrix-quadrant.supporter-inf {
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.05), rgba(76, 175, 80, 0.02));
+            border-color: #81c784;
+        }
+
+        .matrix-quadrant.detractor-inf {
+            background: linear-gradient(135deg, rgba(229, 57, 53, 0.05), rgba(229, 57, 53, 0.02));
+            border-color: #ef5350;
+        }
+
+        .stakeholder-chip {
+            display: inline-block;
+            background: white;
+            border: 1px solid var(--border);
+            padding: 0.5rem 1rem;
+            margin: 0.25rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        /* Org Chart */
+        .org-chart {
+            padding: 2rem;
+            background: var(--paper);
+            border: 1px solid var(--border);
+            margin-top: 2rem;
+        }
+
+        .org-level {
+            margin-bottom: 2rem;
+        }
+
+        .org-node {
+            background: white;
+            border: 2px solid var(--secondary);
+            padding: 1.5rem;
+            margin: 1rem;
+            border-radius: 4px;
+            display: inline-block;
+            min-width: 250px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .org-node.ceo {
+            border-color: var(--accent);
+            background: linear-gradient(135deg, rgba(200, 75, 49, 0.05), white);
+        }
+
+        .org-node.target {
+            border-color: var(--success);
+            border-width: 3px;
+        }
+
+        .org-node-title {
+            font-weight: 700;
+            color: var(--secondary);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .org-node-name {
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+
+        /* Metrics Grid */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .metric-box {
+            background: var(--highlight);
+            padding: 1.5rem;
+            border-left: 3px solid var(--accent);
+        }
+
+        .metric-box .label {
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .metric-box .value {
+            font-size: 1.8rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+
+        /* Action List */
+        .action-list {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .action-item {
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+            background: white;
+            border-left: 4px solid var(--accent);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .action-item.completed {
+            opacity: 0.6;
+            border-left-color: var(--success);
+        }
+
+        .action-item strong {
+            display: block;
+            font-size: 1.05rem;
+            margin-bottom: 0.5rem;
+            color: var(--secondary);
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding: 0 2rem;
+        }
+
+        .timeline-item:nth-child(odd) {
+            text-align: right;
+            padding-right: calc(50% + 2rem);
+        }
+
+        .timeline-item:nth-child(even) {
+            text-align: left;
+            padding-left: calc(50% + 2rem);
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            background: var(--accent);
+            border: 4px solid white;
+            border-radius: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 0 4px var(--border);
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .timeline-date {
+            font-weight: 700;
+            color: var(--accent);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Expandable Sections */
+        .expandable {
+            border: 1px solid var(--border);
+            margin-bottom: 1rem;
+            background: white;
+        }
+
+        .expandable-header {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .expandable-header:hover {
+            background: var(--highlight);
+        }
+
+        .expandable-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .expandable.open .expandable-icon {
+            transform: rotate(180deg);
+        }
+
+        .expandable-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+
+        .expandable.open .expandable-content {
+            max-height: 3000px;
+        }
+
+        .expandable-body {
+            padding: 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--secondary);
+            color: var(--paper);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .grid-2, .grid-3 { grid-template-columns: 1fr; }
+            .header-stats { grid-template-columns: 1fr; }
+            .decision-matrix { grid-template-columns: 1fr; }
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                padding-left: 3rem;
+                padding-right: 1rem;
+                text-align: left;
+            }
+            .timeline::before { left: 1rem; }
+            .timeline-marker { left: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="header-content">
+            <h1>Telstra Strategic Account Plan</h1>
+            <div class="subtitle">CloudSense Business Unit | Skyvera | Q1 2026</div>
+
+            <div class="header-stats">
+                <div class="stat-card">
+                    <div class="stat-label">Total ARR</div>
+                    <div class="stat-value">$2.18M</div>
+                    <div class="stat-change">8.3% of Cloudsense</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Account Rank</div>
+                    <div class="stat-value">#1</div>
+                    <div class="stat-change">Largest Customer</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Health Score</div>
+                    <div class="stat-value">7.5/10</div>
+                    <div class="stat-change">Medium-High</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Champion Status</div>
+                    <div class="stat-value">AT RISK</div>
+                    <div class="stat-change">Nathan Bell Departed</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <div class="nav-tabs">
+        <ul class="nav-tabs-list">
+            <li class="nav-tab active" onclick="showTab('overview')">📊 Overview</li>
+            <li class="nav-tab" onclick="showTab('executives')">👔 Key Executives</li>
+            <li class="nav-tab" onclick="showTab('org-chart')">🏢 Org Structure</li>
+            <li class="nav-tab" onclick="showTab('pain-points')">💡 Pain Points</li>
+            <li class="nav-tab" onclick="showTab('competitive')">⚔️ Competitive</li>
+            <li class="nav-tab" onclick="showTab('action-plan')">📋 Action Plan</li>
+            <li class="nav-tab" onclick="showTab('financial')">💰 Financial</li>
+        </ul>
+    </div>
+
+    <!-- Tab: Overview -->
+    <div id="overview" class="tab-content active">
+        <div class="container">
+            <!-- Critical Alert -->
+            <div class="alert-banner">
+                <h3>🚨 CRITICAL: Primary Champion Nathan Bell Has Departed Telstra</h3>
+                <p>Nathan Bell, Director of B2B Digital Transformation and CloudSense champion who presented at Dreamforce 2018, is now CDO at M1 Singapore. Must rebuild relationship immediately. Ryan Harry (Head of Salesforce Practice, Telstra Health) is still at Telstra and can serve as bridge to new stakeholders.</p>
+            </div>
+
+            <!-- Keys to Success (90 Days) -->
+            <div class="card">
+                <h2>Keys to Success in Next 90 Days</h2>
+                <div class="metrics-grid">
+                    <div class="metric-box">
+                        <div class="label">#1 Priority</div>
+                        <div class="value" style="font-size: 1.3rem;">Re-engage Ryan Harry & Establish Oliver Camplin-Warner Relationship</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="label">#2 Priority</div>
+                        <div class="value" style="font-size: 1.3rem;">Secure 6 International Renewals (Q3'26)</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="label">#3 Priority</div>
+                        <div class="value" style="font-size: 1.3rem;">Execute +25% Upsell Strategy</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Account Summary Grid -->
+            <div class="grid grid-2">
+                <div class="card">
+                    <h2>Account Status</h2>
+                    <table class="data-table">
+                        <tr>
+                            <td><strong>Customer Success</strong></td>
+                            <td><span class="badge badge-medium">Need Validation</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Retention</strong></td>
+                            <td><span class="badge badge-success">Staying</span> (Main) / <span class="badge badge-medium">Pending</span> (Intl)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Current ARR</strong></td>
+                            <td>$2,179,845</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Target ARR (FY26)</strong></td>
+                            <td>$2,724,806 (+25%)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Contract Terms</strong></td>
+                            <td>Main: Dec 2022 - May 2028<br>Intl: Jun 2025 - Jun 2026</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="card">
+                    <h2>Risk & Opportunity Summary</h2>
+                    <h3 style="color: var(--critical); margin-top: 1rem;">Top Risks</h3>
+                    <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+                        <li><strong>Champion Departure:</strong> Nathan Bell gone, relationship reset needed</li>
+                        <li><strong>International Renewals:</strong> 6 subscriptions up in Q3'26 (5 months)</li>
+                        <li><strong>Enterprise Restructuring:</strong> 2,800 job cuts, $350M cost reduction</li>
+                    </ul>
+                    <h3 style="color: var(--success);">Top Opportunities</h3>
+                    <ul style="margin-left: 1.5rem;">
+                        <li><strong>Upsell (+25%):</strong> +$545K ARR projected across all subs</li>
+                        <li><strong>Telstra Purple:</strong> +$300-500K CPQ for managed services</li>
+                        <li><strong>AI Enhancement:</strong> +$100-200K premium features</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Financial Charts -->
+            <div class="grid grid-2">
+                <div class="card">
+                    <h2>ARR by Entity</h2>
+                    <div class="chart-container">
+                        <canvas id="overviewEntityChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>Customer Concentration</h2>
+                    <div class="chart-container">
+                        <canvas id="overviewConcentrationChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tab: Key Executives -->
+    <div id="executives" class="tab-content">
+        <div class="container">
+            <h2>Key Executives & Decision Makers</h2>
+
+            <!-- Decision Maker/Influencer Matrix -->
+            <div class="card">
+                <h3>Decision Maker & Influencer Analysis</h3>
+                <div class="decision-matrix">
+                    <div class="matrix-quadrant supporter-dm">
+                        <h4>✅ Supporter & Decision Maker</h4>
+                        <div class="stakeholder-chip">Oliver Camplin-Warner<br><small>GE Enterprise (Target)</small></div>
+                        <div class="stakeholder-chip">Kim Krogh Andersen<br><small>GE Product & Tech</small></div>
+                    </div>
+                    <div class="matrix-quadrant detractor-dm">
+                        <h4>⚠️ Detractor & Decision Maker</h4>
+                        <p style="font-style: italic; opacity: 0.7; padding-top: 1rem;">None identified</p>
+                    </div>
+                    <div class="matrix-quadrant supporter-inf">
+                        <h4>✅ Supporter & Influencer</h4>
+                        <div class="stakeholder-chip">Ryan Harry<br><small>Head Salesforce (Health)</small></div>
+                    </div>
+                    <div class="matrix-quadrant detractor-inf">
+                        <h4>⚠️ Detractor & Influencer</h4>
+                        <p style="font-style: italic; opacity: 0.7; padding-top: 1rem;">None identified</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Executive Details -->
+            <h3 style="margin-top: 3rem;">Executive Deep Dive</h3>
+
+            <div class="expandable open">
+                <div class="expandable-header" onclick="toggleExpandable(this)">
+                    <span>🎯 Oliver Camplin-Warner - Group Executive, Telstra Enterprise (PRIMARY TARGET)</span>
+                    <span class="expandable-icon">▼</span>
+                </div>
+                <div class="expandable-content">
+                    <div class="expandable-body">
+                        <div class="grid grid-2">
+                            <div>
+                                <h4>Profile</h4>
+                                <table class="data-table">
+                                    <tr><td><strong>Title</strong></td><td>Group Executive, Telstra Enterprise</td></tr>
+                                    <tr><td><strong>Tenure</strong></td><td>Since March 1, 2024</td></tr>
+                                    <tr><td><strong>Previous Role</strong></td><td>Head of Telstra Purple (tech services)</td></tr>
+                                    <tr><td><strong>Career</strong></td><td>12+ years at Telstra; 10+ years IBM</td></tr>
+                                    <tr><td><strong>Background</strong></td><td>Former CEO Telstra International (5 years)</td></tr>
+                                </table>
+                            </div>
+                            <div>
+                                <h4>Strategic Context</h4>
+                                <ul style="margin-left: 1.5rem;">
+                                    <li><strong>Challenge:</strong> Inherited troubled enterprise business (EBITDA down 67% in 2024)</li>
+                                    <li><strong>Focus:</strong> Executing enterprise reset strategy</li>
+                                    <li><strong>Strength:</strong> Technology services background from Purple</li>
+                                    <li><strong>Assessment:</strong> KEY TARGET - Must establish relationship within 30 days</li>
+                                </ul>
+                                <div style="margin-top: 1rem; padding: 1rem; background: var(--highlight); border-left: 3px solid var(--accent);">
+                                    <strong>Key Message:</strong> "CloudSense enables faster enterprise deal cycles with fewer errors, supporting your reset objectives."
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="expandable">
+                <div class="expandable-header" onclick="toggleExpandable(this)">
+                    <span>💻 Kim Krogh Andersen - Group Executive, Product & Technology</span>
+                    <span class="expandable-icon">▼</span>
+                </div>
+                <div class="expandable-content">
+                    <div class="expandable-body">
+                        <div class="grid grid-2">
+                            <div>
+                                <h4>Profile</h4>
+                                <table class="data-table">
+                                    <tr><td><strong>Title</strong></td><td>GE Product & Technology</td></tr>
+                                    <tr><td><strong>Tenure</strong></td><td>Since January 2020 (5+ years)</td></tr>
+                                    <tr><td><strong>Previous Role</strong></td><td>SVP Head of Global Tech Strategy, Telenor</td></tr>
+                                    <tr><td><strong>Responsibilities</strong></td><td>Product P&L, IT, Data & AI, Innovation</td></tr>
+                                </table>
+                            </div>
+                            <div>
+                                <h4>Strategic Focus</h4>
+                                <ul style="margin-left: 1.5rem;">
+                                    <li>"AI will redefine our business" - AI-first transformation</li>
+                                    <li>Composable architecture / API-first strategy</li>
+                                    <li>Partnerships: Infosys, Cognizant, Accenture</li>
+                                    <li><strong>Role:</strong> TECHNOLOGY DECISION MAKER</li>
+                                </ul>
+                                <div style="margin-top: 1rem; padding: 1rem; background: var(--highlight); border-left: 3px solid var(--accent);">
+                                    <strong>Key Message:</strong> "CloudSense's AI-powered, Salesforce-native CPQ aligns with Telstra's composable architecture vision."
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="expandable">
+                <div class="expandable-header" onclick="toggleExpandable(this)">
+                    <span>💰 Michael Ackland - Chief Financial Officer</span>
+                    <span class="expandable-icon">▼</span>
+                </div>
+                <div class="expandable-content">
+                    <div class="expandable-body">
+                        <div class="grid grid-2">
+                            <div>
+                                <h4>Profile</h4>
+                                <table class="data-table">
+                                    <tr><td><strong>Title</strong></td><td>CFO & GE Strategy & Finance</td></tr>
+                                    <tr><td><strong>Tenure</strong></td><td>Since 2022 (replaced Vicki Brady)</td></tr>
+                                    <tr><td><strong>Oversight</strong></td><td>Strategy, finance, procurement, treasury</td></tr>
+                                    <tr><td><strong>Focus</strong></td><td>Cost reduction, efficiency</td></tr>
+                                </table>
+                            </div>
+                            <div>
+                                <h4>Key Initiatives</h4>
+                                <ul style="margin-left: 1.5rem;">
+                                    <li>$306M fixed cost reduction achieved</li>
+                                    <li>Oversees vendor relationships via procurement</li>
+                                    <li>"Exiting legacy products onto growth products"</li>
+                                    <li><strong>Role:</strong> BUDGET AUTHORITY</li>
+                                </ul>
+                                <div style="margin-top: 1rem; padding: 1rem; background: var(--highlight); border-left: 3px solid var(--accent);">
+                                    <strong>Key Message:</strong> "CloudSense supports cost optimization while enabling growth through faster quotes and reduced errors."
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="expandable">
+                <div class="expandable-header" onclick="toggleExpandable(this)">
+                    <span>🔄 Ryan Harry - Head of Salesforce Practice, Telstra Health (INTERNAL ADVOCATE)</span>
+                    <span class="expandable-icon">▼</span>
+                </div>
+                <div class="expandable-content">
+                    <div class="expandable-body">
+                        <div style="padding: 1rem; background: rgba(76, 175, 80, 0.1); border-left: 4px solid var(--success); margin-bottom: 1.5rem;">
+                            <h4 style="color: var(--success);">✅ STILL AT TELSTRA - IMMEDIATE RE-ENGAGEMENT PRIORITY</h4>
+                        </div>
+                        <div class="grid grid-2">
+                            <div>
+                                <h4>Profile</h4>
+                                <table class="data-table">
+                                    <tr><td><strong>Previous Role</strong></td><td>Program Manager (CloudSense implementation)</td></tr>
+                                    <tr><td><strong>Current Title</strong></td><td>Head of Salesforce Practice, Telstra Health</td></tr>
+                                    <tr><td><strong>CloudSense History</strong></td><td>Presented at Dreamforce 2018 with Nathan Bell</td></tr>
+                                </table>
+                            </div>
+                            <div>
+                                <h4>Strategic Value</h4>
+                                <ul style="margin-left: 1.5rem;">
+                                    <li>Deep knowledge of CloudSense implementation</li>
+                                    <li>Can serve as internal reference and sponsor</li>
+                                    <li>Bridge to new decision-makers</li>
+                                    <li>Potential path to Telstra Health expansion</li>
+                                </ul>
+                                <div style="margin-top: 1rem; padding: 1rem; background: var(--highlight); border-left: 3px solid var(--critical);">
+                                    <strong>Action Required:</strong> Re-engage within 7 days as internal advocate and bridge to Oliver Camplin-Warner.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="expandable">
+                <div class="expandable-header" onclick="toggleExpandable(this)">
+                    <span>⚠️ Nathan Bell - Former Champion (DEPARTED)</span>
+                    <span class="expandable-icon">▼</span>
+                </div>
+                <div class="expandable-content">
+                    <div class="expandable-body">
+                        <div style="padding: 1rem; background: rgba(229, 57, 53, 0.1); border-left: 4px solid var(--critical); margin-bottom: 1.5rem;">
+                            <h4 style="color: var(--critical);">⚠️ PRIMARY CHAMPION HAS LEFT TELSTRA</h4>
+                        </div>
+                        <div class="grid grid-2">
+                            <div>
+                                <h4>Previous Role at Telstra</h4>
+                                <table class="data-table">
+                                    <tr><td><strong>Title</strong></td><td>Director, B2B Digital Transformation</td></tr>
+                                    <tr><td><strong>Tenure</strong></td><td>8 years (concluded ~2023)</td></tr>
+                                    <tr><td><strong>CloudSense Role</strong></td><td>Built implementation, presented Dreamforce 2018</td></tr>
+                                    <tr><td><strong>Current Role</strong></td><td>Chief Digital Officer, M1 (Singapore)</td></tr>
+                                </table>
+                            </div>
+                            <div>
+                                <h4>Impact & Opportunity</h4>
+                                <ul style="margin-left: 1.5rem;">
+                                    <li><strong>Impact:</strong> Primary advocate and builder of CloudSense relationship</li>
+                                    <li><strong>Led:</strong> B2B digital transformation including Salesforce/CloudSense</li>
+                                    <li><strong>Critical:</strong> Must identify successor in B2B Digital team</li>
+                                    <li><strong>Opportunity:</strong> M1 Singapore as potential CloudSense prospect?</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Relationship Actions Table -->
+            <div class="card" style="margin-top: 3rem;">
+                <h3>Relationship Actions - Next 30/60/90 Days</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Title/Role</th>
+                            <th>Decision/Influence</th>
+                            <th>Current Status</th>
+                            <th>Next Action</th>
+                            <th>Timeline</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background: rgba(229, 57, 53, 0.1);">
+                            <td><strong>Ryan Harry</strong></td>
+                            <td>Head Salesforce, Telstra Health</td>
+                            <td>Influencer</td>
+                            <td>Historical Advocate</td>
+                            <td>Re-engage immediately, request intro to Oliver</td>
+                            <td><span class="badge badge-critical">Week 1</span></td>
+                        </tr>
+                        <tr style="background: rgba(229, 57, 53, 0.1);">
+                            <td><strong>Oliver Camplin-Warner</strong></td>
+                            <td>GE Telstra Enterprise</td>
+                            <td>Decision Maker</td>
+                            <td>New - Unknown</td>
+                            <td>Request executive briefing via Ryan Harry</td>
+                            <td><span class="badge badge-critical">Week 4</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Kim Krogh Andersen</strong></td>
+                            <td>GE Product & Technology</td>
+                            <td>Decision Maker</td>
+                            <td>Unknown</td>
+                            <td>Present AI roadmap and platform evolution</td>
+                            <td><span class="badge badge-high">Days 31-60</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Michael Ackland</strong></td>
+                            <td>CFO</td>
+                            <td>Budget Authority</td>
+                            <td>Unknown</td>
+                            <td>Prepare ROI analysis for renewal discussions</td>
+                            <td><span class="badge badge-medium">Days 31-60</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Steven Worrall</strong></td>
+                            <td>CEO Telstra InfraCo</td>
+                            <td>Decision Maker (Intl)</td>
+                            <td>New - Unknown</td>
+                            <td>International renewal proposal presentation</td>
+                            <td><span class="badge badge-medium">Days 31-60</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tab: Org Structure -->
+    <div id="org-chart" class="tab-content">
+        <div class="container">
+            <h2>Telstra Organizational Structure</h2>
+            <p style="margin-bottom: 2rem; font-size: 1.1rem;">Decision-making hierarchy for CPQ and B2B sales enablement systems. Green borders indicate primary engagement targets.</p>
+
+            <div class="org-chart">
+                <div class="org-level" style="text-align: center;">
+                    <div class="org-node ceo">
+                        <div class="org-node-title">CEO & Managing Director</div>
+                        <div class="org-node-name">Vicki Brady</div>
+                        <div style="margin-top: 0.5rem; font-size: 0.85rem; color: var(--muted);">Strategic Sponsor (Escalation Only)</div>
+                    </div>
+                </div>
+
+                <div class="org-level" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+                    <div class="org-node target">
+                        <div class="org-node-title">GE Telstra Enterprise</div>
+                        <div class="org-node-name">Oliver Camplin-Warner ⭐</div>
+                        <div style="margin-top: 0.5rem; font-size: 0.85rem;">
+                            <span class="badge badge-critical">PRIMARY TARGET</span><br>
+                            <small>B2B segment, Enterprise reset, Government partnerships</small>
+                        </div>
+                    </div>
+
+                    <div class="org-node target">
+                        <div class="org-node-title">GE Product & Technology</div>
+                        <div class="org-node-name">Kim Krogh Andersen ⭐</div>
+                        <div style="margin-top: 0.5rem; font-size: 0.85rem;">
+                            <span class="badge badge-high">KEY STAKEHOLDER</span><br>
+                            <small>Product P&L, IT, Data & AI, Innovation</small>
+                        </div>
+                    </div>
+
+                    <div class="org-node">
+                        <div class="org-node-title">CFO & Strategy</div>
+                        <div class="org-node-name">Michael Ackland</div>
+                        <div style="margin-top: 0.5rem; font-size: 0.85rem;">
+                            <span class="badge badge-high">BUDGET AUTHORITY</span><br>
+                            <small>Finance, Procurement, Strategy</small>
+                        </div>
+                    </div>
+
+                    <div class="org-node">
+                        <div class="org-node-title">GE Global Networks & Tech</div>
+                        <div class="org-node-name">Shailin Sehgal</div>
+                        <div style="margin-top: 0.5rem; font-size: 0.85rem;">
+                            <span class="badge badge-medium">MEDIUM</span><br>
+                            <small>Network, Cyber, Cloud</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="org-level" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 2rem;">
+                    <div class="org-node">
+                        <div class="org-node-title">CEO Telstra InfraCo</div>
+                        <div class="org-node-name">Steven Worrall</div>
+                        <div style="margin-top: 0.5rem; font-size: 0.85rem;">
+                            <span class="badge badge-medium">INTL RENEWALS</span><br>
+                            <small>Oversees Telstra International (6 subs)</small>
+                        </div>
+                    </div>
+
+                    <div class="org-node" style="border-color: var(--success); background: rgba(76, 175, 80, 0.05);">
+                        <div class="org-node-title">Head Salesforce Practice</div>
+                        <div class="org-node-name">Ryan Harry ✅</div>
+                        <div style="margin-top: 0.5rem; font-size: 0.85rem;">
+                            <span class="badge badge-success">INTERNAL ADVOCATE</span><br>
+                            <small>Telstra Health - Historical CloudSense Champion</small>
+                        </div>
+                    </div>
+
+                    <div class="org-node">
+                        <div class="org-node-title">Chief Procurement Officer</div>
+                        <div class="org-node-name">Sasha Samac</div>
+                        <div style="margin-top: 0.5rem; font-size: 0.85rem;">
+                            <span class="badge badge-medium">PROCUREMENT</span><br>
+                            <small>Vendor management, contracts</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(200, 75, 49, 0.05); border-left: 4px solid var(--accent);">
+                    <h4>Decision Hierarchy for CPQ/Sales Systems:</h4>
+                    <ol style="margin-left: 1.5rem; margin-top: 1rem;">
+                        <li><strong>Level 1 - Strategic Direction:</strong> Kim Krogh Andersen (IT/digital), Oliver Camplin-Warner (business needs)</li>
+                        <li><strong>Level 2 - Technical/Architectural:</strong> IT Function, Salesforce Practice teams, B2B Digital Transformation</li>
+                        <li><strong>Level 3 - Procurement & Budget:</strong> Sasha Samac (CPO), Michael Ackland (CFO)</li>
+                        <li><strong>Level 4 - Implementation & Ops:</strong> Ryan Harry (Salesforce expertise), Enterprise IT, Business analysts</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tab: Pain Points -->
+    <div id="pain-points" class="tab-content">
+        <div class="container">
+            <h2>Customer Pain Points & CloudSense Alignment</h2>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Identified Pain</th>
+                        <th>Customer Owner</th>
+                        <th>Urgency</th>
+                        <th>Budget?</th>
+                        <th>CloudSense Solution</th>
+                        <th>Next Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background: rgba(229, 57, 53, 0.08);">
+                        <td>
+                            <strong>Enterprise Business Underperformance</strong><br>
+                            <small>EBITDA down 67%, revenue down 5%</small>
+                        </td>
+                        <td>Oliver Camplin-Warner<br><small>GE Enterprise</small></td>
+                        <td><span class="badge badge-critical">CRITICAL</span></td>
+                        <td><span class="badge badge-success">$350M</span><br><small>Cost reduction</small></td>
+                        <td>CPQ simplifies quotes, reduces sales cycle, supports product rationalization (NAS reduction by 2/3)</td>
+                        <td><span class="badge badge-critical">Q1'26</span><br>Executive briefing on enterprise reset support</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>Legacy Product Migration</strong><br>
+                            <small>Need to move customers from NAS to growth products</small>
+                        </td>
+                        <td>Kim Krogh Andersen<br>Oliver Camplin-Warner</td>
+                        <td><span class="badge badge-high">HIGH</span></td>
+                        <td><span class="badge badge-medium">Partial</span><br><small>Part of reset</small></td>
+                        <td>CPQ configurator supports legacy-to-new migration paths, transition bundles, migration offers</td>
+                        <td><span class="badge badge-high">Q2'26</span><br>Demo migration quoting capabilities</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>AI Transformation Imperative</strong><br>
+                            <small>"AI will redefine our business"</small>
+                        </td>
+                        <td>Kim Krogh Andersen<br><small>GE Product & Tech</small></td>
+                        <td><span class="badge badge-high">HIGH</span></td>
+                        <td><span class="badge badge-success">$700M</span><br><small>AI investment + Accenture JV</small></td>
+                        <td>TelcoDR/Totogi AI capabilities, AI-powered CPQ recommendations, Einstein integration</td>
+                        <td><span class="badge badge-high">Q1'26</span><br>Present AI roadmap to Product & Tech</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>Order-to-Activate Inefficiency</strong><br>
+                            <small>Complex deals take "weeks" to process</small>
+                        </td>
+                        <td>Kim Krogh Andersen<br>Oliver Camplin-Warner</td>
+                        <td><span class="badge badge-high">HIGH</span></td>
+                        <td><span class="badge badge-medium">TBD</span><br><small>Accenture AI Hub priority</small></td>
+                        <td>End-to-end quote-to-order automation, BSS integration (CSG, Amdocs), reduced handoffs</td>
+                        <td><span class="badge badge-medium">Q2'26</span><br>Map current vs. future state process</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>Salesforce CPQ Migration Uncertainty</strong><br>
+                            <small>Salesforce CPQ "End of Sale", Revenue Cloud unclear</small>
+                        </td>
+                        <td>IT / Product & Tech</td>
+                        <td><span class="badge badge-medium">MEDIUM</span></td>
+                        <td><span class="badge badge-neutral">Unknown</span></td>
+                        <td>CloudSense provides alternative to native CPQ, telecom-specific, independent of SF platform changes</td>
+                        <td><span class="badge badge-medium">Q2'26</span><br>Position as hedge against SF roadmap risk</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Pain Point Detail Cards -->
+            <div style="margin-top: 3rem;">
+                <h3>Strategic Initiatives (2025-2026)</h3>
+                <div class="grid grid-2" style="margin-top: 1.5rem;">
+                    <div class="card">
+                        <h3>Connected Future 30</h3>
+                        <p><strong>Timeline:</strong> 2025-2030 | <strong>Owner:</strong> Vicki Brady</p>
+                        <p style="margin-top: 1rem;">5-year strategic plan for AI-driven connectivity leadership. Three pillars: Enhanced customer engagement, programmable network, premier digital infrastructure.</p>
+                        <div style="margin-top: 1rem;">
+                            <span class="badge badge-high">HIGH CloudSense Relevance</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3>Enterprise Reset</h3>
+                        <p><strong>Timeline:</strong> 2024-2026 | <strong>Owner:</strong> Oliver Camplin-Warner</p>
+                        <p style="margin-top: 1rem;">Restructure enterprise business for profitability after 67% EBITDA decline. Product rationalization, cost reduction, sales simplification.</p>
+                        <div style="margin-top: 1rem;">
+                            <span class="badge badge-critical">CRITICAL - Core Customer Segment</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3>NAS Product Rationalization</h3>
+                        <p><strong>Timeline:</strong> 2025-2026 | <strong>Owner:</strong> Enterprise Team</p>
+                        <p style="margin-top: 1rem;">Reduce network application service products by ~66%. Migrate customers from legacy to growth products.</p>
+                        <div style="margin-top: 1rem;">
+                            <span class="badge badge-high">HIGH - CPQ Supports Simplification</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3>Accenture AI Hub</h3>
+                        <p><strong>Timeline:</strong> May 2025+ | <strong>Owner:</strong> Kim Krogh Andersen</p>
+                        <p style="margin-top: 1rem;">Silicon Valley innovation facility, strategic JV for AI transformation. Order-to-activate automation priority project.</p>
+                        <div style="margin-top: 1rem;">
+                            <span class="badge badge-medium">MEDIUM - AI Capability Alignment</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tab: Competitive -->
+    <div id="competitive" class="tab-content">
+        <div class="container">
+            <h2>Competitive Landscape Analysis</h2>
+
+            <!-- Competitive Threats Table -->
+            <div class="card">
+                <h3>CPQ Competitors at Telstra</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Competitor</th>
+                            <th>Threat Level</th>
+                            <th>Key Customer Sponsor</th>
+                            <th>Risk?</th>
+                            <th>How We Differentiate</th>
+                            <th>Next Action to Defend</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background: rgba(255, 152, 0, 0.1);">
+                            <td><strong>Salesforce Revenue Cloud</strong></td>
+                            <td><span class="badge badge-high">HIGH</span></td>
+                            <td>IT / Product & Tech</td>
+                            <td>Platform migration push</td>
+                            <td>
+                                • Telecom-specific vs. generic<br>
+                                • 7+ years proven at Telstra<br>
+                                • Migration risk/cost avoidance
+                            </td>
+                            <td><span class="badge badge-high">Q1'26</span> Present telecom complexity demo</td>
+                        </tr>
+                        <tr style="background: rgba(255, 152, 0, 0.1);">
+                            <td><strong>Amdocs</strong></td>
+                            <td><span class="badge badge-high">MEDIUM-HIGH</span></td>
+                            <td>Billing team / IT</td>
+                            <td>BSS consolidation play</td>
+                            <td>
+                                • Salesforce-native advantage<br>
+                                • CPQ focus vs. billing focus<br>
+                                • Faster time-to-value
+                            </td>
+                            <td><span class="badge badge-medium">Q2'26</span> Emphasize SF integration strength</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Conga (Apttus)</strong></td>
+                            <td><span class="badge badge-medium">MEDIUM</span></td>
+                            <td>Unknown</td>
+                            <td>Strong CPQ/CLM suite</td>
+                            <td>
+                                • Native SF vs. ISV complexity<br>
+                                • Telecom-built vs. generic<br>
+                                • Implementation maturity
+                            </td>
+                            <td><span class="badge badge-medium">Monitor</span> Track any RFP signals</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Native Salesforce CPQ</strong></td>
+                            <td><span class="badge badge-medium">MEDIUM</span></td>
+                            <td>Salesforce Account Team</td>
+                            <td>End of Sale; generic</td>
+                            <td>
+                                • Purpose-built telecom<br>
+                                • Order management included<br>
+                                • TM Forum compliance
+                            </td>
+                            <td><span class="badge badge-medium">Ongoing</span> Maintain SF relationship</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- CloudSense Differentiation -->
+            <div class="card" style="margin-top: 2rem;">
+                <h3>CloudSense Competitive Advantages</h3>
+                <div class="metrics-grid">
+                    <div class="metric-box">
+                        <div class="label">Salesforce-Native</div>
+                        <div class="value" style="font-size: 1.3rem;">Built on Salesforce</div>
+                        <p style="margin-top: 0.5rem; font-size: 0.9rem;">Seamless with Telstra's 20,000+ SF users, deep CRM integration</p>
+                    </div>
+                    <div class="metric-box">
+                        <div class="label">Telecom-Specific</div>
+                        <div class="value" style="font-size: 1.3rem;">Purpose-Built</div>
+                        <p style="margin-top: 0.5rem; font-size: 0.9rem;">Complex telecom bundles, not generic enterprise CPQ</p>
+                    </div>
+                    <div class="metric-box">
+                        <div class="label">TM Forum Compliant</div>
+                        <div class="value" style="font-size: 1.3rem;">Open APIs</div>
+                        <p style="margin-top: 0.5rem; font-size: 0.9rem;">Aligns with autonomous network, composable architecture</p>
+                    </div>
+                    <div class="metric-box">
+                        <div class="label">Full Quote-to-Cash</div>
+                        <div class="value" style="font-size: 1.3rem;">CPQ + Order Mgmt</div>
+                        <p style="margin-top: 0.5rem; font-size: 0.9rem;">End-to-end vs. CPQ-only competitors</p>
+                    </div>
+                    <div class="metric-box">
+                        <div class="label">AI Roadmap</div>
+                        <div class="value" style="font-size: 1.3rem;">TelcoDR/Totogi</div>
+                        <p style="margin-top: 0.5rem; font-size: 0.9rem;">AI-powered recommendations, predictive insights</p>
+                    </div>
+                    <div class="metric-box">
+                        <div class="label">Proven at Telstra</div>
+                        <div class="value" style="font-size: 1.3rem;">7+ Years</div>
+                        <p style="margin-top: 0.5rem; font-size: 0.9rem;">Deep integration, institutional knowledge, low risk</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Defensive Strategy -->
+            <div class="card" style="margin-top: 2rem;">
+                <h3>Defensive Strategy & Competitive Positioning</h3>
+                <ol style="margin-left: 1.5rem; line-height: 2;">
+                    <li><strong>Strengthen Salesforce Positioning:</strong> Emphasize native integration as Telstra deepens SF investment (20K+ users, Einstein deployment)</li>
+                    <li><strong>Demonstrate Enterprise Reset Alignment:</strong> Position CloudSense as enabler of faster sales, simpler quotes, fewer errors - directly supporting cost reduction</li>
+                    <li><strong>Present AI Roadmap:</strong> TelcoDR/AI capabilities to Kim Krogh Andersen's team, align with $700M AI investment</li>
+                    <li><strong>Expand Footprint:</strong> Drive adoption and usage before any competitive evaluation cycle (Telstra Purple, additional intl entities)</li>
+                    <li><strong>Build Executive Relationships:</strong> Multi-threaded relationships survive contact turnover, create switching costs beyond technology</li>
+                </ol>
+            </div>
+
+            <!-- Competitive Risk Timeline -->
+            <div class="card" style="margin-top: 2rem;">
+                <h3>Competitive Risk Timeline</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Risk Event</th>
+                            <th>Probability</th>
+                            <th>Impact</th>
+                            <th>Timing</th>
+                            <th>Mitigation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Salesforce pushes Revenue Cloud migration</td>
+                            <td><span class="badge badge-medium">MEDIUM</span></td>
+                            <td><span class="badge badge-high">HIGH</span></td>
+                            <td>FY26-27</td>
+                            <td>Demonstrate telecom-specific value, emphasize migration risk</td>
+                        </tr>
+                        <tr>
+                            <td>Amdocs positions CPQ as BSS consolidation</td>
+                            <td><span class="badge badge-medium">LOW-MEDIUM</span></td>
+                            <td><span class="badge badge-high">HIGH</span></td>
+                            <td>FY26+</td>
+                            <td>Emphasize SF-native advantage, faster time-to-value</td>
+                        </tr>
+                        <tr>
+                            <td>Enterprise reset reduces tech spend</td>
+                            <td><span class="badge badge-medium">MEDIUM</span></td>
+                            <td><span class="badge badge-medium">MEDIUM</span></td>
+                            <td>Ongoing</td>
+                            <td>Position as cost reducer, not cost center</td>
+                        </tr>
+                        <tr>
+                            <td>New leadership reviews all vendors</td>
+                            <td><span class="badge badge-medium">MEDIUM</span></td>
+                            <td><span class="badge badge-medium">MEDIUM</span></td>
+                            <td>Q1-Q2'26</td>
+                            <td>Proactive Oliver engagement, demonstrate value</td>
+                        </tr>
+                        <tr>
+                            <td>Competitive RFP triggered</td>
+                            <td><span class="badge badge-neutral">LOW</span></td>
+                            <td><span class="badge badge-high">HIGH</span></td>
+                            <td>FY27</td>
+                            <td>Build relationships now, become default</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tab: Action Plan -->
+    <div id="action-plan" class="tab-content">
+        <div class="container">
+            <h2>30/60/90 Day Action Plan</h2>
+
+            <!-- Timeline Visualization -->
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Days 1-30: IMMEDIATE ACTIONS</div>
+                        <ul style="margin: 1rem 0 0 1.5rem;">
+                            <li><strong>Week 1:</strong> Re-engage Ryan Harry, LinkedIn research on Oliver</li>
+                            <li><strong>Week 2:</strong> Request QBR with Enterprise team, identify Nathan Bell successor</li>
+                            <li><strong>Week 3:</strong> Prepare executive briefing deck, document current deployment</li>
+                            <li><strong>Week 4:</strong> Request Oliver Camplin-Warner introduction via Ryan Harry</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Days 31-60: RELATIONSHIP BUILDING</div>
+                        <ul style="margin: 1rem 0 0 1.5rem;">
+                            <li><strong>Executive briefing</strong> with Oliver Camplin-Warner (enterprise reset alignment)</li>
+                            <li><strong>AI roadmap presentation</strong> to Kim Krogh Andersen's Product & Tech team</li>
+                            <li><strong>International renewal proposal</strong> to Steven Worrall/International team</li>
+                            <li><strong>ROI analysis document</strong> for Michael Ackland (CFO)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Days 61-90: EXECUTION & EXPANSION</div>
+                        <ul style="margin: 1rem 0 0 1.5rem;">
+                            <li><strong>Annual Business Review</strong> with all stakeholders</li>
+                            <li><strong>International renewal execution</strong> (Q3'26 deadline preparation)</li>
+                            <li><strong>Main contract expansion proposal</strong> (+25% upsell formalization)</li>
+                            <li><strong>Telstra Health exploration</strong> via Ryan Harry connection</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Q3'26 (Jul-Sep): CRITICAL RENEWAL DEADLINE</div>
+                        <p style="margin: 1rem 0; font-weight: 600; color: var(--critical);">
+                            6 Telstra International subscriptions renewing. Target: Multi-year renewal with +25% upsell.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Detailed Action Items -->
+            <div style="margin-top: 4rem;">
+                <h3>Detailed Action Items with Owners & Status</h3>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Action</th>
+                            <th>Owner</th>
+                            <th>Target/Outcome</th>
+                            <th>Timeline</th>
+                            <th>Priority</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background: rgba(229, 57, 53, 0.1);">
+                            <td>Re-engage Ryan Harry</td>
+                            <td>Account Manager</td>
+                            <td>Internal advocate activated, intro to Oliver</td>
+                            <td>Week 1</td>
+                            <td><span class="badge badge-critical">CRITICAL</span></td>
+                            <td><span class="badge badge-neutral">Pending</span></td>
+                        </tr>
+                        <tr style="background: rgba(229, 57, 53, 0.1);">
+                            <td>Request Oliver Camplin-Warner briefing</td>
+                            <td>Account Director</td>
+                            <td>Executive relationship established</td>
+                            <td>Week 4</td>
+                            <td><span class="badge badge-critical">CRITICAL</span></td>
+                            <td><span class="badge badge-neutral">Pending</span></td>
+                        </tr>
+                        <tr style="background: rgba(229, 57, 53, 0.1);">
+                            <td>Prepare International renewal proposal</td>
+                            <td>Renewals Team</td>
+                            <td>Multi-year proposal ready</td>
+                            <td>Week 3</td>
+                            <td><span class="badge badge-critical">CRITICAL</span></td>
+                            <td><span class="badge badge-neutral">Pending</span></td>
+                        </tr>
+                        <tr>
+                            <td>Validate stakeholder map via LinkedIn</td>
+                            <td>Account Manager</td>
+                            <td>Current org structure documented</td>
+                            <td>Week 1</td>
+                            <td><span class="badge badge-high">HIGH</span></td>
+                            <td><span class="badge badge-neutral">Pending</span></td>
+                        </tr>
+                        <tr>
+                            <td>Request QBR with B2B Digital team</td>
+                            <td>Account Manager</td>
+                            <td>Operational relationships re-established</td>
+                            <td>Week 2</td>
+                            <td><span class="badge badge-high">HIGH</span></td>
+                            <td><span class="badge badge-neutral">Pending</span></td>
+                        </tr>
+                        <tr>
+                            <td>Document deployment scope & usage</td>
+                            <td>Customer Success</td>
+                            <td>Value metrics for exec presentations</td>
+                            <td>Week 2</td>
+                            <td><span class="badge badge-high">HIGH</span></td>
+                            <td><span class="badge badge-neutral">Pending</span></td>
+                        </tr>
+                        <tr>
+                            <td>Present AI roadmap to Product & Tech</td>
+                            <td>Solutions Engineer</td>
+                            <td>Tech alignment, differentiation</td>
+                            <td>Days 31-60</td>
+                            <td><span class="badge badge-high">HIGH</span></td>
+                            <td><span class="badge badge-neutral">Pending</span></td>
+                        </tr>
+                        <tr>
+                            <td>ROI analysis for CFO</td>
+                            <td>Account Manager + Finance</td>
+                            <td>Cost justification documented</td>
+                            <td>Days 31-60</td>
+                            <td><span class="badge badge-high">HIGH</span></td>
+                            <td><span class="badge badge-neutral">Pending</span></td>
+                        </tr>
+                        <tr>
+                            <td>Annual Business Review</td>
+                            <td>Account Team</td>
+                            <td>All stakeholders aligned</td>
+                            <td>Days 61-90</td>
+                            <td><span class="badge badge-high">HIGH</span></td>
+                            <td><span class="badge badge-neutral">Pending</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Key Messages by Stakeholder -->
+            <div class="card" style="margin-top: 3rem;">
+                <h3>Key Messages by Stakeholder</h3>
+                <div class="grid grid-2">
+                    <div style="padding: 1.5rem; background: var(--highlight); border-left: 3px solid var(--accent);">
+                        <h4 style="margin-bottom: 1rem;">To Oliver Camplin-Warner (Enterprise)</h4>
+                        <p>"CloudSense enables faster enterprise deal cycles with fewer errors, supporting your reset objectives. We're committed to being part of Telstra's path to enterprise profitability."</p>
+                    </div>
+                    <div style="padding: 1.5rem; background: var(--highlight); border-left: 3px solid var(--accent);">
+                        <h4 style="margin-bottom: 1rem;">To Kim Krogh Andersen (Product & Tech)</h4>
+                        <p>"CloudSense's AI-powered, Salesforce-native CPQ aligns with Telstra's composable architecture vision and AI-first strategy. Our TelcoDR capabilities extend AI across the quote-to-cash journey."</p>
+                    </div>
+                    <div style="padding: 1.5rem; background: var(--highlight); border-left: 3px solid var(--accent);">
+                        <h4 style="margin-bottom: 1rem;">To Michael Ackland (CFO)</h4>
+                        <p>"CloudSense has delivered measurable value to Telstra through faster quotes, reduced errors, and improved sales productivity. Our platform supports your cost optimization goals while enabling growth."</p>
+                    </div>
+                    <div style="padding: 1.5rem; background: var(--highlight); border-left: 3px solid var(--accent);">
+                        <h4 style="margin-bottom: 1rem;">To Steven Worrall (InfraCo/International)</h4>
+                        <p>"CloudSense can accelerate Telstra International's growth with proven CPQ capabilities. Let's explore multi-year partnership with expansion across your global footprint."</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Escalation Triggers -->
+            <div class="card" style="margin-top: 2rem; border-left: 4px solid var(--critical);">
+                <h3>⚠️ Escalation Triggers to Skyvera Leadership</h3>
+                <p style="margin-bottom: 1rem;">Escalate immediately if any of the following occur:</p>
+                <ul style="margin-left: 1.5rem; line-height: 2;">
+                    <li>Oliver Camplin-Warner meeting request denied after 60 days</li>
+                    <li>Competitive RFP announced for CPQ/sales systems</li>
+                    <li>International renewal discussions stall or go negative</li>
+                    <li>Budget cuts threaten existing contract value</li>
+                    <li>Contact turnover exceeds 50% of known advocates</li>
+                    <li>Salesforce aggressively pushes Revenue Cloud migration</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tab: Financial -->
+    <div id="financial" class="tab-content">
+        <div class="container">
+            <h2>Financial Analysis & Revenue Impact</h2>
+
+            <!-- Contract Summary -->
+            <div class="card">
+                <h3>Contract Summary</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Entity</th>
+                            <th>Subscription ID</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Current ARR</th>
+                            <th>Projected ARR</th>
+                            <th>Growth</th>
+                            <th>Renewal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="highlight-row">
+                            <td><strong>Telstra Corporation Ltd</strong></td>
+                            <td>1558381</td>
+                            <td>Dec 2022</td>
+                            <td>May 2028</td>
+                            <td>$1,972,000</td>
+                            <td>$2,465,000</td>
+                            <td><span class="badge badge-success">+25%</span></td>
+                            <td>Next Yr</td>
+                        </tr>
+                        <tr>
+                            <td>Telstra International Ltd</td>
+                            <td>1724704</td>
+                            <td>Jun 2025</td>
+                            <td>Jun 2026</td>
+                            <td>$34,641</td>
+                            <td>$43,301</td>
+                            <td><span class="badge badge-success">+25%</span></td>
+                            <td>Q3'26</td>
+                        </tr>
+                        <tr>
+                            <td>Telstra International Ltd</td>
+                            <td>1724705</td>
+                            <td>Jun 2025</td>
+                            <td>Jun 2026</td>
+                            <td>$34,641</td>
+                            <td>$43,301</td>
+                            <td><span class="badge badge-success">+25%</span></td>
+                            <td>Q3'26</td>
+                        </tr>
+                        <tr>
+                            <td>Telstra International Ltd</td>
+                            <td>1724804</td>
+                            <td>Jun 2025</td>
+                            <td>Jun 2026</td>
+                            <td>$34,641</td>
+                            <td>$43,301</td>
+                            <td><span class="badge badge-success">+25%</span></td>
+                            <td>Q3'26</td>
+                        </tr>
+                        <tr>
+                            <td>Telstra International Ltd</td>
+                            <td>1724805</td>
+                            <td>Jun 2025</td>
+                            <td>Jun 2026</td>
+                            <td>$34,641</td>
+                            <td>$43,301</td>
+                            <td><span class="badge badge-success">+25%</span></td>
+                            <td>Q3'26</td>
+                        </tr>
+                        <tr>
+                            <td>Telstra International Ltd</td>
+                            <td>1724806</td>
+                            <td>Jun 2025</td>
+                            <td>Jun 2026</td>
+                            <td>$34,641</td>
+                            <td>$43,301</td>
+                            <td><span class="badge badge-success">+25%</span></td>
+                            <td>Q3'26</td>
+                        </tr>
+                        <tr>
+                            <td>Telstra International Ltd</td>
+                            <td>1724904</td>
+                            <td>Jun 2025</td>
+                            <td>Jun 2026</td>
+                            <td>$34,641</td>
+                            <td>$43,301</td>
+                            <td><span class="badge badge-success">+25%</span></td>
+                            <td>Q3'26</td>
+                        </tr>
+                        <tr style="background: var(--highlight); font-weight: 700;">
+                            <td colspan="4"><strong>TOTAL</strong></td>
+                            <td><strong>$2,179,845</strong></td>
+                            <td><strong>$2,724,806</strong></td>
+                            <td><span class="badge badge-success">+25%</span></td>
+                            <td>—</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Financial Charts -->
+            <div class="grid grid-2">
+                <div class="card">
+                    <h2>Revenue Growth Projection</h2>
+                    <div class="chart-container">
+                        <canvas id="financialGrowthChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>Top 10 Customers - ARR</h2>
+                    <div class="chart-container">
+                        <canvas id="financialCompetitiveChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Impact Analysis -->
+            <div class="card">
+                <h3>Strategic Impact Analysis</h3>
+                <div class="metrics-grid">
+                    <div class="metric-box">
+                        <div class="label">If Telstra Churned</div>
+                        <div class="value">-$545K</div>
+                        <p style="margin-top: 0.5rem; font-size: 0.9rem;">Quarterly revenue impact</p>
+                    </div>
+                    <div class="metric-box">
+                        <div class="label">% of Cloudsense Q Rev</div>
+                        <div class="value">-6.8%</div>
+                        <p style="margin-top: 0.5rem; font-size: 0.9rem;">Material but not existential</p>
+                    </div>
+                    <div class="metric-box">
+                        <div class="label">% of Total Skyvera</div>
+                        <div class="value">-3.7%</div>
+                        <p style="margin-top: 0.5rem; font-size: 0.9rem;">Total company impact</p>
+                    </div>
+                    <div class="metric-box">
+                        <div class="label">Upsell Opportunity</div>
+                        <div class="value">+$545K</div>
+                        <p style="margin-top: 0.5rem; font-size: 0.9rem;">If +25% executes</p>
+                    </div>
+                    <div class="metric-box">
+                        <div class="label">Total Upside (24mo)</div>
+                        <div class="value">+$1.3-1.8M</div>
+                        <p style="margin-top: 0.5rem; font-size: 0.9rem;">All opportunities</p>
+                    </div>
+                    <div class="metric-box">
+                        <div class="label">Payment Behavior</div>
+                        <div class="value">Excellent</div>
+                        <p style="margin-top: 0.5rem; font-size: 0.9rem;">No AR aging issues</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Expansion Opportunities -->
+            <div class="card">
+                <h3>Expansion Opportunities (FY26-27)</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Opportunity</th>
+                            <th>Description</th>
+                            <th>Revenue Potential</th>
+                            <th>Probability</th>
+                            <th>Timeline</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background: rgba(76, 175, 80, 0.1);">
+                            <td><strong>25% Upsell (Planned)</strong></td>
+                            <td>Already budgeted across all 7 subscriptions</td>
+                            <td>+$544,961 ARR</td>
+                            <td><span class="badge badge-success">70%</span></td>
+                            <td>FY26-27</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Additional International</strong></td>
+                            <td>Expand beyond 6 current intl subscriptions</td>
+                            <td>+$200K-400K</td>
+                            <td><span class="badge badge-medium">40%</span></td>
+                            <td>Q3'26+</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Telstra Purple</strong></td>
+                            <td>CPQ for managed services/consulting arm</td>
+                            <td>+$300K-500K</td>
+                            <td><span class="badge badge-medium">35%</span></td>
+                            <td>FY27</td>
+                        </tr>
+                        <tr>
+                            <td><strong>AI/Copilot Enhancement</strong></td>
+                            <td>Premium AI-powered CPQ features</td>
+                            <td>+$100K-200K</td>
+                            <td><span class="badge badge-medium">45%</span></td>
+                            <td>FY26</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Telstra Health</strong></td>
+                            <td>Vertical expansion via Ryan Harry connection</td>
+                            <td>+$150K-250K</td>
+                            <td><span class="badge badge-neutral">25%</span></td>
+                            <td>FY27+</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Telstra Company Overview -->
+            <div class="card">
+                <h3>Telstra Corporation Overview</h3>
+                <div class="grid grid-2">
+                    <div>
+                        <h4>Company Profile</h4>
+                        <table class="data-table">
+                            <tr><td><strong>Market Cap</strong></td><td>A$55 billion (Top 20 ASX)</td></tr>
+                            <tr><td><strong>FY25 Revenue</strong></td><td>A$23.6 billion (~US$15.3B)</td></tr>
+                            <tr><td><strong>Market Position</strong></td><td>44% Australian telecom share (#1)</td></tr>
+                            <tr><td><strong>Employees</strong></td><td>~30,553 globally</td></tr>
+                            <tr><td><strong>CEO</strong></td><td>Vicki Brady (since Sept 2022)</td></tr>
+                            <tr><td><strong>Network Coverage</strong></td><td>99.7% population (mobile), 91% (5G)</td></tr>
+                        </table>
+                    </div>
+                    <div>
+                        <h4>Strategic Investments</h4>
+                        <table class="data-table">
+                            <tr><td><strong>5G Network</strong></td><td>A$800M (4 years)</td></tr>
+                            <tr><td><strong>Fiber Network</strong></td><td>A$1.6B (14,000 km)</td></tr>
+                            <tr><td><strong>AI Investment</strong></td><td>A$700M (multi-year)</td></tr>
+                            <tr><td><strong>Accenture JV</strong></td><td>Strategic partnership (Jan 2025)</td></tr>
+                            <tr><td><strong>Microsoft Copilot</strong></td><td>21,000 employees</td></tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p><strong>Telstra Strategic Account Plan</strong> | CloudSense Business Unit | Skyvera</p>
+        <p style="margin-top: 0.5rem;">Generated: February 3, 2026 | Confidential - Internal Use Only</p>
+        <p style="margin-top: 0.5rem; opacity: 0.7;">Source: Telstra Budget Q1'26, Customer Intelligence Analysis, Public Company Data</p>
+    </div>
+
+    <script>
+        // Chart.js Configuration
+        Chart.defaults.font.family = "'DM Sans', sans-serif";
+        Chart.defaults.color = '#1a1a1a';
+
+        const colors = {
+            primary: '#c84b31',
+            secondary: '#2d4263',
+            accent: '#ecdbba',
+            success: '#4caf50',
+            warning: '#ff9800',
+            critical: '#e53935'
+        };
+
+        // Tab Navigation
+        function showTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.getElementById(tabId).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // Expandable Sections
+        function toggleExpandable(element) {
+            const expandable = element.parentElement;
+            expandable.classList.toggle('open');
+        }
+
+        // Overview Tab Charts
+        const overviewEntityCtx = document.getElementById('overviewEntityChart').getContext('2d');
+        new Chart(overviewEntityCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Telstra Corporation Ltd ($1.97M)', 'Telstra International Ltd ($208K)'],
+                datasets: [{
+                    data: [1972000, 207845],
+                    backgroundColor: [colors.primary, colors.secondary],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'bottom', labels: { padding: 20 } },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return '$' + context.parsed.toLocaleString();
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        const overviewConcentrationCtx = document.getElementById('overviewConcentrationChart').getContext('2d');
+        new Chart(overviewConcentrationCtx, {
+            type: 'pie',
+            data: {
+                labels: ['Telstra (8.3%)', 'Top 5 excl. Telstra (26.5%)', 'Top 10 excl. Top 5 (20.2%)', 'Rest of Base (45%)'],
+                datasets: [{
+                    data: [2179845, 6940138, 5308192, 11799234],
+                    backgroundColor: [colors.primary, colors.secondary, colors.accent, '#e8e6e1'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'bottom', labels: { padding: 15 } }
+                }
+            }
+        });
+
+        // Financial Tab Charts
+        const financialGrowthCtx = document.getElementById('financialGrowthChart').getContext('2d');
+        new Chart(financialGrowthCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Current ARR', 'With +25% Upsell', 'Total Upside Potential'],
+                datasets: [{
+                    label: 'ARR ($M)',
+                    data: [2.18, 2.72, 3.5],
+                    backgroundColor: [colors.secondary, colors.success, colors.primary],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return '$' + context.parsed.y.toFixed(2) + 'M ARR';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return '$' + value + 'M';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        const financialCompetitiveCtx = document.getElementById('financialCompetitiveChart').getContext('2d');
+        new Chart(financialCompetitiveCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Telstra', 'Telefonica UK', 'Vodafone NL', 'Spotify', 'BT plc', 'Maxis', 'Liquid', 'Centrica', 'StarHub', 'Elisa'],
+                datasets: [{
+                    label: 'ARR ($M)',
+                    data: [2.18, 2.10, 1.84, 1.59, 1.40, 1.36, 1.07, 1.05, 0.92, 0.90],
+                    backgroundColor: [
+                        colors.primary,
+                        colors.secondary, colors.secondary, colors.secondary, colors.secondary,
+                        colors.secondary, colors.secondary, colors.secondary, colors.secondary, colors.secondary
+                    ],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return '$' + value + 'M';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skyvera - Customer Analysis Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            color: #333;
+        }
+
+        .dashboard {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+
+        .alert-banner {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+
+        .alert-banner h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .alert-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .alert-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .alert-list li:last-child {
+            border-bottom: none;
+        }
+
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .kpi-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+
+        .kpi-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        .kpi-card h3 {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .kpi-value {
+            font-size: 2.2em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .kpi-value.positive {
+            color: #10b981;
+        }
+
+        .kpi-value.negative {
+            color: #ef4444;
+        }
+
+        .kpi-value.warning {
+            color: #f59e0b;
+        }
+
+        .kpi-change {
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .chart-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .chart-container {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .chart-container h2 {
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 1.3em;
+        }
+
+        .table-container {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            overflow-x: auto;
+        }
+
+        .table-container h2 {
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 1.3em;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: #f3f4f6;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            color: #374151;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        tr:hover {
+            background: #f9fafb;
+        }
+
+        .risk-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        .risk-high {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .risk-medium {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .risk-low {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .footer {
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+            padding: 20px;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .chart-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <div class="header">
+            <h1>📊 Skyvera Customer Analysis Dashboard</h1>
+            <p>FY'26 Customer Revenue & Risk Analysis | Generated: January 31, 2026</p>
+        </div>
+
+        <div class="alert-banner">
+            <h2>🚨 Critical Issues Identified</h2>
+            <ul class="alert-list">
+                <li><strong>$8.78M ARR at Risk:</strong> 37 subscriptions not renewing (16.7% of total ARR)</li>
+                <li><strong>ARR Declining -$1.43M:</strong> Projected ARR down 2.7% from current levels</li>
+                <li><strong>NRR Declining -$1.60M:</strong> Non-recurring revenue down 18.6% vs TTM</li>
+                <li><strong>High Customer Concentration:</strong> Top 10 customers represent 52.4% of revenue</li>
+                <li><strong>Top At-Risk Customers:</strong> HCL ($2.08M), One Albania ($1.62M), BT ($1.40M)</li>
+            </ul>
+        </div>
+
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <h3>Total Revenue FY'26</h3>
+                <div class="kpi-value">$58.2M</div>
+                <div class="kpi-change">Combined RR + NRR forecast</div>
+            </div>
+
+            <div class="kpi-card">
+                <h3>Current ARR</h3>
+                <div class="kpi-value negative">$52.7M</div>
+                <div class="kpi-change">As of 11/30/2025</div>
+            </div>
+
+            <div class="kpi-card">
+                <h3>Projected ARR</h3>
+                <div class="kpi-value negative">$51.2M</div>
+                <div class="kpi-change">↓ $1.43M (-2.7%)</div>
+            </div>
+
+            <div class="kpi-card">
+                <h3>ARR at Risk</h3>
+                <div class="kpi-value negative">$8.78M</div>
+                <div class="kpi-change">16.7% of total ARR</div>
+            </div>
+
+            <div class="kpi-card">
+                <h3>NRR FY'26</h3>
+                <div class="kpi-value warning">$7.0M</div>
+                <div class="kpi-change">↓ $1.60M (-18.6% vs TTM)</div>
+            </div>
+
+            <div class="kpi-card">
+                <h3>Top 10 Concentration</h3>
+                <div class="kpi-value warning">52.4%</div>
+                <div class="kpi-change">$30.5M from 10 customers</div>
+            </div>
+
+            <div class="kpi-card">
+                <h3>Total Subscriptions</h3>
+                <div class="kpi-value">148</div>
+                <div class="kpi-change">37 not renewing</div>
+            </div>
+
+            <div class="kpi-card">
+                <h3>RR Mix</h3>
+                <div class="kpi-value positive">88%</div>
+                <div class="kpi-change">Strong recurring base</div>
+            </div>
+        </div>
+
+        <div class="chart-grid">
+            <div class="chart-container">
+                <h2>Revenue Mix (FY'26)</h2>
+                <canvas id="revenueMixChart"></canvas>
+            </div>
+
+            <div class="chart-container">
+                <h2>ARR Trend</h2>
+                <canvas id="arrTrendChart"></canvas>
+            </div>
+        </div>
+
+        <div class="chart-grid">
+            <div class="chart-container">
+                <h2>RR by Business Unit</h2>
+                <canvas id="buBreakdownChart"></canvas>
+            </div>
+
+            <div class="chart-container">
+                <h2>Customer Concentration</h2>
+                <canvas id="concentrationChart"></canvas>
+            </div>
+        </div>
+
+        <div class="chart-container" style="margin-bottom: 30px;">
+            <h2>Top 10 Customers by Revenue (FY'26)</h2>
+            <canvas id="topCustomersChart"></canvas>
+        </div>
+
+        <div class="table-container">
+            <h2>⚠️ Top 10 At-Risk Subscriptions (Not Renewing)</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Customer</th>
+                        <th>Current ARR</th>
+                        <th>Business Unit</th>
+                        <th>Renewal Quarter</th>
+                        <th>Risk Level</th>
+                    </tr>
+                </thead>
+                <tbody id="atRiskTable">
+                    <!-- Populated by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-container">
+            <h2>📈 Top 15 Recurring Revenue Customers</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Customer</th>
+                        <th>Current ARR</th>
+                        <th>Projected ARR</th>
+                        <th>Business Unit</th>
+                        <th>Renewal Status</th>
+                        <th>Renewal Quarter</th>
+                    </tr>
+                </thead>
+                <tbody id="topRRTable">
+                    <!-- Populated by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-container">
+            <h2>💼 Top 15 Non-Recurring Revenue Customers</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Customer</th>
+                        <th>FY'26 Forecast</th>
+                        <th>TTM Total</th>
+                        <th>Change</th>
+                        <th>Business Class</th>
+                    </tr>
+                </thead>
+                <tbody id="topNRRTable">
+                    <!-- Populated by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="footer">
+            <p>🤖 Generated with Claude Code | Data Source: 2025-12-11 Skyvera Budget Q1'26</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">Dashboard built with Chart.js | Self-contained HTML - no build required</p>
+        </div>
+    </div>
+
+    <script>
+        // Load data from analysis
+        const data = {
+            "summary": {
+                "total_revenue_fy26": 58218906,
+                "rr_annual": 51224932,
+                "nrr_annual": 6993974,
+                "arr_current": 52655941,
+                "arr_growth": -1431009,
+                "arr_at_risk": 8782249,
+                "top_10_concentration_pct": 52.4,
+                "top_20_concentration_pct": 69.6
+            },
+            "top_rr_customers": [
+                {"customer": "EMIRCOM", "arr_current": 9586308, "projected_arr": 9586308, "company": "Kandy", "will_renew": "Yes", "renewal_qtr": "Q2'26"},
+                {"customer": "NS Solutions Corporation", "arr_current": 2412645, "projected_arr": 3015806, "company": "NewNet", "will_renew": "Yes", "renewal_qtr": "Next Yr"},
+                {"customer": "Telefonica UK Limited", "arr_current": 2104857, "projected_arr": 2631071, "company": "Cloudsense", "will_renew": "Yes", "renewal_qtr": "Q1'26"},
+                {"customer": "HCL TECHNOLOGIES UK LIMITED", "arr_current": 2082880, "projected_arr": 0, "company": "NewNet", "will_renew": "No", "renewal_qtr": "Q2'26"},
+                {"customer": "Telstra Corporation Limited", "arr_current": 1972000, "projected_arr": 2465000, "company": "Cloudsense", "will_renew": "Yes", "renewal_qtr": "Next Yr"},
+                {"customer": "Vodafone Netherlands", "arr_current": 1843190, "projected_arr": 2303988, "company": "Cloudsense", "will_renew": "Yes", "renewal_qtr": "Next Yr"},
+                {"customer": "AT&T SERVICES, INC.", "arr_current": 1798095, "projected_arr": 1798095, "company": "Kandy", "will_renew": "Yes", "renewal_qtr": "Q1'26"},
+                {"customer": "One Albania", "arr_current": 1620914, "projected_arr": 0, "company": "STL", "will_renew": "No", "renewal_qtr": "Q4'26"},
+                {"customer": "Spotify", "arr_current": 1587300, "projected_arr": 1587300, "company": "Cloudsense", "will_renew": "Yes", "renewal_qtr": "Next Yr"},
+                {"customer": "British Telecommunications plc", "arr_current": 1404791, "projected_arr": 0, "company": "Cloudsense", "will_renew": "No (SF)", "renewal_qtr": "Q1'26"},
+                {"customer": "TRANSCOM", "arr_current": 1235829, "projected_arr": 1235829, "company": "VoltDelta", "will_renew": "Yes", "renewal_qtr": "Next Yr"},
+                {"customer": "Maxis Broadband Sdn Bhd", "arr_current": 1234734, "projected_arr": 1543418, "company": "Cloudsense", "will_renew": "Yes", "renewal_qtr": "Q4'25"},
+                {"customer": "Liquid Telecom", "arr_current": 1073620, "projected_arr": 1342025, "company": "Cloudsense", "will_renew": "Yes", "renewal_qtr": "Q4'26"},
+                {"customer": "Centrica Services Ltd", "arr_current": 1053983, "projected_arr": 1053983, "company": "Cloudsense", "will_renew": "Yes", "renewal_qtr": "Q2'26"},
+                {"customer": "Abbott Laboratories", "arr_current": 816928, "projected_arr": 1021160, "company": "Cloudsense", "will_renew": "Yes", "renewal_qtr": "Next Yr"}
+            ],
+            "at_risk_rr": [
+                {"customer": "HCL TECHNOLOGIES UK LIMITED", "arr_current": 2082880, "renewal_qtr": "Q2'26", "company": "NewNet"},
+                {"customer": "One Albania", "arr_current": 1620914, "renewal_qtr": "Q4'26", "company": "STL"},
+                {"customer": "British Telecommunications plc", "arr_current": 1404791, "renewal_qtr": "Q1'26", "company": "Cloudsense"},
+                {"customer": "Thryv Australia Pty Ltd", "arr_current": 567979, "renewal_qtr": "Q1'26", "company": "Cloudsense"},
+                {"customer": "CoreSite", "arr_current": 456285, "renewal_qtr": "Q3'26", "company": "Kandy"},
+                {"customer": "DPG Media BV", "arr_current": 358971, "renewal_qtr": "Q3'26", "company": "Cloudsense"},
+                {"customer": "Konnektio Oy.", "arr_current": 322926, "renewal_qtr": "Q4'25", "company": "Cloudsense"},
+                {"customer": "Sun Corporation", "arr_current": 272477, "renewal_qtr": "Q1'26", "company": "NewNet"},
+                {"customer": "PropertyGuru Pte Ltd", "arr_current": 262148, "renewal_qtr": "Q2'26", "company": "Cloudsense"},
+                {"customer": "Hubexo South UK Ltd", "arr_current": 173412, "renewal_qtr": "Q3'26", "company": "Cloudsense"}
+            ],
+            "top_nrr_customers": [
+                {"customer": "New Sales Ps -  <Masergy>", "fy26_total": 1924000, "ttm_total": 0, "class": "Cloudsense Consulting", "q1": 481000, "q2": 481000, "q3": 481000, "q4": 481000},
+                {"customer": "Liquid Telecom", "fy26_total": 1416000, "ttm_total": 0, "class": "Cloudsense Consulting", "q1": 354000, "q2": 354000, "q3": 354000, "q4": 354000},
+                {"customer": "New Sales Ps - Go Get", "fy26_total": 834000, "ttm_total": 0, "class": "Cloudsense Consulting", "q1": 328000, "q2": 212000, "q3": 229000, "q4": 65000},
+                {"customer": "Dplay Entertainment Ltd", "fy26_total": 800000, "ttm_total": 500841, "class": "Cloudsense Consulting", "q1": 200000, "q2": 200000, "q3": 200000, "q4": 200000},
+                {"customer": "New Sales Ps -  <Telstra - Ges(a)>", "fy26_total": 431900, "ttm_total": 0, "class": "Cloudsense Consulting", "q1": 107975, "q2": 107975, "q3": 107975, "q4": 107975},
+                {"customer": "New Sales Ps -  <Star Hub>", "fy26_total": 300000, "ttm_total": 0, "class": "Cloudsense Consulting", "q1": 75000, "q2": 75000, "q3": 75000, "q4": 75000},
+                {"customer": "Teleindia Networks Private Limited", "fy26_total": 225000, "ttm_total": 897279, "class": "Stl Consulting", "q1": 75000, "q2": 75000, "q3": 75000, "q4": 0},
+                {"customer": "One Albania", "fy26_total": 218000, "ttm_total": 0, "class": "Stl Consulting", "q1": 109000, "q2": 109000, "q3": 0, "q4": 0},
+                {"customer": "A1 Telekom Austria Ag.", "fy26_total": 210249, "ttm_total": 667119, "class": "Cloudsense Consulting", "q1": 157687, "q2": 52562, "q3": 0, "q4": 0},
+                {"customer": "New Sales PS - < A1 Telekom>", "fy26_total": 210249, "ttm_total": 0, "class": "Cloudsense Consulting", "q1": 0, "q2": 52562, "q3": 78843, "q4": 78843},
+                {"customer": "Vodafone Egypt", "fy26_total": 168601, "ttm_total": 0, "class": "Newnet Consulting", "q1": 42150, "q2": 42150, "q3": 42150, "q4": 42150},
+                {"customer": "New License Sales - Skyvera", "fy26_total": 150000, "ttm_total": 0, "class": "Newnet Product", "q1": 50000, "q2": 50000, "q3": 50000, "q4": 0},
+                {"customer": "Vodafone Egypt", "fy26_total": 66437, "ttm_total": 0, "class": "Newnet Consulting", "q1": 16609, "q2": 16609, "q3": 16609, "q4": 16609},
+                {"customer": "Vodafone Egypt", "fy26_total": 39538, "ttm_total": 0, "class": "Newnet Consulting", "q1": 9885, "q2": 9885, "q3": 9885, "q4": 9885},
+                {"customer": "Masergy Communications, Inc.", "fy26_total": 0, "ttm_total": 1268250, "class": "Cloudsense Consulting", "q1": 0, "q2": 0, "q3": 0, "q4": 0}
+            ],
+            "bu_breakdown_rr": [
+                {"bu": "Cloudsense", "arr": 28288629, "subscriptions": 59},
+                {"bu": "Kandy", "arr": 13664745, "subscriptions": 28},
+                {"bu": "NewNet", "arr": 5690318, "subscriptions": 24},
+                {"bu": "Other", "arr": 1828588, "subscriptions": 16},
+                {"bu": "STL", "arr": 1752651, "subscriptions": 21}
+            ]
+        };
+
+        // Format currency
+        function formatCurrency(value) {
+            return new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+            }).format(value);
+        }
+
+        // Chart colors
+        const colors = {
+            primary: ['#667eea', '#764ba2', '#f093fb', '#4facfe', '#43e97b'],
+            status: {
+                good: '#10b981',
+                warning: '#f59e0b',
+                danger: '#ef4444'
+            }
+        };
+
+        // Revenue Mix Chart
+        new Chart(document.getElementById('revenueMixChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Recurring Revenue (RR)', 'Non-Recurring Revenue (NRR)'],
+                datasets: [{
+                    data: [data.summary.rr_annual, data.summary.nrr_annual],
+                    backgroundColor: ['#667eea', '#f093fb'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            padding: 20,
+                            font: { size: 12 }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const value = context.parsed;
+                                const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                const percentage = ((value / total) * 100).toFixed(1);
+                                return context.label + ': ' + formatCurrency(value) + ' (' + percentage + '%)';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // ARR Trend Chart
+        new Chart(document.getElementById('arrTrendChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Current ARR\n(11/30/25)', 'Projected ARR\n(FY\'26)'],
+                datasets: [{
+                    label: 'ARR',
+                    data: [data.summary.arr_current, data.summary.rr_annual],
+                    backgroundColor: [colors.status.warning, colors.status.danger],
+                    borderRadius: 8,
+                    borderSkipped: false
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return 'ARR: ' + formatCurrency(context.parsed.y);
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return '$' + (value / 1000000).toFixed(0) + 'M';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // BU Breakdown Chart
+        new Chart(document.getElementById('buBreakdownChart'), {
+            type: 'bar',
+            data: {
+                labels: data.bu_breakdown_rr.map(bu => bu.bu),
+                datasets: [{
+                    label: 'Projected ARR',
+                    data: data.bu_breakdown_rr.map(bu => bu.arr),
+                    backgroundColor: colors.primary,
+                    borderRadius: 8,
+                    borderSkipped: false
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                indexAxis: 'y',
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const bu = data.bu_breakdown_rr[context.dataIndex];
+                                return [
+                                    'ARR: ' + formatCurrency(context.parsed.x),
+                                    'Subscriptions: ' + bu.subscriptions
+                                ];
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: {
+                            callback: function(value) {
+                                return '$' + (value / 1000000).toFixed(0) + 'M';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Concentration Chart
+        new Chart(document.getElementById('concentrationChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Top 10\nCustomers', 'Top 20\nCustomers', 'All Other\nCustomers'],
+                datasets: [{
+                    label: 'Revenue %',
+                    data: [
+                        data.summary.top_10_concentration_pct,
+                        data.summary.top_20_concentration_pct - data.summary.top_10_concentration_pct,
+                        100 - data.summary.top_20_concentration_pct
+                    ],
+                    backgroundColor: [colors.status.danger, colors.status.warning, colors.status.good],
+                    borderRadius: 8,
+                    borderSkipped: false
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.parsed.y.toFixed(1) + '% of revenue';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        ticks: {
+                            callback: function(value) {
+                                return value + '%';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Top Customers Chart
+        const topCustomers = data.top_rr_customers.slice(0, 10);
+        new Chart(document.getElementById('topCustomersChart'), {
+            type: 'bar',
+            data: {
+                labels: topCustomers.map(c => c.customer),
+                datasets: [
+                    {
+                        label: 'Current ARR',
+                        data: topCustomers.map(c => c.arr_current),
+                        backgroundColor: '#764ba2',
+                        borderRadius: 8,
+                        borderSkipped: false
+                    },
+                    {
+                        label: 'Projected ARR',
+                        data: topCustomers.map(c => c.projected_arr),
+                        backgroundColor: '#667eea',
+                        borderRadius: 8,
+                        borderSkipped: false
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                indexAxis: 'y',
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            padding: 20,
+                            font: { size: 12 }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.dataset.label + ': ' + formatCurrency(context.parsed.x);
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: {
+                            callback: function(value) {
+                                return '$' + (value / 1000000).toFixed(1) + 'M';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Populate At-Risk Table
+        const atRiskTable = document.getElementById('atRiskTable');
+        data.at_risk_rr.forEach((customer, idx) => {
+            const row = document.createElement('tr');
+            const riskLevel = customer.arr_current > 1000000 ? 'high' : customer.arr_current > 500000 ? 'medium' : 'low';
+            const riskLabel = riskLevel === 'high' ? 'High' : riskLevel === 'medium' ? 'Medium' : 'Low';
+
+            row.innerHTML = `
+                <td>${idx + 1}</td>
+                <td><strong>${customer.customer}</strong></td>
+                <td>${formatCurrency(customer.arr_current)}</td>
+                <td>${customer.company}</td>
+                <td>${customer.renewal_qtr}</td>
+                <td><span class="risk-badge risk-${riskLevel}">${riskLabel}</span></td>
+            `;
+            atRiskTable.appendChild(row);
+        });
+
+        // Populate Top RR Table
+        const topRRTable = document.getElementById('topRRTable');
+        data.top_rr_customers.forEach((customer, idx) => {
+            const row = document.createElement('tr');
+            const renewalIcon = customer.will_renew.includes('Yes') ? '✓' : '✗';
+            const renewalColor = customer.will_renew.includes('Yes') ? 'color: #10b981' : 'color: #ef4444';
+
+            row.innerHTML = `
+                <td>${idx + 1}</td>
+                <td><strong>${customer.customer}</strong></td>
+                <td>${formatCurrency(customer.arr_current)}</td>
+                <td>${formatCurrency(customer.projected_arr)}</td>
+                <td>${customer.company}</td>
+                <td style="${renewalColor}"><strong>${renewalIcon} ${customer.will_renew}</strong></td>
+                <td>${customer.renewal_qtr}</td>
+            `;
+            topRRTable.appendChild(row);
+        });
+
+        // Populate Top NRR Table
+        const topNRRTable = document.getElementById('topNRRTable');
+        data.top_nrr_customers.forEach((customer, idx) => {
+            const row = document.createElement('tr');
+            const change = customer.fy26_total - customer.ttm_total;
+            const changeText = change > 0 ? `+${formatCurrency(change)}` : change < 0 ? formatCurrency(change) : '-';
+            const changeColor = change > 0 ? 'color: #10b981' : change < 0 ? 'color: #ef4444' : '';
+
+            row.innerHTML = `
+                <td>${idx + 1}</td>
+                <td><strong>${customer.customer}</strong></td>
+                <td>${formatCurrency(customer.fy26_total)}</td>
+                <td>${formatCurrency(customer.ttm_total)}</td>
+                <td style="${changeColor}"><strong>${changeText}</strong></td>
+                <td>${customer.class}</td>
+            `;
+            topNRRTable.appendChild(row);
+        });
+    </script>
+</body>
+</html>

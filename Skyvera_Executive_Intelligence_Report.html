@@ -1,0 +1,1777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skyvera Executive Intelligence Report - Q1'26</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: #333;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+
+        .date {
+            font-size: 1em;
+            opacity: 0.8;
+        }
+
+        nav {
+            background: #f8f9fa;
+            padding: 15px 40px;
+            border-bottom: 2px solid #e9ecef;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav button {
+            padding: 10px 18px;
+            border: none;
+            background: #667eea;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9em;
+            transition: all 0.3s;
+        }
+
+        nav button:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+        }
+
+        nav button.active {
+            background: #1e3c72;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .metric-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .metric-card.danger {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .metric-card.warning {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+
+        .metric-card.success {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .metric-label {
+            font-size: 0.85em;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+
+        .metric-value {
+            font-size: 2.3em;
+            font-weight: 700;
+        }
+
+        .metric-subtitle {
+            font-size: 0.8em;
+            opacity: 0.85;
+            margin-top: 5px;
+        }
+
+        .section-header {
+            font-size: 1.8em;
+            color: #1e3c72;
+            margin: 30px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .subsection-header {
+            font-size: 1.3em;
+            color: #2a5298;
+            margin: 25px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #1e3c72;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e9ecef;
+            font-size: 0.9em;
+        }
+
+        tr:hover {
+            background: #f8f9fa;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: 600;
+        }
+
+        .badge.critical {
+            background: #f5576c;
+            color: white;
+        }
+
+        .badge.high {
+            background: #fa709a;
+            color: white;
+        }
+
+        .badge.medium {
+            background: #fee140;
+            color: #333;
+        }
+
+        .badge.low {
+            background: #00f2fe;
+            color: #333;
+        }
+
+        .badge.good {
+            background: #4facfe;
+            color: white;
+        }
+
+        .badge.pass {
+            background: #00f2fe;
+            color: #333;
+        }
+
+        .badge.immediate {
+            background: #f5576c;
+            color: white;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .chart-container {
+            position: relative;
+            height: 400px;
+            margin: 30px 0;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .alert {
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-weight: 500;
+        }
+
+        .alert.critical {
+            background: #ffe5e5;
+            border-left: 5px solid #f5576c;
+            color: #c92a2a;
+        }
+
+        .alert.warning {
+            background: #fff9db;
+            border-left: 5px solid #fee140;
+            color: #7c6300;
+        }
+
+        .alert.info {
+            background: #e3f2fd;
+            border-left: 5px solid #4facfe;
+            color: #0d47a1;
+        }
+
+        .alert.success {
+            background: #e8f5e9;
+            border-left: 5px solid #4caf50;
+            color: #2e7d32;
+        }
+
+        ul {
+            margin: 15px 0;
+            padding-left: 25px;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        .action-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .action-item {
+            background: white;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+            border-left: 5px solid #667eea;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .action-timeline {
+            display: inline-block;
+            padding: 5px 15px;
+            background: #667eea;
+            color: white;
+            border-radius: 15px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .action-timeline.immediate {
+            background: #f5576c;
+        }
+
+        .bu-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+            border-left: 5px solid #667eea;
+        }
+
+        .bu-header {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #1e3c72;
+            margin-bottom: 15px;
+        }
+
+        .two-col-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .footer {
+            background: #1e3c72;
+            color: white;
+            padding: 30px 40px;
+            text-align: center;
+        }
+
+        .copyright {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Skyvera Executive Intelligence Report</h1>
+            <div class="subtitle">Financial & Customer Intelligence Analysis - Q1'26</div>
+            <div class="date">Report Date: February 1, 2026 | Classification: Executive Confidential</div>
+        </header>
+
+        <nav>
+            <button onclick="showSection('financial-exec')" class="active">Financial Summary</button>
+            <button onclick="showSection('financial-detailed')">Financial Analysis</button>
+            <button onclick="showSection('customer-exec')">Customer Summary</button>
+            <button onclick="showSection('top-customers')">Top Customers</button>
+            <button onclick="showSection('at-risk')">At-Risk Accounts</button>
+            <button onclick="showSection('expansion')">Expansion Pipeline</button>
+            <button onclick="showSection('actions')">Action Plan</button>
+        </nav>
+
+        <div class="content">
+            <!-- FINANCIAL EXECUTIVE SUMMARY -->
+            <div id="financial-exec" class="section active">
+                <h2 class="section-header">Financial Executive Summary</h2>
+
+                <div class="alert critical">
+                    <strong>OVERALL ASSESSMENT: PROCEED WITH CAUTION</strong><br>
+                    Skyvera demonstrates strong profitability metrics (62.5% EBITDA margin, $9.2M quarterly EBITDA) but faces significant structural challenges with declining recurring revenue (-11.9% YoY) and margin compression (-$918K gap to target).
+                </div>
+
+                <div class="metric-grid">
+                    <div class="metric-card">
+                        <div class="metric-label">Total Revenue (Q1'26)</div>
+                        <div class="metric-value">$14.7M</div>
+                        <div class="metric-subtitle">86% Recurring</div>
+                    </div>
+                    <div class="metric-card success">
+                        <div class="metric-label">EBITDA</div>
+                        <div class="metric-value">$9.2M</div>
+                        <div class="metric-subtitle">62.5% Margin</div>
+                    </div>
+                    <div class="metric-card warning">
+                        <div class="metric-label">Net Margin Gap</div>
+                        <div class="metric-value">-$918K</div>
+                        <div class="metric-subtitle">6.2 pts below target</div>
+                    </div>
+                    <div class="metric-card danger">
+                        <div class="metric-label">ARR (Annualized)</div>
+                        <div class="metric-value">$50.4M</div>
+                        <div class="metric-subtitle">DOWN 11.9% YoY</div>
+                    </div>
+                    <div class="metric-card success">
+                        <div class="metric-label">Rule of 40</div>
+                        <div class="metric-value">50.6%</div>
+                        <div class="metric-subtitle">PASSING</div>
+                    </div>
+                    <div class="metric-card danger">
+                        <div class="metric-label">AR >90 Days</div>
+                        <div class="metric-value">$11.5M</div>
+                        <div class="metric-subtitle">21.8% of ARR</div>
+                    </div>
+                </div>
+
+                <h3 class="subsection-header">Critical Financial Issues</h3>
+
+                <div class="bu-card">
+                    <div class="bu-header">1. Margin Gap: -$918K (6.2 percentage points)</div>
+                    <table>
+                        <tr>
+                            <th>Driver</th>
+                            <th>Impact</th>
+                            <th>Explanation</th>
+                        </tr>
+                        <tr>
+                            <td>HC COGS Increase</td>
+                            <td><span class="badge critical">+$779K</span></td>
+                            <td>43 new XO contractors hired</td>
+                        </tr>
+                        <tr>
+                            <td>RR Decline</td>
+                            <td><span class="badge critical">-$336K</span></td>
+                            <td>Recurring revenue down vs. prior plan</td>
+                        </tr>
+                        <tr>
+                            <td>NHC Expenses Up</td>
+                            <td><span class="badge high">+$177K</span></td>
+                            <td>Software/professional services</td>
+                        </tr>
+                        <tr>
+                            <td>CF COGS Down</td>
+                            <td><span class="badge good">-$920K</span></td>
+                            <td>Vendor optimization (positive)</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="bu-card">
+                    <div class="bu-header">2. Recurring Revenue Declining: -$336K</div>
+                    <table>
+                        <tr>
+                            <th>Business Unit</th>
+                            <th>Q1'26 Plan</th>
+                            <th>Prior Plan</th>
+                            <th>Variance</th>
+                        </tr>
+                        <tr>
+                            <td>Cloudsense</td>
+                            <td>$6.37M</td>
+                            <td>$6.72M</td>
+                            <td><span class="badge critical">-$355K</span></td>
+                        </tr>
+                        <tr>
+                            <td>Kandy</td>
+                            <td>$3.32M</td>
+                            <td>$3.40M</td>
+                            <td><span class="badge high">-$75K</span></td>
+                        </tr>
+                        <tr>
+                            <td>STL</td>
+                            <td>$0.80M</td>
+                            <td>$0.66M</td>
+                            <td><span class="badge good">+$146K</span></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="bu-card">
+                    <div class="bu-header">3. Salesforce UK Contract: $4.1M Annual</div>
+                    <div class="alert critical">
+                        <strong>CRITICAL CONCERN:</strong> This contract consumes 64% of Cloudsense's recurring revenue. At this cost ratio, every dollar of Cloudsense RR decline makes this contract increasingly burdensome.
+                        <ul>
+                            <li>Annual Cost: $4.1M</li>
+                            <li>Cloudsense RR: $6.37M (quarterly)</li>
+                            <li>As % of Cloudsense RR: 64%</li>
+                            <li><strong>Action Required:</strong> Urgent review of utilization and renegotiation options</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3 class="subsection-header">Business Unit Performance</h3>
+                <table>
+                    <tr>
+                        <th>Business Unit</th>
+                        <th>Revenue</th>
+                        <th>Net Margin</th>
+                        <th>Target</th>
+                        <th>Gap</th>
+                        <th>Status</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Cloudsense</strong></td>
+                        <td>$8.07M (55%)</td>
+                        <td>59.2%</td>
+                        <td>63.6%</td>
+                        <td>-$352K</td>
+                        <td><span class="badge medium">WATCH</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Kandy</strong></td>
+                        <td>$3.32M (23%)</td>
+                        <td>63.2%</td>
+                        <td>75.0%</td>
+                        <td>-$390K</td>
+                        <td><span class="badge high">CONCERN</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>STL</strong></td>
+                        <td>$0.95M (6%)</td>
+                        <td>61.2%</td>
+                        <td>75.0%</td>
+                        <td>-$131K</td>
+                        <td><span class="badge good">IMPROVING</span></td>
+                    </tr>
+                </table>
+
+                <div class="chart-container">
+                    <canvas id="financialRevenueChart"></canvas>
+                </div>
+
+                <div class="chart-container">
+                    <canvas id="financialMarginChart"></canvas>
+                </div>
+            </div>
+
+            <!-- FINANCIAL DETAILED ANALYSIS -->
+            <div id="financial-detailed" class="section">
+                <h2 class="section-header">Detailed Financial Analysis</h2>
+
+                <h3 class="subsection-header">ARR Health by Product Line</h3>
+                <table>
+                    <tr>
+                        <th>Product</th>
+                        <th>Current ARR</th>
+                        <th>Prior Year ARR</th>
+                        <th>YoY Change</th>
+                        <th>DM%</th>
+                        <th>Status</th>
+                    </tr>
+                    <tr>
+                        <td>Cloudsense</td>
+                        <td>$26.2M</td>
+                        <td>$24.6M</td>
+                        <td><span class="badge good">+1.6%</span></td>
+                        <td>106.6%</td>
+                        <td>Growing</td>
+                    </tr>
+                    <tr>
+                        <td>Kandy</td>
+                        <td>$13.6M</td>
+                        <td>$17.6M</td>
+                        <td><span class="badge critical">-6.2%</span></td>
+                        <td>77.3%</td>
+                        <td>Declining</td>
+                    </tr>
+                    <tr>
+                        <td>STL</td>
+                        <td>$3.4M</td>
+                        <td>$5.2M</td>
+                        <td><span class="badge critical">-9.7%</span></td>
+                        <td>66.4%</td>
+                        <td>Declining</td>
+                    </tr>
+                    <tr>
+                        <td>NewNet</td>
+                        <td>$7.0M</td>
+                        <td>$8.1M</td>
+                        <td><span class="badge high">-3.7%</span></td>
+                        <td>85.9%</td>
+                        <td>Declining</td>
+                    </tr>
+                    <tr>
+                        <td>VoltDelta</td>
+                        <td>$1.6M</td>
+                        <td>$2.4M</td>
+                        <td><span class="badge critical">-10.2%</span></td>
+                        <td>65.0%</td>
+                        <td>Declining</td>
+                    </tr>
+                    <tr>
+                        <td><strong>TOTAL</strong></td>
+                        <td><strong>$52.7M</strong></td>
+                        <td><strong>$59.8M</strong></td>
+                        <td><span class="badge critical">-11.9%</span></td>
+                        <td>88.1%</td>
+                        <td>Net Declining</td>
+                    </tr>
+                </table>
+
+                <div class="alert critical">
+                    <strong>KEY FINDING:</strong> Company-wide ARR declined 11.9% YoY ($59.8M to $52.7M = -$7.1M). Only Cloudsense shows growth; all other product lines are contracting. This erosion rate, if not reversed, represents significant value destruction.
+                </div>
+
+                <h3 class="subsection-header">Headcount Analysis</h3>
+                <div class="bu-card">
+                    <div class="bu-header">Massive HC Increase: +43 XO Contractors (430% increase)</div>
+                    <table>
+                        <tr>
+                            <th>Category</th>
+                            <th>Q1'26 HC</th>
+                            <th>Q4'25 HC</th>
+                            <th>Change</th>
+                            <th>Q1'26 Cost</th>
+                        </tr>
+                        <tr>
+                            <td>COGS (XO)</td>
+                            <td>49</td>
+                            <td>4</td>
+                            <td><span class="badge critical">+45</span></td>
+                            <td>$1.15M</td>
+                        </tr>
+                        <tr>
+                            <td>OPEX (XO)</td>
+                            <td>4</td>
+                            <td>6</td>
+                            <td>-2</td>
+                            <td>$239K</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Total XO</strong></td>
+                            <td><strong>53</strong></td>
+                            <td><strong>10</strong></td>
+                            <td><span class="badge critical">+43</span></td>
+                            <td><strong>$1.39M</strong></td>
+                        </tr>
+                    </table>
+                    <p style="margin-top: 15px;"><strong>Average cost per XO:</strong> ~$26K/quarter ($8,100/month)</p>
+                    <p><strong>Key Question:</strong> Validate productivity and ROI of 43 new contractors</p>
+                </div>
+
+                <h3 class="subsection-header">Top Vendor Costs</h3>
+                <table>
+                    <tr>
+                        <th>Vendor</th>
+                        <th>Q1'26 Cost</th>
+                        <th>Annual Run Rate</th>
+                        <th>% of Revenue</th>
+                        <th>Business Unit</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Salesforce UK Ltd</strong></td>
+                        <td>~$1,025,000</td>
+                        <td><strong>$4,100,000</strong></td>
+                        <td>6.9%</td>
+                        <td>Cloudsense</td>
+                    </tr>
+                    <tr>
+                        <td>Agency Enterprise</td>
+                        <td>$404,242</td>
+                        <td>$2,041,599</td>
+                        <td>2.7%</td>
+                        <td>Cloudsense</td>
+                    </tr>
+                    <tr>
+                        <td>Ribbon Communications</td>
+                        <td>$158,769</td>
+                        <td>$635,076</td>
+                        <td>1.1%</td>
+                        <td>Kandy</td>
+                    </tr>
+                    <tr>
+                        <td>Equinix Inc (US)</td>
+                        <td>$96,000</td>
+                        <td>$384,000</td>
+                        <td>0.7%</td>
+                        <td>Kandy</td>
+                    </tr>
+                </table>
+
+                <h3 class="subsection-header">AR Aging Crisis</h3>
+                <table>
+                    <tr>
+                        <th>Customer</th>
+                        <th>AR >90 Days</th>
+                        <th>ARR</th>
+                        <th>AR as % of ARR</th>
+                        <th>Risk Level</th>
+                    </tr>
+                    <tr>
+                        <td><strong>EMIRCOM</strong></td>
+                        <td>$3,849,108</td>
+                        <td>$9,586,308</td>
+                        <td>40.2%</td>
+                        <td><span class="badge critical">CRITICAL</span></td>
+                    </tr>
+                    <tr>
+                        <td>COGNITY UK</td>
+                        <td>$871,214</td>
+                        <td>$0</td>
+                        <td>N/A</td>
+                        <td><span class="badge critical">WRITE-OFF</span></td>
+                    </tr>
+                    <tr>
+                        <td>STERLITE TECH</td>
+                        <td>$515,578</td>
+                        <td>$112,721</td>
+                        <td>457.4%</td>
+                        <td><span class="badge critical">CRITICAL</span></td>
+                    </tr>
+                    <tr>
+                        <td>BHARTI AIRTEL</td>
+                        <td>$392,880</td>
+                        <td>$33,450</td>
+                        <td>1174.6%</td>
+                        <td><span class="badge critical">CRITICAL</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>TOTAL</strong></td>
+                        <td><strong>$11,468,030</strong></td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                </table>
+
+                <div class="alert critical">
+                    <strong>Estimated Write-off Risk: ~$4M</strong> (accounts with no active ARR indicating churned customers with unpaid balances)
+                </div>
+
+                <div class="chart-container">
+                    <canvas id="arrTrendChart"></canvas>
+                </div>
+            </div>
+
+            <!-- CUSTOMER EXECUTIVE SUMMARY -->
+            <div id="customer-exec" class="section">
+                <h2 class="section-header">Customer Intelligence Executive Summary</h2>
+
+                <div class="alert critical">
+                    <strong>CRITICAL FINDING:</strong> 35 customers marked "Will Not Renew" representing $11.57M ARR at risk (22% of portfolio). Q1-Q2 2026 renewal cliff of $25.9M ARR with $8.2M flagged at high risk.
+                </div>
+
+                <div class="metric-grid">
+                    <div class="metric-card">
+                        <div class="metric-label">Total Portfolio ARR</div>
+                        <div class="metric-value">$52.7M</div>
+                        <div class="metric-subtitle">129 customers</div>
+                    </div>
+                    <div class="metric-card danger">
+                        <div class="metric-label">Projected ARR</div>
+                        <div class="metric-value">$51.2M</div>
+                        <div class="metric-subtitle">-2.7% decline</div>
+                    </div>
+                    <div class="metric-card warning">
+                        <div class="metric-label">EMIRCOM Concentration</div>
+                        <div class="metric-value">18.2%</div>
+                        <div class="metric-subtitle">$9.6M single customer</div>
+                    </div>
+                    <div class="metric-card success">
+                        <div class="metric-label">Expansion Pipeline</div>
+                        <div class="metric-value">$7.4M</div>
+                        <div class="metric-subtitle">45 opportunities</div>
+                    </div>
+                    <div class="metric-card danger">
+                        <div class="metric-label">Confirmed Losses</div>
+                        <div class="metric-value">$11.6M</div>
+                        <div class="metric-subtitle">35 customers</div>
+                    </div>
+                    <div class="metric-card warning">
+                        <div class="metric-label">Top 10 Concentration</div>
+                        <div class="metric-value">51.6%</div>
+                        <div class="metric-subtitle">$27.2M ARR</div>
+                    </div>
+                </div>
+
+                <h3 class="subsection-header">Business Unit Customer Performance</h3>
+                <table>
+                    <tr>
+                        <th>Business Unit</th>
+                        <th>ARR</th>
+                        <th>Projected</th>
+                        <th>Change</th>
+                        <th>Customers</th>
+                        <th>At Risk ARR</th>
+                        <th>Status</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Cloudsense</strong></td>
+                        <td>$26.2M</td>
+                        <td>$28.3M</td>
+                        <td><span class="badge good">+$2.1M</span></td>
+                        <td>50</td>
+                        <td>$3.4M</td>
+                        <td>Growth leader</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Kandy</strong></td>
+                        <td>$13.6M</td>
+                        <td>$13.7M</td>
+                        <td><span class="badge good">+$62K</span></td>
+                        <td>25</td>
+                        <td>$2.8M</td>
+                        <td>Stable (EMIRCOM risk)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>NewNet</strong></td>
+                        <td>$7.0M</td>
+                        <td>$5.7M</td>
+                        <td><span class="badge critical">-$1.3M</span></td>
+                        <td>20</td>
+                        <td>$2.7M</td>
+                        <td>HCL loss driving decline</td>
+                    </tr>
+                    <tr>
+                        <td><strong>STL</strong></td>
+                        <td>$3.4M</td>
+                        <td>$1.8M</td>
+                        <td><span class="badge critical">-$1.7M</span></td>
+                        <td>20</td>
+                        <td>$2.5M</td>
+                        <td>One Albania = 47% of BU</td>
+                    </tr>
+                    <tr>
+                        <td><strong>VoltDelta</strong></td>
+                        <td>$1.6M</td>
+                        <td>$1.2M</td>
+                        <td><span class="badge high">-$323K</span></td>
+                        <td>2</td>
+                        <td>$323K</td>
+                        <td>Konnektio loss</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mobilogy</strong></td>
+                        <td>$394K</td>
+                        <td>$2K</td>
+                        <td><span class="badge critical">-$392K</span></td>
+                        <td>8</td>
+                        <td>$392K</td>
+                        <td>BU wind-down</td>
+                    </tr>
+                </table>
+
+                <h3 class="subsection-header">Renewal Pipeline Risk</h3>
+                <table>
+                    <tr>
+                        <th>Quarter</th>
+                        <th>Renewals Due</th>
+                        <th>Total ARR</th>
+                        <th>At Risk ARR</th>
+                        <th>Risk Ratio</th>
+                    </tr>
+                    <tr>
+                        <td>Q1'26</td>
+                        <td>41</td>
+                        <td>$9.6M</td>
+                        <td>$5.6M</td>
+                        <td><span class="badge critical">58.7%</span></td>
+                    </tr>
+                    <tr>
+                        <td>Q2'26</td>
+                        <td>18</td>
+                        <td>$16.2M</td>
+                        <td>$2.6M</td>
+                        <td><span class="badge medium">15.8%</span></td>
+                    </tr>
+                    <tr>
+                        <td>Q3'26</td>
+                        <td>14</td>
+                        <td>$5.5M</td>
+                        <td>$3.6M</td>
+                        <td><span class="badge critical">64.8%</span></td>
+                    </tr>
+                    <tr>
+                        <td>Q4'26</td>
+                        <td>13</td>
+                        <td>$5.1M</td>
+                        <td>$1.9M</td>
+                        <td><span class="badge high">37.7%</span></td>
+                    </tr>
+                </table>
+
+                <div class="chart-container">
+                    <canvas id="customerBUChart"></canvas>
+                </div>
+
+                <div class="chart-container">
+                    <canvas id="renewalPipelineChart"></canvas>
+                </div>
+            </div>
+
+            <!-- TOP CUSTOMERS -->
+            <div id="top-customers" class="section">
+                <h2 class="section-header">Top Strategic Customers (Tier 1: >$2M ARR)</h2>
+
+                <div class="bu-card">
+                    <div class="bu-header">1. EMIRCOM - $9.59M ARR (18.2% of portfolio)</div>
+                    <div class="alert critical">
+                        <strong>Health Score: 3/10 | Risk Score: 7/10 | Status: CRITICAL</strong>
+                    </div>
+                    <div class="two-col-grid">
+                        <div>
+                            <p><strong>Industry:</strong> ICT/Telecom Solutions Provider</p>
+                            <p><strong>Location:</strong> Abu Dhabi, UAE</p>
+                            <p><strong>Parent:</strong> International Holding Company (Oct 2024)</p>
+                            <p><strong>Product:</strong> Kandy</p>
+                        </div>
+                        <div>
+                            <p><strong>Renewal:</strong> Q2'26 (June 1, 2026)</p>
+                            <p><strong>AR >90 Days:</strong> $3.85M (40% of ARR)</p>
+                            <p><strong>Status:</strong> "Outreach" stage</p>
+                            <p><strong>Will Renew:</strong> Yes (questionable)</p>
+                        </div>
+                    </div>
+                    <h4>Key Issues:</h4>
+                    <ul>
+                        <li>$3.8M recommended for write-off due to pricing disputes</li>
+                        <li>Customer rejected invoices without PO reference</li>
+                        <li>BU reversed pricing increase decision</li>
+                        <li>Legal involvement required</li>
+                    </ul>
+                    <h4>Actions Required:</h4>
+                    <ul class="action-list">
+                        <li class="action-item">
+                            <span class="action-timeline immediate">THIS WEEK</span>
+                            <p>Schedule exec-to-exec call with EMIRCOM/IHC leadership to reset relationship</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bu-card">
+                    <div class="bu-header">2. AT&T Services - $2.52M ARR (4.8% of portfolio)</div>
+                    <div class="alert warning">
+                        <strong>Health Score: 1/10 | Risk Score: 9/10 | Status: DECISION REQUIRED</strong>
+                    </div>
+                    <div class="two-col-grid">
+                        <div>
+                            <p><strong>Industry:</strong> Telecommunications (Fortune 37)</p>
+                            <p><strong>Location:</strong> Dallas, Texas, USA</p>
+                            <p><strong>2025 Revenue:</strong> $122.3B</p>
+                            <p><strong>Product:</strong> Kandy</p>
+                        </div>
+                        <div>
+                            <p><strong>Renewal:</strong> Q1'26, Q3'26</p>
+                            <p><strong>AR >90 Days:</strong> $58K (2.3% of ARR)</p>
+                            <p><strong>Status:</strong> Mixed signals</p>
+                            <p><strong>Will Renew:</strong> Yes/No/Decision Required</p>
+                        </div>
+                    </div>
+                    <h4>Key Issues:</h4>
+                    <ul>
+                        <li>One subscription marked "Will Not Renew"</li>
+                        <li>One subscription requires BU decision</li>
+                        <li>AT&T's insourcing strategy may reduce vendor spend</li>
+                        <li>$3B cost savings commitment over 5 years</li>
+                    </ul>
+                    <h4>Actions Required:</h4>
+                    <ul class="action-list">
+                        <li class="action-item">
+                            <span class="action-timeline immediate">THIS WEEK</span>
+                            <p>Executive escalation call to clarify renewal decision status</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bu-card">
+                    <div class="bu-header">3. NS Solutions Corporation - $2.46M ARR (4.7% of portfolio)</div>
+                    <div class="alert success">
+                        <strong>Health Score: 5/10 | Risk Score: 5/10 | Status: HEALTHY</strong>
+                    </div>
+                    <div class="two-col-grid">
+                        <div>
+                            <p><strong>Industry:</strong> IT Services / System Integration</p>
+                            <p><strong>Location:</strong> Tokyo, Japan</p>
+                            <p><strong>Parent:</strong> Nippon Steel (63.4%)</p>
+                            <p><strong>End User:</strong> SoftBank Corp.</p>
+                        </div>
+                        <div>
+                            <p><strong>Renewal:</strong> April 2027</p>
+                            <p><strong>AR >90 Days:</strong> $0</p>
+                            <p><strong>Status:</strong> Stable</p>
+                            <p><strong>Expansion:</strong> +$614K (25%)</p>
+                        </div>
+                    </div>
+                    <h4>Opportunities:</h4>
+                    <ul>
+                        <li>Strong financial backing from Nippon Steel</li>
+                        <li>SoftBank investing in AI infrastructure with NVIDIA</li>
+                        <li>Clean payment history</li>
+                        <li>25% upsell projected ($614K additional ARR)</li>
+                    </ul>
+                </div>
+
+                <div class="bu-card">
+                    <div class="bu-header">4. Telefonica UK Limited - $2.10M ARR (4.0% of portfolio)</div>
+                    <div class="alert warning">
+                        <strong>Health Score: 4/10 | Risk Score: 6/10 | Status: RENEWAL DUE NOW</strong>
+                    </div>
+                    <div class="two-col-grid">
+                        <div>
+                            <p><strong>Industry:</strong> Telecommunications</p>
+                            <p><strong>Location:</strong> Slough, UK</p>
+                            <p><strong>Parent:</strong> Virgin Media O2 JV</p>
+                            <p><strong>Product:</strong> Cloudsense</p>
+                        </div>
+                        <div>
+                            <p><strong>Renewal:</strong> Feb 1, 2026 (TODAY)</p>
+                            <p><strong>AR >90 Days:</strong> $0</p>
+                            <p><strong>Status:</strong> "Proposal" stage</p>
+                            <p><strong>Expansion:</strong> +$526K (25%)</p>
+                        </div>
+                    </div>
+                    <h4>Actions Required:</h4>
+                    <ul class="action-list">
+                        <li class="action-item">
+                            <span class="action-timeline immediate">IMMEDIATE</span>
+                            <p>Confirm renewal status - contract ended Jan 31. Close expansion deal (+$526K).</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bu-card">
+                    <div class="bu-header">5. HCL Technologies UK - $2.08M ARR (4.0% of portfolio)</div>
+                    <div class="alert critical">
+                        <strong>Health Score: 1/10 | Risk Score: 9/10 | Status: CONFIRMED LOSS</strong>
+                    </div>
+                    <div class="two-col-grid">
+                        <div>
+                            <p><strong>Industry:</strong> IT Services & Consulting</p>
+                            <p><strong>Parent:</strong> HCL Technologies (India)</p>
+                            <p><strong>Parent Revenue:</strong> $14.5B</p>
+                            <p><strong>Product:</strong> NewNet</p>
+                        </div>
+                        <div>
+                            <p><strong>Renewal:</strong> Q2'26 (April 2026)</p>
+                            <p><strong>AR >90 Days:</strong> $0</p>
+                            <p><strong>Will Renew:</strong> NO</p>
+                            <p><strong>Projected ARR:</strong> $0</p>
+                        </div>
+                    </div>
+                    <div class="alert critical">
+                        <strong>CONFIRMED LOSS:</strong> $2.08M complete ARR loss. Conduct exit interview, use learnings to protect other NewNet accounts.
+                    </div>
+                </div>
+            </div>
+
+            <!-- AT-RISK ACCOUNTS -->
+            <div id="at-risk" class="section">
+                <h2 class="section-header">Top 10 At-Risk Customers (Beyond EMIRCOM)</h2>
+
+                <table>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Customer</th>
+                        <th>ARR</th>
+                        <th>Risk Score</th>
+                        <th>At Risk Amount</th>
+                        <th>Renewal Quarter</th>
+                        <th>BU</th>
+                        <th>Status</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td><strong>HCL Technologies UK</strong></td>
+                        <td>$2,082,880</td>
+                        <td>9/10</td>
+                        <td>$2,082,880</td>
+                        <td>Q2'26</td>
+                        <td>NewNet</td>
+                        <td><span class="badge critical">CONFIRMED LOSS</span></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td><strong>AT&T Services</strong></td>
+                        <td>$2,518,275</td>
+                        <td>9/10</td>
+                        <td>$20,430</td>
+                        <td>Q1/Q3'26</td>
+                        <td>Kandy</td>
+                        <td><span class="badge critical">DECISION REQUIRED</span></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td><strong>British Telecom</strong></td>
+                        <td>$1,404,791</td>
+                        <td>9/10</td>
+                        <td>$1,404,791</td>
+                        <td>Q1'26</td>
+                        <td>Cloudsense</td>
+                        <td><span class="badge critical">CONFIRMED LOSS</span></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td><strong>One Albania</strong></td>
+                        <td>$1,620,914</td>
+                        <td>8/10</td>
+                        <td>$1,620,914</td>
+                        <td>Q4'26</td>
+                        <td>STL</td>
+                        <td><span class="badge critical">CONFIRMED LOSS</span></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Thryv Australia</td>
+                        <td>$567,979</td>
+                        <td>9/10</td>
+                        <td>$567,979</td>
+                        <td>Q1'26</td>
+                        <td>Cloudsense</td>
+                        <td><span class="badge critical">CONFIRMED LOSS</span></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>CoreSite</td>
+                        <td>$456,285</td>
+                        <td>6/10</td>
+                        <td>$456,285</td>
+                        <td>Q3'26</td>
+                        <td>Cloudsense</td>
+                        <td><span class="badge critical">CONFIRMED LOSS</span></td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>DPG Media</td>
+                        <td>$358,971</td>
+                        <td>6/10</td>
+                        <td>$358,971</td>
+                        <td>Q3'26</td>
+                        <td>Cloudsense</td>
+                        <td><span class="badge critical">CONFIRMED LOSS</span></td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>Konnektio Oy</td>
+                        <td>$322,926</td>
+                        <td>6/10</td>
+                        <td>$322,926</td>
+                        <td>Q4'25</td>
+                        <td>VoltDelta</td>
+                        <td><span class="badge critical">CONFIRMED LOSS</span></td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>Sun Corporation</td>
+                        <td>$272,477</td>
+                        <td>7/10</td>
+                        <td>$272,477</td>
+                        <td>Q1'26</td>
+                        <td>Mobilogy</td>
+                        <td><span class="badge critical">CONFIRMED LOSS</span></td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>PropertyGuru</td>
+                        <td>$262,148</td>
+                        <td>6.5/10</td>
+                        <td>$262,148</td>
+                        <td>Q2'26</td>
+                        <td>Cloudsense</td>
+                        <td><span class="badge critical">CONFIRMED LOSS</span></td>
+                    </tr>
+                </table>
+
+                <div class="alert critical">
+                    <strong>Total ARR at Risk (Top 10):</strong> $7,369,801<br>
+                    <strong>Total Confirmed Churn:</strong> $6.45M from confirmed "Will Not Renew" status
+                </div>
+
+                <div class="chart-container">
+                    <canvas id="atRiskChart"></canvas>
+                </div>
+            </div>
+
+            <!-- EXPANSION OPPORTUNITIES -->
+            <div id="expansion" class="section">
+                <h2 class="section-header">Top 10 Expansion Opportunities</h2>
+
+                <div class="alert success">
+                    <strong>Total Expansion Pipeline:</strong> $7.35M across 45 customers. Heavily concentrated in Cloudsense with 25% upsell targets.
+                </div>
+
+                <table>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Customer</th>
+                        <th>Current ARR</th>
+                        <th>Projected ARR</th>
+                        <th>Growth</th>
+                        <th>%</th>
+                        <th>BU</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td><strong>NS Solutions Corp</strong></td>
+                        <td>$2,456,101</td>
+                        <td>$3,070,126</td>
+                        <td><span class="badge good">$614,025</span></td>
+                        <td>25%</td>
+                        <td>NewNet</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td><strong>PostNL Holding</strong></td>
+                        <td>$576,495</td>
+                        <td>$1,152,990</td>
+                        <td><span class="badge good">$576,495</span></td>
+                        <td>100%</td>
+                        <td>Cloudsense</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td><strong>Telefonica UK</strong></td>
+                        <td>$2,104,857</td>
+                        <td>$2,631,071</td>
+                        <td><span class="badge good">$526,214</span></td>
+                        <td>25%</td>
+                        <td>Cloudsense</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td><strong>Telstra</strong></td>
+                        <td>$1,972,000</td>
+                        <td>$2,465,000</td>
+                        <td><span class="badge good">$493,000</span></td>
+                        <td>25%</td>
+                        <td>Cloudsense</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Vodafone Netherlands</td>
+                        <td>$1,843,190</td>
+                        <td>$2,303,988</td>
+                        <td><span class="badge good">$460,798</span></td>
+                        <td>25%</td>
+                        <td>Cloudsense</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Maxis Broadband</td>
+                        <td>$1,364,195</td>
+                        <td>$1,705,244</td>
+                        <td><span class="badge good">$341,049</span></td>
+                        <td>25%</td>
+                        <td>Cloudsense</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>Liquid Telecom</td>
+                        <td>$1,073,620</td>
+                        <td>$1,342,025</td>
+                        <td><span class="badge good">$268,405</span></td>
+                        <td>25%</td>
+                        <td>Cloudsense</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>StarHub</td>
+                        <td>$919,239</td>
+                        <td>$1,149,049</td>
+                        <td><span class="badge good">$229,810</span></td>
+                        <td>25%</td>
+                        <td>Cloudsense</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>Elisa Oyj</td>
+                        <td>$897,155</td>
+                        <td>$1,121,444</td>
+                        <td><span class="badge good">$224,289</span></td>
+                        <td>25%</td>
+                        <td>Cloudsense</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>Abbott Labs</td>
+                        <td>$816,928</td>
+                        <td>$1,021,160</td>
+                        <td><span class="badge good">$204,232</span></td>
+                        <td>25%</td>
+                        <td>Cloudsense</td>
+                    </tr>
+                </table>
+
+                <div class="alert info">
+                    <strong>Note:</strong> The systematic 25% upsell targets should be validated. Ensure these are based on actual customer expansion opportunities, not just blanket assumptions.
+                </div>
+
+                <div class="chart-container">
+                    <canvas id="expansionChart"></canvas>
+                </div>
+            </div>
+
+            <!-- ACTION PLAN -->
+            <div id="actions" class="section">
+                <h2 class="section-header">Integrated Action Plan: Financial & Customer</h2>
+
+                <div class="alert critical">
+                    <strong>IMMEDIATE EXECUTIVE ATTENTION REQUIRED:</strong> Four critical items need action this week - EMIRCOM stabilization, Telefonica UK renewal, AT&T escalation, and Salesforce UK contract review.
+                </div>
+
+                <ul class="action-list">
+                    <li class="action-item">
+                        <span class="action-timeline immediate">PRIORITY 1: THIS WEEK</span>
+                        <h3>EMIRCOM Crisis Management</h3>
+                        <p><strong>What:</strong> Executive engagement to reset relationship and resolve $3.85M AR crisis</p>
+                        <p><strong>Why:</strong> 18.2% of total ARR with 40% of their ARR in >90 days aging</p>
+                        <p><strong>Who:</strong> CEO/CFO + Account Executive + Legal + Finance</p>
+                        <p><strong>Impact:</strong> $9.6M ARR, $3.8M AR write-off risk</p>
+                        <p><strong>Actions:</strong></p>
+                        <ul>
+                            <li>Schedule exec-to-exec call with EMIRCOM/IHC leadership</li>
+                            <li>Finalize $3.8M write-off decision</li>
+                            <li>Secure Q2'26 renewal commitment in writing</li>
+                            <li>Establish clear PO/documentation protocol</li>
+                        </ul>
+                    </li>
+
+                    <li class="action-item">
+                        <span class="action-timeline immediate">PRIORITY 2: IMMEDIATE</span>
+                        <h3>Telefonica UK Renewal Closure</h3>
+                        <p><strong>What:</strong> Close renewal with expansion (+25% = $526K)</p>
+                        <p><strong>Why:</strong> Contract ended January 31, 2026 - at Proposal stage</p>
+                        <p><strong>Who:</strong> Account Executive</p>
+                        <p><strong>Impact:</strong> $2.6M ARR with expansion</p>
+                        <p><strong>Actions:</strong></p>
+                        <ul>
+                            <li>Confirm current renewal status immediately</li>
+                            <li>Execute contract if not already closed</li>
+                            <li>Finalize expansion terms</li>
+                        </ul>
+                    </li>
+
+                    <li class="action-item">
+                        <span class="action-timeline immediate">PRIORITY 3: THIS WEEK</span>
+                        <h3>AT&T Executive Escalation</h3>
+                        <p><strong>What:</strong> Clarify mixed renewal signals and secure commitment</p>
+                        <p><strong>Why:</strong> $2.5M ARR with conflicting renewal status</p>
+                        <p><strong>Who:</strong> Sales Leadership</p>
+                        <p><strong>Impact:</strong> Second largest customer, renewal imminent</p>
+                        <p><strong>Actions:</strong></p>
+                        <ul>
+                            <li>Schedule executive call to understand decision status</li>
+                            <li>Prepare retention package with enhanced value proposition</li>
+                            <li>Develop multi-year agreement option</li>
+                        </ul>
+                    </li>
+
+                    <li class="action-item">
+                        <span class="action-timeline immediate">PRIORITY 4: 30 DAYS</span>
+                        <h3>Salesforce UK Contract Review</h3>
+                        <p><strong>What:</strong> Urgent review of $4.1M annual contract</p>
+                        <p><strong>Why:</strong> Consumes 64% of Cloudsense RR - becoming unsustainable</p>
+                        <p><strong>Who:</strong> CFO + Cloudsense BU Leader + Procurement</p>
+                        <p><strong>Impact:</strong> Largest single vendor cost</p>
+                        <p><strong>Actions:</strong></p>
+                        <ul>
+                            <li>Document current utilization levels</li>
+                            <li>Identify renegotiation opportunities</li>
+                            <li>Explore alternative solutions</li>
+                            <li>Develop cost reduction roadmap</li>
+                        </ul>
+                    </li>
+
+                    <li class="action-item">
+                        <span class="action-timeline">PRIORITY 5: 30 DAYS</span>
+                        <h3>AR Collection Blitz</h3>
+                        <p><strong>What:</strong> Aggressive collection campaign on $11.5M AR >90 days</p>
+                        <p><strong>Why:</strong> ~$4M write-off exposure from churned customers</p>
+                        <p><strong>Who:</strong> Finance + Sales</p>
+                        <p><strong>Impact:</strong> Cash flow and working capital improvement</p>
+                        <p><strong>Actions:</strong></p>
+                        <ul>
+                            <li>Finalize write-off decisions on churned customers</li>
+                            <li>Weekly AR review meetings</li>
+                            <li>Customer credit review process</li>
+                            <li>Implement AR early warning system (>30 days)</li>
+                        </ul>
+                    </li>
+
+                    <li class="action-item">
+                        <span class="action-timeline">PRIORITY 6: 90 DAYS</span>
+                        <h3>Margin Improvement Program</h3>
+                        <p><strong>What:</strong> Target +3 percentage points ($441K/quarter)</p>
+                        <p><strong>Why:</strong> Currently 6.2 pts below target (-$918K gap)</p>
+                        <p><strong>Who:</strong> CFO + All BU Leaders</p>
+                        <p><strong>Impact:</strong> $1.8M annual savings</p>
+                        <p><strong>Actions:</strong></p>
+                        <ul>
+                            <li>Validate 43 new contractor productivity and ROI</li>
+                            <li>Review high-cost contractors ($100+/hr)</li>
+                            <li>Vendor consolidation and rationalization</li>
+                            <li>Apply STL cost model (83% gross margin) to other BUs</li>
+                        </ul>
+                    </li>
+
+                    <li class="action-item">
+                        <span class="action-timeline">PRIORITY 7: 90 DAYS</span>
+                        <h3>Cloudsense Expansion Acceleration</h3>
+                        <p><strong>What:</strong> Execute on $2.06M projected growth opportunity</p>
+                        <p><strong>Why:</strong> Only BU showing growth trajectory</p>
+                        <p><strong>Who:</strong> Sales + Customer Success</p>
+                        <p><strong>Impact:</strong> Offset declines in other BUs</p>
+                        <p><strong>Actions:</strong></p>
+                        <ul>
+                            <li>Focus on top 5 expansion accounts (NS Solutions, Telstra, etc.)</li>
+                            <li>Target: Convert 80% of projected expansion</li>
+                            <li>Create expansion playbook for CSMs</li>
+                        </ul>
+                    </li>
+
+                    <li class="action-item">
+                        <span class="action-timeline">PRIORITY 8: 90 DAYS</span>
+                        <h3>Customer Churn Root Cause Analysis</h3>
+                        <p><strong>What:</strong> Understand why 35 customers (22% of ARR) are churning</p>
+                        <p><strong>Why:</strong> $11.6M ARR confirmed losses - need to prevent future churn</p>
+                        <p><strong>Who:</strong> Customer Success + Product</p>
+                        <p><strong>Impact:</strong> Reverse -11.9% YoY ARR decline</p>
+                        <p><strong>Actions:</strong></p>
+                        <ul>
+                            <li>Exit interviews for all confirmed losses (HCL, BT, One Albania, etc.)</li>
+                            <li>Implement customer health scoring system</li>
+                            <li>Quarterly business reviews for Tier 1-2 accounts</li>
+                            <li>Executive sponsor program for >$1M ARR accounts</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h3 class="subsection-header">Success Metrics Dashboard</h3>
+                <table>
+                    <tr>
+                        <th>Metric</th>
+                        <th>Current State</th>
+                        <th>Target (Q2'26)</th>
+                        <th>Target (EOY'26)</th>
+                        <th>Owner</th>
+                    </tr>
+                    <tr>
+                        <td>EMIRCOM Renewal Status</td>
+                        <td>Outreach</td>
+                        <td>Contract Signed</td>
+                        <td>Active + Healthy</td>
+                        <td>Sales + Finance</td>
+                    </tr>
+                    <tr>
+                        <td>Net Margin</td>
+                        <td>62.5%</td>
+                        <td>65%</td>
+                        <td>68.7%</td>
+                        <td>CFO</td>
+                    </tr>
+                    <tr>
+                        <td>AR >90 Days</td>
+                        <td>$11.5M (21.8%)</td>
+                        <td>&lt;$8M (&lt;15%)</td>
+                        <td>&lt;$5M (&lt;10%)</td>
+                        <td>Finance</td>
+                    </tr>
+                    <tr>
+                        <td>ARR Growth</td>
+                        <td>-11.9% YoY</td>
+                        <td>-5% YoY</td>
+                        <td>Flat to +2%</td>
+                        <td>Sales</td>
+                    </tr>
+                    <tr>
+                        <td>Expansion ARR</td>
+                        <td>$0</td>
+                        <td>$2M</td>
+                        <td>$5M</td>
+                        <td>Customer Success</td>
+                    </tr>
+                    <tr>
+                        <td>Customer Concentration (Top 1)</td>
+                        <td>18.2%</td>
+                        <td>&lt;15%</td>
+                        <td>&lt;12%</td>
+                        <td>Sales Leadership</td>
+                    </tr>
+                    <tr>
+                        <td>Gross Revenue Retention</td>
+                        <td>~78%</td>
+                        <td>&gt;85%</td>
+                        <td>&gt;90%</td>
+                        <td>Customer Success</td>
+                    </tr>
+                    <tr>
+                        <td>Net Revenue Retention</td>
+                        <td>~88%</td>
+                        <td>&gt;95%</td>
+                        <td>&gt;100%</td>
+                        <td>Customer Success</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong>Skyvera Executive Intelligence Report</strong></p>
+            <p>Financial Analysis by Pythia | Customer Intelligence by Athena</p>
+            <p>Report Date: February 1, 2026</p>
+            <div class="copyright">
+                &copy; 2026 Skyvera | Executive Confidential | Do Not Distribute
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Navigation
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+            document.getElementById(sectionId).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // Financial Revenue Chart
+        const ctx1 = document.getElementById('financialRevenueChart').getContext('2d');
+        new Chart(ctx1, {
+            type: 'bar',
+            data: {
+                labels: ['Q1\'26 Plan', 'Prior Plan'],
+                datasets: [{
+                    label: 'Recurring Revenue',
+                    data: [12.59, 12.93],
+                    backgroundColor: 'rgba(79, 172, 254, 0.8)'
+                }, {
+                    label: 'Non-Recurring Revenue',
+                    data: [2.12, 1.54],
+                    backgroundColor: 'rgba(102, 126, 234, 0.8)'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Revenue Breakdown: Q1\'26 vs Prior Plan ($M)',
+                        font: { size: 16, weight: 'bold' }
+                    }
+                },
+                scales: {
+                    x: { stacked: true },
+                    y: {
+                        stacked: true,
+                        beginAtZero: true,
+                        title: { display: true, text: 'Revenue ($M)' }
+                    }
+                }
+            }
+        });
+
+        // Financial Margin Chart
+        const ctx2 = document.getElementById('financialMarginChart').getContext('2d');
+        new Chart(ctx2, {
+            type: 'bar',
+            data: {
+                labels: ['Cloudsense', 'Kandy', 'STL', 'Consolidated'],
+                datasets: [{
+                    label: 'Actual Margin',
+                    data: [59.2, 63.2, 61.2, 62.5],
+                    backgroundColor: 'rgba(245, 87, 108, 0.8)'
+                }, {
+                    label: 'Target Margin',
+                    data: [63.6, 75.0, 75.0, 68.7],
+                    backgroundColor: 'rgba(0, 242, 254, 0.8)'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Net Margin: Actual vs Target (%)',
+                        font: { size: 16, weight: 'bold' }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 80,
+                        title: { display: true, text: 'Net Margin (%)' }
+                    }
+                }
+            }
+        });
+
+        // ARR Trend Chart
+        const ctx3 = document.getElementById('arrTrendChart').getContext('2d');
+        new Chart(ctx3, {
+            type: 'line',
+            data: {
+                labels: ['Prior Year', 'Current'],
+                datasets: [{
+                    label: 'Cloudsense',
+                    data: [24.6, 26.2],
+                    borderColor: 'rgb(0, 242, 254)',
+                    backgroundColor: 'rgba(0, 242, 254, 0.1)'
+                }, {
+                    label: 'Kandy',
+                    data: [17.6, 13.6],
+                    borderColor: 'rgb(245, 87, 108)',
+                    backgroundColor: 'rgba(245, 87, 108, 0.1)'
+                }, {
+                    label: 'NewNet',
+                    data: [8.1, 7.0],
+                    borderColor: 'rgb(102, 126, 234)',
+                    backgroundColor: 'rgba(102, 126, 234, 0.1)'
+                }, {
+                    label: 'STL',
+                    data: [5.2, 3.4],
+                    borderColor: 'rgb(254, 225, 64)',
+                    backgroundColor: 'rgba(254, 225, 64, 0.1)'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'ARR Trends by Product Line ($M)',
+                        font: { size: 16, weight: 'bold' }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: { display: true, text: 'ARR ($M)' }
+                    }
+                }
+            }
+        });
+
+        // Customer BU Chart
+        const ctx4 = document.getElementById('customerBUChart').getContext('2d');
+        new Chart(ctx4, {
+            type: 'bar',
+            data: {
+                labels: ['Cloudsense', 'Kandy', 'NewNet', 'STL', 'VoltDelta', 'Mobilogy'],
+                datasets: [{
+                    label: 'Current ARR',
+                    data: [26.2, 13.6, 7.0, 3.4, 1.6, 0.4],
+                    backgroundColor: 'rgba(102, 126, 234, 0.8)'
+                }, {
+                    label: 'Projected ARR',
+                    data: [28.3, 13.7, 5.7, 1.8, 1.2, 0.002],
+                    backgroundColor: 'rgba(0, 242, 254, 0.8)'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Customer ARR by Business Unit: Current vs Projected ($M)',
+                        font: { size: 16, weight: 'bold' }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: { display: true, text: 'ARR ($M)' }
+                    }
+                }
+            }
+        });
+
+        // Renewal Pipeline Chart
+        const ctx5 = document.getElementById('renewalPipelineChart').getContext('2d');
+        new Chart(ctx5, {
+            type: 'bar',
+            data: {
+                labels: ['Q1\'26', 'Q2\'26', 'Q3\'26', 'Q4\'26'],
+                datasets: [{
+                    label: 'Total ARR Renewing',
+                    data: [9.6, 16.2, 5.5, 5.1],
+                    backgroundColor: 'rgba(102, 126, 234, 0.8)'
+                }, {
+                    label: 'At Risk ARR',
+                    data: [5.6, 2.6, 3.6, 1.9],
+                    backgroundColor: 'rgba(245, 87, 108, 0.8)'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Renewal Pipeline Risk by Quarter ($M)',
+                        font: { size: 16, weight: 'bold' }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: { display: true, text: 'ARR ($M)' }
+                    }
+                }
+            }
+        });
+
+        // At Risk Chart
+        const ctx6 = document.getElementById('atRiskChart').getContext('2d');
+        new Chart(ctx6, {
+            type: 'bar',
+            data: {
+                labels: ['HCL Tech', 'BT', 'One Albania', 'Thryv', 'CoreSite', 'DPG', 'Konnektio', 'Sun Corp', 'PropertyGuru'],
+                datasets: [{
+                    label: 'At Risk ARR ($M)',
+                    data: [2.08, 1.40, 1.62, 0.57, 0.46, 0.36, 0.32, 0.27, 0.26],
+                    backgroundColor: 'rgba(245, 87, 108, 0.8)'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                indexAxis: 'y',
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Top At-Risk Customers (Confirmed Losses)',
+                        font: { size: 16, weight: 'bold' }
+                    }
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        title: { display: true, text: 'ARR at Risk ($M)' }
+                    }
+                }
+            }
+        });
+
+        // Expansion Chart
+        const ctx7 = document.getElementById('expansionChart').getContext('2d');
+        new Chart(ctx7, {
+            type: 'bar',
+            data: {
+                labels: ['NS Solutions', 'PostNL', 'Telefonica UK', 'Telstra', 'Vodafone NL', 'Maxis', 'Liquid', 'StarHub', 'Elisa', 'Abbott'],
+                datasets: [{
+                    label: 'Expansion Opportunity ($K)',
+                    data: [614, 576, 526, 493, 461, 341, 268, 230, 224, 204],
+                    backgroundColor: 'rgba(0, 242, 254, 0.8)'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                indexAxis: 'y',
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Top 10 Expansion Opportunities ($K)',
+                        font: { size: 16, weight: 'bold' }
+                    }
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        title: { display: true, text: 'Expansion ARR ($K)' }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telstra Strategic Analysis | Skyvera Cloudsense</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #1a1a1a;
+            --paper: #fafaf8;
+            --accent: #c84b31;
+            --secondary: #2d4263;
+            --muted: #8b8b8b;
+            --border: #e8e6e1;
+            --highlight: #ecdbba;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--paper);
+            color: var(--ink);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 300;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        /* Layout */
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #1a2332 100%);
+            color: var(--paper);
+            padding: 4rem 2rem 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 60%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)" /></svg>');
+            opacity: 0.5;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.85;
+            font-weight: 400;
+            margin-bottom: 2rem;
+        }
+
+        .header-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem;
+            border-radius: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: fadeInUp 0.6s ease-out backwards;
+        }
+
+        .stat-card:nth-child(1) { animation-delay: 0.1s; }
+        .stat-card:nth-child(2) { animation-delay: 0.2s; }
+        .stat-card:nth-child(3) { animation-delay: 0.3s; }
+        .stat-card:nth-child(4) { animation-delay: 0.4s; }
+
+        .stat-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.7;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+        }
+
+        .stat-change {
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            opacity: 0.8;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* Alert Banner */
+        .alert-banner {
+            background: linear-gradient(135deg, #c84b31 0%, #a33a24 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            margin: -1rem 0 3rem;
+            border-left: 4px solid #8b2e1f;
+            animation: slideInLeft 0.5s ease-out;
+        }
+
+        .alert-banner h3 {
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Grid Layout */
+        .grid {
+            display: grid;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            border: 1px solid var(--border);
+            padding: 2rem;
+            position: relative;
+            animation: fadeIn 0.8s ease-out backwards;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--secondary));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.6s ease;
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        /* Chart Container */
+        .chart-container {
+            position: relative;
+            height: 350px;
+            margin-top: 1.5rem;
+        }
+
+        .chart-container.tall {
+            height: 450px;
+        }
+
+        /* Table */
+        .data-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-top: 1.5rem;
+        }
+
+        .data-table thead {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .data-table th {
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .data-table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .data-table tbody tr {
+            transition: background 0.2s ease;
+        }
+
+        .data-table tbody tr:hover {
+            background: var(--highlight);
+        }
+
+        .data-table .rank {
+            font-weight: 700;
+            color: var(--accent);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+        }
+
+        .data-table .highlight-row {
+            background: rgba(200, 75, 49, 0.08);
+            font-weight: 600;
+        }
+
+        /* Badges */
+        .badge {
+            display: inline-block;
+            padding: 0.35rem 0.8rem;
+            border-radius: 2px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .badge-critical {
+            background: var(--accent);
+            color: white;
+        }
+
+        .badge-high {
+            background: #ff9800;
+            color: white;
+        }
+
+        .badge-medium {
+            background: #ffc107;
+            color: var(--ink);
+        }
+
+        .badge-success {
+            background: #4caf50;
+            color: white;
+        }
+
+        /* Metrics Grid */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .metric-box {
+            background: var(--highlight);
+            padding: 1.5rem;
+            border-left: 3px solid var(--accent);
+        }
+
+        .metric-box .label {
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .metric-box .value {
+            font-size: 1.8rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+
+        /* Recommendations */
+        .recommendation-list {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .recommendation-list li {
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+            background: white;
+            border-left: 4px solid var(--accent);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .recommendation-list li strong {
+            display: block;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--secondary);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--secondary);
+            color: var(--paper);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .grid-2, .grid-3 {
+                grid-template-columns: 1fr;
+            }
+
+            .header-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .chart-container {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="header-content">
+            <h1>Telstra Strategic Analysis</h1>
+            <div class="subtitle">Customer Deep Dive | Cloudsense Business Unit | Q1'26 Budget Analysis</div>
+
+            <div class="header-stats">
+                <div class="stat-card">
+                    <div class="stat-label">Total ARR</div>
+                    <div class="stat-value">$2.18M</div>
+                    <div class="stat-change">8.3% of Cloudsense</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Customer Rank</div>
+                    <div class="stat-value">#1</div>
+                    <div class="stat-change">Largest Customer</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Upsell Potential</div>
+                    <div class="stat-value">+$545K</div>
+                    <div class="stat-change">+25% Growth</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Risk Level</div>
+                    <div class="stat-value">Critical</div>
+                    <div class="stat-change">High Concentration</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Alert Banner -->
+        <div class="alert-banner">
+            <h3>⚠️ CRITICAL: Renewal Status Unconfirmed</h3>
+            <p>Main Telstra Corporation subscription ($1.97M ARR) shows uncertain renewal status. Immediate executive engagement required to secure 8.3% of Cloudsense revenue.</p>
+        </div>
+
+        <!-- Entity Breakdown -->
+        <div class="grid grid-2">
+            <div class="card">
+                <h2>ARR Breakdown by Entity</h2>
+                <div class="chart-container">
+                    <canvas id="entityChart"></canvas>
+                </div>
+                <div class="metrics-grid" style="margin-top: 2rem;">
+                    <div class="metric-box">
+                        <div class="label">Corp Ltd</div>
+                        <div class="value">$1.97M</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="label">Intl Ltd</div>
+                        <div class="value">$208K</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="label">Total Subs</div>
+                        <div class="value">7</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Competitive Position</h2>
+                <div class="chart-container">
+                    <canvas id="competitiveChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Customer Ranking Table -->
+        <div class="card" style="animation-delay: 0.2s;">
+            <h2>Top 10 Cloudsense Customers</h2>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Customer</th>
+                        <th>ARR</th>
+                        <th>% of Cloudsense</th>
+                        <th>vs Telstra</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="highlight-row">
+                        <td class="rank">1</td>
+                        <td><strong>Telstra (Combined)</strong></td>
+                        <td>$2,179,845</td>
+                        <td>8.3%</td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">2</td>
+                        <td>Telefonica UK Limited</td>
+                        <td>$2,104,857</td>
+                        <td>8.0%</td>
+                        <td>97%</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">3</td>
+                        <td>Vodafone Netherlands</td>
+                        <td>$1,843,190</td>
+                        <td>7.0%</td>
+                        <td>85%</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">4</td>
+                        <td>Spotify</td>
+                        <td>$1,587,300</td>
+                        <td>6.1%</td>
+                        <td>73%</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">5</td>
+                        <td>British Telecommunications plc</td>
+                        <td>$1,404,791</td>
+                        <td>5.4%</td>
+                        <td>64%</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">6</td>
+                        <td>Maxis Broadband Sdn Bhd</td>
+                        <td>$1,364,195</td>
+                        <td>5.2%</td>
+                        <td>63%</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">7</td>
+                        <td>Liquid Telecom</td>
+                        <td>$1,073,620</td>
+                        <td>4.1%</td>
+                        <td>49%</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">8</td>
+                        <td>Centrica Services Ltd</td>
+                        <td>$1,053,983</td>
+                        <td>4.0%</td>
+                        <td>48%</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">9</td>
+                        <td>StarHub Ltd</td>
+                        <td>$919,239</td>
+                        <td>3.5%</td>
+                        <td>42%</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">10</td>
+                        <td>Elisa Oyj</td>
+                        <td>$897,155</td>
+                        <td>3.4%</td>
+                        <td>41%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Risk and Opportunity -->
+        <div class="grid grid-2">
+            <div class="card" style="animation-delay: 0.3s;">
+                <h2>Concentration Risk Analysis</h2>
+                <div class="chart-container">
+                    <canvas id="concentrationChart"></canvas>
+                </div>
+                <div class="metrics-grid" style="margin-top: 2rem;">
+                    <div class="metric-box">
+                        <div class="label">Churn Impact</div>
+                        <div class="value">-$545K</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="label">Quarterly Risk</div>
+                        <div class="value">6.8%</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" style="animation-delay: 0.4s;">
+                <h2>Upsell Opportunity (+25%)</h2>
+                <div class="chart-container">
+                    <canvas id="upsellChart"></canvas>
+                </div>
+                <div class="metrics-grid" style="margin-top: 2rem;">
+                    <div class="metric-box">
+                        <div class="label">New ARR</div>
+                        <div class="value">$2.72M</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="label">Incremental</div>
+                        <div class="value">+$545K</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Subscription Details -->
+        <div class="card" style="animation-delay: 0.5s;">
+            <h2>Subscription Portfolio (7 Total)</h2>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Entity</th>
+                        <th>Subscription ID</th>
+                        <th>Current ARR</th>
+                        <th>Projected ARR</th>
+                        <th>Growth</th>
+                        <th>Renewal</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Telstra Corporation Limited</td>
+                        <td>1558381</td>
+                        <td>$1,972,000</td>
+                        <td>$2,465,000</td>
+                        <td><span class="badge badge-success">+25%</span></td>
+                        <td>Next Yr</td>
+                        <td><span class="badge badge-critical">Unconfirmed</span></td>
+                    </tr>
+                    <tr>
+                        <td>Telstra International Ltd</td>
+                        <td>1724704</td>
+                        <td>$34,641</td>
+                        <td>$43,301</td>
+                        <td><span class="badge badge-success">+25%</span></td>
+                        <td>Q3'26</td>
+                        <td><span class="badge badge-medium">Pending</span></td>
+                    </tr>
+                    <tr>
+                        <td>Telstra International Ltd</td>
+                        <td>1724705</td>
+                        <td>$34,641</td>
+                        <td>$43,301</td>
+                        <td><span class="badge badge-success">+25%</span></td>
+                        <td>Q3'26</td>
+                        <td><span class="badge badge-medium">Pending</span></td>
+                    </tr>
+                    <tr>
+                        <td>Telstra International Ltd</td>
+                        <td>1724804</td>
+                        <td>$34,641</td>
+                        <td>$43,301</td>
+                        <td><span class="badge badge-success">+25%</span></td>
+                        <td>Q3'26</td>
+                        <td><span class="badge badge-medium">Pending</span></td>
+                    </tr>
+                    <tr>
+                        <td>Telstra International Ltd</td>
+                        <td>1724805</td>
+                        <td>$34,641</td>
+                        <td>$43,301</td>
+                        <td><span class="badge badge-success">+25%</span></td>
+                        <td>Q3'26</td>
+                        <td><span class="badge badge-medium">Pending</span></td>
+                    </tr>
+                    <tr>
+                        <td>Telstra International Ltd</td>
+                        <td>1724806</td>
+                        <td>$34,641</td>
+                        <td>$43,301</td>
+                        <td><span class="badge badge-success">+25%</span></td>
+                        <td>Q3'26</td>
+                        <td><span class="badge badge-medium">Pending</span></td>
+                    </tr>
+                    <tr>
+                        <td>Telstra International Ltd</td>
+                        <td>1724904</td>
+                        <td>$34,641</td>
+                        <td>$43,301</td>
+                        <td><span class="badge badge-success">+25%</span></td>
+                        <td>Q3'26</td>
+                        <td><span class="badge badge-medium">Pending</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Strategic Recommendations -->
+        <div class="card" style="animation-delay: 0.6s;">
+            <h2>Strategic Recommendations</h2>
+            <ul class="recommendation-list">
+                <li>
+                    <strong>🚨 URGENT: Clarify Renewal Status</strong>
+                    Main $1.97M contract shows uncertain renewal status. Renewal window marked as "Next Yr" (ambiguous timing). Immediate executive engagement required to secure explicit renewal commitment.
+                </li>
+                <li>
+                    <strong>💪 Secure Multi-Year Commitment</strong>
+                    8.3% of Cloudsense revenue at stake. Deploy executive sponsor relationship. Consider multi-year lock-in with pricing incentives for stability and predictability.
+                </li>
+                <li>
+                    <strong>📈 Execute +25% Upsell Strategy</strong>
+                    $545K incremental ARR opportunity across all 7 subscriptions. Validate confidence in 25% uplift assumption. Understand drivers: usage metrics, feature adoption, or strategic expansion?
+                </li>
+                <li>
+                    <strong>🔍 Implement Diversification Strategy</strong>
+                    Top 5 customers represent 35% of revenue (high concentration risk). Build pipeline to reduce reliance on any single customer. Target: No customer >6% of revenue within 18 months.
+                </li>
+                <li>
+                    <strong>📋 Develop Telecom Playbook</strong>
+                    Document what works with Telstra. Apply learnings to similar accounts: Telefonica UK ($2.1M), Vodafone Netherlands ($1.8M), British Telecom ($1.4M). Telecom sector represents ~30% of top customer base.
+                </li>
+            </ul>
+        </div>
+
+        <!-- Timeline -->
+        <div class="card" style="animation-delay: 0.7s;">
+            <h2>Critical Timeline</h2>
+            <div class="metrics-grid">
+                <div class="metric-box">
+                    <div class="label">NOW</div>
+                    <div class="value" style="font-size: 1.2rem;">Confirm Renewal Status</div>
+                </div>
+                <div class="metric-box">
+                    <div class="label">Q1'26</div>
+                    <div class="value" style="font-size: 1.2rem;">Begin Upsell Discussions</div>
+                </div>
+                <div class="metric-box">
+                    <div class="label">Q3'26</div>
+                    <div class="value" style="font-size: 1.2rem;">Intl Subs Renewal (6)</div>
+                </div>
+                <div class="metric-box">
+                    <div class="label">Q4'26</div>
+                    <div class="value" style="font-size: 1.2rem;">Lock Next Period Terms</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Skyvera Business Analysis | Telstra Deep Dive | Generated: February 2026</p>
+        <p style="margin-top: 0.5rem; opacity: 0.7;">Source: 2025-12-11 Skyvera - Budget - Q1'26 - For Todd.xlsx</p>
+    </div>
+
+    <script>
+        // Chart.js Global Configuration
+        Chart.defaults.font.family = "'DM Sans', sans-serif";
+        Chart.defaults.color = '#1a1a1a';
+
+        const colorScheme = {
+            primary: '#c84b31',
+            secondary: '#2d4263',
+            accent: '#ecdbba',
+            muted: '#8b8b8b',
+            success: '#4caf50',
+            warning: '#ffc107'
+        };
+
+        // 1. Entity Breakdown Chart (Doughnut)
+        const entityCtx = document.getElementById('entityChart').getContext('2d');
+        new Chart(entityCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Telstra Corporation Ltd', 'Telstra International Ltd'],
+                datasets: [{
+                    data: [1972000, 207845],
+                    backgroundColor: [colorScheme.primary, colorScheme.secondary],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            padding: 20,
+                            font: { size: 13 }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const label = context.label || '';
+                                const value = context.parsed || 0;
+                                const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                const percentage = ((value / total) * 100).toFixed(1);
+                                return label + ': $' + value.toLocaleString() + ' (' + percentage + '%)';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // 2. Competitive Position Chart (Horizontal Bar)
+        const competitiveCtx = document.getElementById('competitiveChart').getContext('2d');
+        new Chart(competitiveCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Telstra', 'Telefonica UK', 'Vodafone NL', 'Spotify', 'BT plc'],
+                datasets: [{
+                    label: 'ARR ($M)',
+                    data: [2.18, 2.10, 1.84, 1.59, 1.40],
+                    backgroundColor: [
+                        colorScheme.primary,
+                        colorScheme.secondary,
+                        colorScheme.secondary,
+                        colorScheme.secondary,
+                        colorScheme.secondary
+                    ],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return '$' + context.parsed.x.toFixed(2) + 'M ARR';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        grid: { color: '#f0f0f0' },
+                        ticks: {
+                            callback: function(value) {
+                                return '$' + value + 'M';
+                            }
+                        }
+                    },
+                    y: {
+                        grid: { display: false }
+                    }
+                }
+            }
+        });
+
+        // 3. Concentration Risk Chart (Pie)
+        const concentrationCtx = document.getElementById('concentrationChart').getContext('2d');
+        new Chart(concentrationCtx, {
+            type: 'pie',
+            data: {
+                labels: ['Telstra', 'Top 5 (excl. Telstra)', 'Top 10 (excl. Top 5)', 'Rest of Base'],
+                datasets: [{
+                    data: [2179845, 6940138, 5308192, 11799234],
+                    backgroundColor: [
+                        colorScheme.primary,
+                        colorScheme.secondary,
+                        colorScheme.accent,
+                        '#e8e6e1'
+                    ],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            padding: 15,
+                            font: { size: 12 }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const label = context.label || '';
+                                const value = context.parsed || 0;
+                                const total = 26227409;
+                                const percentage = ((value / total) * 100).toFixed(1);
+                                return label + ': $' + value.toLocaleString() + ' (' + percentage + '%)';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // 4. Upsell Opportunity Chart (Bar)
+        const upsellCtx = document.getElementById('upsellChart').getContext('2d');
+        new Chart(upsellCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Current ARR', 'Projected ARR (+25%)'],
+                datasets: [{
+                    label: 'Telstra ARR',
+                    data: [2179845, 2724806],
+                    backgroundColor: [colorScheme.secondary, colorScheme.success],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return '$' + context.parsed.y.toLocaleString();
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: { color: '#f0f0f0' },
+                        ticks: {
+                            callback: function(value) {
+                                return '$' + (value / 1000000).toFixed(1) + 'M';
+                            }
+                        }
+                    },
+                    x: {
+                        grid: { display: false }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

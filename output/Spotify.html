@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Account Plan | Skyvera CloudSense</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #1a1a1a;
+            --paper: #fafaf8;
+            --accent: #c84b31;
+            --secondary: #2d4263;
+            --muted: #8b8b8b;
+            --border: #e8e6e1;
+            --highlight: #ecdbba;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'DM Sans', sans-serif; background: var(--paper); color: var(--ink); line-height: 1.6; }
+        h1, h2 { font-family: 'Cormorant Garamond', serif; }
+
+        .global-nav {
+            background: var(--ink);
+            color: var(--paper);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .global-nav-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+        }
+        .global-nav-controls {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .global-nav-bu-selector {
+            padding: 0.75rem 1.5rem;
+            font-size: 0.95rem;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            background: white;
+            cursor: pointer;
+            min-width: 250px;
+        }
+        .global-nav-select {
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            background: white;
+            cursor: pointer;
+            min-width: 400px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #1a2332 100%);
+            color: var(--paper);
+            padding: 4rem 2rem 3rem;
+        }
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .header h1 {
+            font-size: 3.5rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+        }
+        .header-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 4px;
+        }
+        .stat-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            opacity: 0.8;
+            margin-bottom: 0.5rem;
+        }
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+        .card {
+            background: white;
+            border: 1px solid var(--border);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .back-link {
+            display: inline-block;
+            margin: 1rem 2rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--secondary);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        .back-link:hover {
+            background: var(--accent);
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .metric-box {
+            background: var(--highlight);
+            padding: 1.5rem;
+            border-left: 3px solid var(--accent);
+        }
+        .metric-box .label {
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+        .metric-box .value {
+            font-size: 1.8rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+
+        .pending-notice {
+            background: rgba(255, 152, 0, 0.1);
+            border-left: 4px solid #ff9800;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .footer {
+            background: var(--secondary);
+            color: var(--paper);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="global-nav">
+        <a href="index.html" class="global-nav-logo">SKYVERA</a>
+        <div class="global-nav-controls">
+            <select class="global-nav-bu-selector" onchange="window.location.href=this.value">
+                <option value="">Navigate to...</option>
+                <option value="index.html" selected>CloudSense Overview</option>
+                <option value="kandy/index.html">Kandy Overview</option>
+                <option value="stl/index.html">STL Overview</option>
+                <option value="newnet/index.html">NewNet Overview</option>
+                <option value="analytics.html">📊 Master Analytics</option>
+            </select>
+            <select class="global-nav-select" onchange="window.location.href=this.value">
+                <option value="">Select Customer Account...</option>
+                <option value="Liquid_Telecom.html">#1 - Liquid Telecom ($2.49M)</option>
+<option value="Masergy_Communications,_Inc..html">#2 - Masergy Communications, Inc. ($2.27M)</option>
+<option value="Telefonica_UK_Limited.html">#3 - Telefonica UK Limited ($2.10M)</option>
+<option value="Telstra_Corporation_Limited.html">#4 - Telstra Corporation Limited ($1.97M)</option>
+<option value="Vodafone_Netherlands.html">#5 - Vodafone Netherlands ($1.84M)</option>
+<option value="Spotify.html" selected>#6 - Spotify ($1.59M)</option>
+<option value="British_Telecommunications_plc.html">#7 - British Telecommunications plc ($1.40M)</option>
+<option value="Maxis_Broadband_Sdn_Bhd.html">#8 - Maxis Broadband Sdn Bhd ($1.36M)</option>
+<option value="DPLAY_ENTERTAINMENT_LTD.html">#9 - DPLAY ENTERTAINMENT LTD ($1.23M)</option>
+<option value="Centrica_Services_Ltd.html">#10 - Centrica Services Ltd ($1.05M)</option>
+<option value="StarHub_Ltd.html">#11 - StarHub Ltd ($0.92M)</option>
+<option value="Elisa_Oyj.html">#12 - Elisa Oyj ($0.90M)</option>
+<option value="New_Sales_Ps_-_Go_Get.html">#13 - New Sales Ps - Go Get ($0.83M)</option>
+<option value="Abbott_Laboratories.html">#14 - Abbott Laboratories ($0.82M)</option>
+<option value="A1_Telekom_Austria_AG..html">#15 - A1 Telekom Austria AG. ($0.76M)</option>
+<option value="Advance_Publications_US.html">#16 - Advance Publications US ($0.66M)</option>
+<option value="Virgin_Media_Limited.html">#17 - Virgin Media Limited ($0.66M)</option>
+<option value="Foxtel_Management_Pty_Limited.html">#18 - Foxtel Management Pty Limited ($0.64M)</option>
+<option value="PostNL_Holding_BV.html">#19 - PostNL Holding BV ($0.58M)</option>
+<option value="Thryv_Australia_Pty_Ltd.html">#20 - Thryv Australia Pty Ltd ($0.57M)</option>
+<option value="Luminus_Hasselt_NV-SA.html">#21 - Luminus Hasselt NV/SA ($0.54M)</option>
+<option value="Telefonica_Germany_GmbH_&_Co._OHG.html">#22 - Telefonica Germany GmbH & Co. OHG ($0.46M)</option>
+<option value="CoreSite.html">#23 - CoreSite ($0.46M)</option>
+<option value="Telstra_-_Ges(a).html">#24 - Telstra - Ges(a) ($0.43M)</option>
+            </select>
+        </div>
+    </div>
+
+    <a href="index.html" class="back-link">← Back to Customer Overview</a>
+
+    <div class="header">
+        <div class="header-content">
+            <h1>Spotify</h1>
+            <div style="font-size: 1.1rem; opacity: 0.85; margin-top: 1rem;">
+                Strategic Account Plan | CloudSense Business Unit | Q1 2026
+            </div>
+
+            <div class="header-stats">
+                <div class="stat-card">
+                    <div class="stat-label">Total Revenue</div>
+                    <div class="stat-value">$1.59M</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Recurring Revenue</div>
+                    <div class="stat-value">$1.59M</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Non-Recurring Revenue</div>
+                    <div class="stat-value">$0.00M</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Customer Rank</div>
+                    <div class="stat-value">#6</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="pending-notice">
+            <h2 style="margin-bottom: 1rem;">⏳ Account Intelligence In Progress</h2>
+            <p>Comprehensive account plan intelligence (executives, pain points, competitive analysis, opportunities) will be populated here once customer research is complete.</p>
+            <p style="margin-top: 1rem;"><strong>Status:</strong> Awaiting customer-intelligence-analyst research for Spotify</p>
+        </div>
+
+        <div class="card">
+            <h2>Account Overview</h2>
+            <div class="metrics-grid">
+                <div class="metric-box">
+                    <div class="label">Business Unit</div>
+                    <div class="value" style="font-size: 1.2rem;">CloudSense</div>
+                </div>
+                <div class="metric-box">
+                    <div class="label">Active Subscriptions</div>
+                    <div class="value">1</div>
+                </div>
+                <div class="metric-box">
+                    <div class="label">% of CloudSense</div>
+                    <div class="value">4.8%</div>
+                </div>
+                <div class="metric-box">
+                    <div class="label">Revenue Mix</div>
+                    <div class="value" style="font-size: 1rem;">
+                        100% RR /
+                        0% NRR
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Revenue Breakdown</h2>
+            <table style="width: 100%; border-collapse: collapse;">
+                <tr style="border-bottom: 2px solid var(--border);">
+                    <th style="text-align: left; padding: 1rem;">Component</th>
+                    <th style="text-align: right; padding: 1rem;">Amount</th>
+                    <th style="text-align: right; padding: 1rem;">% of Total</th>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border);">
+                    <td style="padding: 1rem;"><strong>Recurring Revenue (ARR)</strong></td>
+                    <td style="text-align: right; padding: 1rem;">$1,587,300</td>
+                    <td style="text-align: right; padding: 1rem;">100.0%</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border);">
+                    <td style="padding: 1rem;"><strong>Non-Recurring Revenue (FY26)</strong></td>
+                    <td style="text-align: right; padding: 1rem;">$0</td>
+                    <td style="text-align: right; padding: 1rem;">0.0%</td>
+                </tr>
+                <tr style="background: var(--highlight); font-weight: 700;">
+                    <td style="padding: 1rem;"><strong>TOTAL REVENUE</strong></td>
+                    <td style="text-align: right; padding: 1rem;">$1,587,300</td>
+                    <td style="text-align: right; padding: 1rem;">100.0%</td>
+                </tr>
+            </table>
+        </div>
+
+        
+    <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+            <h2 style="margin: 0;">📰 Recent News & Updates</h2>
+            <div style="font-size: 0.85rem; color: var(--muted);">
+                Last updated: 2026-02-03 10:14:27
+            </div>
+        </div>
+
+        <div class="news-articles">
+            
+        <div class="news-article">
+            <div class="news-title">
+                <a href="https://news.google.com/rss/articles/CBMickFVX3lxTE9hYzczTXZERUVvQ1FmSDdrLXA3Yzk5aVItODRISnpWWmRjYUN3NkFMUTd4NmhBMno5LV9WNXpUOUc4MFZRb1ZsZTNDbzNlZTltbGNPck13MjdnUWhreU1fNWtMTmhUTkZqOVVpaWJoQkxIQQ?oc=5" target="_blank" rel="noopener">“Biggest contributor to global music revenue”: Spotify reports a record $11 billion in royalty payments last year - MusicTech</a>
+            </div>
+            <div class="news-meta">
+                <span class="news-source">MusicTech</span>
+                <span>•</span>
+                <span>2026-02-03</span>
+                <span>•</span>
+                <span class="news-relevance relevance-high">High Relevance</span>
+            </div>
+            <div class="news-summary"><a href="https://news.google.com/rss/articles/CBMickFVX3lxTE9hYzczTXZERUVvQ1FmSDdrLXA3Yzk5aVItODRISnpWWmRjYUN3NkFMUTd4NmhBMno5LV9WNXpUOUc4MFZRb1ZsZTNDbzNlZTltbGNPck13MjdnUWhreU1fNWtMTmhUTkZqOVVpaWJoQk</div>
+        </div>
+        
+        <div class="news-article">
+            <div class="news-title">
+                <a href="https://news.google.com/rss/articles/CBMilgFBVV95cUxQMWxYVVFjMXJfYzdZekpDMjBlVDJBMzg2ODhNSEpHWlZCWUpqcVgxckRRemMxNUV6WlNiMzE0SlFHWTRCdF9KUDNDemk3QkZ5bzRYMm1IaGh3S2F6VUNlNllObWNrOVRCNGNpM18wVndXUGlIVC0tRXduc0k0Z1R1RzhxM1E0N2hxVE9sQnZiZ0xSeWhhd1E?oc=5" target="_blank" rel="noopener">Smooth Operator: Checkout.com and Spotify Pair for Payments - FinTech Magazine</a>
+            </div>
+            <div class="news-meta">
+                <span class="news-source">FinTech Magazine</span>
+                <span>•</span>
+                <span>2026-02-03</span>
+                <span>•</span>
+                <span class="news-relevance relevance-high">High Relevance</span>
+            </div>
+            <div class="news-summary"><a href="https://news.google.com/rss/articles/CBMilgFBVV95cUxQMWxYVVFjMXJfYzdZekpDMjBlVDJBMzg2ODhNSEpHWlZCWUpqcVgxckRRemMxNUV6WlNiMzE0SlFHWTRCdF9KUDNDemk3QkZ5bzRYMm1IaGh3S2F6VUNlNllObWNrOVRCNGNpM18wVn</div>
+        </div>
+        
+        <div class="news-article">
+            <div class="news-title">
+                <a href="https://news.google.com/rss/articles/CBMi2wFBVV95cUxPSXpUcFBZdHhVb3E2N01IclFzVkNaQ1c1RlJQQXdrWGpta3NmdTNySGFTbXN1dGdjck9MemI0ZDd5Z1ZQX0xsWklyY2FzdGRlQTRha2JzdDR1bkxVODd4Mk1PX0dnWVhrZmU1Tm5pODFLN0NJakJnZVFTUWQ0ZDViRVRTN2REcmJBdTU0SjZfYVlkanpMQmRFTmotQ1VYUFdUaDRTVWFfbGhGb0RoVjdNU2phMVJBdFJLWk1BbmU3RDdISUxSZENPUjR1VDh6RDNNWm5ZbnhBSXZtWmM?oc=5" target="_blank" rel="noopener">Checkout.com Announces Strategic Partnership With Spotify to Power Efficient, Scalable Payments Globally - FF News | Fintech Finance</a>
+            </div>
+            <div class="news-meta">
+                <span class="news-source">FF News | Fintech Finance</span>
+                <span>•</span>
+                <span>2026-02-03</span>
+                <span>•</span>
+                <span class="news-relevance relevance-high">High Relevance</span>
+            </div>
+            <div class="news-summary"><a href="https://news.google.com/rss/articles/CBMi2wFBVV95cUxPSXpUcFBZdHhVb3E2N01IclFzVkNaQ1c1RlJQQXdrWGpta3NmdTNySGFTbXN1dGdjck9MemI0ZDd5Z1ZQX0xsWklyY2FzdGRlQTRha2JzdDR1bkxVODd4Mk1PX0dnWVhrZmU1Tm5pOD</div>
+        </div>
+        
+        <div class="news-article">
+            <div class="news-title">
+                <a href="https://news.google.com/rss/articles/CBMiwAFBVV95cUxQdkNSejFEdWdDQ09ZdUlHYTNrTEhydG5vTDM3ODduOG9NdjJDbGN1aWY0QUZvOGRORkwyVUp2VGZuWFVsOG5KMDhmUXctb1FCdW1pbWhwRlpVWmY3QnhPaDBJYTIta05WXzd5NUR3XzVKY3pGdldaXzFhUkRsZEhxMm9KQ2JoNURzcnpTakpkMjJKVk1xMks3b01aTjVlSmhGbGRWMmNkOEE5T0dCcm9welRkZ24xZGY0REhnVW5NM1o?oc=5" target="_blank" rel="noopener">Suno hires former Spotify exec Sam Berger as Senior Director of Artist Partnerships - Music Business Worldwide</a>
+            </div>
+            <div class="news-meta">
+                <span class="news-source">Music Business Worldwide</span>
+                <span>•</span>
+                <span>2026-02-02</span>
+                <span>•</span>
+                <span class="news-relevance relevance-high">High Relevance</span>
+            </div>
+            <div class="news-summary"><a href="https://news.google.com/rss/articles/CBMiwAFBVV95cUxQdkNSejFEdWdDQ09ZdUlHYTNrTEhydG5vTDM3ODduOG9NdjJDbGN1aWY0QUZvOGRORkwyVUp2VGZuWFVsOG5KMDhmUXctb1FCdW1pbWhwRlpVWmY3QnhPaDBJYTIta05WXzd5NUR3Xz</div>
+        </div>
+        
+        <div class="news-article">
+            <div class="news-title">
+                <a href="https://news.google.com/rss/articles/CBMifEFVX3lxTE9hSUdxWWIyWGNncFlzbmZqN1pWeDZNNUx4UmxnM3J2YmRHRk8zMnRIeXE2TEh3TXctUFpfZUFxMmxFQjRPT01yS0dUTGZzcktDQmZ5UE50RUpwdUdNbzI1cWY3RkFuUGRydndUMEgzRm12cTJEM3pUenN6eVU?oc=5" target="_blank" rel="noopener">Spotify and Major Music Labels Sue Anna’s Archive for $13 Trillion - Hackread</a>
+            </div>
+            <div class="news-meta">
+                <span class="news-source">Hackread</span>
+                <span>•</span>
+                <span>2026-02-02</span>
+                <span>•</span>
+                <span class="news-relevance relevance-high">High Relevance</span>
+            </div>
+            <div class="news-summary"><a href="https://news.google.com/rss/articles/CBMifEFVX3lxTE9hSUdxWWIyWGNncFlzbmZqN1pWeDZNNUx4UmxnM3J2YmRHRk8zMnRIeXE2TEh3TXctUFpfZUFxMmxFQjRPT01yS0dUTGZzcktDQmZ5UE50RUpwdUdNbzI1cWY3RkFuUGRydndUMEgzRm</div>
+        </div>
+        
+        <div class="news-article">
+            <div class="news-title">
+                <a href="https://news.google.com/rss/articles/CBMijAFBVV95cUxOYkYzYTZjMnJ2UVRoRndPbXloZ3BHeXVYbU5BWUxNVGdHU21rRlVHeDNXdlQxX0w0VkxUaFFvM2tPSjNHNERYX3lTZTh5aG9NTVU4QkJfWlhjQm9QdUt4SVp6WDdmbVFvZlV5V014U2FQeE96SDVxQzFVSkZkRWg4Tlo1a2lGOHBma2JzcA?oc=5" target="_blank" rel="noopener">21 Savage Allegedly Gets Stripped Of 25 Million Spotify Streams - HotNewHipHop</a>
+            </div>
+            <div class="news-meta">
+                <span class="news-source">HotNewHipHop</span>
+                <span>•</span>
+                <span>2026-02-02</span>
+                <span>•</span>
+                <span class="news-relevance relevance-high">High Relevance</span>
+            </div>
+            <div class="news-summary"><a href="https://news.google.com/rss/articles/CBMijAFBVV95cUxOYkYzYTZjMnJ2UVRoRndPbXloZ3BHeXVYbU5BWUxNVGdHU21rRlVHeDNXdlQxX0w0VkxUaFFvM2tPSjNHNERYX3lTZTh5aG9NTVU4QkJfWlhjQm9QdUt4SVp6WDdmbVFvZlV5V014U2</div>
+        </div>
+        
+        <div class="news-article">
+            <div class="news-title">
+                <a href="https://news.google.com/rss/articles/CBMipAFBVV95cUxOTjMwc0xxYXRtV0M2SXlrVXlsVzBwSFBkdVluT0ZLSmZPZmZOdmpHdWxwVUhZcGpjRTFmY2hjWnJwQTNBWGNCRFdVQVY1Zmw4b1VVUnpaNW00cUNuZHdiZWhZdFpBcGRFY1A3em9NakpTbmwyWVhxWkJUaVB2ZU5wdkpTYTRHNUpRWVRlalJraDNQSHBuZnJiX2JJRjgxUTVQc05HVQ?oc=5" target="_blank" rel="noopener">Addison Rae’s Latex Minidress Goes off the Charts at Spotify Event - Yahoo</a>
+            </div>
+            <div class="news-meta">
+                <span class="news-source">Yahoo</span>
+                <span>•</span>
+                <span>2026-01-31</span>
+                <span>•</span>
+                <span class="news-relevance relevance-high">High Relevance</span>
+            </div>
+            <div class="news-summary"><a href="https://news.google.com/rss/articles/CBMipAFBVV95cUxOTjMwc0xxYXRtV0M2SXlrVXlsVzBwSFBkdVluT0ZLSmZPZmZOdmpHdWxwVUhZcGpjRTFmY2hjWnJwQTNBWGNCRFdVQVY1Zmw4b1VVUnpaNW00cUNuZHdiZWhZdFpBcGRFY1A3em9Nak</div>
+        </div>
+        
+        <div class="news-article">
+            <div class="news-title">
+                <a href="https://news.google.com/rss/articles/CBMitwFBVV95cUxQdVFmeFUwa1dRV1NGZF8tMFRzVExrV3VRZS1DUkR4OTlQcjA3N3F5c0o4dmVWd1FrR2dzci1qWGZFUTVWR1lVS3MyOURfV0RHOGtrc2VvMTQ5T192X2Fib1c2bnEwWmx1NnppNWYwOHVWQi0tVld0U01IakdzUEJJXzZlcEZjcWVpX0hRWElHUWVGWU9TeXpqQldscGdjUEphUUwydW9xc0NsLWZsdWptM08tT2V5Tk0?oc=5" target="_blank" rel="noopener">Olivia Dean, Leon Thomas, Lola Young Highlight Spotify’s 2026 Best New Artist Party - The Hollywood Reporter</a>
+            </div>
+            <div class="news-meta">
+                <span class="news-source">The Hollywood Reporter</span>
+                <span>•</span>
+                <span>2026-01-30</span>
+                <span>•</span>
+                <span class="news-relevance relevance-high">High Relevance</span>
+            </div>
+            <div class="news-summary"><a href="https://news.google.com/rss/articles/CBMitwFBVV95cUxQdVFmeFUwa1dRV1NGZF8tMFRzVExrV3VRZS1DUkR4OTlQcjA3N3F5c0o4dmVWd1FrR2dzci1qWGZFUTVWR1lVS3MyOURfV0RHOGtrc2VvMTQ5T192X2Fib1c2bnEwWmx1NnppNWYwOH</div>
+        </div>
+        
+        </div>
+    </div>
+
+    <style>
+        .news-article {
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+            background: white;
+            border-left: 4px solid var(--accent);
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+        .news-article:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transform: translateX(4px);
+        }
+        .news-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .news-title a {
+            color: var(--secondary);
+            text-decoration: none;
+        }
+        .news-title a:hover {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+        .news-meta {
+            display: flex;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .news-source {
+            font-weight: 600;
+        }
+        .news-relevance {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 3px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .relevance-high {
+            background: rgba(76, 175, 80, 0.2);
+            color: #2e7d32;
+        }
+        .relevance-medium {
+            background: rgba(255, 152, 0, 0.2);
+            color: #e65100;
+        }
+        .news-summary {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--ink);
+        }
+    </style>
+    
+    </div>
+
+    <div class="footer">
+        <p><strong>Spotify Strategic Account Plan</strong> | CloudSense Business Unit | Skyvera</p>
+        <p style="margin-top: 0.5rem;">Generated: February 03, 2026 | Confidential - Internal Use Only</p>
+    </div>
+</body>
+</html>

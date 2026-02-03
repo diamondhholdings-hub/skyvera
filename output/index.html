@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skyvera Customer Account Plans | CloudSense Q1'26</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #1a1a1a;
+            --paper: #fafaf8;
+            --accent: #c84b31;
+            --secondary: #2d4263;
+            --muted: #8b8b8b;
+            --border: #e8e6e1;
+            --highlight: #ecdbba;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'DM Sans', sans-serif; background: var(--paper); color: var(--ink); line-height: 1.6; }
+        h1, h2 { font-family: 'Cormorant Garamond', serif; }
+
+        .global-nav {
+            background: var(--ink);
+            color: var(--paper);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .global-nav-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+        }
+        .global-nav-select {
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            background: white;
+            cursor: pointer;
+            min-width: 300px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #1a2332 100%);
+            color: var(--paper);
+            padding: 4rem 2rem 3rem;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 3.5rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+        }
+        .header-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 2rem auto 0;
+        }
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 4px;
+            text-align: center;
+        }
+        .stat-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            opacity: 0.8;
+            margin-bottom: 0.5rem;
+        }
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        .search-bar {
+            margin: 2rem 0;
+            text-align: center;
+        }
+        .search-input {
+            padding: 1rem 1.5rem;
+            font-size: 1.1rem;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .customer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .customer-card {
+            background: white;
+            border: 2px solid var(--border);
+            padding: 2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .customer-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            transform: translateY(-4px);
+        }
+
+        .customer-rank {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--accent);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .customer-name {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+            padding-right: 4rem;
+        }
+
+        .customer-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .metric {
+            text-align: center;
+        }
+        .metric-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 0.25rem;
+        }
+        .metric-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--ink);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .badge-critical { background: #e53935; color: white; }
+        .badge-high { background: #ff9800; color: white; }
+        .badge-medium { background: #ffc107; color: #1a1a1a; }
+
+        .footer {
+            background: var(--secondary);
+            color: var(--paper);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2.5rem; }
+            .customer-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="global-nav">
+        <a href="index.html" class="global-nav-logo">SKYVERA</a>
+        <select class="global-nav-select" onchange="window.location.href=this.value">
+            <option value="">Navigate to...</option>
+            <option value="index.html" selected>CloudSense Overview</option>
+            <option value="kandy/index.html">Kandy Overview</option>
+            <option value="stl/index.html">STL Overview</option>
+            <option value="newnet/index.html">NewNet Overview</option>
+            <option value="analytics.html">📊 Master Analytics</option>
+        </select>
+    </div>
+
+    <div class="header">
+        <h1>Skyvera Customer Account Plans</h1>
+        <p style="font-size: 1.2rem; margin-top: 1rem; opacity: 0.9;">CloudSense Business Unit | Q1 2026 Strategic Analysis</p>
+
+        <div class="header-stats">
+            <div class="stat-card">
+                <div class="stat-label">Total Customers</div>
+                <div class="stat-value">24</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Total Revenue</div>
+                <div class="stat-value">$33.2M</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Top 80% Revenue</div>
+                <div class="stat-value">$33.2M</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Coverage</div>
+                <div class="stat-value">100%</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="search-bar">
+            <input type="text" class="search-input" placeholder="Search customers..." onkeyup="filterCustomers(this.value)">
+        </div>
+
+        <h2 style="margin: 3rem 0 1rem;">Top 80% Customer Accounts</h2>
+        <p style="color: var(--muted); margin-bottom: 2rem;">Click any customer card to view their detailed account plan</p>
+
+        <div class="customer-grid" id="customerGrid">
+            
+        <div class="customer-card" onclick="window.location.href='Liquid_Telecom.html'">
+            <div class="customer-rank">#1</div>
+            <h3 class="customer-name">Liquid Telecom</h3>
+            <div class="customer-metrics">
+                <div class="metric">
+                    <div class="metric-label">Total Revenue</div>
+                    <div class="metric-value">$2.49M</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">RR / NRR</div>
+                    <div class="metric-value">$1.1M / $1.4M</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">% of Total</div>
+                    <div class="metric-value">7.5%</div>
+                </div>
+            </div>
+            <span class="badge badge-critical">STRATEGIC</span>
+        </div>
+        
+        <div class="customer-card" onclick="window.location.href='Masergy_Communications,_Inc..html'">
+            <div class="customer-rank">#2</div>
+            <h3 class="customer-name">Masergy Communications, Inc.</h3>
+            <div class="customer-metrics">
+                <div class="metric">
+                    <div class="metric-label">Total Revenue</div>
+                    <div class="metric-value">$2.27M</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">RR / NRR</div>
+                    <div class="metric-value">$0.3M / $1.9M</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">% of Total</div>
+                    <div class="metric-value">6.8%</div>
+                </div>
+            </div>
+            <span class="badge badge-critical">STRATEGIC</span>
+        </div>
+        
+        <div class="customer-card" onclick="window.location.href='Telefonica_UK_Limited.html'">
+            <div class="customer-rank">#3</div>
+            <h3 class="customer-name">Telefonica UK Limited</h3>
+            <div class="customer-metrics">
+                <div class="metric">
+                    <div class="metric-label">Total Revenue</div>
+                    <div class="metric-value">$2.10M</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">RR / NRR</div>
+                    <div class="metric-value">$2.1M / $0.0M</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">% of Total</div>
+                    <div class="metric-value">6.3%</div>
+                </div>
+            </div>
+            <span class="badge badge-critical">STRATEGIC</span>
+        </div>
+        
+        <div class="customer-card" onclick="window.location.href='Telstra_Corporation_Limited.html'">
+            <div class="customer-rank">#4</div>
+            <h3 class="customer-name">Telstra Corporation Limited</h3>
+            <div class="customer-metrics">
+                <div class="metric">
+                    <div class="metric-label">Total Revenue</div>
+                    <div class="metric-value">$1.97M</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">RR / NRR</div>
+                    <div class="metric-value">$2.0M / $0.0M</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">% of Total</div>
+                    <div class="metric-value">5.9%</div>
+                </div>
+            </div>
+            <span class="badge badge-high">HIGH VALUE</span>
+        </div>
+        
+        <div class="customer-card" onclick="window.location.href='Vodafone_Netherlands.html'">
+            <div class="customer-rank">#5</div>
+            <h3 class="customer-name">Vodafone Netherlands</h3>
+            <div class="customer-metrics">
+                <div class="metric">
+                    <div class="metric-label">Total Revenue</div>
+                    <div class="metric-value">$1.84M</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">RR / NRR</div>
+                    <div class="metric-value">$1.8M / $0.0M</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">% of Total</div>
+                    <div class="metric-value">5.5%</div>
+                </div>
+            </div>
+            <span class="badge badge-high">HIGH VALUE</span>
+        </div>
+        
+        <div class="customer-card" onclick="window.location.href='Spotify.html'">
+            <div class="customer-rank">#6</div>
+            <h3 class="customer-name">Spotify</h3>
+            <div class="customer-metrics">
+                <div class="metric">
+                    <div class="metric-label">Total Revenue</div>
+                    <div class="metric-value">$1.59M</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">RR / NRR</div>
+                    <div class="metric-value">$1.6M / $0.0M</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">% of Total</div>
+                    <div class="metric-value">4.8%</div>
+                </div>
+            </div>
+            <span class="badge badge-high">HIGH VALUE</span>
+        </div>
+        
+        <div class="customer-card" onclick="window.location.href='British_Telecommunications_plc.html'">
+            <div class="customer-rank">#7</div>
+            <h3 class="customer-name">British Telecommunications plc</h3>
+            <div class="customer-metrics">
+                <div class="metric">
+                    <div class="metric-label">Total Revenue</div>
+                    <div class="metric-value">$1.40M</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">RR / NRR</div>
+                    <div class="metric-value">$1.4M / $0.0M</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">% of Total</div>
+                    <div class="metric-value">4.2%</div>
+                </div>
+            </div>
+            <span class="badge badge-high">HIGH VALUE</span>
+        </div>
+        
+        <div class="customer-card" onclick="window.location.href='Maxis_Broadband_Sdn_Bhd.html'">
+            <div class="customer-rank">#8</div>
+            <h3 class="customer-name">Maxis Broadband Sdn Bhd</h3>
+            <div class="customer-metrics">
+                <div class="metric">
+                    <div class="metric-label">Total Revenue</div>
+                    <div class="metric-value">$1.36M</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">RR / NRR</div>
+                    <div class="metric-value">$1.4M / $0.0M</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">% of Total</div>
+                    <div class="metric-value">4.1%</div>
+                </div>
+            </div>
+            <span class="badge badge-high">HIGH VALUE</span>
+        </div>
+        
+        <div class="customer-card" onclick="window.location.href='DPLAY_ENTERTAINMENT_LTD.html'">
+            <div class="customer-rank">#9</div>
+            <h3 class="customer-name">DPLAY ENTERTAINMENT LTD</h3>
+            <div class="customer-metrics">
+                <div class="metric">
+                    <div class="metric-label">Total Revenue</div>
+                    <div class="metric-value">$1.23M</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">RR / NRR</div>
+                    <div class="metric-value">$0.4M / $0.8M</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">% of Total</div>
+                    <div class="metric-value">3.7%</div>
+                </div>
+            </div>
+            <span class="badge badge-high">HIGH VALUE</span>
+        </div>
+        
+        <div class="customer-card" onclick="window.location.href='Centrica_Services_Ltd.html'">
+            <div class="customer-rank">#10</div>
+            <h3 class="customer-name">Centrica Services Ltd</h3>
+            <div class="customer-metrics">
+                <div class="metric">
+                    <div class="metric-label">Total Revenue</div>
+                    <div class="metric-value">$1.05M</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">RR / NRR</div>
+                    <div class="metric-value">$1.1M / $0.0M</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">% of Total</div>
+                    <div class="metric-value">3.2%</div>
+                </div>
+            </div>
+            <span class="badge badge-high">HIGH VALUE</span>
+        </div>
+        
+        <div class="customer-card" onclick="window.location.href='StarHub_Ltd.html'">
+            <div class="customer-rank">#11</div>
+            <h3 class="customer-name">StarHub Ltd</h3>
+            <div class="customer-metrics">
+                <div class="metric">
+                    <div class="metric-label">Total Revenue</div>
+                    <div class="metric-value">$0.92M</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">RR / NRR</div>
+                    <div class="metric-value">$0.9M / $0.0M</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">% of Total</div>
+                    <div class="metric-value">2.8%</div>
+                </div>
+            </div>
+            <span class="badge badge-medium">KEY ACCOUNT</span>
+        </div>
+        
+        <div class="customer-card" onclick="window.location.href='Elisa_Oyj.html'">
+            <div class="customer-rank">#12</div>
+            <h3 class="customer-name">Elisa Oyj</h3>
+            <div class="customer-metrics">
+                <div class="metric">
+                    <div class="metric-label">Total Revenue</div>
+                    <div class="metric-value">$0.90M</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">RR / NRR</div>
+                    <div class="metric-value">$0.9M / $0.0M</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">% of Total</div>
+                    <div class="metric-value">2.7%</div>
+                </div>
+            </div>
+            <span class="badge badge-medium">KEY ACCOUNT</span>
+        </div>
+        
+        <div class="customer-card" onclick="window.location.href='New_Sales_Ps_-_Go_Get.html'">
+            <div class="customer-rank">#13</div>
+            <h3 class="customer-name">New Sales Ps - Go Get</h3>
+            <div class="customer-metrics">
+                <div class="metric">
+                    <div class="metric-label">Total Revenue</div>
+                    <div class="metric-value">$0.83M</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">RR / NRR</div>
+                    <div class="metric-value">$0.0M / $0.8M</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">% of Total</div>
+                    <div class="metric-value">2.5%</div>
+                </div>
+            </div>
+            <span class="badge badge-medium">KEY ACCOUNT</span>
+        </div>
+        
+        <div class="customer-card" onclick="window.location.href='Abbott_Laboratories.html'">
+            <div class="customer-rank">#14</div>
+            <h3 class="customer-name">Abbott Laboratories</h3>
+            <div class="customer-metrics">
+                <div class="metric">
+                    <div class="metric-label">Total Revenue</div>
+                    <div class="metric-value">$0.82M</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">RR / NRR</div>
+                    <div class="metric-value">$0.8M / $0.0M</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">% of Total</div>
+                    <div class="metric-value">2.5%</div>
+                </div>
+            </div>
+            <span class="badge badge-medium">KEY ACCOUNT</span>
+        </div>
+        
+        <div class="customer-card" onclick="window.location.href='A1_Telekom_Austria_AG..html'">
+            <div class="customer-rank">#15</div>
+            <h3 class="customer-name">A1 Telekom Austria AG.</h3>
+            <div class="customer-metrics">
+                <div class="metric">
+                    <div class="metric-label">Total Revenue</div>
+                    <div class="metric-value">$0.76M</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">RR / NRR</div>
+                    <div class="metric-value">$0.6M / $0.2M</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">% of Total</div>
+                    <div class="metric-value">2.3%</div>
+                </div>
+            </div>
+            <span class="badge badge-medium">KEY ACCOUNT</span>
+        </div>
+        
+        <div class="customer-card" onclick="window.location.href='Advance_Publications_US.html'">
+            <div class="customer-rank">#16</div>
+            <h3 class="customer-name">Advance Publications US</h3>
+            <div class="customer-metrics">
+                <div class="metric">
+                    <div class="metric-label">Total Revenue</div>
+                    <div class="metric-value">$0.66M</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">RR / NRR</div>
+                    <div class="metric-value">$0.7M / $0.0M</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">% of Total</div>
+                    <div class="metric-value">2.0%</div>
+                </div>
+            </div>
+            <span class="badge badge-medium">KEY ACCOUNT</span>
+        </div>
+        
+        <div class="customer-card" onclick="window.location.href='Virgin_Media_Limited.html'">
+            <div class="customer-rank">#17</div>
+            <h3 class="customer-name">Virgin Media Limited</h3>
+            <div class="customer-metrics">
+                <div class="metric">
+                    <div class="metric-label">Total Revenue</div>
+                    <div class="metric-value">$0.66M</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">RR / NRR</div>
+                    <div class="metric-value">$0.7M / $0.0M</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">% of Total</div>
+                    <div class="metric-value">2.0%</div>
+                </div>
+            </div>
+            <span class="badge badge-medium">KEY ACCOUNT</span>
+        </div>
+        
+        <div class="customer-card" onclick="window.location.href='Foxtel_Management_Pty_Limited.html'">
+            <div class="customer-rank">#18</div>
+            <h3 class="customer-name">Foxtel Management Pty Limited</h3>
+            <div class="customer-metrics">
+                <div class="metric">
+                    <div class="metric-label">Total Revenue</div>
+                    <div class="metric-value">$0.64M</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">RR / NRR</div>
+                    <div class="metric-value">$0.6M / $0.0M</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">% of Total</div>
+                    <div class="metric-value">1.9%</div>
+                </div>
+            </div>
+            <span class="badge badge-medium">KEY ACCOUNT</span>
+        </div>
+        
+        <div class="customer-card" onclick="window.location.href='PostNL_Holding_BV.html'">
+            <div class="customer-rank">#19</div>
+            <h3 class="customer-name">PostNL Holding BV</h3>
+            <div class="customer-metrics">
+                <div class="metric">
+                    <div class="metric-label">Total Revenue</div>
+                    <div class="metric-value">$0.58M</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">RR / NRR</div>
+                    <div class="metric-value">$0.6M / $0.0M</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">% of Total</div>
+                    <div class="metric-value">1.7%</div>
+                </div>
+            </div>
+            <span class="badge badge-medium">KEY ACCOUNT</span>
+        </div>
+        
+        <div class="customer-card" onclick="window.location.href='Thryv_Australia_Pty_Ltd.html'">
+            <div class="customer-rank">#20</div>
+            <h3 class="customer-name">Thryv Australia Pty Ltd</h3>
+            <div class="customer-metrics">
+                <div class="metric">
+                    <div class="metric-label">Total Revenue</div>
+                    <div class="metric-value">$0.57M</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">RR / NRR</div>
+                    <div class="metric-value">$0.6M / $0.0M</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">% of Total</div>
+                    <div class="metric-value">1.7%</div>
+                </div>
+            </div>
+            <span class="badge badge-medium">KEY ACCOUNT</span>
+        </div>
+        
+        <div class="customer-card" onclick="window.location.href='Luminus_Hasselt_NV-SA.html'">
+            <div class="customer-rank">#21</div>
+            <h3 class="customer-name">Luminus Hasselt NV/SA</h3>
+            <div class="customer-metrics">
+                <div class="metric">
+                    <div class="metric-label">Total Revenue</div>
+                    <div class="metric-value">$0.54M</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">RR / NRR</div>
+                    <div class="metric-value">$0.5M / $0.0M</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">% of Total</div>
+                    <div class="metric-value">1.6%</div>
+                </div>
+            </div>
+            <span class="badge badge-medium">KEY ACCOUNT</span>
+        </div>
+        
+        <div class="customer-card" onclick="window.location.href='Telefonica_Germany_GmbH_&_Co._OHG.html'">
+            <div class="customer-rank">#22</div>
+            <h3 class="customer-name">Telefonica Germany GmbH & Co. OHG</h3>
+            <div class="customer-metrics">
+                <div class="metric">
+                    <div class="metric-label">Total Revenue</div>
+                    <div class="metric-value">$0.46M</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">RR / NRR</div>
+                    <div class="metric-value">$0.5M / $0.0M</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">% of Total</div>
+                    <div class="metric-value">1.4%</div>
+                </div>
+            </div>
+            <span class="badge badge-medium">KEY ACCOUNT</span>
+        </div>
+        
+        <div class="customer-card" onclick="window.location.href='CoreSite.html'">
+            <div class="customer-rank">#23</div>
+            <h3 class="customer-name">CoreSite</h3>
+            <div class="customer-metrics">
+                <div class="metric">
+                    <div class="metric-label">Total Revenue</div>
+                    <div class="metric-value">$0.46M</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">RR / NRR</div>
+                    <div class="metric-value">$0.5M / $0.0M</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">% of Total</div>
+                    <div class="metric-value">1.4%</div>
+                </div>
+            </div>
+            <span class="badge badge-medium">KEY ACCOUNT</span>
+        </div>
+        
+        <div class="customer-card" onclick="window.location.href='Telstra_-_Ges(a).html'">
+            <div class="customer-rank">#24</div>
+            <h3 class="customer-name">Telstra - Ges(a)</h3>
+            <div class="customer-metrics">
+                <div class="metric">
+                    <div class="metric-label">Total Revenue</div>
+                    <div class="metric-value">$0.43M</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">RR / NRR</div>
+                    <div class="metric-value">$0.0M / $0.4M</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">% of Total</div>
+                    <div class="metric-value">1.3%</div>
+                </div>
+            </div>
+            <span class="badge badge-medium">KEY ACCOUNT</span>
+        </div>
+        
+        </div>
+    </div>
+
+    <div class="footer">
+        <p><strong>Skyvera Customer Account Planning System</strong></p>
+        <p style="margin-top: 0.5rem; opacity: 0.8;">CloudSense Business Unit | Generated: February 2026</p>
+    </div>
+
+    <script>
+        function filterCustomers(query) {
+            const cards = document.querySelectorAll('.customer-card');
+            const lowerQuery = query.toLowerCase();
+
+            cards.forEach(card => {
+                const name = card.querySelector('.customer-name').textContent.toLowerCase();
+                if (name.includes(lowerQuery)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,562 @@
+{
+  "summary": {
+    "total_revenue_fy26": 58218905.569000006,
+    "rr_annual": 51224931.979,
+    "nrr_annual": 6993973.59,
+    "arr_current": 52655941.26999999,
+    "arr_growth": -1431009.2909999862,
+    "arr_at_risk": 8782249.120000001,
+    "total_rr_subscriptions": 148,
+    "total_nrr_customers": 45,
+    "at_risk_subscriptions": 37,
+    "top_10_concentration_pct": 52.43813253465868,
+    "top_20_concentration_pct": 69.59456804710928
+  },
+  "top_rr_customers": [
+    {
+      "customer": "EMIRCOM",
+      "arr_current": 9586308.0,
+      "projected_arr": 9586308.0,
+      "company": "Kandy",
+      "will_renew": "Yes",
+      "renewal_qtr": "Q2'26"
+    },
+    {
+      "customer": "NS Solutions Corporation",
+      "arr_current": 2412645.0,
+      "projected_arr": 3015806.25,
+      "company": "NewNet",
+      "will_renew": "Yes",
+      "renewal_qtr": "Next Yr"
+    },
+    {
+      "customer": "Telefonica UK Limited",
+      "arr_current": 2104857.01,
+      "projected_arr": 2631071.2624999997,
+      "company": "Cloudsense",
+      "will_renew": "Yes",
+      "renewal_qtr": "Q1'26"
+    },
+    {
+      "customer": "HCL TECHNOLOGIES UK LIMITED",
+      "arr_current": 2082880.43,
+      "projected_arr": 0.0,
+      "company": "NewNet",
+      "will_renew": "No",
+      "renewal_qtr": "Q2'26"
+    },
+    {
+      "customer": "Telstra Corporation Limited",
+      "arr_current": 1972000.0,
+      "projected_arr": 2465000.0,
+      "company": "Cloudsense",
+      "will_renew": "Yes",
+      "renewal_qtr": "Next Yr"
+    },
+    {
+      "customer": "Vodafone Netherlands",
+      "arr_current": 1843190.03,
+      "projected_arr": 2303987.5375,
+      "company": "Cloudsense",
+      "will_renew": "Yes",
+      "renewal_qtr": "Next Yr"
+    },
+    {
+      "customer": "AT&T SERVICES, INC.",
+      "arr_current": 1798094.55,
+      "projected_arr": 1798094.55,
+      "company": "Kandy",
+      "will_renew": "Yes",
+      "renewal_qtr": "Q1'26"
+    },
+    {
+      "customer": "One Albania",
+      "arr_current": 1620914.02,
+      "projected_arr": 0.0,
+      "company": "STL",
+      "will_renew": "No",
+      "renewal_qtr": "Q4'26"
+    },
+    {
+      "customer": "Spotify",
+      "arr_current": 1587300.0,
+      "projected_arr": 1587300.0,
+      "company": "Cloudsense",
+      "will_renew": "Yes",
+      "renewal_qtr": "Next Yr"
+    },
+    {
+      "customer": "British Telecommunications plc",
+      "arr_current": 1404790.63,
+      "projected_arr": 0.0,
+      "company": "Cloudsense",
+      "will_renew": "No (SF)",
+      "renewal_qtr": "Q1'26"
+    },
+    {
+      "customer": "TRANSCOM",
+      "arr_current": 1235829.3,
+      "projected_arr": 1235829.3,
+      "company": "VoltDelta",
+      "will_renew": "Yes",
+      "renewal_qtr": "Next Yr"
+    },
+    {
+      "customer": "Maxis Broadband Sdn Bhd",
+      "arr_current": 1234734.0,
+      "projected_arr": 1543417.5,
+      "company": "Cloudsense",
+      "will_renew": "Yes",
+      "renewal_qtr": "Q4'25"
+    },
+    {
+      "customer": "Liquid Telecom",
+      "arr_current": 1073619.8,
+      "projected_arr": 1342024.75,
+      "company": "Cloudsense",
+      "will_renew": "Yes",
+      "renewal_qtr": "Q4'26"
+    },
+    {
+      "customer": "Centrica Services Ltd",
+      "arr_current": 1053982.65,
+      "projected_arr": 1053982.65,
+      "company": "Cloudsense",
+      "will_renew": "Yes",
+      "renewal_qtr": "Q2'26"
+    },
+    {
+      "customer": "Abbott Laboratories",
+      "arr_current": 816927.6,
+      "projected_arr": 1021159.5,
+      "company": "Cloudsense",
+      "will_renew": "Yes",
+      "renewal_qtr": "Next Yr"
+    }
+  ],
+  "at_risk_rr": [
+    {
+      "customer": "HCL TECHNOLOGIES UK LIMITED",
+      "arr_current": 2082880.43,
+      "renewal_qtr": "Q2'26",
+      "company": "NewNet"
+    },
+    {
+      "customer": "One Albania",
+      "arr_current": 1620914.02,
+      "renewal_qtr": "Q4'26",
+      "company": "STL"
+    },
+    {
+      "customer": "British Telecommunications plc",
+      "arr_current": 1404790.63,
+      "renewal_qtr": "Q1'26",
+      "company": "Cloudsense"
+    },
+    {
+      "customer": "Thryv Australia Pty Ltd",
+      "arr_current": 567978.58,
+      "renewal_qtr": "Q1'26",
+      "company": "Cloudsense"
+    },
+    {
+      "customer": "CoreSite",
+      "arr_current": 456285.2,
+      "renewal_qtr": "Q3'26",
+      "company": "Cloudsense"
+    },
+    {
+      "customer": "DPG Media BV",
+      "arr_current": 358970.62,
+      "renewal_qtr": "Q3'26",
+      "company": "Cloudsense"
+    },
+    {
+      "customer": "Konnektio Oy.",
+      "arr_current": 322926.41,
+      "renewal_qtr": "Q4'25",
+      "company": "VoltDelta"
+    },
+    {
+      "customer": "Sun Corporation",
+      "arr_current": 272477.09,
+      "renewal_qtr": "Q1'26",
+      "company": "Mobilogy"
+    },
+    {
+      "customer": "PropertyGuru Pte Ltd",
+      "arr_current": 262147.67,
+      "renewal_qtr": "Q2'26",
+      "company": "Cloudsense"
+    },
+    {
+      "customer": "Hubexo South UK Ltd",
+      "arr_current": 173411.91,
+      "renewal_qtr": "Q3'26",
+      "company": "Cloudsense"
+    }
+  ],
+  "top_nrr_customers": [
+    {
+      "customer": "New Sales Ps -  <Masergy>",
+      "fy26_total": 1924000.0,
+      "ttm_total": 0.0,
+      "class": "Cloudsense Consulting",
+      "q1": 481000.0,
+      "q2": 481000.0,
+      "q3": 481000.0,
+      "q4": 481000.0
+    },
+    {
+      "customer": "Liquid Telecom",
+      "fy26_total": 1416000.0,
+      "ttm_total": 0.0,
+      "class": "Cloudsense Consulting",
+      "q1": 354000.0,
+      "q2": 354000.0,
+      "q3": 354000.0,
+      "q4": 354000.0
+    },
+    {
+      "customer": "New Sales Ps - Go Get",
+      "fy26_total": 834000.0,
+      "ttm_total": 0.0,
+      "class": "Cloudsense Consulting",
+      "q1": 328000.0,
+      "q2": 212000.0,
+      "q3": 229000.0,
+      "q4": 65000.0
+    },
+    {
+      "customer": "Dplay Entertainment Ltd",
+      "fy26_total": 800000.04,
+      "ttm_total": 500841.14,
+      "class": "Cloudsense Consulting",
+      "q1": 200000.01,
+      "q2": 200000.01,
+      "q3": 200000.01,
+      "q4": 200000.01
+    },
+    {
+      "customer": "New Sales Ps -  <Telstra - Ges(a)>",
+      "fy26_total": 431900.0,
+      "ttm_total": 0.0,
+      "class": "Cloudsense Consulting",
+      "q1": 107975.0,
+      "q2": 107975.0,
+      "q3": 107975.0,
+      "q4": 107975.0
+    },
+    {
+      "customer": "New Sales Ps -  <Star Hub>",
+      "fy26_total": 300000.0,
+      "ttm_total": 0.0,
+      "class": "Cloudsense Consulting",
+      "q1": 75000.0,
+      "q2": 75000.0,
+      "q3": 75000.0,
+      "q4": 75000.0
+    },
+    {
+      "customer": "Teleindia Networks Private Limited",
+      "fy26_total": 225000.0,
+      "ttm_total": 897278.8799999999,
+      "class": "Stl Consulting",
+      "q1": 75000.0,
+      "q2": 50000.0,
+      "q3": 50000.0,
+      "q4": 50000.0
+    },
+    {
+      "customer": "One Albania",
+      "fy26_total": 218000.0,
+      "ttm_total": 354350.0,
+      "class": "Stl Consulting",
+      "q1": 68000.0,
+      "q2": 75000.0,
+      "q3": 75000.0,
+      "q4": 0.0
+    },
+    {
+      "customer": "A1 Telekom Austria Ag.",
+      "fy26_total": 210248.76,
+      "ttm_total": 667119.05,
+      "class": "Cloudsense Consulting",
+      "q1": 157686.57,
+      "q2": 52562.19,
+      "q3": 0.0,
+      "q4": 0.0
+    },
+    {
+      "customer": "New Sales PS - < A1 Telekom>",
+      "fy26_total": 210248.76,
+      "ttm_total": 0.0,
+      "class": "Cloudsense Consulting",
+      "q1": 0.0,
+      "q2": 52562.19,
+      "q3": 78843.285,
+      "q4": 78843.285
+    },
+    {
+      "customer": "Vodafone Egypt",
+      "fy26_total": 168601.0,
+      "ttm_total": 0.0,
+      "class": "Newnet Consulting",
+      "q1": 168601.0,
+      "q2": 0.0,
+      "q3": 0.0,
+      "q4": 0.0
+    },
+    {
+      "customer": "New License Sales - Skyvera",
+      "fy26_total": 150000.02999999997,
+      "ttm_total": 0.0,
+      "class": "Newnet Product",
+      "q1": 0.0,
+      "q2": 50000.009999999995,
+      "q3": 50000.009999999995,
+      "q4": 50000.009999999995
+    },
+    {
+      "customer": "Vodafone Egypt",
+      "fy26_total": 66437.0,
+      "ttm_total": 0.0,
+      "class": "Newnet Consulting",
+      "q1": 66437.0,
+      "q2": 0.0,
+      "q3": 0.0,
+      "q4": 0.0
+    },
+    {
+      "customer": "Vodafone Egypt",
+      "fy26_total": 39538.0,
+      "ttm_total": 0.0,
+      "class": "Newnet Consulting",
+      "q1": 39538.0,
+      "q2": 0.0,
+      "q3": 0.0,
+      "q4": 0.0
+    },
+    {
+      "customer": "Masergy Communications, Inc.",
+      "fy26_total": 0.0,
+      "ttm_total": 1268249.88,
+      "class": "Cloudsense Consulting",
+      "q1": 0.0,
+      "q2": 0.0,
+      "q3": 0.0,
+      "q4": 0.0
+    }
+  ],
+  "bu_breakdown_rr": [
+    {
+      "bu": "Cloudsense",
+      "arr": 28288629.4075,
+      "subscriptions": 59
+    },
+    {
+      "bu": "Kandy",
+      "arr": 13664745.075,
+      "subscriptions": 28
+    },
+    {
+      "bu": "NewNet",
+      "arr": 5690318.096500001,
+      "subscriptions": 24
+    },
+    {
+      "bu": "Other",
+      "arr": 1828588.3875000002,
+      "subscriptions": 16
+    },
+    {
+      "bu": "STL",
+      "arr": 1752651.0125000002,
+      "subscriptions": 21
+    }
+  ],
+  "top_combined_customers": [
+    {
+      "customer": "EMIRCOM",
+      "revenue": 9586308.0,
+      "types": "Recurring",
+      "company": "Kandy"
+    },
+    {
+      "customer": "NS Solutions Corporation",
+      "revenue": 3070126.25,
+      "types": "Recurring",
+      "company": "NewNet"
+    },
+    {
+      "customer": "Liquid Telecom",
+      "revenue": 2758024.75,
+      "types": "Recurring,Non-Recurring",
+      "company": "Cloudsense Consulting"
+    },
+    {
+      "customer": "Telefonica UK Limited",
+      "revenue": 2631071.2624999997,
+      "types": "Recurring",
+      "company": "Cloudsense"
+    },
+    {
+      "customer": "AT&T SERVICES, INC.",
+      "revenue": 2497845.0,
+      "types": "Recurring",
+      "company": "Kandy"
+    },
+    {
+      "customer": "Telstra Corporation Limited",
+      "revenue": 2465000.0,
+      "types": "Recurring,Non-Recurring",
+      "company": "Cloudsense Consulting"
+    },
+    {
+      "customer": "Vodafone Netherlands",
+      "revenue": 2303987.5375,
+      "types": "Recurring,Non-Recurring",
+      "company": "Cloudsense Product"
+    },
+    {
+      "customer": "New Sales Ps -  <Masergy>",
+      "revenue": 1924000.0,
+      "types": "Non-Recurring",
+      "company": "Cloudsense Consulting"
+    },
+    {
+      "customer": "Maxis Broadband Sdn Bhd",
+      "revenue": 1705244.0625,
+      "types": "Recurring",
+      "company": "Cloudsense"
+    },
+    {
+      "customer": "Spotify",
+      "revenue": 1587300.0,
+      "types": "Recurring",
+      "company": "Cloudsense"
+    },
+    {
+      "customer": "TRANSCOM",
+      "revenue": 1235829.3,
+      "types": "Recurring",
+      "company": "VoltDelta"
+    },
+    {
+      "customer": "PostNL Holding BV",
+      "revenue": 1152989.5,
+      "types": "Recurring",
+      "company": "Cloudsense"
+    },
+    {
+      "customer": "StarHub Ltd",
+      "revenue": 1149048.625,
+      "types": "Recurring",
+      "company": "Cloudsense"
+    },
+    {
+      "customer": "Elisa Oyj",
+      "revenue": 1121444.3375000001,
+      "types": "Recurring",
+      "company": "Cloudsense"
+    },
+    {
+      "customer": "Centrica Services Ltd",
+      "revenue": 1053982.65,
+      "types": "Recurring,Non-Recurring",
+      "company": "Cloudsense Product"
+    },
+    {
+      "customer": "Abbott Laboratories",
+      "revenue": 1021159.5,
+      "types": "Recurring",
+      "company": "Cloudsense"
+    },
+    {
+      "customer": "New Sales Ps - Go Get",
+      "revenue": 834000.0,
+      "types": "Non-Recurring",
+      "company": "Cloudsense Consulting"
+    },
+    {
+      "customer": "Virgin Media Limited",
+      "revenue": 819509.3875,
+      "types": "Recurring",
+      "company": "Cloudsense"
+    },
+    {
+      "customer": "Foxtel Management Pty Limited",
+      "revenue": 800325.65,
+      "types": "Recurring",
+      "company": "Cloudsense"
+    },
+    {
+      "customer": "Dplay Entertainment Ltd",
+      "revenue": 800000.04,
+      "types": "Non-Recurring",
+      "company": "Cloudsense Consulting"
+    }
+  ],
+  "nrr_declining": [
+    {
+      "customer": "Liquid Telecommunications Operations Limited",
+      "ttm": 1303760.02,
+      "fy26": 0.0,
+      "change": -1303760.02
+    },
+    {
+      "customer": "Masergy Communications, Inc.",
+      "ttm": 1268249.88,
+      "fy26": 0.0,
+      "change": -1268249.88
+    },
+    {
+      "customer": "Teleindia Networks Private Limited",
+      "ttm": 897278.8799999999,
+      "fy26": 225000.0,
+      "change": -672278.8799999999
+    },
+    {
+      "customer": "A1 Telekom Austria Ag.",
+      "ttm": 667119.05,
+      "fy26": 210248.76,
+      "change": -456870.29000000004
+    },
+    {
+      "customer": "Telstra Corporation Limited",
+      "ttm": 413126.05,
+      "fy26": 0.0,
+      "change": -413126.05
+    },
+    {
+      "customer": "Commverge Solutions Philippines Inc.",
+      "ttm": 402000.0,
+      "fy26": 0.0,
+      "change": -402000.0
+    },
+    {
+      "customer": "Accenture Singapore",
+      "ttm": 393408.36999999994,
+      "fy26": 0.0,
+      "change": -393408.36999999994
+    },
+    {
+      "customer": "Telstra International Limited",
+      "ttm": 291535.62,
+      "fy26": 0.0,
+      "change": -291535.62
+    },
+    {
+      "customer": "Ofcom",
+      "ttm": 218769.58000000002,
+      "fy26": 0.0,
+      "change": -218769.58000000002
+    },
+    {
+      "customer": "Centrica Services Ltd",
+      "ttm": 208464.87000000002,
+      "fy26": 0.0,
+      "change": -208464.87000000002
+    }
+  ]
+}
