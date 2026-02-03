@@ -18,7 +18,8 @@
         }
       ],
       "rank": 1,
-      "pct_of_total": 47.40248967969391
+      "pct_of_total": 47.40248967969391,
+      "region": "Americas"
     },
     {
       "customer_name": "Commverge Solutions Philippines Inc.",
@@ -42,7 +43,8 @@
         }
       ],
       "rank": 2,
-      "pct_of_total": 8.925517354700478
+      "pct_of_total": 8.925517354700478,
+      "region": "APAC"
     },
     {
       "customer_name": "Teleindia Networks Private Limited",
@@ -80,7 +82,8 @@
         }
       ],
       "rank": 3,
-      "pct_of_total": 8.799136769325411
+      "pct_of_total": 8.799136769325411,
+      "region": "APAC"
     },
     {
       "customer_name": "PT. Supra Primatama Nusantara",
@@ -97,7 +100,8 @@
         }
       ],
       "rank": 4,
-      "pct_of_total": 7.081628954998598
+      "pct_of_total": 7.081628954998598,
+      "region": "APAC"
     },
     {
       "customer_name": "Ericsson Telecommunications, Inc.",
@@ -114,7 +118,8 @@
         }
       ],
       "rank": 5,
-      "pct_of_total": 4.560080616149201
+      "pct_of_total": 4.560080616149201,
+      "region": "Americas"
     },
     {
       "customer_name": "PT. Sisindokom Lintasbuana",
@@ -131,7 +136,8 @@
         }
       ],
       "rank": 6,
-      "pct_of_total": 4.516932022692971
+      "pct_of_total": 4.516932022692971,
+      "region": "APAC"
     }
   ]
 }

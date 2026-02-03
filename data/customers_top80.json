@@ -1,0 +1,458 @@
+{
+  "total_revenue": 33221382.41000001,
+  "top_80_count": 24,
+  "top_80_revenue": 33221382.41000001,
+  "customers": [
+    {
+      "customer_name": "Liquid Telecom",
+      "rr": 1073619.8,
+      "nrr": 1416000.0,
+      "total": 2489619.8,
+      "subscriptions": [
+        {
+          "sub_id": 1797503.0,
+          "arr": 1073619.8,
+          "renewal_qtr": "Q4'26",
+          "will_renew": "Yes",
+          "projected_arr": 1342024.75
+        }
+      ],
+      "rank": 1,
+      "pct_of_total": 7.494028301635625,
+      "region": "Americas"
+    },
+    {
+      "customer_name": "Masergy Communications, Inc.",
+      "rr": 349943.99,
+      "nrr": 1924000.0,
+      "total": 2273943.99,
+      "subscriptions": [
+        {
+          "sub_id": 1781385.0,
+          "arr": 349943.99,
+          "renewal_qtr": "Next Yr",
+          "will_renew": "Yes",
+          "projected_arr": 437429.9875
+        }
+      ],
+      "rank": 2,
+      "pct_of_total": 6.844820489214554,
+      "region": "Americas"
+    },
+    {
+      "customer_name": "Telefonica UK Limited",
+      "rr": 2104857.01,
+      "nrr": 0,
+      "total": 2104857.01,
+      "subscriptions": [
+        {
+          "sub_id": 1664529.0,
+          "arr": 2104857.01,
+          "renewal_qtr": "Q1'26",
+          "will_renew": "Yes",
+          "projected_arr": 2631071.2624999997
+        }
+      ],
+      "rank": 3,
+      "pct_of_total": 6.335850158259561,
+      "region": "EMEA"
+    },
+    {
+      "customer_name": "Telstra Corporation Limited",
+      "rr": 1972000.0,
+      "nrr": 0,
+      "total": 1972000.0,
+      "subscriptions": [
+        {
+          "sub_id": 1558381.0,
+          "arr": 1972000.0,
+          "renewal_qtr": "Next Yr",
+          "will_renew": "Yes",
+          "projected_arr": 2465000.0
+        }
+      ],
+      "rank": 4,
+      "pct_of_total": 5.935936005499897,
+      "region": "APAC"
+    },
+    {
+      "customer_name": "Vodafone Netherlands",
+      "rr": 1843190.03,
+      "nrr": 0,
+      "total": 1843190.03,
+      "subscriptions": [
+        {
+          "sub_id": 1693696.0,
+          "arr": 1843190.03,
+          "renewal_qtr": "Next Yr",
+          "will_renew": "Yes",
+          "projected_arr": 2303987.5375
+        }
+      ],
+      "rank": 5,
+      "pct_of_total": 5.548203886437848,
+      "region": "EMEA"
+    },
+    {
+      "customer_name": "Spotify",
+      "rr": 1587300.0,
+      "nrr": 0,
+      "total": 1587300.0,
+      "subscriptions": [
+        {
+          "sub_id": 1780181.0,
+          "arr": 1587300.0,
+          "renewal_qtr": "Next Yr",
+          "will_renew": "Yes",
+          "projected_arr": 1587300.0
+        }
+      ],
+      "rank": 6,
+      "pct_of_total": 4.777946866901615,
+      "region": "Americas"
+    },
+    {
+      "customer_name": "British Telecommunications plc",
+      "rr": 1404790.63,
+      "nrr": 0,
+      "total": 1404790.63,
+      "subscriptions": [
+        {
+          "sub_id": 1674347.0,
+          "arr": 1404790.63,
+          "renewal_qtr": "Q1'26",
+          "will_renew": "No (SF)",
+          "projected_arr": 0
+        }
+      ],
+      "rank": 7,
+      "pct_of_total": 4.228573671808257,
+      "region": "EMEA"
+    },
+    {
+      "customer_name": "Maxis Broadband Sdn Bhd",
+      "rr": 1364195.25,
+      "nrr": 0,
+      "total": 1364195.25,
+      "subscriptions": [
+        {
+          "sub_id": 1558377.0,
+          "arr": 1234734.0,
+          "renewal_qtr": "Q4'25",
+          "will_renew": "Yes",
+          "projected_arr": 1543417.5
+        },
+        {
+          "sub_id": 1558755.0,
+          "arr": 129461.25,
+          "renewal_qtr": "Q4'25",
+          "will_renew": "Yes",
+          "projected_arr": 161826.5625
+        }
+      ],
+      "rank": 8,
+      "pct_of_total": 4.106377131342258,
+      "region": "APAC"
+    },
+    {
+      "customer_name": "DPLAY ENTERTAINMENT LTD",
+      "rr": 427660.68,
+      "nrr": 800000.04,
+      "total": 1227660.72,
+      "subscriptions": [
+        {
+          "sub_id": 1729540.0,
+          "arr": 427660.68,
+          "renewal_qtr": "Q2'26",
+          "will_renew": "Yes",
+          "projected_arr": 534575.85
+        }
+      ],
+      "rank": 9,
+      "pct_of_total": 3.6953932405608145,
+      "region": "Americas"
+    },
+    {
+      "customer_name": "Centrica Services Ltd",
+      "rr": 1053982.65,
+      "nrr": 0,
+      "total": 1053982.65,
+      "subscriptions": [
+        {
+          "sub_id": 1690990.0,
+          "arr": 1053982.65,
+          "renewal_qtr": "Q2'26",
+          "will_renew": "Yes",
+          "projected_arr": 1053982.65
+        }
+      ],
+      "rank": 10,
+      "pct_of_total": 3.172603225815008,
+      "region": "Americas"
+    },
+    {
+      "customer_name": "StarHub Ltd",
+      "rr": 919238.9,
+      "nrr": 0,
+      "total": 919238.9,
+      "subscriptions": [
+        {
+          "sub_id": 1788495.0,
+          "arr": 749638.9,
+          "renewal_qtr": "Q4'26",
+          "will_renew": "Yes",
+          "projected_arr": 937048.625
+        },
+        {
+          "sub_id": 1788494.0,
+          "arr": 169600.0,
+          "renewal_qtr": "Q4'26",
+          "will_renew": "Yes",
+          "projected_arr": 212000.0
+        }
+      ],
+      "rank": 11,
+      "pct_of_total": 2.767009778988904,
+      "region": "APAC"
+    },
+    {
+      "customer_name": "Elisa Oyj",
+      "rr": 897155.47,
+      "nrr": 0,
+      "total": 897155.47,
+      "subscriptions": [
+        {
+          "sub_id": 1785589.0,
+          "arr": 723512.49,
+          "renewal_qtr": "Next Yr",
+          "will_renew": "Yes",
+          "projected_arr": 904390.6125
+        },
+        {
+          "sub_id": 1785891.0,
+          "arr": 173642.98,
+          "renewal_qtr": "Next Yr",
+          "will_renew": "Yes",
+          "projected_arr": 217053.725
+        }
+      ],
+      "rank": 12,
+      "pct_of_total": 2.700536235752628,
+      "region": "EMEA"
+    },
+    {
+      "customer_name": "New Sales Ps - Go Get",
+      "rr": 0,
+      "nrr": 834000.0,
+      "total": 834000.0,
+      "subscriptions": [],
+      "rank": 13,
+      "pct_of_total": 2.5104313532388,
+      "region": "EMEA"
+    },
+    {
+      "customer_name": "Abbott Laboratories",
+      "rr": 816927.6,
+      "nrr": 0,
+      "total": 816927.6,
+      "subscriptions": [
+        {
+          "sub_id": 1665729.0,
+          "arr": 816927.6,
+          "renewal_qtr": "Next Yr",
+          "will_renew": "Yes",
+          "projected_arr": 1021159.5
+        }
+      ],
+      "rank": 14,
+      "pct_of_total": 2.4590415591919967,
+      "region": "Americas"
+    },
+    {
+      "customer_name": "A1 Telekom Austria AG.",
+      "rr": 550573.91,
+      "nrr": 210248.76,
+      "total": 760822.67,
+      "subscriptions": [
+        {
+          "sub_id": 1558386.0,
+          "arr": 520967.79,
+          "renewal_qtr": "Q2'26",
+          "will_renew": "Yes",
+          "projected_arr": 651209.7374999999
+        },
+        {
+          "sub_id": 1558395.0,
+          "arr": 29606.12,
+          "renewal_qtr": "Q3'26",
+          "will_renew": "Yes",
+          "projected_arr": 37007.65
+        }
+      ],
+      "rank": 15,
+      "pct_of_total": 2.2901595743679346,
+      "region": "EMEA"
+    },
+    {
+      "customer_name": "Advance Publications US",
+      "rr": 659200.0,
+      "nrr": 0,
+      "total": 659200.0,
+      "subscriptions": [
+        {
+          "sub_id": 1780082.0,
+          "arr": 659200.0,
+          "renewal_qtr": "Next Yr",
+          "will_renew": "Yes",
+          "projected_arr": 659200.0
+        }
+      ],
+      "rank": 16,
+      "pct_of_total": 1.9842642063009797,
+      "region": "Americas"
+    },
+    {
+      "customer_name": "Virgin Media Limited",
+      "rr": 655607.51,
+      "nrr": 0,
+      "total": 655607.51,
+      "subscriptions": [
+        {
+          "sub_id": 1558418.0,
+          "arr": 655607.51,
+          "renewal_qtr": "Q2'26",
+          "will_renew": "Yes",
+          "projected_arr": 819509.3875
+        }
+      ],
+      "rank": 17,
+      "pct_of_total": 1.9734504178930696,
+      "region": "EMEA"
+    },
+    {
+      "customer_name": "Foxtel Management Pty Limited",
+      "rr": 640260.52,
+      "nrr": 0,
+      "total": 640260.52,
+      "subscriptions": [
+        {
+          "sub_id": 1786391.0,
+          "arr": 640260.52,
+          "renewal_qtr": "Next Yr",
+          "will_renew": "Yes",
+          "projected_arr": 800325.65
+        }
+      ],
+      "rank": 18,
+      "pct_of_total": 1.9272542969412203,
+      "region": "APAC"
+    },
+    {
+      "customer_name": "PostNL Holding BV",
+      "rr": 576494.75,
+      "nrr": 0,
+      "total": 576494.75,
+      "subscriptions": [
+        {
+          "sub_id": 1558410.0,
+          "arr": 576494.75,
+          "renewal_qtr": "Next Yr",
+          "will_renew": "Yes",
+          "projected_arr": 1152989.5
+        }
+      ],
+      "rank": 19,
+      "pct_of_total": 1.7353123445774146,
+      "region": "EMEA"
+    },
+    {
+      "customer_name": "Thryv Australia Pty Ltd",
+      "rr": 567978.58,
+      "nrr": 0,
+      "total": 567978.58,
+      "subscriptions": [
+        {
+          "sub_id": 1664230.0,
+          "arr": 567978.58,
+          "renewal_qtr": "Q1'26",
+          "will_renew": "No",
+          "projected_arr": 0
+        }
+      ],
+      "rank": 20,
+      "pct_of_total": 1.7096777400480239,
+      "region": "APAC"
+    },
+    {
+      "customer_name": "Luminus Hasselt NV/SA",
+      "rr": 541643.21,
+      "nrr": 0,
+      "total": 541643.21,
+      "subscriptions": [
+        {
+          "sub_id": 1558957.0,
+          "arr": 493023.17,
+          "renewal_qtr": "Next Yr",
+          "will_renew": "Yes",
+          "projected_arr": 616278.9625
+        },
+        {
+          "sub_id": 1757129.0,
+          "arr": 48620.04,
+          "renewal_qtr": "Next Yr",
+          "will_renew": "Yes",
+          "projected_arr": 60775.05
+        }
+      ],
+      "rank": 21,
+      "pct_of_total": 1.6304053916701529,
+      "region": "EMEA"
+    },
+    {
+      "customer_name": "Telefonica Germany GmbH & Co. OHG",
+      "rr": 460063.27,
+      "nrr": 0,
+      "total": 460063.27,
+      "subscriptions": [
+        {
+          "sub_id": 1675050.0,
+          "arr": 460063.27,
+          "renewal_qtr": "Next Yr",
+          "will_renew": "Yes",
+          "projected_arr": 575079.0875
+        }
+      ],
+      "rank": 22,
+      "pct_of_total": 1.384840836308834,
+      "region": "EMEA"
+    },
+    {
+      "customer_name": "CoreSite",
+      "rr": 456285.2,
+      "nrr": 0,
+      "total": 456285.2,
+      "subscriptions": [
+        {
+          "sub_id": 1796301.0,
+          "arr": 456285.2,
+          "renewal_qtr": "Q3'26",
+          "will_renew": "No",
+          "projected_arr": 0
+        }
+      ],
+      "rank": 23,
+      "pct_of_total": 1.3734684317731853,
+      "region": "Americas"
+    },
+    {
+      "customer_name": "Telstra - Ges(a)",
+      "rr": 0,
+      "nrr": 431900.0,
+      "total": 431900.0,
+      "subscriptions": [],
+      "rank": 24,
+      "pct_of_total": 1.3000663087096376,
+      "region": "APAC"
+    }
+  ]
+}

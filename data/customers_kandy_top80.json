@@ -18,7 +18,8 @@
         }
       ],
       "rank": 1,
-      "pct_of_total": 70.4731407443919
+      "pct_of_total": 70.4731407443919,
+      "region": "Americas"
     },
     {
       "customer_name": "AT&T SERVICES, INC.",
@@ -77,7 +78,8 @@
         }
       ],
       "rank": 2,
-      "pct_of_total": 18.51294266309377
+      "pct_of_total": 18.51294266309377,
+      "region": "Americas"
     }
   ]
 }
