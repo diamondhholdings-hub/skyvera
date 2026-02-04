@@ -152,6 +152,73 @@
             margin: 2rem 0;
         }
 
+/* Alert Banner */
+        .alert-banner {
+            background: linear-gradient(135deg, var(--accent) 0%, #b33a26 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            margin: 0 0 2rem;
+            border-left: 4px solid #8b1a1a;
+            box-shadow: 0 4px 12px rgba(200, 75, 49, 0.3);
+            border-radius: 4px;
+        }
+
+        .alert-banner h3 {
+            color: white;
+            margin-bottom: 0.75rem;
+            font-size: 1.3rem;
+        }
+
+        .alert-banner p {
+            margin: 0.5rem 0 0;
+            line-height: 1.6;
+            opacity: 0.95;
+        }
+
+        .keys-to-success {
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.08) 0%, rgba(76, 175, 80, 0.02) 100%);
+            border: 1px solid rgba(76, 175, 80, 0.2);
+            padding: 2rem;
+            margin: 0 0 2rem;
+            border-radius: 4px;
+        }
+
+        .keys-to-success h2 {
+            color: #2e7d32;
+            margin-bottom: 1.5rem;
+        }
+
+        .priority-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .priority-card {
+            background: white;
+            padding: 1.5rem;
+            border-left: 4px solid #4caf50;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border-radius: 4px;
+        }
+
+        .priority-card .priority-label {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #4caf50;
+            margin-bottom: 0.75rem;
+            letter-spacing: 0.5px;
+        }
+
+        .priority-card .priority-action {
+            font-size: 1.15rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            color: var(--secondary);
+            line-height: 1.4;
+        }
+
         .footer {
             background: var(--secondary);
             color: var(--paper);
@@ -217,11 +284,367 @@
     </div>
 
     <div class="container">
-        <div class="pending-notice">
-            <h2 style="margin-bottom: 1rem;">⏳ Account Intelligence In Progress</h2>
-            <p>Comprehensive account plan intelligence (executives, pain points, competitive analysis, opportunities) will be populated here once customer research is complete.</p>
-            <p style="margin-top: 1rem;"><strong>Status:</strong> Awaiting customer-intelligence-analyst research for NS Solutions Corporation</p>
+        
+        
+
+        
+        <!-- Customer Intelligence Section -->
+        
+        <div class="card" style="background: linear-gradient(135deg, #4caf5015 0%, #4caf5005 100%); border-left: 4px solid #4caf50;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <div style="font-size: 0.85rem; font-weight: 600; text-transform: uppercase; color: #4caf50; margin-bottom: 0.5rem;">
+                        ✅ RENEWAL EXPECTED
+                    </div>
+                    <h2 style="margin: 0;">Renewal: Next Yr</h2>
+                    <p style="color: var(--muted); margin-top: 0.5rem;">Contract End Date: June 01, 2027</p>
+                </div>
+                <div style="text-align: right;">
+                    <div style="font-size: 3rem; color: #4caf50;">✅</div>
+                </div>
+            </div>
         </div>
+        
+
+        <div class="card" style="background: linear-gradient(135deg, #4caf5015 0%, #4caf5005 100%); border-left: 4px solid #4caf50;">
+            <h2>📊 Strategic Health Score</h2>
+            <div style="display: flex; align-items: center; gap: 2rem; margin-top: 1rem;">
+                <div style="font-size: 4rem; font-weight: 700; color: #4caf50;">8.0/10</div>
+                <div style="flex: 1;">
+                    <div style="background: #e0e0e0; height: 20px; border-radius: 10px; overflow: hidden;">
+                        <div style="background: #4caf50; height: 100%; width: 80.0%; transition: width 0.3s;"></div>
+                    </div>
+                    <p style="margin-top: 0.5rem; color: var(--muted); font-size: 0.9rem;">
+                        HEALTHY - Strong relationship
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+
+        <div class="card">
+            <h2>🎯 Key Strategic Insights</h2>
+            <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 1rem;">
+                
+            <div class="metric-box" style="flex: 1; min-width: 250px;">
+                <div style="font-size: 2rem; margin-bottom: 0.5rem;">🟢</div>
+                <div class="label" style="font-weight: 600; color: var(--ink); margin-bottom: 0.5rem;">HIGH CONFIDENCE</div>
+                <div style="font-size: 0.85rem; line-height: 1.5;">NS Solutions is experiencing exceptional financial performance with record highs in revenue, gross profit, operating profit, and net income for FY2025...</div>
+            </div>
+            
+            <div class="metric-box" style="flex: 1; min-width: 250px;">
+                <div style="font-size: 2rem; margin-bottom: 0.5rem;">🟢</div>
+                <div class="label" style="font-weight: 600; color: var(--ink); margin-bottom: 0.5rem;">HIGH CONFIDENCE</div>
+                <div style="font-size: 0.85rem; line-height: 1.5;">The company has ambitious growth targets - aiming to more than double operating profit to JPY 100 billion by 2030, with revenue targets of JPY 500 bil...</div>
+            </div>
+            
+            <div class="metric-box" style="flex: 1; min-width: 250px;">
+                <div style="font-size: 2rem; margin-bottom: 0.5rem;">🟢</div>
+                <div class="label" style="font-weight: 600; color: var(--ink); margin-bottom: 0.5rem;">HIGH CONFIDENCE</div>
+                <div style="font-size: 0.85rem; line-height: 1.5;">Active M&A strategy with acquisition of INFOCOM Corporation (JPY 55 billion / ~$375M) completed July 2025, expanding workforce to 10,000+ employees....</div>
+            </div>
+            
+            <div class="metric-box" style="flex: 1; min-width: 250px;">
+                <div style="font-size: 2rem; margin-bottom: 0.5rem;">🟢</div>
+                <div class="label" style="font-weight: 600; color: var(--ink); margin-bottom: 0.5rem;">MEDIUM CONFIDENCE</div>
+                <div style="font-size: 0.85rem; line-height: 1.5;">Strong alignment with digital transformation and cloud services - core capabilities that likely support the NewNet relationship....</div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="card">
+            <h2>⚠️ Pain Points & Strategic Initiatives</h2>
+            <div style="margin-top: 1rem;">
+                <h3 id="nssol-2030-vision">NSSOL 2030 Vision</h3>
+
+<p>NS Solutions has positioned FY2025 as the year of "second founding" with the NSSOL 2030 Vision establishing the strategic direction:</p>
+
+<p><strong>Vision Statement:</strong> "Social Value Producer with Digital"</p>
+
+<p><strong>Core Objectives:</strong>
+1. Create value that broadly supports society and industries
+2. Leverage digital technology to envision the future of society
+3. Transform from traditional SI company to digital value creator</p>
+
+<h3 id="2025-2027-medium-term-business-plan">2025-2027 Medium-Term Business Plan</h3>
+
+<p><strong>Four Key Transformations:</strong></p>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Transformation</th>
+  <th>Focus Area</th>
+  <th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>1. SI Business Model</td>
+  <td>TAM-type SI</td>
+  <td>Incorporate generative AI for enhanced productivity</td>
+</tr>
+<tr>
+  <td>2. Customer Approach</td>
+  <td>Management Agenda</td>
+  <td>Address broader management and social issues</td>
+</tr>
+<tr>
+  <td>3. IT Service Platforms</td>
+  <td>Asset Building</td>
+  <td>Build provision-type platforms, enhance R&amp;D</td>
+</tr>
+<tr>
+  <td>4. Operational Excellence</td>
+  <td>Data-Driven</td>
+  <td>Improve productivity, establish data-driven management</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="technology-innovation-centers">Technology &amp; Innovation Centers</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Center</th>
+  <th>Established</th>
+  <th>Focus</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>IoX Solution Business Promotion Dept</td>
+  <td>April 2016</td>
+  <td>IoT solutions</td>
+</tr>
+<tr>
+  <td>AI Research Development Center</td>
+  <td>October 2017</td>
+  <td>Artificial intelligence</td>
+</tr>
+<tr>
+  <td>Enterprise 5G Business Promotion Dept</td>
+  <td>April 2020</td>
+  <td>5G enterprise solutions</td>
+</tr>
+<tr>
+  <td>Digital Transformation &amp; Innovation Center (DXIC)</td>
+  <td>April 2020</td>
+  <td>DX strategy</td>
+</tr>
+<tr>
+  <td>Manufacturing Industry DX Center (MDXC)</td>
+  <td>April 2021</td>
+  <td>Manufacturing DX</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="recent-ma-activity">Recent M&amp;A Activity</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Target</th>
+  <th>Date</th>
+  <th>Value</th>
+  <th>Strategic Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>INFOCOM Corporation</td>
+  <td>July 2025</td>
+  <td>JPY 55B (~$375M)</td>
+  <td>Healthcare sector, mid-market expansion</td>
+</tr>
+<tr>
+  <td>PT. WCS ABYAKTA NAWASENA</td>
+  <td>June 2025</td>
+  <td>Undisclosed</td>
+  <td>Indonesia market expansion</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="global-resource-strategy">Global Resource Strategy</h3>
+
+<ul>
+<li>Establishment of India Utilization Promotion Group</li>
+<li>Leverage IT resources from India, China, Vietnam</li>
+<li>Target: Double overseas sales by 2027</li>
+<li>Launch of new core business system: NSSOL IGNAS</li>
+</ul>
+
+<hr />
+
+            </div>
+        </div>
+        
+
+        <div class="card">
+            <h2>🏆 Competitive Landscape</h2>
+            <div style="margin-top: 1rem;">
+                <h3 id="japan-it-services-market">Japan IT Services Market</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Metric</th>
+  <th>FY2024</th>
+  <th>FY2028 Forecast</th>
+  <th>CAGR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Domestic IT Market</td>
+  <td>JPY 30.4T</td>
+  <td>JPY 40.5T</td>
+  <td>7%</td>
+</tr>
+<tr>
+  <td>Domestic DX Market</td>
+  <td>Growing</td>
+  <td>Growing</td>
+  <td>10%</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="competitive-landscape">Competitive Landscape</h3>
+
+<p><strong>Tier 1 Competitors (Major Japanese SIs):</strong></p>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Company</th>
+  <th>Market Position</th>
+  <th>2023 Revenue</th>
+  <th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>NTT Data</td>
+  <td>#1</td>
+  <td>JPY 2.5T+</td>
+  <td>Dominant national infrastructure</td>
+</tr>
+<tr>
+  <td>NEC</td>
+  <td>#2</td>
+  <td>JPY 1.3T</td>
+  <td>8.9% market share</td>
+</tr>
+<tr>
+  <td>Fujitsu</td>
+  <td>#3</td>
+  <td>JPY 1.2T</td>
+  <td>8.1% market share</td>
+</tr>
+<tr>
+  <td>Hitachi</td>
+  <td>Top 5</td>
+  <td>N/A</td>
+  <td>Full-stack IT services</td>
+</tr>
+<tr>
+  <td><strong>NS Solutions</strong></td>
+  <td>Mid-tier</td>
+  <td>JPY 338B</td>
+  <td>Specialized, Nippon Steel backed</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>NSSOL Competitive Advantages:</strong>
+- Strong manufacturing sector expertise (Nippon Steel heritage)
+- Established keiretsu relationships
+- Cloud and security specialization
+- Aggressive M&amp;A and expansion strategy</p>
+
+<p><strong>Competitive Vulnerabilities:</strong>
+- Smaller scale vs. Tier 1 players
+- Concentrated parent company relationship
+- Talent competition in tight labor market</p>
+
+<hr />
+
+            </div>
+        </div>
+        
+
+        <div class="card">
+            <h2>🚀 Opportunities & Growth Potential</h2>
+            <div style="margin-top: 1rem;">
+                <h3 id="expansion-opportunities">Expansion Opportunities</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Opportunity</th>
+  <th>Potential Value</th>
+  <th>Probability</th>
+  <th>Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>INFOCOM Integration</td>
+  <td>$200K-500K</td>
+  <td>Medium</td>
+  <td>New subsidiary may need NewNet solutions</td>
+</tr>
+<tr>
+  <td>Indonesia Expansion</td>
+  <td>$100K-200K</td>
+  <td>Medium</td>
+  <td>WCS acquisition creates APAC opportunity</td>
+</tr>
+<tr>
+  <td>5G/Telecom Expansion</td>
+  <td>$300K-500K</td>
+  <td>Medium-High</td>
+  <td>Enterprise 5G unit aligned with NewNet</td>
+</tr>
+<tr>
+  <td>Manufacturing DX</td>
+  <td>$150K-300K</td>
+  <td>Medium</td>
+  <td>MDXC center may leverage network solutions</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Total Expansion Potential:</strong> $750K - $1.5M (30-60% growth opportunity)</p>
+
+<h3 id="strategic-partnership-opportunities">Strategic Partnership Opportunities</h3>
+
+<ol>
+<li><strong>Technology Partnership:</strong> Joint development for manufacturing DX solutions</li>
+<li><strong>Reseller Agreement:</strong> NSSOL as channel partner in Japan market</li>
+<li><strong>Reference Customer:</strong> Leverage as flagship case study in Japan/APAC</li>
+</ol>
+
+<h3 id="upsellcross-sell-targets">Upsell/Cross-Sell Targets</h3>
+
+<p>Based on NSSOL's strategic initiatives:
+- Security solutions (aligned with cybersecurity focus)
+- Cloud integration tools
+- 5G network management solutions
+- IoT platform capabilities</p>
+
+<hr />
+
+            </div>
+        </div>
+        
+        
 
         <div class="card">
             <h2>Account Overview</h2>
@@ -286,7 +709,7 @@
 
     <div class="footer">
         <p><strong>NS Solutions Corporation Strategic Account Plan</strong> | NewNet Business Unit | Skyvera</p>
-        <p style="margin-top: 0.5rem;">Generated: February 03, 2026 | Confidential - Internal Use Only</p>
+        <p style="margin-top: 0.5rem;">Generated: February 04, 2026 | Confidential - Internal Use Only</p>
     </div>
 </body>
 </html>

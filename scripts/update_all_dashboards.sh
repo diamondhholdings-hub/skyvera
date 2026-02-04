@@ -12,7 +12,7 @@ echo "SKYVERA MASTER DASHBOARD UPDATE - $(date)"
 echo "==================================================================="
 echo ""
 echo "This script will:"
-echo "  1. Extract customer data for all BUs (Kandy, STL, NewNet)"
+echo "  1. Extract customer data for all BUs (top 80% for dashboards, 100% for analytics)"
 echo "  2. Add region classifications"
 echo "  3. Fetch latest news for all customers"
 echo "  4. Regenerate all BU-specific dashboards"
@@ -24,20 +24,18 @@ echo ""
 # STEP 1: Extract Customer Data
 # =============================================================================
 echo "==================================================================="
-echo "[STEP 1/6] EXTRACTING CUSTOMER DATA - $(date '+%H:%M:%S')"
+echo "[STEP 1/7] EXTRACTING CUSTOMER DATA - $(date '+%H:%M:%S')"
 echo "==================================================================="
 echo ""
 
-echo "→ Extracting Kandy customers..."
+echo "→ Extracting top 80% customers for dashboards..."
 python3 scripts/extract_kandy_customers.py
-echo ""
-
-echo "→ Extracting STL customers..."
 python3 scripts/extract_stl_customers.py
+python3 scripts/extract_newnet_customers.py
 echo ""
 
-echo "→ Extracting NewNet customers..."
-python3 scripts/extract_newnet_customers.py
+echo "→ Extracting ALL customers (100%) for analytics..."
+python3 scripts/extract_all_customers.py
 echo ""
 
 echo "✅ Customer data extraction complete"
@@ -47,21 +45,48 @@ echo ""
 # STEP 2: Add Region Classifications
 # =============================================================================
 echo "==================================================================="
-echo "[STEP 2/6] ADDING REGION CLASSIFICATIONS - $(date '+%H:%M:%S')"
+echo "[STEP 2/7] ADDING REGION CLASSIFICATIONS - $(date '+%H:%M:%S')"
 echo "==================================================================="
 echo ""
 
+echo "→ Adding regions to top 80% customer files..."
 python3 scripts/add_region_to_customers.py
 echo ""
 
-echo "✅ Region classification complete"
+echo "→ Adding regions to all-customer files..."
+python3 << 'EOF'
+import json
+from pathlib import Path
+exec(open('scripts/add_region_to_customers.py').read())
+
+files = [
+    'data/customers_cloudsense_all.json',
+    'data/customers_kandy_all.json',
+    'data/customers_stl_all.json',
+    'data/customers_newnet_all.json'
+]
+
+for filepath in files:
+    with open(filepath, 'r') as f:
+        data = json.load(f)
+
+    for customer in data['customers']:
+        customer['region'] = classify_region(customer['customer_name'])
+
+    with open(filepath, 'w') as f:
+        json.dump(data, f, indent=2)
+
+    print(f"  ✅ {filepath}")
+
+print("\n✅ Region classification complete for all customer files")
+EOF
 echo ""
 
 # =============================================================================
 # STEP 3: Fetch Customer News (if script exists)
 # =============================================================================
 echo "==================================================================="
-echo "[STEP 3/6] FETCHING CUSTOMER NEWS - $(date '+%H:%M:%S')"
+echo "[STEP 3/7] FETCHING CUSTOMER NEWS - $(date '+%H:%M:%S')"
 echo "==================================================================="
 echo ""
 
@@ -79,7 +104,7 @@ echo ""
 # STEP 4: Regenerate All BU Dashboards
 # =============================================================================
 echo "==================================================================="
-echo "[STEP 4/6] REGENERATING ALL DASHBOARDS - $(date '+%H:%M:%S')"
+echo "[STEP 4/7] REGENERATING ALL DASHBOARDS - $(date '+%H:%M:%S')"
 echo "==================================================================="
 echo ""
 
@@ -106,7 +131,7 @@ echo ""
 # STEP 5: Regenerate All Index Pages
 # =============================================================================
 echo "==================================================================="
-echo "[STEP 5/6] REGENERATING INDEX PAGES - $(date '+%H:%M:%S')"
+echo "[STEP 5/7] REGENERATING INDEX PAGES - $(date '+%H:%M:%S')"
 echo "==================================================================="
 echo ""
 
@@ -130,19 +155,42 @@ echo "✅ All index pages regenerated"
 echo ""
 
 # =============================================================================
-# STEP 6: Master Analytics Dashboard
+# STEP 6: Regenerate Master Analytics Dashboard
 # =============================================================================
 echo "==================================================================="
-echo "[STEP 6/6] UPDATING MASTER ANALYTICS - $(date '+%H:%M:%S')"
+echo "[STEP 6/7] REGENERATING MASTER ANALYTICS - $(date '+%H:%M:%S')"
 echo "==================================================================="
 echo ""
 
-if [ -f "output/analytics.html" ]; then
-    echo "✅ Master analytics dashboard exists at output/analytics.html"
-else
-    echo "⚠️  Master analytics dashboard not found at output/analytics.html"
-    echo "   To create it, use the analytics dashboard generation script"
-fi
+echo "→ Generating analytics dashboard with ALL customers..."
+python3 scripts/generate_analytics_dashboard.py
+echo ""
+
+echo "✅ Master analytics dashboard regenerated"
+echo ""
+
+# =============================================================================
+# STEP 7: Verification
+# =============================================================================
+echo "==================================================================="
+echo "[STEP 7/7] VERIFYING OUTPUTS - $(date '+%H:%M:%S')"
+echo "==================================================================="
+echo ""
+
+# Count files
+CLOUDSENSE_DASHBOARDS=$(ls output/*.html 2>/dev/null | wc -l | xargs)
+KANDY_DASHBOARDS=$(ls output/kandy/*.html 2>/dev/null | wc -l | xargs)
+STL_DASHBOARDS=$(ls output/stl/*.html 2>/dev/null | wc -l | xargs)
+NEWNET_DASHBOARDS=$(ls output/newnet/*.html 2>/dev/null | wc -l | xargs)
+
+echo "Dashboard files created:"
+echo "  • CloudSense: $CLOUDSENSE_DASHBOARDS files"
+echo "  • Kandy: $KANDY_DASHBOARDS files"
+echo "  • STL: $STL_DASHBOARDS files"
+echo "  • NewNet: $NEWNET_DASHBOARDS files"
+echo ""
+
+echo "✅ Verification complete"
 echo ""
 
 # =============================================================================
@@ -153,10 +201,11 @@ echo "✅ MASTER UPDATE COMPLETE - $(date)"
 echo "==================================================================="
 echo ""
 echo "Updated outputs:"
-echo "  • Customer data: data/customers_*_top80.json"
-echo "  • Dashboards: output/*.html (all BUs)"
-echo "  • Index pages: output/index.html, output/index_*.html"
-echo "  • Analytics: output/analytics.html"
+echo "  • Top 80% data: data/customers_*_top80.json"
+echo "  • All customers: data/customers_*_all.json"
+echo "  • Dashboards: output/*.html (top 80% customers only)"
+echo "  • Index pages: output/*/index.html"
+echo "  • Analytics: output/analytics.html (ALL 140 customers)"
 echo ""
 echo "To view dashboards:"
 echo "  open output/index.html          # Master index"

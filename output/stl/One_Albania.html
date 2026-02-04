@@ -152,6 +152,73 @@
             margin: 2rem 0;
         }
 
+/* Alert Banner */
+        .alert-banner {
+            background: linear-gradient(135deg, var(--accent) 0%, #b33a26 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            margin: 0 0 2rem;
+            border-left: 4px solid #8b1a1a;
+            box-shadow: 0 4px 12px rgba(200, 75, 49, 0.3);
+            border-radius: 4px;
+        }
+
+        .alert-banner h3 {
+            color: white;
+            margin-bottom: 0.75rem;
+            font-size: 1.3rem;
+        }
+
+        .alert-banner p {
+            margin: 0.5rem 0 0;
+            line-height: 1.6;
+            opacity: 0.95;
+        }
+
+        .keys-to-success {
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.08) 0%, rgba(76, 175, 80, 0.02) 100%);
+            border: 1px solid rgba(76, 175, 80, 0.2);
+            padding: 2rem;
+            margin: 0 0 2rem;
+            border-radius: 4px;
+        }
+
+        .keys-to-success h2 {
+            color: #2e7d32;
+            margin-bottom: 1.5rem;
+        }
+
+        .priority-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .priority-card {
+            background: white;
+            padding: 1.5rem;
+            border-left: 4px solid #4caf50;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border-radius: 4px;
+        }
+
+        .priority-card .priority-label {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #4caf50;
+            margin-bottom: 0.75rem;
+            letter-spacing: 0.5px;
+        }
+
+        .priority-card .priority-action {
+            font-size: 1.15rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            color: var(--secondary);
+            line-height: 1.4;
+        }
+
         .footer {
             background: var(--secondary);
             color: var(--paper);
@@ -216,11 +283,232 @@
     </div>
 
     <div class="container">
-        <div class="pending-notice">
-            <h2 style="margin-bottom: 1rem;">⏳ Account Intelligence In Progress</h2>
-            <p>Comprehensive account plan intelligence (executives, pain points, competitive analysis, opportunities) will be populated here once customer research is complete.</p>
-            <p style="margin-top: 1rem;"><strong>Status:</strong> Awaiting customer-intelligence-analyst research for One Albania</p>
+        
+        
+
+        
+        <!-- Customer Intelligence Section -->
+        
+        <div class="card" style="background: linear-gradient(135deg, #e5393515 0%, #e5393505 100%); border-left: 4px solid #e53935;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <div style="font-size: 0.85rem; font-weight: 600; text-transform: uppercase; color: #e53935; margin-bottom: 0.5rem;">
+                        ❌ CHURN RISK
+                    </div>
+                    <h2 style="margin: 0;">Renewal: Q4'26</h2>
+                    <p style="color: var(--muted); margin-top: 0.5rem;">Contract End Date: December 01, 2026</p>
+                </div>
+                <div style="text-align: right;">
+                    <div style="font-size: 3rem; color: #e53935;">❌</div>
+                </div>
+            </div>
         </div>
+        
+
+        <div class="card" style="background: linear-gradient(135deg, #e6510015 0%, #e6510005 100%); border-left: 4px solid #e65100;">
+            <h2>📊 Strategic Health Score</h2>
+            <div style="display: flex; align-items: center; gap: 2rem; margin-top: 1rem;">
+                <div style="font-size: 4rem; font-weight: 700; color: #e65100;">2.0/10</div>
+                <div style="flex: 1;">
+                    <div style="background: #e0e0e0; height: 20px; border-radius: 10px; overflow: hidden;">
+                        <div style="background: #e65100; height: 100%; width: 20.0%; transition: width 0.3s;"></div>
+                    </div>
+                    <p style="margin-top: 0.5rem; color: var(--muted); font-size: 0.9rem;">
+                        CRITICAL - Requires immediate attention
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+
+        <div class="card">
+            <h2>🚀 Opportunities & Growth Potential</h2>
+            <div style="margin-top: 1rem;">
+                <h3 id="potential-4ig-group-engagement-areas">Potential 4iG Group Engagement Areas</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Opportunity</th>
+  <th>Description</th>
+  <th>Probability</th>
+  <th>Potential Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>M&amp;A Integration Support</td>
+  <td>Provide temporary capacity during 4iG acquisitions</td>
+  <td>25%</td>
+  <td>$200-500K/event</td>
+</tr>
+<tr>
+  <td>Specialized Solutions</td>
+  <td>Niche capabilities 4iG won't build in-house</td>
+  <td>15%</td>
+  <td>$100-300K ARR</td>
+</tr>
+<tr>
+  <td>Regional Expansion</td>
+  <td>Support new market entries (North Macedonia, etc.)</td>
+  <td>10%</td>
+  <td>$50-200K</td>
+</tr>
+<tr>
+  <td>Training/Knowledge Transfer</td>
+  <td>Help 4iG build internal capabilities</td>
+  <td>30%</td>
+  <td>$50-100K NRR</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Total Opportunity Value:</strong> $400K-1.1M (vs. $1.8M loss)</p>
+
+<h3 id="cross-sell-to-other-bus">Cross-Sell to Other BUs</h3>
+
+<p>One Albania/4iG profile suggests potential fit with:</p>
+
+<ul>
+<li><strong>Cloudsense:</strong> CPQ/Quote-to-Cash for telecom (if not in-housed) - LOW probability</li>
+<li><strong>Kandy:</strong> CPaaS/Communications APIs - LOW probability (4iG building internally)</li>
+<li><strong>NewNet:</strong> Network solutions - LOW probability</li>
+</ul>
+
+<p><strong>Assessment:</strong> 4iG's in-housing strategy applies across all solution categories. Cross-sell probability is low.</p>
+
+<hr />
+
+            </div>
+        </div>
+        
+
+        <div class="card" style="background: var(--highlight);">
+            <h2>📋 Account Strategy & Next Steps</h2>
+            <div style="margin-top: 1rem;">
+                <h3 id="immediate-next-30-days">Immediate (Next 30 Days)</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Priority</th>
+  <th>Action</th>
+  <th>Owner</th>
+  <th>Expected Outcome</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>1</td>
+  <td>Confirm churn decision via direct conversation with Emil Georgakiev or Borislav Borisov</td>
+  <td>Account Executive</td>
+  <td>Clarity on timeline and finality</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td>Request formal exit meeting to understand future needs</td>
+  <td>Customer Success</td>
+  <td>Intelligence for Option 3</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td>Invoice all outstanding work, verify payment schedule</td>
+  <td>Finance</td>
+  <td>Protect remaining revenue</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td>Begin internal resource reallocation planning</td>
+  <td>BU Leadership</td>
+  <td>Minimize disruption</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="60-day-actions">60-Day Actions</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Priority</th>
+  <th>Action</th>
+  <th>Owner</th>
+  <th>Expected Outcome</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>5</td>
+  <td>Develop 4iG Group engagement strategy</td>
+  <td>Sales Leadership</td>
+  <td>Pipeline for Option 3</td>
+</tr>
+<tr>
+  <td>6</td>
+  <td>Request case study/reference documentation</td>
+  <td>Marketing</td>
+  <td>Asset for future sales</td>
+</tr>
+<tr>
+  <td>7</td>
+  <td>Analyze STL portfolio for similar parent-company risk</td>
+  <td>Strategy</td>
+  <td>Proactive risk management</td>
+</tr>
+<tr>
+  <td>8</td>
+  <td>Update STL BU financial forecasts</td>
+  <td>Finance</td>
+  <td>Accurate guidance</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="90-day-strategic-actions">90-Day Strategic Actions</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Priority</th>
+  <th>Action</th>
+  <th>Owner</th>
+  <th>Expected Outcome</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>9</td>
+  <td>Present 4iG Group strategy to executive team</td>
+  <td>BU Leadership</td>
+  <td>Buy-in on pivot</td>
+</tr>
+<tr>
+  <td>10</td>
+  <td>Develop STL "capacity partner" positioning</td>
+  <td>Product/Marketing</td>
+  <td>New GTM for integrated telcos</td>
+</tr>
+<tr>
+  <td>11</td>
+  <td>Identify 2-3 replacement pipeline opportunities</td>
+  <td>Sales</td>
+  <td>Revenue replacement</td>
+</tr>
+<tr>
+  <td>12</td>
+  <td>Evaluate STL BU strategic direction</td>
+  <td>Exec Team</td>
+  <td>Portfolio decision</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+            </div>
+        </div>
+        
+        
 
         <div class="card">
             <h2>Account Overview</h2>
@@ -285,7 +573,7 @@
 
     <div class="footer">
         <p><strong>One Albania Strategic Account Plan</strong> | STL Business Unit | Skyvera</p>
-        <p style="margin-top: 0.5rem;">Generated: February 03, 2026 | Confidential - Internal Use Only</p>
+        <p style="margin-top: 0.5rem;">Generated: February 04, 2026 | Confidential - Internal Use Only</p>
     </div>
 </body>
 </html>

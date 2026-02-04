@@ -32,6 +32,89 @@ def load_customer_news(customer_name):
             return json.load(f)
     return None
 
+def load_intelligence_data():
+    """Load pregenerated intelligence HTML for all customers."""
+    filepath = 'data/intelligence_html.json'
+    if os.path.exists(filepath):
+        with open(filepath, 'r') as f:
+            return json.load(f)
+    return {}
+
+def load_intelligence_report(customer_name):
+    """Load raw markdown intelligence report for parsing."""
+    filename = f"{customer_name.replace('/', '-').replace(' ', '_')}.md"
+    filepath = f"data/intelligence/reports/{filename}"
+
+    if os.path.exists(filepath):
+        with open(filepath, 'r') as f:
+            return f.read()
+    return None
+
+def parse_action_items(report_text):
+    """Extract top 3 action items from intelligence report."""
+    if not report_text:
+        return []
+
+    actions = []
+
+    # Parse immediate actions (0-30 days)
+    import re
+    immediate_section = re.search(r'### Immediate Actions.*?\n\n(.*?)(?=\n### |\n## |\Z)', report_text, re.DOTALL)
+    if immediate_section:
+        # Extract table rows
+        rows = re.findall(r'\| (\d+) \| \*\*(.+?)\*\*.*?\|', immediate_section.group(1))
+        for priority, action in rows[:3]:
+            # Clean up action text - remove markdown
+            clean_action = action.strip().replace('**', '')
+            actions.append({'priority': int(priority), 'action': clean_action})
+
+    # If we need more actions, get from short-term
+    if len(actions) < 3:
+        shortterm_section = re.search(r'### Short-Term Actions.*?\n\n(.*?)(?=\n### |\n## |\Z)', report_text, re.DOTALL)
+        if shortterm_section:
+            rows = re.findall(r'\| (\d+) \| \*\*(.+?)\*\*.*?\|', shortterm_section.group(1))
+            for priority, action in rows[:3-len(actions)]:
+                clean_action = action.strip().replace('**', '')
+                actions.append({'priority': int(priority), 'action': clean_action})
+
+    return actions[:3]
+
+def parse_critical_alerts(report_text):
+    """Extract critical risks and cautions from intelligence report."""
+    if not report_text:
+        return []
+
+    alerts = []
+
+    # Look for "CAUTION:" or "CRITICAL" in key findings
+    import re
+    findings = re.findall(r'\d+\.\s+\*\*(CAUTION|CRITICAL|RISK):\*\*\s+(.+?)(?=\n\d+\.|\n\n|\Z)', report_text, re.DOTALL)
+    for severity, text in findings[:2]:  # Top 2 critical items
+        alerts.append({'severity': severity, 'text': text.strip()})
+
+    # Also check risk table for CRITICAL severity
+    risk_matches = re.findall(r'\|\s+\*\*(.+?)\*\*\s+\|[^\|]+\|[^\|]+\|\s+(Critical|HIGH)\s+\|', report_text, re.IGNORECASE)
+    for risk, severity in risk_matches[:1]:  # Top 1 from risk table
+        if not any(r['text'].lower().find(risk.lower()[:20]) >= 0 for r in alerts):
+            alerts.append({'severity': 'CRITICAL', 'text': f"{risk} identified as critical risk"})
+
+    return alerts[:2]  # Max 2 alerts
+
+def get_customer_intelligence(customer_name, intelligence_data):
+    """Get intelligence HTML for customer if available."""
+    # Try exact match first
+    customer_key = customer_name.replace('/', '-').replace(' ', '_')
+    if customer_key in intelligence_data:
+        return intelligence_data[customer_key]
+
+    # Try without underscores
+    customer_key_no_underscore = customer_name.replace('/', ' ').replace('  ', ' ')
+    for key in intelligence_data.keys():
+        if key.replace('_', ' ').lower() == customer_key_no_underscore.lower():
+            return intelligence_data[key]
+
+    return None
+
 def generate_news_widget(customer_name, news_data):
     """Generate news widget HTML."""
     if not news_data or news_data['article_count'] == 0:
@@ -141,12 +224,55 @@ def generate_news_widget(customer_name, news_data):
 
     return widget_html
 
-def create_simple_dashboard(customer, all_customers):
+def create_simple_dashboard(customer, all_customers, intelligence_data=None):
     """Create a simplified dashboard for customers without full intelligence."""
     customer_name = customer['customer_name']
     news_data = load_customer_news(customer_name)
     news_widget = generate_news_widget(customer_name, news_data)
 
+    # Load intelligence HTML if available
+    if intelligence_data is None:
+        intelligence_data = {}
+    intelligence_html = get_customer_intelligence(customer_name, intelligence_data)
+
+    # Load raw intelligence report for action items and alerts
+    intelligence_report = load_intelligence_report(customer_name)
+    action_items = parse_action_items(intelligence_report) if intelligence_report else []
+    critical_alerts = parse_critical_alerts(intelligence_report) if intelligence_report else []
+
+    # Generate alert banners HTML
+    alerts_html = ''
+    for alert in critical_alerts:
+        alert_title = alert["text"][:80] + ('...' if len(alert["text"]) > 80 else '')
+        alerts_html += f'''
+        <div class="alert-banner">
+            <h3>🚨 {alert["severity"].upper()}: {alert_title}</h3>
+            <p>{alert["text"]}</p>
+        </div>
+        '''
+
+    # Generate keys to success HTML
+    keys_html = ''
+    if action_items:
+        priority_cards = ''
+        for action in action_items:
+            priority_cards += f'''
+                <div class="priority-card">
+                    <div class="priority-label">Priority #{action["priority"]}</div>
+                    <div class="priority-action">{action["action"]}</div>
+                </div>
+            '''
+
+        keys_html = f'''
+        <div class="keys-to-success">
+            <h2>🎯 Keys to Success in Next 90 Days</h2>
+            <div class="priority-grid">
+                {priority_cards}
+            </div>
+        </div>
+        '''
+
+    
     html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -301,6 +427,73 @@ def create_simple_dashboard(customer, all_customers):
             margin: 2rem 0;
         }}
 
+/* Alert Banner */
+        .alert-banner {{
+            background: linear-gradient(135deg, var(--accent) 0%, #b33a26 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            margin: 0 0 2rem;
+            border-left: 4px solid #8b1a1a;
+            box-shadow: 0 4px 12px rgba(200, 75, 49, 0.3);
+            border-radius: 4px;
+        }}
+
+        .alert-banner h3 {{
+            color: white;
+            margin-bottom: 0.75rem;
+            font-size: 1.3rem;
+        }}
+
+        .alert-banner p {{
+            margin: 0.5rem 0 0;
+            line-height: 1.6;
+            opacity: 0.95;
+        }}
+
+        .keys-to-success {{
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.08) 0%, rgba(76, 175, 80, 0.02) 100%);
+            border: 1px solid rgba(76, 175, 80, 0.2);
+            padding: 2rem;
+            margin: 0 0 2rem;
+            border-radius: 4px;
+        }}
+
+        .keys-to-success h2 {{
+            color: #2e7d32;
+            margin-bottom: 1.5rem;
+        }}
+
+        .priority-grid {{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }}
+
+        .priority-card {{
+            background: white;
+            padding: 1.5rem;
+            border-left: 4px solid #4caf50;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border-radius: 4px;
+        }}
+
+        .priority-card .priority-label {{
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #4caf50;
+            margin-bottom: 0.75rem;
+            letter-spacing: 0.5px;
+        }}
+
+        .priority-card .priority-action {{
+            font-size: 1.15rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            color: var(--secondary);
+            line-height: 1.4;
+        }}
+
         .footer {{
             background: var(--secondary);
             color: var(--paper);
@@ -360,11 +553,19 @@ def create_simple_dashboard(customer, all_customers):
     </div>
 
     <div class="container">
+        {alerts_html}
+        {keys_html}
+
+        {f'''
+        <!-- Customer Intelligence Section -->
+        {intelligence_html}
+        ''' if intelligence_html else f'''
         <div class="pending-notice">
             <h2 style="margin-bottom: 1rem;">⏳ Account Intelligence In Progress</h2>
             <p>Comprehensive account plan intelligence (executives, pain points, competitive analysis, opportunities) will be populated here once customer research is complete.</p>
             <p style="margin-top: 1rem;"><strong>Status:</strong> Awaiting customer-intelligence-analyst research for {customer_name}</p>
         </div>
+        '''}
 
         <div class="card">
             <h2>Account Overview</h2>
@@ -433,6 +634,10 @@ def main():
     data = load_customers()
     customers = data['customers']
 
+    # Load intelligence data once
+    intelligence_data = load_intelligence_data()
+    print(f"Loaded intelligence for {len(intelligence_data)} customers")
+
     os.makedirs('output/kandy', exist_ok=True)
 
     print("="*100)
@@ -445,7 +650,7 @@ def main():
         filename = customer_name.replace('/', '-').replace(' ', '_') + '.html'
         filepath = f"output/kandy/{filename}"
 
-        html = create_simple_dashboard(customer, customers)
+        html = create_simple_dashboard(customer, customers, intelligence_data)
 
         with open(filepath, 'w') as f:
             f.write(html)

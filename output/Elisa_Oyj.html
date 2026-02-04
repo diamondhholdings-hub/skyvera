@@ -152,6 +152,73 @@
             margin: 2rem 0;
         }
 
+        /* Alert Banner */
+        .alert-banner {
+            background: linear-gradient(135deg, var(--accent) 0%, #b33a26 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            margin: 0 0 2rem;
+            border-left: 4px solid #8b1a1a;
+            box-shadow: 0 4px 12px rgba(200, 75, 49, 0.3);
+            border-radius: 4px;
+        }
+
+        .alert-banner h3 {
+            color: white;
+            margin-bottom: 0.75rem;
+            font-size: 1.3rem;
+        }
+
+        .alert-banner p {
+            margin: 0.5rem 0 0;
+            line-height: 1.6;
+            opacity: 0.95;
+        }
+
+        .keys-to-success {
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.08) 0%, rgba(76, 175, 80, 0.02) 100%);
+            border: 1px solid rgba(76, 175, 80, 0.2);
+            padding: 2rem;
+            margin: 0 0 2rem;
+            border-radius: 4px;
+        }
+
+        .keys-to-success h2 {
+            color: #2e7d32;
+            margin-bottom: 1.5rem;
+        }
+
+        .priority-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .priority-card {
+            background: white;
+            padding: 1.5rem;
+            border-left: 4px solid #4caf50;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border-radius: 4px;
+        }
+
+        .priority-card .priority-label {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #4caf50;
+            margin-bottom: 0.75rem;
+            letter-spacing: 0.5px;
+        }
+
+        .priority-card .priority-action {
+            font-size: 1.15rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            color: var(--secondary);
+            line-height: 1.4;
+        }
+
         .footer {
             background: var(--secondary);
             color: var(--paper);
@@ -234,11 +301,439 @@
     </div>
 
     <div class="container">
-        <div class="pending-notice">
-            <h2 style="margin-bottom: 1rem;">⏳ Account Intelligence In Progress</h2>
-            <p>Comprehensive account plan intelligence (executives, pain points, competitive analysis, opportunities) will be populated here once customer research is complete.</p>
-            <p style="margin-top: 1rem;"><strong>Status:</strong> Awaiting customer-intelligence-analyst research for Elisa Oyj</p>
+        
+        <div class="alert-banner">
+            <h3>🚨 CAUTION: Transformation program announced in Q4 2025 resulted in 357 personnel reductions...</h3>
+            <p>Transformation program announced in Q4 2025 resulted in 357 personnel reductions. Monitor for budget pressure and champion turnover during cost optimization phase.</p>
         </div>
+        
+        <div class="alert-banner">
+            <h3>🚨 CRITICAL: Cost Optimization Pressure identified as critical risk</h3>
+            <p>Cost Optimization Pressure identified as critical risk</p>
+        </div>
+        
+        
+        <div class="keys-to-success">
+            <h2>🎯 Keys to Success in Next 90 Days</h2>
+            <div class="priority-grid">
+                
+                <div class="priority-card">
+                    <div class="priority-label">Priority #1</div>
+                    <div class="priority-action">CEO Introduction</div>
+                </div>
+            
+                <div class="priority-card">
+                    <div class="priority-label">Priority #2</div>
+                    <div class="priority-action">Stakeholder Mapping</div>
+                </div>
+            
+                <div class="priority-card">
+                    <div class="priority-label">Priority #3</div>
+                    <div class="priority-action">ROI Documentation</div>
+                </div>
+            
+            </div>
+        </div>
+        
+
+        
+        <!-- Customer Intelligence Section -->
+        
+        <div class="card" style="background: linear-gradient(135deg, #4caf5015 0%, #4caf5005 100%); border-left: 4px solid #4caf50;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <div style="font-size: 0.85rem; font-weight: 600; text-transform: uppercase; color: #4caf50; margin-bottom: 0.5rem;">
+                        ✅ RENEWAL EXPECTED
+                    </div>
+                    <h2 style="margin: 0;">Renewal: Next Yr</h2>
+                    <p style="color: var(--muted); margin-top: 0.5rem;">Contract End Date: June 01, 2028</p>
+                </div>
+                <div style="text-align: right;">
+                    <div style="font-size: 3rem; color: #4caf50;">✅</div>
+                </div>
+            </div>
+        </div>
+        
+
+        <div class="card" style="background: linear-gradient(135deg, #4caf5015 0%, #4caf5005 100%); border-left: 4px solid #4caf50;">
+            <h2>📊 Strategic Health Score</h2>
+            <div style="display: flex; align-items: center; gap: 2rem; margin-top: 1rem;">
+                <div style="font-size: 4rem; font-weight: 700; color: #4caf50;">8.0/10</div>
+                <div style="flex: 1;">
+                    <div style="background: #e0e0e0; height: 20px; border-radius: 10px; overflow: hidden;">
+                        <div style="background: #4caf50; height: 100%; width: 80.0%; transition: width 0.3s;"></div>
+                    </div>
+                    <p style="margin-top: 0.5rem; color: var(--muted); font-size: 0.9rem;">
+                        HEALTHY - Strong relationship
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+
+        <div class="card">
+            <h2>🎯 Key Strategic Insights</h2>
+            <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 1rem;">
+                
+            <div class="metric-box" style="flex: 1; min-width: 250px;">
+                <div style="font-size: 2rem; margin-bottom: 0.5rem;">🟢</div>
+                <div class="label" style="font-weight: 600; color: var(--ink); margin-bottom: 0.5rem;">POSITIVE</div>
+                <div style="font-size: 0.85rem; line-height: 1.5;">Elisa achieved all-time high EBITDA (EUR 808M) and cash flow (EUR 411M) in 2025, demonstrating exceptional financial stability. The company maintains ...</div>
+            </div>
+            
+            <div class="metric-box" style="flex: 1; min-width: 250px;">
+                <div style="font-size: 2rem; margin-bottom: 0.5rem;">🟢</div>
+                <div class="label" style="font-weight: 600; color: var(--ink); margin-bottom: 0.5rem;">STRATEGIC</div>
+                <div style="font-size: 0.85rem; line-height: 1.5;">New CEO Topi Manner (from Finnair, started March 2024) is executing "Faster Profitable Growth" strategy with EUR 40M cost-savings target and transform...</div>
+            </div>
+            
+            <div class="metric-box" style="flex: 1; min-width: 250px;">
+                <div style="font-size: 2rem; margin-bottom: 0.5rem;">🟢</div>
+                <div class="label" style="font-weight: 600; color: var(--ink); margin-bottom: 0.5rem;">OPPORTUNITY</div>
+                <div style="font-size: 0.85rem; line-height: 1.5;">Elisa Industriq (International Software Services) grew 77% YoY in Q4 2024 and became EBITDA-positive in 2025. This software services expansion mirrors...</div>
+            </div>
+            
+            <div class="metric-box" style="flex: 1; min-width: 250px;">
+                <div style="font-size: 2rem; margin-bottom: 0.5rem;">🟡</div>
+                <div class="label" style="font-weight: 600; color: var(--ink); margin-bottom: 0.5rem;">CAUTION</div>
+                <div style="font-size: 0.85rem; line-height: 1.5;">Transformation program announced in Q4 2025 resulted in 357 personnel reductions. Monitor for budget pressure and champion turnover during cost optimi...</div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="card">
+            <h2>⚠️ Pain Points & Strategic Initiatives</h2>
+            <div style="margin-top: 1rem;">
+                <h3 id="business-challenges">Business Challenges</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Challenge</th>
+  <th>Description</th>
+  <th>CloudSense Impact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Mature Home Market</strong></td>
+  <td>Finland mobile subscriptions near saturation</td>
+  <td>Limited volume growth; focus on value</td>
+</tr>
+<tr>
+  <td><strong>Price Competition</strong></td>
+  <td>DNA aggressive pricing, Telia scale</td>
+  <td>Margin pressure, need for differentiation</td>
+</tr>
+<tr>
+  <td><strong>Fixed Broadband Share Loss</strong></td>
+  <td>DNA now market leader in fixed</td>
+  <td>Revenue protection critical</td>
+</tr>
+<tr>
+  <td><strong>Cost Optimization Pressure</strong></td>
+  <td>EUR 40M savings target</td>
+  <td>Budget scrutiny, vendor review risk</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="technology-challenges">Technology Challenges</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Challenge</th>
+  <th>Description</th>
+  <th>CloudSense Opportunity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Product Complexity</strong></td>
+  <td>5G, fiber, bundled services complexity</td>
+  <td>CPQ handles complex configuration</td>
+</tr>
+<tr>
+  <td><strong>B2B Digital Transformation</strong></td>
+  <td>Enterprise customer experience modernization</td>
+  <td>Sales platform enablement</td>
+</tr>
+<tr>
+  <td><strong>International Expansion</strong></td>
+  <td>Elisa Industriq scaling challenges</td>
+  <td>Potential new market CPQ needs</td>
+</tr>
+<tr>
+  <td><strong>AI Integration</strong></td>
+  <td>Embedding AI across operations</td>
+  <td>AI-enhanced CPQ features</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="regulatory-challenges">Regulatory Challenges</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Challenge</th>
+  <th>Impact</th>
+  <th>Timeline</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>EU Gigabit Infrastructure Act</strong></td>
+  <td>Network construction cost reduction mandates</td>
+  <td>Effective Nov 2025</td>
+</tr>
+<tr>
+  <td><strong>EU AI Act</strong></td>
+  <td>High-risk AI system compliance</td>
+  <td>Aug 2026 deadline</td>
+</tr>
+<tr>
+  <td><strong>NIS-2 Directive</strong></td>
+  <td>Cybersecurity vendor liability</td>
+  <td>2025 implementation</td>
+</tr>
+<tr>
+  <td><strong>GDPR/Data Protection</strong></td>
+  <td>Ongoing compliance requirements</td>
+  <td>Continuous</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="market-pressures">Market Pressures</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Pressure</th>
+  <th>Context</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Telia Competition</strong></td>
+  <td>Scale advantages in Nordics</td>
+</tr>
+<tr>
+  <td><strong>DNA (Telenor) Competition</strong></td>
+  <td>Aggressive pricing, fixed broadband leadership</td>
+</tr>
+<tr>
+  <td><strong>Spectrum/CapEx Costs</strong></td>
+  <td>Ongoing network investment requirements</td>
+</tr>
+<tr>
+  <td><strong>Economic Sensitivity</strong></td>
+  <td>Finnish consumer spending variability</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Confidence Level:</strong> High - Based on company disclosures and industry analysis.</p>
+
+<hr />
+
+            </div>
+        </div>
+        
+
+        <div class="card">
+            <h2>🏆 Competitive Landscape</h2>
+            <div style="margin-top: 1rem;">
+                <h3 id="cloudsense-competitive-position-at-elisa">CloudSense Competitive Position at Elisa</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Competitor</th>
+  <th>Capability</th>
+  <th>Threat Level</th>
+  <th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Salesforce Industries (Vlocity)</strong></td>
+  <td>Native Salesforce CPQ for telco</td>
+  <td>Medium</td>
+  <td>Could expand within Salesforce ecosystem</td>
+</tr>
+<tr>
+  <td><strong>Amdocs</strong></td>
+  <td>Full BSS/OSS suite including CPQ</td>
+  <td>Medium</td>
+  <td>Enterprise telecom heritage</td>
+</tr>
+<tr>
+  <td><strong>SAP CPQ</strong></td>
+  <td>Enterprise CPQ capabilities</td>
+  <td>Low-Medium</td>
+  <td>Less telecom-specific</td>
+</tr>
+<tr>
+  <td><strong>Internal Build</strong></td>
+  <td>Custom solutions</td>
+  <td>Low</td>
+  <td>Focus on software services, not internal tools</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="elisas-market-competitors">Elisa's Market Competitors</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Competitor</th>
+  <th>Mobile Share</th>
+  <th>Position</th>
+  <th>Strategy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Telia Finland</strong></td>
+  <td>31%</td>
+  <td>#2</td>
+  <td>Network sharing with DNA (Suomen Yhteisverkko)</td>
+</tr>
+<tr>
+  <td><strong>DNA (Telenor)</strong></td>
+  <td>~25%</td>
+  <td>#3</td>
+  <td>Aggressive pricing, fixed broadband focus</td>
+</tr>
+<tr>
+  <td><strong>Finnet Group</strong></td>
+  <td>Small</td>
+  <td>Regional</td>
+  <td>Local operators</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="competitive-intelligence-insights">Competitive Intelligence Insights</h3>
+
+<ol>
+<li><strong>Differentiation Strategy:</strong> Elisa positions on quality, security, and digital services rather than pure price competition against DNA.</li>
+<li><strong>Network Leadership:</strong> 5G standalone core and network slicing provide competitive advantage for enterprise customers.</li>
+<li><strong>Software Services Unique:</strong> Elisa Industriq differentiates from pure telecom competitors.</li>
+<li><strong>Customer Loyalty:</strong> Strong NPS focus and digital service bundling create switching barriers.</li>
+</ol>
+
+<p><strong>Confidence Level:</strong> Medium-High - Based on market analysis and competitive positioning research.</p>
+
+<hr />
+
+            </div>
+        </div>
+        
+
+        <div class="card">
+            <h2>🚀 Opportunities & Growth Potential</h2>
+            <div style="margin-top: 1rem;">
+                <h3 id="expansion-opportunities">Expansion Opportunities</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Opportunity</th>
+  <th>Value Estimate</th>
+  <th>Probability</th>
+  <th>Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Corporate Customers Expansion</strong></td>
+  <td>$150-250K ARR</td>
+  <td>High (70%)</td>
+  <td>Deepen CPQ deployment across enterprise sales organization</td>
+</tr>
+<tr>
+  <td><strong>Elisa Industriq Cross-Sell</strong></td>
+  <td>$200-400K ARR</td>
+  <td>Medium (50%)</td>
+  <td>Software services for industrial customers need CPQ capabilities</td>
+</tr>
+<tr>
+  <td><strong>Estonia Market Extension</strong></td>
+  <td>$50-100K ARR</td>
+  <td>Medium (55%)</td>
+  <td>Elisa Eesti operations could leverage parent company platform</td>
+</tr>
+<tr>
+  <td><strong>Network-as-a-Product CPQ</strong></td>
+  <td>$100-200K ARR</td>
+  <td>Medium (45%)</td>
+  <td>5G network slicing creates complex product configuration needs</td>
+</tr>
+<tr>
+  <td><strong>Partner Channel Enablement</strong></td>
+  <td>$75-150K ARR</td>
+  <td>Low-Medium (40%)</td>
+  <td>B2B partner ecosystem CPQ needs</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="strategic-opportunities">Strategic Opportunities</h3>
+
+<ol>
+<li><strong>New CEO Relationship Building</strong></p>
+
+<ul>
+<li>Topi Manner is new to telecom industry</li>
+<li>Opportunity to position CloudSense as strategic partner</li>
+<li><strong>Action:</strong> Executive introduction meeting</li>
+</ul></li>
+<li><strong>Elisa Industriq Alignment</strong></p>
+
+<ul>
+<li>Fastest-growing segment (77% YoY growth)</li>
+<li>Software services for manufacturing need sales configuration</li>
+<li><strong>Action:</strong> Joint workshop on industrial CPQ use cases</li>
+</ul></li>
+<li><strong>5G Monetization Support</strong></p>
+
+<ul>
+<li>Network slicing creates complex B2B product configurations</li>
+<li>Premium services require sophisticated quoting</li>
+<li><strong>Action:</strong> Develop 5G product configuration showcase</li>
+</ul></li>
+<li><strong>Nordic Reference Customer</strong></p>
+
+<ul>
+<li>Strong market position makes excellent reference</li>
+<li>Case study potential for similar telecom customers</li>
+<li><strong>Action:</strong> Propose joint success story development</li>
+</ul></li>
+<li><strong>Skyvera Cross-BU Potential</strong></p>
+
+<ul>
+<li>Kandy communications platform could complement Elisa B2B offerings</li>
+<li><strong>Action:</strong> Explore unified communications bundle opportunity</li>
+</ul></li>
+</ol>
+
+<h3 id="estimated-total-expansion-potential-575k-11m-arr">Estimated Total Expansion Potential: $575K - $1.1M ARR</h3>
+
+<p><strong>Confidence Level:</strong> Medium - Estimates based on market analysis and strategic alignment assessment.</p>
+
+<hr />
+
+            </div>
+        </div>
+        
+        
 
         <div class="card">
             <h2>Account Overview</h2>
@@ -303,7 +798,7 @@
 
     <div class="footer">
         <p><strong>Elisa Oyj Strategic Account Plan</strong> | CloudSense Business Unit | Skyvera</p>
-        <p style="margin-top: 0.5rem;">Generated: February 03, 2026 | Confidential - Internal Use Only</p>
+        <p style="margin-top: 0.5rem;">Generated: February 04, 2026 | Confidential - Internal Use Only</p>
     </div>
 </body>
 </html>

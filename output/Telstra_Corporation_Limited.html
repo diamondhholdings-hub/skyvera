@@ -152,6 +152,73 @@
             margin: 2rem 0;
         }
 
+        /* Alert Banner */
+        .alert-banner {
+            background: linear-gradient(135deg, var(--accent) 0%, #b33a26 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            margin: 0 0 2rem;
+            border-left: 4px solid #8b1a1a;
+            box-shadow: 0 4px 12px rgba(200, 75, 49, 0.3);
+            border-radius: 4px;
+        }
+
+        .alert-banner h3 {
+            color: white;
+            margin-bottom: 0.75rem;
+            font-size: 1.3rem;
+        }
+
+        .alert-banner p {
+            margin: 0.5rem 0 0;
+            line-height: 1.6;
+            opacity: 0.95;
+        }
+
+        .keys-to-success {
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.08) 0%, rgba(76, 175, 80, 0.02) 100%);
+            border: 1px solid rgba(76, 175, 80, 0.2);
+            padding: 2rem;
+            margin: 0 0 2rem;
+            border-radius: 4px;
+        }
+
+        .keys-to-success h2 {
+            color: #2e7d32;
+            margin-bottom: 1.5rem;
+        }
+
+        .priority-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .priority-card {
+            background: white;
+            padding: 1.5rem;
+            border-left: 4px solid #4caf50;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border-radius: 4px;
+        }
+
+        .priority-card .priority-label {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #4caf50;
+            margin-bottom: 0.75rem;
+            letter-spacing: 0.5px;
+        }
+
+        .priority-card .priority-action {
+            font-size: 1.15rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            color: var(--secondary);
+            line-height: 1.4;
+        }
+
         .footer {
             background: var(--secondary);
             color: var(--paper);
@@ -234,11 +301,407 @@
     </div>
 
     <div class="container">
-        <div class="pending-notice">
-            <h2 style="margin-bottom: 1rem;">⏳ Account Intelligence In Progress</h2>
-            <p>Comprehensive account plan intelligence (executives, pain points, competitive analysis, opportunities) will be populated here once customer research is complete.</p>
-            <p style="margin-top: 1rem;"><strong>Status:</strong> Awaiting customer-intelligence-analyst research for Telstra Corporation Limited</p>
+        
+        <div class="alert-banner">
+            <h3>🚨 CAUTION: Enterprise division underwent significant restructuring in 2024-2025 with 2,800 ...</h3>
+            <p>Enterprise division underwent significant restructuring in 2024-2025 with 2,800 layoffs, primarily in B2B/Enterprise segment. Monitor for champion turnover and budget pressure.</p>
         </div>
+        
+        <div class="alert-banner">
+            <h3>🚨 RISK: Enterprise EBITDA declined 67% YoY in H1 FY24. Cost rationalization may create p...</h3>
+            <p>Enterprise EBITDA declined 67% YoY in H1 FY24. Cost rationalization may create pricing pressure during renewal discussions.</p>
+        </div>
+        
+        
+        <div class="keys-to-success">
+            <h2>🎯 Keys to Success in Next 90 Days</h2>
+            <div class="priority-grid">
+                
+                <div class="priority-card">
+                    <div class="priority-label">Priority #1</div>
+                    <div class="priority-action">Stakeholder Mapping Update</div>
+                </div>
+            
+                <div class="priority-card">
+                    <div class="priority-label">Priority #2</div>
+                    <div class="priority-action">Accenture Alignment Meeting</div>
+                </div>
+            
+                <div class="priority-card">
+                    <div class="priority-label">Priority #3</div>
+                    <div class="priority-action">Executive Sponsor Connection</div>
+                </div>
+            
+            </div>
+        </div>
+        
+
+        
+        <!-- Customer Intelligence Section -->
+        
+        <div class="card" style="background: linear-gradient(135deg, #4caf5015 0%, #4caf5005 100%); border-left: 4px solid #4caf50;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <div style="font-size: 0.85rem; font-weight: 600; text-transform: uppercase; color: #4caf50; margin-bottom: 0.5rem;">
+                        ✅ RENEWAL EXPECTED
+                    </div>
+                    <h2 style="margin: 0;">Renewal: Next Yr</h2>
+                    <p style="color: var(--muted); margin-top: 0.5rem;">Contract End Date: May 02, 2028</p>
+                </div>
+                <div style="text-align: right;">
+                    <div style="font-size: 3rem; color: #4caf50;">✅</div>
+                </div>
+            </div>
+        </div>
+        
+
+        <div class="card" style="background: linear-gradient(135deg, #4caf5015 0%, #4caf5005 100%); border-left: 4px solid #4caf50;">
+            <h2>📊 Strategic Health Score</h2>
+            <div style="display: flex; align-items: center; gap: 2rem; margin-top: 1rem;">
+                <div style="font-size: 4rem; font-weight: 700; color: #4caf50;">8.2/10</div>
+                <div style="flex: 1;">
+                    <div style="background: #e0e0e0; height: 20px; border-radius: 10px; overflow: hidden;">
+                        <div style="background: #4caf50; height: 100%; width: 82.0%; transition: width 0.3s;"></div>
+                    </div>
+                    <p style="margin-top: 0.5rem; color: var(--muted); font-size: 0.9rem;">
+                        HEALTHY - Strong relationship
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+
+        <div class="card">
+            <h2>🎯 Key Strategic Insights</h2>
+            <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 1rem;">
+                
+            <div class="metric-box" style="flex: 1; min-width: 250px;">
+                <div style="font-size: 2rem; margin-bottom: 0.5rem;">🟢</div>
+                <div class="label" style="font-weight: 600; color: var(--ink); margin-bottom: 0.5rem;">POSITIVE</div>
+                <div style="font-size: 0.85rem; line-height: 1.5;">Telstra's new "Connected Future 30" strategy (FY25-FY30) commits to massive digital investment including >$4B in infrastructure and AI transformation,...</div>
+            </div>
+            
+            <div class="metric-box" style="flex: 1; min-width: 250px;">
+                <div style="font-size: 2rem; margin-bottom: 0.5rem;">🟡</div>
+                <div class="label" style="font-weight: 600; color: var(--ink); margin-bottom: 0.5rem;">CAUTION</div>
+                <div style="font-size: 0.85rem; line-height: 1.5;">Enterprise division underwent significant restructuring in 2024-2025 with 2,800 layoffs, primarily in B2B/Enterprise segment. Monitor for champion tur...</div>
+            </div>
+            
+            <div class="metric-box" style="flex: 1; min-width: 250px;">
+                <div style="font-size: 2rem; margin-bottom: 0.5rem;">🟢</div>
+                <div class="label" style="font-weight: 600; color: var(--ink); margin-bottom: 0.5rem;">OPPORTUNITY</div>
+                <div style="font-size: 0.85rem; line-height: 1.5;">Telstra-Accenture AI joint venture (60/40 ownership) is consolidating 80 data platforms down to 3. CloudSense should position as an essential part of ...</div>
+            </div>
+            
+            <div class="metric-box" style="flex: 1; min-width: 250px;">
+                <div style="font-size: 2rem; margin-bottom: 0.5rem;">🔴</div>
+                <div class="label" style="font-weight: 600; color: var(--ink); margin-bottom: 0.5rem;">RISK</div>
+                <div style="font-size: 0.85rem; line-height: 1.5;">Enterprise EBITDA declined 67% YoY in H1 FY24. Cost rationalization may create pricing pressure during renewal discussions....</div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="card">
+            <h2>⚠️ Pain Points & Strategic Initiatives</h2>
+            <div style="margin-top: 1rem;">
+                <h3 id="enterprise-division-specific-challenges">Enterprise Division Specific Challenges</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Challenge</th>
+  <th>Description</th>
+  <th>CloudSense Impact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>EBITDA Decline</strong></td>
+  <td>Enterprise EBITDA down 67% YoY in H1 FY24</td>
+  <td>Budget pressure risk</td>
+</tr>
+<tr>
+  <td><strong>Headcount Reduction</strong></td>
+  <td>2,800 jobs cut, primarily Enterprise</td>
+  <td>Champion turnover risk</td>
+</tr>
+<tr>
+  <td><strong>NAS Underperformance</strong></td>
+  <td>Network Application Services dragging results</td>
+  <td>Potential divestment could affect scope</td>
+</tr>
+<tr>
+  <td><strong>Cost Rationalization</strong></td>
+  <td>$350M cost reduction target</td>
+  <td>Pricing scrutiny expected</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="digital-transformation-challenges">Digital Transformation Challenges</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Challenge</th>
+  <th>Description</th>
+  <th>CloudSense Opportunity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Legacy System Debt</strong></td>
+  <td>Technical debt costing +20% on projects</td>
+  <td>Modernization value proposition</td>
+</tr>
+<tr>
+  <td><strong>Vendor Proliferation</strong></td>
+  <td>Consolidating from 18 data/AI vendors to 2</td>
+  <td>Position as essential, not optional</td>
+</tr>
+<tr>
+  <td><strong>Hybrid Cloud Complexity</strong></td>
+  <td>Shifted from public cloud target to hybrid</td>
+  <td>Integration complexity support</td>
+</tr>
+<tr>
+  <td><strong>Security Concerns</strong></td>
+  <td>41% cite multi-cloud access security</td>
+  <td>Secure platform positioning</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="market-competitive-pressures">Market &amp; Competitive Pressures</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Pressure</th>
+  <th>Impact</th>
+  <th>Context</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>NBN Revenue Decline</strong></td>
+  <td>Commercial revenue impact from NBN rollout completion</td>
+  <td>Seeking new revenue streams</td>
+</tr>
+<tr>
+  <td><strong>Price Competition</strong></td>
+  <td>TPG offering 50% promotional discounts</td>
+  <td>Margin pressure</td>
+</tr>
+<tr>
+  <td><strong>Broadband Share Erosion</strong></td>
+  <td>NBN share down to 38.3%, smaller players gaining</td>
+  <td>Competitive intensity</td>
+</tr>
+<tr>
+  <td><strong>5G Investment Demands</strong></td>
+  <td>Requires continued significant CapEx</td>
+  <td>Cash flow management</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Confidence Level:</strong> High - Based on company disclosures, analyst reports, and industry research.</p>
+
+<hr />
+
+            </div>
+        </div>
+        
+
+        <div class="card">
+            <h2>🏆 Competitive Landscape</h2>
+            <div style="margin-top: 1rem;">
+                <h3 id="cloudsense-competitive-position-at-telstra">CloudSense Competitive Position at Telstra</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Competitor</th>
+  <th>Capability</th>
+  <th>Threat Level</th>
+  <th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Salesforce Industries (Vlocity)</strong></td>
+  <td>Native Salesforce CPQ for telco</td>
+  <td>Medium-High</td>
+  <td>Already in ecosystem; could expand</td>
+</tr>
+<tr>
+  <td><strong>Amdocs</strong></td>
+  <td>Full BSS/OSS suite including CPQ</td>
+  <td>Medium</td>
+  <td>Already deployed for billing</td>
+</tr>
+<tr>
+  <td><strong>ServiceNow</strong></td>
+  <td>Expanding into telco workflows</td>
+  <td>Low-Medium</td>
+  <td>Currently focused on ITSM</td>
+</tr>
+<tr>
+  <td><strong>Internal Build</strong></td>
+  <td>Custom solutions via Accenture JV</td>
+  <td>Medium</td>
+  <td>AI-first approach could bypass packaged software</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="telstras-market-competitors">Telstra's Market Competitors</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Competitor</th>
+  <th>Mobile Share</th>
+  <th>Fixed Share</th>
+  <th>Strategy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Optus (Singtel)</strong></td>
+  <td>23.9%</td>
+  <td>12.4%</td>
+  <td>Price increases, network investment</td>
+</tr>
+<tr>
+  <td><strong>TPG Telecom</strong></td>
+  <td>13.1%</td>
+  <td>20%</td>
+  <td>Aggressive discounting, fixed asset sale to Vocus</td>
+</tr>
+<tr>
+  <td><strong>Aussie Broadband</strong></td>
+  <td>Growing</td>
+  <td>Growing</td>
+  <td>Challenger brand, customer service focus</td>
+</tr>
+<tr>
+  <td><strong>Vocus</strong></td>
+  <td>Enterprise</td>
+  <td>Enterprise</td>
+  <td>Acquiring TPG fixed assets</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="competitive-intelligence-insights">Competitive Intelligence Insights</h3>
+
+<ol>
+<li><strong>Salesforce Dependency:</strong> Telstra is deeply invested in Salesforce ecosystem. CloudSense's native Salesforce architecture is a key differentiator.</li>
+<li><strong>Accenture Influence:</strong> The Accenture JV has significant influence over technology decisions. Maintaining relationship with Accenture is critical.</li>
+<li><strong>Consolidation Trend:</strong> Telstra is actively reducing vendor count. CloudSense must position as essential, integrated, and aligned with consolidation goals.</li>
+</ol>
+
+<p><strong>Confidence Level:</strong> Medium-High - Based on industry analysis and vendor ecosystem mapping.</p>
+
+<hr />
+
+            </div>
+        </div>
+        
+
+        <div class="card">
+            <h2>🚀 Opportunities & Growth Potential</h2>
+            <div style="margin-top: 1rem;">
+                <h3 id="expansion-opportunities">Expansion Opportunities</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Opportunity</th>
+  <th>Value Estimate</th>
+  <th>Probability</th>
+  <th>Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Connected Future 30 Alignment</strong></td>
+  <td>$300-500K ARR</td>
+  <td>High (70%)</td>
+  <td>New strategy creates investment mandate for customer experience technology</td>
+</tr>
+<tr>
+  <td><strong>AI-Enhanced CPQ</strong></td>
+  <td>$150-250K ARR</td>
+  <td>Medium (50%)</td>
+  <td>Telstra's AI maturity goal creates demand for AI-augmented solutions</td>
+</tr>
+<tr>
+  <td><strong>Partner Channel Expansion</strong></td>
+  <td>$100-200K ARR</td>
+  <td>Medium (60%)</td>
+  <td>Telstra revamped partner experience with Salesforce; CPQ for partners</td>
+</tr>
+<tr>
+  <td><strong>Consumer/SMB Extension</strong></td>
+  <td>$200-400K ARR</td>
+  <td>Low-Medium (35%)</td>
+  <td>Currently Enterprise-focused; potential to expand to Consumer segment</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="strategic-opportunities">Strategic Opportunities</h3>
+
+<ol>
+<li><strong>Accenture Partnership Alignment</strong></p>
+
+<ul>
+<li>Accenture is Telstra's primary transformation partner</li>
+<li>CloudSense should strengthen Accenture relationship</li>
+<li>Position as pre-integrated with Accenture delivery methodology</li>
+<li><strong>Action:</strong> Joint account planning with Accenture team</li>
+</ul></li>
+<li><strong>Data Platform Consolidation</strong></p>
+
+<ul>
+<li>Telstra consolidating 80 platforms to 3</li>
+<li>CloudSense must be positioned as essential to remaining stack</li>
+<li>Demonstrate data integration and API capabilities</li>
+<li><strong>Action:</strong> Technical whitepaper on CloudSense as consolidation enabler</li>
+</ul></li>
+<li><strong>Network as a Product Initiative</strong></p>
+
+<ul>
+<li>Telstra transforming network into programmable product</li>
+<li>Creates new product configuration complexity</li>
+<li>CPQ evolution opportunity for dynamic network products</li>
+<li><strong>Action:</strong> Develop "Network-as-a-Product" CPQ use cases</li>
+</ul></li>
+<li><strong>Foxtel Relationship Expansion</strong></p>
+
+<ul>
+<li>Foxtel Management Pty Limited is CloudSense customer (#18, $640K ARR)</li>
+<li>Telstra recently sold remaining 35% Foxtel stake</li>
+<li>Combined telco/media CPQ expertise positioning</li>
+<li><strong>Action:</strong> Case study development for media convergence</li>
+</ul></li>
+</ol>
+
+<h3 id="estimated-total-expansion-potential-750k-135m-arr">Estimated Total Expansion Potential: $750K - $1.35M ARR</h3>
+
+<p><strong>Confidence Level:</strong> Medium - Estimates based on market analysis and strategic alignment assessment.</p>
+
+<hr />
+
+            </div>
+        </div>
+        
+        
 
         <div class="card">
             <h2>Account Overview</h2>
@@ -296,7 +759,7 @@
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
             <h2 style="margin: 0;">📰 Recent News & Updates</h2>
             <div style="font-size: 0.85rem; color: var(--muted);">
-                Last updated: 2026-02-03 13:22:30
+                Last updated: 2026-02-03 14:57:59
             </div>
         </div>
 
@@ -382,7 +845,7 @@
 
     <div class="footer">
         <p><strong>Telstra Corporation Limited Strategic Account Plan</strong> | CloudSense Business Unit | Skyvera</p>
-        <p style="margin-top: 0.5rem;">Generated: February 03, 2026 | Confidential - Internal Use Only</p>
+        <p style="margin-top: 0.5rem;">Generated: February 04, 2026 | Confidential - Internal Use Only</p>
     </div>
 </body>
 </html>

@@ -152,6 +152,73 @@
             margin: 2rem 0;
         }
 
+        /* Alert Banner */
+        .alert-banner {
+            background: linear-gradient(135deg, var(--accent) 0%, #b33a26 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            margin: 0 0 2rem;
+            border-left: 4px solid #8b1a1a;
+            box-shadow: 0 4px 12px rgba(200, 75, 49, 0.3);
+            border-radius: 4px;
+        }
+
+        .alert-banner h3 {
+            color: white;
+            margin-bottom: 0.75rem;
+            font-size: 1.3rem;
+        }
+
+        .alert-banner p {
+            margin: 0.5rem 0 0;
+            line-height: 1.6;
+            opacity: 0.95;
+        }
+
+        .keys-to-success {
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.08) 0%, rgba(76, 175, 80, 0.02) 100%);
+            border: 1px solid rgba(76, 175, 80, 0.2);
+            padding: 2rem;
+            margin: 0 0 2rem;
+            border-radius: 4px;
+        }
+
+        .keys-to-success h2 {
+            color: #2e7d32;
+            margin-bottom: 1.5rem;
+        }
+
+        .priority-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .priority-card {
+            background: white;
+            padding: 1.5rem;
+            border-left: 4px solid #4caf50;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border-radius: 4px;
+        }
+
+        .priority-card .priority-label {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #4caf50;
+            margin-bottom: 0.75rem;
+            letter-spacing: 0.5px;
+        }
+
+        .priority-card .priority-action {
+            font-size: 1.15rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            color: var(--secondary);
+            line-height: 1.4;
+        }
+
         .footer {
             background: var(--secondary);
             color: var(--paper);
@@ -234,11 +301,496 @@
     </div>
 
     <div class="container">
-        <div class="pending-notice">
-            <h2 style="margin-bottom: 1rem;">⏳ Account Intelligence In Progress</h2>
-            <p>Comprehensive account plan intelligence (executives, pain points, competitive analysis, opportunities) will be populated here once customer research is complete.</p>
-            <p style="margin-top: 1rem;"><strong>Status:</strong> Awaiting customer-intelligence-analyst research for Vodafone Netherlands</p>
+        
+        
+
+        
+        <!-- Customer Intelligence Section -->
+        
+        <div class="card" style="background: linear-gradient(135deg, #4caf5015 0%, #4caf5005 100%); border-left: 4px solid #4caf50;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <div style="font-size: 0.85rem; font-weight: 600; text-transform: uppercase; color: #4caf50; margin-bottom: 0.5rem;">
+                        ✅ RENEWAL EXPECTED
+                    </div>
+                    <h2 style="margin: 0;">Renewal: Next Yr</h2>
+                    <p style="color: var(--muted); margin-top: 0.5rem;">Contract End Date: June 01, 2028</p>
+                </div>
+                <div style="text-align: right;">
+                    <div style="font-size: 3rem; color: #4caf50;">✅</div>
+                </div>
+            </div>
         </div>
+        
+
+        <div class="card">
+            <h2>🏆 Competitive Landscape</h2>
+            <div style="margin-top: 1rem;">
+                <h3 id="41-vodafoneziggos-market-position">4.1 VodafoneZiggo's Market Position</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Competitor</th>
+  <th>Mobile Share</th>
+  <th>Fixed/Broadband Share</th>
+  <th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>KPN</strong></td>
+  <td>30-35%</td>
+  <td>~40%</td>
+  <td>#1 or #2 across segments</td>
+</tr>
+<tr>
+  <td><strong>VodafoneZiggo</strong></td>
+  <td>20-25%</td>
+  <td>~42.5%</td>
+  <td>#1 in broadband, #3 in mobile</td>
+</tr>
+<tr>
+  <td><strong>Odido (ex-T-Mobile)</strong></td>
+  <td>~47.5% (by minutes)</td>
+  <td>Limited</td>
+  <td>Fastest 5G network</td>
+</tr>
+<tr>
+  <td><strong>MVNOs</strong></td>
+  <td>10-15%</td>
+  <td>N/A</td>
+  <td>Growing segment</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Netherlands Telecom Market (2025):</strong>
+- Market size: ~EUR 10 billion
+- KPN + VodafoneZiggo = 70%+ combined share
+- Enterprise segment growing at 4.35% CAGR (2025-2030)
+- All three MNOs have 5G Standalone ready</p>
+
+<p><strong>Sources:</strong> <a href="https://www.statista.com/statistics/765491/distribution-mobile-network-connections-in-the-netherlands-by-operator/">Statista Netherlands MNO Market</a>, <a href="https://www.mordorintelligence.com/industry-reports/netherlands-telecom-market">Mordor Intelligence Netherlands Telecom</a></p>
+
+<h3 id="42-competitive-threats-to-cloudsense-at-vodafoneziggo">4.2 Competitive Threats to CloudSense at VodafoneZiggo</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Competitor</th>
+  <th>Threat Level</th>
+  <th>Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Conga (ex-Apttus)</strong></td>
+  <td>MEDIUM</td>
+  <td>Market leader, but VodafoneZiggo already rejected non-native approach</td>
+</tr>
+<tr>
+  <td><strong>Oracle CPQ</strong></td>
+  <td>LOW-MEDIUM</td>
+  <td>VodafoneZiggo using Oracle ERP, but CPQ is Salesforce-committed</td>
+</tr>
+<tr>
+  <td><strong>Salesforce CPQ (native)</strong></td>
+  <td>MEDIUM</td>
+  <td>Platform bundling risk, but CloudSense offers telco specialization</td>
+</tr>
+<tr>
+  <td><strong>Amdocs</strong></td>
+  <td>LOW</td>
+  <td>Strong in BSS, but CPQ not primary focus</td>
+</tr>
+<tr>
+  <td><strong>CSG</strong></td>
+  <td>LOW</td>
+  <td>Billing focus, limited CPQ</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Defensive Position:</strong> CloudSense's position is STRONG because:
+1. VodafoneZiggo explicitly chose CloudSense over a competitor due to Salesforce-native architecture
+2. Documented ROI (25% faster, 40% more reliable, 24% channel growth)
+3. Deep integration into B2B sales operations
+4. Executive champion (Danielle de Haes) was public advocate</p>
+
+<p><strong>Key Vulnerability:</strong>
+- Danielle de Haes has since moved to Hexagon Manufacturing Intelligence
+- Need to identify and cultivate new internal champions</p>
+
+<h3 id="43-cpq-market-context-2025">4.3 CPQ Market Context (2025)</h3>
+
+<p>CloudSense is categorized as an "Accelerator" in the 2025 CPQ Value Matrix:
+- Focus on usability and ease of deployment
+- Specialized for communications, media, and utility providers
+- Differentiates through telco-specific capabilities</p>
+
+<p><strong>Competitor Positioning:</strong>
+- <strong>Leaders:</strong> Conga, DealHub, Epicor, Infor, Oracle, PROS
+- <strong>Accelerators:</strong> CloudSense, ServicePath, Zuora
+- <strong>Core Providers:</strong> ModelN, Salesforce, Tacton</p>
+
+<p><strong>Sources:</strong> <a href="https://www.cbinsights.com/company/cloudsense">CBInsights CloudSense</a>, <a href="https://www.trustradius.com/products/cloudsense-cpq/competitors">TrustRadius CloudSense Alternatives</a></p>
+
+<hr />
+
+            </div>
+        </div>
+        
+
+        <div class="card">
+            <h2>🚀 Opportunities & Growth Potential</h2>
+            <div style="margin-top: 1rem;">
+                <h3 id="61-expansion-opportunities">6.1 Expansion Opportunities</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Opportunity</th>
+  <th>Description</th>
+  <th>Revenue Potential</th>
+  <th>Probability</th>
+  <th>Timeline</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>25% Upsell (Planned)</strong></td>
+  <td>Already budgeted ARR growth</td>
+  <td>+$460,798</td>
+  <td>HIGH (75%)</td>
+  <td>FY26-27</td>
+</tr>
+<tr>
+  <td><strong>B2B Market Growth</strong></td>
+  <td>Support 11% B2B revenue growth with expanded CPQ</td>
+  <td>+$200K-350K</td>
+  <td>MEDIUM (45%)</td>
+  <td>FY26-27</td>
+</tr>
+<tr>
+  <td><strong>Partner Channel Enhancement</strong></td>
+  <td>Additional CloudSense Anywhere licenses</td>
+  <td>+$100K-150K</td>
+  <td>MEDIUM (50%)</td>
+  <td>FY26</td>
+</tr>
+<tr>
+  <td><strong>IoT Product Configuration</strong></td>
+  <td>CPQ for IoT product bundles (market leader)</td>
+  <td>+$150K-250K</td>
+  <td>MEDIUM (40%)</td>
+  <td>FY27</td>
+</tr>
+<tr>
+  <td><strong>AI-Powered CPQ</strong></td>
+  <td>Premium AI features for quote optimization</td>
+  <td>+$75K-125K</td>
+  <td>MEDIUM (35%)</td>
+  <td>FY27</td>
+</tr>
+<tr>
+  <td><strong>Contract Management Expansion</strong></td>
+  <td>Enhanced CLM capabilities</td>
+  <td>+$50K-100K</td>
+  <td>MEDIUM (40%)</td>
+  <td>FY26</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Total Upside Potential:</strong> $1.0M - $1.5M additional ARR over 24 months</p>
+
+<h3 id="62-strategic-expansion-drivers">6.2 Strategic Expansion Drivers</h3>
+
+<p><strong>1. B2B Market Momentum:</strong>
+- Ziggo Zakelijk (business) revenue grew 11% in 2024
+- B2B internet customers increased 5,800 in Q4 2024
+- Enterprise digital transformation driving cross-sell (connectivity, cybersecurity, cloud)</p>
+
+<p><strong>2. Partner Channel Importance:</strong></p>
+
+<blockquote>
+  <p>"We can use CPQ as the automation tool for product configuration for our standardized services sold through our partner community in Salesforce. We can also make exceptions and still have automation in place, making it not only easy for our internal users, but easy for our partners - which is half of our total - to do business with us."
+  - Danielle de Haes</p>
+</blockquote>
+
+<p><strong>3. IoT Market Leadership:</strong>
+- VodafoneZiggo is market leader in IoT in Netherlands
+- Complex IoT product bundles require sophisticated CPQ
+- Growth vertical aligned with CloudSense capabilities</p>
+
+<h3 id="63-strategic-value-beyond-revenue">6.3 Strategic Value Beyond Revenue</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Value Driver</th>
+  <th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Reference Customer</strong></td>
+  <td>Public case study with documented ROI (25%/40%/24% improvements)</td>
+</tr>
+<tr>
+  <td><strong>Dreamforce Speaker</strong></td>
+  <td>History of presenting CloudSense success story</td>
+</tr>
+<tr>
+  <td><strong>Salesforce Ecosystem</strong></td>
+  <td>Validates Salesforce-native approach for telco</td>
+</tr>
+<tr>
+  <td><strong>European Footprint</strong></td>
+  <td>Key reference for European telco expansion</td>
+</tr>
+<tr>
+  <td><strong>Product Validation</strong></td>
+  <td>Enterprise-grade telco requirements drive roadmap</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="64-cross-sell-to-other-skyvera-business-units">6.4 Cross-Sell to Other Skyvera Business Units</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Product</th>
+  <th>Fit Assessment</th>
+  <th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Kandy (Communications)</td>
+  <td>LOW</td>
+  <td>VodafoneZiggo is communications provider</td>
+</tr>
+<tr>
+  <td>STL</td>
+  <td>LOW</td>
+  <td>Different vertical focus</td>
+</tr>
+<tr>
+  <td>NewNet</td>
+  <td>MEDIUM</td>
+  <td>Potential for OSS/network solutions</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+            </div>
+        </div>
+        
+
+        <div class="card" style="background: var(--highlight);">
+            <h2>📋 Account Strategy & Next Steps</h2>
+            <div style="margin-top: 1rem;">
+                <h3 id="81-immediate-actions-q126-next-30-days">8.1 Immediate Actions (Q1'26 - Next 30 Days)</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Action</th>
+  <th>Owner</th>
+  <th>Due Date</th>
+  <th>Priority</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Identify Danielle de Haes replacement / Salesforce CoE lead</td>
+  <td>Account Manager</td>
+  <td>Week 1</td>
+  <td>CRITICAL</td>
+</tr>
+<tr>
+  <td>LinkedIn stakeholder mapping for B2B/Business Market team</td>
+  <td>Account Manager</td>
+  <td>Week 1</td>
+  <td>HIGH</td>
+</tr>
+<tr>
+  <td>Schedule introduction meeting with John van Vianen (ED Business Market)</td>
+  <td>Account Director</td>
+  <td>Week 2</td>
+  <td>HIGH</td>
+</tr>
+<tr>
+  <td>Document current deployment scope and usage metrics</td>
+  <td>Customer Success</td>
+  <td>Week 2</td>
+  <td>HIGH</td>
+</tr>
+<tr>
+  <td>Prepare ROI summary document (25%/40%/24% metrics)</td>
+  <td>Account Manager</td>
+  <td>Week 3</td>
+  <td>HIGH</td>
+</tr>
+<tr>
+  <td>Request QBR with new IT/Salesforce leadership</td>
+  <td>Account Manager</td>
+  <td>Week 4</td>
+  <td>HIGH</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="82-60-day-actions-q1-q226">8.2 60-Day Actions (Q1-Q2'26)</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Action</th>
+  <th>Owner</th>
+  <th>Timeline</th>
+  <th>Priority</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Present efficiency/cost savings analysis</td>
+  <td>Solutions Engineer</td>
+  <td>Feb 2026</td>
+  <td>HIGH</td>
+</tr>
+<tr>
+  <td>Conduct stakeholder mapping workshop with customer</td>
+  <td>Account Manager</td>
+  <td>Feb 2026</td>
+  <td>HIGH</td>
+</tr>
+<tr>
+  <td>Propose B2B expansion aligned with 11% growth</td>
+  <td>Account Manager</td>
+  <td>Mar 2026</td>
+  <td>HIGH</td>
+</tr>
+<tr>
+  <td>Engage Thomas Helbo (CTO) on technical roadmap</td>
+  <td>Solutions Engineer</td>
+  <td>Mar 2026</td>
+  <td>MEDIUM</td>
+</tr>
+<tr>
+  <td>Introduce AI capabilities roadmap</td>
+  <td>Product Specialist</td>
+  <td>Mar 2026</td>
+  <td>MEDIUM</td>
+</tr>
+<tr>
+  <td>Develop IoT CPQ use case proposal</td>
+  <td>Solutions Engineer</td>
+  <td>Apr 2026</td>
+  <td>MEDIUM</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="83-strategic-actions-fy26">8.3 Strategic Actions (FY26)</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Initiative</th>
+  <th>Description</th>
+  <th>Expected Outcome</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Executive Sponsorship</td>
+  <td>Establish Skyvera leadership to VodafoneZiggo C-level relationship</td>
+  <td>Strategic partnership alignment</td>
+</tr>
+<tr>
+  <td>New Champion Development</td>
+  <td>Cultivate 2-3 internal advocates</td>
+  <td>Relationship resilience</td>
+</tr>
+<tr>
+  <td>B2B Expansion Package</td>
+  <td>Comprehensive proposal for B2B growth support</td>
+  <td>+$200K-350K ARR</td>
+</tr>
+<tr>
+  <td>Partner Channel Excellence</td>
+  <td>CloudSense Anywhere enhancement proposal</td>
+  <td>+$100K-150K ARR</td>
+</tr>
+<tr>
+  <td>Annual Business Review</td>
+  <td>Comprehensive value delivered presentation</td>
+  <td>Renewal momentum</td>
+</tr>
+<tr>
+  <td>Case Study Refresh</td>
+  <td>Update Dreamforce case study with 2025 results</td>
+  <td>Reference value</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="84-relationship-recovery-plan-champion-departure">8.4 Relationship Recovery Plan (Champion Departure)</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Week</th>
+  <th>Action</th>
+  <th>Goal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>1</td>
+  <td>Identify current Salesforce CoE leadership</td>
+  <td>Find new sponsor</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td>LinkedIn outreach to IT/CRM leadership</td>
+  <td>Initial contact</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td>Schedule introduction call</td>
+  <td>Relationship building</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td>Deliver value summary document</td>
+  <td>Demonstrate expertise</td>
+</tr>
+<tr>
+  <td>6</td>
+  <td>Propose QBR format</td>
+  <td>Establish regular cadence</td>
+</tr>
+<tr>
+  <td>8</td>
+  <td>Executive introduction (if appropriate)</td>
+  <td>Strategic alignment</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+            </div>
+        </div>
+        
+        
 
         <div class="card">
             <h2>Account Overview</h2>
@@ -296,7 +848,7 @@
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
             <h2 style="margin: 0;">📰 Recent News & Updates</h2>
             <div style="font-size: 0.85rem; color: var(--muted);">
-                Last updated: 2026-02-03 13:22:30
+                Last updated: 2026-02-03 14:57:59
             </div>
         </div>
 
@@ -382,7 +934,7 @@
 
     <div class="footer">
         <p><strong>Vodafone Netherlands Strategic Account Plan</strong> | CloudSense Business Unit | Skyvera</p>
-        <p style="margin-top: 0.5rem;">Generated: February 03, 2026 | Confidential - Internal Use Only</p>
+        <p style="margin-top: 0.5rem;">Generated: February 04, 2026 | Confidential - Internal Use Only</p>
     </div>
 </body>
 </html>

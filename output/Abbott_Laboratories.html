@@ -152,6 +152,73 @@
             margin: 2rem 0;
         }
 
+        /* Alert Banner */
+        .alert-banner {
+            background: linear-gradient(135deg, var(--accent) 0%, #b33a26 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            margin: 0 0 2rem;
+            border-left: 4px solid #8b1a1a;
+            box-shadow: 0 4px 12px rgba(200, 75, 49, 0.3);
+            border-radius: 4px;
+        }
+
+        .alert-banner h3 {
+            color: white;
+            margin-bottom: 0.75rem;
+            font-size: 1.3rem;
+        }
+
+        .alert-banner p {
+            margin: 0.5rem 0 0;
+            line-height: 1.6;
+            opacity: 0.95;
+        }
+
+        .keys-to-success {
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.08) 0%, rgba(76, 175, 80, 0.02) 100%);
+            border: 1px solid rgba(76, 175, 80, 0.2);
+            padding: 2rem;
+            margin: 0 0 2rem;
+            border-radius: 4px;
+        }
+
+        .keys-to-success h2 {
+            color: #2e7d32;
+            margin-bottom: 1.5rem;
+        }
+
+        .priority-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .priority-card {
+            background: white;
+            padding: 1.5rem;
+            border-left: 4px solid #4caf50;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border-radius: 4px;
+        }
+
+        .priority-card .priority-label {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #4caf50;
+            margin-bottom: 0.75rem;
+            letter-spacing: 0.5px;
+        }
+
+        .priority-card .priority-action {
+            font-size: 1.15rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            color: var(--secondary);
+            line-height: 1.4;
+        }
+
         .footer {
             background: var(--secondary);
             color: var(--paper);
@@ -234,11 +301,482 @@
     </div>
 
     <div class="container">
-        <div class="pending-notice">
-            <h2 style="margin-bottom: 1rem;">⏳ Account Intelligence In Progress</h2>
-            <p>Comprehensive account plan intelligence (executives, pain points, competitive analysis, opportunities) will be populated here once customer research is complete.</p>
-            <p style="margin-top: 1rem;"><strong>Status:</strong> Awaiting customer-intelligence-analyst research for Abbott Laboratories</p>
+        
+        
+
+        
+        <!-- Customer Intelligence Section -->
+        
+        <div class="card" style="background: linear-gradient(135deg, #4caf5015 0%, #4caf5005 100%); border-left: 4px solid #4caf50;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <div style="font-size: 0.85rem; font-weight: 600; text-transform: uppercase; color: #4caf50; margin-bottom: 0.5rem;">
+                        ✅ RENEWAL EXPECTED
+                    </div>
+                    <h2 style="margin: 0;">Renewal: Next Yr</h2>
+                    <p style="color: var(--muted); margin-top: 0.5rem;">Contract End Date: March 01, 2028</p>
+                </div>
+                <div style="text-align: right;">
+                    <div style="font-size: 3rem; color: #4caf50;">✅</div>
+                </div>
+            </div>
         </div>
+        
+
+        <div class="card" style="background: linear-gradient(135deg, #4caf5015 0%, #4caf5005 100%); border-left: 4px solid #4caf50;">
+            <h2>📊 Strategic Health Score</h2>
+            <div style="display: flex; align-items: center; gap: 2rem; margin-top: 1rem;">
+                <div style="font-size: 4rem; font-weight: 700; color: #4caf50;">7.5/10</div>
+                <div style="flex: 1;">
+                    <div style="background: #e0e0e0; height: 20px; border-radius: 10px; overflow: hidden;">
+                        <div style="background: #4caf50; height: 100%; width: 75.0%; transition: width 0.3s;"></div>
+                    </div>
+                    <p style="margin-top: 0.5rem; color: var(--muted); font-size: 0.9rem;">
+                        STABLE - Standard engagement
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+
+        <div class="card">
+            <h2>⚠️ Pain Points & Strategic Initiatives</h2>
+            <div style="margin-top: 1rem;">
+                <h3 id="abbotts-2025-2026-strategic-priorities">Abbott's 2025-2026 Strategic Priorities</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Priority</th>
+  <th>Description</th>
+  <th>CloudSense Relevance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Medical Devices Growth</strong></td>
+  <td>12th consecutive quarter of double-digit growth</td>
+  <td>Complex device CPQ, bundled solutions</td>
+</tr>
+<tr>
+  <td><strong>Diabetes Care Dominance</strong></td>
+  <td>$7.5B CGM business, FreeStyle Libre expansion</td>
+  <td>Consumer and B2B quoting</td>
+</tr>
+<tr>
+  <td><strong>Exact Sciences Integration</strong></td>
+  <td>$21B acquisition, cancer diagnostics</td>
+  <td>System harmonization opportunity</td>
+</tr>
+<tr>
+  <td><strong>AI Implementation</strong></td>
+  <td>Lingo, LibreView, manufacturing ML</td>
+  <td>AI-powered CPQ features</td>
+</tr>
+<tr>
+  <td><strong>International Expansion</strong></td>
+  <td>EPD double-digit growth in India, LatAm, ME</td>
+  <td>Multi-currency, distributor management</td>
+</tr>
+<tr>
+  <td><strong>Margin Expansion</strong></td>
+  <td>+150 bps operating margin improvement</td>
+  <td>Efficiency through automation</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="estimated-pain-points-discovery-required">Estimated Pain Points (Discovery Required)</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Pain Point</th>
+  <th>Urgency</th>
+  <th>CloudSense Solution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Multi-segment Quote Complexity</strong></td>
+  <td>High</td>
+  <td>Unified CPQ across business units</td>
+</tr>
+<tr>
+  <td><strong>Device + Consumables + Service Bundling</strong></td>
+  <td>High</td>
+  <td>Complex product configuration</td>
+</tr>
+<tr>
+  <td><strong>Healthcare System Contract Management</strong></td>
+  <td>Medium</td>
+  <td>CLM and renewal automation</td>
+</tr>
+<tr>
+  <td><strong>Distributor Quote Accuracy</strong></td>
+  <td>Medium</td>
+  <td>Partner portal, guided selling</td>
+</tr>
+<tr>
+  <td><strong>Post-Acquisition System Integration</strong></td>
+  <td>High (2026)</td>
+  <td>Scalable platform, rapid deployment</td>
+</tr>
+<tr>
+  <td><strong>Sales Efficiency</strong></td>
+  <td>Medium</td>
+  <td>AI-powered automation, quote generation</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+            </div>
+        </div>
+        
+
+        <div class="card">
+            <h2>🏆 Competitive Landscape</h2>
+            <div style="margin-top: 1rem;">
+                <h3 id="cpq-competitive-alternatives">CPQ Competitive Alternatives</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Competitor</th>
+  <th>Fit for Abbott</th>
+  <th>Displacement Risk</th>
+  <th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Salesforce CPQ (Native)</strong></td>
+  <td>High</td>
+  <td>MEDIUM-HIGH</td>
+  <td>Already Salesforce shop; bundle opportunity</td>
+</tr>
+<tr>
+  <td><strong>Apttus/Conga CPQ</strong></td>
+  <td>High</td>
+  <td>HIGH</td>
+  <td>Currently deployed alongside CloudSense</td>
+</tr>
+<tr>
+  <td><strong>Oracle CPQ</strong></td>
+  <td>Medium</td>
+  <td>LOW</td>
+  <td>Less Salesforce-native</td>
+</tr>
+<tr>
+  <td><strong>SAP CPQ</strong></td>
+  <td>Medium</td>
+  <td>LOW</td>
+  <td>ERP-centric, not primary CRM</td>
+</tr>
+<tr>
+  <td><strong>Vendavo</strong></td>
+  <td>Medium</td>
+  <td>LOW</td>
+  <td>Pricing focus</td>
+</tr>
+<tr>
+  <td><strong>Model N</strong></td>
+  <td>High</td>
+  <td>MEDIUM</td>
+  <td>Life sciences specialization</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="primary-competitive-threat-apttusconga">Primary Competitive Threat: Apttus/Conga</h3>
+
+<p><strong>Situation:</strong> Abbott currently uses Apttus CPQ and CLM in some capacity, creating potential consolidation risk.</p>
+
+<p><strong>Defense Strategy:</strong>
+1. Identify CloudSense-specific deployment scope and stakeholder satisfaction
+2. Demonstrate differentiated capabilities (telecom/media expertise applied to healthcare complexity)
+3. Position as complementary rather than competitive if different use cases
+4. Emphasize order management and fulfillment integration strengths
+5. Build relationships with segment-specific IT teams</p>
+
+<h3 id="competitive-defense-points">Competitive Defense Points</h3>
+
+<ol>
+<li><strong>Healthcare Complexity:</strong> Medical device configuration rivaling telecom complexity (product bundles, consumables, service, training)</li>
+<li><strong>Regulatory Compliance:</strong> Contract terms requiring healthcare-specific compliance</li>
+<li><strong>Multi-Site Quoting:</strong> Hospital system quotes across dozens of facilities</li>
+<li><strong>Salesforce-Native:</strong> Deep platform integration</li>
+<li><strong>Existing Institutional Knowledge:</strong> Switching costs and integration complexity</li>
+</ol>
+
+<hr />
+
+            </div>
+        </div>
+        
+
+        <div class="card">
+            <h2>🚀 Opportunities & Growth Potential</h2>
+            <div style="margin-top: 1rem;">
+                <h3 id="opportunity-1-multi-segment-expansion-diagnostics-to-other-bus">Opportunity 1: Multi-Segment Expansion (Diagnostics to Other BUs)</h3>
+
+<p><strong>Context:</strong> Abbott operates four distinct business segments, each with complex B2B sales requirements. If CloudSense is currently deployed in Diagnostics, expansion to Medical Devices, Nutrition, or EPD represents significant potential.</p>
+
+<p><strong>Opportunity:</strong>
+- Medical Devices CPQ (cardiac, diabetes, neuromodulation)
+- Nutrition B2B (healthcare system contracts)
+- Established Pharmaceuticals (emerging markets distribution)</p>
+
+<p><strong>Estimated Value:</strong> $400,000 - $800,000 additional ARR
+<strong>Probability:</strong> Medium (50%)
+<strong>Timeline:</strong> FY26-FY27
+<strong>Champion Required:</strong> CIO Sabina Ewing, segment EVPs</p>
+
+<h3 id="opportunity-2-exact-sciences-integration-post-acquisition">Opportunity 2: Exact Sciences Integration (Post-Acquisition)</h3>
+
+<p><strong>Context:</strong> Abbott's $21B acquisition of Exact Sciences (closing Q2 2026) will add cancer diagnostics and create &gt;$12B diagnostics revenue. Integration will require sales system harmonization.</p>
+
+<p><strong>Opportunity:</strong>
+- Extend CloudSense to Exact Sciences sales operations
+- Cancer screening product configuration
+- Lab services quoting and order management</p>
+
+<p><strong>Estimated Value:</strong> $200,000 - $400,000 additional ARR
+<strong>Probability:</strong> Medium (45%)
+<strong>Timeline:</strong> FY26-FY27 (post-close integration)
+<strong>Champion Required:</strong> Integration PMO, Diagnostics leadership</p>
+
+<h3 id="opportunity-3-ai-powered-guided-selling">Opportunity 3: AI-Powered Guided Selling</h3>
+
+<p><strong>Context:</strong> Abbott is investing heavily in AI with executive-level commitment (CIO elevated to executive suite for AI strategy). CEO Ford positioned AI as "pillar for growth."</p>
+
+<p><strong>Opportunity:</strong>
+- Intelligent product recommendation for complex device configurations
+- Predictive pricing optimization
+- Automated quote generation based on customer profile
+- AI-powered contract clause suggestions</p>
+
+<p><strong>Estimated Value:</strong> $100,000 - $200,000 premium feature tier
+<strong>Probability:</strong> Medium-High (55%)
+<strong>Timeline:</strong> FY26
+<strong>Champion Required:</strong> CIO Sabina Ewing, digital transformation team</p>
+
+<h3 id="opportunity-4-contract-lifecycle-management-clm">Opportunity 4: Contract Lifecycle Management (CLM)</h3>
+
+<p><strong>Context:</strong> Abbott manages complex enterprise contracts with hospitals, health systems, and distributors globally. They currently use Apttus CLM alongside CPQ.</p>
+
+<p><strong>Opportunity:</strong>
+- CloudSense CLM consolidation or expansion
+- Healthcare regulatory compliance features
+- Renewal management automation
+- Multi-year service agreement management</p>
+
+<p><strong>Estimated Value:</strong> $150,000 - $300,000 additional ARR
+<strong>Probability:</strong> Medium-Low (40%)
+<strong>Timeline:</strong> FY27</p>
+
+<h3 id="opportunity-5-partnerdistributor-portal">Opportunity 5: Partner/Distributor Portal</h3>
+
+<p><strong>Context:</strong> Abbott sells through distributors in many international markets, particularly for Established Pharmaceuticals and Diagnostics in emerging markets.</p>
+
+<p><strong>Opportunity:</strong>
+- Distributor portal for quote configuration
+- Channel partner pricing management
+- Multi-tier pricing and approvals
+- Partner self-service ordering</p>
+
+<p><strong>Estimated Value:</strong> $150,000 - $250,000 additional ARR
+<strong>Probability:</strong> Medium (45%)
+<strong>Timeline:</strong> FY27</p>
+
+<h3 id="total-expansion-pipeline">Total Expansion Pipeline</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Opportunity</th>
+  <th>Est. Value</th>
+  <th>Probability</th>
+  <th>Weighted Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Multi-Segment Expansion</td>
+  <td>$600K</td>
+  <td>50%</td>
+  <td>$300K</td>
+</tr>
+<tr>
+  <td>Exact Sciences Integration</td>
+  <td>$300K</td>
+  <td>45%</td>
+  <td>$135K</td>
+</tr>
+<tr>
+  <td>AI-Powered Guided Selling</td>
+  <td>$150K</td>
+  <td>55%</td>
+  <td>$82.5K</td>
+</tr>
+<tr>
+  <td>CLM Expansion</td>
+  <td>$225K</td>
+  <td>40%</td>
+  <td>$90K</td>
+</tr>
+<tr>
+  <td>Partner/Distributor Portal</td>
+  <td>$200K</td>
+  <td>45%</td>
+  <td>$90K</td>
+</tr>
+<tr>
+  <td><strong>TOTAL PIPELINE</strong></td>
+  <td><strong>$1.475M</strong></td>
+  <td></td>
+  <td><strong>$697.5K</strong></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+            </div>
+        </div>
+        
+
+        <div class="card" style="background: var(--highlight);">
+            <h2>📋 Account Strategy & Next Steps</h2>
+            <div style="margin-top: 1rem;">
+                <h3 id="engagement-model-recommendation">Engagement Model Recommendation</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Tier</th>
+  <th>Frequency</th>
+  <th>Participants</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Executive Sponsor</strong></td>
+  <td>Semi-Annual</td>
+  <td>CloudSense VP/SVP + Abbott CIO/IT VP</td>
+</tr>
+<tr>
+  <td><strong>Business Review (QBR)</strong></td>
+  <td>Quarterly</td>
+  <td>CSM + Abbott Sales Ops/IT</td>
+</tr>
+<tr>
+  <td><strong>Technical Review</strong></td>
+  <td>Monthly</td>
+  <td>Solutions team + Abbott technical contacts</td>
+</tr>
+<tr>
+  <td><strong>Support</strong></td>
+  <td>As needed</td>
+  <td>Enterprise SLA</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="30-day-actions-immediate">30-Day Actions (Immediate)</h3>
+
+<ol>
+<li><strong>Discovery Meeting:</strong> Schedule meeting with Account Team to understand:</p>
+
+<ul>
+<li>Which Abbott segment uses CloudSense</li>
+<li>Who are current champions/users</li>
+<li>Contract renewal timeline</li>
+<li>Historical engagement and satisfaction</li>
+</ul></li>
+<li><strong>Stakeholder Mapping:</strong> Identify and document:</p>
+
+<ul>
+<li>IT Business Partner for deployed segment</li>
+<li>Sales Operations leadership</li>
+<li>Salesforce Platform Owner</li>
+<li>Procurement contact</li>
+</ul></li>
+<li><strong>Usage Analysis:</strong> Pull CloudSense telemetry to assess:</p>
+
+<ul>
+<li>Feature adoption</li>
+<li>User counts and engagement</li>
+<li>API utilization</li>
+<li>Support ticket history</li>
+</ul></li>
+</ol>
+
+<h3 id="60-day-actions-priorities">60-Day Actions (Priorities)</h3>
+
+<ol>
+<li><strong>QBR Scheduling:</strong> Request quarterly business review with appropriate stakeholders</li>
+<li><strong>Value Documentation:</strong> Prepare ROI analysis and value realization summary</li>
+<li><strong>Competitive Assessment:</strong> Understand Apttus/CloudSense coexistence and any consolidation risks</li>
+<li><strong>Champion Engagement:</strong> Identify and build relationship with power users</li>
+</ol>
+
+<h3 id="90-day-actions-strategic">90-Day Actions (Strategic)</h3>
+
+<ol>
+<li><strong>Expansion Discovery:</strong> Present expansion opportunities aligned with Abbott's strategic priorities:</p>
+
+<ul>
+<li>Exact Sciences integration readiness</li>
+<li>AI-powered features demonstration</li>
+<li>Multi-segment deployment benefits</li>
+</ul></li>
+<li><strong>Executive Sponsorship:</strong> Request introduction to CIO Sabina Ewing's organization</li>
+<li><strong>Reference Potential:</strong> Explore case study opportunity (healthcare vertical reference)</li>
+<li><strong>Contract Renewal Preparation:</strong> If renewal within 12 months, begin renewal planning</li>
+</ol>
+
+<h3 id="key-messages-by-stakeholder">Key Messages by Stakeholder</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Stakeholder</th>
+  <th>Key Message</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>CIO (Sabina Ewing)</strong></td>
+  <td>CloudSense aligns with your AI and digital transformation priorities; Salesforce-native efficiency at scale</td>
+</tr>
+<tr>
+  <td><strong>CFO (Brian Yoor)</strong></td>
+  <td>Demonstrate ROI through sales efficiency gains; position as margin improvement enabler</td>
+</tr>
+<tr>
+  <td><strong>Segment EVPs</strong></td>
+  <td>Business-specific value: faster quoting, reduced errors, improved customer experience</td>
+</tr>
+<tr>
+  <td><strong>IT/Sales Ops</strong></td>
+  <td>Ease of use, integration stability, roadmap alignment, technical support quality</td>
+</tr>
+<tr>
+  <td><strong>Procurement</strong></td>
+  <td>Vendor consolidation potential, competitive pricing, multi-year value</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+            </div>
+        </div>
+        
+        
 
         <div class="card">
             <h2>Account Overview</h2>
@@ -303,7 +841,7 @@
 
     <div class="footer">
         <p><strong>Abbott Laboratories Strategic Account Plan</strong> | CloudSense Business Unit | Skyvera</p>
-        <p style="margin-top: 0.5rem;">Generated: February 03, 2026 | Confidential - Internal Use Only</p>
+        <p style="margin-top: 0.5rem;">Generated: February 04, 2026 | Confidential - Internal Use Only</p>
     </div>
 </body>
 </html>

@@ -152,6 +152,73 @@
             margin: 2rem 0;
         }
 
+        /* Alert Banner */
+        .alert-banner {
+            background: linear-gradient(135deg, var(--accent) 0%, #b33a26 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            margin: 0 0 2rem;
+            border-left: 4px solid #8b1a1a;
+            box-shadow: 0 4px 12px rgba(200, 75, 49, 0.3);
+            border-radius: 4px;
+        }
+
+        .alert-banner h3 {
+            color: white;
+            margin-bottom: 0.75rem;
+            font-size: 1.3rem;
+        }
+
+        .alert-banner p {
+            margin: 0.5rem 0 0;
+            line-height: 1.6;
+            opacity: 0.95;
+        }
+
+        .keys-to-success {
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.08) 0%, rgba(76, 175, 80, 0.02) 100%);
+            border: 1px solid rgba(76, 175, 80, 0.2);
+            padding: 2rem;
+            margin: 0 0 2rem;
+            border-radius: 4px;
+        }
+
+        .keys-to-success h2 {
+            color: #2e7d32;
+            margin-bottom: 1.5rem;
+        }
+
+        .priority-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .priority-card {
+            background: white;
+            padding: 1.5rem;
+            border-left: 4px solid #4caf50;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border-radius: 4px;
+        }
+
+        .priority-card .priority-label {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #4caf50;
+            margin-bottom: 0.75rem;
+            letter-spacing: 0.5px;
+        }
+
+        .priority-card .priority-action {
+            font-size: 1.15rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            color: var(--secondary);
+            line-height: 1.4;
+        }
+
         .footer {
             background: var(--secondary);
             color: var(--paper);
@@ -234,11 +301,252 @@
     </div>
 
     <div class="container">
-        <div class="pending-notice">
-            <h2 style="margin-bottom: 1rem;">⏳ Account Intelligence In Progress</h2>
-            <p>Comprehensive account plan intelligence (executives, pain points, competitive analysis, opportunities) will be populated here once customer research is complete.</p>
-            <p style="margin-top: 1rem;"><strong>Status:</strong> Awaiting customer-intelligence-analyst research for Telefonica UK Limited</p>
+        
+        
+
+        
+        <!-- Customer Intelligence Section -->
+        
+        <div class="card" style="background: linear-gradient(135deg, #4caf5015 0%, #4caf5005 100%); border-left: 4px solid #4caf50;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <div style="font-size: 0.85rem; font-weight: 600; text-transform: uppercase; color: #4caf50; margin-bottom: 0.5rem;">
+                        ✅ RENEWAL EXPECTED
+                    </div>
+                    <h2 style="margin: 0;">Renewal: Q1'26</h2>
+                    <p style="color: var(--muted); margin-top: 0.5rem;">Contract End Date: February 01, 2026</p>
+                </div>
+                <div style="text-align: right;">
+                    <div style="font-size: 3rem; color: #4caf50;">✅</div>
+                </div>
+            </div>
         </div>
+        
+
+        <div class="card">
+            <h2>🏆 Competitive Landscape</h2>
+            <div style="margin-top: 1rem;">
+                <h3 id="51-direct-competitors-in-account">5.1 Direct Competitors in Account</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Competitor</th>
+  <th>Product Category</th>
+  <th>Threat Level</th>
+  <th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Netcracker</strong></td>
+  <td>BSS/Revenue Mgmt/CPQ</td>
+  <td><strong>CRITICAL</strong></td>
+  <td>Already deployed for consumer and B2B billing</td>
+</tr>
+<tr>
+  <td>Salesforce Revenue Cloud</td>
+  <td>Native CPQ</td>
+  <td>MEDIUM</td>
+  <td>Platform direction toward RLM</td>
+</tr>
+<tr>
+  <td>Hansen Technologies</td>
+  <td>CPQ/Order Mgmt</td>
+  <td>LOW</td>
+  <td>Used by Telefonica Germany, not UK</td>
+</tr>
+<tr>
+  <td>PROS/Oracle</td>
+  <td>Enterprise CPQ</td>
+  <td>LOW</td>
+  <td>No evidence of evaluation</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="52-netcracker-competitive-profile">5.2 Netcracker Competitive Profile</h3>
+
+<p><strong>Netcracker Technology Corporation:</strong>
+- Subsidiary of NEC Corporation
+- Specializes in BSS/OSS for telecommunications
+- Offers: Revenue Management, Digital BSS, Order Management, CPQ</p>
+
+<p><strong>VMO2 Netcracker Footprint:</strong>
+- Consumer BSS (end-to-end)
+- B2B Revenue Management
+- Active Resource Inventory
+- Managed Services</p>
+
+<p><strong>Netcracker CPQ Capabilities:</strong>
+- Intelligent B2B CPQ Solution
+- Integrated with Netcracker Product Catalog
+- AI-powered pricing optimization</p>
+
+<p><strong>Competitive Displacement Scenario:</strong>
+1. VMO2 consolidates on Netcracker product catalog
+2. B2B Revenue Management handles order-to-cash
+3. CloudSense becomes redundant or scope-limited
+4. Contract renewal risk at next major cycle</p>
+
+<h3 id="53-defensive-strategy-recommendations">5.3 Defensive Strategy Recommendations</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Strategy</th>
+  <th>Tactic</th>
+  <th>Priority</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Demonstrate AI/Telco Differentiation</td>
+  <td>Leverage Skyvera/TelcoDR AI capabilities</td>
+  <td>HIGH</td>
+</tr>
+<tr>
+  <td>Target O2 Daisy as New Buying Center</td>
+  <td>Engage Jo Bertram's team directly</td>
+  <td>HIGH</td>
+</tr>
+<tr>
+  <td>Expand Beyond B2B Core</td>
+  <td>IoT, Private 5G, Wholesale quotes</td>
+  <td>MEDIUM</td>
+</tr>
+<tr>
+  <td>Salesforce Lock-in</td>
+  <td>Deepen native Salesforce integration</td>
+  <td>MEDIUM</td>
+</tr>
+<tr>
+  <td>Reference Protection</td>
+  <td>Secure updated case study/testimonial</td>
+  <td>HIGH</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+            </div>
+        </div>
+        
+
+        <div class="card">
+            <h2>🚀 Opportunities & Growth Potential</h2>
+            <div style="margin-top: 1rem;">
+                <h3 id="61-whitespace-analysis">6.1 Whitespace Analysis</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Opportunity</th>
+  <th>Description</th>
+  <th>Est. Value</th>
+  <th>Probability</th>
+  <th>Timeframe</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>O2 Daisy Platform Consolidation</td>
+  <td>CPQ/OM for merged entity</td>
+  <td>$500K-$1M</td>
+  <td>40%</td>
+  <td>12-18 months</td>
+</tr>
+<tr>
+  <td>IoT/Private 5G Quoting</td>
+  <td>Complex enterprise configurations</td>
+  <td>$200K-$400K</td>
+  <td>35%</td>
+  <td>18-24 months</td>
+</tr>
+<tr>
+  <td>Wholesale/MVNO Portal</td>
+  <td>Partner quoting automation</td>
+  <td>$150K-$300K</td>
+  <td>30%</td>
+  <td>12-18 months</td>
+</tr>
+<tr>
+  <td>Consumer Cross-sell</td>
+  <td>Extend to consumer segments</td>
+  <td>$300K-$500K</td>
+  <td>20%</td>
+  <td>24+ months</td>
+</tr>
+<tr>
+  <td>AI-Powered Pricing</td>
+  <td>Leverage Skyvera AI for dynamic pricing</td>
+  <td>$100K-$200K</td>
+  <td>45%</td>
+  <td>6-12 months</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Total Addressable Expansion:</strong> $1.25M - $2.4M</p>
+
+<h3 id="62-o2-daisy-specific-opportunities">6.2 O2 Daisy-Specific Opportunities</h3>
+
+<p><strong>Products O2 Daisy Will Sell (requiring CPQ):</strong>
+- Data and WiFi solutions
+- Modern workplace tools (Microsoft integration)
+- 5G Private Networks
+- Cloud-based services
+- Cybersecurity offerings
+- O2 Motion movement insights (AI-powered)
+- IoT connectivity</p>
+
+<p><strong>CloudSense Value Proposition:</strong>
+1. <strong>Proven Track Record:</strong> 15+ years with O2 B2B
+2. <strong>Salesforce Native:</strong> Aligns with existing CRM investment
+3. <strong>Telco-Specific:</strong> Purpose-built for complex telecom configurations
+4. <strong>AI Capabilities:</strong> Skyvera investment in AI-driven transformation
+5. <strong>Speed-to-Market:</strong> Demonstrated 3x faster launches</p>
+
+<h3 id="63-strategic-initiatives-alignment">6.3 Strategic Initiatives Alignment</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>VMO2 2025 Initiative</th>
+  <th>CloudSense Alignment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>GBP 700M Mobile Transformation</td>
+  <td>Not directly aligned</td>
+</tr>
+<tr>
+  <td>O2 Daisy B2B consolidation</td>
+  <td><strong>STRONG</strong> - CPQ/OM core requirement</td>
+</tr>
+<tr>
+  <td>5G Private Networks for Enterprise</td>
+  <td><strong>STRONG</strong> - Complex configuration needs</td>
+</tr>
+<tr>
+  <td>AI-powered services (O2 Motion)</td>
+  <td><strong>MEDIUM</strong> - AI pricing potential</td>
+</tr>
+<tr>
+  <td>Cost optimization (synergy targets)</td>
+  <td><strong>MEDIUM</strong> - Platform consolidation could help or hurt</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+            </div>
+        </div>
+        
+        
 
         <div class="card">
             <h2>Account Overview</h2>
@@ -303,7 +611,7 @@
 
     <div class="footer">
         <p><strong>Telefonica UK Limited Strategic Account Plan</strong> | CloudSense Business Unit | Skyvera</p>
-        <p style="margin-top: 0.5rem;">Generated: February 03, 2026 | Confidential - Internal Use Only</p>
+        <p style="margin-top: 0.5rem;">Generated: February 04, 2026 | Confidential - Internal Use Only</p>
     </div>
 </body>
 </html>

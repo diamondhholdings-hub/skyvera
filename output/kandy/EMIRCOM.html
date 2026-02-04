@@ -152,6 +152,73 @@
             margin: 2rem 0;
         }
 
+/* Alert Banner */
+        .alert-banner {
+            background: linear-gradient(135deg, var(--accent) 0%, #b33a26 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            margin: 0 0 2rem;
+            border-left: 4px solid #8b1a1a;
+            box-shadow: 0 4px 12px rgba(200, 75, 49, 0.3);
+            border-radius: 4px;
+        }
+
+        .alert-banner h3 {
+            color: white;
+            margin-bottom: 0.75rem;
+            font-size: 1.3rem;
+        }
+
+        .alert-banner p {
+            margin: 0.5rem 0 0;
+            line-height: 1.6;
+            opacity: 0.95;
+        }
+
+        .keys-to-success {
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.08) 0%, rgba(76, 175, 80, 0.02) 100%);
+            border: 1px solid rgba(76, 175, 80, 0.2);
+            padding: 2rem;
+            margin: 0 0 2rem;
+            border-radius: 4px;
+        }
+
+        .keys-to-success h2 {
+            color: #2e7d32;
+            margin-bottom: 1.5rem;
+        }
+
+        .priority-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .priority-card {
+            background: white;
+            padding: 1.5rem;
+            border-left: 4px solid #4caf50;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border-radius: 4px;
+        }
+
+        .priority-card .priority-label {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #4caf50;
+            margin-bottom: 0.75rem;
+            letter-spacing: 0.5px;
+        }
+
+        .priority-card .priority-action {
+            font-size: 1.15rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            color: var(--secondary);
+            line-height: 1.4;
+        }
+
         .footer {
             background: var(--secondary);
             color: var(--paper);
@@ -212,11 +279,392 @@
     </div>
 
     <div class="container">
-        <div class="pending-notice">
-            <h2 style="margin-bottom: 1rem;">⏳ Account Intelligence In Progress</h2>
-            <p>Comprehensive account plan intelligence (executives, pain points, competitive analysis, opportunities) will be populated here once customer research is complete.</p>
-            <p style="margin-top: 1rem;"><strong>Status:</strong> Awaiting customer-intelligence-analyst research for EMIRCOM</p>
+        
+        <div class="alert-banner">
+            <h3>🚨 CRITICAL: Lerrick D'lima identified as critical risk</h3>
+            <p>Lerrick D'lima identified as critical risk</p>
         </div>
+        
+        
+        <div class="keys-to-success">
+            <h2>🎯 Keys to Success in Next 90 Days</h2>
+            <div class="priority-grid">
+                
+                <div class="priority-card">
+                    <div class="priority-label">Priority #1</div>
+                    <div class="priority-action">Executive Sponsor Assignment</div>
+                </div>
+            
+                <div class="priority-card">
+                    <div class="priority-label">Priority #2</div>
+                    <div class="priority-action">Renewal Strategy Session</div>
+                </div>
+            
+                <div class="priority-card">
+                    <div class="priority-label">Priority #3</div>
+                    <div class="priority-action">Stakeholder Mapping Deep Dive</div>
+                </div>
+            
+            </div>
+        </div>
+        
+
+        
+        <!-- Customer Intelligence Section -->
+        
+        <div class="card" style="background: linear-gradient(135deg, #4caf5015 0%, #4caf5005 100%); border-left: 4px solid #4caf50;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <div style="font-size: 0.85rem; font-weight: 600; text-transform: uppercase; color: #4caf50; margin-bottom: 0.5rem;">
+                        ✅ RENEWAL EXPECTED
+                    </div>
+                    <h2 style="margin: 0;">Renewal: Q2'26</h2>
+                    <p style="color: var(--muted); margin-top: 0.5rem;">Contract End Date: June 01, 2026</p>
+                </div>
+                <div style="text-align: right;">
+                    <div style="font-size: 3rem; color: #4caf50;">✅</div>
+                </div>
+            </div>
+        </div>
+        
+
+        <div class="card" style="background: linear-gradient(135deg, #4caf5015 0%, #4caf5005 100%); border-left: 4px solid #4caf50;">
+            <h2>📊 Strategic Health Score</h2>
+            <div style="display: flex; align-items: center; gap: 2rem; margin-top: 1rem;">
+                <div style="font-size: 4rem; font-weight: 700; color: #4caf50;">7.5/10</div>
+                <div style="flex: 1;">
+                    <div style="background: #e0e0e0; height: 20px; border-radius: 10px; overflow: hidden;">
+                        <div style="background: #4caf50; height: 100%; width: 75.0%; transition: width 0.3s;"></div>
+                    </div>
+                    <p style="margin-top: 0.5rem; color: var(--muted); font-size: 0.9rem;">
+                        STABLE - Standard engagement
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+
+        <div class="card">
+            <h2>🏆 Competitive Landscape</h2>
+            <div style="margin-top: 1rem;">
+                <h3 id="emircoms-direct-competitors">EMIRCOM's Direct Competitors</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Competitor</th>
+  <th>Strengths</th>
+  <th>Threat Level</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Prologix</strong></td>
+  <td>ISO certified, established 1998, ME&amp;A presence</td>
+  <td>Medium</td>
+</tr>
+<tr>
+  <td><strong>Panacor</strong></td>
+  <td>Complete ICT turnkey solutions</td>
+  <td>Medium</td>
+</tr>
+<tr>
+  <td><strong>Emitac</strong></td>
+  <td>Similar market positioning</td>
+  <td>Medium</td>
+</tr>
+<tr>
+  <td><strong>Helpag</strong></td>
+  <td>Cybersecurity focus for enterprises/governments</td>
+  <td>Medium</td>
+</tr>
+<tr>
+  <td><strong>3ANET</strong></td>
+  <td>IT infrastructure, UC, security solutions</td>
+  <td>Medium</td>
+</tr>
+<tr>
+  <td><strong>Injazat Data Systems</strong></td>
+  <td>Government sector strength</td>
+  <td>High</td>
+</tr>
+<tr>
+  <td><strong>Sysfore Technologies</strong></td>
+  <td>Systems integration specialist</td>
+  <td>Low</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="platform-competition-risk">Platform Competition Risk</h3>
+
+<p><strong>Competitive Platforms to Kandy:</strong></p>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Platform</th>
+  <th>Risk Factor</th>
+  <th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Cisco Webex</strong></td>
+  <td>HIGH</td>
+  <td>EMIRCOM is Cisco Gold Partner; Cisco offers competing CPaaS/UCaaS</td>
+</tr>
+<tr>
+  <td><strong>Microsoft Teams</strong></td>
+  <td>HIGH</td>
+  <td>Market leader (21.7% share); deep enterprise penetration</td>
+</tr>
+<tr>
+  <td><strong>Twilio</strong></td>
+  <td>MEDIUM</td>
+  <td>CPaaS leader (24% share); developer-focused</td>
+</tr>
+<tr>
+  <td><strong>Vonage/Ericsson</strong></td>
+  <td>MEDIUM</td>
+  <td>Enterprise CPaaS alternative</td>
+</tr>
+<tr>
+  <td><strong>Infobip</strong></td>
+  <td>MEDIUM</td>
+  <td>Strong in ME region</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Critical Observation:</strong> EMIRCOM's primary partnership is with Cisco, which directly competes with Kandy in the CPaaS/UCaaS space. Cisco was named a "Visionary" in Gartner's 2025 CPaaS Magic Quadrant. This creates potential conflict of interest and platform migration risk.</p>
+
+<hr />
+
+            </div>
+        </div>
+        
+
+        <div class="card">
+            <h2>🚀 Opportunities & Growth Potential</h2>
+            <div style="margin-top: 1rem;">
+                <h3 id="expansion-opportunities">Expansion Opportunities</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Opportunity</th>
+  <th>Potential Value</th>
+  <th>Probability</th>
+  <th>Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Saudi Arabia Growth</strong></td>
+  <td>+$1-2M ARR</td>
+  <td>Medium (40%)</td>
+  <td>EMIRCOM aggressively expanding KSA presence; new Riyadh SOC; Vision 2030 tailwinds</td>
+</tr>
+<tr>
+  <td><strong>Additional Product Modules</strong></td>
+  <td>+$500K-1M ARR</td>
+  <td>Medium (35%)</td>
+  <td>Cross-sell additional Kandy capabilities (CCaaS, analytics)</td>
+</tr>
+<tr>
+  <td><strong>Volume Growth</strong></td>
+  <td>+$500K ARR</td>
+  <td>Low (25%)</td>
+  <td>Usage-based growth tied to EMIRCOM's customer expansion</td>
+</tr>
+<tr>
+  <td><strong>Multi-Year Contract</strong></td>
+  <td>Retention Value</td>
+  <td>High (60%)</td>
+  <td>Lock in commitment before Q2'26 renewal</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="strategic-value-beyond-revenue">Strategic Value Beyond Revenue</h3>
+
+<ol>
+<li><strong>Reference Customer:</strong> EMIRCOM's 40-year reputation and IHC backing provides credibility</li>
+<li><strong>Market Access:</strong> Gateway to UAE government and enterprise accounts</li>
+<li><strong>Partnership Ecosystem:</strong> Access to Cisco, Dell, VMware partner networks</li>
+<li><strong>Regional Expansion:</strong> Leverage EMIRCOM's KSA growth for Saudi market penetration</li>
+</ol>
+
+<h3 id="white-space-analysis">White Space Analysis</h3>
+
+<p><strong>Current State:</strong> Single subscription at $9.6M ARR suggests a large-scale deployment, likely supporting EMIRCOM's managed services offerings to their downstream customers.</p>
+
+<p><strong>Potential Expansion Vectors:</strong>
+- CCaaS/Contact Center capabilities
+- AI-powered communications features
+- Additional geographic deployments (Africa expansion)
+- New vertical solutions (healthcare, government)</p>
+
+<hr />
+
+            </div>
+        </div>
+        
+
+        <div class="card" style="background: var(--highlight);">
+            <h2>📋 Account Strategy & Next Steps</h2>
+            <div style="margin-top: 1rem;">
+                <h3 id="immediate-actions-0-30-days">Immediate Actions (0-30 Days)</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Priority</th>
+  <th>Action</th>
+  <th>Owner</th>
+  <th>Objective</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>1</td>
+  <td><strong>Executive Sponsor Assignment</strong></td>
+  <td>Kandy Leadership</td>
+  <td>Assign C-level sponsor for EMIRCOM relationship</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td><strong>Renewal Strategy Session</strong></td>
+  <td>Account Team</td>
+  <td>Develop Q2'26 renewal strategy with multi-year goal</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td><strong>Stakeholder Mapping Deep Dive</strong></td>
+  <td>Account Team</td>
+  <td>Map all decision-makers, influencers, champions</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td><strong>Usage Analytics Review</strong></td>
+  <td>Customer Success</td>
+  <td>Analyze platform utilization and health metrics</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td><strong>Competitive Intelligence Gathering</strong></td>
+  <td>Account Team</td>
+  <td>Determine if Cisco/others are being evaluated</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="medium-term-actions-30-90-days">Medium-Term Actions (30-90 Days)</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Priority</th>
+  <th>Action</th>
+  <th>Owner</th>
+  <th>Objective</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>1</td>
+  <td><strong>QBR Execution</strong></td>
+  <td>Customer Success</td>
+  <td>Conduct business review demonstrating value delivered</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td><strong>Executive Visit to Abu Dhabi</strong></td>
+  <td>Kandy Leadership</td>
+  <td>Face-to-face relationship building with EMIRCOM leadership</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td><strong>Multi-Year Proposal Development</strong></td>
+  <td>Deal Desk</td>
+  <td>Structure 3-year deal with favorable economics</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td><strong>Expansion Discovery</strong></td>
+  <td>Account Team</td>
+  <td>Identify KSA expansion and new module opportunities</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td><strong>Technical Roadmap Alignment</strong></td>
+  <td>Product</td>
+  <td>Present roadmap aligned with EMIRCOM's digital transformation goals</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="strategic-actions-90-days">Strategic Actions (90+ Days)</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Priority</th>
+  <th>Action</th>
+  <th>Owner</th>
+  <th>Objective</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>1</td>
+  <td><strong>Multi-Year Contract Closure</strong></td>
+  <td>Account Team</td>
+  <td>Secure 3-year commitment before Q2'26</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td><strong>Reference Program Enrollment</strong></td>
+  <td>Marketing</td>
+  <td>Leverage EMIRCOM for regional credibility</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td><strong>Joint Marketing Initiative</strong></td>
+  <td>Marketing</td>
+  <td>Co-branded content for ME market visibility</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td><strong>Diversification Initiative</strong></td>
+  <td>Kandy Leadership</td>
+  <td>Reduce concentration risk by accelerating new customer acquisition</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="renewal-strategy-q226">Renewal Strategy: Q2'26</h3>
+
+<p><strong>Objective:</strong> Convert to multi-year agreement with modest expansion</p>
+
+<p><strong>Recommended Approach:</strong>
+1. <strong>Timing:</strong> Initiate renewal discussions 6+ months early (Q4'25/Q1'26)
+2. <strong>Structure:</strong> Propose 3-year term with Year 1 flat, 3-5% annual escalator
+3. <strong>Value Adds:</strong> Include enhanced SLA, dedicated support, product roadmap influence
+4. <strong>Risk Mitigation:</strong> Include termination provisions that provide runway</p>
+
+<p><strong>Target Outcome:</strong>
+- 3-year commitment: $28.8M+ TCV
+- Annual escalator: 3-5%
+- Expansion modules: +$500K-1M in Year 2</p>
+
+<hr />
+
+            </div>
+        </div>
+        
+        
 
         <div class="card">
             <h2>Account Overview</h2>
@@ -281,7 +729,7 @@
 
     <div class="footer">
         <p><strong>EMIRCOM Strategic Account Plan</strong> | Kandy Business Unit | Skyvera</p>
-        <p style="margin-top: 0.5rem;">Generated: February 03, 2026 | Confidential - Internal Use Only</p>
+        <p style="margin-top: 0.5rem;">Generated: February 04, 2026 | Confidential - Internal Use Only</p>
     </div>
 </body>
 </html>

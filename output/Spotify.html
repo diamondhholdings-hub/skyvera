@@ -152,6 +152,73 @@
             margin: 2rem 0;
         }
 
+        /* Alert Banner */
+        .alert-banner {
+            background: linear-gradient(135deg, var(--accent) 0%, #b33a26 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            margin: 0 0 2rem;
+            border-left: 4px solid #8b1a1a;
+            box-shadow: 0 4px 12px rgba(200, 75, 49, 0.3);
+            border-radius: 4px;
+        }
+
+        .alert-banner h3 {
+            color: white;
+            margin-bottom: 0.75rem;
+            font-size: 1.3rem;
+        }
+
+        .alert-banner p {
+            margin: 0.5rem 0 0;
+            line-height: 1.6;
+            opacity: 0.95;
+        }
+
+        .keys-to-success {
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.08) 0%, rgba(76, 175, 80, 0.02) 100%);
+            border: 1px solid rgba(76, 175, 80, 0.2);
+            padding: 2rem;
+            margin: 0 0 2rem;
+            border-radius: 4px;
+        }
+
+        .keys-to-success h2 {
+            color: #2e7d32;
+            margin-bottom: 1.5rem;
+        }
+
+        .priority-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .priority-card {
+            background: white;
+            padding: 1.5rem;
+            border-left: 4px solid #4caf50;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border-radius: 4px;
+        }
+
+        .priority-card .priority-label {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #4caf50;
+            margin-bottom: 0.75rem;
+            letter-spacing: 0.5px;
+        }
+
+        .priority-card .priority-action {
+            font-size: 1.15rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            color: var(--secondary);
+            line-height: 1.4;
+        }
+
         .footer {
             background: var(--secondary);
             color: var(--paper);
@@ -234,11 +301,291 @@
     </div>
 
     <div class="container">
-        <div class="pending-notice">
-            <h2 style="margin-bottom: 1rem;">⏳ Account Intelligence In Progress</h2>
-            <p>Comprehensive account plan intelligence (executives, pain points, competitive analysis, opportunities) will be populated here once customer research is complete.</p>
-            <p style="margin-top: 1rem;"><strong>Status:</strong> Awaiting customer-intelligence-analyst research for Spotify</p>
+        
+        
+
+        
+        <!-- Customer Intelligence Section -->
+        
+        <div class="card" style="background: linear-gradient(135deg, #4caf5015 0%, #4caf5005 100%); border-left: 4px solid #4caf50;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <div style="font-size: 0.85rem; font-weight: 600; text-transform: uppercase; color: #4caf50; margin-bottom: 0.5rem;">
+                        ✅ RENEWAL EXPECTED
+                    </div>
+                    <h2 style="margin: 0;">Renewal: Next Yr</h2>
+                    <p style="color: var(--muted); margin-top: 0.5rem;">Contract End Date: June 01, 2027</p>
+                </div>
+                <div style="text-align: right;">
+                    <div style="font-size: 3rem; color: #4caf50;">✅</div>
+                </div>
+            </div>
         </div>
+        
+
+        <div class="card" style="background: linear-gradient(135deg, #4caf5015 0%, #4caf5005 100%); border-left: 4px solid #4caf50;">
+            <h2>📊 Strategic Health Score</h2>
+            <div style="display: flex; align-items: center; gap: 2rem; margin-top: 1rem;">
+                <div style="font-size: 4rem; font-weight: 700; color: #4caf50;">7.5/10</div>
+                <div style="flex: 1;">
+                    <div style="background: #e0e0e0; height: 20px; border-radius: 10px; overflow: hidden;">
+                        <div style="background: #4caf50; height: 100%; width: 75.0%; transition: width 0.3s;"></div>
+                    </div>
+                    <p style="margin-top: 0.5rem; color: var(--muted); font-size: 0.9rem;">
+                        STABLE - Standard engagement
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+
+        <div class="card">
+            <h2>🏆 Competitive Landscape</h2>
+            <div style="margin-top: 1rem;">
+                <h3 id="cpq-competitive-alternatives">CPQ Competitive Alternatives</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Competitor</th>
+  <th>Fit for Spotify</th>
+  <th>Displacement Risk</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Salesforce CPQ (Native)</strong></td>
+  <td>High - Already Salesforce shop</td>
+  <td>MEDIUM - Most credible alternative</td>
+</tr>
+<tr>
+  <td><strong>DealHub</strong></td>
+  <td>Medium - Strong in SaaS</td>
+  <td>LOW - Less telco/media expertise</td>
+</tr>
+<tr>
+  <td><strong>Conga</strong></td>
+  <td>Medium - Document focus</td>
+  <td>LOW</td>
+</tr>
+<tr>
+  <td><strong>Oracle CPQ</strong></td>
+  <td>Low - Not Salesforce-native</td>
+  <td>VERY LOW</td>
+</tr>
+<tr>
+  <td><strong>Vendavo</strong></td>
+  <td>Medium - Pricing focus</td>
+  <td>LOW</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="competitive-defense-strategy">Competitive Defense Strategy</h3>
+
+<p><strong>Primary Threat:</strong> Salesforce CPQ (native Salesforce product)</p>
+
+<p><strong>Defense Points:</strong>
+1. CloudSense's deep telecommunications/media vertical expertise vs. Salesforce CPQ's horizontal approach
+2. Order Management capabilities beyond basic CPQ
+3. Complex product catalog handling for advertising inventory
+4. Proven media company implementations (BT, Vodafone, etc.)
+5. Existing integration and institutional knowledge</p>
+
+<p><strong>Vulnerability:</strong> If Spotify consolidates all Salesforce spending for volume discounts, Salesforce could bundle CPQ at aggressive pricing.</p>
+
+<p><strong>Recommendation:</strong> Proactive engagement with Salesforce account team to position as complementary rather than competitive.</p>
+
+<hr />
+
+            </div>
+        </div>
+        
+
+        <div class="card">
+            <h2>🚀 Opportunities & Growth Potential</h2>
+            <div style="margin-top: 1rem;">
+                <h3 id="opportunity-1-spotify-ad-exchange-sax-cpq-enhancement">Opportunity 1: Spotify Ad Exchange (SAX) CPQ Enhancement</h3>
+
+<p><strong>Context:</strong> Spotify launched Ad Exchange in April 2025, enabling programmatic real-time bidding across audio, video, and display. Partners include The Trade Desk, Google DV360, Amazon DSP, Yahoo DSP, and Magnite.</p>
+
+<p><strong>Opportunity:</strong> Enhanced CPQ rules engine and pricing management for:
+- Dynamic programmatic pricing tiers
+- Partner-specific deal structures
+- Self-service advertiser configuration
+- Auction-based pricing models</p>
+
+<p><strong>Estimated Value:</strong> $200,000-$400,000 additional ARR
+<strong>Probability:</strong> Medium (50-60%)
+<strong>Timeline:</strong> FY26-FY27
+<strong>Champion Required:</strong> Spotify Advertising Sales Operations leadership</p>
+
+<h3 id="opportunity-2-partner-marketplace-enablement">Opportunity 2: Partner Marketplace Enablement</h3>
+
+<p><strong>Context:</strong> Spotify connects with 150+ offshore partners and has expanded SAX access to Megaphone publishers for private marketplace deals.</p>
+
+<p><strong>Opportunity:</strong> Partner portal CPQ capabilities for:
+- Channel partner quoting
+- Private marketplace deal configuration
+- White-label ordering workflows</p>
+
+<p><strong>Estimated Value:</strong> $150,000-$250,000 additional ARR
+<strong>Probability:</strong> Medium-Low (40%)
+<strong>Timeline:</strong> FY27</p>
+
+<h3 id="opportunity-3-contract-lifecycle-management-clm-cross-sell">Opportunity 3: Contract Lifecycle Management (CLM) Cross-Sell</h3>
+
+<p><strong>Context:</strong> Spotify manages enterprise advertising contracts with major brands (referenced: Salesforce, Netflix, Samsung partnerships). Currently using Salesforce ecosystem.</p>
+
+<p><strong>Opportunity:</strong> CloudSense CLM module for:
+- Advertiser contract management
+- Renewal automation
+- License compliance tracking</p>
+
+<p><strong>Estimated Value:</strong> $100,000-$200,000 additional ARR
+<strong>Probability:</strong> Medium (45%)
+<strong>Timeline:</strong> FY26-FY27</p>
+
+<h3 id="opportunity-4-ai-powered-guided-selling">Opportunity 4: AI-Powered Guided Selling</h3>
+
+<p><strong>Context:</strong> Spotify is investing heavily in AI (new research lab, partnerships with Sony/UMG/Warner for AI music tools). CEO Ek is AI-forward.</p>
+
+<p><strong>Opportunity:</strong> Position CloudSense AI-powered CPQ capabilities for:
+- Intelligent deal recommendations
+- Automated pricing optimization
+- Predictive close rates</p>
+
+<p><strong>Estimated Value:</strong> $75,000-$150,000 additional ARR (premium feature tier)
+<strong>Probability:</strong> Medium (50%)
+<strong>Timeline:</strong> FY26</p>
+
+<h3 id="total-expansion-pipeline">Total Expansion Pipeline</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Opportunity</th>
+  <th>Est. Value</th>
+  <th>Probability</th>
+  <th>Weighted Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>SAX CPQ Enhancement</td>
+  <td>$300K</td>
+  <td>55%</td>
+  <td>$165K</td>
+</tr>
+<tr>
+  <td>Partner Marketplace</td>
+  <td>$200K</td>
+  <td>40%</td>
+  <td>$80K</td>
+</tr>
+<tr>
+  <td>CLM Cross-Sell</td>
+  <td>$150K</td>
+  <td>45%</td>
+  <td>$67.5K</td>
+</tr>
+<tr>
+  <td>AI Guided Selling</td>
+  <td>$112.5K</td>
+  <td>50%</td>
+  <td>$56.25K</td>
+</tr>
+<tr>
+  <td><strong>TOTAL PIPELINE</strong></td>
+  <td><strong>$762.5K</strong></td>
+  <td></td>
+  <td><strong>$368.75K</strong></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+            </div>
+        </div>
+        
+
+        <div class="card" style="background: var(--highlight);">
+            <h2>📋 Account Strategy & Next Steps</h2>
+            <div style="margin-top: 1rem;">
+                <h3 id="engagement-model-recommendation">Engagement Model Recommendation</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Tier</th>
+  <th>Frequency</th>
+  <th>Participants</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Executive Sponsor</strong></td>
+  <td>Quarterly</td>
+  <td>CloudSense VP/SVP + Spotify VP Sales Ops/Technology</td>
+</tr>
+<tr>
+  <td><strong>Business Review (QBR)</strong></td>
+  <td>Quarterly</td>
+  <td>CSM + Spotify Operations/IT</td>
+</tr>
+<tr>
+  <td><strong>Technical Review</strong></td>
+  <td>Monthly</td>
+  <td>Solutions team + Spotify technical contacts</td>
+</tr>
+<tr>
+  <td><strong>Support</strong></td>
+  <td>As needed</td>
+  <td>Standard enterprise SLA</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="key-relationship-actions">Key Relationship Actions</h3>
+
+<ol>
+<li><strong>Immediate (30 Days):</strong></p>
+
+<ul>
+<li>Schedule QBR to review 2025 usage and 2026 roadmap alignment</li>
+<li>Identify current champion(s) within Spotify Advertising</li>
+<li>Document current product adoption metrics and use cases</li>
+</ul></li>
+<li><strong>Short-Term (90 Days):</strong></p>
+
+<ul>
+<li>Present SAX CPQ enhancement opportunity tied to their programmatic growth</li>
+<li>Request introduction to Technology Procurement leadership</li>
+<li>Align on AI roadmap given their investment in AI capabilities</li>
+</ul></li>
+<li><strong>Medium-Term (6 Months):</strong></p>
+
+<ul>
+<li>Conduct joint success story development (media reference)</li>
+<li>Explore partner marketplace expansion opportunity</li>
+<li>Position for contract renewal (timing TBD)</li>
+</ul></li>
+<li><strong>Strategic (12 Months):</strong></p>
+
+<ul>
+<li>Establish executive sponsorship at Co-CEO level</li>
+<li>Expand from single subscription to multi-module relationship</li>
+<li>Target $2M+ ARR relationship</li>
+</ul></li>
+</ol>
+
+<hr />
+
+            </div>
+        </div>
+        
+        
 
         <div class="card">
             <h2>Account Overview</h2>
@@ -296,12 +643,26 @@
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
             <h2 style="margin: 0;">📰 Recent News & Updates</h2>
             <div style="font-size: 0.85rem; color: var(--muted);">
-                Last updated: 2026-02-03 13:22:31
+                Last updated: 2026-02-03 14:58:00
             </div>
         </div>
 
         <div class="news-articles">
             
+        <div class="news-article">
+            <div class="news-title">
+                <a href="https://news.google.com/rss/articles/CBMinAFBVV95cUxOUmZLNnVTQXJkRG94QzNUbUhsMXNVeldnQ2t6cG9weGNKdDVlTkhHLW9pSVl1Tno1SXpZTWZ1MnFhbm4yV1JPWWNBMTAyVFNYRl96R290dFIyN0NReXE5TmpheC1SVGtpN0lCSG9aMTNaQ2oxek5SY2twVmJ1eThQTTF0cDdoUVA1Z19uTThOR3hNWGp1akMzODFhTHQ?oc=5" target="_blank" rel="noopener">Spotify to Use Checkout.com’s Global Acquiring Services - PYMNTS.com</a>
+            </div>
+            <div class="news-meta">
+                <span class="news-source">PYMNTS.com</span>
+                <span>•</span>
+                <span>2026-02-03</span>
+                <span>•</span>
+                <span class="news-relevance relevance-high">High Relevance</span>
+            </div>
+            <div class="news-summary"><a href="https://news.google.com/rss/articles/CBMinAFBVV95cUxOUmZLNnVTQXJkRG94QzNUbUhsMXNVeldnQ2t6cG9weGNKdDVlTkhHLW9pSVl1Tno1SXpZTWZ1MnFhbm4yV1JPWWNBMTAyVFNYRl96R290dFIyN0NReXE5TmpheC1SVGtpN0lCSG9aMT</div>
+        </div>
+        
         <div class="news-article">
             <div class="news-title">
                 <a href="https://news.google.com/rss/articles/CBMi-gFBVV95cUxQc2t2UWg2OEo5dFJKMXhmTU1nQldOMUtmY2JDMnh0N0xYR2tzUHBJWUg3VjI3N2thTV9MN2VRZWoxUXJ0ak9RTHN4eG1zdVliMkNpeWFMeGhueHRHQkJVZjlzWDE5WThINFI0cFNIVHZFYldqcURsbFBDWmM1Z2ZxbjdNSG9NSG5yS0d5ZnBiQkdFc3RQRGY2N2pNVnJIWE02RWNjVnhib1dNeURZYV9YRHNOLWhlMmtMaFpFNTJtUHYxaFFPNkRURUdKVzFJLXJkZjM3R1VjOGd1UEZlYjhqMi00MUlMaHQ5ZFBKN3hnQkJuV013Rm5YX3pn?oc=5" target="_blank" rel="noopener">Kind Son Tried To Help His Dad Log In To His Spotify Account, But Soon Feel Into A Dizzying Maze Of Stale Passwords, Frustration And Despair - TwistedSifter</a>
@@ -400,20 +761,6 @@
             <div class="news-summary"><a href="https://news.google.com/rss/articles/CBMiygFBVV95cUxNUEhUR2ZYbE9FSDltaGlGNGd1eVlPUmF2bXBCc3pELVpLNDRWTHd4OVM2TWZmUDlvWGRZNU9vcjVrSVo2SXdaNmpScFpzSWdQUnBUekhXZ2k4WkxEQWlwSXJYU0dFQlRPVEptcHlKeV</div>
         </div>
         
-        <div class="news-article">
-            <div class="news-title">
-                <a href="https://news.google.com/rss/articles/CBMivwFBVV95cUxQZjFBWkhvTXpUNTN2UG1YeUhIcHZZb2Q5b0VwdXI1Q0xERjc5V21wazFVZ042YzVQWkxRaUkzbjZnaTBTMlhpdkZuNmwtQVIzRDFQNk5lbVgyamR4ODdtRmJsQUxGXzlTX181Mlp5SkRETV9TbWZxTjJTeHJQay1EMWZiZVVfQ1NybVdITDJ5bnlVdmhkTHZadUtCd1g3WDhPc2VxdzdHR2hjN2lvQ2FURmcyaHRCVm1YZ0hkOFpZOA?oc=5" target="_blank" rel="noopener">Spotify Paid Out $11B in Royalties to Music Industry in 2025, All-Time Payments Surpass $70B - The Hollywood Reporter</a>
-            </div>
-            <div class="news-meta">
-                <span class="news-source">The Hollywood Reporter</span>
-                <span>•</span>
-                <span>2026-01-28</span>
-                <span>•</span>
-                <span class="news-relevance relevance-high">High Relevance</span>
-            </div>
-            <div class="news-summary"><a href="https://news.google.com/rss/articles/CBMivwFBVV95cUxQZjFBWkhvTXpUNTN2UG1YeUhIcHZZb2Q5b0VwdXI1Q0xERjc5V21wazFVZ042YzVQWkxRaUkzbjZnaTBTMlhpdkZuNmwtQVIzRDFQNk5lbVgyamR4ODdtRmJsQUxGXzlTX181Mlp5Sk</div>
-        </div>
-        
         </div>
     </div>
 
@@ -480,7 +827,7 @@
 
     <div class="footer">
         <p><strong>Spotify Strategic Account Plan</strong> | CloudSense Business Unit | Skyvera</p>
-        <p style="margin-top: 0.5rem;">Generated: February 03, 2026 | Confidential - Internal Use Only</p>
+        <p style="margin-top: 0.5rem;">Generated: February 04, 2026 | Confidential - Internal Use Only</p>
     </div>
 </body>
 </html>

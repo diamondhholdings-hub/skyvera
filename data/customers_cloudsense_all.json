@@ -1015,12 +1015,90 @@
       "region": "Americas"
     },
     {
-      "customer_name": "Ntirety (Hosting.Com)",
+      "customer_name": "Accenture Singapore",
       "rr": 0,
       "nrr": 0,
       "total": 0,
       "subscriptions": [],
       "rank": 56,
+      "pct_of_total": 0.0,
+      "region": "APAC"
+    },
+    {
+      "customer_name": "Telefonica Germany Gmbh & Co. Ohg",
+      "rr": 0,
+      "nrr": 0,
+      "total": 0,
+      "subscriptions": [],
+      "rank": 57,
+      "pct_of_total": 0.0,
+      "region": "EMEA"
+    },
+    {
+      "customer_name": "Ziggo Services B.V.",
+      "rr": 0,
+      "nrr": 0,
+      "total": 0,
+      "subscriptions": [],
+      "rank": 58,
+      "pct_of_total": 0.0,
+      "region": "EMEA"
+    },
+    {
+      "customer_name": "Rcs Media Group",
+      "rr": 0,
+      "nrr": 0,
+      "total": 0,
+      "subscriptions": [],
+      "rank": 59,
+      "pct_of_total": 0.0,
+      "region": "Americas"
+    },
+    {
+      "customer_name": "Luminus Hasselt Nv/Sa",
+      "rr": 0,
+      "nrr": 0,
+      "total": 0,
+      "subscriptions": [],
+      "rank": 60,
+      "pct_of_total": 0.0,
+      "region": "EMEA"
+    },
+    {
+      "customer_name": "Hcl Australia Services Pty. Ltd",
+      "rr": 0,
+      "nrr": 0,
+      "total": 0,
+      "subscriptions": [],
+      "rank": 61,
+      "pct_of_total": 0.0,
+      "region": "APAC"
+    },
+    {
+      "customer_name": "Ntirety (Hosting.Com)",
+      "rr": 0,
+      "nrr": 0,
+      "total": 0,
+      "subscriptions": [],
+      "rank": 62,
+      "pct_of_total": 0.0,
+      "region": "Americas"
+    },
+    {
+      "customer_name": "Various: Incremental Rev from Platinum upsell",
+      "rr": 0,
+      "nrr": 0,
+      "total": 0,
+      "subscriptions": [
+        {
+          "sub_id": "centrrica, others",
+          "arr": null,
+          "renewal_qtr": null,
+          "will_renew": null,
+          "projected_arr": null
+        }
+      ],
+      "rank": 63,
       "pct_of_total": 0.0,
       "region": "Americas"
     },
@@ -1038,100 +1116,22 @@
           "projected_arr": null
         }
       ],
-      "rank": 57,
+      "rank": 64,
       "pct_of_total": 0.0,
       "region": "Americas"
+    },
+    {
+      "customer_name": "British Telecommunications Plc",
+      "rr": 0,
+      "nrr": 0,
+      "total": 0,
+      "subscriptions": [],
+      "rank": 65,
+      "pct_of_total": 0.0,
+      "region": "EMEA"
     },
     {
       "customer_name": "Liquid Telecommunications Operations Limited",
-      "rr": 0,
-      "nrr": 0,
-      "total": 0,
-      "subscriptions": [],
-      "rank": 58,
-      "pct_of_total": 0.0,
-      "region": "EMEA"
-    },
-    {
-      "customer_name": "Hcl Australia Services Pty. Ltd",
-      "rr": 0,
-      "nrr": 0,
-      "total": 0,
-      "subscriptions": [],
-      "rank": 59,
-      "pct_of_total": 0.0,
-      "region": "APAC"
-    },
-    {
-      "customer_name": "Rcs Media Group",
-      "rr": 0,
-      "nrr": 0,
-      "total": 0,
-      "subscriptions": [],
-      "rank": 60,
-      "pct_of_total": 0.0,
-      "region": "Americas"
-    },
-    {
-      "customer_name": "Interxion Headquarters Bv",
-      "rr": 0,
-      "nrr": 0,
-      "total": 0,
-      "subscriptions": [],
-      "rank": 61,
-      "pct_of_total": 0.0,
-      "region": "Americas"
-    },
-    {
-      "customer_name": "Aarp Services, Inc.",
-      "rr": 0,
-      "nrr": 0,
-      "total": 0,
-      "subscriptions": [],
-      "rank": 62,
-      "pct_of_total": 0.0,
-      "region": "Americas"
-    },
-    {
-      "customer_name": "Accenture Singapore",
-      "rr": 0,
-      "nrr": 0,
-      "total": 0,
-      "subscriptions": [],
-      "rank": 63,
-      "pct_of_total": 0.0,
-      "region": "APAC"
-    },
-    {
-      "customer_name": "Telefonica Germany Gmbh & Co. Ohg",
-      "rr": 0,
-      "nrr": 0,
-      "total": 0,
-      "subscriptions": [],
-      "rank": 64,
-      "pct_of_total": 0.0,
-      "region": "EMEA"
-    },
-    {
-      "customer_name": "Various: Incremental Rev from Platinum upsell",
-      "rr": 0,
-      "nrr": 0,
-      "total": 0,
-      "subscriptions": [
-        {
-          "sub_id": "centrrica, others",
-          "arr": null,
-          "renewal_qtr": null,
-          "will_renew": null,
-          "projected_arr": null
-        }
-      ],
-      "rank": 65,
-      "pct_of_total": 0.0,
-      "region": "Americas"
-    },
-    {
-      "customer_name": "Luminus Hasselt Nv/Sa",
       "rr": 0,
       "nrr": 0,
       "total": 0,
@@ -1141,24 +1141,24 @@
       "region": "EMEA"
     },
     {
-      "customer_name": "British Telecommunications Plc",
+      "customer_name": "Aarp Services, Inc.",
       "rr": 0,
       "nrr": 0,
       "total": 0,
       "subscriptions": [],
       "rank": 67,
       "pct_of_total": 0.0,
-      "region": "EMEA"
+      "region": "Americas"
     },
     {
-      "customer_name": "Ziggo Services B.V.",
+      "customer_name": "Interxion Headquarters Bv",
       "rr": 0,
       "nrr": 0,
       "total": 0,
       "subscriptions": [],
       "rank": 68,
       "pct_of_total": 0.0,
-      "region": "EMEA"
+      "region": "Americas"
     }
   ]
 }

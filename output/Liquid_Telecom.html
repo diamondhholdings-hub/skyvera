@@ -152,6 +152,73 @@
             margin: 2rem 0;
         }
 
+        /* Alert Banner */
+        .alert-banner {
+            background: linear-gradient(135deg, var(--accent) 0%, #b33a26 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            margin: 0 0 2rem;
+            border-left: 4px solid #8b1a1a;
+            box-shadow: 0 4px 12px rgba(200, 75, 49, 0.3);
+            border-radius: 4px;
+        }
+
+        .alert-banner h3 {
+            color: white;
+            margin-bottom: 0.75rem;
+            font-size: 1.3rem;
+        }
+
+        .alert-banner p {
+            margin: 0.5rem 0 0;
+            line-height: 1.6;
+            opacity: 0.95;
+        }
+
+        .keys-to-success {
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.08) 0%, rgba(76, 175, 80, 0.02) 100%);
+            border: 1px solid rgba(76, 175, 80, 0.2);
+            padding: 2rem;
+            margin: 0 0 2rem;
+            border-radius: 4px;
+        }
+
+        .keys-to-success h2 {
+            color: #2e7d32;
+            margin-bottom: 1.5rem;
+        }
+
+        .priority-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .priority-card {
+            background: white;
+            padding: 1.5rem;
+            border-left: 4px solid #4caf50;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border-radius: 4px;
+        }
+
+        .priority-card .priority-label {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #4caf50;
+            margin-bottom: 0.75rem;
+            letter-spacing: 0.5px;
+        }
+
+        .priority-card .priority-action {
+            font-size: 1.15rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            color: var(--secondary);
+            line-height: 1.4;
+        }
+
         .footer {
             background: var(--secondary);
             color: var(--paper);
@@ -234,11 +301,855 @@
     </div>
 
     <div class="container">
-        <div class="pending-notice">
-            <h2 style="margin-bottom: 1rem;">⏳ Account Intelligence In Progress</h2>
-            <p>Comprehensive account plan intelligence (executives, pain points, competitive analysis, opportunities) will be populated here once customer research is complete.</p>
-            <p style="margin-top: 1rem;"><strong>Status:</strong> Awaiting customer-intelligence-analyst research for Liquid Telecom</p>
+        
+        <div class="alert-banner">
+            <h3>🚨 CRITICAL: Financial Default identified as critical risk</h3>
+            <p>Financial Default identified as critical risk</p>
         </div>
+        
+        
+        <div class="keys-to-success">
+            <h2>🎯 Keys to Success in Next 90 Days</h2>
+            <div class="priority-grid">
+                
+                <div class="priority-card">
+                    <div class="priority-label">Priority #1</div>
+                    <div class="priority-action">Obtain contract renewal date</div>
+                </div>
+            
+                <div class="priority-card">
+                    <div class="priority-label">Priority #2</div>
+                    <div class="priority-action">Schedule CTO meeting</div>
+                </div>
+            
+                <div class="priority-card">
+                    <div class="priority-label">Priority #3</div>
+                    <div class="priority-action">AR review</div>
+                </div>
+            
+            </div>
+        </div>
+        
+
+        
+        <!-- Customer Intelligence Section -->
+        
+        <div class="card" style="background: linear-gradient(135deg, #4caf5015 0%, #4caf5005 100%); border-left: 4px solid #4caf50;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <div style="font-size: 0.85rem; font-weight: 600; text-transform: uppercase; color: #4caf50; margin-bottom: 0.5rem;">
+                        ✅ RENEWAL EXPECTED
+                    </div>
+                    <h2 style="margin: 0;">Renewal: Q4'26</h2>
+                    <p style="color: var(--muted); margin-top: 0.5rem;">Contract End Date: December 01, 2026</p>
+                </div>
+                <div style="text-align: right;">
+                    <div style="font-size: 3rem; color: #4caf50;">✅</div>
+                </div>
+            </div>
+        </div>
+        
+
+        <div class="card" style="background: linear-gradient(135deg, #ff980015 0%, #ff980005 100%); border-left: 4px solid #ff9800;">
+            <h2>📊 Strategic Health Score</h2>
+            <div style="display: flex; align-items: center; gap: 2rem; margin-top: 1rem;">
+                <div style="font-size: 4rem; font-weight: 700; color: #ff9800;">5.5/10</div>
+                <div style="flex: 1;">
+                    <div style="background: #e0e0e0; height: 20px; border-radius: 10px; overflow: hidden;">
+                        <div style="background: #ff9800; height: 100%; width: 55.0%; transition: width 0.3s;"></div>
+                    </div>
+                    <p style="margin-top: 0.5rem; color: var(--muted); font-size: 0.9rem;">
+                        AT RISK - Monitor closely
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+
+        <div class="card">
+            <h2>🎯 Key Strategic Insights</h2>
+            <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 1rem;">
+                
+            <div class="metric-box" style="flex: 1; min-width: 250px;">
+                <div style="font-size: 2rem; margin-bottom: 0.5rem;">🔴</div>
+                <div class="label" style="font-weight: 600; color: var(--ink); margin-bottom: 0.5rem;">CRITICAL RISK</div>
+                <div style="font-size: 0.85rem; line-height: 1.5;">Liquid faces significant financial distress with Moody's downgrade to Caa2 and $620M debt maturing Feb/Sep 2026. This creates budget pressure and pote...</div>
+            </div>
+            
+            <div class="metric-box" style="flex: 1; min-width: 250px;">
+                <div style="font-size: 2rem; margin-bottom: 0.5rem;">🟢</div>
+                <div class="label" style="font-weight: 600; color: var(--ink); margin-bottom: 0.5rem;">STRATEGIC VALUE</div>
+                <div style="font-size: 0.85rem; line-height: 1.5;">Liquid is Africa's largest independent fiber network operator (110,000+ km) with operations in 20+ countries - a flagship reference customer for Cloud...</div>
+            </div>
+            
+            <div class="metric-box" style="flex: 1; min-width: 250px;">
+                <div style="font-size: 2rem; margin-bottom: 0.5rem;">🟢</div>
+                <div class="label" style="font-weight: 600; color: var(--ink); margin-bottom: 0.5rem;">REVENUE COMPOSITION INSIGHT</div>
+                <div style="font-size: 0.85rem; line-height: 1.5;">NRR ($1.42M) exceeds RR ($1.07M), indicating active professional services engagement. This suggests ongoing expansion/customization work - a positive ...</div>
+            </div>
+            
+            <div class="metric-box" style="flex: 1; min-width: 250px;">
+                <div style="font-size: 2rem; margin-bottom: 0.5rem;">🟢</div>
+                <div class="label" style="font-weight: 600; color: var(--ink); margin-bottom: 0.5rem;">PLATFORM INVESTMENT</div>
+                <div style="font-size: 0.85rem; line-height: 1.5;">Liquid has made significant investment in CloudSense through TCS-led implementation, migrating ~100,000 customer services to the platform. High switch...</div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="card">
+            <h2>⚠️ Pain Points & Strategic Initiatives</h2>
+            <div style="margin-top: 1rem;">
+                <h3 id="top-business-challenges">Top Business Challenges</h3>
+
+<h4 id="1-debt-refinancing-crisis">1. Debt Refinancing Crisis</h4>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Attribute</th>
+  <th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Urgency</strong></td>
+  <td>CRITICAL</td>
+</tr>
+<tr>
+  <td><strong>Budget Allocated</strong></td>
+  <td>$185M equity raise target</td>
+</tr>
+<tr>
+  <td><strong>Executive Owner</strong></td>
+  <td>Hardy Pemhiwa (CEO), Lorraine Harper (CFO)</td>
+</tr>
+<tr>
+  <td><strong>Deadline</strong></td>
+  <td>Feb/Sep 2026 debt maturities</td>
+</tr>
+<tr>
+  <td><strong>CloudSense Relevance</strong></td>
+  <td>Indirect - Budget pressure affects all vendor spend</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Mitigation:</strong> Demonstrate cost savings and operational efficiency to justify continued investment.</p>
+
+<hr />
+
+<h4 id="2-revenue-growth-stagnation">2. Revenue Growth Stagnation</h4>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Attribute</th>
+  <th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Urgency</strong></td>
+  <td>HIGH</td>
+</tr>
+<tr>
+  <td><strong>Evidence</strong></td>
+  <td>Only 1% YoY revenue growth (FY25)</td>
+</tr>
+<tr>
+  <td><strong>Executive Owner</strong></td>
+  <td>Regional CEOs, CMO</td>
+</tr>
+<tr>
+  <td><strong>CloudSense Relevance</strong></td>
+  <td>HIGH - CPQ enables faster go-to-market for new products</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Opportunity:</strong> Position CloudSense as revenue acceleration tool for new AI/cloud services.</p>
+
+<hr />
+
+<h4 id="3-leadership-turnover">3. Leadership Turnover</h4>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Attribute</th>
+  <th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Urgency</strong></td>
+  <td>HIGH</td>
+</tr>
+<tr>
+  <td><strong>Evidence</strong></td>
+  <td>CTO Ben Roberts (22 years), SA CEO Deon Geyser departed</td>
+</tr>
+<tr>
+  <td><strong>Executive Owner</strong></td>
+  <td>Hardy Pemhiwa (CEO)</td>
+</tr>
+<tr>
+  <td><strong>CloudSense Relevance</strong></td>
+  <td>MEDIUM - Risk of champion loss; need to build new relationships</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Mitigation:</strong> Identify and cultivate new champions; document tribal knowledge.</p>
+
+<hr />
+
+<h4 id="4-competitive-pressure-from-mnos">4. Competitive Pressure from MNOs</h4>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Attribute</th>
+  <th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Urgency</strong></td>
+  <td>MEDIUM</td>
+</tr>
+<tr>
+  <td><strong>Evidence</strong></td>
+  <td>MTN, Safaricom, Vodacom expanding into enterprise</td>
+</tr>
+<tr>
+  <td><strong>Executive Owner</strong></td>
+  <td>Wellington Makamure, Regional CEOs</td>
+</tr>
+<tr>
+  <td><strong>CloudSense Relevance</strong></td>
+  <td>HIGH - Need agile quoting to compete</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Opportunity:</strong> Enable competitive differentiation through faster, more accurate quotes.</p>
+
+<hr />
+
+<h4 id="5-one-cassava-integration">5. One Cassava Integration</h4>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Attribute</th>
+  <th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Urgency</strong></td>
+  <td>MEDIUM</td>
+</tr>
+<tr>
+  <td><strong>Initiative</strong></td>
+  <td>Unifying Liquid, Africa Data Centres, Sasai under one strategy</td>
+</tr>
+<tr>
+  <td><strong>Executive Owner</strong></td>
+  <td>Hardy Pemhiwa</td>
+</tr>
+<tr>
+  <td><strong>CloudSense Relevance</strong></td>
+  <td>HIGH - Opportunity to expand across business units</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Opportunity:</strong> Propose CloudSense as the unified CPQ platform across all Cassava entities.</p>
+
+<hr />
+
+<h3 id="strategic-initiatives-where-cloudsense-is-relevant">Strategic Initiatives Where CloudSense is Relevant</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Initiative</th>
+  <th>Description</th>
+  <th>CloudSense Opportunity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>AI Factory Rollout</strong></td>
+  <td>GPU-as-a-Service in 5 countries ($720M investment)</td>
+  <td>Configure/quote new AI infrastructure services</td>
+</tr>
+<tr>
+  <td><strong>Liquid C2 Growth</strong></td>
+  <td>Cloud, cybersecurity, managed services expansion</td>
+  <td>Complex product bundles and pricing</td>
+</tr>
+<tr>
+  <td><strong>Microsoft Airband</strong></td>
+  <td>20M underserved connections by 2025</td>
+  <td>High-volume, standardized connectivity packages</td>
+</tr>
+<tr>
+  <td><strong>SME Portal</strong></td>
+  <td>Zambia SME digital platform launch</td>
+  <td>Self-service quoting for SME segment</td>
+</tr>
+<tr>
+  <td><strong>Business Internet Access</strong></td>
+  <td>New BIA service in South Africa</td>
+  <td>New product configuration</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+            </div>
+        </div>
+        
+
+        <div class="card">
+            <h2>🏆 Competitive Landscape</h2>
+            <div style="margin-top: 1rem;">
+                <h3 id="liquids-business-competitors">Liquid's Business Competitors</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Competitor</th>
+  <th>Market</th>
+  <th>Threat Level</th>
+  <th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>MTN Group</strong></td>
+  <td>Pan-African</td>
+  <td>HIGH</td>
+  <td>295M customers, $11.2B revenue, expanding enterprise</td>
+</tr>
+<tr>
+  <td><strong>Safaricom</strong></td>
+  <td>East Africa</td>
+  <td>MEDIUM</td>
+  <td>Strong in Kenya, Ethiopia expansion</td>
+</tr>
+<tr>
+  <td><strong>Vodacom</strong></td>
+  <td>Southern Africa</td>
+  <td>MEDIUM</td>
+  <td>43.8% SA market share</td>
+</tr>
+<tr>
+  <td><strong>Orange Africa</strong></td>
+  <td>West/Central Africa</td>
+  <td>MEDIUM</td>
+  <td>149M customers across 18 countries</td>
+</tr>
+<tr>
+  <td><strong>Airtel Africa</strong></td>
+  <td>Pan-African</td>
+  <td>MEDIUM</td>
+  <td>14 countries, growing enterprise focus</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="cpqbss-technology-competitive-threats">CPQ/BSS Technology Competitive Threats</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Competitor</th>
+  <th>Threat to CloudSense</th>
+  <th>Probability</th>
+  <th>Mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Salesforce Revenue Cloud</strong></td>
+  <td>HIGH</td>
+  <td>25%</td>
+  <td>Native Salesforce integration; limited telco depth</td>
+</tr>
+<tr>
+  <td><strong>Amdocs</strong></td>
+  <td>MEDIUM</td>
+  <td>15%</td>
+  <td>Strong BSS; expensive, complex</td>
+</tr>
+<tr>
+  <td><strong>Oracle CPQ</strong></td>
+  <td>MEDIUM</td>
+  <td>15%</td>
+  <td>Enterprise-grade; integration complexity</td>
+</tr>
+<tr>
+  <td><strong>NetCracker</strong></td>
+  <td>LOW</td>
+  <td>5%</td>
+  <td>BSS focus, not CPQ-first</td>
+</tr>
+<tr>
+  <td><strong>Cerillion</strong></td>
+  <td>LOW</td>
+  <td>5%</td>
+  <td>BSS/billing specialist</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="cloudsense-competitive-differentiators">CloudSense Competitive Differentiators</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Differentiator</th>
+  <th>Value to Liquid</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Salesforce Native</strong></td>
+  <td>Leverages existing Salesforce investment</td>
+</tr>
+<tr>
+  <td><strong>Telco Specialization</strong></td>
+  <td>Purpose-built for complex telco products</td>
+</tr>
+<tr>
+  <td><strong>Implementation Partner</strong></td>
+  <td>TCS relationship provides continuity</td>
+</tr>
+<tr>
+  <td><strong>Migration Investment</strong></td>
+  <td>100,000 services migrated; high switching cost</td>
+</tr>
+<tr>
+  <td><strong>Multi-Country</strong></td>
+  <td>Proven across Liquid's 20+ country footprint</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="defensive-positioning">Defensive Positioning</h3>
+
+<p><strong>Key Message:</strong> "CloudSense is deeply embedded in your sales operations with 100,000+ services migrated. Switching would require significant investment and operational disruption during a critical refinancing period."</p>
+
+<hr />
+
+            </div>
+        </div>
+        
+
+        <div class="card">
+            <h2>🚀 Opportunities & Growth Potential</h2>
+            <div style="margin-top: 1rem;">
+                <h3 id="expansion-opportunities">Expansion Opportunities</h3>
+
+<h4 id="opportunity-1-one-cassava-platform-standardization">Opportunity 1: One Cassava Platform Standardization</h4>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Attribute</th>
+  <th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Description</strong></td>
+  <td>Extend CloudSense to Africa Data Centres, Sasai Fintech, Liquid C2 as unified CPQ</td>
+</tr>
+<tr>
+  <td><strong>Revenue Potential</strong></td>
+  <td>$500K - $1M ARR</td>
+</tr>
+<tr>
+  <td><strong>Probability</strong></td>
+  <td>40%</td>
+</tr>
+<tr>
+  <td><strong>Executive Sponsor</strong></td>
+  <td>Hardy Pemhiwa</td>
+</tr>
+<tr>
+  <td><strong>Timeline</strong></td>
+  <td>12-18 months</td>
+</tr>
+<tr>
+  <td><strong>Prerequisites</strong></td>
+  <td>Prove ROI in current Liquid deployment</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h4 id="opportunity-2-aicloud-services-configuration">Opportunity 2: AI/Cloud Services Configuration</h4>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Attribute</th>
+  <th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Description</strong></td>
+  <td>Configure CloudSense for new GPU-as-a-Service and AI infrastructure products</td>
+</tr>
+<tr>
+  <td><strong>Revenue Potential</strong></td>
+  <td>$200K - $400K NRR (implementation) + $150K ARR</td>
+</tr>
+<tr>
+  <td><strong>Probability</strong></td>
+  <td>50%</td>
+</tr>
+<tr>
+  <td><strong>Executive Sponsor</strong></td>
+  <td>Shahzad Manzoor (CTO)</td>
+</tr>
+<tr>
+  <td><strong>Timeline</strong></td>
+  <td>6-12 months</td>
+</tr>
+<tr>
+  <td><strong>Prerequisites</strong></td>
+  <td>AI Factory launch timeline</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h4 id="opportunity-3-geographic-expansion-east-africa">Opportunity 3: Geographic Expansion (East Africa)</h4>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Attribute</th>
+  <th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Description</strong></td>
+  <td>Extend CloudSense deployment to Kenya, Tanzania, Uganda operations</td>
+</tr>
+<tr>
+  <td><strong>Revenue Potential</strong></td>
+  <td>$200K - $300K ARR</td>
+</tr>
+<tr>
+  <td><strong>Probability</strong></td>
+  <td>35%</td>
+</tr>
+<tr>
+  <td><strong>Executive Sponsor</strong></td>
+  <td>Neeraj Pradhan (Kenya CEO)</td>
+</tr>
+<tr>
+  <td><strong>Timeline</strong></td>
+  <td>12-24 months</td>
+</tr>
+<tr>
+  <td><strong>Prerequisites</strong></td>
+  <td>Successful southern Africa renewal</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h4 id="opportunity-4-sme-self-service-portal-integration">Opportunity 4: SME Self-Service Portal Integration</h4>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Attribute</th>
+  <th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Description</strong></td>
+  <td>Integrate CloudSense with Liquid's SME portal for self-service quoting</td>
+</tr>
+<tr>
+  <td><strong>Revenue Potential</strong></td>
+  <td>$100K - $150K ARR</td>
+</tr>
+<tr>
+  <td><strong>Probability</strong></td>
+  <td>30%</td>
+</tr>
+<tr>
+  <td><strong>Executive Sponsor</strong></td>
+  <td>Regional CEOs</td>
+</tr>
+<tr>
+  <td><strong>Timeline</strong></td>
+  <td>6-12 months</td>
+</tr>
+<tr>
+  <td><strong>Prerequisites</strong></td>
+  <td>SME portal success in Zambia</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h3 id="cross-sell-opportunities-other-skyvera-products">Cross-Sell Opportunities (Other Skyvera Products)</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Product</th>
+  <th>Fit</th>
+  <th>Probability</th>
+  <th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Kandy (CPaaS)</strong></td>
+  <td>MEDIUM</td>
+  <td>25%</td>
+  <td>Liquid already offers UCaaS; potential overlap or complement</td>
+</tr>
+<tr>
+  <td><strong>STL</strong></td>
+  <td>LOW</td>
+  <td>10%</td>
+  <td>Unknown product alignment</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h3 id="reference-case-study-value">Reference &amp; Case Study Value</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Asset</th>
+  <th>Value</th>
+  <th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Logo Rights</strong></td>
+  <td>HIGH</td>
+  <td>Africa's largest fiber network</td>
+</tr>
+<tr>
+  <td><strong>Case Study</strong></td>
+  <td>HIGH</td>
+  <td>TCS case study exists</td>
+</tr>
+<tr>
+  <td><strong>Speaking Engagement</strong></td>
+  <td>MEDIUM</td>
+  <td>Executive testimony at events</td>
+</tr>
+<tr>
+  <td><strong>Reference Call</strong></td>
+  <td>HIGH</td>
+  <td>Peer validation for telco prospects</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+            </div>
+        </div>
+        
+
+        <div class="card" style="background: var(--highlight);">
+            <h2>📋 Account Strategy & Next Steps</h2>
+            <div style="margin-top: 1rem;">
+                <h3 id="immediate-actions-next-30-days">Immediate Actions (Next 30 Days)</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>#</th>
+  <th>Action</th>
+  <th>Owner</th>
+  <th>Deadline</th>
+  <th>Success Criteria</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>1</td>
+  <td><strong>Obtain contract renewal date</strong></td>
+  <td>Account Manager</td>
+  <td>Week 1</td>
+  <td>Contract terms documented</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td><strong>Schedule CTO meeting</strong> with Shahzad Manzoor</td>
+  <td>Account Executive</td>
+  <td>Week 2</td>
+  <td>Meeting confirmed</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td><strong>AR review</strong> - Check payment status</td>
+  <td>Finance</td>
+  <td>Week 1</td>
+  <td>Current payment status confirmed</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td><strong>Champion mapping</strong> - Identify new contacts post-departures</td>
+  <td>Account Manager</td>
+  <td>Week 2</td>
+  <td>3+ new contacts identified</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td><strong>ROI documentation</strong> - Update business case</td>
+  <td>Solutions</td>
+  <td>Week 3</td>
+  <td>ROI deck refreshed</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="60-day-priorities">60-Day Priorities</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>#</th>
+  <th>Action</th>
+  <th>Owner</th>
+  <th>Success Criteria</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>1</td>
+  <td><strong>Executive Business Review</strong> with Regional CEO</td>
+  <td>VP Sales</td>
+  <td>EBR completed, expansion discussion initiated</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td><strong>Technical roadmap session</strong> with CTO</td>
+  <td>Solutions Architect</td>
+  <td>Future state architecture defined</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td><strong>AI/Cloud configuration scoping</strong></td>
+  <td>Professional Services</td>
+  <td>Statement of Work for AI products</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td><strong>Competitive defense brief</strong></td>
+  <td>Product Marketing</td>
+  <td>Competitive positioning document</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="90-day-strategic-initiatives">90-Day Strategic Initiatives</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>#</th>
+  <th>Action</th>
+  <th>Owner</th>
+  <th>Success Criteria</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>1</td>
+  <td><strong>One Cassava proposal</strong> - Platform standardization pitch</td>
+  <td>Account Executive</td>
+  <td>Proposal delivered to CEO</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td><strong>Multi-year renewal negotiation</strong></td>
+  <td>VP Sales</td>
+  <td>LOI for 3-year renewal</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td><strong>Reference program enrollment</strong></td>
+  <td>Marketing</td>
+  <td>Case study update approved</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td><strong>Executive sponsor assignment</strong></td>
+  <td>Leadership</td>
+  <td>VP/C-level sponsor identified</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="key-messages-by-stakeholder">Key Messages by Stakeholder</h3>
+
+<table class="data-table">
+<thead>
+<tr>
+  <th>Stakeholder</th>
+  <th>Key Message</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Hardy Pemhiwa (CEO)</strong></td>
+  <td>"CloudSense enables your One Cassava strategy by providing a unified sales platform across all business units, reducing operational complexity and accelerating revenue."</td>
+</tr>
+<tr>
+  <td><strong>Lorraine Harper (CFO)</strong></td>
+  <td>"Our platform has already delivered X% improvement in quote accuracy and Y% reduction in sales cycle time. Consolidating on CloudSense reduces total cost of ownership vs. fragmented alternatives."</td>
+</tr>
+<tr>
+  <td><strong>Shahzad Manzoor (CTO)</strong></td>
+  <td>"As you launch AI-as-a-Service and new cloud products, CloudSense can configure these complex offerings on Day 1, leveraging your existing Salesforce investment."</td>
+</tr>
+<tr>
+  <td><strong>Wellington Makamure (Regional CEO)</strong></td>
+  <td>"CloudSense has proven scale across your Southern Africa operations. Let's discuss how we can replicate this success in your East African markets."</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+            </div>
+        </div>
+        
+        
 
         <div class="card">
             <h2>Account Overview</h2>
@@ -303,7 +1214,7 @@
 
     <div class="footer">
         <p><strong>Liquid Telecom Strategic Account Plan</strong> | CloudSense Business Unit | Skyvera</p>
-        <p style="margin-top: 0.5rem;">Generated: February 03, 2026 | Confidential - Internal Use Only</p>
+        <p style="margin-top: 0.5rem;">Generated: February 04, 2026 | Confidential - Internal Use Only</p>
     </div>
 </body>
 </html>

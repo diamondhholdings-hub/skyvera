@@ -1,8 +1,16 @@
 {
   "customer_name": "Spotify",
-  "last_updated": "2026-02-03 13:22:31",
+  "last_updated": "2026-02-03 14:58:00",
   "article_count": 8,
   "articles": [
+    {
+      "title": "Spotify to Use Checkout.com\u2019s Global Acquiring Services - PYMNTS.com",
+      "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOUmZLNnVTQXJkRG94QzNUbUhsMXNVeldnQ2t6cG9weGNKdDVlTkhHLW9pSVl1Tno1SXpZTWZ1MnFhbm4yV1JPWWNBMTAyVFNYRl96R290dFIyN0NReXE5TmpheC1SVGtpN0lCSG9aMTNaQ2oxek5SY2twVmJ1eThQTTF0cDdoUVA1Z19uTThOR3hNWGp1akMzODFhTHQ?oc=5",
+      "source": "PYMNTS.com",
+      "published": "2026-02-03",
+      "summary": "<a href=\"https://news.google.com/rss/articles/CBMinAFBVV95cUxOUmZLNnVTQXJkRG94QzNUbUhsMXNVeldnQ2t6cG9weGNKdDVlTkhHLW9pSVl1Tno1SXpZTWZ1MnFhbm4yV1JPWWNBMTAyVFNYRl96R290dFIyN0NReXE5TmpheC1SVGtpN0lCSG9aMT",
+      "relevance_score": 1.0
+    },
     {
       "title": "Kind Son Tried To Help His Dad Log In To His Spotify Account, But Soon Feel Into A Dizzying Maze Of Stale Passwords, Frustration And Despair - TwistedSifter",
       "url": "https://news.google.com/rss/articles/CBMi-gFBVV95cUxQc2t2UWg2OEo5dFJKMXhmTU1nQldOMUtmY2JDMnh0N0xYR2tzUHBJWUg3VjI3N2thTV9MN2VRZWoxUXJ0ak9RTHN4eG1zdVliMkNpeWFMeGhueHRHQkJVZjlzWDE5WThINFI0cFNIVHZFYldqcURsbFBDWmM1Z2ZxbjdNSG9NSG5yS0d5ZnBiQkdFc3RQRGY2N2pNVnJIWE02RWNjVnhib1dNeURZYV9YRHNOLWhlMmtMaFpFNTJtUHYxaFFPNkRURUdKVzFJLXJkZjM3R1VjOGd1UEZlYjhqMi00MUlMaHQ5ZFBKN3hnQkJuV013Rm5YX3pn?oc=5",
@@ -57,14 +65,6 @@
       "source": "NME",
       "published": "2026-01-28",
       "summary": "<a href=\"https://news.google.com/rss/articles/CBMiygFBVV95cUxNUEhUR2ZYbE9FSDltaGlGNGd1eVlPUmF2bXBCc3pELVpLNDRWTHd4OVM2TWZmUDlvWGRZNU9vcjVrSVo2SXdaNmpScFpzSWdQUnBUekhXZ2k4WkxEQWlwSXJYU0dFQlRPVEptcHlKeV",
-      "relevance_score": 1.0
-    },
-    {
-      "title": "Spotify Paid Out $11B in Royalties to Music Industry in 2025, All-Time Payments Surpass $70B - The Hollywood Reporter",
-      "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQZjFBWkhvTXpUNTN2UG1YeUhIcHZZb2Q5b0VwdXI1Q0xERjc5V21wazFVZ042YzVQWkxRaUkzbjZnaTBTMlhpdkZuNmwtQVIzRDFQNk5lbVgyamR4ODdtRmJsQUxGXzlTX181Mlp5SkRETV9TbWZxTjJTeHJQay1EMWZiZVVfQ1NybVdITDJ5bnlVdmhkTHZadUtCd1g3WDhPc2VxdzdHR2hjN2lvQ2FURmcyaHRCVm1YZ0hkOFpZOA?oc=5",
-      "source": "The Hollywood Reporter",
-      "published": "2026-01-28",
-      "summary": "<a href=\"https://news.google.com/rss/articles/CBMivwFBVV95cUxQZjFBWkhvTXpUNTN2UG1YeUhIcHZZb2Q5b0VwdXI1Q0xERjc5V21wazFVZ042YzVQWkxRaUkzbjZnaTBTMlhpdkZuNmwtQVIzRDFQNk5lbVgyamR4ODdtRmJsQUxGXzlTX181Mlp5Sk",
       "relevance_score": 1.0
     }
   ]

@@ -438,6 +438,41 @@
       "region": "Americas"
     },
     {
+      "customer_name": "Los Angeles Public Library",
+      "rr": 0,
+      "nrr": 0,
+      "total": 0,
+      "subscriptions": [
+        {
+          "sub_id": 1211873.0,
+          "arr": 0.0,
+          "renewal_qtr": "Q1'26",
+          "will_renew": "No (SF)",
+          "projected_arr": 0.0
+        },
+        {
+          "sub_id": 1421164.0,
+          "arr": 0.0,
+          "renewal_qtr": "Q1'26",
+          "will_renew": "No",
+          "projected_arr": 0.0
+        }
+      ],
+      "rank": 22,
+      "pct_of_total": 0.0,
+      "region": "Americas"
+    },
+    {
+      "customer_name": "At&T Services, Inc.",
+      "rr": 0,
+      "nrr": 0,
+      "total": 0,
+      "subscriptions": [],
+      "rank": 23,
+      "pct_of_total": 0.0,
+      "region": "Americas"
+    },
+    {
       "customer_name": "VR3CLOUD INTERNATIONAL, LLC",
       "rr": 0,
       "nrr": 0,
@@ -451,25 +486,7 @@
           "projected_arr": 0.0
         }
       ],
-      "rank": 22,
-      "pct_of_total": 0.0,
-      "region": "Americas"
-    },
-    {
-      "customer_name": "DIGITAL SPACE GROUP LIMITED",
-      "rr": 0,
-      "nrr": 0,
-      "total": 0,
-      "subscriptions": [
-        {
-          "sub_id": 1234294.0,
-          "arr": 0.0,
-          "renewal_qtr": "Q1'26",
-          "will_renew": "No",
-          "projected_arr": 0.0
-        }
-      ],
-      "rank": 23,
+      "rank": 24,
       "pct_of_total": 0.0,
       "region": "Americas"
     },
@@ -479,7 +496,7 @@
       "nrr": 0,
       "total": 0,
       "subscriptions": [],
-      "rank": 24,
+      "rank": 25,
       "pct_of_total": 0.0,
       "region": "Americas"
     },
@@ -504,35 +521,18 @@
           "projected_arr": 0.0
         }
       ],
-      "rank": 25,
-      "pct_of_total": 0.0,
-      "region": "Americas"
-    },
-    {
-      "customer_name": "At&T Services, Inc.",
-      "rr": 0,
-      "nrr": 0,
-      "total": 0,
-      "subscriptions": [],
       "rank": 26,
       "pct_of_total": 0.0,
       "region": "Americas"
     },
     {
-      "customer_name": "Los Angeles Public Library",
+      "customer_name": "DIGITAL SPACE GROUP LIMITED",
       "rr": 0,
       "nrr": 0,
       "total": 0,
       "subscriptions": [
         {
-          "sub_id": 1211873.0,
-          "arr": 0.0,
-          "renewal_qtr": "Q1'26",
-          "will_renew": "No (SF)",
-          "projected_arr": 0.0
-        },
-        {
-          "sub_id": 1421164.0,
+          "sub_id": 1234294.0,
           "arr": 0.0,
           "renewal_qtr": "Q1'26",
           "will_renew": "No",

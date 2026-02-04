@@ -34,6 +34,11 @@ def classify_region(customer_name):
         'ericsson telecommunications': 'APAC',  # Philippines office
         'commverge': 'APAC',  # Philippines
         'hcl technologies': 'EMEA',  # UK office (HCL TECHNOLOGIES UK LIMITED)
+        'elpedison': 'EMEA',  # Greece
+        'ofcom': 'EMEA',  # UK regulator
+        'pelephone': 'EMEA',  # Israel
+        'rcs media': 'EMEA',  # Italy
+        'sku': 'EMEA',  # Italy (SKU Italia)
     }
 
     # Check specific company mappings first
@@ -43,11 +48,14 @@ def classify_region(customer_name):
 
     # High priority EMEA patterns (specific identifiers)
     emea_priority = [
-        'uk', 'plc', 'gmbh', 'ag.', 'nv/', 'sa/', 's.a.l', 'oyj',
+        'uk', 'plc', 'gmbh', 'ag.', 'nv/', 'sa/', 'sa ', ' sa', 's.a.l', 'oyj',
         'albania', 'germany', 'austria', 'belgium', 'netherlands', 'finland',
         'africa', 'egypt', 'uae', 'middle east', 'emirates',
         'telekom', 'vodafone', 'telefonica', 'elisa', 'luminus', 'ziggo',
-        'british', 'virgin media', 'a1 ', 'postnl', 'orange'
+        'british', 'virgin media', 'a1 ', 'postnl', 'orange',
+        'italy', 'italia', 'italian', 'greece', 'greek', 'israel', 'israeli',
+        'france', 'french', 'spain', 'spanish', 'portugal', 'portuguese',
+        'poland', 'polish', 'czech', 'hungary', 'romania', 'bulgaria'
     ]
 
     # High priority APAC patterns (check before generic patterns)
