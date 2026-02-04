@@ -18,8 +18,7 @@
         }
       ],
       "rank": 1,
-      "pct_of_total": 47.40248967969391,
-      "region": "EMEA"
+      "pct_of_total": 47.40248967969391
     },
     {
       "customer_name": "Commverge Solutions Philippines Inc.",
@@ -43,8 +42,7 @@
         }
       ],
       "rank": 2,
-      "pct_of_total": 8.925517354700478,
-      "region": "APAC"
+      "pct_of_total": 8.925517354700478
     },
     {
       "customer_name": "Teleindia Networks Private Limited",
@@ -82,8 +80,7 @@
         }
       ],
       "rank": 3,
-      "pct_of_total": 8.799136769325411,
-      "region": "APAC"
+      "pct_of_total": 8.799136769325411
     },
     {
       "customer_name": "PT. Supra Primatama Nusantara",
@@ -100,8 +97,7 @@
         }
       ],
       "rank": 4,
-      "pct_of_total": 7.081628954998598,
-      "region": "APAC"
+      "pct_of_total": 7.081628954998598
     },
     {
       "customer_name": "Ericsson Telecommunications, Inc.",
@@ -118,8 +114,7 @@
         }
       ],
       "rank": 5,
-      "pct_of_total": 4.560080616149201,
-      "region": "APAC"
+      "pct_of_total": 4.560080616149201
     },
     {
       "customer_name": "PT. Sisindokom Lintasbuana",
@@ -136,8 +131,7 @@
         }
       ],
       "rank": 6,
-      "pct_of_total": 4.516932022692971,
-      "region": "APAC"
+      "pct_of_total": 4.516932022692971
     },
     {
       "customer_name": "Sterlite Technologies Ltd",
@@ -154,8 +148,7 @@
         }
       ],
       "rank": 7,
-      "pct_of_total": 2.905661789183833,
-      "region": "Americas"
+      "pct_of_total": 2.905661789183833
     },
     {
       "customer_name": "Asianet Satellite Communications Ltd",
@@ -179,8 +172,7 @@
         }
       ],
       "rank": 8,
-      "pct_of_total": 2.7290316998749136,
-      "region": "APAC"
+      "pct_of_total": 2.7290316998749136
     },
     {
       "customer_name": "MTN Zambia",
@@ -197,8 +189,7 @@
         }
       ],
       "rank": 9,
-      "pct_of_total": 2.5133000746658922,
-      "region": "Americas"
+      "pct_of_total": 2.5133000746658922
     },
     {
       "customer_name": "Synaptic Technologies",
@@ -215,8 +206,7 @@
         }
       ],
       "rank": 10,
-      "pct_of_total": 1.9175471671927222,
-      "region": "Americas"
+      "pct_of_total": 1.9175471671927222
     },
     {
       "customer_name": "Bharti Airtel Limited - Mumbai",
@@ -240,8 +230,7 @@
         }
       ],
       "rank": 11,
-      "pct_of_total": 1.612536421198036,
-      "region": "Americas"
+      "pct_of_total": 1.612536421198036
     },
     {
       "customer_name": "HITACHI SYSTEMS INDIA PRIVATE LIMITED",
@@ -258,8 +247,7 @@
         }
       ],
       "rank": 12,
-      "pct_of_total": 1.2015249890286075,
-      "region": "APAC"
+      "pct_of_total": 1.2015249890286075
     },
     {
       "customer_name": "Tata Teleservices Limited",
@@ -276,8 +264,7 @@
         }
       ],
       "rank": 13,
-      "pct_of_total": 1.1088313889825299,
-      "region": "Americas"
+      "pct_of_total": 1.1088313889825299
     },
     {
       "customer_name": "ERICSSON (THAILAND) LTD",
@@ -294,8 +281,7 @@
         }
       ],
       "rank": 14,
-      "pct_of_total": 0.9795425932031169,
-      "region": "APAC"
+      "pct_of_total": 0.9795425932031169
     },
     {
       "customer_name": "Bharti Airtel Limited - Chennai",
@@ -312,8 +298,7 @@
         }
       ],
       "rank": 15,
-      "pct_of_total": 0.8764328465501573,
-      "region": "Americas"
+      "pct_of_total": 0.8764328465501573
     },
     {
       "customer_name": "Bharti Airtel Limited - Gurgaon",
@@ -330,8 +315,7 @@
         }
       ],
       "rank": 16,
-      "pct_of_total": 0.8622588652265081,
-      "region": "Americas"
+      "pct_of_total": 0.8622588652265081
     },
     {
       "customer_name": "Atom Myanmar Ltd",
@@ -348,8 +332,7 @@
         }
       ],
       "rank": 17,
-      "pct_of_total": 0.8248779732236774,
-      "region": "Americas"
+      "pct_of_total": 0.8248779732236774
     },
     {
       "customer_name": "Wipro Ltd.",
@@ -366,8 +349,7 @@
         }
       ],
       "rank": 18,
-      "pct_of_total": 0.6283250186664731,
-      "region": "Americas"
+      "pct_of_total": 0.6283250186664731
     },
     {
       "customer_name": "Mavenir Systems Private Limited",
@@ -384,8 +366,7 @@
         }
       ],
       "rank": 19,
-      "pct_of_total": 0.5543437754429744,
-      "region": "Americas"
+      "pct_of_total": 0.5543437754429744
     },
     {
       "customer_name": "4iG",
@@ -394,8 +375,7 @@
       "total": 0,
       "subscriptions": [],
       "rank": 20,
-      "pct_of_total": 0.0,
-      "region": "Americas"
+      "pct_of_total": 0.0
     },
     {
       "customer_name": "MTN Sudan Company Limited",
@@ -412,8 +392,7 @@
         }
       ],
       "rank": 21,
-      "pct_of_total": 0.0,
-      "region": "Americas"
+      "pct_of_total": 0.0
     }
   ]
 }

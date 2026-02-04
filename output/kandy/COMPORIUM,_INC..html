@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COMPORIUM, INC. Account Plan | Skyvera Kandy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #1a1a1a;
+            --paper: #fafaf8;
+            --accent: #e65100;
+            --secondary: #2d4263;
+            --muted: #8b8b8b;
+            --border: #e8e6e1;
+            --highlight: #fff3e0;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'DM Sans', sans-serif; background: var(--paper); color: var(--ink); line-height: 1.6; }
+        h1, h2 { font-family: 'Cormorant Garamond', serif; }
+
+        .global-nav {
+            background: var(--ink);
+            color: var(--paper);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .global-nav-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+        }
+        .global-nav-controls {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .global-nav-bu-selector {
+            padding: 0.75rem 1.5rem;
+            font-size: 0.95rem;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            background: white;
+            cursor: pointer;
+            min-width: 200px;
+        }
+        .global-nav-select {
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            background: white;
+            cursor: pointer;
+            min-width: 400px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #1a2332 100%);
+            color: var(--paper);
+            padding: 4rem 2rem 3rem;
+        }
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .header h1 {
+            font-size: 3.5rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+        }
+        .header-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 4px;
+        }
+        .stat-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            opacity: 0.8;
+            margin-bottom: 0.5rem;
+        }
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+        .card {
+            background: white;
+            border: 1px solid var(--border);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .back-link {
+            display: inline-block;
+            margin: 1rem 2rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--secondary);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        .back-link:hover {
+            background: var(--accent);
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .metric-box {
+            background: var(--highlight);
+            padding: 1.5rem;
+            border-left: 3px solid var(--accent);
+        }
+        .metric-box .label {
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+        .metric-box .value {
+            font-size: 1.8rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+
+        .pending-notice {
+            background: rgba(255, 152, 0, 0.1);
+            border-left: 4px solid #ff9800;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+/* Alert Banner */
+        .alert-banner {
+            background: linear-gradient(135deg, var(--accent) 0%, #b33a26 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            margin: 0 0 2rem;
+            border-left: 4px solid #8b1a1a;
+            box-shadow: 0 4px 12px rgba(200, 75, 49, 0.3);
+            border-radius: 4px;
+        }
+
+        .alert-banner h3 {
+            color: white;
+            margin-bottom: 0.75rem;
+            font-size: 1.3rem;
+        }
+
+        .alert-banner p {
+            margin: 0.5rem 0 0;
+            line-height: 1.6;
+            opacity: 0.95;
+        }
+
+        .keys-to-success {
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.08) 0%, rgba(76, 175, 80, 0.02) 100%);
+            border: 1px solid rgba(76, 175, 80, 0.2);
+            padding: 2rem;
+            margin: 0 0 2rem;
+            border-radius: 4px;
+        }
+
+        .keys-to-success h2 {
+            color: #2e7d32;
+            margin-bottom: 1.5rem;
+        }
+
+        .priority-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .priority-card {
+            background: white;
+            padding: 1.5rem;
+            border-left: 4px solid #4caf50;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border-radius: 4px;
+        }
+
+        .priority-card .priority-label {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #4caf50;
+            margin-bottom: 0.75rem;
+            letter-spacing: 0.5px;
+        }
+
+        .priority-card .priority-action {
+            font-size: 1.15rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            color: var(--secondary);
+            line-height: 1.4;
+        }
+
+        .footer {
+            background: var(--secondary);
+            color: var(--paper);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="global-nav">
+        <a href="../index.html" class="global-nav-logo">SKYVERA</a>
+        <div class="global-nav-controls">
+            <select class="global-nav-bu-selector" onchange="window.location.href=this.value">
+                <option value="">Navigate to...</option>
+                <option value="../index.html">CloudSense Overview</option>
+                <option value="index.html" selected>Kandy Overview</option>
+                <option value="../stl/index.html">STL Overview</option>
+                <option value="../newnet/index.html">NewNet Overview</option>
+                <option value="../analytics.html">📊 Master Analytics</option>
+            </select>
+            <select class="global-nav-select" onchange="window.location.href=this.value">
+                <option value="">Select Customer Account...</option>
+                <option value="EMIRCOM.html">#1 - EMIRCOM ($9.59M)</option>
+<option value="AT&T_SERVICES,_INC..html">#2 - AT&T SERVICES, INC. ($2.52M)</option>
+<option value="PIONEER_TELEPHONE_COOPERATIVE_(OK).html">#3 - PIONEER TELEPHONE COOPERATIVE (OK) ($0.30M)</option>
+<option value="ISSQUARED,_INC..html">#4 - ISSQUARED, INC. ($0.30M)</option>
+<option value="HARGRAY_COMMUNICATIONS_GROUP.html">#5 - HARGRAY COMMUNICATIONS GROUP ($0.16M)</option>
+<option value="COMPORIUM,_INC..html" selected>#6 - COMPORIUM, INC. ($0.13M)</option>
+<option value="YADKIN_VALLEY_TEL_MEMBERSHIP_CORP.html">#7 - YADKIN VALLEY TEL MEMBERSHIP CORP ($0.10M)</option>
+<option value="RAZORLINE,_LLC.html">#8 - RAZORLINE, LLC ($0.08M)</option>
+<option value="WHOLESALE_CARRIER_SERVICES_INC..html">#9 - WHOLESALE CARRIER SERVICES INC. ($0.07M)</option>
+<option value="NUWAVE_COMMUNICATIONS,_INC..html">#10 - NUWAVE COMMUNICATIONS, INC. ($0.07M)</option>
+<option value="Juxto_-_Ontario.html">#11 - Juxto - Ontario ($0.05M)</option>
+<option value="VOICEFLEX_LIMITED.html">#12 - VOICEFLEX LIMITED ($0.05M)</option>
+<option value="HERTZ_EUROPE_LIMITED.html">#13 - HERTZ EUROPE LIMITED ($0.05M)</option>
+<option value="Coordinadora_de_Carriers_SA_de_CV_Vivaro.html">#14 - Coordinadora de Carriers SA de CV Vivaro ($0.04M)</option>
+<option value="CROSS_TELEPHONE_COMPANY_LLC_(OK).html">#15 - CROSS TELEPHONE COMPANY LLC (OK) ($0.03M)</option>
+<option value="COEO_SOLUTIONS_LLC.html">#16 - COEO SOLUTIONS LLC ($0.02M)</option>
+<option value="EVOLUTIO_CLOUD_ENABLER_S.A..html">#17 - EVOLUTIO CLOUD ENABLER S.A. ($0.02M)</option>
+<option value="EMPIRE_TELEPHONE_CORPORATION.html">#18 - EMPIRE TELEPHONE CORPORATION ($0.02M)</option>
+<option value="VODAFONE_FIJI_LIMITED.html">#19 - VODAFONE FIJI LIMITED ($0.01M)</option>
+<option value="ISSQUARED,_Inc..html">#20 - ISSQUARED, Inc. ($0.00M)</option>
+<option value="AGT.html">#21 - AGT ($0.00M)</option>
+<option value="Ribbon_Communications_Operating_Company,_Inc..html">#22 - Ribbon Communications Operating Company, Inc. ($0.00M)</option>
+<option value="At&T_Services,_Inc..html">#23 - At&T Services, Inc. ($0.00M)</option>
+<option value="Los_Angeles_Public_Library.html">#24 - Los Angeles Public Library ($0.00M)</option>
+<option value="CITY_OF_LOS_ANGELES.html">#25 - CITY OF LOS ANGELES ($0.00M)</option>
+<option value="VR3CLOUD_INTERNATIONAL,_LLC.html">#26 - VR3CLOUD INTERNATIONAL, LLC ($0.00M)</option>
+<option value="DIGITAL_SPACE_GROUP_LIMITED.html">#27 - DIGITAL SPACE GROUP LIMITED ($0.00M)</option>
+            </select>
+        </div>
+    </div>
+
+    <a href="index.html" class="back-link">← Back to Customer Overview</a>
+
+    <div class="header">
+        <div class="header-content">
+            <h1>COMPORIUM, INC.</h1>
+            <div style="font-size: 1.1rem; opacity: 0.85; margin-top: 1rem;">
+                Strategic Account Plan | Kandy Business Unit | Q1 2026
+            </div>
+
+            <div class="header-stats">
+                <div class="stat-card">
+                    <div class="stat-label">Total Revenue</div>
+                    <div class="stat-value">$0.13M</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Recurring Revenue</div>
+                    <div class="stat-value">$0.13M</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Non-Recurring Revenue</div>
+                    <div class="stat-value">$0.00M</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Customer Rank</div>
+                    <div class="stat-value">#6</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        
+        
+
+        
+        <div class="pending-notice">
+            <h2 style="margin-bottom: 1rem;">⏳ Account Intelligence In Progress</h2>
+            <p>Comprehensive account plan intelligence (executives, pain points, competitive analysis, opportunities) will be populated here once customer research is complete.</p>
+            <p style="margin-top: 1rem;"><strong>Status:</strong> Awaiting customer-intelligence-analyst research for COMPORIUM, INC.</p>
+        </div>
+        
+
+        <div class="card">
+            <h2>Account Overview</h2>
+            <div class="metrics-grid">
+                <div class="metric-box">
+                    <div class="label">Business Unit</div>
+                    <div class="value" style="font-size: 1.2rem;">Kandy</div>
+                </div>
+                <div class="metric-box">
+                    <div class="label">Active Subscriptions</div>
+                    <div class="value">2</div>
+                </div>
+                <div class="metric-box">
+                    <div class="label">% of Kandy</div>
+                    <div class="value">0.9%</div>
+                </div>
+                <div class="metric-box">
+                    <div class="label">Revenue Mix</div>
+                    <div class="value" style="font-size: 1rem;">
+                        100% RR /
+                        0% NRR
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Revenue Breakdown</h2>
+            <table style="width: 100%; border-collapse: collapse;">
+                <tr style="border-bottom: 2px solid var(--border);">
+                    <th style="text-align: left; padding: 1rem;">Component</th>
+                    <th style="text-align: right; padding: 1rem;">Amount</th>
+                    <th style="text-align: right; padding: 1rem;">% of Total</th>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border);">
+                    <td style="padding: 1rem;"><strong>Recurring Revenue (ARR)</strong></td>
+                    <td style="text-align: right; padding: 1rem;">$127,574</td>
+                    <td style="text-align: right; padding: 1rem;">100.0%</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border);">
+                    <td style="padding: 1rem;"><strong>Non-Recurring Revenue (FY26)</strong></td>
+                    <td style="text-align: right; padding: 1rem;">$0</td>
+                    <td style="text-align: right; padding: 1rem;">0.0%</td>
+                </tr>
+                <tr style="background: var(--highlight); font-weight: 700;">
+                    <td style="padding: 1rem;"><strong>TOTAL REVENUE</strong></td>
+                    <td style="text-align: right; padding: 1rem;">$127,574</td>
+                    <td style="text-align: right; padding: 1rem;">100.0%</td>
+                </tr>
+            </table>
+        </div>
+
+        
+        <div class="card">
+            <h2>📰 Recent News & Updates</h2>
+            <div style="text-align: center; padding: 3rem; color: var(--muted); font-style: italic;">
+                No recent news available for this customer
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="footer">
+        <p><strong>COMPORIUM, INC. Strategic Account Plan</strong> | Kandy Business Unit | Skyvera</p>
+        <p style="margin-top: 0.5rem;">Generated: February 04, 2026 | Confidential - Internal Use Only</p>
+    </div>
+</body>
+</html>

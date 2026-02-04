@@ -4,7 +4,7 @@ import os
 from datetime import datetime
 
 def load_customers():
-    with open('data/customers_top80.json', 'r') as f:
+    with open('data/customers_cloudsense_all.json', 'r') as f:
         return json.load(f)
 
 def load_template():

@@ -18,8 +18,7 @@
         }
       ],
       "rank": 1,
-      "pct_of_total": 7.6949826884635,
-      "region": "EMEA"
+      "pct_of_total": 7.6949826884635
     },
     {
       "customer_name": "Telefonica UK Limited",
@@ -36,8 +35,7 @@
         }
       ],
       "rank": 2,
-      "pct_of_total": 6.50574768630979,
-      "region": "EMEA"
+      "pct_of_total": 6.50574768630979
     },
     {
       "customer_name": "Telstra Corporation Limited",
@@ -54,8 +52,7 @@
         }
       ],
       "rank": 3,
-      "pct_of_total": 6.0951097278588575,
-      "region": "APAC"
+      "pct_of_total": 6.0951097278588575
     },
     {
       "customer_name": "Masergy",
@@ -64,8 +61,7 @@
       "total": 1924000.0,
       "subscriptions": [],
       "rank": 4,
-      "pct_of_total": 5.946750059026593,
-      "region": "Americas"
+      "pct_of_total": 5.946750059026593
     },
     {
       "customer_name": "Vodafone Netherlands",
@@ -82,8 +78,7 @@
         }
       ],
       "rank": 5,
-      "pct_of_total": 5.696980467619401,
-      "region": "EMEA"
+      "pct_of_total": 5.696980467619401
     },
     {
       "customer_name": "Spotify",
@@ -100,8 +95,7 @@
         }
       ],
       "rank": 6,
-      "pct_of_total": 4.906068798696939,
-      "region": "Americas"
+      "pct_of_total": 4.906068798696939
     },
     {
       "customer_name": "British Telecommunications plc",
@@ -118,8 +112,7 @@
         }
       ],
       "rank": 7,
-      "pct_of_total": 4.341964013447248,
-      "region": "EMEA"
+      "pct_of_total": 4.341964013447248
     },
     {
       "customer_name": "Maxis Broadband Sdn Bhd",
@@ -143,8 +136,7 @@
         }
       ],
       "rank": 8,
-      "pct_of_total": 4.216490739844749,
-      "region": "APAC"
+      "pct_of_total": 4.216490739844749
     },
     {
       "customer_name": "Centrica Services Ltd",
@@ -161,8 +153,7 @@
         }
       ],
       "rank": 9,
-      "pct_of_total": 3.257677435603173,
-      "region": "EMEA"
+      "pct_of_total": 3.257677435603173
     },
     {
       "customer_name": "StarHub Ltd",
@@ -186,8 +177,7 @@
         }
       ],
       "rank": 10,
-      "pct_of_total": 2.841207891286144,
-      "region": "APAC"
+      "pct_of_total": 2.841207891286144
     },
     {
       "customer_name": "Elisa Oyj",
@@ -211,8 +201,7 @@
         }
       ],
       "rank": 11,
-      "pct_of_total": 2.7729518420886334,
-      "region": "EMEA"
+      "pct_of_total": 2.7729518420886334
     },
     {
       "customer_name": "New Sales Ps - Go Get",
@@ -221,8 +210,7 @@
       "total": 834000.0,
       "subscriptions": [],
       "rank": 12,
-      "pct_of_total": 2.5777492459605917,
-      "region": "Americas"
+      "pct_of_total": 2.5777492459605917
     },
     {
       "customer_name": "Abbott Laboratories",
@@ -239,8 +227,7 @@
         }
       ],
       "rank": 13,
-      "pct_of_total": 2.5249814207486763,
-      "region": "Americas"
+      "pct_of_total": 2.5249814207486763
     },
     {
       "customer_name": "Dplay Entertainment Ltd",
@@ -249,8 +236,7 @@
       "total": 800000.04,
       "subscriptions": [],
       "rank": 14,
-      "pct_of_total": 2.4726612708374622,
-      "region": "EMEA"
+      "pct_of_total": 2.4726612708374622
     },
     {
       "customer_name": "Advance Publications US",
@@ -267,8 +253,7 @@
         }
       ],
       "rank": 15,
-      "pct_of_total": 2.0374727852964294,
-      "region": "Americas"
+      "pct_of_total": 2.0374727852964294
     },
     {
       "customer_name": "Virgin Media Limited",
@@ -285,8 +270,7 @@
         }
       ],
       "rank": 16,
-      "pct_of_total": 2.026369022240529,
-      "region": "EMEA"
+      "pct_of_total": 2.026369022240529
     },
     {
       "customer_name": "Foxtel Management Pty Limited",
@@ -303,8 +287,7 @@
         }
       ],
       "rank": 17,
-      "pct_of_total": 1.9789341398661109,
-      "region": "APAC"
+      "pct_of_total": 1.9789341398661109
     },
     {
       "customer_name": "PostNL Holding BV",
@@ -321,8 +304,7 @@
         }
       ],
       "rank": 18,
-      "pct_of_total": 1.7818452123653954,
-      "region": "EMEA"
+      "pct_of_total": 1.7818452123653954
     },
     {
       "customer_name": "Thryv Australia Pty Ltd",
@@ -339,8 +321,7 @@
         }
       ],
       "rank": 19,
-      "pct_of_total": 1.7555232090129107,
-      "region": "APAC"
+      "pct_of_total": 1.7555232090129107
     },
     {
       "customer_name": "A1 Telekom Austria AG.",
@@ -364,8 +345,7 @@
         }
       ],
       "rank": 20,
-      "pct_of_total": 1.7017283949017685,
-      "region": "EMEA"
+      "pct_of_total": 1.7017283949017685
     },
     {
       "customer_name": "Luminus Hasselt NV/SA",
@@ -389,8 +369,7 @@
         }
       ],
       "rank": 21,
-      "pct_of_total": 1.6741251512675952,
-      "region": "EMEA"
+      "pct_of_total": 1.6741251512675952
     },
     {
       "customer_name": "Telefonica Germany GmbH & Co. OHG",
@@ -407,8 +386,7 @@
         }
       ],
       "rank": 22,
-      "pct_of_total": 1.421975716231012,
-      "region": "EMEA"
+      "pct_of_total": 1.421975716231012
     },
     {
       "customer_name": "CoreSite",
@@ -425,8 +403,7 @@
         }
       ],
       "rank": 23,
-      "pct_of_total": 1.410298357605489,
-      "region": "Americas"
+      "pct_of_total": 1.410298357605489
     },
     {
       "customer_name": "Telstra - Ges(a)",
@@ -435,8 +412,7 @@
       "total": 431900.0,
       "subscriptions": [],
       "rank": 24,
-      "pct_of_total": 1.334927936846978,
-      "region": "APAC"
+      "pct_of_total": 1.334927936846978
     },
     {
       "customer_name": "DPLAY ENTERTAINMENT LTD",
@@ -453,8 +429,7 @@
         }
       ],
       "rank": 25,
-      "pct_of_total": 1.3218249345287698,
-      "region": "EMEA"
+      "pct_of_total": 1.3218249345287698
     },
     {
       "customer_name": "Informa UK Limited",
@@ -471,8 +446,7 @@
         }
       ],
       "rank": 26,
-      "pct_of_total": 1.2747879960577297,
-      "region": "EMEA"
+      "pct_of_total": 1.2747879960577297
     },
     {
       "customer_name": "Proximus NV",
@@ -489,8 +463,7 @@
         }
       ],
       "rank": 27,
-      "pct_of_total": 1.2367835342161058,
-      "region": "Americas"
+      "pct_of_total": 1.2367835342161058
     },
     {
       "customer_name": "DPG Media BV",
@@ -507,8 +480,7 @@
         }
       ],
       "rank": 28,
-      "pct_of_total": 1.1095158813273454,
-      "region": "Americas"
+      "pct_of_total": 1.1095158813273454
     },
     {
       "customer_name": "Masergy Communications, Inc.",
@@ -525,8 +497,7 @@
         }
       ],
       "rank": 29,
-      "pct_of_total": 1.0816161347133584,
-      "region": "Americas"
+      "pct_of_total": 1.0816161347133584
     },
     {
       "customer_name": "Hawaiian Telcom Communications, Inc.",
@@ -543,8 +514,7 @@
         }
       ],
       "rank": 30,
-      "pct_of_total": 1.036301559272668,
-      "region": "Americas"
+      "pct_of_total": 1.036301559272668
     },
     {
       "customer_name": "MasterCard Worldwide",
@@ -561,8 +531,7 @@
         }
       ],
       "rank": 31,
-      "pct_of_total": 0.9995269063608705,
-      "region": "Americas"
+      "pct_of_total": 0.9995269063608705
     },
     {
       "customer_name": "Telenet BV",
@@ -579,8 +548,7 @@
         }
       ],
       "rank": 32,
-      "pct_of_total": 0.9321161363765321,
-      "region": "Americas"
+      "pct_of_total": 0.9321161363765321
     },
     {
       "customer_name": "Star Hub",
@@ -589,8 +557,7 @@
       "total": 300000.0,
       "subscriptions": [],
       "rank": 33,
-      "pct_of_total": 0.9272479302016517,
-      "region": "Americas"
+      "pct_of_total": 0.9272479302016517
     },
     {
       "customer_name": "Interxion Headquarters BV",
@@ -607,8 +574,7 @@
         }
       ],
       "rank": 34,
-      "pct_of_total": 0.9161993693058627,
-      "region": "Americas"
+      "pct_of_total": 0.9161993693058627
     },
     {
       "customer_name": "NBN Co Ltd",
@@ -625,8 +591,7 @@
         }
       ],
       "rank": 35,
-      "pct_of_total": 0.909463129450798,
-      "region": "Americas"
+      "pct_of_total": 0.909463129450798
     },
     {
       "customer_name": "PropertyGuru Pte Ltd",
@@ -643,8 +608,7 @@
         }
       ],
       "rank": 36,
-      "pct_of_total": 0.810252948048952,
-      "region": "Americas"
+      "pct_of_total": 0.810252948048952
     },
     {
       "customer_name": "Momentum Energy",
@@ -661,18 +625,7 @@
         }
       ],
       "rank": 37,
-      "pct_of_total": 0.743911634919044,
-      "region": "Americas"
-    },
-    {
-      "customer_name": "A1 Telekom",
-      "rr": 0,
-      "nrr": 210248.76,
-      "total": 210248.76,
-      "subscriptions": [],
-      "rank": 38,
-      "pct_of_total": 0.6498424251248794,
-      "region": "EMEA"
+      "pct_of_total": 0.743911634919044
     },
     {
       "customer_name": "A1 Telekom Austria Ag.",
@@ -680,9 +633,17 @@
       "nrr": 210248.76,
       "total": 210248.76,
       "subscriptions": [],
+      "rank": 38,
+      "pct_of_total": 0.6498424251248794
+    },
+    {
+      "customer_name": "A1 Telekom",
+      "rr": 0,
+      "nrr": 210248.76,
+      "total": 210248.76,
+      "subscriptions": [],
       "rank": 39,
-      "pct_of_total": 0.6498424251248794,
-      "region": "EMEA"
+      "pct_of_total": 0.6498424251248794
     },
     {
       "customer_name": "Telstra International Limited",
@@ -734,8 +695,7 @@
         }
       ],
       "rank": 40,
-      "pct_of_total": 0.6424123874601735,
-      "region": "APAC"
+      "pct_of_total": 0.6424123874601735
     },
     {
       "customer_name": "BeeDIGITAL AI, S.A.U.",
@@ -752,8 +712,7 @@
         }
       ],
       "rank": 41,
-      "pct_of_total": 0.5832143760266886,
-      "region": "Americas"
+      "pct_of_total": 0.5832143760266886
     },
     {
       "customer_name": "TATA Communications (America) Inc.",
@@ -770,8 +729,7 @@
         }
       ],
       "rank": 42,
-      "pct_of_total": 0.5592417716632202,
-      "region": "Americas"
+      "pct_of_total": 0.5592417716632202
     },
     {
       "customer_name": "AARP Services, Inc.",
@@ -788,8 +746,7 @@
         }
       ],
       "rank": 43,
-      "pct_of_total": 0.5487553702792479,
-      "region": "Americas"
+      "pct_of_total": 0.5487553702792479
     },
     {
       "customer_name": "Hubexo South UK Ltd",
@@ -806,8 +763,7 @@
         }
       ],
       "rank": 44,
-      "pct_of_total": 0.5359861153993837,
-      "region": "EMEA"
+      "pct_of_total": 0.5359861153993837
     },
     {
       "customer_name": "ELPEDISON SA",
@@ -831,8 +787,7 @@
         }
       ],
       "rank": 45,
-      "pct_of_total": 0.47828823657564334,
-      "region": "Americas"
+      "pct_of_total": 0.47828823657564334
     },
     {
       "customer_name": "Sky Italia",
@@ -849,8 +804,7 @@
         }
       ],
       "rank": 46,
-      "pct_of_total": 0.46758689912145035,
-      "region": "Americas"
+      "pct_of_total": 0.46758689912145035
     },
     {
       "customer_name": "RCS Media Group",
@@ -867,8 +821,7 @@
         }
       ],
       "rank": 47,
-      "pct_of_total": 0.46707243106151014,
-      "region": "Americas"
+      "pct_of_total": 0.46707243106151014
     },
     {
       "customer_name": "Ofcom",
@@ -885,8 +838,7 @@
         }
       ],
       "rank": 48,
-      "pct_of_total": 0.4352237518706446,
-      "region": "Americas"
+      "pct_of_total": 0.4352237518706446
     },
     {
       "customer_name": "Ntirety (Hosting.com)",
@@ -903,8 +855,7 @@
         }
       ],
       "rank": 49,
-      "pct_of_total": 0.41589047798461837,
-      "region": "Americas"
+      "pct_of_total": 0.41589047798461837
     },
     {
       "customer_name": "Il Sole 24 ORE SpA",
@@ -921,8 +872,7 @@
         }
       ],
       "rank": 50,
-      "pct_of_total": 0.328000479305582,
-      "region": "Americas"
+      "pct_of_total": 0.328000479305582
     },
     {
       "customer_name": "TV4 AB",
@@ -939,8 +889,7 @@
         }
       ],
       "rank": 51,
-      "pct_of_total": 0.30055755683854096,
-      "region": "Americas"
+      "pct_of_total": 0.30055755683854096
     },
     {
       "customer_name": "Unidad Editorial S.A.",
@@ -957,8 +906,7 @@
         }
       ],
       "rank": 52,
-      "pct_of_total": 0.26289447677655287,
-      "region": "Americas"
+      "pct_of_total": 0.26289447677655287
     },
     {
       "customer_name": "Rakuten Marketing",
@@ -975,8 +923,7 @@
         }
       ],
       "rank": 53,
-      "pct_of_total": 0.21766029373141096,
-      "region": "Americas"
+      "pct_of_total": 0.21766029373141096
     },
     {
       "customer_name": "Liberty Global Services B.V. (NL)",
@@ -993,8 +940,7 @@
         }
       ],
       "rank": 54,
-      "pct_of_total": 0.10083784151025754,
-      "region": "Americas"
+      "pct_of_total": 0.10083784151025754
     },
     {
       "customer_name": "Newsday",
@@ -1011,28 +957,7 @@
         }
       ],
       "rank": 55,
-      "pct_of_total": 0.08262137593963062,
-      "region": "Americas"
-    },
-    {
-      "customer_name": "Accenture Singapore",
-      "rr": 0,
-      "nrr": 0,
-      "total": 0,
-      "subscriptions": [],
-      "rank": 56,
-      "pct_of_total": 0.0,
-      "region": "APAC"
-    },
-    {
-      "customer_name": "Telefonica Germany Gmbh & Co. Ohg",
-      "rr": 0,
-      "nrr": 0,
-      "total": 0,
-      "subscriptions": [],
-      "rank": 57,
-      "pct_of_total": 0.0,
-      "region": "EMEA"
+      "pct_of_total": 0.08262137593963062
     },
     {
       "customer_name": "Ziggo Services B.V.",
@@ -1040,29 +965,8 @@
       "nrr": 0,
       "total": 0,
       "subscriptions": [],
-      "rank": 58,
-      "pct_of_total": 0.0,
-      "region": "EMEA"
-    },
-    {
-      "customer_name": "Rcs Media Group",
-      "rr": 0,
-      "nrr": 0,
-      "total": 0,
-      "subscriptions": [],
-      "rank": 59,
-      "pct_of_total": 0.0,
-      "region": "Americas"
-    },
-    {
-      "customer_name": "Luminus Hasselt Nv/Sa",
-      "rr": 0,
-      "nrr": 0,
-      "total": 0,
-      "subscriptions": [],
-      "rank": 60,
-      "pct_of_total": 0.0,
-      "region": "EMEA"
+      "rank": 56,
+      "pct_of_total": 0.0
     },
     {
       "customer_name": "Hcl Australia Services Pty. Ltd",
@@ -1070,37 +974,62 @@
       "nrr": 0,
       "total": 0,
       "subscriptions": [],
-      "rank": 61,
-      "pct_of_total": 0.0,
-      "region": "APAC"
+      "rank": 57,
+      "pct_of_total": 0.0
     },
     {
-      "customer_name": "Ntirety (Hosting.Com)",
+      "customer_name": "British Telecommunications Plc",
+      "rr": 0,
+      "nrr": 0,
+      "total": 0,
+      "subscriptions": [],
+      "rank": 58,
+      "pct_of_total": 0.0
+    },
+    {
+      "customer_name": "Luminus Hasselt Nv/Sa",
+      "rr": 0,
+      "nrr": 0,
+      "total": 0,
+      "subscriptions": [],
+      "rank": 59,
+      "pct_of_total": 0.0
+    },
+    {
+      "customer_name": "Interxion Headquarters Bv",
+      "rr": 0,
+      "nrr": 0,
+      "total": 0,
+      "subscriptions": [],
+      "rank": 60,
+      "pct_of_total": 0.0
+    },
+    {
+      "customer_name": "Rcs Media Group",
+      "rr": 0,
+      "nrr": 0,
+      "total": 0,
+      "subscriptions": [],
+      "rank": 61,
+      "pct_of_total": 0.0
+    },
+    {
+      "customer_name": "Liquid Telecommunications Operations Limited",
       "rr": 0,
       "nrr": 0,
       "total": 0,
       "subscriptions": [],
       "rank": 62,
-      "pct_of_total": 0.0,
-      "region": "Americas"
+      "pct_of_total": 0.0
     },
     {
-      "customer_name": "Various: Incremental Rev from Platinum upsell",
+      "customer_name": "Aarp Services, Inc.",
       "rr": 0,
       "nrr": 0,
       "total": 0,
-      "subscriptions": [
-        {
-          "sub_id": "centrrica, others",
-          "arr": null,
-          "renewal_qtr": null,
-          "will_renew": null,
-          "projected_arr": null
-        }
-      ],
+      "subscriptions": [],
       "rank": 63,
-      "pct_of_total": 0.0,
-      "region": "Americas"
+      "pct_of_total": 0.0
     },
     {
       "customer_name": "Various: License increments",
@@ -1117,48 +1046,51 @@
         }
       ],
       "rank": 64,
-      "pct_of_total": 0.0,
-      "region": "Americas"
+      "pct_of_total": 0.0
     },
     {
-      "customer_name": "British Telecommunications Plc",
+      "customer_name": "Accenture Singapore",
       "rr": 0,
       "nrr": 0,
       "total": 0,
       "subscriptions": [],
       "rank": 65,
-      "pct_of_total": 0.0,
-      "region": "EMEA"
+      "pct_of_total": 0.0
     },
     {
-      "customer_name": "Liquid Telecommunications Operations Limited",
+      "customer_name": "Various: Incremental Rev from Platinum upsell",
       "rr": 0,
       "nrr": 0,
       "total": 0,
-      "subscriptions": [],
+      "subscriptions": [
+        {
+          "sub_id": "centrrica, others",
+          "arr": null,
+          "renewal_qtr": null,
+          "will_renew": null,
+          "projected_arr": null
+        }
+      ],
       "rank": 66,
-      "pct_of_total": 0.0,
-      "region": "EMEA"
+      "pct_of_total": 0.0
     },
     {
-      "customer_name": "Aarp Services, Inc.",
+      "customer_name": "Telefonica Germany Gmbh & Co. Ohg",
       "rr": 0,
       "nrr": 0,
       "total": 0,
       "subscriptions": [],
       "rank": 67,
-      "pct_of_total": 0.0,
-      "region": "Americas"
+      "pct_of_total": 0.0
     },
     {
-      "customer_name": "Interxion Headquarters Bv",
+      "customer_name": "Ntirety (Hosting.Com)",
       "rr": 0,
       "nrr": 0,
       "total": 0,
       "subscriptions": [],
       "rank": 68,
-      "pct_of_total": 0.0,
-      "region": "Americas"
+      "pct_of_total": 0.0
     }
   ]
 }

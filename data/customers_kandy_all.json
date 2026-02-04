@@ -18,8 +18,7 @@
         }
       ],
       "rank": 1,
-      "pct_of_total": 70.4731407443919,
-      "region": "EMEA"
+      "pct_of_total": 70.4731407443919
     },
     {
       "customer_name": "AT&T SERVICES, INC.",
@@ -78,8 +77,7 @@
         }
       ],
       "rank": 2,
-      "pct_of_total": 18.51294266309377,
-      "region": "Americas"
+      "pct_of_total": 18.51294266309377
     },
     {
       "customer_name": "PIONEER TELEPHONE COOPERATIVE (OK)",
@@ -96,8 +94,7 @@
         }
       ],
       "rank": 3,
-      "pct_of_total": 2.2184509807075186,
-      "region": "Americas"
+      "pct_of_total": 2.2184509807075186
     },
     {
       "customer_name": "ISSQUARED, INC.",
@@ -114,8 +111,7 @@
         }
       ],
       "rank": 4,
-      "pct_of_total": 2.1695679669630406,
-      "region": "Americas"
+      "pct_of_total": 2.1695679669630406
     },
     {
       "customer_name": "HARGRAY COMMUNICATIONS GROUP",
@@ -132,8 +128,7 @@
         }
       ],
       "rank": 5,
-      "pct_of_total": 1.1631948899466404,
-      "region": "Americas"
+      "pct_of_total": 1.1631948899466404
     },
     {
       "customer_name": "COMPORIUM, INC.",
@@ -157,8 +152,7 @@
         }
       ],
       "rank": 6,
-      "pct_of_total": 0.9378504048732698,
-      "region": "Americas"
+      "pct_of_total": 0.9378504048732698
     },
     {
       "customer_name": "YADKIN VALLEY TEL MEMBERSHIP CORP",
@@ -182,8 +176,7 @@
         }
       ],
       "rank": 7,
-      "pct_of_total": 0.7111688404114015,
-      "region": "Americas"
+      "pct_of_total": 0.7111688404114015
     },
     {
       "customer_name": "RAZORLINE, LLC",
@@ -200,8 +193,7 @@
         }
       ],
       "rank": 8,
-      "pct_of_total": 0.6068412876959034,
-      "region": "Americas"
+      "pct_of_total": 0.6068412876959034
     },
     {
       "customer_name": "WHOLESALE CARRIER SERVICES INC.",
@@ -218,8 +210,7 @@
         }
       ],
       "rank": 9,
-      "pct_of_total": 0.542432259237739,
-      "region": "Americas"
+      "pct_of_total": 0.542432259237739
     },
     {
       "customer_name": "NUWAVE COMMUNICATIONS, INC.",
@@ -236,8 +227,7 @@
         }
       ],
       "rank": 10,
-      "pct_of_total": 0.5346770811614584,
-      "region": "Americas"
+      "pct_of_total": 0.5346770811614584
     },
     {
       "customer_name": "Juxto - Ontario",
@@ -254,8 +244,7 @@
         }
       ],
       "rank": 11,
-      "pct_of_total": 0.3587033041729707,
-      "region": "Americas"
+      "pct_of_total": 0.3587033041729707
     },
     {
       "customer_name": "VOICEFLEX LIMITED",
@@ -272,8 +261,7 @@
         }
       ],
       "rank": 12,
-      "pct_of_total": 0.3453155284681822,
-      "region": "Americas"
+      "pct_of_total": 0.3453155284681822
     },
     {
       "customer_name": "HERTZ EUROPE LIMITED",
@@ -290,8 +278,7 @@
         }
       ],
       "rank": 13,
-      "pct_of_total": 0.3420984660577993,
-      "region": "Americas"
+      "pct_of_total": 0.3420984660577993
     },
     {
       "customer_name": "Coordinadora de Carriers SA de CV Vivaro",
@@ -308,8 +295,7 @@
         }
       ],
       "rank": 14,
-      "pct_of_total": 0.2601987513081165,
-      "region": "Americas"
+      "pct_of_total": 0.2601987513081165
     },
     {
       "customer_name": "CROSS TELEPHONE COMPANY LLC (OK)",
@@ -326,8 +312,7 @@
         }
       ],
       "rank": 15,
-      "pct_of_total": 0.2547705971466975,
-      "region": "Americas"
+      "pct_of_total": 0.2547705971466975
     },
     {
       "customer_name": "COEO SOLUTIONS LLC",
@@ -344,8 +329,7 @@
         }
       ],
       "rank": 16,
-      "pct_of_total": 0.16578387644312548,
-      "region": "Americas"
+      "pct_of_total": 0.16578387644312548
     },
     {
       "customer_name": "EVOLUTIO CLOUD ENABLER S.A.",
@@ -362,8 +346,7 @@
         }
       ],
       "rank": 17,
-      "pct_of_total": 0.15281741160129497,
-      "region": "Americas"
+      "pct_of_total": 0.15281741160129497
     },
     {
       "customer_name": "EMPIRE TELEPHONE CORPORATION",
@@ -380,8 +363,7 @@
         }
       ],
       "rank": 18,
-      "pct_of_total": 0.12450033733613151,
-      "region": "Americas"
+      "pct_of_total": 0.12450033733613151
     },
     {
       "customer_name": "VODAFONE FIJI LIMITED",
@@ -398,8 +380,7 @@
         }
       ],
       "rank": 19,
-      "pct_of_total": 0.07956578048390188,
-      "region": "EMEA"
+      "pct_of_total": 0.07956578048390188
     },
     {
       "customer_name": "ISSQUARED, Inc.",
@@ -416,8 +397,7 @@
         }
       ],
       "rank": 20,
-      "pct_of_total": 0.02930400470229677,
-      "region": "Americas"
+      "pct_of_total": 0.02930400470229677
     },
     {
       "customer_name": "AGT",
@@ -434,8 +414,25 @@
         }
       ],
       "rank": 21,
-      "pct_of_total": 0.01667482379682141,
-      "region": "Americas"
+      "pct_of_total": 0.01667482379682141
+    },
+    {
+      "customer_name": "Ribbon Communications Operating Company, Inc.",
+      "rr": 0,
+      "nrr": 0,
+      "total": 0,
+      "subscriptions": [],
+      "rank": 22,
+      "pct_of_total": 0.0
+    },
+    {
+      "customer_name": "At&T Services, Inc.",
+      "rr": 0,
+      "nrr": 0,
+      "total": 0,
+      "subscriptions": [],
+      "rank": 23,
+      "pct_of_total": 0.0
     },
     {
       "customer_name": "Los Angeles Public Library",
@@ -458,47 +455,8 @@
           "projected_arr": 0.0
         }
       ],
-      "rank": 22,
-      "pct_of_total": 0.0,
-      "region": "Americas"
-    },
-    {
-      "customer_name": "At&T Services, Inc.",
-      "rr": 0,
-      "nrr": 0,
-      "total": 0,
-      "subscriptions": [],
-      "rank": 23,
-      "pct_of_total": 0.0,
-      "region": "Americas"
-    },
-    {
-      "customer_name": "VR3CLOUD INTERNATIONAL, LLC",
-      "rr": 0,
-      "nrr": 0,
-      "total": 0,
-      "subscriptions": [
-        {
-          "sub_id": 1211901.0,
-          "arr": null,
-          "renewal_qtr": "Q1'26",
-          "will_renew": "No",
-          "projected_arr": 0.0
-        }
-      ],
       "rank": 24,
-      "pct_of_total": 0.0,
-      "region": "Americas"
-    },
-    {
-      "customer_name": "Ribbon Communications Operating Company, Inc.",
-      "rr": 0,
-      "nrr": 0,
-      "total": 0,
-      "subscriptions": [],
-      "rank": 25,
-      "pct_of_total": 0.0,
-      "region": "Americas"
+      "pct_of_total": 0.0
     },
     {
       "customer_name": "CITY OF LOS ANGELES",
@@ -521,9 +479,25 @@
           "projected_arr": 0.0
         }
       ],
+      "rank": 25,
+      "pct_of_total": 0.0
+    },
+    {
+      "customer_name": "VR3CLOUD INTERNATIONAL, LLC",
+      "rr": 0,
+      "nrr": 0,
+      "total": 0,
+      "subscriptions": [
+        {
+          "sub_id": 1211901.0,
+          "arr": null,
+          "renewal_qtr": "Q1'26",
+          "will_renew": "No",
+          "projected_arr": 0.0
+        }
+      ],
       "rank": 26,
-      "pct_of_total": 0.0,
-      "region": "Americas"
+      "pct_of_total": 0.0
     },
     {
       "customer_name": "DIGITAL SPACE GROUP LIMITED",
@@ -540,8 +514,7 @@
         }
       ],
       "rank": 27,
-      "pct_of_total": 0.0,
-      "region": "Americas"
+      "pct_of_total": 0.0
     }
   ]
 }
