@@ -862,38 +862,39 @@
     <script>
         // Real customer data from Excel
         const customersDatabase = [
-            { name: 'Liquid Telecom', arr: 7.190012, bu: 'CloudSense' },
-            { name: 'Telstra', arr: 6.899616, bu: 'CloudSense' },
-            { name: 'Spotify', arr: 7.120724, bu: 'CloudSense' },
-            { name: 'Elisa', arr: 7.142356, bu: 'CloudSense' },
-            { name: 'Foxtel', arr: 7.145564, bu: 'CloudSense' },
-            { name: 'StarHub', arr: 7.153980, bu: 'CloudSense' },
-            { name: 'Luminus', arr: 7.028516, bu: 'CloudSense' },
-            { name: 'DPLAY', arr: 6.918160, bu: 'CloudSense' },
-            { name: 'British Telecommunications', arr: 6.697388, bu: 'CloudSense' },
-            { name: 'Vodafone Netherlands', arr: 6.774784, bu: 'CloudSense' },
-            { name: 'Vodafone Egypt', arr: 6.396596, bu: 'CloudSense' },
-            { name: 'Vodafone GmbH', arr: 6.476796, bu: 'CloudSense' },
-            { name: 'Telefonica UK', arr: 6.658116, bu: 'CloudSense' },
-            { name: 'Telefonica Germany', arr: 6.700200, bu: 'CloudSense' },
-            { name: 'Centrica', arr: 6.763960, bu: 'CloudSense' },
-            { name: 'Virgin Media', arr: 6.233672, bu: 'CloudSense' },
-            { name: 'PostNL', arr: 6.233640, bu: 'CloudSense' },
-            { name: 'RCS Media', arr: 6.233632, bu: 'CloudSense' },
-            { name: 'A1 Telekom Austria', arr: 6.233580, bu: 'CloudSense' },
-            { name: 'ELPEDISON', arr: 6.233564, bu: 'CloudSense' },
-            { name: 'Pelephone', arr: 6.765972, bu: 'CloudSense' },
-            { name: 'Ofcom', arr: 6.743460, bu: 'CloudSense' },
-            { name: 'Thryv Australia', arr: 6.656920, bu: 'CloudSense' },
-            { name: 'Sky Italia', arr: 6.656912, bu: 'CloudSense' },
-            { name: 'Advance Publications', arr: 7.120328, bu: 'CloudSense' },
-            { name: 'EMIRCOM', arr: 6.398188, bu: 'Kandy' },
-            { name: 'AT&T', arr: 5.319328, bu: 'Kandy' },
-            { name: 'NS Solutions', arr: 5.738100, bu: 'Kandy' },
-            { name: 'HCL Technologies', arr: 6.571428, bu: 'Kandy' },
-            { name: 'Abbott Laboratories', arr: 6.662916, bu: 'Kandy' },
-            { name: 'One Albania', arr: 6.350068, bu: 'STL' },
-            { name: 'Maxis', arr: 6.235020, bu: 'STL' }
+            { name: 'Liquid Telecom', arr: 7.190012, bu: 'CloudSense', aliases: ['liquid'] },
+            { name: 'Telstra', arr: 6.899616, bu: 'CloudSense', aliases: ['telstra corp'] },
+            { name: 'Spotify', arr: 7.120724, bu: 'CloudSense', aliases: [] },
+            { name: 'Elisa', arr: 7.142356, bu: 'CloudSense', aliases: ['elisa oyj'] },
+            { name: 'Foxtel', arr: 7.145564, bu: 'CloudSense', aliases: ['foxtel management'] },
+            { name: 'StarHub', arr: 7.153980, bu: 'CloudSense', aliases: ['starhub ltd'] },
+            { name: 'Luminus', arr: 7.028516, bu: 'CloudSense', aliases: ['luminus hasselt'] },
+            { name: 'DPLAY', arr: 6.918160, bu: 'CloudSense', aliases: ['dplay entertainment'] },
+            { name: 'British Telecommunications', arr: 6.697388, bu: 'CloudSense', aliases: ['bt', 'british telecom', 'bt plc'] },
+            { name: 'Vodafone Netherlands', arr: 6.774784, bu: 'CloudSense', aliases: ['vodafone nl', 'vodafone dutch'] },
+            { name: 'Vodafone Egypt', arr: 6.396596, bu: 'CloudSense', aliases: [] },
+            { name: 'Vodafone GmbH', arr: 6.476796, bu: 'CloudSense', aliases: ['vodafone germany', 'vodafone de'] },
+            { name: 'Telefonica UK', arr: 6.658116, bu: 'CloudSense', aliases: ['telefonica united kingdom'] },
+            { name: 'Telefonica Germany', arr: 6.700200, bu: 'CloudSense', aliases: ['telefonica de', 'telefonica gmbh'] },
+            { name: 'Centrica', arr: 6.763960, bu: 'CloudSense', aliases: ['centrica services'] },
+            { name: 'Virgin Media', arr: 6.233672, bu: 'CloudSense', aliases: ['virgin media limited'] },
+            { name: 'PostNL', arr: 6.233640, bu: 'CloudSense', aliases: ['postnl holding'] },
+            { name: 'RCS Media', arr: 6.233632, bu: 'CloudSense', aliases: ['rcs media group'] },
+            { name: 'A1 Telekom Austria', arr: 6.233580, bu: 'CloudSense', aliases: ['a1 austria', 'a1 telekom'] },
+            { name: 'ELPEDISON', arr: 6.233564, bu: 'CloudSense', aliases: ['elpedison sa'] },
+            { name: 'Pelephone', arr: 6.765972, bu: 'CloudSense', aliases: ['pelephone communications'] },
+            { name: 'Ofcom', arr: 6.743460, bu: 'CloudSense', aliases: [] },
+            { name: 'Thryv Australia', arr: 6.656920, bu: 'CloudSense', aliases: ['thryv'] },
+            { name: 'Sky Italia', arr: 6.656912, bu: 'CloudSense', aliases: ['sky italy'] },
+            { name: 'Advance Publications', arr: 7.120328, bu: 'CloudSense', aliases: ['advance pub'] },
+            { name: 'NBN Co', arr: 6.233420, bu: 'CloudSense', aliases: ['nbn', 'nbn co ltd'] },
+            { name: 'EMIRCOM', arr: 6.398188, bu: 'Kandy', aliases: [] },
+            { name: 'AT&T', arr: 5.319328, bu: 'Kandy', aliases: ['att', 'at&t services'] },
+            { name: 'NS Solutions', arr: 5.738100, bu: 'Kandy', aliases: ['ns solutions corporation'] },
+            { name: 'HCL Technologies', arr: 6.571428, bu: 'Kandy', aliases: ['hcl', 'hcl tech'] },
+            { name: 'Abbott Laboratories', arr: 6.662916, bu: 'Kandy', aliases: ['abbott'] },
+            { name: 'One Albania', arr: 6.350068, bu: 'STL', aliases: ['one alb'] },
+            { name: 'Maxis', arr: 6.235020, bu: 'STL', aliases: ['maxis broadband'] }
         ];
 
         // Calculate baseline data from customer database
@@ -916,13 +917,36 @@
             }
         };
 
-        // Customer lookup helper
+        // Customer lookup helper with alias support
         function findCustomer(name) {
             const searchName = name.toLowerCase().trim();
-            return customersDatabase.find(c =>
+
+            // Try exact or partial name match first
+            let customer = customersDatabase.find(c =>
+                c.name.toLowerCase() === searchName ||
                 c.name.toLowerCase().includes(searchName) ||
                 searchName.includes(c.name.toLowerCase())
             );
+
+            // Try aliases if no match
+            if (!customer) {
+                customer = customersDatabase.find(c =>
+                    c.aliases && c.aliases.some(alias =>
+                        alias.toLowerCase() === searchName ||
+                        alias.toLowerCase().includes(searchName) ||
+                        searchName.includes(alias.toLowerCase())
+                    )
+                );
+            }
+
+            // Log for debugging
+            if (!customer) {
+                console.log(`Customer not found: "${name}". Available: ${customersDatabase.map(c => c.name).join(', ')}`);
+            } else {
+                console.log(`Customer found: "${name}" -> ${customer.name} (ARR: $${customer.arr}M)`);
+            }
+
+            return customer;
         }
 
         let currentScenario = null;
@@ -1316,7 +1340,32 @@ Available business units: CloudSense, Kandy, STL, NewNet`,
                     foundCustomer = customer;
                     break;
                 }
+                // Check aliases
+                if (customer.aliases) {
+                    for (const alias of customer.aliases) {
+                        if (lowerQuery.includes(alias.toLowerCase())) {
+                            foundCustomer = customer;
+                            break;
+                        }
+                    }
+                }
+                if (foundCustomer) break;
             }
+
+            // If no customer found, try harder
+            if (!foundCustomer) {
+                // Extract potential customer names (capitalized words)
+                const words = query.split(/\s+/);
+                for (const word of words) {
+                    const match = findCustomer(word);
+                    if (match) {
+                        foundCustomer = match;
+                        break;
+                    }
+                }
+            }
+
+            console.log('Pattern matching:', { query, foundCustomer: foundCustomer ? foundCustomer.name : 'none' });
 
             // Growth scenario
             if ((lowerQuery.includes('grow') || lowerQuery.includes('increase')) && foundCustomer) {
@@ -1382,8 +1431,10 @@ Available business units: CloudSense, Kandy, STL, NewNet`,
                     arr: customerARR
                 };
             } else {
+                // Show helpful message with available customers
+                const customerList = customersDatabase.slice(0, 10).map(c => c.name).join(', ');
                 addChatMessage(
-                    `I understand you want to model a scenario. Try mentioning a specific customer like "What if Telstra grows 3% monthly" or "What if we lose Centrica".`,
+                    `I couldn't find a customer in your query. Try mentioning a specific customer like: "${customersDatabase[0].name}", "${customersDatabase[1].name}", or "${customersDatabase[2].name}". Examples: "What if ${customersDatabase[0].name} grows 3% monthly?" or "What if we lose ${customersDatabase[2].name}?"`,
                     'assistant'
                 );
             }
