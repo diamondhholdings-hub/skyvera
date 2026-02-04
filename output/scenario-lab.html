@@ -1352,20 +1352,49 @@ Available business units: CloudSense, Kandy, STL, NewNet`,
                 if (foundCustomer) break;
             }
 
-            // If no customer found, try harder
+            // If no customer found, try harder with multi-word matching
             if (!foundCustomer) {
-                // Extract potential customer names (capitalized words)
+                // Try two-word combinations
+                const words = query.toLowerCase().split(/\s+/);
+                for (let i = 0; i < words.length - 1; i++) {
+                    const twoWords = words[i] + ' ' + words[i+1];
+                    const threeWords = i < words.length - 2 ? words[i] + ' ' + words[i+1] + ' ' + words[i+2] : null;
+
+                    // Try two-word combination
+                    const match = findCustomer(twoWords);
+                    if (match) {
+                        foundCustomer = match;
+                        console.log('Found via two-word match:', twoWords, '->', match.name);
+                        break;
+                    }
+
+                    // Try three-word combination
+                    if (threeWords) {
+                        const match3 = findCustomer(threeWords);
+                        if (match3) {
+                            foundCustomer = match3;
+                            console.log('Found via three-word match:', threeWords, '->', match3.name);
+                            break;
+                        }
+                    }
+                }
+            }
+
+            // Last resort: try individual words
+            if (!foundCustomer) {
                 const words = query.split(/\s+/);
                 for (const word of words) {
+                    if (word.length < 3) continue; // Skip short words
                     const match = findCustomer(word);
                     if (match) {
                         foundCustomer = match;
+                        console.log('Found via single word:', word, '->', match.name);
                         break;
                     }
                 }
             }
 
-            console.log('Pattern matching:', { query, foundCustomer: foundCustomer ? foundCustomer.name : 'none' });
+            console.log('Pattern matching result:', { query, foundCustomer: foundCustomer ? foundCustomer.name : 'NONE' });
 
             // Growth scenario
             if ((lowerQuery.includes('grow') || lowerQuery.includes('increase')) && foundCustomer) {
@@ -1547,11 +1576,24 @@ Available business units: CloudSense, Kandy, STL, NewNet`,
         }
 
         function applyScenario() {
-            if (!currentScenario) return;
+            if (!currentScenario) {
+                console.log('applyScenario: No current scenario');
+                return;
+            }
+
+            console.log('applyScenario called:', currentScenario);
 
             if (currentScenario.type === 'growth') {
                 // Handle revenue growth scenarios
                 const baseline = currentScenario.baselineARR;
+                console.log('Growth scenario:', {
+                    customer: currentScenario.customer,
+                    baseline,
+                    rate: currentScenario.rate,
+                    months: currentScenario.months,
+                    baselineTotal: baselineData.totalARR
+                });
+
                 const result = scenarioEngine.calculateGrowth(
                     baseline,
                     currentScenario.rate,
@@ -1560,6 +1602,13 @@ Available business units: CloudSense, Kandy, STL, NewNet`,
 
                 const delta = result.totalDelta;
                 const newTotal = baselineData.totalARR + delta;
+
+                console.log('Growth calculation result:', {
+                    finalValue: result.finalValue,
+                    delta,
+                    newTotal,
+                    percentChange: ((delta/baselineData.totalARR)*100).toFixed(1)
+                });
 
                 // Update metric displays
                 document.getElementById('totalARR').textContent = `$${newTotal.toFixed(1)}M`;
@@ -1570,9 +1619,11 @@ Available business units: CloudSense, Kandy, STL, NewNet`,
                 // Update BU chart - find which BU this customer belongs to
                 const customerBU = currentScenario.customerData.bu;
                 const buIndex = ['CloudSense', 'Kandy', 'STL', 'NewNet'].indexOf(customerBU);
+                const buBaseline = baselineData.buData[customerBU];
+
                 if (buIndex >= 0) {
-                    const buBaseline = baselineData.buData[customerBU];
                     const newBUValue = buBaseline + delta;
+                    console.log('BU update:', { bu: customerBU, baseline: buBaseline, delta, newValue: newBUValue });
                     charts.bu.data.datasets[0].data[buIndex] = newBUValue;
                     charts.bu.update();
                 }
