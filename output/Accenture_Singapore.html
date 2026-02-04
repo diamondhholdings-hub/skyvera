@@ -6,618 +6,167 @@
     <title>Accenture Singapore Account Plan | Skyvera CloudSense</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-    
     <style>
-        :root {
-            --ink: #1a1a1a;
-            --paper: #fafaf8;
-            --accent: #c84b31;
-            --secondary: #2d4263;
-            --muted: #8b8b8b;
-            --border: #e8e6e1;
-            --highlight: #ecdbba;
-            --success: #4caf50;
-            --warning: #ff9800;
-            --critical: #e53935;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: 'DM Sans', sans-serif;
-            background: var(--paper);
-            color: var(--ink);
-            line-height: 1.6;
-        }
-
-        h1, h2, h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 600;
-            line-height: 1.2;
-        }
-
-        h1 { font-size: 3.5rem; font-weight: 300; letter-spacing: -0.02em; }
-        h2 { font-size: 1.75rem; margin-bottom: 1.5rem; color: var(--secondary); }
-        h3 { font-size: 1.25rem; margin-bottom: 1rem; }
-
-        /* Global Nav */
-        .global-nav {
-            background: var(--ink);
-            color: var(--paper);
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .global-nav-logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--accent);
-            text-decoration: none;
-        }
-
-        .global-nav-controls {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-
-        .global-nav-bu-selector, .global-nav-select {
-            padding: 0.75rem 1.5rem;
-            font-size: 0.95rem;
-            border: 1px solid var(--border);
-            border-radius: 4px;
-            background: white;
-            cursor: pointer;
-        }
-
-        .global-nav-bu-selector { min-width: 250px; }
-        .global-nav-select { min-width: 400px; }
-
-        /* Header */
-        .header {
-            background: linear-gradient(135deg, var(--secondary) 0%, #1a2332 100%);
-            color: var(--paper);
-            padding: 4rem 2rem 3rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .header-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        .subtitle {
-            font-size: 1.1rem;
-            opacity: 0.85;
-            margin-bottom: 2rem;
-        }
-
-        .header-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .stat-card {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(10px);
-            padding: 1.5rem;
-            border-radius: 4px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .stat-label {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            opacity: 0.7;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-value {
-            font-size: 2rem;
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 600;
-        }
-
-        /* Navigation Tabs */
-        .nav-tabs {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            background: white;
-            border-bottom: 2px solid var(--border);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        }
-
-        .nav-tabs-list {
-            display: flex;
-            gap: 0;
-            list-style: none;
-            overflow-x: auto;
-        }
-
-        .nav-tab {
-            padding: 1.25rem 2rem;
-            cursor: pointer;
-            border-bottom: 3px solid transparent;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-            font-weight: 500;
-            color: var(--muted);
-        }
-
-        .nav-tab:hover {
-            color: var(--secondary);
-            background: var(--highlight);
-        }
-
-        .nav-tab.active {
-            color: var(--accent);
-            border-bottom-color: var(--accent);
-            background: rgba(200, 75, 49, 0.05);
-        }
-
-        /* Tab Content */
-        .tab-content {
-            display: none;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Container */
-        .container {
-            max-width: 1400px;
-            margin: 3rem auto;
-            padding: 0 2rem;
-        }
-
-        /* Cards */
-        .card {
-            background: white;
-            border: 1px solid var(--border);
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        }
-
-        /* Metrics Grid */
-        .metrics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .metric-box {
-            background: var(--highlight);
-            padding: 1.5rem;
-            border-left: 3px solid var(--accent);
-        }
-
-        .metric-box .label {
-            font-size: 0.85rem;
-            color: var(--muted);
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-        }
-
-        .metric-box .value {
-            font-size: 1.8rem;
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 600;
-            color: var(--secondary);
-        }
-
-        /* Alert Banner */
-        .alert-banner {
-            background: linear-gradient(135deg, var(--critical) 0%, #c62828 100%);
-            color: white;
-            padding: 1.5rem 2rem;
-            margin: 0 0 2rem;
-            border-left: 4px solid #8b1a1a;
-            box-shadow: 0 4px 12px rgba(229, 57, 53, 0.3);
-            border-radius: 4px;
-        }
-
-        .alert-banner h3 {
-            color: white;
-            margin-bottom: 0.75rem;
-            font-size: 1.3rem;
-        }
-
-        .alert-banner p {
-            margin: 0.5rem 0 0;
-            line-height: 1.6;
-            opacity: 0.95;
-        }
-
-        /* Keys to Success */
-        .keys-to-success {
-            background: linear-gradient(135deg, rgba(76, 175, 80, 0.08) 0%, rgba(76, 175, 80, 0.02) 100%);
-            border: 1px solid rgba(76, 175, 80, 0.2);
-            padding: 2rem;
-            margin: 0 0 2rem;
-            border-radius: 4px;
-        }
-
-        .keys-to-success h2 {
-            color: #2e7d32;
-            margin-bottom: 1.5rem;
-        }
-
-        .priority-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .priority-card {
-            background: white;
-            padding: 1.5rem;
-            border-left: 4px solid #4caf50;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            border-radius: 4px;
-        }
-
-        .priority-card .priority-label {
-            font-size: 0.85rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            color: #4caf50;
-            margin-bottom: 0.75rem;
-            letter-spacing: 0.5px;
-        }
-
-        .priority-card .priority-action {
-            font-size: 1.15rem;
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 600;
-            color: var(--secondary);
-            line-height: 1.4;
-        }
-
-        /* Pending Notice */
-        .pending-notice {
-            background: rgba(255, 152, 0, 0.1);
-            border-left: 4px solid #ff9800;
-            padding: 2rem;
-            margin: 2rem 0;
-            border-radius: 4px;
-        }
-
-        /* Footer */
-        .footer {
-            background: var(--secondary);
-            color: var(--paper);
-            text-align: center;
-            padding: 2rem;
-            margin-top: 4rem;
-        }
-    </style>
+    :root {
+        --ink: #1a1a1a; --paper: #fafaf8; --accent: #c84b31; --secondary: #2d4263;
+        --muted: #8b8b8b; --border: #e8e6e1; --highlight: #ecdbba;
+        --success: #4caf50; --warning: #ff9800; --critical: #e53935;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--paper); color: var(--ink); line-height: 1.6; }
+    h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 600; line-height: 1.2; }
+    h1 { font-size: 3.5rem; font-weight: 300; }
+    h2 { font-size: 1.75rem; margin-bottom: 1.5rem; color: var(--secondary); }
+    h3 { font-size: 1.25rem; margin-bottom: 1rem; }
     
+    .global-nav { background: var(--ink); color: var(--paper); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .global-nav-logo { font-size: 1.5rem; font-weight: 700; color: var(--accent); text-decoration: none; }
+    .global-nav-select { padding: 0.75rem 1.5rem; font-size: 0.95rem; border: 1px solid var(--border); border-radius: 4px; background: white; min-width: 400px; }
+    
+    .header { background: linear-gradient(135deg, var(--secondary) 0%, #1a2332 100%); color: var(--paper); padding: 4rem 2rem 3rem; }
+    .header-content { max-width: 1400px; margin: 0 auto; }
+    .subtitle { font-size: 1.1rem; opacity: 0.85; margin-bottom: 2rem; }
+    .header-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 2rem; }
+    .stat-card { background: rgba(255,255,255,0.08); padding: 1.5rem; border-radius: 4px; border: 1px solid rgba(255,255,255,0.1); }
+    .stat-label { font-size: 0.85rem; text-transform: uppercase; opacity: 0.7; margin-bottom: 0.5rem; }
+    .stat-value { font-size: 2rem; font-family: 'Cormorant Garamond', serif; font-weight: 600; }
+    
+    .nav-tabs { max-width: 1400px; margin: 0 auto; padding: 0 2rem; background: white; border-bottom: 2px solid var(--border); position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+    .nav-tabs-list { display: flex; gap: 0; list-style: none; overflow-x: auto; }
+    .nav-tab { padding: 1.25rem 2rem; cursor: pointer; border-bottom: 3px solid transparent; transition: all 0.3s; white-space: nowrap; font-weight: 500; color: var(--muted); }
+    .nav-tab:hover { color: var(--secondary); background: var(--highlight); }
+    .nav-tab.active { color: var(--accent); border-bottom-color: var(--accent); background: rgba(200,75,49,0.05); }
+    
+    .tab-content { display: none; }
+    .tab-content.active { display: block; animation: fadeIn 0.3s ease; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    
+    .container { max-width: 1400px; margin: 3rem auto; padding: 0 2rem; }
+    .card { background: white; border: 1px solid var(--border); padding: 2rem; margin-bottom: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border-radius: 4px; }
+    
+    .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+    .metric-box { background: var(--highlight); padding: 1.5rem; border-left: 3px solid var(--accent); }
+    .metric-box .label { font-size: 0.85rem; color: var(--muted); margin-bottom: 0.5rem; text-transform: uppercase; }
+    .metric-box .value { font-size: 1.8rem; font-family: 'Cormorant Garamond', serif; font-weight: 600; color: var(--secondary); }
+    
+    .alert-banner { background: linear-gradient(135deg, var(--critical) 0%, #c62828 100%); color: white; padding: 1.5rem 2rem; margin: 0 0 2rem; border-left: 4px solid #8b1a1a; box-shadow: 0 4px 12px rgba(229,57,53,0.3); border-radius: 4px; }
+    .alert-banner h3 { color: white; margin-bottom: 0.75rem; font-size: 1.3rem; }
+    .alert-banner p { margin: 0.5rem 0 0; line-height: 1.6; opacity: 0.95; }
+    
+    .keys-to-success { background: linear-gradient(135deg, rgba(76,175,80,0.08) 0%, rgba(76,175,80,0.02) 100%); border: 1px solid rgba(76,175,80,0.2); padding: 2rem; margin: 0 0 2rem; border-radius: 4px; }
+    .keys-to-success h2 { color: #2e7d32; margin-bottom: 1.5rem; }
+    .priority-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+    .priority-card { background: white; padding: 1.5rem; border-left: 4px solid #4caf50; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border-radius: 4px; }
+    .priority-card .priority-label { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; color: #4caf50; margin-bottom: 0.75rem; }
+    .priority-card .priority-action { font-size: 1.15rem; font-family: 'Cormorant Garamond', serif; font-weight: 600; color: var(--secondary); line-height: 1.4; }
+    
+    .exec-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+    .exec-card { background: var(--paper); border: 1px solid var(--border); padding: 1.5rem; border-radius: 4px; border-left: 4px solid var(--accent); }
+    .exec-role { font-size: 0.85rem; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 0.5rem; }
+    .exec-name { font-size: 1.3rem; font-family: 'Cormorant Garamond', serif; font-weight: 600; margin-bottom: 1rem; color: var(--secondary); }
+    .exec-detail { font-size: 0.95rem; margin-bottom: 0.5rem; color: var(--ink); }
+    
+    .data-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; }
+    .data-table th { background: var(--secondary); color: white; padding: 1rem; text-align: left; font-weight: 600; }
+    .data-table td { padding: 1rem; border-bottom: 1px solid var(--border); }
+    .data-table tr:hover { background: var(--highlight); }
+    .priority-col { font-weight: 700; color: var(--accent); }
+    
+    .badge { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 3px; font-size: 0.85rem; font-weight: 600; }
+    .badge-high, .badge-critical { background: rgba(229,57,53,0.2); color: #c62828; }
+    .badge-medium { background: rgba(255,152,0,0.2); color: #e65100; }
+    
+    .pending-notice { background: rgba(255,152,0,0.1); border-left: 4px solid #ff9800; padding: 2rem; margin: 2rem 0; border-radius: 4px; }
+    
+    .footer { background: var(--secondary); color: var(--paper); text-align: center; padding: 2rem; margin-top: 4rem; }
+    </style>
 </head>
 <body>
-    
     <div class="global-nav">
         <a href="../index.html" class="global-nav-logo">SKYVERA</a>
-        <div class="global-nav-controls">
-            <select class="global-nav-bu-selector" onchange="window.location.href=this.value">
-                <option value="">Navigate to...</option>
-                <option value="../index.html" selected>CloudSense Overview</option>
-                <option value="../kandy/index.html">Kandy Overview</option>
-                <option value="../stl/index.html">STL Overview</option>
-                <option value="../newnet/index.html">NewNet Overview</option>
-                <option value="../analytics.html">📊 Master Analytics</option>
-            </select>
-            <select class="global-nav-select" onchange="window.location.href=this.value">
-                <option value="">Select Customer Account...</option>
-                <option value="Liquid_Telecom.html">#1 - Liquid Telecom ($2.49M)</option>
-<option value="Telefonica_UK_Limited.html">#2 - Telefonica UK Limited ($2.10M)</option>
-<option value="Telstra_Corporation_Limited.html">#3 - Telstra Corporation Limited ($1.97M)</option>
-<option value="Masergy.html">#4 - Masergy ($1.92M)</option>
-<option value="Vodafone_Netherlands.html">#5 - Vodafone Netherlands ($1.84M)</option>
-<option value="Spotify.html">#6 - Spotify ($1.59M)</option>
-<option value="British_Telecommunications_plc.html">#7 - British Telecommunications plc ($1.40M)</option>
-<option value="Maxis_Broadband_Sdn_Bhd.html">#8 - Maxis Broadband Sdn Bhd ($1.36M)</option>
-<option value="Centrica_Services_Ltd.html">#9 - Centrica Services Ltd ($1.05M)</option>
-<option value="StarHub_Ltd.html">#10 - StarHub Ltd ($0.92M)</option>
-<option value="Elisa_Oyj.html">#11 - Elisa Oyj ($0.90M)</option>
-<option value="New_Sales_Ps_-_Go_Get.html">#12 - New Sales Ps - Go Get ($0.83M)</option>
-<option value="Abbott_Laboratories.html">#13 - Abbott Laboratories ($0.82M)</option>
-<option value="Dplay_Entertainment_Ltd.html">#14 - Dplay Entertainment Ltd ($0.80M)</option>
-<option value="Advance_Publications_US.html">#15 - Advance Publications US ($0.66M)</option>
-<option value="Virgin_Media_Limited.html">#16 - Virgin Media Limited ($0.66M)</option>
-<option value="Foxtel_Management_Pty_Limited.html">#17 - Foxtel Management Pty Limited ($0.64M)</option>
-<option value="PostNL_Holding_BV.html">#18 - PostNL Holding BV ($0.58M)</option>
-<option value="Thryv_Australia_Pty_Ltd.html">#19 - Thryv Australia Pty Ltd ($0.57M)</option>
-<option value="A1_Telekom_Austria_AG..html">#20 - A1 Telekom Austria AG. ($0.55M)</option>
-<option value="Luminus_Hasselt_NV-SA.html">#21 - Luminus Hasselt NV/SA ($0.54M)</option>
-<option value="Telefonica_Germany_GmbH_&_Co._OHG.html">#22 - Telefonica Germany GmbH & Co. OHG ($0.46M)</option>
-<option value="CoreSite.html">#23 - CoreSite ($0.46M)</option>
-<option value="Telstra_-_Ges(a).html">#24 - Telstra - Ges(a) ($0.43M)</option>
-<option value="DPLAY_ENTERTAINMENT_LTD.html">#25 - DPLAY ENTERTAINMENT LTD ($0.43M)</option>
-<option value="Informa_UK_Limited.html">#26 - Informa UK Limited ($0.41M)</option>
-<option value="Proximus_NV.html">#27 - Proximus NV ($0.40M)</option>
-<option value="DPG_Media_BV.html">#28 - DPG Media BV ($0.36M)</option>
-<option value="Masergy_Communications,_Inc..html">#29 - Masergy Communications, Inc. ($0.35M)</option>
-<option value="Hawaiian_Telcom_Communications,_Inc..html">#30 - Hawaiian Telcom Communications, Inc. ($0.34M)</option>
-<option value="MasterCard_Worldwide.html">#31 - MasterCard Worldwide ($0.32M)</option>
-<option value="Telenet_BV.html">#32 - Telenet BV ($0.30M)</option>
-<option value="Star_Hub.html">#33 - Star Hub ($0.30M)</option>
-<option value="Interxion_Headquarters_BV.html">#34 - Interxion Headquarters BV ($0.30M)</option>
-<option value="NBN_Co_Ltd.html">#35 - NBN Co Ltd ($0.29M)</option>
-<option value="PropertyGuru_Pte_Ltd.html">#36 - PropertyGuru Pte Ltd ($0.26M)</option>
-<option value="Momentum_Energy.html">#37 - Momentum Energy ($0.24M)</option>
-<option value="A1_Telekom_Austria_Ag..html">#38 - A1 Telekom Austria Ag. ($0.21M)</option>
-<option value="A1_Telekom.html">#39 - A1 Telekom ($0.21M)</option>
-<option value="Telstra_International_Limited.html">#40 - Telstra International Limited ($0.21M)</option>
-<option value="BeeDIGITAL_AI,_S.A.U..html">#41 - BeeDIGITAL AI, S.A.U. ($0.19M)</option>
-<option value="TATA_Communications_(America)_Inc..html">#42 - TATA Communications (America) Inc. ($0.18M)</option>
-<option value="AARP_Services,_Inc..html">#43 - AARP Services, Inc. ($0.18M)</option>
-<option value="Hubexo_South_UK_Ltd.html">#44 - Hubexo South UK Ltd ($0.17M)</option>
-<option value="ELPEDISON_SA.html">#45 - ELPEDISON SA ($0.15M)</option>
-<option value="Sky_Italia.html">#46 - Sky Italia ($0.15M)</option>
-<option value="RCS_Media_Group.html">#47 - RCS Media Group ($0.15M)</option>
-<option value="Ofcom.html">#48 - Ofcom ($0.14M)</option>
-<option value="Ntirety_(Hosting.com).html">#49 - Ntirety (Hosting.com) ($0.13M)</option>
-<option value="Il_Sole_24_ORE_SpA.html">#50 - Il Sole 24 ORE SpA ($0.11M)</option>
-<option value="TV4_AB.html">#51 - TV4 AB ($0.10M)</option>
-<option value="Unidad_Editorial_S.A..html">#52 - Unidad Editorial S.A. ($0.09M)</option>
-<option value="Rakuten_Marketing.html">#53 - Rakuten Marketing ($0.07M)</option>
-<option value="Liberty_Global_Services_B.V._(NL).html">#54 - Liberty Global Services B.V. (NL) ($0.03M)</option>
-<option value="Newsday.html">#55 - Newsday ($0.03M)</option>
-<option value="Ziggo_Services_B.V..html">#56 - Ziggo Services B.V. ($0.00M)</option>
-<option value="Hcl_Australia_Services_Pty._Ltd.html">#57 - Hcl Australia Services Pty. Ltd ($0.00M)</option>
-<option value="British_Telecommunications_Plc.html">#58 - British Telecommunications Plc ($0.00M)</option>
-<option value="Luminus_Hasselt_Nv-Sa.html">#59 - Luminus Hasselt Nv/Sa ($0.00M)</option>
-<option value="Interxion_Headquarters_Bv.html">#60 - Interxion Headquarters Bv ($0.00M)</option>
-<option value="Rcs_Media_Group.html">#61 - Rcs Media Group ($0.00M)</option>
-<option value="Liquid_Telecommunications_Operations_Limited.html">#62 - Liquid Telecommunications Operations Limited ($0.00M)</option>
-<option value="Aarp_Services,_Inc..html">#63 - Aarp Services, Inc. ($0.00M)</option>
-<option value="Various:_License_increments.html">#64 - Various: License increments ($0.00M)</option>
-<option value="Accenture_Singapore.html" selected>#65 - Accenture Singapore ($0.00M)</option>
-<option value="Various:_Incremental_Rev_from_Platinum_upsell.html">#66 - Various: Incremental Rev from Platinum upsell ($0.00M)</option>
-<option value="Telefonica_Germany_Gmbh_&_Co._Ohg.html">#67 - Telefonica Germany Gmbh & Co. Ohg ($0.00M)</option>
-<option value="Ntirety_(Hosting.Com).html">#68 - Ntirety (Hosting.Com) ($0.00M)</option>
-            </select>
-        </div>
+        <div><select class="global-nav-select" onchange="window.location.href=this.value">
+            <option value="">Select Customer...</option>
+            <option value="Liquid_Telecom.html">#1 - Liquid Telecom ($2.49M)</option><option value="Telefonica_UK_Limited.html">#2 - Telefonica UK Limited ($2.10M)</option><option value="Telstra_Corporation_Limited.html">#3 - Telstra Corporation Limited ($1.97M)</option><option value="Masergy.html">#4 - Masergy ($1.92M)</option><option value="Vodafone_Netherlands.html">#5 - Vodafone Netherlands ($1.84M)</option><option value="Spotify.html">#6 - Spotify ($1.59M)</option><option value="British_Telecommunications_plc.html">#7 - British Telecommunications plc ($1.40M)</option><option value="Maxis_Broadband_Sdn_Bhd.html">#8 - Maxis Broadband Sdn Bhd ($1.36M)</option><option value="Centrica_Services_Ltd.html">#9 - Centrica Services Ltd ($1.05M)</option><option value="StarHub_Ltd.html">#10 - StarHub Ltd ($0.92M)</option><option value="Elisa_Oyj.html">#11 - Elisa Oyj ($0.90M)</option><option value="New_Sales_Ps_-_Go_Get.html">#12 - New Sales Ps - Go Get ($0.83M)</option><option value="Abbott_Laboratories.html">#13 - Abbott Laboratories ($0.82M)</option><option value="Dplay_Entertainment_Ltd.html">#14 - Dplay Entertainment Ltd ($0.80M)</option><option value="Advance_Publications_US.html">#15 - Advance Publications US ($0.66M)</option><option value="Virgin_Media_Limited.html">#16 - Virgin Media Limited ($0.66M)</option><option value="Foxtel_Management_Pty_Limited.html">#17 - Foxtel Management Pty Limited ($0.64M)</option><option value="PostNL_Holding_BV.html">#18 - PostNL Holding BV ($0.58M)</option><option value="Thryv_Australia_Pty_Ltd.html">#19 - Thryv Australia Pty Ltd ($0.57M)</option><option value="A1_Telekom_Austria_AG..html">#20 - A1 Telekom Austria AG. ($0.55M)</option><option value="Luminus_Hasselt_NV-SA.html">#21 - Luminus Hasselt NV/SA ($0.54M)</option><option value="Telefonica_Germany_GmbH_&_Co._OHG.html">#22 - Telefonica Germany GmbH & Co. OHG ($0.46M)</option><option value="CoreSite.html">#23 - CoreSite ($0.46M)</option><option value="Telstra_-_Ges(a).html">#24 - Telstra - Ges(a) ($0.43M)</option><option value="DPLAY_ENTERTAINMENT_LTD.html">#25 - DPLAY ENTERTAINMENT LTD ($0.43M)</option><option value="Informa_UK_Limited.html">#26 - Informa UK Limited ($0.41M)</option><option value="Proximus_NV.html">#27 - Proximus NV ($0.40M)</option><option value="DPG_Media_BV.html">#28 - DPG Media BV ($0.36M)</option><option value="Masergy_Communications,_Inc..html">#29 - Masergy Communications, Inc. ($0.35M)</option><option value="Hawaiian_Telcom_Communications,_Inc..html">#30 - Hawaiian Telcom Communications, Inc. ($0.34M)</option><option value="MasterCard_Worldwide.html">#31 - MasterCard Worldwide ($0.32M)</option><option value="Telenet_BV.html">#32 - Telenet BV ($0.30M)</option><option value="Star_Hub.html">#33 - Star Hub ($0.30M)</option><option value="Interxion_Headquarters_BV.html">#34 - Interxion Headquarters BV ($0.30M)</option><option value="NBN_Co_Ltd.html">#35 - NBN Co Ltd ($0.29M)</option><option value="PropertyGuru_Pte_Ltd.html">#36 - PropertyGuru Pte Ltd ($0.26M)</option><option value="Momentum_Energy.html">#37 - Momentum Energy ($0.24M)</option><option value="A1_Telekom_Austria_Ag..html">#38 - A1 Telekom Austria Ag. ($0.21M)</option><option value="A1_Telekom.html">#39 - A1 Telekom ($0.21M)</option><option value="Telstra_International_Limited.html">#40 - Telstra International Limited ($0.21M)</option><option value="BeeDIGITAL_AI,_S.A.U..html">#41 - BeeDIGITAL AI, S.A.U. ($0.19M)</option><option value="TATA_Communications_(America)_Inc..html">#42 - TATA Communications (America) Inc. ($0.18M)</option><option value="AARP_Services,_Inc..html">#43 - AARP Services, Inc. ($0.18M)</option><option value="Hubexo_South_UK_Ltd.html">#44 - Hubexo South UK Ltd ($0.17M)</option><option value="ELPEDISON_SA.html">#45 - ELPEDISON SA ($0.15M)</option><option value="Sky_Italia.html">#46 - Sky Italia ($0.15M)</option><option value="RCS_Media_Group.html">#47 - RCS Media Group ($0.15M)</option><option value="Ofcom.html">#48 - Ofcom ($0.14M)</option><option value="Ntirety_(Hosting.com).html">#49 - Ntirety (Hosting.com) ($0.13M)</option><option value="Il_Sole_24_ORE_SpA.html">#50 - Il Sole 24 ORE SpA ($0.11M)</option><option value="TV4_AB.html">#51 - TV4 AB ($0.10M)</option><option value="Unidad_Editorial_S.A..html">#52 - Unidad Editorial S.A. ($0.09M)</option><option value="Rakuten_Marketing.html">#53 - Rakuten Marketing ($0.07M)</option><option value="Liberty_Global_Services_B.V._(NL).html">#54 - Liberty Global Services B.V. (NL) ($0.03M)</option><option value="Newsday.html">#55 - Newsday ($0.03M)</option><option value="Ziggo_Services_B.V..html">#56 - Ziggo Services B.V. ($0.00M)</option><option value="Hcl_Australia_Services_Pty._Ltd.html">#57 - Hcl Australia Services Pty. Ltd ($0.00M)</option><option value="British_Telecommunications_Plc.html">#58 - British Telecommunications Plc ($0.00M)</option><option value="Luminus_Hasselt_Nv-Sa.html">#59 - Luminus Hasselt Nv/Sa ($0.00M)</option><option value="Interxion_Headquarters_Bv.html">#60 - Interxion Headquarters Bv ($0.00M)</option><option value="Rcs_Media_Group.html">#61 - Rcs Media Group ($0.00M)</option><option value="Liquid_Telecommunications_Operations_Limited.html">#62 - Liquid Telecommunications Operations Limited ($0.00M)</option><option value="Aarp_Services,_Inc..html">#63 - Aarp Services, Inc. ($0.00M)</option><option value="Various:_License_increments.html">#64 - Various: License increments ($0.00M)</option><option value="Accenture_Singapore.html" selected>#65 - Accenture Singapore ($0.00M)</option><option value="Various:_Incremental_Rev_from_Platinum_upsell.html">#66 - Various: Incremental Rev from Platinum upsell ($0.00M)</option><option value="Telefonica_Germany_Gmbh_&_Co._Ohg.html">#67 - Telefonica Germany Gmbh & Co. Ohg ($0.00M)</option><option value="Ntirety_(Hosting.Com).html">#68 - Ntirety (Hosting.Com) ($0.00M)</option>
+        </select></div>
     </div>
-    
-    
     <div class="header">
         <div class="header-content">
             <h1>Accenture Singapore</h1>
             <div class="subtitle">Strategic Account Plan | CloudSense Business Unit | Q1 2026</div>
-
             <div class="header-stats">
-                <div class="stat-card">
-                    <div class="stat-label">Total Revenue</div>
-                    <div class="stat-value">$0.00M</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-label">Recurring Revenue</div>
-                    <div class="stat-value">$0.00M</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-label">Non-Recurring Revenue</div>
-                    <div class="stat-value">$0.00M</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-label">Customer Rank</div>
-                    <div class="stat-value">#65</div>
-                </div>
+                <div class="stat-card"><div class="stat-label">Total Revenue</div><div class="stat-value">$0.00M</div></div>
+                <div class="stat-card"><div class="stat-label">Recurring Revenue</div><div class="stat-value">$0.00M</div></div>
+                <div class="stat-card"><div class="stat-label">Non-Recurring Revenue</div><div class="stat-value">$0.00M</div></div>
+                <div class="stat-card"><div class="stat-label">Customer Rank</div><div class="stat-value">#65</div></div>
             </div>
         </div>
     </div>
+    <div class="nav-tabs"><ul class="nav-tabs-list">
+        <li class="nav-tab active" onclick="showTab('overview')">📊 Overview</li>
+        <li class="nav-tab" onclick="showTab('executives')">👔 Key Executives</li>
+        <li class="nav-tab" onclick="showTab('org-chart')">🏢 Org Structure</li>
+        <li class="nav-tab" onclick="showTab('pain-points')">💡 Pain Points</li>
+        <li class="nav-tab" onclick="showTab('competitive')">⚔️ Competitive</li>
+        <li class="nav-tab" onclick="showTab('action-plan')">📋 Action Plan</li>
+        <li class="nav-tab" onclick="showTab('financial')">💰 Financial</li>
+    </ul></div>
     
-    
-    <div class="nav-tabs">
-        <ul class="nav-tabs-list">
-            <li class="nav-tab active" onclick="showTab('overview')">📊 Overview</li>
-            <li class="nav-tab" onclick="showTab('executives')">👔 Key Executives</li>
-            <li class="nav-tab" onclick="showTab('org-chart')">🏢 Org Structure</li>
-            <li class="nav-tab" onclick="showTab('pain-points')">💡 Pain Points</li>
-            <li class="nav-tab" onclick="showTab('competitive')">⚔️ Competitive</li>
-            <li class="nav-tab" onclick="showTab('action-plan')">📋 Action Plan</li>
-            <li class="nav-tab" onclick="showTab('financial')">💰 Financial</li>
-        </ul>
-    </div>
-    
-
-    <!-- Tab: Overview -->
     <div id="overview" class="tab-content active">
         <div class="container">
             
             
-
             
     <div class="pending-notice">
-        <h2 style="margin-bottom: 1rem;">⏳ Intelligence In Progress</h2>
-        <p>Detailed analysis for this section will be available once customer intelligence research is complete.</p>
-        <p style="margin-top: 1rem;"><strong>Status:</strong> Awaiting customer-intelligence-analyst research for Accenture Singapore</p>
+        <h2>⏳ Intelligence In Progress</h2>
+        <p>Comprehensive account intelligence will be available once research is complete.</p>
     </div>
-    
-
-            <div class="card">
-                <h2>Account Overview</h2>
-                <div class="metrics-grid">
-                    <div class="metric-box">
-                        <div class="label">Business Unit</div>
-                        <div class="value" style="font-size: 1.2rem;">CloudSense</div>
-                    </div>
-                    <div class="metric-box">
-                        <div class="label">Active Subscriptions</div>
-                        <div class="value">0</div>
-                    </div>
-                    <div class="metric-box">
-                        <div class="label">% of CloudSense</div>
-                        <div class="value">0.0%</div>
-                    </div>
-                    <div class="metric-box">
-                        <div class="label">Revenue Mix</div>
-                        <div class="value" style="font-size: 1rem;">
-                            0% RR / 0% NRR
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <div class="card">
                 <h2>Revenue Breakdown</h2>
-                <table style="width: 100%; border-collapse: collapse;">
-                    <tr style="border-bottom: 2px solid var(--border);">
-                        <th style="text-align: left; padding: 1rem;">Component</th>
-                        <th style="text-align: right; padding: 1rem;">Amount</th>
-                        <th style="text-align: right; padding: 1rem;">% of Total</th>
-                    </tr>
-                    <tr style="border-bottom: 1px solid var(--border);">
-                        <td style="padding: 1rem;"><strong>Recurring Revenue (ARR)</strong></td>
-                        <td style="text-align: right; padding: 1rem;">$0</td>
-                        <td style="text-align: right; padding: 1rem;">0.0%</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid var(--border);">
-                        <td style="padding: 1rem;"><strong>Non-Recurring Revenue (FY26)</strong></td>
-                        <td style="text-align: right; padding: 1rem;">$0</td>
-                        <td style="text-align: right; padding: 1rem;">0.0%</td>
-                    </tr>
-                    <tr style="background: var(--highlight); font-weight: 700;">
-                        <td style="padding: 1rem;"><strong>TOTAL REVENUE</strong></td>
-                        <td style="text-align: right; padding: 1rem;">$0</td>
-                        <td style="text-align: right; padding: 1rem;">100.0%</td>
-                    </tr>
+                <table class="data-table">
+                    <tr><th>Component</th><th style="text-align:right">Amount</th><th style="text-align:right">% of Total</th></tr>
+                    <tr><td><strong>Recurring Revenue (ARR)</strong></td><td style="text-align:right">$0</td><td style="text-align:right">0.0%</td></tr>
+                    <tr><td><strong>Non-Recurring Revenue (FY26)</strong></td><td style="text-align:right">$0</td><td style="text-align:right">0.0%</td></tr>
+                    <tr style="background:var(--highlight)"><td><strong>TOTAL REVENUE</strong></td><td style="text-align:right"><strong>$0</strong></td><td style="text-align:right"><strong>100.0%</strong></td></tr>
                 </table>
             </div>
         </div>
     </div>
-
-    <!-- Remaining tabs with pending notices -->
-    
-    <!-- Tab: Key Executives -->
-    <div id="executives" class="tab-content">
-        <div class="container">
-            
-    <div class="pending-notice">
-        <h2 style="margin-bottom: 1rem;">⏳ Intelligence In Progress</h2>
-        <p>Detailed analysis for this section will be available once customer intelligence research is complete.</p>
-        <p style="margin-top: 1rem;"><strong>Status:</strong> Awaiting customer-intelligence-analyst research for Accenture Singapore</p>
-    </div>
-    
-        </div>
-    </div>
-
-    <!-- Tab: Org Structure -->
-    <div id="org-chart" class="tab-content">
-        <div class="container">
-            
-    <div class="pending-notice">
-        <h2 style="margin-bottom: 1rem;">⏳ Intelligence In Progress</h2>
-        <p>Detailed analysis for this section will be available once customer intelligence research is complete.</p>
-        <p style="margin-top: 1rem;"><strong>Status:</strong> Awaiting customer-intelligence-analyst research for Accenture Singapore</p>
-    </div>
-    
-        </div>
-    </div>
-
-    <!-- Tab: Pain Points -->
-    <div id="pain-points" class="tab-content">
-        <div class="container">
-            
-    <div class="pending-notice">
-        <h2 style="margin-bottom: 1rem;">⏳ Intelligence In Progress</h2>
-        <p>Detailed analysis for this section will be available once customer intelligence research is complete.</p>
-        <p style="margin-top: 1rem;"><strong>Status:</strong> Awaiting customer-intelligence-analyst research for Accenture Singapore</p>
-    </div>
-    
-        </div>
-    </div>
-
-    <!-- Tab: Competitive -->
-    <div id="competitive" class="tab-content">
-        <div class="container">
-            
-    <div class="pending-notice">
-        <h2 style="margin-bottom: 1rem;">⏳ Intelligence In Progress</h2>
-        <p>Detailed analysis for this section will be available once customer intelligence research is complete.</p>
-        <p style="margin-top: 1rem;"><strong>Status:</strong> Awaiting customer-intelligence-analyst research for Accenture Singapore</p>
-    </div>
-    
-        </div>
-    </div>
-
-    <!-- Tab: Action Plan -->
-    <div id="action-plan" class="tab-content">
-        <div class="container">
-            
-    <div class="pending-notice">
-        <h2 style="margin-bottom: 1rem;">⏳ Intelligence In Progress</h2>
-        <p>Detailed analysis for this section will be available once customer intelligence research is complete.</p>
-        <p style="margin-top: 1rem;"><strong>Status:</strong> Awaiting customer-intelligence-analyst research for Accenture Singapore</p>
-    </div>
-    
-        </div>
-    </div>
-
-    <!-- Tab: Financial -->
-    <div id="financial" class="tab-content">
-        <div class="container">
-            
-    <div class="pending-notice">
-        <h2 style="margin-bottom: 1rem;">⏳ Intelligence In Progress</h2>
-        <p>Detailed analysis for this section will be available once customer intelligence research is complete.</p>
-        <p style="margin-top: 1rem;"><strong>Status:</strong> Awaiting customer-intelligence-analyst research for Accenture Singapore</p>
-    </div>
-    
-        </div>
-    </div>
-    
-
+    <div id="executives" class="tab-content"><div class="container">
+            <div class="pending-notice"><h2>⏳ Executive Intelligence In Progress</h2>
+            <p>Detailed executive profiles will be available once research is complete.</p></div>
+        </div></div>
+    <div id="org-chart" class="tab-content"><div class="container">
+            <div class="pending-notice"><h2>⏳ Organizational Intelligence In Progress</h2>
+            <p>Strategic direction and organizational structure will be available once research is complete.</p></div>
+        </div></div>
+    <div id="pain-points" class="tab-content"><div class="container">
+            <div class="pending-notice"><h2>⏳ Challenge Analysis In Progress</h2>
+            <p>Pain point analysis will be available once research is complete.</p></div>
+        </div></div>
+    <div id="competitive" class="tab-content"><div class="container">
+            <div class="pending-notice"><h2>⏳ Competitive Analysis In Progress</h2>
+            <p>Competitive landscape analysis will be available once research is complete.</p></div>
+        </div></div>
+    <div id="action-plan" class="tab-content"><div class="container">
+            <div class="pending-notice"><h2>⏳ Action Plan In Progress</h2>
+            <p>Strategic action items will be available once research is complete.</p></div>
+        </div></div>
+    <div id="financial" class="tab-content"><div class="container">
+            <div class="pending-notice"><h2>⏳ Financial Analysis In Progress</h2>
+            <p>Detailed financial analysis will be available once research is complete.</p></div>
+        </div></div>
     
     <div class="footer">
         <p><strong>Accenture Singapore Strategic Account Plan</strong> | CloudSense Business Unit | Skyvera</p>
-        <p style="margin-top: 0.5rem;">Generated: February 04, 2026 | Confidential - Internal Use Only</p>
+        <p style="margin-top:0.5rem">Generated: February 04, 2026 | Confidential - Internal Use Only</p>
     </div>
-    
-    
     <script>
-        function showTab(tabId) {
-            // Hide all tab content
-            document.querySelectorAll('.tab-content').forEach(tab => {
-                tab.classList.remove('active');
-            });
-
-            // Remove active class from all nav tabs
-            document.querySelectorAll('.nav-tab').forEach(tab => {
-                tab.classList.remove('active');
-            });
-
-            // Show selected tab content
-            document.getElementById(tabId).classList.add('active');
-
-            // Add active class to clicked nav tab
-            event.target.classList.add('active');
-        }
+    function showTab(tabId) {
+        document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+        document.getElementById(tabId).classList.add('active');
+        event.target.classList.add('active');
+    }
     </script>
-    
 </body>
 </html>
