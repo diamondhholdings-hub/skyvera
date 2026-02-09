@@ -14,66 +14,63 @@ export default function TestAnalysisPage() {
     setProgress(0);
     setCurrentStage('Initializing...');
 
-    // Simulate agent workflow
-    const stages = [
-      { name: 'Loading customer data...', progress: 10, duration: 500 },
-      { name: 'Scanning for patterns...', progress: 25, duration: 1500 },
-      { name: 'Analyzing churn risks...', progress: 40, duration: 1200 },
-      { name: 'Identifying expansion opportunities...', progress: 55, duration: 1000 },
-      { name: 'Cross-referencing competitive intelligence...', progress: 70, duration: 800 },
-      { name: 'Generating PRD recommendations...', progress: 85, duration: 1500 },
-      { name: 'Complete!', progress: 100, duration: 500 },
-    ];
+    try {
+      // Simulate progress updates
+      const progressInterval = setInterval(() => {
+        setProgress(prev => Math.min(prev + 5, 90));
+      }, 200);
 
-    for (const stage of stages) {
-      setCurrentStage(stage.name);
-      setProgress(stage.progress);
-      await new Promise(resolve => setTimeout(resolve, stage.duration));
-    }
+      const stages = [
+        'Loading customer data...',
+        'Scanning for patterns...',
+        'Analyzing churn risks...',
+        'Identifying expansion opportunities...',
+        'Cross-referencing competitive intelligence...',
+        'Generating PRD recommendations...'
+      ];
 
-    // Mock results
-    setResults({
-      patterns_detected: 3,
-      prds_recommended: 2,
-      total_arr_opportunity: 3100000,
-      patterns: [
-        {
-          id: 'pat_001',
-          name: 'Enterprise AR Aging + Support Volume Spike',
-          confidence: 0.87,
-          customers: ['Telstra Corporation Limited', 'British Telecommunications', 'Vodafone Netherlands'],
-          arr_at_risk: 1280000,
-          signal: '3 enterprise customers with AR >90 days + support ticket volume +150% in last 30 days',
-          opportunity: 'Automated billing reminder system with customer self-service portal',
-          recommended_prd: true,
-          prd_title: 'Automated AR Management & Customer Portal'
-        },
-        {
-          id: 'pat_002',
-          name: 'Recurring Revenue Decline Pattern',
-          confidence: 0.76,
-          customers: ['Multiple customers across Cloudsense'],
-          financial_impact: 336000,
-          signal: 'RR declining -$336K vs prior plan, multiple customers downgrading',
-          opportunity: 'Usage analytics dashboard + proactive engagement alerts',
-          recommended_prd: true,
-          prd_title: 'Customer Success Early Warning System'
-        },
-        {
-          id: 'pat_003',
-          name: 'Multi-BU Customer Consolidation Requests',
-          confidence: 0.68,
-          customers: ['AT&T Services Inc', 'Telefonica UK Limited'],
-          arr_opportunity: 850000,
-          signal: '2 customers with multiple BU relationships requesting unified billing & reporting',
-          opportunity: 'Multi-BU consolidated view and unified billing',
-          recommended_prd: false,
-          reason: 'Needs more validation - only 2 customers, confidence below threshold'
+      let stageIndex = 0;
+      const stageInterval = setInterval(() => {
+        if (stageIndex < stages.length) {
+          setCurrentStage(stages[stageIndex]);
+          stageIndex++;
         }
-      ]
-    });
+      }, 800);
 
-    setIsAnalyzing(false);
+      // Call real API
+      const response = await fetch('/api/product-agent/analyze', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          scope: 'business_unit',
+          businessUnit: 'all',
+          analysisType: 'deep_scan',
+          focus: 'churn_risk_and_expansion'
+        })
+      });
+
+      clearInterval(progressInterval);
+      clearInterval(stageInterval);
+
+      if (!response.ok) {
+        throw new Error(`API error: ${response.statusText}`);
+      }
+
+      const data = await response.json();
+
+      setProgress(100);
+      setCurrentStage('Complete!');
+
+      await new Promise(resolve => setTimeout(resolve, 500));
+
+      setResults(data);
+    } catch (error) {
+      console.error('Analysis error:', error);
+      setCurrentStage(`Error: ${error instanceof Error ? error.message : 'Unknown error'}`);
+      await new Promise(resolve => setTimeout(resolve, 2000));
+    } finally {
+      setIsAnalyzing(false);
+    }
   };
 
   return (
