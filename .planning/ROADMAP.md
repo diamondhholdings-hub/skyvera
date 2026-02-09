@@ -30,12 +30,13 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. System provides consistent business metric definitions (ARR, EBITDA, Net Margin) through semantic layer
   4. System caches data with 15-minute TTL and returns cached responses for repeated queries
   5. System handles missing data gracefully (null values, missing Salesforce IDs) without crashes
-**Plans**: TBD
+**Plans**: 4 plans
 
 Plans:
-- [ ] 01-01: TBD during planning
-- [ ] 01-02: TBD during planning
-- [ ] 01-03: TBD during planning
+- [ ] 01-01-PLAN.md -- Bootstrap Next.js project, TypeScript types, Zod schemas, Prisma/SQLite models
+- [ ] 01-02-PLAN.md -- Semantic layer (metric definitions, resolver, validator) and cache manager
+- [ ] 01-03-PLAN.md -- Claude API orchestrator with rate limiting, priority queue, prompt templates
+- [ ] 01-04-PLAN.md -- Excel adapter, NewsAPI adapter, connector factory, health endpoint
 
 ### Phase 2: Core Platform UI
 **Goal**: Users can view enhanced financial dashboards and browse all 140 customer accounts with health indicators
@@ -106,11 +107,11 @@ Plans:
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
+Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation & Data Integration | 0/TBD | Not started | - |
+| 1. Foundation & Data Integration | 0/4 | Not started | - |
 | 2. Core Platform UI | 0/TBD | Not started | - |
 | 3. Intelligence Features | 0/TBD | Not started | - |
 | 4. Advanced Account Intelligence | 0/TBD | Not started | - |
