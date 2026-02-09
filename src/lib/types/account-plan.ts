@@ -40,7 +40,7 @@ export const StakeholderSchema = z.object({
   raciRole: RACIRoleSchema.optional(),
   email: z.string().email().optional(),
   phone: z.string().optional(),
-  reportsTo: z.string().optional(), // Parent stakeholder ID for tree building
+  reportsTo: z.string().nullable().optional(), // Parent stakeholder ID for tree building (null for root)
   tenure: z.string().optional(),
   interests: z.array(z.string()).optional(),
   relationshipStrength: RelationshipStrengthSchema,

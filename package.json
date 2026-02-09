@@ -9,7 +9,8 @@
     "lint": "next lint",
     "prisma:generate": "prisma generate",
     "prisma:push": "prisma db push",
-    "generate-demo-data": "npx tsx scripts/generate-demo-data.ts"
+    "generate-demo-data": "npx tsx scripts/generate-demo-data.ts",
+    "warmup": "npx tsx scripts/warmup-cache.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.74.0",

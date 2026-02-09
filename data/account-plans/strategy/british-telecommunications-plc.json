@@ -43,6 +43,7 @@
       "id": "bt-opp-002",
       "title": "Enterprise Quote Complexity Features",
       "description": "Multi-site, multi-service quote capabilities for complex enterprise bundles. BT expanding network services (5G, full fibre) requiring sophisticated CPQ.",
+      "status": "identified",
       "estimatedValue": 200000,
       "probability": 45,
       "identifiedDate": "2025-10-15",
