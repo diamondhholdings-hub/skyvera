@@ -13,7 +13,7 @@ This roadmap delivers an AI-powered business intelligence platform in 24 hours, 
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Foundation & Data Integration** - Semantic layer, Claude orchestration, data adapters (Hours 0-8)
-- [ ] **Phase 2: Core Platform UI** - Enhanced dashboard, account directory, health scoring (Hours 8-14)
+- [x] **Phase 2: Core Platform UI** - Enhanced dashboard, account directory, health scoring (Hours 8-14)
 - [ ] **Phase 3: Intelligence Features** - Scenario modeling + Natural language query (Hours 14-20)
 - [ ] **Phase 4: Advanced Account Intelligence** - 7-tab account plans with real-time intelligence (Hours 20-22)
 - [ ] **Phase 5: Demo Readiness** - Testing, hardening, demo preparation (Hours 22-24)
@@ -51,9 +51,9 @@ Plans:
 **Plans**: 3 plans
 
 Plans:
-- [ ] 02-01-PLAN.md -- App shell (layout, navigation, shared UI components) and server-side data access functions
-- [ ] 02-02-PLAN.md -- Financial KPI dashboard with charts, BU breakdown, and metrics (DASH-01)
-- [ ] 02-03-PLAN.md -- Account directory with TanStack Table and proactive alerts dashboard (ACCT-01-03, DASH-02)
+- [x] 02-01-PLAN.md -- App shell (layout, navigation, shared UI components) and server-side data access functions
+- [x] 02-02-PLAN.md -- Financial KPI dashboard with charts, BU breakdown, and metrics (DASH-01)
+- [x] 02-03-PLAN.md -- Account directory with TanStack Table and proactive alerts dashboard (ACCT-01-03, DASH-02)
 
 ### Phase 3: Intelligence Features
 **Goal**: Users can model what-if scenarios and ask natural language questions about business data
@@ -113,7 +113,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation & Data Integration | 4/4 | Complete ✓ | 2026-02-08 |
-| 2. Core Platform UI | 0/3 | Not started | - |
+| 2. Core Platform UI | 3/3 | Complete ✓ | 2026-02-09 |
 | 3. Intelligence Features | 0/TBD | Not started | - |
 | 4. Advanced Account Intelligence | 0/TBD | Not started | - |
 | 5. Demo Readiness | 0/TBD | Not started | - |
