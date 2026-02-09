@@ -2,10 +2,91 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client"
-  output   = "../generated/prisma"
+  provider = "prisma-client-js"
+  output   = "../node_modules/.prisma/client"
 }
 
 datasource db {
   provider = "sqlite"
+}
+
+// Customer model matching JSON structure
+model Customer {
+  id            Int      @id @default(autoincrement())
+  customerName  String   @unique
+  bu            String
+  rr            Float
+  nrr           Float
+  totalRevenue  Float
+  rank          Int?
+  pctOfTotal    Float?
+  healthScore   String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  subscriptions Subscription[]
+
+  @@index([bu])
+  @@index([customerName])
+}
+
+// Subscription model
+model Subscription {
+  id           Int      @id @default(autoincrement())
+  customerId   Int
+  subId        Float?
+  arr          Float?
+  renewalQtr   String?
+  willRenew    String?
+  projectedArr Float?
+
+  customer     Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+
+  @@index([customerId])
+}
+
+// Financial snapshot for time-series tracking
+model FinancialSnapshot {
+  id           Int      @id @default(autoincrement())
+  bu           String
+  quarter      String
+  totalRR      Float
+  totalNRR     Float
+  totalRevenue Float
+  grossMargin  Float
+  netMargin    Float
+  ebitda       Float
+  createdAt    DateTime @default(now())
+
+  @@unique([bu, quarter])
+  @@index([bu])
+  @@index([quarter])
+}
+
+// News articles for customer intelligence
+model NewsArticle {
+  id             Int      @id @default(autoincrement())
+  customerName   String
+  title          String
+  summary        String
+  publishedAt    DateTime
+  source         String
+  url            String
+  sentiment      String?
+  relevanceScore Float?
+  fetchedAt      DateTime
+
+  @@index([customerName])
+  @@index([publishedAt])
+}
+
+// Cache entries for API responses
+model CacheEntry {
+  id        Int      @id @default(autoincrement())
+  key       String   @unique
+  value     String   // JSON serialized
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@index([expiresAt])
 }
