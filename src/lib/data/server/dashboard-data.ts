@@ -7,6 +7,7 @@
 import { getConnectorFactory } from '../registry/connector-factory'
 import type { BU, BUFinancialSummary } from '@/lib/types/financial'
 import { ok, err, type Result } from '@/lib/types/result'
+import { getCacheManager, getActiveTTL } from '@/lib/cache/manager'
 
 /**
  * Dashboard overview data
@@ -52,161 +53,191 @@ interface FinancialSummary {
 
 /**
  * Get consolidated dashboard data for all BUs
+ * Cached with 5-minute TTL (30min in DEMO_MODE)
  */
 export async function getDashboardData(): Promise<Result<DashboardData, Error>> {
-  try {
-    const factory = await getConnectorFactory()
+  const cache = getCacheManager()
+  const ttl = getActiveTTL()
 
-    // Fetch financials for all BUs
-    const result = await factory.getData('excel', {
-      type: 'financials',
-      filters: {},
-    })
+  return cache.get(
+    'dashboard:overview',
+    async () => {
+      try {
+        const factory = await getConnectorFactory()
 
-    if (!result.success) {
-      console.error('[getDashboardData] Failed to fetch financials:', result.error)
-      return err(result.error)
-    }
+        // Fetch financials for all BUs
+        const result = await factory.getData('excel', {
+          type: 'financials',
+          filters: {},
+        })
 
-    const allFinancials = result.value.data as FinancialSummary[]
+        if (!result.success) {
+          console.error('[getDashboardData] Failed to fetch financials:', result.error)
+          return err(result.error)
+        }
 
-    // Calculate totals
-    let totalRevenue = 0
-    let totalRR = 0
-    let totalNRR = 0
-    let totalEbitda = 0
+        const allFinancials = result.value.data as FinancialSummary[]
 
-    for (const financial of allFinancials) {
-      totalRevenue += financial.totalRevenue
-      totalRR += financial.totalRR
-      totalNRR += financial.totalNRR
-      totalEbitda += financial.ebitda
-    }
+        // Calculate totals
+        let totalRevenue = 0
+        let totalRR = 0
+        let totalNRR = 0
+        let totalEbitda = 0
 
-    // Calculate net margin percentage
-    const netMarginPct = totalRevenue > 0 ? (totalEbitda / totalRevenue) * 100 : 0
+        for (const financial of allFinancials) {
+          totalRevenue += financial.totalRevenue
+          totalRR += financial.totalRR
+          totalNRR += financial.totalNRR
+          totalEbitda += financial.ebitda
+        }
 
-    // RR target: use prior period (assume 5% growth for demo)
-    const rrTarget = totalRR * 0.95
+        // Calculate net margin percentage
+        const netMarginPct = totalRevenue > 0 ? (totalEbitda / totalRevenue) * 100 : 0
 
-    // EBITDA target: based on 68.7% net margin target from CLAUDE.md
-    const netMarginTarget = 68.7
-    const ebitdaTarget = (totalRevenue * netMarginTarget) / 100
+        // RR target: use prior period (assume 5% growth for demo)
+        const rrTarget = totalRR * 0.95
 
-    // Headcount from CLAUDE.md: 58 FTEs
-    const headcount = 58
+        // EBITDA target: based on 68.7% net margin target from CLAUDE.md
+        const netMarginTarget = 68.7
+        const ebitdaTarget = (totalRevenue * netMarginTarget) / 100
 
-    return ok({
-      totalRevenue,
-      totalRR,
-      rrTarget,
-      totalNRR,
-      ebitda: totalEbitda,
-      ebitdaTarget,
-      netMarginPct,
-      netMarginTarget,
-      headcount,
-      lastUpdated: new Date(),
-    })
-  } catch (error) {
-    console.error('[getDashboardData] Unexpected error:', error)
-    return err(
-      new Error(
-        `Failed to fetch dashboard data: ${error instanceof Error ? error.message : 'Unknown error'}`
-      )
-    )
-  }
+        // Headcount from CLAUDE.md: 58 FTEs
+        const headcount = 58
+
+        return ok({
+          totalRevenue,
+          totalRR,
+          rrTarget,
+          totalNRR,
+          ebitda: totalEbitda,
+          ebitdaTarget,
+          netMarginPct,
+          netMarginTarget,
+          headcount,
+          lastUpdated: new Date(),
+        })
+      } catch (error) {
+        console.error('[getDashboardData] Unexpected error:', error)
+        return err(
+          new Error(
+            `Failed to fetch dashboard data: ${error instanceof Error ? error.message : 'Unknown error'}`
+          )
+        )
+      }
+    },
+    { ttl: ttl.FINANCIAL }
+  )
 }
 
 /**
  * Get per-BU financial summaries
+ * Cached with 5-minute TTL (30min in DEMO_MODE)
  */
 export async function getBUSummaries(): Promise<Result<BUFinancialSummary[], Error>> {
-  try {
-    const factory = await getConnectorFactory()
+  const cache = getCacheManager()
+  const ttl = getActiveTTL()
 
-    // Fetch financials for all BUs
-    const result = await factory.getData('excel', {
-      type: 'financials',
-      filters: {},
-    })
+  return cache.get(
+    'dashboard:bu-summaries',
+    async () => {
+      try {
+        const factory = await getConnectorFactory()
 
-    if (!result.success) {
-      console.error('[getBUSummaries] Failed to fetch financials:', result.error)
-      return err(result.error)
-    }
+        // Fetch financials for all BUs
+        const result = await factory.getData('excel', {
+          type: 'financials',
+          filters: {},
+        })
 
-    const allFinancials = result.value.data as FinancialSummary[]
+        if (!result.success) {
+          console.error('[getBUSummaries] Failed to fetch financials:', result.error)
+          return err(result.error)
+        }
 
-    // Targets from CLAUDE.md: Cloudsense 63.6%, Kandy 75%, STL 75%
-    const netMarginTargets: Record<string, number> = {
-      Cloudsense: 63.6,
-      Kandy: 75,
-      STL: 75,
-      NewNet: 70, // Default if exists
-    }
+        const allFinancials = result.value.data as FinancialSummary[]
 
-    // Map to BUFinancialSummary
-    const summaries: BUFinancialSummary[] = allFinancials.map((financial) => ({
-      bu: financial.bu as BU,
-      totalRR: financial.totalRR,
-      totalNRR: financial.totalNRR,
-      totalRevenue: financial.totalRevenue,
-      customerCount: financial.customerCount,
-      netMarginPct: financial.netMargin,
-      netMarginTarget: netMarginTargets[financial.bu] || 70,
-      ebitda: financial.ebitda,
-    }))
+        // Targets from CLAUDE.md: Cloudsense 63.6%, Kandy 75%, STL 75%
+        const netMarginTargets: Record<string, number> = {
+          Cloudsense: 63.6,
+          Kandy: 75,
+          STL: 75,
+          NewNet: 70, // Default if exists
+        }
 
-    return ok(summaries)
-  } catch (error) {
-    console.error('[getBUSummaries] Unexpected error:', error)
-    return err(
-      new Error(
-        `Failed to fetch BU summaries: ${error instanceof Error ? error.message : 'Unknown error'}`
-      )
-    )
-  }
+        // Map to BUFinancialSummary
+        const summaries: BUFinancialSummary[] = allFinancials.map((financial) => ({
+          bu: financial.bu as BU,
+          totalRR: financial.totalRR,
+          totalNRR: financial.totalNRR,
+          totalRevenue: financial.totalRevenue,
+          customerCount: financial.customerCount,
+          netMarginPct: financial.netMargin,
+          netMarginTarget: netMarginTargets[financial.bu] || 70,
+          ebitda: financial.ebitda,
+        }))
+
+        return ok(summaries)
+      } catch (error) {
+        console.error('[getBUSummaries] Unexpected error:', error)
+        return err(
+          new Error(
+            `Failed to fetch BU summaries: ${error instanceof Error ? error.message : 'Unknown error'}`
+          )
+        )
+      }
+    },
+    { ttl: ttl.FINANCIAL }
+  )
 }
 
 /**
  * Get revenue trend data for charts (demo: generate quarterly data)
+ * Cached with 5-minute TTL (30min in DEMO_MODE)
  */
 export async function getRevenueTrendData(): Promise<Result<RevenueTrendPoint[], Error>> {
-  try {
-    const dashboardResult = await getDashboardData()
+  const cache = getCacheManager()
+  const ttl = getActiveTTL()
 
-    if (!dashboardResult.success) {
-      return err(dashboardResult.error)
-    }
+  return cache.get(
+    'dashboard:revenue-trend',
+    async () => {
+      try {
+        const dashboardResult = await getDashboardData()
 
-    const { totalRevenue } = dashboardResult.value
+        if (!dashboardResult.success) {
+          return err(dashboardResult.error)
+        }
 
-    // Demo: Generate Q1-Q4 data using current quarter as Q1'26
-    // Simulate historical trend (Q2'25 - Q1'26)
-    const quarters = ["Q2'25", "Q3'25", "Q4'25", "Q1'26"]
-    const growthRate = 1.03 // 3% quarterly growth
+        const { totalRevenue } = dashboardResult.value
 
-    const trendData: RevenueTrendPoint[] = quarters.map((quarter, index) => {
-      // Q1'26 is the latest (index 3), work backwards
-      const periodsBack = quarters.length - 1 - index
-      const revenue = totalRevenue / Math.pow(growthRate, periodsBack)
-      const target = revenue * 1.05 // Target 5% above actual
+        // Demo: Generate Q1-Q4 data using current quarter as Q1'26
+        // Simulate historical trend (Q2'25 - Q1'26)
+        const quarters = ["Q2'25", "Q3'25", "Q4'25", "Q1'26"]
+        const growthRate = 1.03 // 3% quarterly growth
 
-      return {
-        quarter,
-        revenue: Math.round(revenue),
-        target: Math.round(target),
+        const trendData: RevenueTrendPoint[] = quarters.map((quarter, index) => {
+          // Q1'26 is the latest (index 3), work backwards
+          const periodsBack = quarters.length - 1 - index
+          const revenue = totalRevenue / Math.pow(growthRate, periodsBack)
+          const target = revenue * 1.05 // Target 5% above actual
+
+          return {
+            quarter,
+            revenue: Math.round(revenue),
+            target: Math.round(target),
+          }
+        })
+
+        return ok(trendData)
+      } catch (error) {
+        console.error('[getRevenueTrendData] Unexpected error:', error)
+        return err(
+          new Error(
+            `Failed to fetch revenue trend: ${error instanceof Error ? error.message : 'Unknown error'}`
+          )
+        )
       }
-    })
-
-    return ok(trendData)
-  } catch (error) {
-    console.error('[getRevenueTrendData] Unexpected error:', error)
-    return err(
-      new Error(
-        `Failed to fetch revenue trend: ${error instanceof Error ? error.message : 'Unknown error'}`
-      )
-    )
-  }
+    },
+    { ttl: ttl.FINANCIAL }
+  )
 }

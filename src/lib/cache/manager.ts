@@ -22,6 +22,24 @@ export const CACHE_TTL = {
   CUSTOMER_DATA: 600, // 10 minutes for customer records
 } as const
 
+// DEMO_MODE: Extended cache TTLs for demo stability (30min dashboard, 60min intelligence)
+const DEMO_MODE = process.env.DEMO_MODE === 'true'
+
+export const DEMO_CACHE_TTL = {
+  FINANCIAL: 1800, // 30 minutes (was 5min)
+  NEWS: 3600, // 60 minutes (was 15min)
+  CLAUDE_RESPONSE: 1800, // 30 minutes (was 5min)
+  CLAUDE_ENRICHMENT: 3600, // 60 minutes (was 15min)
+  CUSTOMER_DATA: 1800, // 30 minutes (was 10min)
+} as const
+
+/**
+ * Get active TTL based on DEMO_MODE environment variable
+ */
+export function getActiveTTL() {
+  return DEMO_MODE ? DEMO_CACHE_TTL : CACHE_TTL
+}
+
 export class CacheManager {
   private cache: Map<string, CacheEntry<unknown>> = new Map()
   private hits = 0
