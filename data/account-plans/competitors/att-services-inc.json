@@ -1,0 +1,53 @@
+[
+  {
+    "id": "att-comp-001",
+    "name": "Amdocs",
+    "type": "our-competitor",
+    "description": "Incumbent telco BSS provider at AT&T, could expand into CPQ territory",
+    "strengths": [
+      "Deep AT&T relationship and presence",
+      "Comprehensive telco BSS suite",
+      "Large support organization"
+    ],
+    "weaknesses": [
+      "Higher cost structure than CloudSense",
+      "Less agile for new product launches",
+      "CloudSense already embedded in AT&T Business workflows"
+    ],
+    "lastUpdated": "2026-02-01"
+  },
+  {
+    "id": "att-comp-002",
+    "name": "Oracle CPQ",
+    "type": "our-competitor",
+    "description": "Enterprise CPQ provider that could be considered for AT&T Business expansion",
+    "strengths": [
+      "Strong enterprise CPQ capabilities",
+      "Robust integration framework",
+      "Large customer base"
+    ],
+    "weaknesses": [
+      "Less telco-specific than CloudSense",
+      "AT&T invested in current CloudSense platform",
+      "Higher switching costs"
+    ],
+    "lastUpdated": "2026-02-01"
+  },
+  {
+    "id": "att-comp-003",
+    "name": "Verizon",
+    "type": "customer-competitor",
+    "description": "Primary competitor in US enterprise telecom market",
+    "strengths": [
+      "Largest US 5G network coverage",
+      "Strong enterprise brand",
+      "Advanced IoT and edge solutions"
+    ],
+    "weaknesses": [
+      "Higher pricing than AT&T",
+      "AT&T has FirstNet exclusivity for public safety",
+      "AT&T fiber expansion outpacing Verizon"
+    ],
+    "lastUpdated": "2026-02-01"
+  }
+]

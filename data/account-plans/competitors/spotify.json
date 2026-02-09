@@ -1,0 +1,53 @@
+[
+  {
+    "id": "spot-comp-001",
+    "name": "Conga (Apttus)",
+    "type": "our-competitor",
+    "description": "Market leader in CLM and CPQ, could be considered for contract management expansion",
+    "strengths": [
+      "Market leading CLM capabilities",
+      "Strong contract intelligence features",
+      "Large enterprise customer base"
+    ],
+    "weaknesses": [
+      "Higher cost structure",
+      "Spotify already on CloudSense platform",
+      "Not as agile as CloudSense for custom requirements"
+    ],
+    "lastUpdated": "2026-02-01"
+  },
+  {
+    "id": "spot-comp-002",
+    "name": "Apple Music",
+    "type": "customer-competitor",
+    "description": "Primary competitor in music streaming with 100M+ subscribers",
+    "strengths": [
+      "Deep iOS integration",
+      "Hardware ecosystem advantage",
+      "Strong brand loyalty"
+    ],
+    "weaknesses": [
+      "Smaller overall subscriber base than Spotify",
+      "Less focus on podcasts and creators",
+      "More closed platform"
+    ],
+    "lastUpdated": "2026-02-01"
+  },
+  {
+    "id": "spot-comp-003",
+    "name": "YouTube Music",
+    "type": "customer-competitor",
+    "description": "Google's music streaming service bundled with YouTube Premium",
+    "strengths": [
+      "Integration with YouTube video platform",
+      "Google ecosystem advantage",
+      "Growing subscriber base"
+    ],
+    "weaknesses": [
+      "Less music-focused UI than Spotify",
+      "Weaker social features",
+      "Spotify maintains market leadership"
+    ],
+    "lastUpdated": "2026-02-01"
+  }
+]

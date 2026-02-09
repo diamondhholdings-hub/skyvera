@@ -1,0 +1,43 @@
+[
+  {
+    "id": "tef-001",
+    "name": "Patricia Cobian",
+    "title": "Chief Commercial Officer, Telefonica UK",
+    "role": "decision-maker",
+    "raciRole": "accountable",
+    "reportsTo": null,
+    "tenure": "5 years",
+    "interests": ["B2B growth", "SME digitalization", "customer experience"],
+    "relationshipStrength": "moderate",
+    "lastInteraction": "2025-12-10",
+    "notes": "Leads B2B strategy at O2 Business. Focus on SME market growth."
+  },
+  {
+    "id": "tef-002",
+    "name": "Derek McManus",
+    "title": "Chief Operating Officer",
+    "role": "influencer",
+    "raciRole": "consulted",
+    "email": "derek.mcmanus@o2.co.uk",
+    "reportsTo": "tef-001",
+    "tenure": "8 years",
+    "interests": ["operational efficiency", "network operations", "digital transformation"],
+    "relationshipStrength": "strong",
+    "lastInteraction": "2026-01-15",
+    "notes": "Strong operational focus. Champion for automation and process improvement."
+  },
+  {
+    "id": "tef-003",
+    "name": "Nina Bibby",
+    "title": "Chief Marketing Officer",
+    "role": "user",
+    "raciRole": "informed",
+    "email": "nina.bibby@o2.co.uk",
+    "reportsTo": "tef-001",
+    "tenure": "3 years",
+    "interests": ["customer journey", "digital channels", "brand strategy"],
+    "relationshipStrength": "weak",
+    "lastInteraction": "2025-09-20",
+    "notes": "CMO with focus on customer experience and digital channels."
+  }
+]

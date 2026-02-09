@@ -1,0 +1,52 @@
+[
+  {
+    "id": "bt-action-001",
+    "title": "Schedule Q1 Executive Briefing with Hena Jalil",
+    "description": "Present ROI documentation showing 75% time-to-market improvement and cost savings alignment with GBP 3B target",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Director",
+    "dueDate": "2026-02-20",
+    "createdAt": "2026-02-03"
+  },
+  {
+    "id": "bt-action-002",
+    "title": "Request Introduction to Jon James",
+    "description": "Schedule meeting with new CEO of BT Business to establish relationship and understand B2B turnaround priorities",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Director",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "bt-action-003",
+    "title": "Prepare B2B Expansion Proposal",
+    "description": "Create proposal for enterprise segment CPQ expansion aligned with turnaround strategy",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-03-15",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "bt-action-004",
+    "title": "Conduct Quarterly Business Review",
+    "description": "Schedule QBR with BT Business IT leadership to review platform performance and discuss roadmap",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-31",
+    "createdAt": "2026-02-01"
+  },
+  {
+    "id": "bt-action-005",
+    "title": "Document Cost Savings ROI Case Study",
+    "description": "Comprehensive ROI analysis showing contribution to GBP 3B cost savings target",
+    "status": "done",
+    "priority": "high",
+    "owner": "Customer Success",
+    "dueDate": "2026-01-31",
+    "createdAt": "2025-12-10"
+  }
+]

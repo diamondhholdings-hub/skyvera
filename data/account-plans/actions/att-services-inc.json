@@ -1,0 +1,62 @@
+[
+  {
+    "id": "att-action-001",
+    "title": "Present 5G Enterprise CPQ Roadmap to Anne Chow",
+    "description": "Executive briefing on private 5G and edge compute quoting capabilities",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Director",
+    "dueDate": "2026-02-22",
+    "createdAt": "2026-01-25"
+  },
+  {
+    "id": "att-action-002",
+    "title": "Conduct FirstNet Requirements Workshop",
+    "description": "Technical workshop with FirstNet team to understand procurement workflow requirements",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-03-08",
+    "createdAt": "2026-02-01"
+  },
+  {
+    "id": "att-action-003",
+    "title": "Schedule Integration Health Check with Jeremy Legg",
+    "description": "Review legacy BSS integration performance and identify optimization opportunities",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Solutions Architect",
+    "dueDate": "2026-03-15",
+    "createdAt": "2026-02-03"
+  },
+  {
+    "id": "att-action-004",
+    "title": "Prepare Annual Contract Renewal Proposal",
+    "description": "Build multi-year renewal proposal with 5G and FirstNet expansion modules",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Director",
+    "dueDate": "2026-03-31",
+    "createdAt": "2026-01-10"
+  },
+  {
+    "id": "att-action-005",
+    "title": "Conduct Quarterly Business Review",
+    "description": "QBR with AT&T Business leadership on platform performance and roadmap",
+    "status": "done",
+    "priority": "medium",
+    "owner": "Account Manager",
+    "dueDate": "2026-01-31",
+    "createdAt": "2025-12-01"
+  },
+  {
+    "id": "att-action-006",
+    "title": "Complete Security and Compliance Audit",
+    "description": "Annual security review and SOC 2 documentation update for AT&T InfoSec",
+    "status": "done",
+    "priority": "high",
+    "owner": "Customer Success",
+    "dueDate": "2026-01-15",
+    "createdAt": "2025-11-20"
+  }
+]

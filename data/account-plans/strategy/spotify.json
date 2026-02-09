@@ -1,0 +1,54 @@
+{
+  "painPoints": [
+    {
+      "id": "spot-pain-001",
+      "title": "Complex Partner Contract Management",
+      "description": "Managing contracts with record labels, podcast creators, and advertising partners requires sophisticated contract lifecycle management beyond current capabilities.",
+      "status": "active",
+      "severity": "high",
+      "identifiedDate": "2025-09-10",
+      "owner": "Solutions Engineer"
+    },
+    {
+      "id": "spot-pain-002",
+      "title": "Ad Sales Quote Turnaround Time",
+      "description": "Competition from YouTube and others requires faster advertising quote cycles. Current process taking too long for competitive deals.",
+      "status": "active",
+      "severity": "medium",
+      "identifiedDate": "2025-10-20",
+      "owner": "Account Manager"
+    }
+  ],
+  "opportunities": [
+    {
+      "id": "spot-opp-001",
+      "title": "Advanced Contract Lifecycle Management",
+      "description": "Expand CLM capabilities for complex creator and partner agreements with automated renewals and tiering",
+      "status": "proposed",
+      "estimatedValue": 350000,
+      "probability": 65,
+      "identifiedDate": "2025-11-01",
+      "owner": "Account Director"
+    },
+    {
+      "id": "spot-opp-002",
+      "title": "Advertising CPQ Enhancement",
+      "description": "Build specialized advertising CPQ for podcast and music streaming ad packages",
+      "status": "exploring",
+      "estimatedValue": 200000,
+      "probability": 45,
+      "identifiedDate": "2025-12-01",
+      "owner": "Solutions Engineer"
+    },
+    {
+      "id": "spot-opp-003",
+      "title": "Creator Economy Tooling",
+      "description": "CPQ for Spotify's creator marketplace and tools subscription offerings",
+      "status": "identified",
+      "estimatedValue": 150000,
+      "probability": 30,
+      "identifiedDate": "2026-01-15",
+      "owner": "Product Specialist"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+[
+  {
+    "id": "tef-action-001",
+    "title": "Demo IoT CPQ Capabilities",
+    "description": "Present IoT device bundling and connectivity quote capabilities to Patricia Cobian's team",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-03-05",
+    "createdAt": "2026-02-05"
+  },
+  {
+    "id": "tef-action-002",
+    "title": "Schedule QBR with Derek McManus",
+    "description": "Quarterly business review focusing on operational efficiency gains",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "tef-action-003",
+    "title": "Prepare IoT Expansion Business Case",
+    "description": "Build ROI analysis for IoT CPQ module investment",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Account Director",
+    "dueDate": "2026-03-15",
+    "createdAt": "2026-02-01"
+  },
+  {
+    "id": "tef-action-004",
+    "title": "Complete Annual Contract Renewal",
+    "description": "Finalize annual contract renewal and discuss multi-year commitment",
+    "status": "done",
+    "priority": "high",
+    "owner": "Account Director",
+    "dueDate": "2026-01-31",
+    "createdAt": "2025-11-01"
+  }
+]

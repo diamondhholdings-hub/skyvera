@@ -1,0 +1,36 @@
+[
+  {
+    "id": "tef-comp-001",
+    "name": "Salesforce Revenue Cloud",
+    "type": "our-competitor",
+    "description": "Native Salesforce CPQ could be considered as O2 evaluates platform consolidation",
+    "strengths": [
+      "Native Salesforce platform",
+      "Strong partner ecosystem",
+      "Continuous innovation"
+    ],
+    "weaknesses": [
+      "Less telco-specific than CloudSense",
+      "O2 already invested in CloudSense",
+      "Generic B2B solution"
+    ],
+    "lastUpdated": "2026-02-01"
+  },
+  {
+    "id": "tef-comp-002",
+    "name": "EE (BT Group)",
+    "type": "customer-competitor",
+    "description": "Market leader in UK business mobile and IoT",
+    "strengths": [
+      "Largest UK network",
+      "Strong enterprise presence",
+      "Advanced IoT platform"
+    ],
+    "weaknesses": [
+      "Higher pricing than O2",
+      "Complex enterprise sales processes",
+      "O2 has stronger SME brand"
+    ],
+    "lastUpdated": "2026-02-01"
+  }
+]

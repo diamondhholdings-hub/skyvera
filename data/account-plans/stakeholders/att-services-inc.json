@@ -1,0 +1,57 @@
+[
+  {
+    "id": "att-001",
+    "name": "John Stankey",
+    "title": "CEO, AT&T Inc.",
+    "role": "decision-maker",
+    "raciRole": "accountable",
+    "reportsTo": null,
+    "tenure": "5 years",
+    "interests": ["5G leadership", "fiber expansion", "cost efficiency"],
+    "relationshipStrength": "weak",
+    "lastInteraction": "2024-08-10",
+    "notes": "CEO focused on fiber and 5G infrastructure investments. Limited direct engagement."
+  },
+  {
+    "id": "att-002",
+    "name": "Pascal Desroches",
+    "title": "Chief Financial Officer",
+    "role": "influencer",
+    "raciRole": "consulted",
+    "email": "pascal.desroches@att.com",
+    "reportsTo": "att-001",
+    "tenure": "2 years",
+    "interests": ["financial discipline", "capital efficiency", "free cash flow"],
+    "relationshipStrength": "moderate",
+    "lastInteraction": "2025-12-05",
+    "notes": "CFO driving cost discipline and operational efficiency initiatives."
+  },
+  {
+    "id": "att-003",
+    "name": "Anne Chow",
+    "title": "CEO, AT&T Business",
+    "role": "champion",
+    "raciRole": "responsible",
+    "email": "anne.chow@att.com",
+    "reportsTo": "att-001",
+    "tenure": "4 years",
+    "interests": ["enterprise solutions", "5G for business", "digital transformation"],
+    "relationshipStrength": "strong",
+    "lastInteraction": "2026-01-18",
+    "notes": "Strong advocate for CloudSense. Leading AT&T Business digital transformation and enterprise growth."
+  },
+  {
+    "id": "att-004",
+    "name": "Jeremy Legg",
+    "title": "Chief Technology Officer",
+    "role": "influencer",
+    "raciRole": "consulted",
+    "email": "jeremy.legg@att.com",
+    "reportsTo": "att-001",
+    "tenure": "7 years",
+    "interests": ["network modernization", "cloud architecture", "automation"],
+    "relationshipStrength": "moderate",
+    "lastInteraction": "2025-11-12",
+    "notes": "CTO focused on network transformation and OSS/BSS modernization."
+  }
+]

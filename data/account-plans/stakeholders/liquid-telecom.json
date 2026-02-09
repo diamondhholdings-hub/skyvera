@@ -1,0 +1,43 @@
+[
+  {
+    "id": "lt-001",
+    "name": "Nic Rudnick",
+    "title": "Group CEO",
+    "role": "decision-maker",
+    "raciRole": "accountable",
+    "reportsTo": null,
+    "tenure": "3 years",
+    "interests": ["pan-African expansion", "network infrastructure", "digital services"],
+    "relationshipStrength": "moderate",
+    "lastInteraction": "2025-10-22",
+    "notes": "Leading Liquid's expansion across Africa. Focus on fiber and data center growth."
+  },
+  {
+    "id": "lt-002",
+    "name": "Ben Roberts",
+    "title": "Group Chief Technology and Innovation Officer",
+    "role": "champion",
+    "raciRole": "responsible",
+    "email": "ben.roberts@liquid.tech",
+    "reportsTo": "lt-001",
+    "tenure": "6 years",
+    "interests": ["network automation", "OSS/BSS modernization", "API integration"],
+    "relationshipStrength": "strong",
+    "lastInteraction": "2026-01-10",
+    "notes": "Strong CloudSense advocate. Driving OSS/BSS transformation across African operations."
+  },
+  {
+    "id": "lt-003",
+    "name": "Reshaad Sha",
+    "title": "Chief Commercial Officer",
+    "role": "influencer",
+    "raciRole": "consulted",
+    "email": "reshaad.sha@liquid.tech",
+    "reportsTo": "lt-001",
+    "tenure": "4 years",
+    "interests": ["enterprise sales", "wholesale services", "B2B growth"],
+    "relationshipStrength": "moderate",
+    "lastInteraction": "2025-11-30",
+    "notes": "Focused on enterprise and wholesale revenue growth. Key stakeholder for B2B CPQ expansion."
+  }
+]

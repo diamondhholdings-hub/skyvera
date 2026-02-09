@@ -1,0 +1,36 @@
+[
+  {
+    "id": "lt-comp-001",
+    "name": "Amdocs",
+    "type": "our-competitor",
+    "description": "Leading telco BSS/OSS provider with CPQ capabilities",
+    "strengths": [
+      "Strong telco domain expertise",
+      "Comprehensive BSS suite",
+      "African market presence"
+    ],
+    "weaknesses": [
+      "Higher implementation costs",
+      "Less agile than CloudSense",
+      "Not Salesforce-native"
+    ],
+    "lastUpdated": "2026-02-01"
+  },
+  {
+    "id": "lt-comp-002",
+    "name": "MTN Group",
+    "type": "customer-competitor",
+    "description": "Largest telco in Africa competing with Liquid for enterprise customers",
+    "strengths": [
+      "Massive scale across 21 countries",
+      "Strong brand recognition",
+      "Mobile network dominance"
+    ],
+    "weaknesses": [
+      "Weaker fiber infrastructure than Liquid",
+      "Less focus on enterprise wholesale",
+      "Regulatory challenges in some markets"
+    ],
+    "lastUpdated": "2026-02-01"
+  }
+]

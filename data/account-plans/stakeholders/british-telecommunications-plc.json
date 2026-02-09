@@ -1,0 +1,57 @@
+[
+  {
+    "id": "bt-001",
+    "name": "Allison Kirkby",
+    "title": "Chief Executive Officer",
+    "role": "decision-maker",
+    "raciRole": "accountable",
+    "email": "allison.kirkby@bt.com",
+    "reportsTo": null,
+    "tenure": "2 years",
+    "interests": ["digital transformation", "cost savings", "operational efficiency"],
+    "relationshipStrength": "moderate",
+    "lastInteraction": "2025-11-15",
+    "notes": "New CEO focused on GBP 3 billion cost savings initiative. Strong believer in platform consolidation."
+  },
+  {
+    "id": "bt-002",
+    "name": "Hena Jalil",
+    "title": "CIO, BT Business",
+    "role": "champion",
+    "raciRole": "responsible",
+    "email": "hena.jalil@bt.com",
+    "reportsTo": "bt-003",
+    "tenure": "4 years",
+    "interests": ["Salesforce platform", "system rationalization", "B2B digital sales"],
+    "relationshipStrength": "strong",
+    "lastInteraction": "2026-01-20",
+    "notes": "Key CloudSense champion. Spoke at Dreamforce 2024 about BT's digital transformation. Leads Salesforce consolidation initiative."
+  },
+  {
+    "id": "bt-003",
+    "name": "Jon James",
+    "title": "CEO, BT Business",
+    "role": "decision-maker",
+    "raciRole": "accountable",
+    "email": "jon.james@bt.com",
+    "reportsTo": "bt-001",
+    "tenure": "11 months",
+    "interests": ["B2B turnaround", "enterprise sales growth", "revenue growth"],
+    "relationshipStrength": "weak",
+    "lastInteraction": "2025-12-05",
+    "notes": "New executive appointed March 2025. Relationship needs development. Focused on reversing nine years of B2B revenue decline."
+  },
+  {
+    "id": "bt-004",
+    "name": "Tom Meakin",
+    "title": "Chief Strategy and Change Officer",
+    "role": "influencer",
+    "raciRole": "consulted",
+    "reportsTo": "bt-001",
+    "tenure": "2 years",
+    "interests": ["transformation strategy", "change management", "strategic initiatives"],
+    "relationshipStrength": "moderate",
+    "lastInteraction": "2025-10-18",
+    "notes": "Oversees strategic transformation programs. Key stakeholder for expansion initiatives."
+  }
+]

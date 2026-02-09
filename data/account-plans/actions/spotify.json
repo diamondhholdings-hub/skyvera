@@ -1,0 +1,52 @@
+[
+  {
+    "id": "spot-action-001",
+    "title": "Present CLM Enhancement Proposal to Gustav Soderstrom",
+    "description": "Demo advanced contract lifecycle management for creator partnerships",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Director",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-01-28"
+  },
+  {
+    "id": "spot-action-002",
+    "title": "Conduct ROI Analysis for Advertising CPQ",
+    "description": "Build business case showing quote cycle time reduction impact on ad sales revenue",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-03-10",
+    "createdAt": "2026-02-01"
+  },
+  {
+    "id": "spot-action-003",
+    "title": "Schedule Quarterly Review with Paul Vogel",
+    "description": "QBR focused on cost optimization and platform efficiency",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-25",
+    "createdAt": "2026-02-05"
+  },
+  {
+    "id": "spot-action-004",
+    "title": "Complete Security Audit Documentation",
+    "description": "Provide updated security documentation required by InfoSec team",
+    "status": "done",
+    "priority": "high",
+    "owner": "Customer Success",
+    "dueDate": "2026-01-20",
+    "createdAt": "2025-12-15"
+  },
+  {
+    "id": "spot-action-005",
+    "title": "Explore Creator Economy CPQ Requirements",
+    "description": "Discovery sessions with product team on creator marketplace needs",
+    "status": "in-progress",
+    "priority": "low",
+    "owner": "Product Specialist",
+    "dueDate": "2026-04-15",
+    "createdAt": "2026-01-18"
+  }
+]

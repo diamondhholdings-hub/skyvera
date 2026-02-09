@@ -1,0 +1,44 @@
+{
+  "painPoints": [
+    {
+      "id": "lt-pain-001",
+      "title": "Multi-Country Operations Complexity",
+      "description": "Operating across 13 African countries creates quote and pricing complexity. Need unified CPQ solution for consistent enterprise quotes across markets.",
+      "status": "active",
+      "severity": "high",
+      "identifiedDate": "2025-08-10",
+      "owner": "Solutions Engineer"
+    },
+    {
+      "id": "lt-pain-002",
+      "title": "Manual Quote Processes Slow Enterprise Sales",
+      "description": "Enterprise fiber deals taking weeks to quote due to manual processes. Competing against faster telcos for enterprise contracts.",
+      "status": "active",
+      "severity": "medium",
+      "identifiedDate": "2025-09-05",
+      "owner": "Account Manager"
+    }
+  ],
+  "opportunities": [
+    {
+      "id": "lt-opp-001",
+      "title": "Enterprise Fiber CPQ Expansion",
+      "description": "Expand CloudSense to handle complex multi-site fiber connectivity quotes across African markets",
+      "status": "proposed",
+      "estimatedValue": 250000,
+      "probability": 55,
+      "identifiedDate": "2025-11-01",
+      "owner": "Account Director"
+    },
+    {
+      "id": "lt-opp-002",
+      "title": "Data Center Services Quoting",
+      "description": "Add data center and cloud connectivity services to CPQ platform as Liquid expands data center footprint",
+      "status": "exploring",
+      "estimatedValue": 180000,
+      "probability": 40,
+      "identifiedDate": "2025-12-15",
+      "owner": "Solutions Engineer"
+    }
+  ]
+}

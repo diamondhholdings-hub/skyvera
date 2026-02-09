@@ -1,0 +1,63 @@
+{
+  "painPoints": [
+    {
+      "id": "att-pain-001",
+      "title": "Legacy BSS Systems Limiting Agility",
+      "description": "AT&T operating with legacy BSS systems that slow enterprise product launches. CloudSense integration with legacy systems needs optimization.",
+      "status": "active",
+      "severity": "high",
+      "identifiedDate": "2025-08-01",
+      "owner": "Solutions Engineer"
+    },
+    {
+      "id": "att-pain-002",
+      "title": "5G Enterprise Bundles Complexity",
+      "description": "New 5G enterprise solutions (private networks, edge compute) require complex bundling and pricing not fully supported by current CPQ configuration.",
+      "status": "active",
+      "severity": "high",
+      "identifiedDate": "2025-09-15",
+      "owner": "Account Director"
+    },
+    {
+      "id": "att-pain-003",
+      "title": "FirstNet Quote Turnaround Requirements",
+      "description": "FirstNet public safety contracts require rapid quote turnaround. Need to optimize CPQ for government procurement cycles.",
+      "status": "monitoring",
+      "severity": "medium",
+      "identifiedDate": "2025-10-20",
+      "owner": "Account Manager"
+    }
+  ],
+  "opportunities": [
+    {
+      "id": "att-opp-001",
+      "title": "5G Enterprise Solutions CPQ",
+      "description": "Expand CloudSense to handle private 5G network, edge compute, and IoT enterprise bundles",
+      "status": "proposed",
+      "estimatedValue": 500000,
+      "probability": 70,
+      "identifiedDate": "2025-11-01",
+      "owner": "Account Director"
+    },
+    {
+      "id": "att-opp-002",
+      "title": "FirstNet Accelerated Quote Module",
+      "description": "Purpose-built CPQ module for FirstNet public safety contracts with government procurement workflows",
+      "status": "exploring",
+      "estimatedValue": 300000,
+      "probability": 55,
+      "identifiedDate": "2025-12-10",
+      "owner": "Solutions Engineer"
+    },
+    {
+      "id": "att-opp-003",
+      "title": "Legacy BSS Integration Enhancement",
+      "description": "Optimize CloudSense integration with AT&T's legacy billing and provisioning systems",
+      "status": "exploring",
+      "estimatedValue": 250000,
+      "probability": 60,
+      "identifiedDate": "2026-01-05",
+      "owner": "Solutions Architect"
+    }
+  ]
+}

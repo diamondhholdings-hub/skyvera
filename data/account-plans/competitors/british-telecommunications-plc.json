@@ -1,0 +1,53 @@
+[
+  {
+    "id": "bt-comp-001",
+    "name": "Salesforce Revenue Cloud (Native CPQ)",
+    "type": "our-competitor",
+    "description": "Salesforce's native CPQ solution could be positioned as alternative with platform bundling",
+    "strengths": [
+      "Native Salesforce integration and support",
+      "Platform bundling leverage",
+      "Large partner ecosystem"
+    ],
+    "weaknesses": [
+      "Less telco-specific features than CloudSense",
+      "Generic solution not optimized for communications industry",
+      "BT already invested in CloudSense implementation with TCS"
+    ],
+    "lastUpdated": "2026-02-01"
+  },
+  {
+    "id": "bt-comp-002",
+    "name": "Oracle CPQ",
+    "type": "our-competitor",
+    "description": "Enterprise CPQ competitor with strong market presence",
+    "strengths": [
+      "Robust enterprise CPQ capabilities",
+      "Strong Oracle ecosystem integration",
+      "Large customer base"
+    ],
+    "weaknesses": [
+      "BT standardized on Salesforce, not Oracle",
+      "Migration would conflict with platform consolidation strategy",
+      "Higher switching costs"
+    ],
+    "lastUpdated": "2026-02-01"
+  },
+  {
+    "id": "bt-comp-003",
+    "name": "Vodafone UK (VodafoneThree)",
+    "type": "customer-competitor",
+    "description": "BT's primary competitor in UK telecom market after Vodafone-Three merger",
+    "strengths": [
+      "Combined 27 million mobile subscribers post-merger",
+      "Strong network infrastructure",
+      "Aggressive pricing"
+    ],
+    "weaknesses": [
+      "Integration challenges from merger",
+      "Regulatory scrutiny",
+      "BT maintains market leadership"
+    ],
+    "lastUpdated": "2026-02-01"
+  }
+]

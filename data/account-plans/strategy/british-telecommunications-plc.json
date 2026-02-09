@@ -1,0 +1,62 @@
+{
+  "painPoints": [
+    {
+      "id": "bt-pain-001",
+      "title": "Budget Pressure from Cost Savings Initiative",
+      "description": "BT is targeting GBP 3 billion in cost savings by end of decade, creating intense scrutiny on all vendor spending. Need to demonstrate ROI and position as cost reduction enabler.",
+      "status": "active",
+      "severity": "high",
+      "identifiedDate": "2025-09-01",
+      "owner": "Account Director"
+    },
+    {
+      "id": "bt-pain-002",
+      "title": "B2B Revenue Decline for Nine Years",
+      "description": "Enterprise division has experienced consistent revenue decline. New CEO Jon James tasked with turnaround, creating opportunity to position CloudSense as key enabler.",
+      "status": "active",
+      "severity": "medium",
+      "identifiedDate": "2025-08-15",
+      "owner": "Account Manager"
+    },
+    {
+      "id": "bt-pain-003",
+      "title": "System Complexity - 2,400 Systems to Rationalize",
+      "description": "BT has 2,400 systems with target to reduce to 500. Platform consolidation is strategic priority. CloudSense must reinforce position as Salesforce-native consolidation tool.",
+      "status": "monitoring",
+      "severity": "medium",
+      "identifiedDate": "2025-07-20",
+      "owner": "Solutions Engineer"
+    }
+  ],
+  "opportunities": [
+    {
+      "id": "bt-opp-001",
+      "title": "B2B Turnaround Expansion",
+      "description": "Support Jon James' B2B turnaround with expanded CPQ capabilities for enterprise segment growth. Align with first revenue growth in nine years.",
+      "status": "exploring",
+      "estimatedValue": 400000,
+      "probability": 60,
+      "identifiedDate": "2025-11-01",
+      "owner": "Account Director"
+    },
+    {
+      "id": "bt-opp-002",
+      "title": "Enterprise Quote Complexity Features",
+      "description": "Multi-site, multi-service quote capabilities for complex enterprise bundles. BT expanding network services (5G, full fibre) requiring sophisticated CPQ.",
+      "estimatedValue": 200000,
+      "probability": 45,
+      "identifiedDate": "2025-10-15",
+      "owner": "Solutions Engineer"
+    },
+    {
+      "id": "bt-opp-003",
+      "title": "Partner Channel Enablement",
+      "description": "CloudSense Anywhere for channel partners to support BT's partner ecosystem sales. Aligns with B2B growth strategy.",
+      "status": "identified",
+      "estimatedValue": 150000,
+      "probability": 40,
+      "identifiedDate": "2025-12-01",
+      "owner": "Account Manager"
+    }
+  ]
+}

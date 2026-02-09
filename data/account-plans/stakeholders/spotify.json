@@ -1,0 +1,57 @@
+[
+  {
+    "id": "spot-001",
+    "name": "Daniel Ek",
+    "title": "CEO and Co-Founder",
+    "role": "decision-maker",
+    "raciRole": "accountable",
+    "reportsTo": null,
+    "tenure": "18 years",
+    "interests": ["platform growth", "creator economy", "audio innovation"],
+    "relationshipStrength": "weak",
+    "lastInteraction": "2024-06-15",
+    "notes": "Visionary CEO focused on audio platform expansion beyond music. Limited direct engagement."
+  },
+  {
+    "id": "spot-002",
+    "name": "Paul Vogel",
+    "title": "Chief Financial Officer",
+    "role": "influencer",
+    "raciRole": "consulted",
+    "email": "paul.vogel@spotify.com",
+    "reportsTo": "spot-001",
+    "tenure": "5 years",
+    "interests": ["profitability", "cost optimization", "margin improvement"],
+    "relationshipStrength": "moderate",
+    "lastInteraction": "2025-11-20",
+    "notes": "CFO focused on path to sustained profitability. Key decision-maker for technology spend."
+  },
+  {
+    "id": "spot-003",
+    "name": "Gustav Soderstrom",
+    "title": "Chief Product and Technology Officer",
+    "role": "champion",
+    "raciRole": "responsible",
+    "email": "gustav@spotify.com",
+    "reportsTo": "spot-001",
+    "tenure": "14 years",
+    "interests": ["product innovation", "tech infrastructure", "user experience"],
+    "relationshipStrength": "strong",
+    "lastInteraction": "2026-01-25",
+    "notes": "Long-tenured executive overseeing product and tech. Strong CloudSense advocate for internal tooling."
+  },
+  {
+    "id": "spot-004",
+    "name": "Alex Norström",
+    "title": "Chief Business Officer",
+    "role": "user",
+    "raciRole": "informed",
+    "email": "alex.norstrom@spotify.com",
+    "reportsTo": "spot-001",
+    "tenure": "12 years",
+    "interests": ["partnerships", "advertising", "business development"],
+    "relationshipStrength": "moderate",
+    "lastInteraction": "2025-10-05",
+    "notes": "Manages partnerships and advertising. User of internal quoting tools powered by CloudSense."
+  }
+]

@@ -1,0 +1,44 @@
+{
+  "painPoints": [
+    {
+      "id": "tef-pain-001",
+      "title": "SME Customer Acquisition Costs Rising",
+      "description": "Competition for SME customers driving up acquisition costs. Need faster, more efficient quote-to-cash process.",
+      "status": "active",
+      "severity": "high",
+      "identifiedDate": "2025-10-01",
+      "owner": "Account Manager"
+    },
+    {
+      "id": "tef-pain-002",
+      "title": "Complex Product Bundling Requirements",
+      "description": "O2 Business expanding into IoT and connectivity solutions requiring complex bundling capabilities beyond current CPQ scope.",
+      "status": "monitoring",
+      "severity": "medium",
+      "identifiedDate": "2025-11-15",
+      "owner": "Solutions Engineer"
+    }
+  ],
+  "opportunities": [
+    {
+      "id": "tef-opp-001",
+      "title": "IoT Solutions CPQ Module",
+      "description": "Expand CPQ to handle IoT device + connectivity bundles as O2 pushes into IoT market",
+      "status": "exploring",
+      "estimatedValue": 300000,
+      "probability": 50,
+      "identifiedDate": "2025-12-01",
+      "owner": "Account Director"
+    },
+    {
+      "id": "tef-opp-002",
+      "title": "Self-Service SME Portal Enhancement",
+      "description": "Enhance self-service capabilities for SME customers to reduce acquisition costs",
+      "status": "identified",
+      "estimatedValue": 120000,
+      "probability": 35,
+      "identifiedDate": "2026-01-10",
+      "owner": "Solutions Engineer"
+    }
+  ]
+}
