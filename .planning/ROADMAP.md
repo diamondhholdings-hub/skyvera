@@ -48,11 +48,12 @@ Plans:
   3. User sees account health score (red/yellow/green indicator) for each customer based on multiple data sources
   4. User views financial metrics per account (ARR, NRR, margin) with data freshness timestamps
   5. User receives proactive alerts dashboard showing at-risk accounts and metric anomalies
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 02-01: TBD during planning
-- [ ] 02-02: TBD during planning
+- [ ] 02-01-PLAN.md -- App shell (layout, navigation, shared UI components) and server-side data access functions
+- [ ] 02-02-PLAN.md -- Financial KPI dashboard with charts, BU breakdown, and metrics (DASH-01)
+- [ ] 02-03-PLAN.md -- Account directory with TanStack Table and proactive alerts dashboard (ACCT-01-03, DASH-02)
 
 ### Phase 3: Intelligence Features
 **Goal**: Users can model what-if scenarios and ask natural language questions about business data
@@ -112,7 +113,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation & Data Integration | 4/4 | Complete ✓ | 2026-02-08 |
-| 2. Core Platform UI | 0/TBD | Not started | - |
+| 2. Core Platform UI | 0/3 | Not started | - |
 | 3. Intelligence Features | 0/TBD | Not started | - |
 | 4. Advanced Account Intelligence | 0/TBD | Not started | - |
 | 5. Demo Readiness | 0/TBD | Not started | - |
