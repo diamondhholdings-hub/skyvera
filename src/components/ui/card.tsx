@@ -14,10 +14,12 @@ interface CardProps {
 
 export function Card({ title, children, className = '' }: CardProps) {
   return (
-    <div className={`bg-white rounded-lg shadow-sm border border-slate-200 ${className}`}>
+    <div
+      className={`bg-white rounded-lg shadow-lg border border-slate-200 hover:shadow-xl transition-shadow duration-200 ${className}`}
+    >
       {title && (
-        <div className="border-b border-slate-200 px-6 py-4">
-          <h2 className="text-lg font-semibold text-slate-900">{title}</h2>
+        <div className="border-b border-slate-200 px-6 py-4 bg-slate-50">
+          <h2 className="text-lg font-bold text-slate-900">{title}</h2>
         </div>
       )}
       <div className={title ? 'p-6' : ''}>
