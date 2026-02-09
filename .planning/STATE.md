@@ -10,28 +10,28 @@ See: .planning/PROJECT.md (updated 2026-02-08)
 ## Current Position
 
 Phase: 1 of 5 (Foundation & Data Integration)
-Plan: 1 of 4 in current phase
+Plan: 2 of 4 in current phase
 Status: In progress
-Last activity: 2026-02-09 - Completed 01-01-PLAN.md (Foundation Bootstrap)
+Last activity: 2026-02-09 - Completed 01-02-PLAN.md (Semantic Layer & Cache)
 
-Progress: [█░░░░░░░░░] 10%
+Progress: [██░░░░░░░░] 20%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 1
-- Average duration: 6 min
-- Total execution time: 0.1 hours
+- Total plans completed: 2
+- Average duration: 5.5 min
+- Total execution time: 0.18 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 1 - Foundation & Data Integration | 1 | 6min | 6min |
+| 1 - Foundation & Data Integration | 2 | 11min | 5.5min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (6min)
-- Trend: Baseline (first plan)
+- Last 5 plans: 01-01 (6min), 01-02 (5min)
+- Trend: Accelerating (5min vs 6min average)
 
 *Updated after each plan completion*
 
@@ -53,6 +53,13 @@ Recent decisions affecting current work:
 - API keys optional in env validation to allow development without external services
 - BUEnum includes NewNet (exists in data/) even though not in primary BU list
 
+**From Plan 01-02 (2026-02-09):**
+- DataProvider interface pattern enables pluggable data sources (MockDataProvider now, adapters in Plan 04)
+- In-memory Map for cache storage (Redis swappable via interface post-demo)
+- Cache TTL: 5min financial, 10min customer, 15min news/enrichment with ±10% jitter
+- SemanticResolver as single source of truth for all metric calculations
+- Customer health scoring: green (stable), yellow (some concerns), red (at-risk)
+
 ### Pending Todos
 
 None yet.
@@ -72,5 +79,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-09 (plan execution)
-Stopped at: Completed 01-01-PLAN.md (Foundation Bootstrap) - all types, schemas, and database in place
+Stopped at: Completed 01-02-PLAN.md (Semantic Layer & Cache) - semantic layer, cache manager, and validation layer in place
 Resume file: None
