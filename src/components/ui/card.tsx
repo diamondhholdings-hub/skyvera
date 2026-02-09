@@ -13,18 +13,40 @@ interface CardProps {
 }
 
 export function Card({ title, children, className = '' }: CardProps) {
+  const cardStyle: React.CSSProperties = {
+    backgroundColor: '#ffffff',
+    borderRadius: '12px',
+    border: '1px solid #e2e8f0',
+    boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
+    transition: 'box-shadow 0.2s',
+    overflow: 'hidden',
+  }
+
+  const headerStyle: React.CSSProperties = {
+    borderBottom: '1px solid #e2e8f0',
+    padding: '16px 24px',
+    backgroundColor: '#f8fafc',
+  }
+
+  const titleStyle: React.CSSProperties = {
+    fontSize: '18px',
+    fontWeight: 700,
+    color: '#0f172a',
+    margin: 0,
+  }
+
+  const contentStyle: React.CSSProperties = {
+    padding: title ? '24px' : '0',
+  }
+
   return (
-    <div
-      className={`bg-white rounded-lg shadow-lg border border-slate-200 hover:shadow-xl transition-shadow duration-200 ${className}`}
-    >
+    <div style={cardStyle} className={className}>
       {title && (
-        <div className="border-b border-slate-200 px-6 py-4 bg-slate-50">
-          <h2 className="text-lg font-bold text-slate-900">{title}</h2>
+        <div style={headerStyle}>
+          <h2 style={titleStyle}>{title}</h2>
         </div>
       )}
-      <div className={title ? 'p-6' : ''}>
-        {children}
-      </div>
+      <div style={contentStyle}>{children}</div>
     </div>
   )
 }

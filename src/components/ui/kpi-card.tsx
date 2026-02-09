@@ -21,28 +21,62 @@ export function KPICard({ title, value, target, format = 'number' }: KPICardProp
     return val.toLocaleString()
   }
 
+  // Inline styles that will definitely render
+  const cardStyle: React.CSSProperties = {
+    backgroundColor: '#ffffff',
+    padding: '24px',
+    borderRadius: '12px',
+    borderLeft: `6px solid ${isPositive ? '#10b981' : '#ef4444'}`,
+    boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
+    transition: 'box-shadow 0.2s',
+  }
+
+  const titleStyle: React.CSSProperties = {
+    fontSize: '12px',
+    fontWeight: 600,
+    color: '#64748b',
+    textTransform: 'uppercase',
+    letterSpacing: '0.05em',
+    marginBottom: '8px',
+  }
+
+  const valueStyle: React.CSSProperties = {
+    fontSize: '36px',
+    fontWeight: 700,
+    color: '#0f172a',
+    marginTop: '12px',
+    marginBottom: '12px',
+  }
+
+  const targetContainerStyle: React.CSSProperties = {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '12px',
+    marginTop: '12px',
+  }
+
+  const targetTextStyle: React.CSSProperties = {
+    fontSize: '14px',
+    color: '#475569',
+  }
+
+  const badgeStyle: React.CSSProperties = {
+    fontSize: '13px',
+    fontWeight: 600,
+    padding: '4px 12px',
+    borderRadius: '9999px',
+    backgroundColor: isPositive ? '#dcfce7' : '#fee2e2',
+    color: isPositive ? '#15803d' : '#b91c1c',
+  }
+
   return (
-    <div
-      className={`bg-white p-6 rounded-lg shadow-lg border-l-4 hover:shadow-xl transition-shadow duration-200 ${
-        isPositive ? 'border-l-green-500' : 'border-l-red-500'
-      }`}
-    >
-      <h3 className="text-sm font-semibold text-slate-500 uppercase tracking-wide">
-        {title}
-      </h3>
-      <p className="text-4xl font-bold text-slate-900 mt-3">
-        {formatValue(value)}
-      </p>
-      <div className="flex items-center gap-3 mt-3">
-        <span className="text-sm text-slate-600">Target: {formatValue(target)}</span>
+    <div style={cardStyle}>
+      <h3 style={titleStyle}>{title}</h3>
+      <p style={valueStyle}>{formatValue(value)}</p>
+      <div style={targetContainerStyle}>
+        <span style={targetTextStyle}>Target: {formatValue(target)}</span>
         {target !== 0 && (
-          <span
-            className={`text-sm font-semibold px-2 py-1 rounded-full ${
-              isPositive
-                ? 'bg-green-100 text-green-700'
-                : 'bg-red-100 text-red-700'
-            }`}
-          >
+          <span style={badgeStyle}>
             {isPositive ? '▲' : '▼'} {Math.abs(delta).toFixed(1)}%
           </span>
         )}
