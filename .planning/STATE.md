@@ -10,28 +10,29 @@ See: .planning/PROJECT.md (updated 2026-02-08)
 ## Current Position
 
 Phase: 2 of 5 (Core Platform UI)
-Plan: 0 of TBD in current phase
-Status: Ready to plan
-Last activity: 2026-02-08 - Phase 1 completed: Foundation & Data Integration
+Plan: 1 of 3 in current phase
+Status: In progress
+Last activity: 2026-02-09 - Completed 02-01-PLAN.md (App Shell & Server Data Functions)
 
-Progress: [██░░░░░░░░] 20%
+Progress: [███░░░░░░░] 25%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 4
-- Average duration: 5.3 min
-- Total execution time: 0.35 hours
+- Total plans completed: 5
+- Average duration: 5.0 min
+- Total execution time: 0.42 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 1 - Foundation & Data Integration | 4 | 21min | 5.3min |
+| 2 - Core Platform UI | 1 | 4.5min | 4.5min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (6min), 01-02 (5min), 01-03 (4min), 01-04 (6min)
-- Trend: Stable (6min this plan vs 5.3min average)
+- Last 5 plans: 01-02 (5min), 01-03 (4min), 01-04 (6min), 02-01 (4.5min)
+- Trend: Improving (4.5min this plan vs 5.0min average)
 
 *Updated after each plan completion*
 
@@ -78,6 +79,13 @@ Recent decisions affecting current work:
 - ConnectorFactory initializes adapters in parallel, handles individual adapter failures gracefully
 - Health endpoint returns 200 even if some adapters degraded (system still partially functional)
 
+**From Plan 02-01 (2026-02-09):**
+- Server-first data fetching: Dashboard pages call data functions directly (no API routes needed)
+- CustomerWithHealth extended with `bu` field: Each customer annotated with BU during data assembly for downstream filtering
+- Client component islands: NavBar and RefreshButton only client components, rest server-rendered
+- WCAG 2.2 Level AA accessibility: HealthIndicator uses color + icon + text + aria-label (never color alone)
+- Loading.tsx per route: Instant feedback during navigation with Tailwind animate-pulse skeletons
+
 ### Pending Todos
 
 None yet.
@@ -97,7 +105,7 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-09 (plan execution)
-Stopped at: Completed 01-04-PLAN.md (Data Integration & Adapters) - Phase 1 complete! Excel adapter parses all 140 customers, NewsAPI integrated, ConnectorFactory operational, health endpoint verified
+Stopped at: Completed 02-01-PLAN.md (App Shell & Server Data Functions) - Phase 2 started! NavBar with navigation, 6 shared UI components, 3 server data modules, CustomerWithHealth.bu field annotated
 Resume file: None
 
-**Phase 1 Foundation Complete - Ready for Phase 2 (UI & Dashboard)**
+**Phase 2 Plan 1 Complete - Ready for Plans 02-02 (Dashboard) and 02-03 (Accounts/Alerts) in parallel**
