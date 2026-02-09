@@ -14,6 +14,8 @@ export function NavBar() {
     { href: '/dashboard', label: 'Dashboard' },
     { href: '/accounts', label: 'Accounts' },
     { href: '/alerts', label: 'Alerts' },
+    { href: '/scenario', label: 'Scenarios' },
+    { href: '/query', label: 'Ask' },
   ]
 
   return (
