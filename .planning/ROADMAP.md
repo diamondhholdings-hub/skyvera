@@ -14,7 +14,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Foundation & Data Integration** - Semantic layer, Claude orchestration, data adapters (Hours 0-8)
 - [x] **Phase 2: Core Platform UI** - Enhanced dashboard, account directory, health scoring (Hours 8-14)
-- [ ] **Phase 3: Intelligence Features** - Scenario modeling + Natural language query (Hours 14-20)
+- [x] **Phase 3: Intelligence Features** - Scenario modeling + Natural language query (Hours 14-20)
 - [ ] **Phase 4: Advanced Account Intelligence** - 7-tab account plans with real-time intelligence (Hours 20-22)
 - [ ] **Phase 5: Demo Readiness** - Testing, hardening, demo preparation (Hours 22-24)
 
@@ -69,8 +69,8 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 03-01-PLAN.md -- Scenario modeling: service layer (types, calculator, analyzer) + API route + UI forms and impact display (SCEN-01 through SCEN-04)
-- [ ] 03-02-PLAN.md -- Natural language query: canned queries, interpreter, clarification + API route + UI with metrics catalog (NLQ-01 through NLQ-03)
+- [x] 03-01-PLAN.md -- Scenario modeling: service layer (types, calculator, analyzer) + API route + UI forms and impact display (SCEN-01 through SCEN-04)
+- [x] 03-02-PLAN.md -- Natural language query: canned queries, interpreter, clarification + API route + UI with metrics catalog (NLQ-01 through NLQ-03)
 
 ### Phase 4: Advanced Account Intelligence
 **Goal**: Users can view comprehensive 7-tab account plans with real-time intelligence and competitive context
@@ -114,6 +114,6 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
 |-------|----------------|--------|-----------|
 | 1. Foundation & Data Integration | 4/4 | Complete ✓ | 2026-02-08 |
 | 2. Core Platform UI | 3/3 | Complete ✓ | 2026-02-09 |
-| 3. Intelligence Features | 0/2 | In progress | - |
+| 3. Intelligence Features | 2/2 | Complete ✓ | 2026-02-09 |
 | 4. Advanced Account Intelligence | 0/TBD | Not started | - |
 | 5. Demo Readiness | 0/TBD | Not started | - |
