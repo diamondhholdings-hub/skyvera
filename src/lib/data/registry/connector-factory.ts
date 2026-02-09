@@ -266,13 +266,26 @@ export class ConnectorFactory {
 
 // Singleton instance
 let connectorFactoryInstance: ConnectorFactory | null = null
+let initializationPromise: Promise<ConnectorFactory> | null = null
 
 /**
  * Get singleton ConnectorFactory instance
  * Automatically registers and initializes adapters on first call
+ * Thread-safe: multiple simultaneous calls await the same initialization promise
  */
 export async function getConnectorFactory(): Promise<ConnectorFactory> {
-  if (!connectorFactoryInstance) {
+  // If already initialized, return immediately
+  if (connectorFactoryInstance) {
+    return connectorFactoryInstance
+  }
+
+  // If initialization is in progress, await it
+  if (initializationPromise) {
+    return initializationPromise
+  }
+
+  // Start initialization
+  initializationPromise = (async () => {
     connectorFactoryInstance = new ConnectorFactory()
 
     // Register adapters
@@ -281,9 +294,11 @@ export async function getConnectorFactory(): Promise<ConnectorFactory> {
 
     // Initialize all adapters
     await connectorFactoryInstance.initialize()
-  }
 
-  return connectorFactoryInstance
+    return connectorFactoryInstance
+  })()
+
+  return initializationPromise
 }
 
 /**
@@ -294,4 +309,5 @@ export function resetConnectorFactory(): void {
     connectorFactoryInstance.disconnectAll()
   }
   connectorFactoryInstance = null
+  initializationPromise = null
 }
