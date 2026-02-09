@@ -48,12 +48,18 @@ function AlertsSkeleton() {
 
 export default function DashboardPage() {
   return (
-    <div className="p-6 space-y-6">
-      {/* Header */}
-      <div className="flex justify-between items-center">
-        <h1 className="text-3xl font-bold text-slate-900">Executive Dashboard</h1>
-        <RefreshButton label="Refresh Data" />
-      </div>
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-50">
+      <div className="p-6 space-y-6">
+        {/* Header */}
+        <div className="flex justify-between items-center">
+          <div>
+            <h1 className="text-3xl font-bold text-slate-900">Executive Dashboard</h1>
+            <p className="text-sm text-slate-600 mt-1">
+              Real-time business intelligence and performance metrics
+            </p>
+          </div>
+          <RefreshButton label="Refresh Data" />
+        </div>
 
       {/* KPI Section */}
       <Suspense fallback={<KPISkeleton />}>
@@ -79,6 +85,7 @@ export default function DashboardPage() {
       <Suspense fallback={<AlertsSkeleton />}>
         <RecentAlertsPreview />
       </Suspense>
+      </div>
     </div>
   )
 }
