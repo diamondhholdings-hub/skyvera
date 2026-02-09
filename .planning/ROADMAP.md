@@ -66,11 +66,11 @@ Plans:
   4. User asks natural language questions from pre-programmed query library (5-10 canned queries)
   5. User asks free-form natural language questions and receives clarification dialogue for ambiguous queries
   6. User browses curated metrics catalog to build queries with semantic definitions
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 03-01: TBD during planning
-- [ ] 03-02: TBD during planning
+- [ ] 03-01-PLAN.md -- Scenario modeling: service layer (types, calculator, analyzer) + API route + UI forms and impact display (SCEN-01 through SCEN-04)
+- [ ] 03-02-PLAN.md -- Natural language query: canned queries, interpreter, clarification + API route + UI with metrics catalog (NLQ-01 through NLQ-03)
 
 ### Phase 4: Advanced Account Intelligence
 **Goal**: Users can view comprehensive 7-tab account plans with real-time intelligence and competitive context
@@ -114,6 +114,6 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
 |-------|----------------|--------|-----------|
 | 1. Foundation & Data Integration | 4/4 | Complete ✓ | 2026-02-08 |
 | 2. Core Platform UI | 3/3 | Complete ✓ | 2026-02-09 |
-| 3. Intelligence Features | 0/TBD | Not started | - |
+| 3. Intelligence Features | 0/2 | In progress | - |
 | 4. Advanced Account Intelligence | 0/TBD | Not started | - |
 | 5. Demo Readiness | 0/TBD | Not started | - |
