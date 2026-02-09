@@ -17,6 +17,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 3: Intelligence Features** - Scenario modeling + Natural language query (Hours 14-20)
 - [x] **Phase 4: Advanced Account Intelligence** - 7-tab account plans with real-time intelligence (Hours 20-22)
 - [x] **Phase 5: Demo Readiness** - Testing, hardening, demo preparation (Hours 22-24)
+- [ ] **Phase 6: Visual Design Implementation** - UI polish matching reference HTML designs
 
 ## Phase Details
 
@@ -110,10 +111,25 @@ Plans:
 - [x] 05-03-PLAN.md -- Demo data generation for 140 accounts and cache warmup script for hero accounts
 - [x] 05-04-PLAN.md -- Playwright E2E test suite, demo flow 3x validation, smoke tests, human verification
 
+### Phase 6: Visual Design Implementation
+**Goal**: UI matches reference HTML designs with editorial theme, professional typography, and polished component library
+**Depends on**: Phase 5
+**Requirements**: (Design enhancement - no new functional requirements)
+**Success Criteria** (what must be TRUE):
+  1. All pages use Cormorant Garamond + DM Sans typography matching reference designs
+  2. Color palette matches Paper/Ink editorial theme (--paper: #fafaf8, --ink: #1a1a1a, --accent: #c84b31, --secondary: #2d4263)
+  3. Dashboard has gradient header, metric cards with proper spacing, and visual hierarchy matching Financial Dashboard reference
+  4. Account directory uses card grid with hover effects matching index.html reference
+  5. Account plan pages have hero header with stat cards, sticky tab navigation, and layout matching Telstra/Liquid Telecom references
+**Plans**: 0 plans
+
+Plans:
+- [ ] TBD (run /gsd:discuss-phase 6 or /gsd:plan-phase 6 to break down)
+
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
+Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
@@ -122,3 +138,4 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
 | 3. Intelligence Features | 2/2 | Complete ✓ | 2026-02-09 |
 | 4. Advanced Account Intelligence | 4/4 | Complete ✓ | 2026-02-09 |
 | 5. Demo Readiness | 4/4 | Complete ✓ | 2026-02-09 |
+| 6. Visual Design Implementation | 0/? | Not started | - |
