@@ -1,0 +1,32 @@
+[
+  {
+    "id": "comp-1",
+    "name": "Amdocs",
+    "type": "our-competitor",
+    "description": "Amdocs competes with Skyvera for BSS/OSS platform business.",
+    "strengths": [
+      "Established market presence",
+      "Large customer base"
+    ],
+    "weaknesses": [
+      "Legacy technology stack",
+      "Higher implementation costs"
+    ],
+    "lastUpdated": "2025-12-01"
+  },
+  {
+    "id": "comp-2",
+    "name": "NetCracker",
+    "type": "our-competitor",
+    "description": "NetCracker competes with Skyvera for BSS/OSS platform business.",
+    "strengths": [
+      "Established market presence",
+      "Large customer base"
+    ],
+    "weaknesses": [
+      "Legacy technology stack",
+      "Higher implementation costs"
+    ],
+    "lastUpdated": "2025-12-01"
+  }
+]

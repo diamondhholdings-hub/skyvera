@@ -1,0 +1,44 @@
+{
+  "painPoints": [
+    {
+      "id": "pp-001",
+      "title": "Legacy system modernization needs",
+      "description": "Current systems lack modern capabilities and integration flexibility. Need to migrate to cloud-native architecture.",
+      "status": "active",
+      "severity": "high",
+      "identifiedDate": "2025-09-15",
+      "owner": "CTO"
+    },
+    {
+      "id": "pp-002",
+      "title": "Operational cost pressures",
+      "description": "Rising operational costs due to manual processes and system inefficiencies. Need automation and optimization.",
+      "status": "monitoring",
+      "severity": "medium",
+      "identifiedDate": "2025-10-01",
+      "owner": "VP Operations"
+    }
+  ],
+  "opportunities": [
+    {
+      "id": "opp-001",
+      "title": "Cloud migration initiative",
+      "description": "Major cloud transformation program planned for 2026. Opportunity to expand platform footprint.",
+      "status": "identified",
+      "estimatedValue": 500000,
+      "probability": 60,
+      "identifiedDate": "2025-11-01",
+      "owner": "CTO"
+    },
+    {
+      "id": "opp-002",
+      "title": "Process automation expansion",
+      "description": "Looking to automate additional business processes. Our platform can address 3-4 new use cases.",
+      "status": "exploring",
+      "estimatedValue": 250000,
+      "probability": 40,
+      "identifiedDate": "2025-12-15",
+      "owner": "VP Operations"
+    }
+  ]
+}

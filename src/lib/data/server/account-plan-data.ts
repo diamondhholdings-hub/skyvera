@@ -24,17 +24,19 @@ import {
 
 /**
  * Convert customer name to file-safe slug for JSON lookups
- * Rules: lowercase, spaces to hyphens, remove commas/periods/parens, & to and
+ * Rules: lowercase, spaces to hyphens, remove commas/periods/parens/slashes, & to and
  *
  * Examples:
  *   "British Telecommunications plc" -> "british-telecommunications-plc"
  *   "AT&T SERVICES, INC." -> "att-services-inc"
+ *   "Luminus Hasselt NV/SA" -> "luminus-hasselt-nv-sa"
  *   "Liquid Telecom" -> "liquid-telecom"
  */
 export function slugifyCustomerName(name: string): string {
   return name
     .toLowerCase()
     .replace(/&/g, 'and')
+    .replace(/\//g, '-') // Replace slashes with hyphens
     .replace(/[,.()\[\]]/g, '')
     .replace(/\s+/g, '-')
     .replace(/-+/g, '-')

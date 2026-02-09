@@ -1,0 +1,56 @@
+[
+  {
+    "id": "a1-telekom-austria-ag-001",
+    "name": "Chief Technology Officer",
+    "title": "CTO",
+    "role": "decision-maker",
+    "raciRole": "accountable",
+    "email": "cto@a1.com",
+    "reportsTo": null,
+    "tenure": "3 years",
+    "interests": [
+      "digital transformation",
+      "platform modernization",
+      "cost optimization"
+    ],
+    "relationshipStrength": "moderate",
+    "lastInteraction": "2025-12-10",
+    "notes": "Key decision maker for technology strategy and platform investments."
+  },
+  {
+    "id": "a1-telekom-austria-ag-002",
+    "name": "VP of Operations",
+    "title": "VP Operations",
+    "role": "champion",
+    "raciRole": "responsible",
+    "email": "vp.operations@a1.com",
+    "reportsTo": "a1-telekom-austria-ag-001",
+    "tenure": "2 years",
+    "interests": [
+      "operational efficiency",
+      "automation",
+      "process improvement"
+    ],
+    "relationshipStrength": "strong",
+    "lastInteraction": "2026-01-15",
+    "notes": "Strong advocate for our platform. Leads daily operations and platform adoption."
+  },
+  {
+    "id": "a1-telekom-austria-ag-003",
+    "name": "Director of IT",
+    "title": "Director IT",
+    "role": "influencer",
+    "raciRole": "consulted",
+    "email": "director.it@a1.com",
+    "reportsTo": "a1-telekom-austria-ag-001",
+    "tenure": "5 years",
+    "interests": [
+      "technical architecture",
+      "integration",
+      "security"
+    ],
+    "relationshipStrength": "moderate",
+    "lastInteraction": "2025-11-20",
+    "notes": "Technical stakeholder. Influences architecture and integration decisions."
+  }
+]
