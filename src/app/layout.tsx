@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { NavBar } from "@/components/ui/nav-bar";
+import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
   title: "Skyvera Intelligence Platform",
@@ -13,7 +15,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <NavBar />
+        <main className="min-h-screen">
+          {children}
+        </main>
+        <Toaster position="top-right" richColors />
+      </body>
     </html>
   );
 }
