@@ -29,6 +29,7 @@ export type Customer = z.infer<typeof CustomerSchema>
 
 // Customer with health score (for intelligence features)
 export const CustomerWithHealthSchema = CustomerSchema.extend({
+  bu: z.string(), // BU name annotated during data assembly
   healthScore: z.enum(['green', 'yellow', 'red']),
   healthFactors: z.array(z.string()),
 })
