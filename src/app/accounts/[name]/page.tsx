@@ -17,6 +17,7 @@ import { StrategyTab } from './_components/strategy-tab'
 import { CompetitiveTab } from './_components/competitive-tab'
 import { OrganizationTab } from './_components/organization-tab'
 import { IntelligenceTab } from './_components/intelligence-tab'
+import { ActionItemsTab } from './_components/action-items-tab'
 import { Badge } from '@/components/ui/badge'
 import { HealthIndicator } from '@/components/ui/health-indicator'
 
@@ -150,10 +151,9 @@ export default async function AccountPlanPage({ params, searchParams }: AccountP
       )}
 
       {activeTab === 'action-items' && (
-        <div className="text-center py-12 text-slate-500">
-          <p className="text-lg font-medium mb-2">Action Items</p>
-          <p className="text-sm">Coming soon in Plan 04-04</p>
-        </div>
+        <Suspense fallback={<TabSkeleton />}>
+          <ActionItemsTab initialActions={accountData.actions} />
+        </Suspense>
       )}
     </div>
   )
