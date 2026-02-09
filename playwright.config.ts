@@ -53,7 +53,11 @@ export default defineConfig({
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: {
+        ...devices['Desktop Chrome'],
+        // Ensure viewport is large enough for desktop tab view (md: breakpoint is 768px)
+        viewport: { width: 1280, height: 720 },
+      },
     },
   ],
 

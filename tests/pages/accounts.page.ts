@@ -57,10 +57,12 @@ export class AccountsPage {
   }
 
   /**
-   * Click first account in table
+   * Click first account in table (clicks the customer name link)
    */
   async clickFirstAccount() {
-    await this.firstAccountRow.click()
+    // Click the customer name link within the first row (it's a blue link)
+    const firstLink = this.firstAccountRow.locator('a').first()
+    await firstLink.click()
   }
 
   /**
