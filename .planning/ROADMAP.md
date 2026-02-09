@@ -15,7 +15,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 1: Foundation & Data Integration** - Semantic layer, Claude orchestration, data adapters (Hours 0-8)
 - [x] **Phase 2: Core Platform UI** - Enhanced dashboard, account directory, health scoring (Hours 8-14)
 - [x] **Phase 3: Intelligence Features** - Scenario modeling + Natural language query (Hours 14-20)
-- [ ] **Phase 4: Advanced Account Intelligence** - 7-tab account plans with real-time intelligence (Hours 20-22)
+- [x] **Phase 4: Advanced Account Intelligence** - 7-tab account plans with real-time intelligence (Hours 20-22)
 - [ ] **Phase 5: Demo Readiness** - Testing, hardening, demo preparation (Hours 22-24)
 
 ## Phase Details
@@ -87,10 +87,10 @@ Plans:
 **Plans**: 4 plans
 
 Plans:
-- [ ] 04-01-PLAN.md -- Account plan types (Zod schemas), data access layer, and mock data for 5 hero accounts
-- [ ] 04-02-PLAN.md -- Account plan page shell, tab navigation, and 4 tabs (Overview, Financials, Strategy, Competitive)
-- [ ] 04-03-PLAN.md -- Organization tab (org chart tree, stakeholder cards) and Intelligence tab (insights, news timeline)
-- [ ] 04-04-PLAN.md -- Action Items tab with @dnd-kit Kanban board (drag-and-drop, quick-add)
+- [x] 04-01-PLAN.md -- Account plan types (Zod schemas), data access layer, and mock data for 5 hero accounts
+- [x] 04-02-PLAN.md -- Account plan page shell, tab navigation, and 4 tabs (Overview, Financials, Strategy, Competitive)
+- [x] 04-03-PLAN.md -- Organization tab (org chart tree, stakeholder cards) and Intelligence tab (insights, news timeline)
+- [x] 04-04-PLAN.md -- Action Items tab with @dnd-kit Kanban board (drag-and-drop, quick-add)
 
 ### Phase 5: Demo Readiness
 **Goal**: System is demo-ready with full end-to-end testing, error recovery, and performance optimization
@@ -102,10 +102,13 @@ Plans:
   3. System loads initial dashboard in under 2 seconds and transitions between views in under 500ms
   4. All 140 customer accounts have demo-ready data with realistic financial metrics and intelligence
   5. Manual refresh buttons are visible and functional in all views with loading indicators
-**Plans**: TBD
+**Plans**: 4 plans
 
 Plans:
-- [ ] 05-01: TBD during planning
+- [ ] 05-01-PLAN.md -- Error boundaries for all route segments and reusable empty state component
+- [ ] 05-02-PLAN.md -- Aggressive dashboard caching (5min TTL), DEMO_MODE config, refresh buttons on all pages
+- [ ] 05-03-PLAN.md -- Demo data generation for 140 accounts and cache warmup script for hero accounts
+- [ ] 05-04-PLAN.md -- Playwright E2E test suite, demo flow 3x validation, smoke tests, human verification
 
 ## Progress
 
@@ -118,4 +121,4 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
 | 2. Core Platform UI | 3/3 | Complete ✓ | 2026-02-09 |
 | 3. Intelligence Features | 2/2 | Complete ✓ | 2026-02-09 |
 | 4. Advanced Account Intelligence | 4/4 | Complete ✓ | 2026-02-09 |
-| 5. Demo Readiness | 0/TBD | Not started | - |
+| 5. Demo Readiness | 0/4 | Not started | - |
