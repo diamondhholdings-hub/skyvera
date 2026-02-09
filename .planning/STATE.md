@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-08)
 
 **Core value:** Executives and BU leaders can instantly understand business performance, customer health, and scenario impacts through AI-powered intelligence and natural language interaction - eliminating manual data gathering and enabling rapid strategic decision-making
-**Current focus:** Phase 4: Advanced Account Intelligence
+**Current focus:** Phase 5: Demo Readiness
 
 ## Current Position
 
 Phase: 5 of 5 (Demo Readiness)
-Plan: 1 of 3 in current phase
+Plan: 2 of 3 in current phase
 Status: In progress
-Last activity: 2026-02-09 - Completed 05-01-PLAN.md
+Last activity: 2026-02-09 - Completed 05-02-PLAN.md
 
-Progress: [█████████░] 87%
+Progress: [█████████░] 93%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 14
-- Average duration: 4.5 min
-- Total execution time: 1.05 hours
+- Total plans completed: 15
+- Average duration: 4.4 min
+- Total execution time: 1.1 hours
 
 **By Phase:**
 
@@ -31,11 +31,11 @@ Progress: [█████████░] 87%
 | 2 - Core Platform UI | 3 | 13.9min | 4.6min |
 | 3 - Intelligence Features | 2 | 13min | 6.5min |
 | 4 - Advanced Account Intelligence | 4 | 15.5min | 3.9min |
-| 5 - Demo Readiness | 1 | 2.2min | 2.2min |
+| 5 - Demo Readiness | 2 | 5.2min | 2.6min |
 
 **Recent Trend:**
-- Last 5 plans: 04-02 (4min), 04-03 (2.5min), 04-04 (3min), 05-01 (2.2min)
-- Trend: Accelerating (2.9min avg recent, exceptional velocity)
+- Last 5 plans: 04-03 (2.5min), 04-04 (3min), 05-01 (2.2min), 05-02 (3min)
+- Trend: Accelerating (2.7min avg recent, exceptional velocity)
 
 *Updated after each plan completion*
 
@@ -155,6 +155,12 @@ Recent decisions affecting current work:
 - Each error boundary provides reset() recovery and navigation fallback to parent route
 - EmptyState component supports both href (Link) and onClick (button) for flexible CTA patterns
 
+**From Plan 05-02 (2026-02-09):**
+- DEMO_MODE environment flag extends cache TTLs for demo stability (30min dashboard, 60min intelligence vs 5min/15min normal)
+- Cache-aside pattern applied to getDashboardData, getBUSummaries, getRevenueTrendData (5min TTL, 30min in DEMO_MODE)
+- Second dashboard load serves from in-memory cache in sub-100ms
+- All 6 pages have visible refresh buttons with loading indicators (dashboard, accounts, account plan, alerts, query, scenario)
+
 ### Pending Todos
 
 None yet.
@@ -174,7 +180,7 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-09 (plan execution)
-Stopped at: Completed 05-01-PLAN.md - Error boundaries and empty states
+Stopped at: Completed 05-02-PLAN.md - Performance optimization with caching and refresh buttons
 Resume file: None
 
-**Phase 5 in progress - Error boundaries protect all routes with business-friendly messaging. EmptyState component ready for tabs. Demo reliability foundation in place.**
+**Phase 5 in progress - Performance optimized with aggressive caching (sub-100ms dashboard loads on cache hit). All pages have refresh buttons. DEMO_MODE enables extended cache stability. Ready for visual polish phase.**
