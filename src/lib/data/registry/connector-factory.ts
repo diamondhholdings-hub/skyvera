@@ -286,16 +286,19 @@ export async function getConnectorFactory(): Promise<ConnectorFactory> {
 
   // Start initialization
   initializationPromise = (async () => {
-    connectorFactoryInstance = new ConnectorFactory()
+    const instance = new ConnectorFactory()
 
     // Register adapters
-    connectorFactoryInstance.register(new ExcelAdapter())
-    connectorFactoryInstance.register(new NewsAPIAdapter())
+    instance.register(new ExcelAdapter())
+    instance.register(new NewsAPIAdapter())
 
     // Initialize all adapters
-    await connectorFactoryInstance.initialize()
+    await instance.initialize()
 
-    return connectorFactoryInstance
+    // Only set the singleton AFTER initialization completes
+    connectorFactoryInstance = instance
+
+    return instance
   })()
 
   return initializationPromise
