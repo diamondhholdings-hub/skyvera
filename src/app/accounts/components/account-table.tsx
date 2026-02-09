@@ -7,6 +7,7 @@
  */
 
 import { useState, useEffect, useMemo } from 'react'
+import Link from 'next/link'
 import {
   useReactTable,
   getCoreRowModel,
@@ -55,7 +56,14 @@ export function AccountTable({ customers }: AccountTableProps) {
       {
         accessorKey: 'customer_name',
         header: 'Customer Name',
-        cell: (info) => <span className="font-semibold">{info.getValue() as string}</span>,
+        cell: (info) => (
+          <Link
+            href={`/accounts/${encodeURIComponent(info.getValue() as string)}`}
+            className="font-semibold text-blue-600 hover:text-blue-800 hover:underline"
+          >
+            {info.getValue() as string}
+          </Link>
+        ),
       },
       {
         accessorKey: 'bu',
