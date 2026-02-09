@@ -84,11 +84,13 @@ Plans:
   5. User receives Claude-generated strategic insights for each account based on multi-source data
   6. User sees real-time news and intelligence for customer companies with sentiment analysis
   7. User views competitive intelligence showing competitors for us and for the customer
-**Plans**: TBD
+**Plans**: 4 plans
 
 Plans:
-- [ ] 04-01: TBD during planning
-- [ ] 04-02: TBD during planning
+- [ ] 04-01-PLAN.md -- Account plan types (Zod schemas), data access layer, and mock data for 5 hero accounts
+- [ ] 04-02-PLAN.md -- Account plan page shell, tab navigation, and 4 tabs (Overview, Financials, Strategy, Competitive)
+- [ ] 04-03-PLAN.md -- Organization tab (org chart tree, stakeholder cards) and Intelligence tab (insights, news timeline)
+- [ ] 04-04-PLAN.md -- Action Items tab with @dnd-kit Kanban board (drag-and-drop, quick-add)
 
 ### Phase 5: Demo Readiness
 **Goal**: System is demo-ready with full end-to-end testing, error recovery, and performance optimization
@@ -115,5 +117,5 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
 | 1. Foundation & Data Integration | 4/4 | Complete ✓ | 2026-02-08 |
 | 2. Core Platform UI | 3/3 | Complete ✓ | 2026-02-09 |
 | 3. Intelligence Features | 2/2 | Complete ✓ | 2026-02-09 |
-| 4. Advanced Account Intelligence | 0/TBD | Not started | - |
+| 4. Advanced Account Intelligence | 0/4 | Planning complete | - |
 | 5. Demo Readiness | 0/TBD | Not started | - |
