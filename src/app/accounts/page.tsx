@@ -4,7 +4,6 @@
  * Satisfies requirements ACCT-01, ACCT-02, ACCT-03
  */
 
-import { Suspense } from 'react'
 import { getAllCustomersWithHealth, getCustomerCount } from '@/lib/data/server/account-data'
 import { RefreshButton } from '@/components/ui/refresh-button'
 import { AccountStats } from './components/account-stats'
@@ -73,26 +72,7 @@ export default async function AccountsPage() {
       <AccountStats stats={stats} />
 
       {/* Customer Table */}
-      <Suspense fallback={<TableSkeleton />}>
-        <AccountTable customers={customers} />
-      </Suspense>
-    </div>
-  )
-}
-
-/**
- * Loading skeleton for table
- */
-function TableSkeleton() {
-  return (
-    <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
-      <div className="animate-pulse space-y-4">
-        <div className="h-10 bg-slate-200 rounded w-full"></div>
-        <div className="h-10 bg-slate-100 rounded w-full"></div>
-        <div className="h-10 bg-slate-100 rounded w-full"></div>
-        <div className="h-10 bg-slate-100 rounded w-full"></div>
-        <div className="h-10 bg-slate-100 rounded w-full"></div>
-      </div>
+      <AccountTable customers={customers} />
     </div>
   )
 }
