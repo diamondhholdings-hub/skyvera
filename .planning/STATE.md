@@ -10,29 +10,29 @@ See: .planning/PROJECT.md (updated 2026-02-08)
 ## Current Position
 
 Phase: 2 of 5 (Core Platform UI)
-Plan: 1 of 3 in current phase
+Plan: 2 of 3 in current phase
 Status: In progress
-Last activity: 2026-02-09 - Completed 02-01-PLAN.md (App Shell & Server Data Functions)
+Last activity: 2026-02-09 - Completed 02-02-PLAN.md (Executive Dashboard)
 
-Progress: [███░░░░░░░] 25%
+Progress: [███░░░░░░░] 30%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 5
-- Average duration: 5.0 min
-- Total execution time: 0.42 hours
+- Total plans completed: 6
+- Average duration: 4.9 min
+- Total execution time: 0.49 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 1 - Foundation & Data Integration | 4 | 21min | 5.3min |
-| 2 - Core Platform UI | 1 | 4.5min | 4.5min |
+| 2 - Core Platform UI | 2 | 9.3min | 4.7min |
 
 **Recent Trend:**
-- Last 5 plans: 01-02 (5min), 01-03 (4min), 01-04 (6min), 02-01 (4.5min)
-- Trend: Improving (4.5min this plan vs 5.0min average)
+- Last 5 plans: 01-03 (4min), 01-04 (6min), 02-01 (4.5min), 02-02 (4.8min)
+- Trend: Stable (4.8min this plan vs 4.9min average)
 
 *Updated after each plan completion*
 
@@ -86,6 +86,11 @@ Recent decisions affecting current work:
 - WCAG 2.2 Level AA accessibility: HealthIndicator uses color + icon + text + aria-label (never color alone)
 - Loading.tsx per route: Instant feedback during navigation with Tailwind animate-pulse skeletons
 
+**From Plan 02-02 (2026-02-09):**
+- Server wrapper pattern for charts: Async Server Components fetch data and pass as props to "use client" chart components (keeps data fetching server-side)
+- Suspense per section: Independent Suspense boundaries for KPIs, charts, BU breakdown, alerts enable progressive rendering
+- Color-coded margin indicators: Green if >= target, red if below + checkmark/X icons for accessibility (never color alone)
+
 ### Pending Todos
 
 None yet.
@@ -105,7 +110,7 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-09 (plan execution)
-Stopped at: Completed 02-01-PLAN.md (App Shell & Server Data Functions) - Phase 2 started! NavBar with navigation, 6 shared UI components, 3 server data modules, CustomerWithHealth.bu field annotated
+Stopped at: Completed 02-02-PLAN.md (Executive Dashboard) - Dashboard with KPI cards, Recharts line/bar charts, BU breakdown, alerts preview, server wrapper pattern established
 Resume file: None
 
-**Phase 2 Plan 1 Complete - Ready for Plans 02-02 (Dashboard) and 02-03 (Accounts/Alerts) in parallel**
+**Phase 2 Plan 2 Complete - Requirement DASH-01 satisfied. Ready for Plan 02-03 (Accounts & Alerts Pages) to satisfy DASH-02**
