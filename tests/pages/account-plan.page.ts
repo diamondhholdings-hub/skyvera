@@ -31,14 +31,14 @@ export class AccountPlanPage {
     this.customerName = page.locator('h1').first()
     this.backLink = page.getByRole('link', { name: /back to accounts/i })
 
-    // Tab navigation - using role link or button
-    this.overviewTab = page.getByRole('link', { name: /overview/i })
-    this.financialsTab = page.getByRole('link', { name: /financials/i })
-    this.organizationTab = page.getByRole('link', { name: /organization/i })
-    this.strategyTab = page.getByRole('link', { name: /strategy/i })
-    this.competitiveTab = page.getByRole('link', { name: /competitive/i })
-    this.intelligenceTab = page.getByRole('link', { name: /intelligence/i })
-    this.actionItemsTab = page.getByRole('link', { name: /action items/i })
+    // Tab navigation - using role link with exact names for specificity
+    this.overviewTab = page.getByRole('link', { name: 'Overview' })
+    this.financialsTab = page.getByRole('link', { name: 'Financials' })
+    this.organizationTab = page.getByRole('link', { name: 'Organization' })
+    this.strategyTab = page.getByRole('link', { name: 'Strategy' })
+    this.competitiveTab = page.getByRole('link', { name: 'Competitive' })
+    this.intelligenceTab = page.getByRole('link', { name: 'Intelligence' })
+    this.actionItemsTab = page.getByRole('link', { name: 'Action Items' })
 
     // Tab content container
     this.tabContent = page.locator('main').or(page.locator('[role="tabpanel"]'))

@@ -30,11 +30,11 @@ export class DashboardPage {
     this.refreshButton = page.getByRole('button', { name: /refresh/i })
     this.accountsNavLink = page.getByRole('link', { name: 'Accounts' })
 
-    // KPI cards - using getByText for flexibility
-    this.totalRevenueKPI = page.getByText('Total Revenue')
-    this.netMarginKPI = page.getByText('Net Margin')
-    this.ebitdaKPI = page.getByText('EBITDA')
-    this.headcountKPI = page.getByText('Headcount')
+    // KPI cards - using role heading for specificity (avoids duplicates)
+    this.totalRevenueKPI = page.getByRole('heading', { name: 'Total Revenue' })
+    this.netMarginKPI = page.getByRole('heading', { name: 'Net Margin' })
+    this.ebitdaKPI = page.getByRole('heading', { name: 'EBITDA' })
+    this.headcountKPI = page.getByRole('heading', { name: 'Headcount' })
 
     // Loading skeletons
     this.loadingSkeletons = page.locator('.animate-pulse')
