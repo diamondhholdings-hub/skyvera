@@ -7,6 +7,7 @@ import { Suspense } from 'react'
 import { getBaselineMetrics } from '@/lib/data/server/scenario-data'
 import ScenarioForm from './components/scenario-form'
 import ScenarioLoading from './loading'
+import { RefreshButton } from '@/components/ui/refresh-button'
 
 export default async function ScenarioPage() {
   // Fetch baseline metrics server-side
@@ -31,11 +32,14 @@ export default async function ScenarioPage() {
   return (
     <div className="p-6 space-y-6">
       {/* Header */}
-      <div className="space-y-2">
-        <h1 className="text-3xl font-bold text-slate-900">Scenario Modeling</h1>
-        <p className="text-slate-600">
-          Model what-if scenarios and see financial impact with AI-powered analysis
-        </p>
+      <div className="flex justify-between items-start">
+        <div className="space-y-2">
+          <h1 className="text-3xl font-bold text-slate-900">Scenario Modeling</h1>
+          <p className="text-slate-600">
+            Model what-if scenarios and see financial impact with AI-powered analysis
+          </p>
+        </div>
+        <RefreshButton label="Refresh Data" />
       </div>
 
       {/* Scenario Form */}

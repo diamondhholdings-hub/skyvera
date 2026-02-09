@@ -12,6 +12,7 @@ import { QueryInput } from './query-input'
 import { CannedQueries } from './canned-queries'
 import { QueryResults } from './query-results'
 import { MetricsCatalog } from './metrics-catalog'
+import { RefreshButton } from '@/components/ui/refresh-button'
 
 // Serializable metric definition without the calculate function
 type SerializableMetricDefinition = Omit<MetricDefinition, 'calculate'>
@@ -131,11 +132,14 @@ export function QueryPageClient({ cannedQueries, metrics }: QueryPageClientProps
   return (
     <div className="p-6 space-y-6">
       {/* Page header */}
-      <div className="space-y-2">
-        <h1 className="text-3xl font-bold text-slate-900">Ask a Question</h1>
-        <p className="text-slate-600">
-          Query your business data using natural language
-        </p>
+      <div className="flex justify-between items-start">
+        <div className="space-y-2">
+          <h1 className="text-3xl font-bold text-slate-900">Ask a Question</h1>
+          <p className="text-slate-600">
+            Query your business data using natural language
+          </p>
+        </div>
+        <RefreshButton label="Refresh Data" />
       </div>
 
       {/* Two-column layout */}

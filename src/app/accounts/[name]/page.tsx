@@ -20,6 +20,7 @@ import { IntelligenceTab } from './_components/intelligence-tab'
 import { ActionItemsTab } from './_components/action-items-tab'
 import { Badge } from '@/components/ui/badge'
 import { HealthIndicator } from '@/components/ui/health-indicator'
+import { RefreshButton } from '@/components/ui/refresh-button'
 
 interface AccountPlanPageProps {
   params: Promise<{ name: string }>
@@ -96,10 +97,15 @@ export default async function AccountPlanPage({ params, searchParams }: AccountP
 
       {/* Header */}
       <div className="mb-6">
-        <h1 className="text-3xl font-bold text-slate-900 mb-2">{customer.customer_name}</h1>
-        <div className="flex items-center gap-3">
-          <Badge variant="default">{customer.bu}</Badge>
-          <HealthIndicator score={customer.healthScore} />
+        <div className="flex justify-between items-start">
+          <div>
+            <h1 className="text-3xl font-bold text-slate-900 mb-2">{customer.customer_name}</h1>
+            <div className="flex items-center gap-3">
+              <Badge variant="default">{customer.bu}</Badge>
+              <HealthIndicator score={customer.healthScore} />
+            </div>
+          </div>
+          <RefreshButton label="Refresh Data" />
         </div>
       </div>
 
