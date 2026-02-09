@@ -75,7 +75,8 @@ export class CacheManager {
    * Manual set with TTL
    */
   set<T>(key: string, value: T, options: CacheOptions): void {
-    const ttlMs = this.addJitter(options.ttl) * 1000
+    const baseTTLMs = options.ttl * 1000
+    const ttlMs = options.jitter !== false ? this.addJitter(baseTTLMs) : baseTTLMs
     const now = Date.now()
 
     const entry: CacheEntry<T> = {
@@ -167,10 +168,10 @@ export class CacheManager {
   /**
    * Add ±10% random jitter to prevent thundering herd
    */
-  private addJitter(baseTTL: number): number {
+  private addJitter(baseTTLMs: number): number {
     const jitterPercent = 0.1
-    const jitter = baseTTL * jitterPercent * (Math.random() * 2 - 1)
-    return baseTTL + jitter
+    const jitter = baseTTLMs * jitterPercent * (Math.random() * 2 - 1)
+    return baseTTLMs + jitter
   }
 
   /**
