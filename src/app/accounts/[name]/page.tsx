@@ -15,6 +15,8 @@ import { OverviewTab } from './_components/overview-tab'
 import { FinancialsTab } from './_components/financials-tab'
 import { StrategyTab } from './_components/strategy-tab'
 import { CompetitiveTab } from './_components/competitive-tab'
+import { OrganizationTab } from './_components/organization-tab'
+import { IntelligenceTab } from './_components/intelligence-tab'
 import { Badge } from '@/components/ui/badge'
 import { HealthIndicator } from '@/components/ui/health-indicator'
 
@@ -117,10 +119,9 @@ export default async function AccountPlanPage({ params, searchParams }: AccountP
       )}
 
       {activeTab === 'organization' && (
-        <div className="text-center py-12 text-slate-500">
-          <p className="text-lg font-medium mb-2">Organization Chart</p>
-          <p className="text-sm">Coming soon in Plan 04-03</p>
-        </div>
+        <Suspense fallback={<TabSkeleton />}>
+          <OrganizationTab stakeholders={accountData.stakeholders} />
+        </Suspense>
       )}
 
       {activeTab === 'strategy' && (
@@ -139,10 +140,13 @@ export default async function AccountPlanPage({ params, searchParams }: AccountP
       )}
 
       {activeTab === 'intelligence' && (
-        <div className="text-center py-12 text-slate-500">
-          <p className="text-lg font-medium mb-2">AI Intelligence Report</p>
-          <p className="text-sm">Coming soon in Plan 04-04</p>
-        </div>
+        <Suspense fallback={<TabSkeleton />}>
+          <IntelligenceTab
+            intelligenceReport={accountData.intelligence}
+            news={accountData.news}
+            customerName={customerName}
+          />
+        </Suspense>
       )}
 
       {activeTab === 'action-items' && (
