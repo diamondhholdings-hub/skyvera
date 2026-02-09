@@ -121,10 +121,14 @@ Plans:
   3. Dashboard has gradient header, metric cards with proper spacing, and visual hierarchy matching Financial Dashboard reference
   4. Account directory uses card grid with hover effects matching index.html reference
   5. Account plan pages have hero header with stat cards, sticky tab navigation, and layout matching Telstra/Liquid Telecom references
-**Plans**: 0 plans
+**Plans**: 5 plans
 
 Plans:
-- [ ] TBD (run /gsd:discuss-phase 6 or /gsd:plan-phase 6 to break down)
+- [ ] 06-01-PLAN.md -- Design system foundation: CSS variables, Google Fonts, Tailwind config, shared UI component restyling
+- [ ] 06-02-PLAN.md -- Dashboard page: gradient header, editorial KPI cards, themed charts and BU breakdown
+- [ ] 06-03-PLAN.md -- Account directory: gradient header with stats, customer card grid with hover effects
+- [ ] 06-04-PLAN.md -- Account plan pages: hero header with stat cards, sticky tabs, editorial tab content
+- [ ] 06-05-PLAN.md -- Secondary pages (Alerts, Scenario, Query) restyling and human visual verification
 
 ## Progress
 
@@ -138,4 +142,4 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 | 3. Intelligence Features | 2/2 | Complete ✓ | 2026-02-09 |
 | 4. Advanced Account Intelligence | 4/4 | Complete ✓ | 2026-02-09 |
 | 5. Demo Readiness | 4/4 | Complete ✓ | 2026-02-09 |
-| 6. Visual Design Implementation | 0/? | Not started | - |
+| 6. Visual Design Implementation | 0/5 | Not started | - |
