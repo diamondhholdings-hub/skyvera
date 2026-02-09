@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
   output   = "../node_modules/.prisma/client"
@@ -10,10 +7,9 @@ datasource db {
   provider = "sqlite"
 }
 
-// Customer model matching JSON structure
 model Customer {
-  id            Int      @id @default(autoincrement())
-  customerName  String   @unique
+  id            Int            @id @default(autoincrement())
+  customerName  String         @unique
   bu            String
   rr            Float
   nrr           Float
@@ -21,16 +17,14 @@ model Customer {
   rank          Int?
   pctOfTotal    Float?
   healthScore   String?
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
-
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
   subscriptions Subscription[]
 
   @@index([bu])
   @@index([customerName])
 }
 
-// Subscription model
 model Subscription {
   id           Int      @id @default(autoincrement())
   customerId   Int
@@ -39,13 +33,11 @@ model Subscription {
   renewalQtr   String?
   willRenew    String?
   projectedArr Float?
-
   customer     Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
 
   @@index([customerId])
 }
 
-// Financial snapshot for time-series tracking
 model FinancialSnapshot {
   id           Int      @id @default(autoincrement())
   bu           String
@@ -63,7 +55,6 @@ model FinancialSnapshot {
   @@index([quarter])
 }
 
-// News articles for customer intelligence
 model NewsArticle {
   id             Int      @id @default(autoincrement())
   customerName   String
@@ -80,13 +71,198 @@ model NewsArticle {
   @@index([publishedAt])
 }
 
-// Cache entries for API responses
 model CacheEntry {
   id        Int      @id @default(autoincrement())
   key       String   @unique
-  value     String   // JSON serialized
+  value     String
   expiresAt DateTime
   createdAt DateTime @default(now())
 
   @@index([expiresAt])
+}
+
+// Product Agent System Models
+
+// PRD (Product Requirements Document)
+model PRD {
+  id                       Int      @id @default(autoincrement())
+  prdId                    String   @unique // PRD-2026-042
+  title                    String
+  content                  String   // Markdown content (14 sections)
+
+  // Scoring
+  confidenceScore          Int      // 0-100 from QA validation
+  priorityScore            Int      // 0-100 weighted multi-factor
+  priorityClass            String   // P0/P1/P2/P3/P4
+  leverageClassification   String   // Leverage/Neutral/Overhead
+
+  // Business metrics
+  arrImpact                Float
+  customerCount            Int
+  implementationWeeks      Int
+
+  // Status
+  status                   String   // Auto-Published/Pending Review/Approved/In Dev/Shipped/Rejected
+  workflowId               String?
+
+  // Metadata
+  generatedAt              DateTime @default(now())
+  reviewedAt               DateTime?
+  approvedAt               DateTime?
+  shippedAt                DateTime?
+
+  // Assignments
+  assignedPm               String?
+  assignedEngLead          String?
+  reviewedBy               String?
+  approvedBy               String?
+
+  // Tags (JSON arrays stored as strings)
+  strategicThemes          String?  // JSON array
+  businessUnits            String?  // JSON array
+  customerTags             String?  // JSON array
+  category                 String?
+
+  // Relationships
+  featureRequests          FeatureRequest[]
+  lifecycle                PRDLifecycle?
+
+  @@index([prdId])
+  @@index([status])
+  @@index([priorityClass])
+  @@index([generatedAt])
+}
+
+// Feature Request from sales/customers
+model FeatureRequest {
+  id                 Int      @id @default(autoincrement())
+  requestId          String   @unique @default(cuid())
+
+  // Customer info
+  customerName       String
+  customerArr        Float
+  businessUnit       String
+
+  // Request details
+  featureDescription String
+  customerQuote      String?
+  urgency            String   // critical/high/medium/low
+  dealImpact         String   // hard_blocker/soft_blocker/friction/nice_to_have
+  dealSize           Float?
+
+  // Submission
+  submittedBy        String
+  submittedAt        DateTime @default(now())
+
+  // Status
+  status             String   // Submitted/Under Review/PRD Created/In Dev/Shipped/Declined
+  linkedPrdId        String?
+  linkedPrd          PRD?     @relation(fields: [linkedPrdId], references: [prdId])
+
+  // Agent processing
+  processedAt        DateTime?
+  patternId          String?
+
+  @@index([customerName])
+  @@index([status])
+  @@index([submittedAt])
+  @@index([patternId])
+}
+
+// Detected patterns from Pattern Detection Agent
+model Pattern {
+  id              Int      @id @default(autoincrement())
+  patternId       String   @unique @default(cuid())
+
+  // Pattern details
+  name            String
+  description     String
+  signal          String   // What triggered this pattern
+  confidence      Float    // 0-1
+
+  // Affected customers (JSON array)
+  customers       String   // JSON array of customer names
+
+  // Financial impact
+  arrAtRisk       Float?
+  arrOpportunity  Float?
+  financialImpact Float?
+
+  // Status
+  status          String   // Detected/Analyzing/PRD Generated/Dismissed
+  prdGenerated    Boolean  @default(false)
+  linkedPrdId     String?
+
+  // Metadata
+  detectedAt      DateTime @default(now())
+  processedAt     DateTime?
+
+  @@index([patternId])
+  @@index([status])
+  @@index([detectedAt])
+}
+
+// Workflow execution tracking
+model Workflow {
+  id           Int      @id @default(autoincrement())
+  workflowId   String   @unique @default(cuid())
+
+  // Workflow details
+  type         String   // prd_generation/pattern_analysis
+  status       String   // pending/running/completed/failed
+  currentStage String?
+
+  // Tracking
+  startedAt    DateTime @default(now())
+  completedAt  DateTime?
+
+  // Results (JSON)
+  input        String?  // JSON
+  output       String?  // JSON
+  error        String?
+
+  // Metrics
+  executionTimeMs Int?
+  tokensUsed      Int?
+  costUsd         Float?
+
+  @@index([workflowId])
+  @@index([status])
+  @@index([startedAt])
+}
+
+// PRD Lifecycle tracking for learning
+model PRDLifecycle {
+  id          Int      @id @default(autoincrement())
+  prdId       String   @unique
+  prd         PRD      @relation(fields: [prdId], references: [prdId])
+
+  // Predictions
+  predictedArrImpact     Float
+  predictedCustomers     Int
+  predictedWeeks         Int
+
+  // Review metrics
+  reviewDecision         String?  // approved/rejected/needs_revision
+  reviewFeedback         String?
+  pmPriorityOverride     Int?
+
+  // Development metrics
+  devStartedAt           DateTime?
+  actualWeeks            Int?
+
+  // Impact metrics (post-launch)
+  actualArrImpact30d     Float?
+  actualArrImpact90d     Float?
+  actualCustomerAdoption Int?
+  customerSatisfaction   Float?   // NPS score
+
+  // Learning metrics
+  predictionAccuracy     Float?
+  leverageValidated      Boolean?
+
+  createdAt              DateTime @default(now())
+  updatedAt              DateTime @updatedAt
+
+  @@index([prdId])
 }
