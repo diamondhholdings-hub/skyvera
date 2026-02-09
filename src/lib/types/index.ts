@@ -14,3 +14,6 @@ export * from './customer'
 
 // News types and schemas
 export * from './news'
+
+// Account plan types and schemas
+export * from './account-plan'
