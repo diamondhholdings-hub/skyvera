@@ -25,6 +25,8 @@ export function AccountStats({ stats }: AccountStatsProps) {
         <div className="flex items-center gap-3">
           <svg
             className="w-8 h-8 text-blue-500"
+            width="32"
+            height="32"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
