@@ -10,28 +10,28 @@ See: .planning/PROJECT.md (updated 2026-02-08)
 ## Current Position
 
 Phase: 1 of 5 (Foundation & Data Integration)
-Plan: 2 of 4 in current phase
+Plan: 3 of 4 in current phase
 Status: In progress
-Last activity: 2026-02-09 - Completed 01-02-PLAN.md (Semantic Layer & Cache)
+Last activity: 2026-02-09 - Completed 01-03-PLAN.md (Claude Orchestration)
 
-Progress: [██░░░░░░░░] 20%
+Progress: [███░░░░░░░] 30%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 2
-- Average duration: 5.5 min
-- Total execution time: 0.18 hours
+- Total plans completed: 3
+- Average duration: 5 min
+- Total execution time: 0.25 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 1 - Foundation & Data Integration | 2 | 11min | 5.5min |
+| 1 - Foundation & Data Integration | 3 | 15min | 5min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (6min), 01-02 (5min)
-- Trend: Accelerating (5min vs 6min average)
+- Last 5 plans: 01-01 (6min), 01-02 (5min), 01-03 (4min)
+- Trend: Accelerating (4min this plan vs 5.5min average)
 
 *Updated after each plan completion*
 
@@ -60,6 +60,15 @@ Recent decisions affecting current work:
 - SemanticResolver as single source of truth for all metric calculations
 - Customer health scoring: green (stable), yellow (some concerns), red (at-risk)
 
+**From Plan 01-03 (2026-02-09):**
+- All Claude API requests MUST flow through ClaudeOrchestrator singleton (no direct SDK calls)
+- Rate limiter enforces 50 RPM with token bucket and even distribution
+- Priority queue: HIGH (user-facing) processes before MEDIUM/LOW (background)
+- Response caching with priority-based TTL (HIGH=5min, MEDIUM/LOW=15min)
+- djb2 hash for cache keys (fast, sufficient for prompt deduplication)
+- Max 3 retries on 429 errors with exponential backoff (1-2s base, doubles)
+- All prompts specify JSON output with confidence levels and source citations
+
 ### Pending Todos
 
 None yet.
@@ -79,5 +88,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-09 (plan execution)
-Stopped at: Completed 01-02-PLAN.md (Semantic Layer & Cache) - semantic layer, cache manager, and validation layer in place
+Stopped at: Completed 01-03-PLAN.md (Claude Orchestration) - orchestrator, rate limiter, caching, and prompt templates ready
 Resume file: None
