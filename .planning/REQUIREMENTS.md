@@ -20,13 +20,13 @@ Requirements for 24-hour demo. Each maps to roadmap phases.
 - [ ] **ACCT-01**: User can view account health score (red/yellow/green) for each customer
 - [ ] **ACCT-02**: User can browse directory of 140 customers with search and filter
 - [ ] **ACCT-03**: User can view financial metrics per account (ARR, NRR, margin)
-- [ ] **ACCT-04**: User can view organization structure and stakeholder mapping per account
-- [ ] **ACCT-05**: User can track pain points and opportunities per account
-- [ ] **ACCT-06**: User can manage action plans per account
-- [ ] **ACCT-07**: User receives Claude-generated strategic insights for each account
-- [ ] **ACCT-08**: User sees real-time news and intelligence for customer companies
-- [ ] **ACCT-09**: User can navigate 7-tab comprehensive account plan interface
-- [ ] **ACCT-10**: User can view competitive intelligence (competitors for us and for customer)
+- [x] **ACCT-04**: User can view organization structure and stakeholder mapping per account
+- [x] **ACCT-05**: User can track pain points and opportunities per account
+- [x] **ACCT-06**: User can manage action plans per account
+- [x] **ACCT-07**: User receives Claude-generated strategic insights for each account
+- [x] **ACCT-08**: User sees real-time news and intelligence for customer companies
+- [x] **ACCT-09**: User can navigate 7-tab comprehensive account plan interface
+- [x] **ACCT-10**: User can view competitive intelligence (competitors for us and for customer)
 
 ### Scenario Modeling
 
