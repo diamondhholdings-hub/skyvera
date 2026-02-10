@@ -30,18 +30,13 @@ function DashboardSkeleton() {
 
 export default function DashboardPage() {
   return (
-    <>
-      {/* Styles extracted from reference HTML */}
-      <style jsx global>{`
-        body {
-          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-          background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-          color: #333;
-          padding: 20px;
-          line-height: 1.6;
-        }
-      `}</style>
-
+    <div style={{
+      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+      background: 'linear-gradient(135deg, #1e3c72 0%, #2a5298 100%)',
+      minHeight: '100vh',
+      padding: '20px',
+      lineHeight: 1.6
+    }}>
       <div style={{
         maxWidth: '1600px',
         margin: '0 auto',
@@ -118,6 +113,6 @@ export default function DashboardPage() {
           </div>
         </footer>
       </div>
-    </>
+    </div>
   )
 }

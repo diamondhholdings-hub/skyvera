@@ -94,19 +94,23 @@ export function DashboardNavigation() {
         ))}
       </nav>
 
-      {/* CSS for fade-in animation */}
-      <style jsx global>{`
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-      `}</style>
+      {/* CSS for fade-in animation - injected once */}
+      {typeof window !== 'undefined' && !document.getElementById('dashboard-keyframes') && (
+        <style id="dashboard-keyframes" dangerouslySetInnerHTML={{
+          __html: `
+            @keyframes fadeIn {
+              from {
+                opacity: 0;
+                transform: translateY(20px);
+              }
+              to {
+                opacity: 1;
+                transform: translateY(0);
+              }
+            }
+          `
+        }} />
+      )}
     </>
   )
 }
