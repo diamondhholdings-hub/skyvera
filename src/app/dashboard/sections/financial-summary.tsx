@@ -41,12 +41,15 @@ export async function FinancialSummarySection() {
 
       {/* Overall Assessment Alert */}
       <AlertBox variant="critical">
-        <strong>OVERALL ASSESSMENT: PROCEED WITH CAUTION</strong>
-        <br />
-        Skyvera demonstrates strong profitability metrics ({data.netMarginPct.toFixed(1)}% EBITDA
-        margin, ${(data.ebitda / 1e6).toFixed(1)}M quarterly EBITDA) but faces significant
-        structural challenges with declining recurring revenue ({arrYoYChange}% YoY) and margin
-        compression (-${Math.abs(marginGap / 1e3).toFixed(0)}K gap to target).
+        <div className="text-lg">
+          <strong>OVERALL ASSESSMENT: PROCEED WITH CAUTION</strong>
+        </div>
+        <div className="mt-2 leading-relaxed">
+          Skyvera demonstrates strong profitability metrics ({data.netMarginPct.toFixed(1)}% EBITDA
+          margin, ${(data.ebitda / 1e6).toFixed(1)}M quarterly EBITDA) but faces significant
+          structural challenges with declining recurring revenue ({arrYoYChange}% YoY) and margin
+          compression (-${Math.abs(marginGap / 1e3).toFixed(0)}K gap to target).
+        </div>
       </AlertBox>
 
       {/* Metric Cards Grid */}

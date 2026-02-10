@@ -51,7 +51,7 @@ export async function TopCustomersSection() {
                   : 'bg-red-500'
 
             return (
-              <tr key={customer.name} className="border-b border-slate-200 hover:bg-slate-50">
+              <tr key={`${customer.name}-${index}`} className="border-b border-slate-200 hover:bg-slate-50">
                 <td className="p-3 text-sm font-semibold">{index + 1}</td>
                 <td className="p-3 text-sm">
                   <Link

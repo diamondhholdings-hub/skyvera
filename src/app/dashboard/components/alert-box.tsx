@@ -13,14 +13,14 @@ interface AlertBoxProps {
 }
 
 const variantStyles: Record<AlertVariant, string> = {
-  critical: 'bg-[#ffe5e5] border-l-[5px] border-[#f5576c] text-[#c92a2a]',
-  warning: 'bg-[#fff9db] border-l-[5px] border-[#fee140] text-[#7c6300]',
-  info: 'bg-[#e3f2fd] border-l-[5px] border-[#4facfe] text-[#0d47a1]',
-  success: 'bg-[#e8f5e9] border-l-[5px] border-[#4caf50] text-[#2e7d32]',
+  critical: 'bg-red-50 border-l-4 border-red-500 text-red-900',
+  warning: 'bg-amber-50 border-l-4 border-amber-500 text-amber-900',
+  info: 'bg-blue-50 border-l-4 border-blue-500 text-blue-900',
+  success: 'bg-green-50 border-l-4 border-green-500 text-green-900',
 }
 
 export function AlertBox({ variant, children }: AlertBoxProps) {
   return (
-    <div className={`${variantStyles[variant]} p-5 rounded-lg my-5 font-medium`}>{children}</div>
+    <div className={`${variantStyles[variant]} p-6 rounded-xl my-6 leading-relaxed`}>{children}</div>
   )
 }
