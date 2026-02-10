@@ -162,14 +162,14 @@ export function AccountTable({ customers }: AccountTableProps) {
 
   return (
     <div>
-      {/* Search Input */}
-      <div className="mb-4">
+      {/* Search Input - Centered */}
+      <div className="mb-6 flex justify-center">
         <input
           type="text"
           value={globalFilter}
           onChange={(e) => setGlobalFilter(e.target.value)}
           placeholder="Search customers by name..."
-          className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          className="w-full max-w-[600px] px-6 py-3 text-lg border-2 border-[var(--border)] rounded-lg focus:border-accent focus:ring-1 focus:ring-accent outline-none transition-colors"
         />
       </div>
 
@@ -181,54 +181,85 @@ export function AccountTable({ customers }: AccountTableProps) {
         activeHealth={activeHealth ?? null}
       />
 
-      {/* Table */}
-      <div className="bg-white rounded-lg shadow-sm border border-slate-200 overflow-hidden">
-        <table className="w-full">
-          <thead className="bg-slate-50 border-b border-slate-200">
-            {table.getHeaderGroups().map((headerGroup) => (
-              <tr key={headerGroup.id}>
-                {headerGroup.headers.map((header) => (
-                  <th
-                    key={header.id}
-                    onClick={header.column.getToggleSortingHandler()}
-                    className="px-6 py-3 text-left text-xs font-medium text-slate-700 uppercase tracking-wider cursor-pointer hover:bg-slate-100"
-                  >
-                    <div className="flex items-center gap-2">
-                      {flexRender(header.column.columnDef.header, header.getContext())}
-                      {header.column.getIsSorted() && (
-                        <span className="text-blue-500">
-                          {header.column.getIsSorted() === 'asc' ? '▲' : '▼'}
-                        </span>
-                      )}
-                    </div>
-                  </th>
-                ))}
-              </tr>
-            ))}
-          </thead>
-          <tbody className="divide-y divide-slate-200">
-            {table.getRowModel().rows.map((row) => (
-              <tr key={row.id} className="hover:bg-slate-50 transition-colors">
-                {row.getVisibleCells().map((cell) => (
-                  <td key={cell.id} className="px-6 py-4 text-sm text-slate-900">
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-
-        {/* Empty state */}
-        {table.getRowModel().rows.length === 0 && (
-          <div className="text-center py-12 text-slate-500">
-            No customers found matching your filters.
-          </div>
-        )}
+      {/* Sort Controls */}
+      <div className="mb-4 flex items-center gap-4">
+        <label className="text-sm font-medium text-ink">Sort by:</label>
+        <select
+          value={sorting[0]?.id || 'total'}
+          onChange={(e) => {
+            const columnId = e.target.value
+            setSorting([{ id: columnId, desc: sorting[0]?.desc ?? true }])
+          }}
+          className="px-3 py-1.5 border border-[var(--border)] rounded text-sm focus:border-accent focus:ring-1 focus:ring-accent outline-none"
+        >
+          <option value="total">Total Revenue</option>
+          <option value="customer_name">Customer Name</option>
+          <option value="healthScore">Health Score</option>
+          <option value="rr">Recurring Revenue</option>
+        </select>
+        <button
+          onClick={() => setSorting([{ id: sorting[0]?.id || 'total', desc: !sorting[0]?.desc }])}
+          className="px-3 py-1.5 border border-[var(--border)] rounded text-sm hover:bg-highlight transition-colors"
+        >
+          {sorting[0]?.desc ? '↓ Descending' : '↑ Ascending'}
+        </button>
       </div>
 
+      {/* Customer Card Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mt-6">
+        {table.getRowModel().rows.map((row, index) => {
+          const customer = row.original
+          return (
+            <Link
+              key={row.id}
+              href={`/accounts/${encodeURIComponent(customer.customer_name)}`}
+              className="bg-white border-2 border-[var(--border)] p-6 rounded-lg cursor-pointer transition-all duration-300 hover:border-accent hover:shadow-lg hover:-translate-y-1 relative block"
+            >
+              {/* Rank Badge */}
+              <div className="absolute top-4 right-4 bg-accent text-white px-3 py-1 rounded font-bold text-lg">
+                #{index + 1}
+              </div>
+
+              {/* Customer Name */}
+              <h3 className="font-display text-xl font-semibold text-secondary mb-4 pr-16">
+                {customer.customer_name}
+              </h3>
+
+              {/* Metrics Grid */}
+              <div className="grid grid-cols-3 gap-4 mb-4">
+                <div className="text-center">
+                  <p className="text-xs uppercase text-muted mb-1">Total Revenue</p>
+                  <p className="text-sm font-semibold text-ink">{formatCurrency(customer.total)}</p>
+                </div>
+                <div className="text-center">
+                  <p className="text-xs uppercase text-muted mb-1">RR</p>
+                  <p className="text-sm font-semibold text-ink">{formatCurrency(customer.rr)}</p>
+                </div>
+                <div className="text-center">
+                  <p className="text-xs uppercase text-muted mb-1">ARR</p>
+                  <p className="text-sm font-semibold text-ink">{formatCurrency(customer.rr * 4)}</p>
+                </div>
+              </div>
+
+              {/* Bottom Row: BU Badge and Health Indicator */}
+              <div className="flex items-center justify-between">
+                <Badge variant="default">{customer.bu}</Badge>
+                <HealthIndicator score={customer.healthScore} />
+              </div>
+            </Link>
+          )
+        })}
+      </div>
+
+      {/* Empty state */}
+      {table.getRowModel().rows.length === 0 && (
+        <div className="text-center py-12 text-muted">
+          No customers found matching your filters.
+        </div>
+      )}
+
       {/* Footer */}
-      <div className="mt-4 text-sm text-slate-600">
+      <div className="mt-6 text-sm text-muted text-center">
         Showing {table.getRowModel().rows.length} of {customers.length} customers
       </div>
     </div>

@@ -28,19 +28,19 @@ export function AccountFilters({
   }
 
   return (
-    <div className="flex flex-col sm:flex-row gap-4 mb-4">
+    <div className="flex flex-col sm:flex-row gap-4 mb-6">
       {/* BU Filter */}
       <div className="flex flex-col gap-2">
-        <label className="text-sm font-medium text-slate-700">Business Unit</label>
+        <label className="text-sm font-medium text-ink">Business Unit</label>
         <div className="flex gap-2 flex-wrap">
           {buOptions.map((bu) => (
             <button
               key={bu}
               onClick={() => onBUFilter(bu === 'All' ? null : bu)}
-              className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
+              className={`px-3 py-1.5 rounded text-sm font-medium transition-colors border ${
                 (bu === 'All' && activeBU === null) || activeBU === bu
-                  ? 'bg-blue-500 text-white'
-                  : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                  ? 'bg-accent text-white border-accent'
+                  : 'bg-highlight text-ink border-[var(--border)] hover:border-accent'
               }`}
             >
               {bu}
@@ -51,7 +51,7 @@ export function AccountFilters({
 
       {/* Health Filter */}
       <div className="flex flex-col gap-2">
-        <label className="text-sm font-medium text-slate-700">Health Status</label>
+        <label className="text-sm font-medium text-ink">Health Status</label>
         <div className="flex gap-2 flex-wrap">
           {healthOptions.map((health) => {
             const isActive =
@@ -64,16 +64,16 @@ export function AccountFilters({
                 onClick={() =>
                   onHealthFilter(health === 'All' ? null : healthScoreMap[health])
                 }
-                className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
+                className={`px-3 py-1.5 rounded text-sm font-medium transition-colors border ${
                   isActive
                     ? health === 'Healthy'
-                      ? 'bg-green-500 text-white'
+                      ? 'bg-green-600 text-white border-green-600'
                       : health === 'At Risk'
-                        ? 'bg-yellow-500 text-white'
+                        ? 'bg-yellow-600 text-white border-yellow-600'
                         : health === 'Critical'
-                          ? 'bg-red-500 text-white'
-                          : 'bg-blue-500 text-white'
-                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                          ? 'bg-red-600 text-white border-red-600'
+                          : 'bg-accent text-white border-accent'
+                    : 'bg-highlight text-ink border-[var(--border)] hover:border-accent'
                 }`}
               >
                 {health}
