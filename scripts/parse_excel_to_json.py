@@ -162,50 +162,145 @@ def extract_all_customers(wb):
 
     return customers_by_bu
 
-def extract_financials(wb):
-    """Extract financial summary data for each BU.
+def _safe_num(value, default=0):
+    """Safely convert a cell value to a float, returning default if None or non-numeric."""
+    if value is None:
+        return default
+    try:
+        return float(value)
+    except (ValueError, TypeError):
+        return default
 
-    Since P&L sheets have complex formulas, we aggregate from customer data
-    and add basic cost estimates where possible.
+
+def _read_bu_pnl(wb, sheet_name, bu_name):
+    """Read actual P&L values from a BU-specific P&L sheet.
+
+    All three BU P&L sheets (Cloudsense, Kandy, STL) share an identical
+    layout.  The Q1'26 BU Plan values are in column C (index 3).
+
+    Row mapping (column B = label, column C = Q1'26 BU Plan value):
+        Row  5: Recurring Revenue
+        Row  6: Non Recurring Revenue
+        Row  7: Total Revenue
+        Row  8: HC COGS
+        Row  9: NHC COGS
+        Row 10: CF COGS
+        Row 11: Total COGS
+        Row 12: Gross Profit
+        Row 13: Gross Margin  (decimal, e.g. 0.74)
+        Row 14: HC Expenses
+        Row 15: NHC Expenses
+        Row 16: Total Revenue Write Off
+        Row 17: CF Expenses
+        Row 18: Core Allocation
+        Row 19: Total Expenses
+        Row 20: Net Profit
+        Row 21: Net Margin  (decimal, e.g. 0.59)
+        Row 22: Margin Target  (decimal)
+        Row 23: Delta to Margin
+        Row 24: EBITDA
     """
-    log("Extracting financial summaries...")
+    try:
+        ws = wb[sheet_name]
+    except KeyError:
+        log(f"  Warning: Sheet '{sheet_name}' not found, skipping {bu_name}")
+        return None
 
-    # Get customer data to aggregate revenue
+    COL = 3  # Column C = Q1'26 BU Plan
+
+    def cell(row):
+        return _safe_num(ws.cell(row=row, column=COL).value)
+
+    rr             = cell(5)
+    nrr            = cell(6)
+    total_revenue  = cell(7)
+    hc_cogs        = cell(8)
+    nhc_cogs       = cell(9)
+    cf_cogs        = cell(10)
+    total_cogs     = cell(11)
+    gross_profit   = cell(12)
+    gross_margin   = cell(13)
+    hc_expenses    = cell(14)
+    nhc_expenses   = cell(15)
+    rev_write_off  = cell(16)
+    cf_expenses    = cell(17)
+    core_alloc     = cell(18)
+    total_expenses = cell(19)
+    net_profit     = cell(20)
+    net_margin_dec = cell(21)
+    margin_target  = cell(22)
+    delta_to_margin = cell(23)
+    ebitda         = cell(24)
+
+    return {
+        'bu': bu_name,
+        'totalRR': rr,
+        'totalNRR': nrr,
+        'totalRevenue': total_revenue,
+        'hcCogs': hc_cogs,
+        'nhcCogs': nhc_cogs,
+        'cfCogs': cf_cogs,
+        'totalCogs': total_cogs,
+        'grossProfit': gross_profit,
+        'grossMargin': gross_margin * 100,        # convert to percentage
+        'hcExpenses': hc_expenses,
+        'nhcExpenses': nhc_expenses,
+        'revenueWriteOff': rev_write_off,
+        'cfExpenses': cf_expenses,
+        'coreAllocation': core_alloc,
+        'totalExpenses': total_expenses,
+        'netProfit': net_profit,
+        'netMargin': net_margin_dec * 100,         # convert to percentage
+        'marginTarget': margin_target * 100,       # convert to percentage
+        'deltaToMargin': delta_to_margin,
+        'ebitda': ebitda,
+    }
+
+
+def extract_financials(wb):
+    """Extract actual financial data from BU-specific P&L sheets.
+
+    Reads directly from the 'P&Ls - <BU>' sheets instead of estimating
+    costs with hardcoded ratios.  Also enriches each BU record with
+    customer count from the RR/NRR input sheets.
+    """
+    log("Extracting financial summaries from P&L sheets...")
+
+    # Map of BU name -> (P&L sheet name, RR company filter, NRR class filter)
+    bu_configs = {
+        'Cloudsense': ("P&Ls - Cloudsense", 'Cloudsense', 'Cloudsense'),
+        'Kandy':      ("P&Ls - Kandy",      'Kandy',      'Kandy'),
+        'STL':        ("P&Ls - STL",         'STL',        'Stl'),
+    }
+
+    # Get customer counts per BU (reuse existing extraction logic)
     customers_by_bu = extract_all_customers(wb)
 
     financials_by_bu = {}
 
-    for bu_name, customers in customers_by_bu.items():
-        total_rr = sum(c['rr'] for c in customers)
-        total_nrr = sum(c['nrr'] for c in customers)
-        total_revenue = total_rr + total_nrr
+    for bu_name, (sheet_name, _, _) in bu_configs.items():
+        pnl = _read_bu_pnl(wb, sheet_name, bu_name)
+        if pnl is None:
+            continue
 
-        # Use industry-standard cost ratios from CLAUDE.md
-        # These are estimates - real P&L parsing would be more complex
-        cogs = total_revenue * 0.21  # 21% COGS
-        headcount_cost = total_revenue * 0.08  # 8% headcount
-        vendor_cost = total_revenue * 0.43  # 43% vendor/CF costs
-        core_allocation = total_revenue * 0.17  # 17% core allocation
+        # Attach customer count
+        pnl['customerCount'] = len(customers_by_bu.get(bu_name, []))
 
-        total_costs = cogs + headcount_cost + vendor_cost + core_allocation
-        ebitda = total_revenue - total_costs
-        net_margin = (ebitda / total_revenue * 100) if total_revenue > 0 else 0
+        financials_by_bu[bu_name] = pnl
+        log(f"  ✓ {bu_name}: ${pnl['totalRevenue']:,.0f} revenue, "
+            f"{pnl['netMargin']:.1f}% net margin (from {sheet_name})")
 
-        financials_by_bu[bu_name] = {
-            'bu': bu_name,
-            'totalRR': total_rr,
-            'totalNRR': total_nrr,
-            'totalRevenue': total_revenue,
-            'cogs': cogs,
-            'headcountCost': headcount_cost,
-            'vendorCost': vendor_cost,
-            'coreAllocation': core_allocation,
-            'ebitda': ebitda,
-            'netMargin': net_margin,
-            'customerCount': len(customers)
-        }
-
-        log(f"  ✓ {bu_name}: ${total_revenue:,.0f} revenue, {net_margin:.1f}% margin")
+    # Also read the consolidated Skyvera totals from the 'P&Ls' sheet
+    consolidated = _read_bu_pnl(wb, "P&Ls", "Skyvera")
+    if consolidated:
+        total_customers = sum(
+            len(customers_by_bu.get(bu, []))
+            for bu in bu_configs
+        )
+        consolidated['customerCount'] = total_customers
+        financials_by_bu['Skyvera'] = consolidated
+        log(f"  ✓ Skyvera (consolidated): ${consolidated['totalRevenue']:,.0f} revenue, "
+            f"{consolidated['netMargin']:.1f}% net margin")
 
     return financials_by_bu
 
