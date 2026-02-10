@@ -12,7 +12,7 @@ export async function AtRiskSection() {
   if (!customersResult.success) {
     return (
       <section id="at-risk" style={{ display: 'none' }}>
-        <p className="text-center text-slate-500">Failed to load customer data</p>
+        <p style={{ textAlign: 'center', color: '#64748b' }}>Failed to load customer data</p>
       </section>
     )
   }
@@ -30,60 +30,128 @@ export async function AtRiskSection() {
 
   return (
     <section id="at-risk" style={{ display: 'none' }}>
-      <h2 className="text-3xl font-semibold text-[#1e3c72] mb-5 pb-2.5 border-b-[3px] border-[#667eea]">
+      <h2 style={{
+        fontSize: '1.875rem',
+        fontWeight: 600,
+        color: '#1e3c72',
+        marginBottom: '1.25rem',
+        paddingBottom: '0.625rem',
+        borderBottom: '3px solid #667eea'
+      }}>
         At-Risk Accounts
       </h2>
 
-      <div className="bg-[#ffe5e5] border-l-[5px] border-[#f5576c] text-[#c92a2a] p-5 rounded-lg my-5 font-medium">
+      <div style={{
+        backgroundColor: '#ffe5e5',
+        borderLeft: '5px solid #f5576c',
+        color: '#c92a2a',
+        padding: '1.25rem',
+        borderRadius: '0.5rem',
+        margin: '1.25rem 0',
+        fontWeight: 500
+      }}>
         <strong>IMMEDIATE ACTION REQUIRED:</strong> {atRiskCustomers.length} accounts at risk
         representing ${(totalAtRiskARR / 1e6).toFixed(1)}M in ARR
       </div>
 
-      <table className="w-full border-collapse rounded-lg overflow-hidden shadow-sm my-5">
+      <table style={{
+        width: '100%',
+        borderCollapse: 'collapse',
+        borderRadius: '0.5rem',
+        overflow: 'hidden',
+        boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+        margin: '1.25rem 0'
+      }}>
         <thead>
-          <tr className="bg-[#1e3c72] text-white text-left">
-            <th className="p-4 font-semibold text-sm">Priority</th>
-            <th className="p-4 font-semibold text-sm">Customer</th>
-            <th className="p-4 font-semibold text-sm">BU</th>
-            <th className="p-4 font-semibold text-sm">ARR at Risk</th>
-            <th className="p-4 font-semibold text-sm">Health</th>
-            <th className="p-4 font-semibold text-sm">Risk Factors</th>
-            <th className="p-4 font-semibold text-sm">Actions</th>
+          <tr style={{ backgroundColor: '#1e3c72', color: 'white', textAlign: 'left' }}>
+            <th style={{ padding: '1rem', fontWeight: 600, fontSize: '0.875rem' }}>Priority</th>
+            <th style={{ padding: '1rem', fontWeight: 600, fontSize: '0.875rem' }}>Customer</th>
+            <th style={{ padding: '1rem', fontWeight: 600, fontSize: '0.875rem' }}>BU</th>
+            <th style={{ padding: '1rem', fontWeight: 600, fontSize: '0.875rem' }}>ARR at Risk</th>
+            <th style={{ padding: '1rem', fontWeight: 600, fontSize: '0.875rem' }}>Health</th>
+            <th style={{ padding: '1rem', fontWeight: 600, fontSize: '0.875rem' }}>Risk Factors</th>
+            <th style={{ padding: '1rem', fontWeight: 600, fontSize: '0.875rem' }}>Actions</th>
           </tr>
         </thead>
-        <tbody className="bg-white">
+        <tbody style={{ backgroundColor: 'white' }}>
           {atRiskCustomers.map((customer, index) => {
             const arr = customer.rr * 4
-            const healthColor = customer.health === 'red' ? 'bg-red-500' : 'bg-amber-500'
+            const healthBgColor = customer.health === 'red' ? '#ef4444' : '#f59e0b'
             const healthLabel = customer.health === 'red' ? 'CRITICAL' : 'AT RISK'
 
             return (
-              <tr key={customer.name} className="border-b border-slate-200 hover:bg-slate-50">
-                <td className="p-3 text-sm font-bold text-[#f5576c]">{index + 1}</td>
-                <td className="p-3 text-sm">
+              <tr
+                key={customer.name}
+                style={{
+                  borderBottom: '1px solid #e2e8f0',
+                  transition: 'background-color 0.2s ease'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#f8fafc'}
+                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
+              >
+                <td style={{ padding: '0.75rem', fontSize: '0.875rem', fontWeight: 700, color: '#f5576c' }}>{index + 1}</td>
+                <td style={{ padding: '0.75rem', fontSize: '0.875rem' }}>
                   <Link
                     href={`/accounts/${encodeURIComponent(customer.name)}`}
-                    className="text-[#667eea] hover:text-[#764ba2] font-medium hover:underline"
+                    style={{
+                      color: '#667eea',
+                      fontWeight: 500,
+                      textDecoration: 'none',
+                      cursor: 'pointer'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.color = '#764ba2'
+                      e.currentTarget.style.textDecoration = 'underline'
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.color = '#667eea'
+                      e.currentTarget.style.textDecoration = 'none'
+                    }}
                   >
                     {customer.name}
                   </Link>
                 </td>
-                <td className="p-3 text-sm">{customer.bu}</td>
-                <td className="p-3 text-sm font-semibold">${(arr / 1e6).toFixed(2)}M</td>
-                <td className="p-3 text-sm">
+                <td style={{ padding: '0.75rem', fontSize: '0.875rem' }}>{customer.bu}</td>
+                <td style={{ padding: '0.75rem', fontSize: '0.875rem', fontWeight: 600 }}>${(arr / 1e6).toFixed(2)}M</td>
+                <td style={{ padding: '0.75rem', fontSize: '0.875rem' }}>
                   <span
-                    className={`inline-block px-3 py-1 rounded-2xl text-white text-xs font-semibold ${healthColor}`}
+                    style={{
+                      display: 'inline-block',
+                      paddingLeft: '0.75rem',
+                      paddingRight: '0.75rem',
+                      paddingTop: '0.25rem',
+                      paddingBottom: '0.25rem',
+                      borderRadius: '9999px',
+                      color: 'white',
+                      fontSize: '0.75rem',
+                      fontWeight: 600,
+                      backgroundColor: healthBgColor
+                    }}
                   >
                     {healthLabel}
                   </span>
                 </td>
-                <td className="p-3 text-sm text-slate-600">
+                <td style={{ padding: '0.75rem', fontSize: '0.875rem', color: '#4b5563' }}>
                   {customer.health === 'red' ? 'Payment delays, declining usage' : 'Some concerns'}
                 </td>
-                <td className="p-3 text-sm">
+                <td style={{ padding: '0.75rem', fontSize: '0.875rem' }}>
                   <Link
                     href={`/accounts/${encodeURIComponent(customer.name)}`}
-                    className="text-[#667eea] hover:text-[#764ba2] text-xs font-medium"
+                    style={{
+                      color: '#667eea',
+                      fontSize: '0.75rem',
+                      fontWeight: 500,
+                      textDecoration: 'none',
+                      cursor: 'pointer'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.color = '#764ba2'
+                      e.currentTarget.style.textDecoration = 'underline'
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.color = '#667eea'
+                      e.currentTarget.style.textDecoration = 'none'
+                    }}
                   >
                     View Plan →
                   </Link>

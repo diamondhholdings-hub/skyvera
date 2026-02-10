@@ -45,30 +45,75 @@ export async function ActionPlanSection() {
 
   return (
     <section id="action-plan" style={{ display: 'none' }}>
-      <h2 className="text-3xl font-semibold text-[#1e3c72] mb-5 pb-2.5 border-b-[3px] border-[#667eea]">
+      <h2 style={{
+        fontSize: '1.875rem',
+        fontWeight: 600,
+        color: '#1e3c72',
+        marginBottom: '1.25rem',
+        paddingBottom: '0.625rem',
+        borderBottom: '3px solid #667eea'
+      }}>
         Strategic Action Plan
       </h2>
 
-      <div className="space-y-4 my-8">
+      <div style={{ marginTop: '2rem', marginBottom: '2rem' }}>
         {actions.map((action, index) => (
           <div
             key={index}
-            className="bg-white p-5 rounded-xl border-l-[5px] border-[#667eea] shadow-sm"
+            style={{
+              backgroundColor: 'white',
+              padding: '1.25rem',
+              borderRadius: '0.75rem',
+              borderLeft: '5px solid #667eea',
+              boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+              marginBottom: '1rem'
+            }}
           >
             <span
-              className={`inline-block px-4 py-1.5 rounded-2xl text-xs font-semibold mb-3 ${
-                action.immediate ? 'bg-[#f5576c] text-white' : 'bg-[#667eea] text-white'
-              }`}
+              style={{
+                display: 'inline-block',
+                paddingLeft: '1rem',
+                paddingRight: '1rem',
+                paddingTop: '0.375rem',
+                paddingBottom: '0.375rem',
+                borderRadius: '9999px',
+                fontSize: '0.75rem',
+                fontWeight: 600,
+                marginBottom: '0.75rem',
+                backgroundColor: action.immediate ? '#f5576c' : '#667eea',
+                color: 'white'
+              }}
             >
               {action.timeline}
             </span>
-            <h3 className="text-lg font-bold text-[#1e3c72] mb-2">{action.title}</h3>
-            <p className="text-sm text-slate-600">{action.description}</p>
+            <h3 style={{
+              fontSize: '1.125rem',
+              fontWeight: 700,
+              color: '#1e3c72',
+              marginBottom: '0.5rem'
+            }}>
+              {action.title}
+            </h3>
+            <p style={{
+              fontSize: '0.875rem',
+              color: '#475569'
+            }}>
+              {action.description}
+            </p>
           </div>
         ))}
       </div>
 
-      <div className="bg-[#e3f2fd] border-l-[5px] border-[#4facfe] text-[#0d47a1] p-5 rounded-lg my-8 font-medium">
+      <div style={{
+        backgroundColor: '#e3f2fd',
+        borderLeft: '5px solid #4facfe',
+        color: '#0d47a1',
+        padding: '1.25rem',
+        borderRadius: '0.5rem',
+        marginTop: '2rem',
+        marginBottom: '2rem',
+        fontWeight: 500
+      }}>
         <strong>SUCCESS METRICS:</strong> Target 5% ARR growth, 3pt margin improvement, and
         reduction of AR &gt;90 days by 50% within 6 months
       </div>

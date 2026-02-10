@@ -12,7 +12,7 @@ export async function TopCustomersSection() {
   if (!customersResult.success) {
     return (
       <section id="top-customers" style={{ display: 'none' }}>
-        <p className="text-center text-slate-500">Failed to load customer data</p>
+        <p style={{ textAlign: 'center', color: '#64748b' }}>Failed to load customer data</p>
       </section>
     )
   }
@@ -23,58 +23,62 @@ export async function TopCustomersSection() {
 
   return (
     <section id="top-customers" style={{ display: 'none' }}>
-      <h2 className="text-3xl font-semibold text-[#1e3c72] mb-5 pb-2.5 border-b-[3px] border-[#667eea]">
+      <h2 style={{ fontSize: '1.875rem', fontWeight: '600', color: '#1e3c72', marginBottom: '1.25rem', paddingBottom: '0.625rem', borderBottom: '3px solid #667eea' }}>
         Top 20 Customers by Revenue
       </h2>
 
-      <table className="w-full border-collapse rounded-lg overflow-hidden shadow-sm my-5">
+      <table style={{ width: '100%', borderCollapse: 'collapse', borderRadius: '0.5rem', overflow: 'hidden', boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)', margin: '1.25rem 0' }}>
         <thead>
-          <tr className="bg-[#1e3c72] text-white text-left">
-            <th className="p-4 font-semibold text-sm">Rank</th>
-            <th className="p-4 font-semibold text-sm">Customer</th>
-            <th className="p-4 font-semibold text-sm">BU</th>
-            <th className="p-4 font-semibold text-sm">Total Revenue</th>
-            <th className="p-4 font-semibold text-sm">RR</th>
-            <th className="p-4 font-semibold text-sm">NRR</th>
-            <th className="p-4 font-semibold text-sm">Health</th>
-            <th className="p-4 font-semibold text-sm">Actions</th>
+          <tr style={{ backgroundColor: '#1e3c72', color: 'white', textAlign: 'left' }}>
+            <th style={{ padding: '1rem', fontWeight: '600', fontSize: '0.875rem' }}>Rank</th>
+            <th style={{ padding: '1rem', fontWeight: '600', fontSize: '0.875rem' }}>Customer</th>
+            <th style={{ padding: '1rem', fontWeight: '600', fontSize: '0.875rem' }}>BU</th>
+            <th style={{ padding: '1rem', fontWeight: '600', fontSize: '0.875rem' }}>Total Revenue</th>
+            <th style={{ padding: '1rem', fontWeight: '600', fontSize: '0.875rem' }}>RR</th>
+            <th style={{ padding: '1rem', fontWeight: '600', fontSize: '0.875rem' }}>NRR</th>
+            <th style={{ padding: '1rem', fontWeight: '600', fontSize: '0.875rem' }}>Health</th>
+            <th style={{ padding: '1rem', fontWeight: '600', fontSize: '0.875rem' }}>Actions</th>
           </tr>
         </thead>
-        <tbody className="bg-white">
+        <tbody style={{ backgroundColor: 'white' }}>
           {topCustomers.map((customer, index) => {
             const total = customer.rr + customer.nrr
             const healthColor =
               customer.health === 'green'
-                ? 'bg-green-500'
+                ? '#22c55e'
                 : customer.health === 'yellow'
-                  ? 'bg-amber-500'
-                  : 'bg-red-500'
+                  ? '#f59e0b'
+                  : '#ef4444'
 
             return (
-              <tr key={`${customer.name}-${index}`} className="border-b border-slate-200 hover:bg-slate-50">
-                <td className="p-3 text-sm font-semibold">{index + 1}</td>
-                <td className="p-3 text-sm">
+              <tr key={`${customer.name}-${index}`} style={{ borderBottom: '1px solid #e2e8f0', transition: 'background-color 0.15s ease-in-out' }} onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#f8fafc')} onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}>
+                <td style={{ padding: '0.75rem', fontSize: '0.875rem', fontWeight: '600' }}>{index + 1}</td>
+                <td style={{ padding: '0.75rem', fontSize: '0.875rem' }}>
                   <Link
                     href={`/accounts/${encodeURIComponent(customer.name)}`}
-                    className="text-[#667eea] hover:text-[#764ba2] font-medium hover:underline"
+                    style={{ color: '#667eea', fontWeight: '500', textDecoration: 'none', transition: 'color 0.15s ease-in-out' }}
+                    onMouseEnter={(e) => { e.currentTarget.style.color = '#764ba2'; e.currentTarget.style.textDecoration = 'underline' }}
+                    onMouseLeave={(e) => { e.currentTarget.style.color = '#667eea'; e.currentTarget.style.textDecoration = 'none' }}
                   >
                     {customer.name}
                   </Link>
                 </td>
-                <td className="p-3 text-sm">{customer.bu}</td>
-                <td className="p-3 text-sm font-semibold">${(total / 1e6).toFixed(2)}M</td>
-                <td className="p-3 text-sm">${(customer.rr / 1e6).toFixed(2)}M</td>
-                <td className="p-3 text-sm">${(customer.nrr / 1e6).toFixed(2)}M</td>
-                <td className="p-3 text-sm">
+                <td style={{ padding: '0.75rem', fontSize: '0.875rem' }}>{customer.bu}</td>
+                <td style={{ padding: '0.75rem', fontSize: '0.875rem', fontWeight: '600' }}>${(total / 1e6).toFixed(2)}M</td>
+                <td style={{ padding: '0.75rem', fontSize: '0.875rem' }}>${(customer.rr / 1e6).toFixed(2)}M</td>
+                <td style={{ padding: '0.75rem', fontSize: '0.875rem' }}>${(customer.nrr / 1e6).toFixed(2)}M</td>
+                <td style={{ padding: '0.75rem', fontSize: '0.875rem' }}>
                   <span
-                    className={`inline-block w-3 h-3 rounded-full ${healthColor}`}
+                    style={{ display: 'inline-block', width: '0.75rem', height: '0.75rem', borderRadius: '9999px', backgroundColor: healthColor }}
                     aria-label={customer.health}
                   />
                 </td>
-                <td className="p-3 text-sm">
+                <td style={{ padding: '0.75rem', fontSize: '0.875rem' }}>
                   <Link
                     href={`/accounts/${encodeURIComponent(customer.name)}`}
-                    className="text-[#667eea] hover:text-[#764ba2] text-xs font-medium"
+                    style={{ color: '#667eea', fontSize: '0.75rem', fontWeight: '500', textDecoration: 'none', transition: 'color 0.15s ease-in-out' }}
+                    onMouseEnter={(e) => { e.currentTarget.style.color = '#764ba2' }}
+                    onMouseLeave={(e) => { e.currentTarget.style.color = '#667eea' }}
                   >
                     View Plan →
                   </Link>

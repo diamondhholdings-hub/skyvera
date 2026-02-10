@@ -6,12 +6,19 @@
 export async function FinancialDetailedSection() {
   return (
     <section id="financial-detailed" style={{ display: 'none' }}>
-      <h2 className="text-3xl font-semibold text-[#1e3c72] mb-5 pb-2.5 border-b-[3px] border-[#667eea]">
+      <h2 style={{
+        fontSize: '1.8em',
+        color: '#1e3c72',
+        fontWeight: 'semibold',
+        margin: '30px 0 20px 0',
+        paddingBottom: '10px',
+        borderBottom: '3px solid #667eea'
+      }}>
         Detailed Financial Analysis
       </h2>
-      <div className="text-slate-600 text-center py-12">
-        <p className="text-lg">Cost structure analysis, margin waterfall, and financial drivers</p>
-        <p className="text-sm mt-2">Coming in next implementation phase</p>
+      <div style={{ color: '#64748b', textAlign: 'center', padding: '50px 0' }}>
+        <p style={{ fontSize: '1.1em' }}>Cost structure analysis, margin waterfall, and financial drivers</p>
+        <p style={{ fontSize: '0.9em', marginTop: '10px' }}>Coming in next implementation phase</p>
       </div>
     </section>
   )
