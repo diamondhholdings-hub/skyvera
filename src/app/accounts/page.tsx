@@ -53,26 +53,28 @@ export default async function AccountsPage() {
   const lastUpdated = new Date()
 
   return (
-    <div className="p-6">
-      {/* Header */}
-      <div className="mb-6 flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold text-slate-900">Customer Accounts</h1>
-          <p className="text-slate-600 mt-2">
-            Browse all customers with health scores and financial metrics
-          </p>
-          <p className="text-sm text-slate-500 mt-1">
-            Data as of: {lastUpdated.toLocaleDateString()} {lastUpdated.toLocaleTimeString()}
-          </p>
+    <div>
+      {/* Gradient Header */}
+      <div className="bg-gradient-to-br from-secondary to-[#1a2332] text-paper pt-16 pb-12 px-8 text-center relative">
+        <div className="absolute top-4 right-4">
+          <RefreshButton />
         </div>
-        <RefreshButton />
+        <h1 className="font-display text-4xl font-light text-paper">
+          Skyvera Customer Account Plans
+        </h1>
+        <p className="text-paper/80 text-lg mt-3">
+          CloudSense Business Unit | Q1 2026 Strategic Analysis
+        </p>
+
+        {/* Stats Summary inside header */}
+        <AccountStats stats={stats} />
       </div>
 
-      {/* Stats Summary */}
-      <AccountStats stats={stats} />
-
-      {/* Customer Table */}
-      <AccountTable customers={customers} />
+      {/* Content Container */}
+      <div className="max-w-[1400px] mx-auto py-8 px-8">
+        {/* Customer Table */}
+        <AccountTable customers={customers} />
+      </div>
     </div>
   )
 }
