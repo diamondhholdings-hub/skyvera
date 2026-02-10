@@ -1,113 +1,81 @@
 /**
- * Executive Dashboard - Main landing page
- * Server Component with Suspense boundaries for streaming each section independently
- * Calls server data functions directly (no API routes)
+ * Executive Intelligence Dashboard
+ * Professional boxed layout matching Executive Intelligence Report design
+ * 7-section navigation with gradient metric cards and semantic color coding
  */
 
 import { Suspense } from 'react'
-import { KPISection } from './components/kpi-section'
-import { BUBreakdown } from './components/bu-breakdown'
-import { RevenueChartWrapper, MarginComparisonWrapper } from './components/chart-wrappers'
-import { RecentAlertsPreview } from './components/recent-alerts-preview'
-import { RefreshButton } from '@/components/ui/refresh-button'
+import { FinancialSummarySection } from './sections/financial-summary'
+import { FinancialDetailedSection } from './sections/financial-detailed'
+import { CustomerSummarySection } from './sections/customer-summary'
+import { TopCustomersSection } from './sections/top-customers'
+import { AtRiskSection } from './sections/at-risk'
+import { ExpansionSection } from './sections/expansion'
+import { ActionPlanSection } from './sections/action-plan'
+import { DashboardNavigation } from './components/dashboard-navigation'
 
-// Skeleton fallbacks for dark theme
-function KPISkeleton() {
+// Skeleton fallback
+function DashboardSkeleton() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-      {[...Array(4)].map((_, i) => (
-        <div key={i} className="h-32 bg-white/5 border border-white/10 animate-pulse rounded-[15px]" />
-      ))}
-    </div>
-  )
-}
-
-function ChartSkeleton() {
-  return <div className="h-80 bg-white/5 border border-white/10 animate-pulse rounded-[15px]" />
-}
-
-function BUSkeleton() {
-  return (
-    <div className="space-y-4">
-      {[...Array(3)].map((_, i) => (
-        <div key={i} className="h-40 bg-white/5 border border-white/10 animate-pulse rounded-[15px]" />
-      ))}
-    </div>
-  )
-}
-
-function AlertsSkeleton() {
-  return (
-    <div className="space-y-3">
-      {[...Array(3)].map((_, i) => (
-        <div key={i} className="h-20 bg-white/5 border border-white/10 animate-pulse rounded-[15px]" />
-      ))}
+    <div className="animate-pulse space-y-6">
+      <div className="h-64 bg-slate-100 rounded-2xl" />
+      <div className="grid grid-cols-3 gap-5">
+        {[...Array(6)].map((_, i) => (
+          <div key={i} className="h-32 bg-slate-100 rounded-xl" />
+        ))}
+      </div>
     </div>
   )
 }
 
 export default function DashboardPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#1a1a2e] to-[#16213e]">
-      {/* Header Section */}
-      <div className="px-8 py-12 relative">
-        <div className="max-w-[1600px] mx-auto">
-          {/* Header with RefreshButton */}
-          <div className="flex justify-between items-start mb-8">
-            <div>
-              <h1 className="text-4xl font-bold text-[#00d4ff]">
-                Executive Dashboard
-              </h1>
-              <p className="text-[#888] text-lg mt-2">
-                Real-time business intelligence and performance metrics
-              </p>
-              <div className="mt-4">
-                <a
-                  href="/accounts"
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-[#00d4ff]/10 hover:bg-[#00d4ff]/20 border border-[#00d4ff]/30 text-[#00d4ff] rounded-lg transition-colors"
-                >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                  </svg>
-                  View All Accounts
-                </a>
-              </div>
-            </div>
-            <RefreshButton label="Refresh Data" />
+    <div className="min-h-screen bg-gradient-to-br from-[#1e3c72] to-[#2a5298] p-5">
+      {/* Main Container - White boxed layout */}
+      <div className="max-w-[1600px] mx-auto bg-white rounded-[20px] shadow-[0_20px_60px_rgba(0,0,0,0.3)] overflow-hidden">
+
+        {/* Header */}
+        <header className="bg-gradient-to-br from-[#1e3c72] to-[#2a5298] text-white py-10 px-10 text-center">
+          <h1 className="text-5xl font-bold mb-2.5">
+            Skyvera Executive Intelligence Report
+          </h1>
+          <div className="text-xl opacity-90 mb-2.5">
+            Financial & Customer Intelligence Analysis - Q1'26
           </div>
+          <div className="text-base opacity-80">
+            Report Date: {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })} | Classification: Executive Confidential
+          </div>
+        </header>
 
-          {/* KPI Section within header */}
-          <Suspense fallback={<KPISkeleton />}>
-            <KPISection />
-          </Suspense>
-        </div>
-      </div>
+        {/* 7-Section Navigation */}
+        <DashboardNavigation />
 
-      {/* Main Content Area */}
-      <div className="max-w-[1600px] mx-auto px-8 py-8">
-        {/* Charts Section - 2 column grid on large screens */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-          <Suspense fallback={<ChartSkeleton />}>
-            <RevenueChartWrapper />
-          </Suspense>
-          <Suspense fallback={<ChartSkeleton />}>
-            <MarginComparisonWrapper />
-          </Suspense>
-        </div>
-
-        {/* BU Breakdown */}
-        <div className="mb-8">
-          <Suspense fallback={<BUSkeleton />}>
-            <BUBreakdown />
+        {/* Content Area */}
+        <div className="p-10">
+          <Suspense fallback={<DashboardSkeleton />}>
+            {/* All sections render, visibility controlled by client component */}
+            <FinancialSummarySection />
+            <FinancialDetailedSection />
+            <CustomerSummarySection />
+            <TopCustomersSection />
+            <AtRiskSection />
+            <ExpansionSection />
+            <ActionPlanSection />
           </Suspense>
         </div>
 
-        {/* Recent Alerts Preview */}
-        <div className="mb-8">
-          <Suspense fallback={<AlertsSkeleton />}>
-            <RecentAlertsPreview />
-          </Suspense>
-        </div>
+        {/* Footer */}
+        <footer className="bg-[#1e3c72] text-white py-8 px-10 text-center">
+          <div className="mb-5">
+            <div className="text-lg font-semibold mb-2">Skyvera Intelligence Platform</div>
+            <div className="opacity-80 text-sm">
+              Powered by AI-driven analysis and real-time data integration
+            </div>
+          </div>
+          <div className="pt-5 border-t border-white/20 opacity-70 text-sm">
+            © 2026 Skyvera. Executive Confidential. All Rights Reserved.
+          </div>
+        </footer>
       </div>
     </div>
   )
