@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation'
 /**
  * NavBar - Top navigation bar with Skyvera branding and page links
  * Client Component because it uses usePathname() for active link highlighting
+ * Editorial theme: dark ink background, accent logo, paper text
  */
 export function NavBar() {
   const pathname = usePathname()
@@ -19,16 +20,16 @@ export function NavBar() {
   ]
 
   return (
-    <nav className="bg-slate-900 border-b border-slate-800">
+    <nav className="bg-ink border-b border-ink">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo/Brand */}
           <div className="flex items-center">
             <Link href="/dashboard" className="flex items-center space-x-2">
-              <div className="text-2xl font-bold text-white">
-                Skyvera
+              <div className="text-2xl font-bold text-accent">
+                SKYVERA
               </div>
-              <div className="text-sm text-slate-400 hidden sm:block">
+              <div className="text-sm text-paper opacity-80 hidden sm:block">
                 Intelligence Platform
               </div>
             </Link>
@@ -45,8 +46,8 @@ export function NavBar() {
                   href={link.href}
                   className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
                     isActive
-                      ? 'bg-slate-700 text-white'
-                      : 'text-slate-300 hover:bg-slate-800 hover:text-white'
+                      ? 'bg-white/10 text-paper'
+                      : 'text-paper/70 hover:text-paper'
                   }`}
                 >
                   {link.label}

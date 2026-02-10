@@ -3,6 +3,7 @@
 /**
  * RefreshButton - Button with refresh icon that revalidates server data
  * Client Component because it uses useRouter and useState for interactivity
+ * Editorial theme: muted text with ink hover
  */
 
 import { useRouter } from 'next/navigation'
@@ -34,7 +35,7 @@ export function RefreshButton({ onRefresh, label = 'Refresh' }: RefreshButtonPro
     <button
       onClick={handleRefresh}
       disabled={isRefreshing}
-      className="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-slate-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+      className="inline-flex items-center gap-2 text-sm text-muted hover:text-ink disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
       aria-label={label}
     >
       <svg
