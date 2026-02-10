@@ -14,9 +14,9 @@ export async function RecentAlertsPreview() {
   if (!result.success) {
     return (
       <Card title="Recent Alerts">
-        <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-          <p className="text-red-800 font-medium">Unable to load alerts</p>
-          <p className="text-red-600 text-sm mt-1">{result.error.message}</p>
+        <div className="bg-[var(--critical)]/10 border border-[var(--critical)]/30 rounded p-4">
+          <p className="text-[var(--critical)] font-medium">Unable to load alerts</p>
+          <p className="text-[var(--critical)]/80 text-sm mt-1">{result.error.message}</p>
         </div>
       </Card>
     )
@@ -27,9 +27,9 @@ export async function RecentAlertsPreview() {
   if (alerts.length === 0) {
     return (
       <Card title="Recent Alerts">
-        <div className="bg-green-50 border border-green-200 rounded-lg p-6 text-center">
-          <p className="text-green-800 font-medium">All metrics within expected ranges</p>
-          <p className="text-green-600 text-sm mt-1">No alerts at this time</p>
+        <div className="bg-[var(--success)]/10 border border-[var(--success)]/30 rounded p-6 text-center">
+          <p className="text-[var(--success)] font-medium">All metrics within expected ranges</p>
+          <p className="text-[var(--success)]/80 text-sm mt-1">No alerts at this time</p>
         </div>
       </Card>
     )
@@ -38,38 +38,47 @@ export async function RecentAlertsPreview() {
   return (
     <Card title="Recent Alerts">
       <div className="space-y-3">
-        {alerts.map((alert) => (
-          <div
-            key={alert.id}
-            className="border border-slate-200 rounded-lg p-4 hover:border-blue-300 transition-colors"
-          >
-            <div className="flex items-start gap-3">
-              <HealthIndicator score={alert.severity} />
-              <div className="flex-1">
-                <h4 className="font-semibold text-slate-900">{alert.title}</h4>
-                {alert.accountName && (
-                  <p className="text-sm text-slate-600 mt-1">
-                    Account: {alert.accountName}
-                  </p>
-                )}
-                <p className="text-sm text-slate-700 mt-1">{alert.description}</p>
-                <div className="flex items-center gap-4 mt-2 text-xs text-slate-500">
-                  <span>
-                    {alert.metricName}: {alert.currentValue}
-                  </span>
-                  <span>Expected: {alert.threshold}</span>
+        {alerts.map((alert) => {
+          const borderColor = alert.severity === 'red' ? 'var(--critical)' : 'var(--warning)'
+          const bgColor = alert.severity === 'red' ? 'var(--critical)' : 'var(--warning)'
+
+          return (
+            <div
+              key={alert.id}
+              className="border-l-4 rounded p-4 transition-colors"
+              style={{
+                borderLeftColor: borderColor,
+                backgroundColor: `${bgColor}10`,
+              }}
+            >
+              <div className="flex items-start gap-3">
+                <HealthIndicator score={alert.severity} />
+                <div className="flex-1">
+                  <h4 className="font-semibold text-ink">{alert.title}</h4>
+                  {alert.accountName && (
+                    <p className="text-sm text-muted mt-1">
+                      Account: {alert.accountName}
+                    </p>
+                  )}
+                  <p className="text-sm text-ink mt-1">{alert.description}</p>
+                  <div className="flex items-center gap-4 mt-2 text-xs text-muted">
+                    <span>
+                      {alert.metricName}: {alert.currentValue}
+                    </span>
+                    <span>Expected: {alert.threshold}</span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        ))}
+          )
+        })}
       </div>
 
       {/* Link to full alerts page */}
-      <div className="mt-4 pt-4 border-t border-slate-200">
+      <div className="mt-4 pt-4 border-t border-[var(--border)]">
         <Link
           href="/alerts"
-          className="text-blue-600 hover:text-blue-800 text-sm font-medium"
+          className="text-accent hover:text-accent/80 text-sm font-medium"
         >
           View all alerts →
         </Link>

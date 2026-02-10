@@ -38,16 +38,16 @@ export async function BUBreakdown() {
           const nrrPercent = 100 - rrPercent
 
           const marginMeetsTarget = buSummary.netMarginPct >= buSummary.netMarginTarget
-          const marginColor = marginMeetsTarget ? 'text-green-600' : 'text-red-600'
+          const marginColor = marginMeetsTarget ? 'text-[var(--success)]' : 'text-[var(--critical)]'
 
           return (
             <div
               key={buSummary.bu}
-              className="border border-slate-200 rounded-lg p-4 hover:border-blue-300 transition-colors"
+              className="border border-[var(--border)] rounded p-5 hover:border-accent transition-colors"
             >
               {/* BU Header */}
               <div className="flex items-center justify-between mb-3">
-                <h3 className="text-lg font-semibold text-slate-900">
+                <h3 className="font-display text-lg font-semibold text-secondary">
                   {buSummary.bu}
                 </h3>
                 <Badge variant="default">
@@ -57,30 +57,30 @@ export async function BUBreakdown() {
 
               {/* Revenue */}
               <div className="mb-3">
-                <p className="text-sm text-slate-600 mb-1">Total Revenue</p>
-                <p className="text-2xl font-bold text-slate-900">
+                <p className="text-sm text-muted mb-1">Total Revenue</p>
+                <p className="text-2xl font-display font-bold text-ink">
                   ${(buSummary.totalRevenue / 1000000).toFixed(1)}M
                 </p>
               </div>
 
               {/* RR/NRR Split Bar */}
               <div className="mb-3">
-                <p className="text-sm text-slate-600 mb-2">Revenue Mix</p>
+                <p className="text-sm text-muted mb-2">Revenue Mix</p>
                 <div className="flex h-8 rounded overflow-hidden">
                   <div
-                    className="bg-blue-500 flex items-center justify-center text-white text-xs font-medium"
+                    className="bg-accent flex items-center justify-center text-white text-xs font-medium"
                     style={{ width: `${rrPercent}%` }}
                   >
                     {rrPercent > 15 && `RR ${rrPercent.toFixed(0)}%`}
                   </div>
                   <div
-                    className="bg-slate-400 flex items-center justify-center text-white text-xs font-medium"
+                    className="bg-secondary flex items-center justify-center text-white text-xs font-medium"
                     style={{ width: `${nrrPercent}%` }}
                   >
                     {nrrPercent > 15 && `NRR ${nrrPercent.toFixed(0)}%`}
                   </div>
                 </div>
-                <div className="flex justify-between text-xs text-slate-500 mt-1">
+                <div className="flex justify-between text-xs text-muted mt-1">
                   <span>RR: ${(buSummary.totalRR / 1000000).toFixed(1)}M</span>
                   <span>NRR: ${(buSummary.totalNRR / 1000000).toFixed(1)}M</span>
                 </div>
@@ -88,18 +88,18 @@ export async function BUBreakdown() {
 
               {/* Net Margin */}
               <div className="flex items-center justify-between">
-                <p className="text-sm text-slate-600">Net Margin</p>
+                <p className="text-sm text-muted">Net Margin</p>
                 <div className="flex items-center gap-2">
                   <span className={`text-lg font-bold ${marginColor}`}>
                     {buSummary.netMarginPct.toFixed(1)}%
                   </span>
-                  <span className="text-sm text-slate-500">
+                  <span className="text-sm text-muted">
                     (target: {buSummary.netMarginTarget.toFixed(1)}%)
                   </span>
                   {marginMeetsTarget ? (
-                    <span className="text-green-600">✓</span>
+                    <span className="text-[var(--success)]">✓</span>
                   ) : (
-                    <span className="text-red-600">✕</span>
+                    <span className="text-[var(--critical)]">✕</span>
                   )}
                 </div>
               </div>

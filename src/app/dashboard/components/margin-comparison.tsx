@@ -41,24 +41,24 @@ export function MarginComparison({ buSummaries }: MarginComparisonProps) {
           data={chartData}
           margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
         >
-          <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+          <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
           <XAxis
             dataKey="bu"
-            stroke="#64748b"
+            stroke="var(--muted)"
             style={{ fontSize: '12px' }}
           />
           <YAxis
             domain={[0, 100]}
             tickFormatter={(value) => `${value}%`}
-            stroke="#64748b"
+            stroke="var(--muted)"
             style={{ fontSize: '12px' }}
           />
           <Tooltip
             formatter={(value) => `${value}%`}
             contentStyle={{
-              backgroundColor: 'white',
-              border: '1px solid #e2e8f0',
-              borderRadius: '6px',
+              backgroundColor: 'var(--paper)',
+              border: '1px solid var(--border)',
+              borderRadius: '4px',
               padding: '8px 12px',
             }}
           />
@@ -69,14 +69,14 @@ export function MarginComparison({ buSummaries }: MarginComparisonProps) {
             {chartData.map((entry, index) => (
               <Cell
                 key={`cell-${index}`}
-                fill={entry.meetsTarget ? '#22c55e' : '#ef4444'}
+                fill={entry.meetsTarget ? 'var(--success)' : 'var(--critical)'}
               />
             ))}
           </Bar>
           <Bar
             dataKey="target"
             name="Target Margin"
-            fill="#94a3b8"
+            fill="var(--secondary)"
             radius={[4, 4, 0, 0]}
           />
         </BarChart>

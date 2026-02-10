@@ -40,23 +40,23 @@ export function RevenueChart({ data }: RevenueChartProps) {
           data={data}
           margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
         >
-          <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+          <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
           <XAxis
             dataKey="quarter"
-            stroke="#64748b"
+            stroke="var(--muted)"
             style={{ fontSize: '12px' }}
           />
           <YAxis
             tickFormatter={formatDollar}
-            stroke="#64748b"
+            stroke="var(--muted)"
             style={{ fontSize: '12px' }}
           />
           <Tooltip
             formatter={(value) => typeof value === 'number' ? formatDollar(value) : value}
             contentStyle={{
-              backgroundColor: 'white',
-              border: '1px solid #e2e8f0',
-              borderRadius: '6px',
+              backgroundColor: 'var(--paper)',
+              border: '1px solid var(--border)',
+              borderRadius: '4px',
               padding: '8px 12px',
             }}
           />
@@ -68,19 +68,19 @@ export function RevenueChart({ data }: RevenueChartProps) {
             type="monotone"
             dataKey="revenue"
             name="Actual Revenue"
-            stroke="#3b82f6"
+            stroke="var(--accent)"
             strokeWidth={2}
-            dot={{ fill: '#3b82f6', r: 4 }}
+            dot={{ fill: 'var(--accent)', r: 4 }}
             activeDot={{ r: 6 }}
           />
           <Line
             type="monotone"
             dataKey="target"
             name="Target"
-            stroke="#94a3b8"
+            stroke="var(--secondary)"
             strokeWidth={2}
             strokeDasharray="5 5"
-            dot={{ fill: '#94a3b8', r: 4 }}
+            dot={{ fill: 'var(--secondary)', r: 4 }}
           />
         </LineChart>
       </ResponsiveContainer>
