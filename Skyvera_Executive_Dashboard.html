@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skyvera Executive Intelligence Dashboard - Q1'26</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: #333;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+
+        .date {
+            font-size: 1em;
+            opacity: 0.8;
+        }
+
+        nav {
+            background: #f8f9fa;
+            padding: 15px 40px;
+            border-bottom: 2px solid #e9ecef;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav button {
+            padding: 10px 18px;
+            border: none;
+            background: #667eea;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9em;
+            transition: all 0.3s;
+        }
+
+        nav button:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+        }
+
+        nav button.active {
+            background: #1e3c72;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .metric-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .metric-card.danger {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            box-shadow: 0 4px 15px rgba(240, 147, 251, 0.4);
+        }
+
+        .metric-card.warning {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            box-shadow: 0 4px 15px rgba(250, 112, 154, 0.4);
+        }
+
+        .metric-card.success {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            box-shadow: 0 4px 15px rgba(79, 172, 254, 0.4);
+        }
+
+        .metric-label {
+            font-size: 0.85em;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+
+        .metric-value {
+            font-size: 2.3em;
+            font-weight: 700;
+        }
+
+        .metric-subtitle {
+            font-size: 0.8em;
+            opacity: 0.85;
+            margin-top: 5px;
+        }
+
+        .section-header {
+            font-size: 1.8em;
+            color: #1e3c72;
+            margin: 30px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .subsection-header {
+            font-size: 1.3em;
+            color: #2a5298;
+            margin: 25px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #1e3c72;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e9ecef;
+            font-size: 0.9em;
+        }
+
+        tr:hover {
+            background: #f8f9fa;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: 600;
+            color: white;
+        }
+
+        .badge.danger {
+            background: #f5576c;
+        }
+
+        .badge.warning {
+            background: #fa709a;
+        }
+
+        .badge.success {
+            background: #4facfe;
+        }
+
+        .alert {
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-weight: 500;
+        }
+
+        .alert.critical {
+            background: #ffe5e5;
+            border-left: 5px solid #f5576c;
+            color: #c92a2a;
+        }
+
+        .alert.warning {
+            background: #fff9db;
+            border-left: 5px solid #fee140;
+            color: #7c6300;
+        }
+
+        .alert.info {
+            background: #e3f2fd;
+            border-left: 5px solid #4facfe;
+            color: #0d47a1;
+        }
+
+        .issue-box {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+            margin: 15px 0;
+        }
+
+        .issue-title {
+            font-size: 1.2em;
+            font-weight: 700;
+            color: #1e3c72;
+            margin-bottom: 15px;
+        }
+
+        footer {
+            background: #1e3c72;
+            color: white;
+            padding: 30px 40px;
+            text-align: center;
+        }
+
+        footer .brand {
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        footer .tagline {
+            opacity: 0.8;
+            font-size: 0.95em;
+            margin-bottom: 20px;
+        }
+
+        footer .copyright {
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            opacity: 0.7;
+            font-size: 0.9em;
+        }
+
+        a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        a:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+
+        .coming-soon {
+            text-align: center;
+            padding: 60px 20px;
+            color: #64748b;
+        }
+
+        .coming-soon p:first-child {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+
+        .coming-soon p:last-child {
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>Skyvera Executive Intelligence Report</h1>
+            <div class="subtitle">Financial & Customer Intelligence Analysis - Q1'26</div>
+            <div class="date">Report Date: February 10, 2026 | Classification: Executive Confidential</div>
+        </header>
+
+        <!-- Navigation -->
+        <nav>
+            <button class="nav-btn active" data-section="financial-summary">Financial Summary</button>
+            <button class="nav-btn" data-section="financial-detailed">Financial Analysis</button>
+            <button class="nav-btn" data-section="customer-summary">Customer Summary</button>
+            <button class="nav-btn" data-section="top-customers">Top Customers</button>
+            <button class="nav-btn" data-section="at-risk">At-Risk Accounts</button>
+            <button class="nav-btn" data-section="expansion">Expansion Pipeline</button>
+            <button class="nav-btn" data-section="action-plan">Action Plan</button>
+        </nav>
+
+        <!-- Content Sections -->
+        <div class="content">
+            <!-- Financial Summary Section -->
+            <section id="financial-summary" class="section active">
+                <h2 class="section-header">Financial Executive Summary</h2>
+
+                <div class="alert critical">
+                    <div style="font-size: 1.1em; margin-bottom: 10px;"><strong>OVERALL ASSESSMENT: PROCEED WITH CAUTION</strong></div>
+                    <div>Skyvera demonstrates strong profitability metrics (62.5% EBITDA margin, $9.2M quarterly EBITDA) but faces significant structural challenges with declining recurring revenue (-11.9% YoY) and margin compression (-$918K gap to target).</div>
+                </div>
+
+                <div class="metric-grid">
+                    <div class="metric-card">
+                        <div class="metric-label">Total Revenue (Q1'26)</div>
+                        <div class="metric-value">$14.7M</div>
+                        <div class="metric-subtitle">86% Recurring</div>
+                    </div>
+                    <div class="metric-card success">
+                        <div class="metric-label">EBITDA</div>
+                        <div class="metric-value">$9.2M</div>
+                        <div class="metric-subtitle">62.5% Margin</div>
+                    </div>
+                    <div class="metric-card warning">
+                        <div class="metric-label">Net Margin Gap</div>
+                        <div class="metric-value">-$918K</div>
+                        <div class="metric-subtitle">6.2 pts below target</div>
+                    </div>
+                    <div class="metric-card danger">
+                        <div class="metric-label">ARR (Annualized)</div>
+                        <div class="metric-value">$50.4M</div>
+                        <div class="metric-subtitle">DOWN 11.9% YoY</div>
+                    </div>
+                    <div class="metric-card success">
+                        <div class="metric-label">Rule of 40</div>
+                        <div class="metric-value">50.6%</div>
+                        <div class="metric-subtitle">PASSING</div>
+                    </div>
+                    <div class="metric-card danger">
+                        <div class="metric-label">AR >90 Days</div>
+                        <div class="metric-value">$11.5M</div>
+                        <div class="metric-subtitle">22.8% of ARR</div>
+                    </div>
+                </div>
+
+                <h3 class="subsection-header">Critical Financial Issues</h3>
+
+                <div class="issue-box">
+                    <div class="issue-title">1. Margin Gap: -$918K (6.2 percentage points)</div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Driver</th>
+                                <th>Impact</th>
+                                <th>Explanation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>HC COGS Increase</td>
+                                <td><span class="badge danger">+$779K</span></td>
+                                <td>43 new XO contractors hired</td>
+                            </tr>
+                            <tr>
+                                <td>RR Decline</td>
+                                <td><span class="badge danger">-$336K</span></td>
+                                <td>Recurring revenue down vs. prior plan</td>
+                            </tr>
+                            <tr>
+                                <td>NHC Expenses Up</td>
+                                <td><span class="badge warning">+$177K</span></td>
+                                <td>Software/professional services</td>
+                            </tr>
+                            <tr>
+                                <td>CF COGS Down</td>
+                                <td><span class="badge success">-$920K</span></td>
+                                <td>Vendor optimization (positive)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="issue-box">
+                    <div class="issue-title">2. Recurring Revenue Declining: -$336K</div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Business Unit</th>
+                                <th>Q1'26 Plan</th>
+                                <th>Prior Plan</th>
+                                <th>Variance</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Cloudsense</td>
+                                <td>$6.37M</td>
+                                <td>$6.73M</td>
+                                <td><span class="badge danger">-$355K</span></td>
+                            </tr>
+                            <tr>
+                                <td>Kandy</td>
+                                <td>$3.32M</td>
+                                <td>$3.40M</td>
+                                <td><span class="badge danger">-$75K</span></td>
+                            </tr>
+                            <tr>
+                                <td>STL</td>
+                                <td>$0.80M</td>
+                                <td>$0.66M</td>
+                                <td><span class="badge success">+$146K</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="issue-box">
+                    <div class="issue-title">3. Salesforce UK Contract: $4.1M Annual</div>
+                    <div class="alert critical">
+                        <strong>CRITICAL CONCERN:</strong> This contract consumes 64% of Cloudsense's recurring revenue. At this cost ratio, every dollar of Cloudsense RR decline makes this contract increasingly burdensome.
+                        <ul style="margin-top: 15px; margin-left: 25px; line-height: 2;">
+                            <li>Annual Cost: $4.1M</li>
+                            <li>Cloudsense RR: $6.37M (quarterly)</li>
+                            <li>As % of Cloudsense RR: 64%</li>
+                            <li><strong>Action Required:</strong> Urgent review of utilization and renegotiation options</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3 class="subsection-header">Business Unit Performance</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Business Unit</th>
+                            <th>Revenue</th>
+                            <th>Customers</th>
+                            <th>Net Margin</th>
+                            <th>Target</th>
+                            <th>Delta</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bu-performance">
+                        <!-- Populated by JavaScript -->
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Financial Detailed Section -->
+            <section id="financial-detailed" class="section">
+                <h2 class="section-header">Detailed Financial Analysis</h2>
+                <div class="coming-soon">
+                    <p>Cost structure analysis, margin waterfall, and financial drivers</p>
+                    <p>Coming in next implementation phase</p>
+                </div>
+            </section>
+
+            <!-- Customer Summary Section -->
+            <section id="customer-summary" class="section">
+                <h2 class="section-header">Customer Summary</h2>
+                <div class="metric-grid">
+                    <div class="metric-card">
+                        <div class="metric-label">Total Customers</div>
+                        <div class="metric-value">140</div>
+                    </div>
+                    <div class="metric-card success">
+                        <div class="metric-label">Healthy</div>
+                        <div class="metric-value">98</div>
+                        <div class="metric-subtitle">70.0%</div>
+                    </div>
+                    <div class="metric-card warning">
+                        <div class="metric-label">At Risk</div>
+                        <div class="metric-value">28</div>
+                        <div class="metric-subtitle">20.0%</div>
+                    </div>
+                    <div class="metric-card danger">
+                        <div class="metric-label">Critical</div>
+                        <div class="metric-value">14</div>
+                        <div class="metric-subtitle">10.0%</div>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 30px;">
+                    <a href="./accounts/index.html" style="display: inline-block; padding: 12px 24px; background: #667eea; color: white; border-radius: 8px; text-decoration: none; font-weight: 600;">View All Accounts →</a>
+                </div>
+            </section>
+
+            <!-- Top Customers Section -->
+            <section id="top-customers" class="section">
+                <h2 class="section-header">Top 20 Customers by Revenue</h2>
+                <div class="coming-soon">
+                    <p>Customer revenue rankings with health indicators</p>
+                    <p>Will be populated from customer data files</p>
+                </div>
+            </section>
+
+            <!-- At-Risk Section -->
+            <section id="at-risk" class="section">
+                <h2 class="section-header">At-Risk Accounts</h2>
+                <div class="alert critical">
+                    <strong>IMMEDIATE ACTION REQUIRED:</strong> 42 accounts at risk representing $15.2M in ARR
+                </div>
+                <div class="coming-soon">
+                    <p>Detailed at-risk customer analysis</p>
+                    <p>Will be populated from customer health scoring</p>
+                </div>
+            </section>
+
+            <!-- Expansion Section -->
+            <section id="expansion" class="section">
+                <h2 class="section-header">Expansion Pipeline</h2>
+                <div class="coming-soon">
+                    <p>Upsell opportunities, cross-sell analysis, and growth potential</p>
+                    <p>Coming in next implementation phase</p>
+                </div>
+            </section>
+
+            <!-- Action Plan Section -->
+            <section id="action-plan" class="section">
+                <h2 class="section-header">Strategic Action Plan</h2>
+
+                <div style="margin: 30px 0;">
+                    <div style="background: white; padding: 20px; border-radius: 15px; border-left: 5px solid #667eea; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 15px;">
+                        <span class="badge danger" style="margin-bottom: 10px;">IMMEDIATE</span>
+                        <h3 style="font-size: 1.1em; font-weight: 700; color: #1e3c72; margin: 10px 0;">AR Collection Blitz</h3>
+                        <p style="font-size: 0.9em; color: #475569;">Escalate EMIRCOM ($3.85M) to CEO level for immediate collection action</p>
+                    </div>
+
+                    <div style="background: white; padding: 20px; border-radius: 15px; border-left: 5px solid #667eea; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 15px;">
+                        <span class="badge" style="background: #667eea; margin-bottom: 10px;">0-30 Days</span>
+                        <h3 style="font-size: 1.1em; font-weight: 700; color: #1e3c72; margin: 10px 0;">Salesforce UK Contract Review</h3>
+                        <p style="font-size: 0.9em; color: #475569;">Urgent review of $4.1M annual contract - identify renegotiation opportunities</p>
+                    </div>
+
+                    <div style="background: white; padding: 20px; border-radius: 15px; border-left: 5px solid #667eea; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 15px;">
+                        <span class="badge" style="background: #667eea; margin-bottom: 10px;">30-60 Days</span>
+                        <h3 style="font-size: 1.1em; font-weight: 700; color: #1e3c72; margin: 10px 0;">Margin Improvement Program</h3>
+                        <p style="font-size: 0.9em; color: #475569;">Launch initiative targeting +3 pts improvement ($441K/qtr)</p>
+                    </div>
+
+                    <div style="background: white; padding: 20px; border-radius: 15px; border-left: 5px solid #667eea; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 15px;">
+                        <span class="badge" style="background: #667eea; margin-bottom: 10px;">30-60 Days</span>
+                        <h3 style="font-size: 1.1em; font-weight: 700; color: #1e3c72; margin: 10px 0;">Customer Churn Analysis</h3>
+                        <p style="font-size: 0.9em; color: #475569;">Root cause analysis of 11.9% ARR decline with retention strategy</p>
+                    </div>
+
+                    <div style="background: white; padding: 20px; border-radius: 15px; border-left: 5px solid #667eea; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 15px;">
+                        <span class="badge" style="background: #667eea; margin-bottom: 10px;">60-90 Days</span>
+                        <h3 style="font-size: 1.1em; font-weight: 700; color: #1e3c72; margin: 10px 0;">STL Cost Model Replication</h3>
+                        <p style="font-size: 0.9em; color: #475569;">Apply STL operational efficiency model to Cloudsense and Kandy</p>
+                    </div>
+
+                    <div style="background: white; padding: 20px; border-radius: 15px; border-left: 5px solid #667eea; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 15px;">
+                        <span class="badge" style="background: #667eea; margin-bottom: 10px;">60-90 Days</span>
+                        <h3 style="font-size: 1.1em; font-weight: 700; color: #1e3c72; margin: 10px 0;">FY'26 Reforecast</h3>
+                        <p style="font-size: 0.9em; color: #475569;">Update financial projections with stress testing and scenario planning</p>
+                    </div>
+                </div>
+
+                <div class="alert info">
+                    <strong>SUCCESS METRICS:</strong> Target 5% ARR growth, 3pt margin improvement, and reduction of AR >90 days by 50% within 6 months
+                </div>
+            </section>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <div class="brand">Skyvera Intelligence Platform</div>
+            <div class="tagline">Powered by AI-driven analysis and real-time data integration</div>
+            <div class="copyright">© 2026 Skyvera. Executive Confidential. All Rights Reserved.</div>
+        </footer>
+    </div>
+
+    <script>
+        // Embedded financial data
+        const financialData = {
+            "Cloudsense": {
+                "bu": "Cloudsense",
+                "totalRevenue": 8073762.42,
+                "netMargin": 59.22,
+                "marginTarget": 63.57,
+                "deltaToMargin": -351610.38,
+                "ebitda": 4780880.38,
+                "customerCount": 68
+            },
+            "Kandy": {
+                "bu": "Kandy",
+                "totalRevenue": 3322466.07,
+                "netMargin": 63.25,
+                "marginTarget": 75.00,
+                "deltaToMargin": -390417.45,
+                "ebitda": 2101432.10,
+                "customerCount": 27
+            },
+            "STL": {
+                "bu": "STL",
+                "totalRevenue": 947031.79,
+                "netMargin": 61.18,
+                "marginTarget": 75.00,
+                "deltaToMargin": -130835.14,
+                "ebitda": 579438.70,
+                "customerCount": 21
+            }
+        };
+
+        // Navigation functionality
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active button
+                document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                // Update active section
+                const sectionId = btn.dataset.section;
+                document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+                document.getElementById(sectionId).classList.add('active');
+            });
+        });
+
+        // Populate BU Performance Table
+        function populateBUTable() {
+            const tbody = document.getElementById('bu-performance');
+            Object.values(financialData).forEach(bu => {
+                const delta = bu.deltaToMargin;
+                const badgeClass = delta < 0 ? 'danger' : 'success';
+                const deltaSign = delta < 0 ? '-' : '+';
+
+                const row = `
+                    <tr>
+                        <td style="font-weight: 600;">${bu.bu}</td>
+                        <td>$${(bu.totalRevenue / 1e6).toFixed(2)}M</td>
+                        <td>${bu.customerCount}</td>
+                        <td style="font-weight: 600;">${bu.netMargin.toFixed(1)}%</td>
+                        <td>${bu.marginTarget.toFixed(1)}%</td>
+                        <td><span class="badge ${badgeClass}">${deltaSign}$${Math.abs(delta / 1e3).toFixed(0)}K</span></td>
+                    </tr>
+                `;
+                tbody.innerHTML += row;
+            });
+        }
+
+        // Initialize on page load
+        populateBUTable();
+    </script>
+</body>
+</html>
