@@ -1,0 +1,989 @@
+{
+  "total": 140,
+  "updated": 140,
+  "specific_intel": 30,
+  "template_intel": 110,
+  "errors": [],
+  "accounts": [
+    {
+      "file": "4iG_Account_Plan.html",
+      "company": "4iG",
+      "bu": "STL",
+      "health": "yellow",
+      "specific": false
+    },
+    {
+      "file": "A1_Telekom_Account_Plan.html",
+      "company": "A1 Telekom",
+      "bu": "CloudSense",
+      "health": "yellow",
+      "specific": false
+    },
+    {
+      "file": "A1_Telekom_Austria_AG__rank20_CloudSense_Account_Plan.html",
+      "company": "A1 Telekom Austria AG.",
+      "bu": "CloudSense",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "A1_Telekom_Austria_Ag__rank38_CloudSense_Account_Plan.html",
+      "company": "A1 Telekom Austria Ag.",
+      "bu": "CloudSense",
+      "health": "yellow",
+      "specific": false
+    },
+    {
+      "file": "AARP_Services__Inc__rank43_CloudSense_Account_Plan.html",
+      "company": "AARP Services, Inc.",
+      "bu": "CloudSense",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "AGT_Account_Plan.html",
+      "company": "AGT",
+      "bu": "Kandy",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "AT_T_SERVICES__INC__rank2_Kandy_Account_Plan.html",
+      "company": "AT&T SERVICES, INC.",
+      "bu": "Kandy",
+      "health": "red",
+      "specific": true
+    },
+    {
+      "file": "Aarp_Services__Inc__rank63_CloudSense_Account_Plan.html",
+      "company": "Aarp Services, Inc.",
+      "bu": "CloudSense",
+      "health": "yellow",
+      "specific": false
+    },
+    {
+      "file": "Abbott_Laboratories_Account_Plan.html",
+      "company": "Abbott Laboratories",
+      "bu": "CloudSense",
+      "health": "green",
+      "specific": true
+    },
+    {
+      "file": "Accenture_Singapore_Account_Plan.html",
+      "company": "Accenture Singapore",
+      "bu": "CloudSense",
+      "health": "yellow",
+      "specific": false
+    },
+    {
+      "file": "Advance_Publications_US_Account_Plan.html",
+      "company": "Advance Publications US",
+      "bu": "CloudSense",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "Asianet_Satellite_Communications_Ltd_Account_Plan.html",
+      "company": "Asianet Satellite Communications Ltd",
+      "bu": "STL",
+      "health": "red",
+      "specific": false
+    },
+    {
+      "file": "At_T_Services__Inc__rank23_Kandy_Account_Plan.html",
+      "company": "At&T Services, Inc.",
+      "bu": "Kandy",
+      "health": "yellow",
+      "specific": true
+    },
+    {
+      "file": "Atom_Myanmar_Ltd_Account_Plan.html",
+      "company": "Atom Myanmar Ltd",
+      "bu": "STL",
+      "health": "red",
+      "specific": false
+    },
+    {
+      "file": "BeeDIGITAL_AI__S_A_U__Account_Plan.html",
+      "company": "BeeDIGITAL AI, S.A.U.",
+      "bu": "CloudSense",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "Bell-TSII_Limited_Account_Plan.html",
+      "company": "Bell-TSII Limited",
+      "bu": "NewNet",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "Bell_TSII_Ltd_Merkezi_Ingiltere_Istanbul_Merkez_Subesi_Account_Plan.html",
+      "company": "Bell TSII Ltd Merkezi Ingiltere Istanbul Merkez Subesi",
+      "bu": "NewNet",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "Bharti_Airtel_Limited_-_Chennai_Account_Plan.html",
+      "company": "Bharti Airtel Limited - Chennai",
+      "bu": "STL",
+      "health": "red",
+      "specific": false
+    },
+    {
+      "file": "Bharti_Airtel_Limited_-_Gurgaon_Account_Plan.html",
+      "company": "Bharti Airtel Limited - Gurgaon",
+      "bu": "STL",
+      "health": "red",
+      "specific": false
+    },
+    {
+      "file": "Bharti_Airtel_Limited_-_Mumbai_Account_Plan.html",
+      "company": "Bharti Airtel Limited - Mumbai",
+      "bu": "STL",
+      "health": "red",
+      "specific": false
+    },
+    {
+      "file": "British_Telecommunications_Plc_rank58_CloudSense_Account_Plan.html",
+      "company": "British Telecommunications Plc",
+      "bu": "CloudSense",
+      "health": "yellow",
+      "specific": true
+    },
+    {
+      "file": "British_Telecommunications_plc_rank7_CloudSense_Account_Plan.html",
+      "company": "British Telecommunications plc",
+      "bu": "CloudSense",
+      "health": "red",
+      "specific": true
+    },
+    {
+      "file": "CITY_OF_LOS_ANGELES_Account_Plan.html",
+      "company": "CITY OF LOS ANGELES",
+      "bu": "Kandy",
+      "health": "red",
+      "specific": false
+    },
+    {
+      "file": "COEO_SOLUTIONS_LLC_Account_Plan.html",
+      "company": "COEO SOLUTIONS LLC",
+      "bu": "Kandy",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "COMPORIUM__INC__Account_Plan.html",
+      "company": "COMPORIUM, INC.",
+      "bu": "Kandy",
+      "health": "red",
+      "specific": false
+    },
+    {
+      "file": "CROSS_TELEPHONE_COMPANY_LLC__OK__Account_Plan.html",
+      "company": "CROSS TELEPHONE COMPANY LLC (OK)",
+      "bu": "Kandy",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "Centrica_Services_Ltd_Account_Plan.html",
+      "company": "Centrica Services Ltd",
+      "bu": "CloudSense",
+      "health": "green",
+      "specific": true
+    },
+    {
+      "file": "Commverge_Solutions_Philippines_Inc__Account_Plan.html",
+      "company": "Commverge Solutions Philippines Inc.",
+      "bu": "STL",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "Coordinadora_de_Carriers_SA_de_CV_Vivaro_Account_Plan.html",
+      "company": "Coordinadora de Carriers SA de CV Vivaro",
+      "bu": "Kandy",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "CoreSite_Account_Plan.html",
+      "company": "CoreSite",
+      "bu": "CloudSense",
+      "health": "red",
+      "specific": true
+    },
+    {
+      "file": "DIGIS_Squared_Limited_Account_Plan.html",
+      "company": "DIGIS Squared Limited",
+      "bu": "NewNet",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "DIGITAL_SPACE_GROUP_LIMITED_Account_Plan.html",
+      "company": "DIGITAL SPACE GROUP LIMITED",
+      "bu": "Kandy",
+      "health": "red",
+      "specific": false
+    },
+    {
+      "file": "DPG_Media_BV_Account_Plan.html",
+      "company": "DPG Media BV",
+      "bu": "CloudSense",
+      "health": "red",
+      "specific": true
+    },
+    {
+      "file": "DPLAY_ENTERTAINMENT_LTD_rank25_CloudSense_Account_Plan.html",
+      "company": "DPLAY ENTERTAINMENT LTD",
+      "bu": "CloudSense",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "D_G_Square_for_Technology_Services_Account_Plan.html",
+      "company": "D G Square for Technology Services",
+      "bu": "NewNet",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "Dplay_Entertainment_Ltd_rank14_CloudSense_Account_Plan.html",
+      "company": "Dplay Entertainment Ltd",
+      "bu": "CloudSense",
+      "health": "yellow",
+      "specific": false
+    },
+    {
+      "file": "ELPEDISON_SA_Account_Plan.html",
+      "company": "ELPEDISON SA",
+      "bu": "CloudSense",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "EMIRCOM_Account_Plan.html",
+      "company": "EMIRCOM",
+      "bu": "Kandy",
+      "health": "green",
+      "specific": true
+    },
+    {
+      "file": "EMPIRE_TELEPHONE_CORPORATION_Account_Plan.html",
+      "company": "EMPIRE TELEPHONE CORPORATION",
+      "bu": "Kandy",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "ERICSSON__THAILAND__LTD_Account_Plan.html",
+      "company": "ERICSSON (THAILAND) LTD",
+      "bu": "STL",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "EVOLUTIO_CLOUD_ENABLER_S_A__Account_Plan.html",
+      "company": "EVOLUTIO CLOUD ENABLER S.A.",
+      "bu": "Kandy",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "Elisa_Oyj_Account_Plan.html",
+      "company": "Elisa Oyj",
+      "bu": "CloudSense",
+      "health": "green",
+      "specific": true
+    },
+    {
+      "file": "Ericsson_Telecommunications__Inc__Account_Plan.html",
+      "company": "Ericsson Telecommunications, Inc.",
+      "bu": "STL",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "Foxtel_Management_Pty_Limited_Account_Plan.html",
+      "company": "Foxtel Management Pty Limited",
+      "bu": "CloudSense",
+      "health": "green",
+      "specific": true
+    },
+    {
+      "file": "HARGRAY_COMMUNICATIONS_GROUP_Account_Plan.html",
+      "company": "HARGRAY COMMUNICATIONS GROUP",
+      "bu": "Kandy",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "HCL_TECHNOLOGIES_UK_LIMITED_Account_Plan.html",
+      "company": "HCL TECHNOLOGIES UK LIMITED",
+      "bu": "NewNet",
+      "health": "red",
+      "specific": true
+    },
+    {
+      "file": "HERTZ_EUROPE_LIMITED_Account_Plan.html",
+      "company": "HERTZ EUROPE LIMITED",
+      "bu": "Kandy",
+      "health": "red",
+      "specific": false
+    },
+    {
+      "file": "HITACHI_SYSTEMS_INDIA_PRIVATE_LIMITED_Account_Plan.html",
+      "company": "HITACHI SYSTEMS INDIA PRIVATE LIMITED",
+      "bu": "STL",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "Hawaiian_Telcom_Communications__Inc__Account_Plan.html",
+      "company": "Hawaiian Telcom Communications, Inc.",
+      "bu": "CloudSense",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "Hcl_Australia_Services_Pty__Ltd_Account_Plan.html",
+      "company": "Hcl Australia Services Pty. Ltd",
+      "bu": "CloudSense",
+      "health": "yellow",
+      "specific": false
+    },
+    {
+      "file": "Hubexo_South_UK_Ltd_Account_Plan.html",
+      "company": "Hubexo South UK Ltd",
+      "bu": "CloudSense",
+      "health": "red",
+      "specific": false
+    },
+    {
+      "file": "ISSQUARED__INC__rank4_Kandy_Account_Plan.html",
+      "company": "ISSQUARED, INC.",
+      "bu": "Kandy",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "ISSQUARED__Inc__rank20_Kandy_Account_Plan.html",
+      "company": "ISSQUARED, Inc.",
+      "bu": "Kandy",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "Il_Sole_24_ORE_SpA_Account_Plan.html",
+      "company": "Il Sole 24 ORE SpA",
+      "bu": "CloudSense",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "Informa_UK_Limited_Account_Plan.html",
+      "company": "Informa UK Limited",
+      "bu": "CloudSense",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "Interxion_Headquarters_BV_rank34_CloudSense_Account_Plan.html",
+      "company": "Interxion Headquarters BV",
+      "bu": "CloudSense",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "Interxion_Headquarters_Bv_rank60_CloudSense_Account_Plan.html",
+      "company": "Interxion Headquarters Bv",
+      "bu": "CloudSense",
+      "health": "yellow",
+      "specific": false
+    },
+    {
+      "file": "Juxto_-_Ontario_Account_Plan.html",
+      "company": "Juxto - Ontario",
+      "bu": "Kandy",
+      "health": "red",
+      "specific": false
+    },
+    {
+      "file": "Liberty_Global_Services_B_V___NL__Account_Plan.html",
+      "company": "Liberty Global Services B.V. (NL)",
+      "bu": "CloudSense",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "Liquid_Telecom_Account_Plan.html",
+      "company": "Liquid Telecom",
+      "bu": "CloudSense",
+      "health": "green",
+      "specific": true
+    },
+    {
+      "file": "Liquid_Telecommunications_Operations_Limited_Account_Plan.html",
+      "company": "Liquid Telecommunications Operations Limited",
+      "bu": "CloudSense",
+      "health": "yellow",
+      "specific": true
+    },
+    {
+      "file": "Los_Angeles_Public_Library_Account_Plan.html",
+      "company": "Los Angeles Public Library",
+      "bu": "Kandy",
+      "health": "red",
+      "specific": false
+    },
+    {
+      "file": "Luminus_Hasselt_NV_SA_rank21_CloudSense_Account_Plan.html",
+      "company": "Luminus Hasselt NV/SA",
+      "bu": "CloudSense",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "Luminus_Hasselt_Nv_Sa_rank59_CloudSense_Account_Plan.html",
+      "company": "Luminus Hasselt Nv/Sa",
+      "bu": "CloudSense",
+      "health": "yellow",
+      "specific": false
+    },
+    {
+      "file": "MTN_Sudan_Company_Limited_Account_Plan.html",
+      "company": "MTN Sudan Company Limited",
+      "bu": "STL",
+      "health": "red",
+      "specific": false
+    },
+    {
+      "file": "MTN_Zambia_Account_Plan.html",
+      "company": "MTN Zambia",
+      "bu": "STL",
+      "health": "red",
+      "specific": false
+    },
+    {
+      "file": "Masergy_Account_Plan.html",
+      "company": "Masergy",
+      "bu": "CloudSense",
+      "health": "yellow",
+      "specific": false
+    },
+    {
+      "file": "Masergy_Communications__Inc__Account_Plan.html",
+      "company": "Masergy Communications, Inc.",
+      "bu": "CloudSense",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "MasterCard_Worldwide_Account_Plan.html",
+      "company": "MasterCard Worldwide",
+      "bu": "CloudSense",
+      "health": "green",
+      "specific": true
+    },
+    {
+      "file": "Mavenir_Systems_Private_Limited_Account_Plan.html",
+      "company": "Mavenir Systems Private Limited",
+      "bu": "STL",
+      "health": "red",
+      "specific": false
+    },
+    {
+      "file": "Maxis_Broadband_Sdn_Bhd_Account_Plan.html",
+      "company": "Maxis Broadband Sdn Bhd",
+      "bu": "CloudSense",
+      "health": "green",
+      "specific": true
+    },
+    {
+      "file": "Mobile_Interim_Company_1_S_A_L___MIC1__Account_Plan.html",
+      "company": "Mobile Interim Company 1 S.A.L. (MIC1)",
+      "bu": "NewNet",
+      "health": "red",
+      "specific": false
+    },
+    {
+      "file": "Momentum_Energy_Account_Plan.html",
+      "company": "Momentum Energy",
+      "bu": "CloudSense",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "NBN_Co_Ltd_Account_Plan.html",
+      "company": "NBN Co Ltd",
+      "bu": "CloudSense",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "NS_Solutions_Corporation_rank1_NewNet_Account_Plan.html",
+      "company": "NS Solutions Corporation",
+      "bu": "NewNet",
+      "health": "green",
+      "specific": true
+    },
+    {
+      "file": "NUWAVE_COMMUNICATIONS__INC__Account_Plan.html",
+      "company": "NUWAVE COMMUNICATIONS, INC.",
+      "bu": "Kandy",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "New_License_Sales_-_Skyvera_Account_Plan.html",
+      "company": "New License Sales - Skyvera",
+      "bu": "NewNet",
+      "health": "yellow",
+      "specific": false
+    },
+    {
+      "file": "New_Sales_Ps_-_Go_Get_Account_Plan.html",
+      "company": "New Sales Ps - Go Get",
+      "bu": "CloudSense",
+      "health": "yellow",
+      "specific": false
+    },
+    {
+      "file": "Newsday_Account_Plan.html",
+      "company": "Newsday",
+      "bu": "CloudSense",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "Nokia_Operations_de_Mexico__SA_de_CV_Account_Plan.html",
+      "company": "Nokia Operations de Mexico, SA de CV",
+      "bu": "NewNet",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "Nokia_Solutions_and_Networks_Oy_Account_Plan.html",
+      "company": "Nokia Solutions and Networks Oy",
+      "bu": "NewNet",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "Nomia_Uk_Limited_Account_Plan.html",
+      "company": "Nomia Uk Limited",
+      "bu": "NewNet",
+      "health": "yellow",
+      "specific": false
+    },
+    {
+      "file": "Ns_Solutions_Corporation_rank23_NewNet_Account_Plan.html",
+      "company": "Ns Solutions Corporation",
+      "bu": "NewNet",
+      "health": "yellow",
+      "specific": true
+    },
+    {
+      "file": "Ntirety__Hosting_Com__rank68_CloudSense_Account_Plan.html",
+      "company": "Ntirety (Hosting.Com)",
+      "bu": "CloudSense",
+      "health": "yellow",
+      "specific": false
+    },
+    {
+      "file": "Ntirety__Hosting_com__rank49_CloudSense_Account_Plan.html",
+      "company": "Ntirety (Hosting.com)",
+      "bu": "CloudSense",
+      "health": "red",
+      "specific": false
+    },
+    {
+      "file": "Odido_Netherlands_B_V__Account_Plan.html",
+      "company": "Odido Netherlands B.V.",
+      "bu": "NewNet",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "Ofcom_Account_Plan.html",
+      "company": "Ofcom",
+      "bu": "CloudSense",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "One_Albania_Account_Plan.html",
+      "company": "One Albania",
+      "bu": "STL",
+      "health": "red",
+      "specific": true
+    },
+    {
+      "file": "PIONEER_TELEPHONE_COOPERATIVE__OK__Account_Plan.html",
+      "company": "PIONEER TELEPHONE COOPERATIVE (OK)",
+      "bu": "Kandy",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "PT__Sisindokom_Lintasbuana_Account_Plan.html",
+      "company": "PT. Sisindokom Lintasbuana",
+      "bu": "STL",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "PT__Supra_Primatama_Nusantara_Account_Plan.html",
+      "company": "PT. Supra Primatama Nusantara",
+      "bu": "STL",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "Pelephone_Communications_Ltd_Account_Plan.html",
+      "company": "Pelephone Communications Ltd",
+      "bu": "NewNet",
+      "health": "red",
+      "specific": false
+    },
+    {
+      "file": "PostNL_Holding_BV_Account_Plan.html",
+      "company": "PostNL Holding BV",
+      "bu": "CloudSense",
+      "health": "green",
+      "specific": true
+    },
+    {
+      "file": "PropertyGuru_Pte_Ltd_Account_Plan.html",
+      "company": "PropertyGuru Pte Ltd",
+      "bu": "CloudSense",
+      "health": "red",
+      "specific": true
+    },
+    {
+      "file": "Proximus_NV_Account_Plan.html",
+      "company": "Proximus NV",
+      "bu": "CloudSense",
+      "health": "green",
+      "specific": true
+    },
+    {
+      "file": "RAZORLINE__LLC_Account_Plan.html",
+      "company": "RAZORLINE, LLC",
+      "bu": "Kandy",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "RCS_Media_Group_rank47_CloudSense_Account_Plan.html",
+      "company": "RCS Media Group",
+      "bu": "CloudSense",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "Rakuten_Marketing_Account_Plan.html",
+      "company": "Rakuten Marketing",
+      "bu": "CloudSense",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "Rcs_Media_Group_rank61_CloudSense_Account_Plan.html",
+      "company": "Rcs Media Group",
+      "bu": "CloudSense",
+      "health": "yellow",
+      "specific": false
+    },
+    {
+      "file": "Ribbon_Communications_Operating_Company__Inc__Account_Plan.html",
+      "company": "Ribbon Communications Operating Company, Inc.",
+      "bu": "Kandy",
+      "health": "yellow",
+      "specific": false
+    },
+    {
+      "file": "Sierra_Wireless_America_Account_Plan.html",
+      "company": "Sierra Wireless America",
+      "bu": "NewNet",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "Sky_Italia_Account_Plan.html",
+      "company": "Sky Italia",
+      "bu": "CloudSense",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "Somtel_GSM_FZCO_Account_Plan.html",
+      "company": "Somtel GSM FZCO",
+      "bu": "NewNet",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "Spotify_Account_Plan.html",
+      "company": "Spotify",
+      "bu": "CloudSense",
+      "health": "green",
+      "specific": true
+    },
+    {
+      "file": "StarHub_Ltd_Account_Plan.html",
+      "company": "StarHub Ltd",
+      "bu": "CloudSense",
+      "health": "green",
+      "specific": true
+    },
+    {
+      "file": "Star_Hub_Account_Plan.html",
+      "company": "Star Hub",
+      "bu": "CloudSense",
+      "health": "yellow",
+      "specific": false
+    },
+    {
+      "file": "Sterlite_Technologies_Ltd_Account_Plan.html",
+      "company": "Sterlite Technologies Ltd",
+      "bu": "STL",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "Synaptic_Technologies_Account_Plan.html",
+      "company": "Synaptic Technologies",
+      "bu": "STL",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "Syniverse_Technologies_Asia_Pacific_Ltd_Account_Plan.html",
+      "company": "Syniverse Technologies Asia Pacific Ltd",
+      "bu": "NewNet",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "TATA_Communications__America__Inc__Account_Plan.html",
+      "company": "TATA Communications (America) Inc.",
+      "bu": "CloudSense",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "TV4_AB_Account_Plan.html",
+      "company": "TV4 AB",
+      "bu": "CloudSense",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "Taifon_Computer_Co_Ltd_Account_Plan.html",
+      "company": "Taifon Computer Co Ltd",
+      "bu": "NewNet",
+      "health": "red",
+      "specific": false
+    },
+    {
+      "file": "Tata_Teleservices_Limited_Account_Plan.html",
+      "company": "Tata Teleservices Limited",
+      "bu": "STL",
+      "health": "red",
+      "specific": false
+    },
+    {
+      "file": "Telecom_Argentina_S_A__Account_Plan.html",
+      "company": "Telecom Argentina S.A.",
+      "bu": "NewNet",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "Telefonica_Germany_GmbH___Co__OHG_rank22_CloudSense_Account_Plan.html",
+      "company": "Telefonica Germany GmbH & Co. OHG",
+      "bu": "CloudSense",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "Telefonica_Germany_Gmbh___Co__Ohg_rank67_CloudSense_Account_Plan.html",
+      "company": "Telefonica Germany Gmbh & Co. Ohg",
+      "bu": "CloudSense",
+      "health": "yellow",
+      "specific": false
+    },
+    {
+      "file": "Telefonica_UK_Limited_Account_Plan.html",
+      "company": "Telefonica UK Limited",
+      "bu": "CloudSense",
+      "health": "green",
+      "specific": true
+    },
+    {
+      "file": "Teleindia_Networks_Private_Limited_Account_Plan.html",
+      "company": "Teleindia Networks Private Limited",
+      "bu": "STL",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "Telekom_Romania_Mobile_Communications_S_A___Formerly_COSMOTE_ROMANIAN_TELECOM__Account_Plan.html",
+      "company": "Telekom Romania Mobile Communications S.A. (Formerly COSMOTE ROMANIAN TELECOM)",
+      "bu": "NewNet",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "Telenet_BV_Account_Plan.html",
+      "company": "Telenet BV",
+      "bu": "CloudSense",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "Telenet_Group_Account_Plan.html",
+      "company": "Telenet Group",
+      "bu": "NewNet",
+      "health": "red",
+      "specific": false
+    },
+    {
+      "file": "Telstra_-_Ges_a__Account_Plan.html",
+      "company": "Telstra - Ges(a)",
+      "bu": "CloudSense",
+      "health": "yellow",
+      "specific": false
+    },
+    {
+      "file": "Telstra_Corporation_Limited_Account_Plan.html",
+      "company": "Telstra Corporation Limited",
+      "bu": "CloudSense",
+      "health": "green",
+      "specific": true
+    },
+    {
+      "file": "Telstra_International_Limited_Account_Plan.html",
+      "company": "Telstra International Limited",
+      "bu": "CloudSense",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "Thryv_Australia_Pty_Ltd_Account_Plan.html",
+      "company": "Thryv Australia Pty Ltd",
+      "bu": "CloudSense",
+      "health": "red",
+      "specific": true
+    },
+    {
+      "file": "Unidad_Editorial_S_A__Account_Plan.html",
+      "company": "Unidad Editorial S.A.",
+      "bu": "CloudSense",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "VODAFONE_FIJI_LIMITED_Account_Plan.html",
+      "company": "VODAFONE FIJI LIMITED",
+      "bu": "Kandy",
+      "health": "red",
+      "specific": false
+    },
+    {
+      "file": "VOICEFLEX_LIMITED_Account_Plan.html",
+      "company": "VOICEFLEX LIMITED",
+      "bu": "Kandy",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "VR3CLOUD_INTERNATIONAL__LLC_Account_Plan.html",
+      "company": "VR3CLOUD INTERNATIONAL, LLC",
+      "bu": "Kandy",
+      "health": "red",
+      "specific": false
+    },
+    {
+      "file": "Various__Incremental_Rev_from_Platinum_upsell_Account_Plan.html",
+      "company": "Various: Incremental Rev from Platinum upsell",
+      "bu": "CloudSense",
+      "health": "yellow",
+      "specific": false
+    },
+    {
+      "file": "Various__License_increments_Account_Plan.html",
+      "company": "Various: License increments",
+      "bu": "CloudSense",
+      "health": "yellow",
+      "specific": false
+    },
+    {
+      "file": "Virgin_Media_Limited_Account_Plan.html",
+      "company": "Virgin Media Limited",
+      "bu": "CloudSense",
+      "health": "green",
+      "specific": true
+    },
+    {
+      "file": "Vodafone_Egypt_Account_Plan.html",
+      "company": "Vodafone Egypt",
+      "bu": "NewNet",
+      "health": "yellow",
+      "specific": false
+    },
+    {
+      "file": "Vodafone_Egypt_Telecommunications_SA_Account_Plan.html",
+      "company": "Vodafone Egypt Telecommunications SA",
+      "bu": "NewNet",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "Vodafone_GmbH_Account_Plan.html",
+      "company": "Vodafone GmbH",
+      "bu": "NewNet",
+      "health": "green",
+      "specific": true
+    },
+    {
+      "file": "Vodafone_Netherlands_Account_Plan.html",
+      "company": "Vodafone Netherlands",
+      "bu": "CloudSense",
+      "health": "green",
+      "specific": true
+    },
+    {
+      "file": "WHOLESALE_CARRIER_SERVICES_INC__Account_Plan.html",
+      "company": "WHOLESALE CARRIER SERVICES INC.",
+      "bu": "Kandy",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "Wipro_Ltd__Account_Plan.html",
+      "company": "Wipro Ltd.",
+      "bu": "STL",
+      "health": "red",
+      "specific": false
+    },
+    {
+      "file": "YADKIN_VALLEY_TEL_MEMBERSHIP_CORP_Account_Plan.html",
+      "company": "YADKIN VALLEY TEL MEMBERSHIP CORP",
+      "bu": "Kandy",
+      "health": "green",
+      "specific": false
+    },
+    {
+      "file": "Ziggo_Services_B_V__Account_Plan.html",
+      "company": "Ziggo Services B.V.",
+      "bu": "CloudSense",
+      "health": "yellow",
+      "specific": false
+    }
+  ]
+}
