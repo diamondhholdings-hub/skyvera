@@ -69,7 +69,7 @@ export function CannedQueries({ queries, onQuerySelect }: CannedQueriesProps) {
 
   return (
     <div className="space-y-6">
-      <h2 className="text-lg font-semibold text-slate-900">Common Questions</h2>
+      <h2 className="text-lg font-display font-semibold text-[var(--secondary)]">Common Questions</h2>
 
       {CATEGORY_ORDER.map((category) => {
         const categoryQueries = groupedQueries[category]
@@ -78,7 +78,7 @@ export function CannedQueries({ queries, onQuerySelect }: CannedQueriesProps) {
         return (
           <div key={category} className="space-y-2">
             {/* Category header */}
-            <h3 className="text-xs font-medium text-slate-500 uppercase tracking-wide">
+            <h3 className="text-xs font-bold text-[var(--accent)] uppercase tracking-wide">
               {CATEGORY_LABELS[category]}
             </h3>
 
@@ -94,13 +94,13 @@ export function CannedQueries({ queries, onQuerySelect }: CannedQueriesProps) {
                     {/* Query card */}
                     <button
                       onClick={() => handleQueryClick(query)}
-                      className="w-full text-left p-3 border border-slate-200 rounded-lg
-                                 hover:border-blue-500 hover:bg-blue-50
-                                 transition-all duration-150
+                      className="w-full text-left p-4 bg-white border border-[var(--border)] rounded
+                                 cursor-pointer hover:border-[var(--accent)] hover:shadow-sm
+                                 transition-all
                                  group"
                     >
                       <div className="flex items-start justify-between gap-2">
-                        <span className="text-sm text-slate-700 group-hover:text-blue-700">
+                        <span className="font-display text-base font-semibold text-[var(--secondary)] group-hover:text-[var(--accent)]">
                           {query.label}
                         </span>
                         {requiresFilters && (

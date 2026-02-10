@@ -35,15 +35,15 @@ export function MetricsCatalog({ metrics }: MetricsCatalogProps) {
   }, [metricsList, searchTerm])
 
   return (
-    <div className="border border-slate-200 rounded-lg overflow-hidden">
+    <div className="border border-[var(--border)] rounded overflow-hidden">
       {/* Header - always visible */}
       <button
         onClick={() => setIsExpanded(!isExpanded)}
-        className="w-full px-4 py-3 bg-slate-50 hover:bg-slate-100
+        className="w-full px-4 py-3 bg-[var(--highlight)] hover:bg-[var(--highlight)]/70
                    flex items-center justify-between
                    transition-colors"
       >
-        <h2 className="text-sm font-semibold text-slate-900">Browse Metrics Catalog</h2>
+        <h2 className="font-display text-lg font-semibold text-[var(--secondary)]">Browse Metrics Catalog</h2>
         <svg
           className={`w-5 h-5 text-slate-600 transition-transform ${
             isExpanded ? 'rotate-180' : ''
@@ -119,19 +119,19 @@ export function MetricsCatalog({ metrics }: MetricsCatalogProps) {
  */
 function MetricCard({ metric }: { metric: SerializableMetricDefinition }) {
   const unitBadgeConfig = {
-    currency: { bg: 'bg-green-100', text: 'text-green-800', label: '$' },
-    percentage: { bg: 'bg-blue-100', text: 'text-blue-800', label: '%' },
-    count: { bg: 'bg-purple-100', text: 'text-purple-800', label: '#' },
-    ratio: { bg: 'bg-orange-100', text: 'text-orange-800', label: 'x' },
+    currency: { bg: 'bg-[var(--success)]/10', text: 'text-[var(--success)]', label: '$' },
+    percentage: { bg: 'bg-[var(--accent)]/10', text: 'text-[var(--accent)]', label: '%' },
+    count: { bg: 'bg-[var(--secondary)]/10', text: 'text-[var(--secondary)]', label: '#' },
+    ratio: { bg: 'bg-[var(--warning)]/10', text: 'text-[var(--warning)]', label: 'x' },
   }
 
   const badge = unitBadgeConfig[metric.unit]
 
   return (
-    <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg space-y-2">
+    <div className="p-3 bg-[var(--highlight)]/30 border border-[var(--border)] rounded space-y-2">
       {/* Header with name and unit badge */}
       <div className="flex items-start justify-between gap-2">
-        <h3 className="font-semibold text-slate-900 text-sm">{metric.displayName}</h3>
+        <h3 className="font-semibold text-[var(--ink)] text-sm">{metric.displayName}</h3>
         <span
           className={`px-2 py-0.5 rounded text-xs font-medium ${badge.bg} ${badge.text} flex-shrink-0`}
         >
@@ -140,7 +140,7 @@ function MetricCard({ metric }: { metric: SerializableMetricDefinition }) {
       </div>
 
       {/* Description */}
-      <p className="text-xs text-slate-600 leading-relaxed">{metric.description}</p>
+      <p className="text-xs text-[var(--muted)] leading-relaxed">{metric.description}</p>
 
       {/* Formula */}
       <div className="pt-2 border-t border-slate-200">

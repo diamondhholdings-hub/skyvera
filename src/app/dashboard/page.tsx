@@ -11,26 +11,26 @@ import { RevenueChartWrapper, MarginComparisonWrapper } from './components/chart
 import { RecentAlertsPreview } from './components/recent-alerts-preview'
 import { RefreshButton } from '@/components/ui/refresh-button'
 
-// Skeleton fallbacks matching loading.tsx structure
+// Skeleton fallbacks for editorial theme
 function KPISkeleton() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
       {[...Array(4)].map((_, i) => (
-        <div key={i} className="h-32 bg-slate-200 animate-pulse rounded-lg" />
+        <div key={i} className="h-32 bg-[var(--border)] animate-pulse rounded" />
       ))}
     </div>
   )
 }
 
 function ChartSkeleton() {
-  return <div className="h-80 bg-slate-200 animate-pulse rounded-lg" />
+  return <div className="h-80 bg-[var(--border)] animate-pulse rounded" />
 }
 
 function BUSkeleton() {
   return (
     <div className="space-y-4">
       {[...Array(3)].map((_, i) => (
-        <div key={i} className="h-40 bg-slate-200 animate-pulse rounded-lg" />
+        <div key={i} className="h-40 bg-[var(--border)] animate-pulse rounded" />
       ))}
     </div>
   )
@@ -40,76 +40,42 @@ function AlertsSkeleton() {
   return (
     <div className="space-y-3">
       {[...Array(3)].map((_, i) => (
-        <div key={i} className="h-20 bg-slate-200 animate-pulse rounded-lg" />
+        <div key={i} className="h-20 bg-[var(--border)] animate-pulse rounded" />
       ))}
     </div>
   )
 }
 
 export default function DashboardPage() {
-  const containerStyle: React.CSSProperties = {
-    minHeight: '100vh',
-    background: 'linear-gradient(to bottom right, #f8fafc, #ffffff, #f8fafc)',
-  }
-
-  const contentStyle: React.CSSProperties = {
-    padding: '24px',
-  }
-
-  const headerStyle: React.CSSProperties = {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: '24px',
-  }
-
-  const titleStyle: React.CSSProperties = {
-    fontSize: '30px',
-    fontWeight: 700,
-    color: '#0f172a',
-    margin: 0,
-  }
-
-  const subtitleStyle: React.CSSProperties = {
-    fontSize: '14px',
-    color: '#475569',
-    marginTop: '4px',
-  }
-
-  const sectionStyle: React.CSSProperties = {
-    marginBottom: '24px',
-  }
-
   return (
-    <div style={containerStyle}>
-      <div style={contentStyle}>
-        {/* Header */}
-        <div style={headerStyle}>
-          <div>
-            <h1 style={titleStyle}>Executive Dashboard</h1>
-            <p style={subtitleStyle}>
-              Real-time business intelligence and performance metrics
-            </p>
+    <div className="min-h-screen bg-[var(--paper)]">
+      {/* Gradient Header Section */}
+      <div className="bg-gradient-to-br from-secondary to-[#1a2332] text-paper px-8 py-12 relative">
+        <div className="max-w-[1400px] mx-auto">
+          {/* Header with RefreshButton */}
+          <div className="flex justify-between items-start mb-8">
+            <div>
+              <h1 className="font-display text-4xl font-light text-paper">
+                Executive Dashboard
+              </h1>
+              <p className="text-paper/80 text-lg mt-2">
+                Real-time business intelligence and performance metrics
+              </p>
+            </div>
+            <RefreshButton label="Refresh Data" />
           </div>
-          <RefreshButton label="Refresh Data" />
-        </div>
 
-        {/* KPI Section */}
-        <div style={sectionStyle}>
+          {/* KPI Section within header */}
           <Suspense fallback={<KPISkeleton />}>
             <KPISection />
           </Suspense>
         </div>
+      </div>
 
+      {/* Main Content Area */}
+      <div className="max-w-[1400px] mx-auto px-8 py-8">
         {/* Charts Section - 2 column grid on large screens */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(500px, 1fr))',
-            gap: '24px',
-            marginBottom: '24px',
-          }}
-        >
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
           <Suspense fallback={<ChartSkeleton />}>
             <RevenueChartWrapper />
           </Suspense>
@@ -119,14 +85,14 @@ export default function DashboardPage() {
         </div>
 
         {/* BU Breakdown */}
-        <div style={sectionStyle}>
+        <div className="mb-8">
           <Suspense fallback={<BUSkeleton />}>
             <BUBreakdown />
           </Suspense>
         </div>
 
         {/* Recent Alerts Preview */}
-        <div style={sectionStyle}>
+        <div className="mb-8">
           <Suspense fallback={<AlertsSkeleton />}>
             <RecentAlertsPreview />
           </Suspense>

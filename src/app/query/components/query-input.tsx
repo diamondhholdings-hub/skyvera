@@ -48,10 +48,9 @@ export function QueryInput({ onSubmit, isLoading }: QueryInputProps) {
           disabled={isLoading}
           placeholder="Ask anything about your business data..."
           aria-label="Natural language query input"
-          className="w-full px-4 py-3 pr-24 border border-slate-300 rounded-lg
-                     focus:ring-2 focus:ring-blue-500 focus:border-blue-500
-                     disabled:bg-slate-100 disabled:cursor-not-allowed
-                     text-base"
+          className="w-full px-6 py-4 pr-24 text-lg border-2 border-[var(--border)] rounded-lg
+                     focus:border-[var(--accent)] focus:ring-1 focus:ring-[var(--accent)]
+                     disabled:bg-[var(--highlight)] disabled:cursor-not-allowed"
           maxLength={500}
         />
 
@@ -86,8 +85,8 @@ export function QueryInput({ onSubmit, isLoading }: QueryInputProps) {
           type="submit"
           disabled={!isValid || isLoading}
           className="absolute right-2 top-1/2 -translate-y-1/2
-                     px-4 py-1.5 bg-blue-600 text-white rounded-md
-                     hover:bg-blue-700 disabled:bg-slate-300
+                     px-4 py-1.5 bg-[var(--accent)] text-white rounded-md
+                     hover:bg-[var(--accent)]/90 disabled:bg-[var(--muted)]
                      disabled:cursor-not-allowed
                      transition-colors
                      flex items-center gap-2"

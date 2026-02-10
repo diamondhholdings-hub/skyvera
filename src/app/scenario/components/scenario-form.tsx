@@ -133,10 +133,10 @@ export default function ScenarioForm({ baseline }: ScenarioFormProps) {
         <button
           type="button"
           onClick={() => handleTypeChange('financial')}
-          className={`px-6 py-2 rounded-lg font-medium transition-colors ${
+          className={`px-6 py-2 rounded font-semibold transition-all ${
             selectedType === 'financial'
-              ? 'bg-blue-600 text-white shadow-md'
-              : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+              ? 'border-2 border-[var(--accent)] bg-[var(--accent)]/5 text-[var(--accent)]'
+              : 'border-2 border-[var(--border)] text-[var(--ink)] hover:border-[var(--accent)]'
           }`}
         >
           Financial
@@ -144,10 +144,10 @@ export default function ScenarioForm({ baseline }: ScenarioFormProps) {
         <button
           type="button"
           onClick={() => handleTypeChange('headcount')}
-          className={`px-6 py-2 rounded-lg font-medium transition-colors ${
+          className={`px-6 py-2 rounded font-semibold transition-all ${
             selectedType === 'headcount'
-              ? 'bg-blue-600 text-white shadow-md'
-              : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+              ? 'border-2 border-[var(--accent)] bg-[var(--accent)]/5 text-[var(--accent)]'
+              : 'border-2 border-[var(--border)] text-[var(--ink)] hover:border-[var(--accent)]'
           }`}
         >
           Headcount
@@ -155,10 +155,10 @@ export default function ScenarioForm({ baseline }: ScenarioFormProps) {
         <button
           type="button"
           onClick={() => handleTypeChange('customer')}
-          className={`px-6 py-2 rounded-lg font-medium transition-colors ${
+          className={`px-6 py-2 rounded font-semibold transition-all ${
             selectedType === 'customer'
-              ? 'bg-blue-600 text-white shadow-md'
-              : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+              ? 'border-2 border-[var(--accent)] bg-[var(--accent)]/5 text-[var(--accent)]'
+              : 'border-2 border-[var(--border)] text-[var(--ink)] hover:border-[var(--accent)]'
           }`}
         >
           Customer
@@ -167,21 +167,21 @@ export default function ScenarioForm({ baseline }: ScenarioFormProps) {
 
       {/* Scenario Form */}
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 max-w-2xl">
-        <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6 space-y-4">
+        <div className="bg-white rounded shadow-sm border border-[var(--border)] p-6 space-y-4">
           {/* Description field (common to all types) */}
           <div>
-            <label htmlFor="description" className="block text-sm font-medium text-slate-700 mb-1">
+            <label htmlFor="description" className="block text-sm font-semibold text-[var(--ink)] mb-1">
               Description
             </label>
             <textarea
               id="description"
               {...register('description')}
               rows={3}
-              className="w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-3 py-2 border-2 border-[var(--border)] rounded focus:outline-none focus:border-[var(--accent)] focus:ring-1 focus:ring-[var(--accent)]"
               placeholder="Describe this scenario..."
             />
             {errors.description && (
-              <p className="mt-1 text-sm text-red-600">{String(errors.description?.message)}</p>
+              <p className="mt-1 text-sm text-[var(--critical)]">{String(errors.description?.message)}</p>
             )}
           </div>
 
@@ -189,7 +189,7 @@ export default function ScenarioForm({ baseline }: ScenarioFormProps) {
           {selectedType === 'financial' && (
             <>
               <div>
-                <label htmlFor="pricingChange" className="block text-sm font-medium text-slate-700 mb-1">
+                <label htmlFor="pricingChange" className="block text-sm font-semibold text-[var(--ink)] mb-1">
                   Pricing Change (%)
                 </label>
                 <input
@@ -197,15 +197,15 @@ export default function ScenarioForm({ baseline }: ScenarioFormProps) {
                   type="number"
                   step="0.1"
                   {...register('pricingChange', { valueAsNumber: true })}
-                  className="w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full px-3 py-2 border-2 border-[var(--border)] rounded focus:outline-none focus:border-[var(--accent)] focus:ring-1 focus:ring-[var(--accent)]"
                 />
                 {errors.pricingChange && (
-                  <p className="mt-1 text-sm text-red-600">{String(errors.pricingChange?.message)}</p>
+                  <p className="mt-1 text-sm text-[var(--critical)]">{String(errors.pricingChange?.message)}</p>
                 )}
               </div>
 
               <div>
-                <label htmlFor="costChange" className="block text-sm font-medium text-slate-700 mb-1">
+                <label htmlFor="costChange" className="block text-sm font-semibold text-[var(--ink)] mb-1">
                   Cost Change (%)
                 </label>
                 <input
@@ -213,15 +213,15 @@ export default function ScenarioForm({ baseline }: ScenarioFormProps) {
                   type="number"
                   step="0.1"
                   {...register('costChange', { valueAsNumber: true })}
-                  className="w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full px-3 py-2 border-2 border-[var(--border)] rounded focus:outline-none focus:border-[var(--accent)] focus:ring-1 focus:ring-[var(--accent)]"
                 />
                 {errors.costChange && (
-                  <p className="mt-1 text-sm text-red-600">{String(errors.costChange?.message)}</p>
+                  <p className="mt-1 text-sm text-[var(--critical)]">{String(errors.costChange?.message)}</p>
                 )}
               </div>
 
               <div>
-                <label htmlFor="targetMargin" className="block text-sm font-medium text-slate-700 mb-1">
+                <label htmlFor="targetMargin" className="block text-sm font-semibold text-[var(--ink)] mb-1">
                   Target Margin (%)
                 </label>
                 <input
@@ -229,10 +229,10 @@ export default function ScenarioForm({ baseline }: ScenarioFormProps) {
                   type="number"
                   step="0.1"
                   {...register('targetMargin', { valueAsNumber: true })}
-                  className="w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full px-3 py-2 border-2 border-[var(--border)] rounded focus:outline-none focus:border-[var(--accent)] focus:ring-1 focus:ring-[var(--accent)]"
                 />
                 {errors.targetMargin && (
-                  <p className="mt-1 text-sm text-red-600">{String(errors.targetMargin?.message)}</p>
+                  <p className="mt-1 text-sm text-[var(--critical)]">{String(errors.targetMargin?.message)}</p>
                 )}
               </div>
             </>
@@ -241,7 +241,7 @@ export default function ScenarioForm({ baseline }: ScenarioFormProps) {
           {selectedType === 'headcount' && (
             <>
               <div>
-                <label htmlFor="headcountChange" className="block text-sm font-medium text-slate-700 mb-1">
+                <label htmlFor="headcountChange" className="block text-sm font-semibold text-[var(--ink)] mb-1">
                   Headcount Change
                 </label>
                 <input
@@ -249,15 +249,15 @@ export default function ScenarioForm({ baseline }: ScenarioFormProps) {
                   type="number"
                   step="1"
                   {...register('headcountChange', { valueAsNumber: true })}
-                  className="w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full px-3 py-2 border-2 border-[var(--border)] rounded focus:outline-none focus:border-[var(--accent)] focus:ring-1 focus:ring-[var(--accent)]"
                 />
                 {errors.headcountChange && (
-                  <p className="mt-1 text-sm text-red-600">{String(errors.headcountChange?.message)}</p>
+                  <p className="mt-1 text-sm text-[var(--critical)]">{String(errors.headcountChange?.message)}</p>
                 )}
               </div>
 
               <div>
-                <label htmlFor="avgSalaryCost" className="block text-sm font-medium text-slate-700 mb-1">
+                <label htmlFor="avgSalaryCost" className="block text-sm font-semibold text-[var(--ink)] mb-1">
                   Avg Annual Salary Cost ($)
                 </label>
                 <input
@@ -265,10 +265,10 @@ export default function ScenarioForm({ baseline }: ScenarioFormProps) {
                   type="number"
                   step="1000"
                   {...register('avgSalaryCost', { valueAsNumber: true })}
-                  className="w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full px-3 py-2 border-2 border-[var(--border)] rounded focus:outline-none focus:border-[var(--accent)] focus:ring-1 focus:ring-[var(--accent)]"
                 />
                 {errors.avgSalaryCost && (
-                  <p className="mt-1 text-sm text-red-600">{String(errors.avgSalaryCost?.message)}</p>
+                  <p className="mt-1 text-sm text-[var(--critical)]">{String(errors.avgSalaryCost?.message)}</p>
                 )}
               </div>
             </>
@@ -277,7 +277,7 @@ export default function ScenarioForm({ baseline }: ScenarioFormProps) {
           {selectedType === 'customer' && (
             <>
               <div>
-                <label htmlFor="churnRate" className="block text-sm font-medium text-slate-700 mb-1">
+                <label htmlFor="churnRate" className="block text-sm font-semibold text-[var(--ink)] mb-1">
                   Churn Rate (%)
                 </label>
                 <input
@@ -285,15 +285,15 @@ export default function ScenarioForm({ baseline }: ScenarioFormProps) {
                   type="number"
                   step="0.1"
                   {...register('churnRate', { valueAsNumber: true })}
-                  className="w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full px-3 py-2 border-2 border-[var(--border)] rounded focus:outline-none focus:border-[var(--accent)] focus:ring-1 focus:ring-[var(--accent)]"
                 />
                 {errors.churnRate && (
-                  <p className="mt-1 text-sm text-red-600">{String(errors.churnRate?.message)}</p>
+                  <p className="mt-1 text-sm text-[var(--critical)]">{String(errors.churnRate?.message)}</p>
                 )}
               </div>
 
               <div>
-                <label htmlFor="acquisitionCount" className="block text-sm font-medium text-slate-700 mb-1">
+                <label htmlFor="acquisitionCount" className="block text-sm font-semibold text-[var(--ink)] mb-1">
                   New Customers
                 </label>
                 <input
@@ -301,15 +301,15 @@ export default function ScenarioForm({ baseline }: ScenarioFormProps) {
                   type="number"
                   step="1"
                   {...register('acquisitionCount', { valueAsNumber: true })}
-                  className="w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full px-3 py-2 border-2 border-[var(--border)] rounded focus:outline-none focus:border-[var(--accent)] focus:ring-1 focus:ring-[var(--accent)]"
                 />
                 {errors.acquisitionCount && (
-                  <p className="mt-1 text-sm text-red-600">{String(errors.acquisitionCount?.message)}</p>
+                  <p className="mt-1 text-sm text-[var(--critical)]">{String(errors.acquisitionCount?.message)}</p>
                 )}
               </div>
 
               <div>
-                <label htmlFor="avgCustomerARR" className="block text-sm font-medium text-slate-700 mb-1">
+                <label htmlFor="avgCustomerARR" className="block text-sm font-semibold text-[var(--ink)] mb-1">
                   Avg Customer ARR ($)
                 </label>
                 <input
@@ -317,10 +317,10 @@ export default function ScenarioForm({ baseline }: ScenarioFormProps) {
                   type="number"
                   step="1000"
                   {...register('avgCustomerARR', { valueAsNumber: true })}
-                  className="w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full px-3 py-2 border-2 border-[var(--border)] rounded focus:outline-none focus:border-[var(--accent)] focus:ring-1 focus:ring-[var(--accent)]"
                 />
                 {errors.avgCustomerARR && (
-                  <p className="mt-1 text-sm text-red-600">{String(errors.avgCustomerARR?.message)}</p>
+                  <p className="mt-1 text-sm text-[var(--critical)]">{String(errors.avgCustomerARR?.message)}</p>
                 )}
               </div>
             </>
@@ -328,13 +328,13 @@ export default function ScenarioForm({ baseline }: ScenarioFormProps) {
 
           {/* Affected BU (common to all types) */}
           <div>
-            <label htmlFor="affectedBU" className="block text-sm font-medium text-slate-700 mb-1">
+            <label htmlFor="affectedBU" className="block text-sm font-semibold text-[var(--ink)] mb-1">
               Affected Business Unit
             </label>
             <select
               id="affectedBU"
               {...register('affectedBU')}
-              className="w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-3 py-2 border-2 border-[var(--border)] rounded focus:outline-none focus:border-[var(--accent)] focus:ring-1 focus:ring-[var(--accent)]"
             >
               <option value="All">All</option>
               <option value="Cloudsense">Cloudsense</option>
@@ -342,7 +342,7 @@ export default function ScenarioForm({ baseline }: ScenarioFormProps) {
               <option value="STL">STL</option>
             </select>
             {errors.affectedBU && (
-              <p className="mt-1 text-sm text-red-600">{String(errors.affectedBU?.message)}</p>
+              <p className="mt-1 text-sm text-[var(--critical)]">{String(errors.affectedBU?.message)}</p>
             )}
           </div>
         </div>
@@ -351,7 +351,7 @@ export default function ScenarioForm({ baseline }: ScenarioFormProps) {
         <button
           type="submit"
           disabled={analyzing}
-          className="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-medium rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+          className="inline-flex items-center px-6 py-3 bg-[var(--accent)] text-white font-semibold rounded hover:bg-[var(--accent)]/90 focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
         >
           {analyzing ? (
             <>

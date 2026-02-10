@@ -18,10 +18,10 @@ export function AlertSummary({ alerts }: AlertSummaryProps) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
       {/* Total Alerts */}
-      <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
+      <div className="bg-white rounded shadow-sm border border-[var(--border)] p-5">
         <div className="flex items-center gap-3">
           <svg
-            className="w-8 h-8 text-blue-500"
+            className="w-8 h-8 text-[var(--accent)]"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -35,22 +35,22 @@ export function AlertSummary({ alerts }: AlertSummaryProps) {
             />
           </svg>
           <div>
-            <p className="text-sm font-medium text-slate-600">Total Alerts</p>
-            <p className="text-3xl font-bold text-slate-900">{totalAlerts}</p>
+            <p className="text-sm font-medium text-[var(--muted)]">Total Alerts</p>
+            <p className="text-3xl font-display font-bold text-[var(--ink)]">{totalAlerts}</p>
           </div>
         </div>
       </div>
 
       {/* Critical Alerts */}
-      <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
+      <div className="bg-white rounded shadow-sm border border-[var(--border)] p-5">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 flex items-center justify-center bg-red-100 rounded-full">
-            <span className="text-xl text-red-600">✕</span>
+          <div className="w-8 h-8 flex items-center justify-center bg-[var(--critical)]/10 rounded-full">
+            <span className="text-xl text-[var(--critical)]">✕</span>
           </div>
           <div>
-            <p className="text-sm font-medium text-slate-600">Critical</p>
+            <p className="text-sm font-medium text-[var(--muted)]">Critical</p>
             <div className="flex items-center gap-2">
-              <p className="text-3xl font-bold text-red-600">{criticalCount}</p>
+              <p className="text-3xl font-display font-bold text-[var(--critical)]">{criticalCount}</p>
               <Badge variant="danger">High Priority</Badge>
             </div>
           </div>
@@ -58,15 +58,15 @@ export function AlertSummary({ alerts }: AlertSummaryProps) {
       </div>
 
       {/* Warning Alerts */}
-      <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
+      <div className="bg-white rounded shadow-sm border border-[var(--border)] p-5">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 flex items-center justify-center bg-yellow-100 rounded-full">
-            <span className="text-xl text-yellow-600">⚠</span>
+          <div className="w-8 h-8 flex items-center justify-center bg-[var(--warning)]/10 rounded-full">
+            <span className="text-xl text-[var(--warning)]">⚠</span>
           </div>
           <div>
-            <p className="text-sm font-medium text-slate-600">Warning</p>
+            <p className="text-sm font-medium text-[var(--muted)]">Warning</p>
             <div className="flex items-center gap-2">
-              <p className="text-3xl font-bold text-yellow-600">{warningCount}</p>
+              <p className="text-3xl font-display font-bold text-[var(--warning)]">{warningCount}</p>
               <Badge variant="warning">Monitor</Badge>
             </div>
           </div>

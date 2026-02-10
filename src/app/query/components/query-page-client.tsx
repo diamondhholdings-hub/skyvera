@@ -130,34 +130,39 @@ export function QueryPageClient({ cannedQueries, metrics }: QueryPageClientProps
   }
 
   return (
-    <div className="p-6 space-y-6">
-      {/* Page header */}
-      <div className="flex justify-between items-start">
-        <div className="space-y-2">
-          <h1 className="text-3xl font-bold text-slate-900">Ask a Question</h1>
-          <p className="text-slate-600">
-            Query your business data using natural language
-          </p>
+    <div>
+      {/* Editorial Header */}
+      <div className="bg-gradient-to-br from-[var(--secondary)] to-[#1a2332] text-[var(--paper)] px-8 pt-12 pb-8">
+        <div className="max-w-[1400px] mx-auto flex items-center justify-between">
+          <div>
+            <h1 className="font-display text-4xl font-light text-[var(--paper)]">Business Intelligence Query</h1>
+            <p className="text-[var(--paper)]/80 mt-2">
+              Query your business data using natural language
+            </p>
+          </div>
+          <RefreshButton label="Refresh Data" />
         </div>
-        <RefreshButton label="Refresh Data" />
       </div>
 
-      {/* Two-column layout */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Left column - Input and results (2/3 width) */}
-        <div className="lg:col-span-2 space-y-6">
-          <QueryInput onSubmit={handleFreeFormQuery} isLoading={isLoading} />
-          <QueryResults
-            result={currentResult}
-            onClarificationSelect={handleClarificationSelect}
-            onFollowUp={handleFollowUp}
-          />
-        </div>
+      {/* Content */}
+      <div className="max-w-[1400px] mx-auto px-8 py-8">
+        {/* Two-column layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          {/* Left column - Input and results (2/3 width) */}
+          <div className="lg:col-span-2 space-y-6">
+            <QueryInput onSubmit={handleFreeFormQuery} isLoading={isLoading} />
+            <QueryResults
+              result={currentResult}
+              onClarificationSelect={handleClarificationSelect}
+              onFollowUp={handleFollowUp}
+            />
+          </div>
 
-        {/* Right column - Canned queries and catalog (1/3 width) */}
-        <div className="space-y-6">
-          <CannedQueries queries={cannedQueries} onQuerySelect={handleCannedQuery} />
-          <MetricsCatalog metrics={metrics} />
+          {/* Right column - Canned queries and catalog (1/3 width) */}
+          <div className="space-y-6">
+            <CannedQueries queries={cannedQueries} onQuerySelect={handleCannedQuery} />
+            <MetricsCatalog metrics={metrics} />
+          </div>
         </div>
       </div>
     </div>

@@ -15,9 +15,9 @@ interface AlertListProps {
 export function AlertList({ alerts }: AlertListProps) {
   if (alerts.length === 0) {
     return (
-      <div className="bg-green-50 border border-green-200 rounded-lg p-8 text-center">
+      <div className="bg-[var(--success)]/10 border border-[var(--success)]/30 rounded p-8 text-center">
         <svg
-          className="w-16 h-16 text-green-500 mx-auto mb-4"
+          className="w-16 h-16 text-[var(--success)] mx-auto mb-4"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -30,8 +30,8 @@ export function AlertList({ alerts }: AlertListProps) {
             d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
           />
         </svg>
-        <p className="text-lg font-semibold text-green-800">All metrics within expected ranges</p>
-        <p className="text-sm text-green-600 mt-2">No active alerts at this time</p>
+        <p className="text-lg font-display font-semibold text-[var(--ink)]">All metrics within expected ranges</p>
+        <p className="text-sm text-[var(--muted)] mt-2">No active alerts at this time</p>
       </div>
     )
   }
@@ -61,42 +61,42 @@ export function AlertList({ alerts }: AlertListProps) {
  * Individual alert card
  */
 function AlertCard({ alert }: { alert: Alert }) {
-  const severityColor = alert.severity === 'red' ? 'border-red-500' : 'border-yellow-500'
-  const severityBg = alert.severity === 'red' ? 'bg-red-50' : 'bg-yellow-50'
+  const severityColor = alert.severity === 'red' ? 'border-l-[var(--critical)]' : 'border-l-[var(--warning)]'
+  const severityBg = alert.severity === 'red' ? 'bg-[var(--critical)]/5' : 'bg-[var(--warning)]/5'
 
   return (
     <div
-      className={`bg-white border-l-4 ${severityColor} rounded-lg shadow-sm p-6 ${severityBg}`}
+      className={`bg-white border border-[var(--border)] rounded shadow-sm p-6 border-l-4 ${severityColor} ${severityBg}`}
     >
       <div className="flex items-start justify-between">
         <div className="flex-1">
           {/* Title with health indicator */}
           <div className="flex items-center gap-3 mb-2">
             <HealthIndicator score={alert.severity} label="" />
-            <h3 className="font-semibold text-slate-900">{alert.title}</h3>
+            <h3 className="font-display text-lg font-semibold text-[var(--ink)]">{alert.title}</h3>
           </div>
 
           {/* Description */}
-          <p className="text-sm text-slate-600 mb-3">{alert.description}</p>
+          <p className="text-sm text-[var(--muted)] mb-3">{alert.description}</p>
 
           {/* Account Name */}
           {alert.accountName && (
             <div className="text-sm mb-2">
-              <span className="text-slate-500">Account:</span>{' '}
-              <span className="font-medium text-slate-900">{alert.accountName}</span>
+              <span className="text-[var(--muted)]">Account:</span>{' '}
+              <span className="font-medium text-[var(--ink)]">{alert.accountName}</span>
             </div>
           )}
 
           {/* Metric Details */}
           <div className="text-sm">
-            <span className="text-slate-500">{alert.metricName}:</span>{' '}
-            <span className="font-medium text-slate-900">{alert.currentValue}</span>
-            <span className="text-slate-500"> (threshold: {alert.threshold})</span>
+            <span className="text-[var(--muted)]">{alert.metricName}:</span>{' '}
+            <span className="font-display font-bold text-[var(--ink)]">{alert.currentValue}</span>
+            <span className="text-[var(--muted)]"> (threshold: {alert.threshold})</span>
           </div>
         </div>
 
         {/* Timestamp */}
-        <div className="text-xs text-slate-500 ml-4">
+        <div className="text-xs text-[var(--muted)] ml-4">
           {formatDistanceToNow(alert.timestamp, { addSuffix: true })}
         </div>
       </div>

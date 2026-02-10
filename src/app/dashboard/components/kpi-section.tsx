@@ -33,7 +33,7 @@ export async function KPISection() {
 
   return (
     <div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <KPICard
           title="Total Revenue"
           value={data.totalRevenue}
@@ -59,7 +59,7 @@ export async function KPISection() {
           format="currency"
         />
       </div>
-      <p className="text-sm text-slate-500 mt-4">Last updated: {updateText}</p>
+      <p className="text-sm text-muted mt-4">Last updated: {updateText}</p>
     </div>
   )
 }

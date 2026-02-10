@@ -30,22 +30,27 @@ export default async function ScenarioPage() {
   const baseline = baselineResult.value
 
   return (
-    <div className="p-6 space-y-6">
-      {/* Header */}
-      <div className="flex justify-between items-start">
-        <div className="space-y-2">
-          <h1 className="text-3xl font-bold text-slate-900">Scenario Modeling</h1>
-          <p className="text-slate-600">
-            Model what-if scenarios and see financial impact with AI-powered analysis
-          </p>
+    <div>
+      {/* Editorial Header */}
+      <div className="bg-gradient-to-br from-[var(--secondary)] to-[#1a2332] text-[var(--paper)] px-8 pt-12 pb-8">
+        <div className="max-w-[1400px] mx-auto flex items-center justify-between">
+          <div>
+            <h1 className="font-display text-4xl font-light text-[var(--paper)]">Scenario Modeling</h1>
+            <p className="text-[var(--paper)]/80 mt-2">
+              Model what-if scenarios and see financial impact with AI-powered analysis
+            </p>
+          </div>
+          <RefreshButton label="Refresh Data" />
         </div>
-        <RefreshButton label="Refresh Data" />
       </div>
 
-      {/* Scenario Form */}
-      <Suspense fallback={<ScenarioLoading />}>
-        <ScenarioForm baseline={baseline} />
-      </Suspense>
+      {/* Content */}
+      <div className="max-w-[1400px] mx-auto px-8 py-8">
+        {/* Scenario Form */}
+        <Suspense fallback={<ScenarioLoading />}>
+          <ScenarioForm baseline={baseline} />
+        </Suspense>
+      </div>
     </div>
   )
 }

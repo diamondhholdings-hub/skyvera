@@ -17,9 +17,9 @@ export default function ImpactDisplay({ calculatedMetrics, claudeAnalysis }: Imp
   return (
     <div className="space-y-6">
       {/* Metrics Comparison Table */}
-      <div className="bg-white rounded-lg shadow-sm border border-slate-200 overflow-hidden">
-        <div className="px-6 py-4 bg-slate-50 border-b border-slate-200">
-          <h2 className="text-lg font-semibold text-slate-900">Impact Analysis</h2>
+      <div className="bg-white rounded shadow-sm border border-[var(--border)] overflow-hidden">
+        <div className="px-6 py-4 bg-[var(--highlight)] border-b border-[var(--border)]">
+          <h2 className="text-lg font-display font-semibold text-[var(--secondary)]">Impact Analysis</h2>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full">
@@ -64,8 +64,8 @@ export default function ImpactDisplay({ calculatedMetrics, claudeAnalysis }: Imp
                       aria-label={`${isPositive ? 'Increased' : isNegative ? 'Decreased' : 'Unchanged'} by ${formatValue(Math.abs(metric.change), isPercentage)}`}
                     >
                       <span
-                        className={`inline-flex items-center space-x-1 ${
-                          isPositive ? 'text-green-700' : isNegative ? 'text-red-700' : 'text-slate-500'
+                        className={`inline-flex items-center space-x-1 font-display font-semibold ${
+                          isPositive ? 'text-[var(--success)]' : isNegative ? 'text-[var(--critical)]' : 'text-[var(--muted)]'
                         }`}
                       >
                         {isPositive && <ArrowUp className="w-4 h-4" />}
@@ -81,9 +81,9 @@ export default function ImpactDisplay({ calculatedMetrics, claudeAnalysis }: Imp
                       aria-label={`${Math.abs(metric.changePercent).toFixed(1)} percent ${isPositive ? 'increase' : isNegative ? 'decrease' : 'change'}`}
                     >
                       <span
-                        className={
-                          isPositive ? 'text-green-700' : isNegative ? 'text-red-700' : 'text-slate-500'
-                        }
+                        className={`font-display font-semibold ${
+                          isPositive ? 'text-[var(--success)]' : isNegative ? 'text-[var(--critical)]' : 'text-[var(--muted)]'
+                        }`}
                       >
                         {metric.changePercent > 0 ? '+' : ''}
                         {metric.changePercent.toFixed(1)}%
@@ -101,13 +101,13 @@ export default function ImpactDisplay({ calculatedMetrics, claudeAnalysis }: Imp
       {claudeAnalysis ? (
         <div className="space-y-4">
           {/* Impact Summary */}
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-            <h3 className="text-sm font-semibold text-blue-900 mb-2">Impact Summary</h3>
-            <p className="text-sm text-blue-800">{claudeAnalysis.impactSummary}</p>
+          <div className="bg-[var(--highlight)] border-l-4 border-[var(--accent)] p-6 rounded">
+            <h3 className="text-sm font-display font-semibold text-[var(--secondary)] mb-2">Impact Summary</h3>
+            <p className="text-sm text-[var(--ink)]">{claudeAnalysis.impactSummary}</p>
           </div>
 
           {/* Recommendation */}
-          <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6 space-y-4">
+          <div className="bg-white rounded shadow-sm border border-[var(--border)] p-6 space-y-4">
             <div className="flex items-start justify-between">
               <div>
                 <h3 className="text-lg font-semibold text-slate-900">Recommendation</h3>
@@ -171,7 +171,7 @@ export default function ImpactDisplay({ calculatedMetrics, claudeAnalysis }: Imp
 
           {/* Risks */}
           {claudeAnalysis.risks.length > 0 && (
-            <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
+            <div className="bg-white rounded shadow-sm border border-[var(--border)] p-6">
               <h3 className="text-lg font-semibold text-slate-900 mb-4">Risk Assessment</h3>
               <div className="space-y-3">
                 {claudeAnalysis.risks.map((risk, index) => (

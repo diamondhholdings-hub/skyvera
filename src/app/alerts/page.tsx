@@ -34,23 +34,28 @@ export default async function AlertsPage() {
   const alerts = alertsResult.value
 
   return (
-    <div className="p-6">
-      {/* Header */}
-      <div className="mb-6 flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold text-slate-900">Proactive Alerts</h1>
-          <p className="text-slate-600 mt-2">At-risk accounts and metric anomalies</p>
+    <div>
+      {/* Editorial Header */}
+      <div className="bg-gradient-to-br from-[var(--secondary)] to-[#1a2332] text-[var(--paper)] px-8 pt-12 pb-8">
+        <div className="max-w-[1400px] mx-auto flex items-center justify-between">
+          <div>
+            <h1 className="font-display text-4xl font-light text-[var(--paper)]">Proactive Alerts</h1>
+            <p className="text-[var(--paper)]/80 mt-2">At-risk accounts and metric anomalies</p>
+          </div>
+          <RefreshButton />
         </div>
-        <RefreshButton />
       </div>
 
-      {/* Alert Summary */}
-      <AlertSummary alerts={alerts} />
+      {/* Content */}
+      <div className="max-w-[1400px] mx-auto px-8 py-8">
+        {/* Alert Summary */}
+        <AlertSummary alerts={alerts} />
 
-      {/* Alert Cards */}
-      <Suspense fallback={<AlertsSkeleton />}>
-        <AlertList alerts={alerts} />
-      </Suspense>
+        {/* Alert Cards */}
+        <Suspense fallback={<AlertsSkeleton />}>
+          <AlertList alerts={alerts} />
+        </Suspense>
+      </div>
     </div>
   )
 }
@@ -62,11 +67,11 @@ function AlertsSkeleton() {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
       {[1, 2, 3, 4].map((i) => (
-        <div key={i} className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
+        <div key={i} className="bg-white rounded shadow-sm border border-[var(--border)] p-6">
           <div className="animate-pulse space-y-3">
-            <div className="h-6 bg-slate-200 rounded w-3/4"></div>
-            <div className="h-4 bg-slate-100 rounded w-full"></div>
-            <div className="h-4 bg-slate-100 rounded w-2/3"></div>
+            <div className="h-6 bg-[var(--border)] rounded w-3/4"></div>
+            <div className="h-4 bg-[var(--border)] rounded w-full"></div>
+            <div className="h-4 bg-[var(--border)] rounded w-2/3"></div>
           </div>
         </div>
       ))}

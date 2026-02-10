@@ -99,10 +99,10 @@ export function QueryResults({
 
   // Normal answer display
   return (
-    <div className="bg-white border border-slate-200 rounded-lg shadow-sm">
+    <div className="bg-white border border-[var(--border)] rounded shadow-sm">
       {/* Header with confidence badge */}
-      <div className="px-6 py-4 border-b border-slate-200 flex items-center justify-between">
-        <h3 className="font-semibold text-slate-900">Answer</h3>
+      <div className="px-6 py-4 border-b border-[var(--border)] flex items-center justify-between">
+        <h3 className="font-display font-semibold text-[var(--secondary)]">Answer</h3>
         <ConfidenceBadge level={response.confidence} />
       </div>
 
@@ -110,16 +110,16 @@ export function QueryResults({
       <div className="px-6 py-4 space-y-4">
         {/* Interpretation */}
         <div>
-          <p className="text-xs font-medium text-slate-500 uppercase tracking-wide mb-1">
+          <p className="text-xs font-bold text-[var(--muted)] uppercase tracking-wide mb-1">
             You asked
           </p>
-          <p className="text-sm text-slate-700 italic">{response.interpretation}</p>
+          <p className="text-sm text-[var(--muted)] italic">{response.interpretation}</p>
         </div>
 
         {/* Answer */}
         {response.answer && (
           <div>
-            <p className="text-base text-slate-900 leading-relaxed">{response.answer}</p>
+            <p className="font-display text-lg text-[var(--ink)] leading-relaxed">{response.answer}</p>
           </div>
         )}
 
@@ -145,13 +145,13 @@ export function QueryResults({
         {/* Sources */}
         {response.sources && response.sources.length > 0 && (
           <div>
-            <p className="text-xs font-medium text-slate-500 uppercase tracking-wide mb-2">
+            <p className="text-xs font-bold text-[var(--muted)] uppercase tracking-wide mb-2">
               Data Sources
             </p>
             <ul className="space-y-1">
               {response.sources.map((source, idx) => (
-                <li key={idx} className="text-sm text-slate-600 flex items-start gap-2">
-                  <svg className="w-4 h-4 text-slate-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <li key={idx} className="text-sm text-[var(--muted)] flex items-start gap-2">
+                  <svg className="w-4 h-4 text-[var(--muted)] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
                   </svg>
                   {source}
