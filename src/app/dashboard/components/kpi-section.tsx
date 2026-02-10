@@ -11,9 +11,9 @@ export async function KPISection() {
 
   if (!result.success) {
     return (
-      <div className="bg-red-50 border border-red-200 rounded-lg p-6">
-        <p className="text-red-800 font-medium">Unable to load financial data</p>
-        <p className="text-red-600 text-sm mt-1">{result.error.message}</p>
+      <div className="bg-[#e74c3c]/10 border border-[#e74c3c]/30 rounded-[15px] p-6">
+        <p className="text-[#e74c3c] font-medium">Unable to load financial data</p>
+        <p className="text-[#e74c3c]/80 text-sm mt-1">{result.error.message}</p>
       </div>
     )
   }
@@ -59,7 +59,7 @@ export async function KPISection() {
           format="currency"
         />
       </div>
-      <p className="text-sm text-muted mt-4">Last updated: {updateText}</p>
+      <p className="text-sm text-[#888] mt-4">Last updated: {updateText}</p>
     </div>
   )
 }

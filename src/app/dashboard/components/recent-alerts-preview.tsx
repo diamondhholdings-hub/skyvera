@@ -5,7 +5,6 @@
 
 import Link from 'next/link'
 import { getProactiveAlerts } from '@/lib/data/server/alert-data'
-import { Card } from '@/components/ui/card'
 import { HealthIndicator } from '@/components/ui/health-indicator'
 
 export async function RecentAlertsPreview() {
@@ -13,12 +12,15 @@ export async function RecentAlertsPreview() {
 
   if (!result.success) {
     return (
-      <Card title="Recent Alerts">
-        <div className="bg-[var(--critical)]/10 border border-[var(--critical)]/30 rounded p-4">
-          <p className="text-[var(--critical)] font-medium">Unable to load alerts</p>
-          <p className="text-[var(--critical)]/80 text-sm mt-1">{result.error.message}</p>
+      <div className="bg-white/5 border border-white/10 rounded-[15px] p-6">
+        <h3 className="text-[#00d4ff] text-lg font-bold mb-6 pb-3 border-b border-white/10">
+          Recent Alerts
+        </h3>
+        <div className="bg-[#e74c3c]/10 border border-[#e74c3c]/30 rounded-[8px] p-4">
+          <p className="text-[#e74c3c] font-medium">Unable to load alerts</p>
+          <p className="text-[#e74c3c]/80 text-sm mt-1">{result.error.message}</p>
         </div>
-      </Card>
+      </div>
     )
   }
 
@@ -26,26 +28,32 @@ export async function RecentAlertsPreview() {
 
   if (alerts.length === 0) {
     return (
-      <Card title="Recent Alerts">
-        <div className="bg-[var(--success)]/10 border border-[var(--success)]/30 rounded p-6 text-center">
-          <p className="text-[var(--success)] font-medium">All metrics within expected ranges</p>
-          <p className="text-[var(--success)]/80 text-sm mt-1">No alerts at this time</p>
+      <div className="bg-white/5 border border-white/10 rounded-[15px] p-6">
+        <h3 className="text-[#00d4ff] text-lg font-bold mb-6 pb-3 border-b border-white/10">
+          Recent Alerts
+        </h3>
+        <div className="bg-[#2ecc71]/10 border border-[#2ecc71]/30 rounded-[8px] p-6 text-center">
+          <p className="text-[#2ecc71] font-medium">All metrics within expected ranges</p>
+          <p className="text-[#2ecc71]/80 text-sm mt-1">No alerts at this time</p>
         </div>
-      </Card>
+      </div>
     )
   }
 
   return (
-    <Card title="Recent Alerts">
+    <div className="bg-white/5 border border-white/10 rounded-[15px] p-6">
+      <h3 className="text-[#00d4ff] text-lg font-bold mb-6 pb-3 border-b border-white/10">
+        Recent Alerts
+      </h3>
       <div className="space-y-3">
         {alerts.map((alert) => {
-          const borderColor = alert.severity === 'red' ? 'var(--critical)' : 'var(--warning)'
-          const bgColor = alert.severity === 'red' ? 'var(--critical)' : 'var(--warning)'
+          const borderColor = alert.severity === 'red' ? '#e74c3c' : '#f39c12'
+          const bgColor = alert.severity === 'red' ? '#e74c3c' : '#f39c12'
 
           return (
             <div
               key={alert.id}
-              className="border-l-4 rounded p-4 transition-colors"
+              className="border-l-4 rounded-[8px] p-4 transition-colors"
               style={{
                 borderLeftColor: borderColor,
                 backgroundColor: `${bgColor}10`,
@@ -54,14 +62,14 @@ export async function RecentAlertsPreview() {
               <div className="flex items-start gap-3">
                 <HealthIndicator score={alert.severity} />
                 <div className="flex-1">
-                  <h4 className="font-semibold text-ink">{alert.title}</h4>
+                  <h4 className="font-semibold text-white">{alert.title}</h4>
                   {alert.accountName && (
-                    <p className="text-sm text-muted mt-1">
+                    <p className="text-sm text-[#aaa] mt-1">
                       Account: {alert.accountName}
                     </p>
                   )}
-                  <p className="text-sm text-ink mt-1">{alert.description}</p>
-                  <div className="flex items-center gap-4 mt-2 text-xs text-muted">
+                  <p className="text-sm text-[#e8e8e8] mt-1">{alert.description}</p>
+                  <div className="flex items-center gap-4 mt-2 text-xs text-[#aaa]">
                     <span>
                       {alert.metricName}: {alert.currentValue}
                     </span>
@@ -75,14 +83,14 @@ export async function RecentAlertsPreview() {
       </div>
 
       {/* Link to full alerts page */}
-      <div className="mt-4 pt-4 border-t border-[var(--border)]">
+      <div className="mt-4 pt-4 border-t border-white/10">
         <Link
           href="/alerts"
-          className="text-accent hover:text-accent/80 text-sm font-medium"
+          className="text-[#00d4ff] hover:text-[#00d4ff]/80 text-sm font-medium"
         >
           View all alerts →
         </Link>
       </div>
-    </Card>
+    </div>
   )
 }

@@ -15,7 +15,6 @@ import {
   Legend,
   ResponsiveContainer,
 } from 'recharts'
-import { Card } from '@/components/ui/card'
 
 interface RevenueTrendPoint {
   quarter: string
@@ -34,56 +33,60 @@ export function RevenueChart({ data }: RevenueChartProps) {
   }
 
   return (
-    <Card title="Revenue Trend">
+    <div className="bg-white/5 border border-white/10 rounded-[15px] p-6">
+      <h3 className="text-[#00d4ff] text-lg font-bold mb-6 pb-3 border-b border-white/10">
+        Revenue Trend
+      </h3>
       <ResponsiveContainer width="100%" height={300}>
         <LineChart
           data={data}
           margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
         >
-          <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
+          <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
           <XAxis
             dataKey="quarter"
-            stroke="var(--muted)"
-            style={{ fontSize: '12px' }}
+            stroke="#888"
+            style={{ fontSize: '12px', fill: '#888' }}
           />
           <YAxis
             tickFormatter={formatDollar}
-            stroke="var(--muted)"
-            style={{ fontSize: '12px' }}
+            stroke="#888"
+            style={{ fontSize: '12px', fill: '#888' }}
           />
           <Tooltip
             formatter={(value) => typeof value === 'number' ? formatDollar(value) : value}
             contentStyle={{
-              backgroundColor: 'var(--paper)',
-              border: '1px solid var(--border)',
-              borderRadius: '4px',
+              backgroundColor: 'rgba(26, 26, 46, 0.95)',
+              border: '1px solid rgba(255,255,255,0.1)',
+              borderRadius: '8px',
               padding: '8px 12px',
+              color: '#e8e8e8',
             }}
           />
           <Legend
-            wrapperStyle={{ fontSize: '14px' }}
+            wrapperStyle={{ fontSize: '14px', color: '#e8e8e8' }}
             iconType="line"
           />
           <Line
             type="monotone"
             dataKey="revenue"
             name="Actual Revenue"
-            stroke="var(--accent)"
+            stroke="#00d4ff"
             strokeWidth={2}
-            dot={{ fill: 'var(--accent)', r: 4 }}
+            dot={{ fill: '#00d4ff', r: 4 }}
             activeDot={{ r: 6 }}
           />
           <Line
             type="monotone"
             dataKey="target"
             name="Target"
-            stroke="var(--secondary)"
+            stroke="#2ecc71"
             strokeWidth={2}
             strokeDasharray="5 5"
-            dot={{ fill: 'var(--secondary)', r: 4 }}
+            dot={{ fill: '#2ecc71', r: 4 }}
           />
         </LineChart>
       </ResponsiveContainer>
-    </Card>
+    </div>
   )
 }

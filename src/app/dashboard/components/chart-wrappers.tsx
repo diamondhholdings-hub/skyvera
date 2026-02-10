@@ -16,11 +16,11 @@ export async function RevenueChartWrapper() {
 
   if (!result.success) {
     return (
-      <div className="bg-paper rounded border border-[var(--border)] p-6 shadow-sm">
-        <h2 className="font-display text-lg font-semibold text-secondary mb-4">Revenue Trend</h2>
-        <div className="bg-[var(--critical)]/10 border border-[var(--critical)]/30 rounded p-4">
-          <p className="text-[var(--critical)] font-medium">Unable to load revenue trend</p>
-          <p className="text-[var(--critical)]/80 text-sm mt-1">{result.error.message}</p>
+      <div className="bg-white/5 rounded-[15px] border border-white/10 p-6">
+        <h2 className="text-[#00d4ff] text-lg font-bold mb-4">Revenue Trend</h2>
+        <div className="bg-[#e74c3c]/10 border border-[#e74c3c]/30 rounded-[8px] p-4">
+          <p className="text-[#e74c3c] font-medium">Unable to load revenue trend</p>
+          <p className="text-[#e74c3c]/80 text-sm mt-1">{result.error.message}</p>
         </div>
       </div>
     )
@@ -38,11 +38,11 @@ export async function MarginComparisonWrapper() {
 
   if (!result.success) {
     return (
-      <div className="bg-paper rounded border border-[var(--border)] p-6 shadow-sm">
-        <h2 className="font-display text-lg font-semibold text-secondary mb-4">Margin Comparison by BU</h2>
-        <div className="bg-[var(--critical)]/10 border border-[var(--critical)]/30 rounded p-4">
-          <p className="text-[var(--critical)] font-medium">Unable to load margin data</p>
-          <p className="text-[var(--critical)]/80 text-sm mt-1">{result.error.message}</p>
+      <div className="bg-white/5 rounded-[15px] border border-white/10 p-6">
+        <h2 className="text-[#00d4ff] text-lg font-bold mb-4">Margin Comparison by BU</h2>
+        <div className="bg-[#e74c3c]/10 border border-[#e74c3c]/30 rounded-[8px] p-4">
+          <p className="text-[#e74c3c] font-medium">Unable to load margin data</p>
+          <p className="text-[#e74c3c]/80 text-sm mt-1">{result.error.message}</p>
         </div>
       </div>
     )
