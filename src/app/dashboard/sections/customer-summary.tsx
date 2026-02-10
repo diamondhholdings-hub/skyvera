@@ -21,7 +21,7 @@ export async function CustomerSummarySection() {
   const totalCustomers = customers.length
   const healthCounts = customers.reduce(
     (acc, c) => {
-      acc[c.health]++
+      acc[c.healthScore]++
       return acc
     },
     { green: 0, yellow: 0, red: 0 } as Record<string, number>

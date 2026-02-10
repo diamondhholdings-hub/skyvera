@@ -18,11 +18,11 @@ export async function AtRiskSection() {
   }
 
   const atRiskCustomers = customersResult.value
-    .filter((c) => c.health === 'red' || c.health === 'yellow')
+    .filter((c) => c.healthScore === 'red' || c.healthScore === 'yellow')
     .sort((a, b) => {
       // Red first, then by revenue
-      if (a.health === 'red' && b.health !== 'red') return -1
-      if (a.health !== 'red' && b.health === 'red') return 1
+      if (a.healthScore === 'red' && b.healthScore !== 'red') return -1
+      if (a.healthScore !== 'red' && b.healthScore === 'red') return 1
       return (b.rr + b.nrr) - (a.rr + a.nrr)
     })
 
@@ -76,12 +76,12 @@ export async function AtRiskSection() {
         <tbody style={{ backgroundColor: 'white' }}>
           {atRiskCustomers.map((customer, index) => {
             const arr = customer.rr * 4
-            const healthBgColor = customer.health === 'red' ? '#ef4444' : '#f59e0b'
-            const healthLabel = customer.health === 'red' ? 'CRITICAL' : 'AT RISK'
+            const healthBgColor = customer.healthScore === 'red' ? '#ef4444' : '#f59e0b'
+            const healthLabel = customer.healthScore === 'red' ? 'CRITICAL' : 'AT RISK'
 
             return (
               <tr
-                key={customer.name}
+                key={customer.customer_name}
                 style={{
                   borderBottom: '1px solid #e2e8f0',
                   transition: 'background-color 0.2s ease'
@@ -92,7 +92,7 @@ export async function AtRiskSection() {
                 <td style={{ padding: '0.75rem', fontSize: '0.875rem', fontWeight: 700, color: '#f5576c' }}>{index + 1}</td>
                 <td style={{ padding: '0.75rem', fontSize: '0.875rem' }}>
                   <Link
-                    href={`/accounts/${encodeURIComponent(customer.name)}`}
+                    href={`/accounts/${encodeURIComponent(customer.customer_name)}`}
                     style={{
                       color: '#667eea',
                       fontWeight: 500,
@@ -108,7 +108,7 @@ export async function AtRiskSection() {
                       e.currentTarget.style.textDecoration = 'none'
                     }}
                   >
-                    {customer.name}
+                    {customer.customer_name}
                   </Link>
                 </td>
                 <td style={{ padding: '0.75rem', fontSize: '0.875rem' }}>{customer.bu}</td>
@@ -132,11 +132,11 @@ export async function AtRiskSection() {
                   </span>
                 </td>
                 <td style={{ padding: '0.75rem', fontSize: '0.875rem', color: '#4b5563' }}>
-                  {customer.health === 'red' ? 'Payment delays, declining usage' : 'Some concerns'}
+                  {customer.healthScore === 'red' ? 'Payment delays, declining usage' : 'Some concerns'}
                 </td>
                 <td style={{ padding: '0.75rem', fontSize: '0.875rem' }}>
                   <Link
-                    href={`/accounts/${encodeURIComponent(customer.name)}`}
+                    href={`/accounts/${encodeURIComponent(customer.customer_name)}`}
                     style={{
                       color: '#667eea',
                       fontSize: '0.75rem',
