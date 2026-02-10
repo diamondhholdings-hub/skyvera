@@ -1,6 +1,6 @@
 /**
  * Metric Card Component
- * Gradient cards with semantic color variants for displaying KPIs
+ * Exact match to reference HTML styling
  */
 
 type MetricCardVariant = 'primary' | 'success' | 'warning' | 'danger'
@@ -12,24 +12,43 @@ interface MetricCardProps {
   subtitle: string
 }
 
-const variantStyles: Record<MetricCardVariant, string> = {
-  primary: 'bg-gradient-to-br from-[#667eea] to-[#764ba2] shadow-[0_4px_15px_rgba(102,126,234,0.4)] text-white',
-  success: 'bg-gradient-to-br from-[#4facfe] to-[#00f2fe] shadow-[0_4px_15px_rgba(79,172,254,0.4)] text-white',
-  warning: 'bg-gradient-to-br from-[#ffd93d] to-[#ff9a3d] shadow-[0_4px_15px_rgba(255,217,61,0.4)] text-[#333]',
-  danger: 'bg-gradient-to-br from-[#ff6b9d] to-[#c9184a] shadow-[0_4px_15px_rgba(255,107,157,0.4)] text-white',
+const variantStyles: Record<MetricCardVariant, React.CSSProperties> = {
+  primary: {
+    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+    color: 'white',
+    padding: '25px',
+    borderRadius: '15px',
+    boxShadow: '0 4px 15px rgba(102, 126, 234, 0.4)',
+  },
+  success: {
+    background: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+    color: 'white',
+    padding: '25px',
+    borderRadius: '15px',
+    boxShadow: '0 4px 15px rgba(79, 172, 254, 0.4)',
+  },
+  warning: {
+    background: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
+    color: 'white',
+    padding: '25px',
+    borderRadius: '15px',
+    boxShadow: '0 4px 15px rgba(250, 112, 154, 0.4)',
+  },
+  danger: {
+    background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+    color: 'white',
+    padding: '25px',
+    borderRadius: '15px',
+    boxShadow: '0 4px 15px rgba(240, 147, 251, 0.4)',
+  },
 }
 
 export function MetricCard({ variant, label, value, subtitle }: MetricCardProps) {
   return (
-    <div
-      className={`
-        ${variantStyles[variant]}
-        p-6 rounded-2xl
-      `}
-    >
-      <div className="text-sm font-medium mb-3 uppercase tracking-wide opacity-95">{label}</div>
-      <div className="text-[2.5rem] font-bold leading-none mb-2">{value}</div>
-      <div className="text-sm font-medium opacity-90">{subtitle}</div>
+    <div style={variantStyles[variant]}>
+      <div style={{ fontSize: '0.85em', opacity: 0.9, marginBottom: '10px' }}>{label}</div>
+      <div style={{ fontSize: '2.3em', fontWeight: 700 }}>{value}</div>
+      <div style={{ fontSize: '0.8em', opacity: 0.85, marginTop: '5px' }}>{subtitle}</div>
     </div>
   )
 }

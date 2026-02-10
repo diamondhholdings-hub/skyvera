@@ -2,8 +2,7 @@
 
 /**
  * 7-Section Dashboard Navigation
- * Sticky navigation bar with section tabs
- * Uses URL search params for deep linking
+ * Exact match to reference HTML navigation
  */
 
 import { useSearchParams, useRouter } from 'next/navigation'
@@ -44,20 +43,51 @@ export function DashboardNavigation() {
 
   return (
     <>
-      {/* Navigation Bar */}
-      <nav className="sticky top-0 z-50 bg-slate-50 py-4 px-10 border-b-2 border-slate-200 flex gap-2.5 flex-wrap">
+      {/* Navigation Bar - exact styling from reference */}
+      <nav style={{
+        background: '#f8f9fa',
+        padding: '15px 40px',
+        borderBottom: '2px solid #e9ecef',
+        display: 'flex',
+        gap: '10px',
+        flexWrap: 'wrap',
+        position: 'sticky',
+        top: 0,
+        zIndex: 100
+      }}>
         {sections.map(({ id, label }) => (
           <button
             key={id}
             onClick={() => handleSectionChange(id)}
-            className={`
-              px-[18px] py-2.5 rounded-lg font-semibold text-[0.9rem] transition-all duration-300
-              ${
-                activeSection === id
-                  ? 'bg-[#1e3c72] text-white'
-                  : 'bg-[#667eea] text-white hover:bg-[#764ba2] hover:-translate-y-0.5'
+            style={{
+              padding: '10px 18px',
+              border: 'none',
+              background: activeSection === id ? '#1e3c72' : '#667eea',
+              color: 'white',
+              borderRadius: '8px',
+              cursor: 'pointer',
+              fontWeight: 600,
+              fontSize: '0.9em',
+              transition: 'all 0.3s',
+              ...(activeSection !== id && {
+                ':hover': {
+                  background: '#764ba2',
+                  transform: 'translateY(-2px)'
+                }
+              })
+            }}
+            onMouseEnter={(e) => {
+              if (activeSection !== id) {
+                e.currentTarget.style.background = '#764ba2'
+                e.currentTarget.style.transform = 'translateY(-2px)'
               }
-            `}
+            }}
+            onMouseLeave={(e) => {
+              if (activeSection !== id) {
+                e.currentTarget.style.background = '#667eea'
+                e.currentTarget.style.transform = 'translateY(0)'
+              }
+            }}
           >
             {label}
           </button>

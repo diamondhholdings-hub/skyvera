@@ -1,7 +1,7 @@
 /**
  * Executive Intelligence Dashboard
- * Professional boxed layout matching Executive Intelligence Report design
- * 7-section navigation with gradient metric cards and semantic color coding
+ * Exact match to Skyvera_Executive_Intelligence_Report.html
+ * Uses inline styles extracted from reference HTML
  */
 
 import { Suspense } from 'react'
@@ -18,10 +18,10 @@ import { DashboardNavigation } from './components/dashboard-navigation'
 function DashboardSkeleton() {
   return (
     <div className="animate-pulse space-y-6">
-      <div className="h-64 bg-slate-100 rounded-2xl" />
+      <div className="h-64 bg-slate-100 rounded-[15px]" />
       <div className="grid grid-cols-3 gap-5">
         {[...Array(6)].map((_, i) => (
-          <div key={i} className="h-32 bg-slate-100 rounded-xl" />
+          <div key={i} className="h-32 bg-slate-100 rounded-[15px]" />
         ))}
       </div>
     </div>
@@ -30,28 +30,57 @@ function DashboardSkeleton() {
 
 export default function DashboardPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#1e3c72] to-[#2a5298] p-5">
-      {/* Main Container - White boxed layout */}
-      <div className="max-w-[1600px] mx-auto bg-white rounded-[20px] shadow-[0_20px_60px_rgba(0,0,0,0.3)] overflow-hidden">
+    <>
+      {/* Styles extracted from reference HTML */}
+      <style jsx global>{`
+        body {
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+          background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+          color: #333;
+          padding: 20px;
+          line-height: 1.6;
+        }
+      `}</style>
 
-        {/* Header */}
-        <header className="bg-gradient-to-br from-[#1e3c72] to-[#2a5298] text-white py-10 px-10 text-center">
-          <h1 className="text-5xl font-bold mb-2.5">
+      <div style={{
+        maxWidth: '1600px',
+        margin: '0 auto',
+        background: 'white',
+        borderRadius: '20px',
+        boxShadow: '0 20px 60px rgba(0,0,0,0.3)',
+        overflow: 'hidden'
+      }}>
+        {/* Header - exact match */}
+        <header style={{
+          background: 'linear-gradient(135deg, #1e3c72 0%, #2a5298 100%)',
+          color: 'white',
+          padding: '40px',
+          textAlign: 'center'
+        }}>
+          <h1 style={{
+            fontSize: '2.8em',
+            marginBottom: '10px',
+            fontWeight: 700
+          }}>
             Skyvera Executive Intelligence Report
           </h1>
-          <div className="text-xl opacity-90 mb-2.5">
+          <div style={{
+            fontSize: '1.3em',
+            opacity: 0.9,
+            marginBottom: '10px'
+          }}>
             Financial & Customer Intelligence Analysis - Q1'26
           </div>
-          <div className="text-base opacity-80">
+          <div style={{ fontSize: '1em', opacity: 0.8 }}>
             Report Date: {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })} | Classification: Executive Confidential
           </div>
         </header>
 
-        {/* 7-Section Navigation */}
+        {/* 7-Section Navigation - exact match */}
         <DashboardNavigation />
 
         {/* Content Area */}
-        <div className="p-10">
+        <div style={{ padding: '40px' }}>
           <Suspense fallback={<DashboardSkeleton />}>
             {/* All sections render, visibility controlled by client component */}
             <FinancialSummarySection />
@@ -64,19 +93,31 @@ export default function DashboardPage() {
           </Suspense>
         </div>
 
-        {/* Footer */}
-        <footer className="bg-[#1e3c72] text-white py-8 px-10 text-center">
-          <div className="mb-5">
-            <div className="text-lg font-semibold mb-2">Skyvera Intelligence Platform</div>
-            <div className="opacity-80 text-sm">
+        {/* Footer - exact match */}
+        <footer style={{
+          background: '#1e3c72',
+          color: 'white',
+          padding: '30px 40px',
+          textAlign: 'center'
+        }}>
+          <div style={{ marginBottom: '20px' }}>
+            <div style={{ fontSize: '1.2em', fontWeight: 600, marginBottom: '10px' }}>
+              Skyvera Intelligence Platform
+            </div>
+            <div style={{ opacity: 0.8, fontSize: '0.95em' }}>
               Powered by AI-driven analysis and real-time data integration
             </div>
           </div>
-          <div className="pt-5 border-t border-white/20 opacity-70 text-sm">
+          <div style={{
+            paddingTop: '20px',
+            borderTop: '1px solid rgba(255,255,255,0.2)',
+            opacity: 0.7,
+            fontSize: '0.9em'
+          }}>
             © 2026 Skyvera. Executive Confidential. All Rights Reserved.
           </div>
         </footer>
       </div>
-    </div>
+    </>
   )
 }
