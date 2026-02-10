@@ -119,8 +119,8 @@ export function OrganizationTab({ stakeholders }: OrganizationTabProps) {
   return (
     <div className="space-y-8">
       {/* Org chart */}
-      <div className="bg-slate-50 p-6 rounded-lg">
-        <h2 className="text-xl font-semibold text-slate-900 mb-6">Organization Structure</h2>
+      <div className="bg-highlight/30 p-6 rounded-lg border border-[var(--border)]">
+        <h2 className="font-display text-xl font-semibold text-secondary mb-6">Organization Structure</h2>
 
         <div className="space-y-6">
           {roots.map((root) => renderStakeholderTree(root))}
@@ -130,28 +130,28 @@ export function OrganizationTab({ stakeholders }: OrganizationTabProps) {
       {/* Summary stats */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Role breakdown */}
-        <div className="bg-white p-6 rounded-lg border border-slate-200">
-          <h3 className="text-lg font-semibold text-slate-900 mb-4">Roles</h3>
+        <div className="bg-white p-6 rounded-lg border border-[var(--border)] shadow-sm">
+          <h3 className="font-display text-lg font-semibold text-secondary mb-4">Roles</h3>
           <div className="space-y-2">
             <div className="flex items-center justify-between text-sm">
-              <span className="text-slate-600">Total Stakeholders</span>
-              <span className="font-semibold text-slate-900">{localStakeholders.length}</span>
+              <span className="text-muted">Total Stakeholders</span>
+              <span className="font-semibold text-ink">{localStakeholders.length}</span>
             </div>
             {Object.entries(roleCounts).map(([role, count]) => (
               <div key={role} className="flex items-center justify-between text-sm">
-                <span className="text-slate-600 capitalize">
+                <span className="text-muted capitalize">
                   {roleLabels[role] || role}
                   {count > 1 ? 's' : ''}
                 </span>
-                <span className="font-medium text-slate-700">{count}</span>
+                <span className="font-medium text-ink">{count}</span>
               </div>
             ))}
           </div>
         </div>
 
         {/* Relationship health */}
-        <div className="bg-white p-6 rounded-lg border border-slate-200">
-          <h3 className="text-lg font-semibold text-slate-900 mb-4">Relationship Health</h3>
+        <div className="bg-white p-6 rounded-lg border border-[var(--border)] shadow-sm">
+          <h3 className="font-display text-lg font-semibold text-secondary mb-4">Relationship Health</h3>
           <div className="space-y-2">
             {Object.entries(relationshipCounts).map(([strength, count]) => (
               <div key={strength} className="flex items-center justify-between text-sm">
@@ -159,17 +159,17 @@ export function OrganizationTab({ stakeholders }: OrganizationTabProps) {
                   <div
                     className={`w-3 h-3 rounded-full ${
                       strength === 'strong'
-                        ? 'bg-green-500'
+                        ? 'bg-success'
                         : strength === 'moderate'
-                        ? 'bg-amber-500'
+                        ? 'bg-warning'
                         : strength === 'weak'
-                        ? 'bg-red-500'
-                        : 'bg-gray-400'
+                        ? 'bg-critical'
+                        : 'bg-muted'
                     }`}
                   />
-                  <span className="text-slate-600 capitalize">{strength}</span>
+                  <span className="text-muted capitalize">{strength}</span>
                 </div>
-                <span className="font-medium text-slate-700">{count}</span>
+                <span className="font-medium text-ink">{count}</span>
               </div>
             ))}
           </div>

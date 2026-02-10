@@ -18,7 +18,7 @@ export function StrategyTab({ painPoints, opportunities }: StrategyTabProps) {
       {/* Pain Points Column */}
       <div>
         <div className="flex items-center gap-3 mb-4">
-          <h2 className="text-xl font-semibold text-slate-900">Pain Points</h2>
+          <h2 className="font-display text-xl font-semibold text-secondary">Pain Points</h2>
           <Badge variant="default">{painPoints.length}</Badge>
         </div>
 
@@ -42,7 +42,7 @@ export function StrategyTab({ painPoints, opportunities }: StrategyTabProps) {
       {/* Opportunities Column */}
       <div>
         <div className="flex items-center gap-3 mb-4">
-          <h2 className="text-xl font-semibold text-slate-900">Opportunities</h2>
+          <h2 className="font-display text-xl font-semibold text-secondary">Opportunities</h2>
           <Badge variant="default">{opportunities.length}</Badge>
         </div>
 
@@ -71,18 +71,18 @@ export function StrategyTab({ painPoints, opportunities }: StrategyTabProps) {
  */
 function PainPointCard({ painPoint }: { painPoint: PainPoint }) {
   return (
-    <div className="bg-white border border-slate-200 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
+    <div className="bg-white border border-[var(--border)] rounded p-4 shadow-sm hover:shadow-md transition-shadow">
       <div className="flex items-start justify-between gap-2 mb-2">
-        <h3 className="font-semibold text-slate-900">{painPoint.title}</h3>
+        <h3 className="font-semibold text-ink">{painPoint.title}</h3>
         <SeverityBadge severity={painPoint.severity} />
       </div>
 
-      <p className="text-sm text-slate-600 mb-3">{painPoint.description}</p>
+      <p className="text-sm text-muted mb-3">{painPoint.description}</p>
 
       <div className="flex items-center gap-2">
         <StatusBadge status={painPoint.status} />
         {painPoint.owner && (
-          <span className="text-xs text-slate-500">Owner: {painPoint.owner}</span>
+          <span className="text-xs text-muted">Owner: {painPoint.owner}</span>
         )}
       </div>
     </div>
@@ -98,27 +98,27 @@ function OpportunityCard({ opportunity }: { opportunity: Opportunity }) {
   }
 
   return (
-    <div className="bg-white border border-slate-200 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
+    <div className="bg-white border border-[var(--border)] rounded p-4 shadow-sm hover:shadow-md transition-shadow">
       <div className="flex items-start justify-between gap-2 mb-2">
-        <h3 className="font-semibold text-slate-900">{opportunity.title}</h3>
+        <h3 className="font-semibold text-ink">{opportunity.title}</h3>
         <OpportunityStatusBadge status={opportunity.status} />
       </div>
 
-      <p className="text-sm text-slate-600 mb-3">{opportunity.description}</p>
+      <p className="text-sm text-muted mb-3">{opportunity.description}</p>
 
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3 text-sm">
           {opportunity.estimatedValue && (
-            <span className="font-medium text-green-700">
+            <span className="font-display font-semibold text-[#2e7d32]">
               {formatValue(opportunity.estimatedValue)}
             </span>
           )}
           {opportunity.probability !== undefined && (
-            <span className="text-slate-600">{opportunity.probability}% probability</span>
+            <span className="text-muted">{opportunity.probability}% probability</span>
           )}
         </div>
         {opportunity.owner && (
-          <span className="text-xs text-slate-500">Owner: {opportunity.owner}</span>
+          <span className="text-xs text-muted">Owner: {opportunity.owner}</span>
         )}
       </div>
     </div>

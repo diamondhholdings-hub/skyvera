@@ -140,26 +140,26 @@ export function ActionItemsTab({ initialActions }: ActionItemsTabProps) {
 
       {/* Summary bar */}
       {actions.length > 0 && (
-        <div className="bg-slate-50 rounded-lg p-4 flex flex-wrap gap-4 text-sm">
+        <div className="bg-highlight/30 rounded-lg p-4 flex flex-wrap gap-4 text-sm border border-[var(--border)]">
           <div className="flex items-center gap-2">
-            <span className="font-medium text-slate-700">Total:</span>
-            <span className="text-slate-900">{totalCount} items</span>
+            <span className="font-medium text-muted">Total:</span>
+            <span className="text-ink font-semibold">{totalCount} items</span>
           </div>
           <div className="flex items-center gap-2">
-            <span className="font-medium text-slate-700">Priority:</span>
-            <span className="text-red-700">{highCount} High</span>
-            <span className="text-slate-400">•</span>
-            <span className="text-yellow-700">{mediumCount} Medium</span>
-            <span className="text-slate-400">•</span>
-            <span className="text-green-700">{lowCount} Low</span>
+            <span className="font-medium text-muted">Priority:</span>
+            <span className="text-[#c62828] font-medium">{highCount} High</span>
+            <span className="text-muted/50">•</span>
+            <span className="text-[#e65100] font-medium">{mediumCount} Medium</span>
+            <span className="text-muted/50">•</span>
+            <span className="text-[#2e7d32] font-medium">{lowCount} Low</span>
           </div>
           <div className="flex items-center gap-2">
-            <span className="font-medium text-slate-700">Status:</span>
-            <span className="text-slate-900">{todoActions.length} To Do</span>
-            <span className="text-slate-400">•</span>
-            <span className="text-slate-900">{inProgressActions.length} In Progress</span>
-            <span className="text-slate-400">•</span>
-            <span className="text-slate-900">{doneActions.length} Done</span>
+            <span className="font-medium text-muted">Status:</span>
+            <span className="text-ink">{todoActions.length} To Do</span>
+            <span className="text-muted/50">•</span>
+            <span className="text-ink">{inProgressActions.length} In Progress</span>
+            <span className="text-muted/50">•</span>
+            <span className="text-ink">{doneActions.length} Done</span>
           </div>
         </div>
       )}

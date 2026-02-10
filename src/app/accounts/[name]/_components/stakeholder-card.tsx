@@ -57,7 +57,7 @@ export function StakeholderCard({ stakeholder, onUpdate }: StakeholderCardProps)
 
   if (isEditing) {
     return (
-      <div className="bg-white p-4 rounded-lg shadow border-2 border-blue-500 w-64">
+      <div className="bg-white p-4 rounded-lg shadow border-2 border-accent w-64">
         {/* Edit mode */}
         <div className="space-y-2">
           <div>
@@ -157,13 +157,13 @@ export function StakeholderCard({ stakeholder, onUpdate }: StakeholderCardProps)
           <div className="flex gap-2 pt-2">
             <button
               onClick={handleSave}
-              className="flex-1 px-3 py-1.5 bg-blue-600 text-white text-sm font-medium rounded hover:bg-blue-700"
+              className="flex-1 px-3 py-1.5 bg-accent text-white text-sm font-medium rounded hover:bg-accent/90"
             >
               Save
             </button>
             <button
               onClick={handleCancel}
-              className="flex-1 px-3 py-1.5 text-slate-600 text-sm font-medium rounded hover:bg-slate-100"
+              className="flex-1 px-3 py-1.5 text-muted text-sm font-medium rounded hover:bg-highlight"
             >
               Cancel
             </button>
@@ -178,40 +178,40 @@ export function StakeholderCard({ stakeholder, onUpdate }: StakeholderCardProps)
 
   return (
     <div
-      className="bg-white p-4 rounded-lg shadow hover:shadow-md w-64 cursor-pointer transition-shadow"
+      className="bg-paper border border-[var(--border)] p-5 rounded border-l-4 border-l-accent shadow-sm hover:shadow-md w-64 cursor-pointer transition-shadow"
       onClick={() => setIsEditing(true)}
     >
-      {/* Name and role badges */}
-      <div className="flex items-start gap-2 mb-2">
-        <div className="flex-1">
-          <h3 className="font-semibold text-slate-900 text-sm leading-tight">{stakeholder.name}</h3>
-        </div>
-        <div className="flex flex-col gap-1 items-end">
-          <span className={`px-2 py-0.5 text-xs font-medium rounded border ${roleColors[stakeholder.role]}`}>
-            {roleLabels[stakeholder.role]}
+      {/* Role badge */}
+      <div className="mb-2">
+        <span className="text-xs uppercase tracking-wider text-accent font-bold">
+          {roleLabels[stakeholder.role]}
+        </span>
+        {stakeholder.raciRole && (
+          <span className="ml-2 px-2 py-0.5 text-xs font-medium rounded bg-highlight text-muted border border-[var(--border)]">
+            {stakeholder.raciRole.charAt(0).toUpperCase()}
           </span>
-          {stakeholder.raciRole && (
-            <span className="px-2 py-0.5 text-xs font-medium rounded bg-gray-100 text-gray-700 border border-gray-200">
-              {stakeholder.raciRole.charAt(0).toUpperCase()}
-            </span>
-          )}
-        </div>
+        )}
       </div>
 
+      {/* Name */}
+      <h3 className="font-display text-xl font-semibold text-secondary mb-3 leading-tight">
+        {stakeholder.name}
+      </h3>
+
       {/* Title */}
-      <p className="text-sm text-slate-600 mb-3">{stakeholder.title}</p>
+      <p className="text-sm text-ink mb-3">{stakeholder.title}</p>
 
       {/* Contact info */}
       {(stakeholder.email || stakeholder.phone) && (
         <div className="space-y-1 mb-3">
           {stakeholder.email && (
-            <div className="flex items-center gap-1.5 text-xs text-slate-500">
+            <div className="flex items-center gap-1.5 text-xs text-muted">
               <Mail className="w-3 h-3" />
               <span className="truncate">{stakeholder.email}</span>
             </div>
           )}
           {stakeholder.phone && (
-            <div className="flex items-center gap-1.5 text-xs text-slate-500">
+            <div className="flex items-center gap-1.5 text-xs text-muted">
               <Phone className="w-3 h-3" />
               <span>{stakeholder.phone}</span>
             </div>
@@ -232,7 +232,7 @@ export function StakeholderCard({ stakeholder, onUpdate }: StakeholderCardProps)
 
       {/* Last interaction */}
       {stakeholder.lastInteraction && (
-        <div className="flex items-center gap-1.5 text-xs text-slate-500 mb-2">
+        <div className="flex items-center gap-1.5 text-xs text-muted mb-2">
           <Clock className="w-3 h-3" />
           <span>
             {formatDistanceToNow(new Date(stakeholder.lastInteraction), { addSuffix: true })}
@@ -242,10 +242,10 @@ export function StakeholderCard({ stakeholder, onUpdate }: StakeholderCardProps)
 
       {/* Notes (truncated) */}
       {stakeholder.notes && (
-        <div className="mt-3 pt-3 border-t border-slate-200">
+        <div className="mt-3 pt-3 border-t border-[var(--border)]">
           <div className="flex items-start gap-1.5">
-            <MessageSquare className="w-3 h-3 text-slate-400 mt-0.5 flex-shrink-0" />
-            <p className="text-xs text-slate-600 line-clamp-2">{stakeholder.notes}</p>
+            <MessageSquare className="w-3 h-3 text-muted mt-0.5 flex-shrink-0" />
+            <p className="text-xs text-ink line-clamp-2">{stakeholder.notes}</p>
           </div>
         </div>
       )}

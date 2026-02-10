@@ -22,34 +22,34 @@ export function IntelligenceTab({ intelligenceReport, news, customerName }: Inte
     <div className="space-y-8">
       {/* Intelligence Report Section */}
       <div>
-        <h2 className="text-xl font-semibold text-slate-900 mb-4">Strategic Intelligence</h2>
+        <h2 className="font-display text-xl font-semibold text-secondary mb-4">Strategic Intelligence</h2>
 
         {hasIntelligence ? (
           <div className="space-y-6">
             {/* Display raw markdown for now - structured parsing in future iteration */}
-            <div className="bg-white p-6 rounded-lg border border-slate-200">
+            <div className="bg-highlight/50 p-6 rounded border-l-3 border-accent shadow-sm">
               <div className="prose prose-sm max-w-none">
-                <div className="whitespace-pre-wrap text-sm text-slate-700 leading-relaxed">
+                <div className="whitespace-pre-wrap text-sm text-ink leading-relaxed">
                   {intelligenceReport.raw.slice(0, 2000)}
                   {intelligenceReport.raw.length > 2000 && (
-                    <span className="text-blue-600"> ... (read full report for more)</span>
+                    <span className="text-accent"> ... (read full report for more)</span>
                   )}
                 </div>
               </div>
               {intelligenceReport.raw.length > 2000 && (
-                <p className="text-xs text-slate-500 mt-4 pt-4 border-t border-slate-200">
+                <p className="text-xs text-muted mt-4 pt-4 border-t border-[var(--border)]">
                   Full intelligence report available - parsed from account analysis
                 </p>
               )}
             </div>
           </div>
         ) : (
-          <div className="bg-amber-50 border-2 border-amber-200 rounded-lg p-6">
+          <div className="bg-warning/10 border-2 border-warning rounded-lg p-6">
             <div className="flex items-start gap-3">
-              <AlertTriangle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+              <AlertTriangle className="w-5 h-5 text-[#e65100] flex-shrink-0 mt-0.5" />
               <div>
-                <h3 className="font-semibold text-amber-900 mb-1">No Intelligence Report Available</h3>
-                <p className="text-sm text-amber-700">
+                <h3 className="font-semibold text-[#e65100] mb-1">No Intelligence Report Available</h3>
+                <p className="text-sm text-[#e65100]">
                   Intelligence data for <strong>{customerName}</strong> has not been generated yet.
                   Check back later for AI-powered insights.
                 </p>
@@ -61,7 +61,7 @@ export function IntelligenceTab({ intelligenceReport, news, customerName }: Inte
 
       {/* News Timeline Section */}
       <div>
-        <h2 className="text-xl font-semibold text-slate-900 mb-4">Recent News & Intelligence</h2>
+        <h2 className="font-display text-xl font-semibold text-secondary mb-4">Recent News & Intelligence</h2>
 
         {hasNews ? (
           <div className="space-y-3">
@@ -102,33 +102,33 @@ function NewsArticleCard({ article }: NewsArticleCardProps) {
   }
 
   return (
-    <div className="bg-white p-4 rounded-lg border border-slate-200 hover:border-slate-300 transition-colors">
+    <div className="bg-white p-4 rounded border border-[var(--border)] hover:border-accent/30 transition-colors shadow-sm">
       {/* Title */}
       <a
         href={article.url}
         target="_blank"
         rel="noopener noreferrer"
-        className="text-blue-600 hover:underline font-medium text-sm block mb-2"
+        className="text-accent hover:underline font-medium text-sm block mb-2"
       >
         {article.title}
       </a>
 
       {/* Source and date */}
-      <div className="flex items-center gap-2 text-xs text-slate-500 mb-2">
+      <div className="flex items-center gap-2 text-xs text-muted mb-2">
         <span>{article.source}</span>
         <span>•</span>
         <span>{relativeTime}</span>
         {article.relevanceScore && article.relevanceScore > 0.8 && (
           <>
             <span>•</span>
-            <span className="text-blue-600 font-medium">High relevance</span>
+            <span className="text-accent font-medium">High relevance</span>
           </>
         )}
       </div>
 
       {/* Summary */}
       {cleanSummary && (
-        <p className="text-sm text-slate-600 leading-relaxed">
+        <p className="text-sm text-ink leading-relaxed">
           {cleanSummary}
           {article.summary.length > 200 && '...'}
         </p>

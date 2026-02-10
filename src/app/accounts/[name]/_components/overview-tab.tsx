@@ -46,22 +46,22 @@ export function OverviewTab({ customer, intelligenceReport }: OverviewTabProps) 
         <Card title="Account Summary">
           <dl className="space-y-3">
             <div>
-              <dt className="text-sm font-medium text-slate-600">Customer Name</dt>
-              <dd className="text-base text-slate-900 mt-1">{customer.customer_name}</dd>
+              <dt className="text-sm font-medium text-muted">Customer Name</dt>
+              <dd className="text-base text-ink mt-1">{customer.customer_name}</dd>
             </div>
             <div>
-              <dt className="text-sm font-medium text-slate-600">Business Unit</dt>
-              <dd className="text-base text-slate-900 mt-1">{customer.bu}</dd>
+              <dt className="text-sm font-medium text-muted">Business Unit</dt>
+              <dd className="text-base text-ink mt-1">{customer.bu}</dd>
             </div>
             <div>
-              <dt className="text-sm font-medium text-slate-600">Rank</dt>
-              <dd className="text-base text-slate-900 mt-1">
+              <dt className="text-sm font-medium text-muted">Rank</dt>
+              <dd className="text-base text-ink mt-1">
                 #{customer.rank} of total customers
               </dd>
             </div>
             <div>
-              <dt className="text-sm font-medium text-slate-600">% of Total Revenue</dt>
-              <dd className="text-base text-slate-900 mt-1">
+              <dt className="text-sm font-medium text-muted">% of Total Revenue</dt>
+              <dd className="text-base text-ink mt-1">
                 {customer.pct_of_total !== undefined ? customer.pct_of_total.toFixed(2) : 'N/A'}%
               </dd>
             </div>
@@ -72,18 +72,18 @@ export function OverviewTab({ customer, intelligenceReport }: OverviewTabProps) 
         <Card title="Quick Intelligence">
           {truncatedReport ? (
             <div className="space-y-3">
-              <p className="text-sm text-slate-700 whitespace-pre-wrap">{truncatedReport}</p>
+              <p className="text-sm text-ink whitespace-pre-wrap">{truncatedReport}</p>
               <Link
                 href={`?tab=intelligence`}
-                className="text-sm text-blue-600 hover:text-blue-800 hover:underline inline-block"
+                className="text-sm text-accent hover:text-accent/80 hover:underline inline-block"
               >
                 View full report on Intelligence tab →
               </Link>
             </div>
           ) : (
             <div className="text-center py-8">
-              <p className="text-slate-500 text-sm">No intelligence report available</p>
-              <p className="text-xs text-slate-400 mt-1">
+              <p className="text-muted text-sm">No intelligence report available</p>
+              <p className="text-xs text-muted/70 mt-1">
                 Intelligence reports are generated for key accounts
               </p>
             </div>
@@ -97,13 +97,13 @@ export function OverviewTab({ customer, intelligenceReport }: OverviewTabProps) 
           <ul className="space-y-2">
             {customer.healthFactors.map((factor, index) => (
               <li key={index} className="flex items-start gap-2">
-                <span className="text-slate-400 mt-1">•</span>
-                <span className="text-sm text-slate-700">{factor}</span>
+                <span className="text-muted/50 mt-1">•</span>
+                <span className="text-sm text-ink">{factor}</span>
               </li>
             ))}
           </ul>
         ) : (
-          <p className="text-sm text-slate-500">No specific health factors recorded</p>
+          <p className="text-sm text-muted">No specific health factors recorded</p>
         )}
       </Card>
     </div>
@@ -123,19 +123,19 @@ function KPICard({
   isHealth?: boolean
 }) {
   const healthConfig = {
-    green: { color: 'bg-green-100 text-green-800', icon: '✓' },
-    yellow: { color: 'bg-yellow-100 text-yellow-800', icon: '⚠' },
-    red: { color: 'bg-red-100 text-red-800', icon: '✕' },
+    green: { color: 'bg-success/20 text-[#2e7d32]', icon: '✓' },
+    yellow: { color: 'bg-warning/20 text-[#e65100]', icon: '⚠' },
+    red: { color: 'bg-critical/20 text-[#c62828]', icon: '✕' },
   }
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-sm border border-slate-200">
-      <h3 className="text-sm font-medium text-slate-600">{title}</h3>
+    <div className="bg-highlight p-5 border-l-3 border-accent shadow-sm">
+      <h3 className="text-xs uppercase tracking-wider text-muted font-semibold">{title}</h3>
       {isHealth ? (
         <div className="mt-2">
           <span
             className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium ${
-              healthConfig[value as keyof typeof healthConfig]?.color || 'bg-slate-100 text-slate-800'
+              healthConfig[value as keyof typeof healthConfig]?.color || 'bg-highlight text-muted'
             }`}
           >
             {healthConfig[value as keyof typeof healthConfig]?.icon || '?'}
@@ -143,7 +143,7 @@ function KPICard({
           </span>
         </div>
       ) : (
-        <p className="text-3xl font-bold text-slate-900 mt-2">{value}</p>
+        <p className="text-2xl font-display font-semibold text-secondary mt-2">{value}</p>
       )}
     </div>
   )

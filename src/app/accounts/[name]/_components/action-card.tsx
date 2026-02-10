@@ -25,19 +25,19 @@ export function ActionCard({ action, isDragging }: ActionCardProps) {
 
   return (
     <div
-      className={`bg-white p-3 rounded shadow cursor-move ${
+      className={`bg-white border border-[var(--border)] p-4 rounded shadow-sm cursor-move ${
         isDragging ? 'opacity-50' : ''
       }`}
     >
       {/* Top row: title + priority badge */}
       <div className="flex items-start gap-2 mb-2">
-        <div className="font-medium text-sm flex-1">{action.title}</div>
+        <div className="font-medium text-sm flex-1 text-ink">{action.title}</div>
         <PriorityBadge priority={action.priority} />
       </div>
 
       {/* Owner line */}
       {action.owner && (
-        <div className="flex items-center gap-1 text-xs text-slate-600 mb-1">
+        <div className="flex items-center gap-1 text-xs text-muted mb-1">
           <User size={12} />
           <span>{action.owner}</span>
         </div>
@@ -45,9 +45,9 @@ export function ActionCard({ action, isDragging }: ActionCardProps) {
 
       {/* Due date line */}
       {action.dueDate && (
-        <div className="flex items-center gap-1 text-xs text-slate-600">
+        <div className="flex items-center gap-1 text-xs text-muted">
           <Calendar size={12} />
-          <span className={isPastDue ? 'text-red-600 font-medium' : ''}>
+          <span className={isPastDue ? 'text-critical font-medium' : ''}>
             {format(new Date(action.dueDate), 'MMM d, yyyy')}
           </span>
         </div>
@@ -62,17 +62,17 @@ export function ActionCard({ action, isDragging }: ActionCardProps) {
 function PriorityBadge({ priority }: { priority: 'high' | 'medium' | 'low' }) {
   const config = {
     high: {
-      className: 'bg-red-100 text-red-800',
+      className: 'bg-critical/20 text-[#c62828]',
       icon: AlertCircle,
       label: 'High',
     },
     medium: {
-      className: 'bg-yellow-100 text-yellow-800',
+      className: 'bg-warning/20 text-[#e65100]',
       icon: Minus,
       label: 'Medium',
     },
     low: {
-      className: 'bg-green-100 text-green-800',
+      className: 'bg-success/20 text-[#2e7d32]',
       icon: CheckCircle,
       label: 'Low',
     },
