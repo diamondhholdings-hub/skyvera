@@ -135,13 +135,13 @@ async function detectPatterns(customers: any[]) {
   }, {} as Record<string, any[]>);
 
   const multiBuCustomers = Object.entries(customersByName)
-    .filter(([_, cs]) => new Set(cs.map(c => c.bu)).size > 1)
+    .filter(([_, cs]) => new Set((cs as any[]).map(c => c.bu)).size > 1)
     .map(([name, _]) => name);
 
   if (multiBuCustomers.length >= 2) {
     const totalArr = multiBuCustomers.reduce((sum, name) => {
-      const customerRecords = customersByName[name];
-      return sum + customerRecords.reduce((s, c) => s + c.totalRevenue, 0);
+      const customerRecords = customersByName[name] as any[];
+      return sum + customerRecords.reduce((s: number, c: any) => s + c.totalRevenue, 0);
     }, 0);
 
     patterns.push({

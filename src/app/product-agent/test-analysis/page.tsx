@@ -8,6 +8,38 @@ export default function TestAnalysisPage() {
   const [progress, setProgress] = useState(0);
   const [currentStage, setCurrentStage] = useState('');
   const [results, setResults] = useState<any>(null);
+  const [generatingPRD, setGeneratingPRD] = useState<string | null>(null);
+  const [viewingPRD, setViewingPRD] = useState<any>(null);
+
+  const generatePRD = async (patternId: string) => {
+    setGeneratingPRD(patternId);
+
+    try {
+      const response = await fetch('/api/product-agent/generate-prd', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ patternId })
+      });
+
+      if (!response.ok) {
+        throw new Error(`Failed to generate PRD: ${response.statusText}`);
+      }
+
+      const data = await response.json();
+
+      if (data.success) {
+        // Show the PRD in a modal
+        setViewingPRD(data.prd);
+      } else {
+        alert(`Error: ${data.error || 'Unknown error'}`);
+      }
+    } catch (error) {
+      console.error('PRD generation error:', error);
+      alert(`Error generating PRD: ${error instanceof Error ? error.message : 'Unknown error'}`);
+    } finally {
+      setGeneratingPRD(null);
+    }
+  };
 
   const runAnalysis = async () => {
     setIsAnalyzing(true);
@@ -250,8 +282,19 @@ export default function TestAnalysisPage() {
                       <div className="text-sm font-medium text-gray-700">Recommended PRD</div>
                       <div className="text-lg font-semibold text-gray-900">{pattern.prd_title}</div>
                     </div>
-                    <button className="px-4 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors">
-                      Generate PRD
+                    <button
+                      onClick={() => generatePRD(pattern.patternId)}
+                      disabled={generatingPRD === pattern.patternId}
+                      className="px-4 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
+                    >
+                      {generatingPRD === pattern.patternId ? (
+                        <span className="flex items-center gap-2">
+                          <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                          Generating...
+                        </span>
+                      ) : (
+                        'Generate PRD'
+                      )}
                     </button>
                   </div>
                 )}
@@ -294,7 +337,116 @@ export default function TestAnalysisPage() {
             </div>
           </div>
         )}
+
+        {/* PRD Modal */}
+        {viewingPRD && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+            <div className="bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-hidden flex flex-col">
+              {/* Header */}
+              <div className="flex items-center justify-between p-6 border-b border-gray-200">
+                <div>
+                  <div className="flex items-center gap-3 mb-2">
+                    <h2 className="text-2xl font-bold text-gray-900">{viewingPRD.title}</h2>
+                    <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
+                      {viewingPRD.prdId}
+                    </span>
+                    <span className={`px-3 py-1 rounded-full text-sm font-medium ${
+                      viewingPRD.priorityClass === 'P0' ? 'bg-red-100 text-red-800' :
+                      viewingPRD.priorityClass === 'P1' ? 'bg-orange-100 text-orange-800' :
+                      viewingPRD.priorityClass === 'P2' ? 'bg-yellow-100 text-yellow-800' :
+                      'bg-gray-100 text-gray-800'
+                    }`}>
+                      {viewingPRD.priorityClass}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-4 text-sm text-gray-600">
+                    <span>Priority Score: {viewingPRD.priorityScore}/100</span>
+                    <span>•</span>
+                    <span>Confidence: {viewingPRD.confidenceScore}%</span>
+                    <span>•</span>
+                    <span>Status: {viewingPRD.status}</span>
+                    <span>•</span>
+                    <span>ARR Impact: ${(viewingPRD.arrImpact / 1000).toFixed(0)}K</span>
+                  </div>
+                </div>
+                <button
+                  onClick={() => setViewingPRD(null)}
+                  className="text-gray-400 hover:text-gray-600 transition-colors"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+
+              {/* Content */}
+              <div className="flex-1 overflow-y-auto p-6">
+                <div className="prose prose-sm max-w-none">
+                  <div dangerouslySetInnerHTML={{ __html: markdownToHtml(viewingPRD.content) }} />
+                </div>
+              </div>
+
+              {/* Footer */}
+              <div className="flex items-center justify-between p-6 border-t border-gray-200 bg-gray-50">
+                <div className="text-sm text-gray-600">
+                  {viewingPRD.customerCount} customers affected • {viewingPRD.implementationWeeks} week implementation
+                </div>
+                <div className="flex gap-3">
+                  <button
+                    onClick={() => {
+                      const blob = new Blob([viewingPRD.content], { type: 'text/markdown' });
+                      const url = URL.createObjectURL(blob);
+                      const a = document.createElement('a');
+                      a.href = url;
+                      a.download = `${viewingPRD.prdId}-${viewingPRD.title.replace(/[^a-z0-9]/gi, '-').toLowerCase()}.md`;
+                      document.body.appendChild(a);
+                      a.click();
+                      document.body.removeChild(a);
+                      URL.revokeObjectURL(url);
+                    }}
+                    className="px-4 py-2 border border-gray-300 text-gray-700 font-medium rounded-lg hover:bg-gray-100 transition-colors"
+                  >
+                    Download Markdown
+                  </button>
+                  <button
+                    onClick={() => setViewingPRD(null)}
+                    className="px-4 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
+}
+
+// Simple markdown to HTML converter (basic version)
+function markdownToHtml(markdown: string): string {
+  let html = markdown;
+
+  // Headers
+  html = html.replace(/^### (.*$)/gim, '<h3>$1</h3>');
+  html = html.replace(/^## (.*$)/gim, '<h2>$1</h2>');
+  html = html.replace(/^# (.*$)/gim, '<h1>$1</h1>');
+
+  // Bold
+  html = html.replace(/\*\*(.*?)\*\*/gim, '<strong>$1</strong>');
+
+  // Italic
+  html = html.replace(/\*(.*?)\*/gim, '<em>$1</em>');
+
+  // Lists
+  html = html.replace(/^\* (.*$)/gim, '<li>$1</li>');
+  html = html.replace(/^- (.*$)/gim, '<li>$1</li>');
+  html = html.replace(/(<li>[\s\S]*<\/li>)/, '<ul>$1</ul>');
+
+  // Line breaks
+  html = html.replace(/\n\n/g, '</p><p>');
+  html = '<p>' + html + '</p>';
+
+  return html;
 }

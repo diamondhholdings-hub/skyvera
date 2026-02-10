@@ -7,7 +7,21 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        ink: '#1a1a1a',
+        paper: '#fafaf8',
+        accent: '#c84b31',
+        secondary: '#2d4263',
+        muted: '#8b8b8b',
+        'border-editorial': '#e8e6e1',
+        highlight: '#ecdbba',
+      },
+      fontFamily: {
+        display: ['Cormorant Garamond', 'serif'],
+        sans: ['DM Sans', 'sans-serif'],
+      },
+    },
   },
   plugins: [],
 };
