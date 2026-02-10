@@ -36,17 +36,21 @@ function TabNavigationContent({ accountName }: TabNavigationProps) {
   return (
     <>
       {/* Desktop: Horizontal tab bar */}
-      <div className="hidden md:block border-b border-slate-200 mb-6">
-        <nav className="flex space-x-8" aria-label="Account tabs">
+      <div className="hidden md:block sticky top-0 z-50 bg-white border-b-2 border-[var(--border)] shadow-sm">
+        <nav className="max-w-[1400px] mx-auto px-8 flex overflow-x-auto" aria-label="Account tabs">
           {tabs.map((tab) => (
             <button
               key={tab.id}
               onClick={() => handleTabChange(tab.id)}
-              className={`py-4 px-1 border-b-2 font-medium text-sm transition-colors ${
+              className={`py-5 px-6 border-b-3 border-transparent font-medium text-muted whitespace-nowrap transition-all duration-300 ${
                 activeTab === tab.id
-                  ? 'border-blue-600 text-blue-600'
-                  : 'border-transparent text-slate-600 hover:text-slate-900 hover:border-slate-300'
+                  ? 'text-accent border-accent bg-accent/5'
+                  : 'hover:text-secondary hover:bg-highlight'
               }`}
+              style={{
+                borderBottomWidth: activeTab === tab.id ? '3px' : '3px',
+                borderBottomColor: activeTab === tab.id ? 'var(--accent)' : 'transparent',
+              }}
               aria-current={activeTab === tab.id ? 'page' : undefined}
             >
               {tab.label}
@@ -56,7 +60,7 @@ function TabNavigationContent({ accountName }: TabNavigationProps) {
       </div>
 
       {/* Mobile: Dropdown select */}
-      <div className="md:hidden mb-6">
+      <div className="md:hidden mb-6 px-8">
         <label htmlFor="tab-select" className="sr-only">
           Select tab
         </label>
@@ -64,7 +68,7 @@ function TabNavigationContent({ accountName }: TabNavigationProps) {
           id="tab-select"
           value={activeTab}
           onChange={(e) => handleTabChange(e.target.value)}
-          className="w-full px-4 py-2 border border-slate-300 rounded-lg bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          className="w-full px-4 py-2 border-2 border-[var(--border)] rounded-lg bg-white focus:border-accent focus:ring-accent"
         >
           {tabs.map((tab) => (
             <option key={tab.id} value={tab.id}>
@@ -81,8 +85,8 @@ export function TabNavigation({ accountName }: TabNavigationProps) {
   return (
     <Suspense
       fallback={
-        <div className="border-b border-slate-200 mb-6">
-          <div className="h-14 animate-pulse bg-slate-100"></div>
+        <div className="sticky top-0 z-50 bg-white border-b-2 border-[var(--border)] shadow-sm">
+          <div className="h-16 animate-pulse bg-highlight/50"></div>
         </div>
       }
     >

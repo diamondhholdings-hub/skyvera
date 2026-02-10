@@ -85,27 +85,77 @@ export default async function AccountPlanPage({ params, searchParams }: AccountP
     notFound()
   }
 
-  return (
-    <div className="p-6">
-      {/* Back link */}
-      <Link
-        href="/accounts"
-        className="inline-flex items-center text-sm text-blue-600 hover:text-blue-800 hover:underline mb-4"
-      >
-        ← Back to Accounts
-      </Link>
+  // Calculate total revenue
+  const totalRevenue = (customer.rr || 0) + (customer.nrr || 0)
 
-      {/* Header */}
-      <div className="mb-6">
-        <div className="flex justify-between items-start">
-          <div>
-            <h1 className="text-3xl font-bold text-slate-900 mb-2">{customer.customer_name}</h1>
-            <div className="flex items-center gap-3">
-              <Badge variant="default">{customer.bu}</Badge>
-              <HealthIndicator score={customer.healthScore} />
+  return (
+    <div>
+      {/* Back link */}
+      <div className="max-w-[1400px] mx-auto px-8 pt-4">
+        <Link
+          href="/accounts"
+          className="inline-flex items-center text-sm text-accent hover:text-accent/80 hover:underline"
+        >
+          ← Back to Accounts
+        </Link>
+      </div>
+
+      {/* Hero Header */}
+      <div className="bg-gradient-to-br from-secondary to-[#1a2332] text-paper px-8 pt-12 pb-10">
+        <div className="max-w-[1400px] mx-auto">
+          <div className="flex justify-between items-start mb-6">
+            <div className="flex-1">
+              <h1 className="font-display text-4xl font-light text-paper mb-2">
+                {customer.customer_name}
+              </h1>
+              <div className="flex items-center gap-3 text-paper/80 text-lg">
+                <span>Strategic Account Plan</span>
+                <span>|</span>
+                <Badge variant="default">{customer.bu} Business Unit</Badge>
+                <span>|</span>
+                <HealthIndicator score={customer.healthScore} />
+                <span>|</span>
+                <span>Q1 2026</span>
+              </div>
+            </div>
+            <RefreshButton label="Refresh Data" />
+          </div>
+
+          {/* Stat Cards */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-6">
+            <div className="bg-white/10 p-5 rounded border border-white/10">
+              <div className="text-xs uppercase tracking-wider text-paper/70 mb-2">
+                Total Revenue
+              </div>
+              <div className="text-2xl font-display font-semibold text-paper">
+                ${totalRevenue.toLocaleString()}
+              </div>
+            </div>
+            <div className="bg-white/10 p-5 rounded border border-white/10">
+              <div className="text-xs uppercase tracking-wider text-paper/70 mb-2">
+                Recurring Revenue
+              </div>
+              <div className="text-2xl font-display font-semibold text-paper">
+                ${(customer.rr || 0).toLocaleString()}
+              </div>
+            </div>
+            <div className="bg-white/10 p-5 rounded border border-white/10">
+              <div className="text-xs uppercase tracking-wider text-paper/70 mb-2">
+                Non-Recurring Revenue
+              </div>
+              <div className="text-2xl font-display font-semibold text-paper">
+                ${(customer.nrr || 0).toLocaleString()}
+              </div>
+            </div>
+            <div className="bg-white/10 p-5 rounded border border-white/10">
+              <div className="text-xs uppercase tracking-wider text-paper/70 mb-2">
+                Health Score
+              </div>
+              <div className="text-2xl font-display font-semibold text-paper">
+                {customer.healthScore}%
+              </div>
             </div>
           </div>
-          <RefreshButton label="Refresh Data" />
         </div>
       </div>
 
@@ -113,54 +163,56 @@ export default async function AccountPlanPage({ params, searchParams }: AccountP
       <TabNavigation accountName={name} />
 
       {/* Tab Content */}
-      {activeTab === 'overview' && (
-        <Suspense fallback={<TabSkeleton />}>
-          <OverviewTab customer={customer} intelligenceReport={accountData.intelligence.raw} />
-        </Suspense>
-      )}
+      <div className="max-w-[1400px] mx-auto px-8 py-6">
+        {activeTab === 'overview' && (
+          <Suspense fallback={<TabSkeleton />}>
+            <OverviewTab customer={customer} intelligenceReport={accountData.intelligence.raw} />
+          </Suspense>
+        )}
 
-      {activeTab === 'financials' && (
-        <Suspense fallback={<TabSkeleton />}>
-          <FinancialsTab customer={customer} />
-        </Suspense>
-      )}
+        {activeTab === 'financials' && (
+          <Suspense fallback={<TabSkeleton />}>
+            <FinancialsTab customer={customer} />
+          </Suspense>
+        )}
 
-      {activeTab === 'organization' && (
-        <Suspense fallback={<TabSkeleton />}>
-          <OrganizationTab stakeholders={accountData.stakeholders} />
-        </Suspense>
-      )}
+        {activeTab === 'organization' && (
+          <Suspense fallback={<TabSkeleton />}>
+            <OrganizationTab stakeholders={accountData.stakeholders} />
+          </Suspense>
+        )}
 
-      {activeTab === 'strategy' && (
-        <Suspense fallback={<TabSkeleton />}>
-          <StrategyTab
-            painPoints={accountData.strategy.painPoints}
-            opportunities={accountData.strategy.opportunities}
-          />
-        </Suspense>
-      )}
+        {activeTab === 'strategy' && (
+          <Suspense fallback={<TabSkeleton />}>
+            <StrategyTab
+              painPoints={accountData.strategy.painPoints}
+              opportunities={accountData.strategy.opportunities}
+            />
+          </Suspense>
+        )}
 
-      {activeTab === 'competitive' && (
-        <Suspense fallback={<TabSkeleton />}>
-          <CompetitiveTab competitors={accountData.competitors} />
-        </Suspense>
-      )}
+        {activeTab === 'competitive' && (
+          <Suspense fallback={<TabSkeleton />}>
+            <CompetitiveTab competitors={accountData.competitors} />
+          </Suspense>
+        )}
 
-      {activeTab === 'intelligence' && (
-        <Suspense fallback={<TabSkeleton />}>
-          <IntelligenceTab
-            intelligenceReport={accountData.intelligence}
-            news={accountData.news}
-            customerName={customerName}
-          />
-        </Suspense>
-      )}
+        {activeTab === 'intelligence' && (
+          <Suspense fallback={<TabSkeleton />}>
+            <IntelligenceTab
+              intelligenceReport={accountData.intelligence}
+              news={accountData.news}
+              customerName={customerName}
+            />
+          </Suspense>
+        )}
 
-      {activeTab === 'action-items' && (
-        <Suspense fallback={<TabSkeleton />}>
-          <ActionItemsTab initialActions={accountData.actions} />
-        </Suspense>
-      )}
+        {activeTab === 'action-items' && (
+          <Suspense fallback={<TabSkeleton />}>
+            <ActionItemsTab initialActions={accountData.actions} />
+          </Suspense>
+        )}
+      </div>
     </div>
   )
 }
