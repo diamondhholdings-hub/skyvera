@@ -3,7 +3,7 @@
  * Display customers with red/yellow health status
  */
 
-import { getAllCustomersWithHealth } from '@/lib/data/server/customer-data'
+import { getAllCustomersWithHealth } from '@/lib/data/server/account-data'
 import Link from 'next/link'
 
 export async function AtRiskSection() {
