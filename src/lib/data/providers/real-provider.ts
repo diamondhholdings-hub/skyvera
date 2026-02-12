@@ -44,8 +44,8 @@ export class RealDataProvider implements DataProvider {
         return err(customersResult.error)
       }
 
-      const financials = financialsResult.value.value[0] as any
-      const customers = customersResult.value.value as Customer[]
+      const financials = financialsResult.value.data[0] as any
+      const customers = customersResult.value.data as Customer[]
 
       // Map to FinancialData format expected by SemanticResolver
       const financialData: FinancialData = {
@@ -93,7 +93,7 @@ export class RealDataProvider implements DataProvider {
         return err(result.error)
       }
 
-      const customers = result.value.value as Customer[]
+      const customers = result.value.data as Customer[]
       return ok(customers)
     } catch (error) {
       return err(

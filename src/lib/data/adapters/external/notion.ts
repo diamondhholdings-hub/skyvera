@@ -600,10 +600,10 @@ export class NotionAdapter implements DataAdapter {
     }
 
     return ok({
-      data: accountPlanResult.data ? [accountPlanResult.data] : [],
+      data: accountPlanResult.value ? [accountPlanResult.value] : [],
       source: this.name,
       timestamp: new Date(),
-      count: accountPlanResult.data ? 1 : 0,
+      count: accountPlanResult.value ? 1 : 0,
     })
   }
 
