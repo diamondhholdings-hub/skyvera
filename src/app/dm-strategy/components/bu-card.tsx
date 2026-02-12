@@ -71,49 +71,99 @@ export default function BUCard({ metrics, isActive = false, onClick }: BUCardPro
         )}
       </div>
 
-      {/* DM% Donut Chart */}
-      <div className="dm-flex dm-justify-center dm-items-center" style={{ marginBottom: 'var(--space-lg)' }}>
-        <div style={{ position: 'relative', width: size, height: size }}>
-          <svg width={size} height={size} style={{ transform: 'rotate(-90deg)' }}>
-            {/* Background Circle */}
-            <circle
-              cx={size / 2}
-              cy={size / 2}
-              r={radius}
-              fill="none"
-              stroke="var(--border)"
-              strokeWidth={strokeWidth}
-            />
-            {/* Progress Circle */}
-            <circle
-              cx={size / 2}
-              cy={size / 2}
-              r={radius}
-              fill="none"
-              stroke={metrics.color}
-              strokeWidth={strokeWidth}
-              strokeDasharray={circumference}
-              strokeDashoffset={offset}
-              strokeLinecap="round"
-              style={{ transition: 'stroke-dashoffset 0.5s ease' }}
-            />
-          </svg>
-          {/* Center Text */}
-          <div
-            style={{
-              position: 'absolute',
-              top: '50%',
-              left: '50%',
-              transform: 'translate(-50%, -50%)',
-              textAlign: 'center'
-            }}
-          >
-            <div style={{ fontSize: '1.75rem', fontWeight: 700, color: metrics.color }}>
-              {metrics.currentDM.toFixed(1)}%
-            </div>
-            <div style={{ fontSize: '0.75rem', color: 'var(--text-light)' }}>
-              Target: {metrics.targetDM.toFixed(1)}%
-            </div>
+      {/* DM% Three Periods */}
+      <div style={{
+        background: 'var(--background)',
+        borderRadius: 'var(--radius-md)',
+        padding: 'var(--space-md)',
+        marginBottom: 'var(--space-lg)'
+      }}>
+        <div style={{
+          display: 'grid',
+          gap: 'var(--space-sm)'
+        }}>
+          {/* Monthly DM% */}
+          <div style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            paddingBottom: 'var(--space-xs)',
+            borderBottom: '1px solid var(--border)'
+          }}>
+            <span style={{
+              fontSize: '0.75rem',
+              color: 'var(--text-light)',
+              fontWeight: 600
+            }}>
+              This Month (Jan)
+            </span>
+            <span style={{
+              fontSize: '1rem',
+              fontWeight: 700,
+              color: metrics.monthlyDM >= metrics.targetDM ? 'var(--success)' : 'var(--critical)'
+            }}>
+              {metrics.monthlyDM.toFixed(1)}%
+            </span>
+          </div>
+
+          {/* Quarterly DM% */}
+          <div style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            paddingBottom: 'var(--space-xs)',
+            borderBottom: '1px solid var(--border)'
+          }}>
+            <span style={{
+              fontSize: '0.75rem',
+              color: 'var(--text-light)',
+              fontWeight: 600
+            }}>
+              This Quarter (Q1)
+            </span>
+            <span style={{
+              fontSize: '1rem',
+              fontWeight: 700,
+              color: metrics.quarterlyDM >= metrics.targetDM ? 'var(--success)' : 'var(--critical)'
+            }}>
+              {metrics.quarterlyDM.toFixed(1)}%
+            </span>
+          </div>
+
+          {/* TTM DM% - Primary */}
+          <div style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            background: `${metrics.color}10`,
+            padding: 'var(--space-xs)',
+            borderRadius: 'var(--radius-sm)',
+            marginTop: 'var(--space-xs)'
+          }}>
+            <span style={{
+              fontSize: '0.875rem',
+              color: metrics.color,
+              fontWeight: 700
+            }}>
+              TTM (12 Mo.)
+            </span>
+            <span style={{
+              fontSize: '1.5rem',
+              fontWeight: 700,
+              color: metrics.color
+            }}>
+              {metrics.ttmDM.toFixed(1)}%
+            </span>
+          </div>
+
+          {/* Target Reference */}
+          <div style={{
+            textAlign: 'center',
+            fontSize: '0.7rem',
+            color: 'var(--text-light)',
+            marginTop: 'var(--space-xs)'
+          }}>
+            Target: {metrics.targetDM.toFixed(1)}%
           </div>
         </div>
       </div>

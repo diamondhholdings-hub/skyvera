@@ -70,13 +70,46 @@ export default function DMStrategyHero({ stats }: DMStrategyHeroProps) {
           marginTop: 'var(--space-xl)'
         }}
       >
-        {/* Current DM% */}
+        {/* Monthly DM% */}
         <div
           className="dm-hero-stat"
           style={{
-            background: 'rgba(255, 255, 255, 0.1)',
+            background: 'rgba(255, 255, 255, 0.08)',
             backdropFilter: 'blur(10px)',
-            padding: 'var(--space-lg)',
+            padding: 'var(--space-md)',
+            borderRadius: 'var(--radius-md)',
+            border: '1px solid rgba(255, 255, 255, 0.15)'
+          }}
+        >
+          <div
+            className="dm-hero-stat-value"
+            style={{
+              fontSize: '1.5rem',
+              fontWeight: 700,
+              marginBottom: 'var(--space-xs)',
+              color: 'var(--white)'
+            }}
+          >
+            {stats.monthlyDM.toFixed(1)}%
+          </div>
+          <div
+            className="dm-hero-stat-label"
+            style={{
+              fontSize: '0.75rem',
+              opacity: 0.7
+            }}
+          >
+            This Month (Jan)
+          </div>
+        </div>
+
+        {/* Quarterly DM% */}
+        <div
+          className="dm-hero-stat"
+          style={{
+            background: 'rgba(255, 255, 255, 0.12)',
+            backdropFilter: 'blur(10px)',
+            padding: 'var(--space-md)',
             borderRadius: 'var(--radius-md)',
             border: '1px solid rgba(255, 255, 255, 0.2)'
           }}
@@ -84,22 +117,75 @@ export default function DMStrategyHero({ stats }: DMStrategyHeroProps) {
           <div
             className="dm-hero-stat-value"
             style={{
-              fontSize: '2rem',
+              fontSize: '1.5rem',
               fontWeight: 700,
               marginBottom: 'var(--space-xs)',
               color: 'var(--white)'
             }}
           >
-            {stats.currentDM.toFixed(1)}%
+            {stats.quarterlyDM.toFixed(1)}%
+          </div>
+          <div
+            className="dm-hero-stat-label"
+            style={{
+              fontSize: '0.75rem',
+              opacity: 0.7
+            }}
+          >
+            This Quarter (Q1'26)
+          </div>
+        </div>
+
+        {/* TTM DM% - Primary */}
+        <div
+          className="dm-hero-stat"
+          style={{
+            background: 'rgba(255, 255, 255, 0.2)',
+            backdropFilter: 'blur(10px)',
+            padding: 'var(--space-lg)',
+            borderRadius: 'var(--radius-md)',
+            border: '2px solid rgba(255, 255, 255, 0.4)',
+            position: 'relative',
+            overflow: 'hidden'
+          }}
+        >
+          <div
+            style={{
+              position: 'absolute',
+              top: 'var(--space-xs)',
+              right: 'var(--space-xs)',
+              background: 'rgba(255, 255, 255, 0.3)',
+              color: 'var(--white)',
+              padding: '4px 8px',
+              borderRadius: 'var(--radius-sm)',
+              fontSize: '0.625rem',
+              fontWeight: 700,
+              textTransform: 'uppercase',
+              letterSpacing: '0.5px'
+            }}
+          >
+            Primary
+          </div>
+          <div
+            className="dm-hero-stat-value"
+            style={{
+              fontSize: '2.25rem',
+              fontWeight: 700,
+              marginBottom: 'var(--space-xs)',
+              color: 'var(--white)'
+            }}
+          >
+            {stats.ttmDM.toFixed(1)}%
           </div>
           <div
             className="dm-hero-stat-label"
             style={{
               fontSize: '0.875rem',
-              opacity: 0.8
+              opacity: 0.9,
+              fontWeight: 600
             }}
           >
-            Current DM% Rate
+            TTM (12 Months)
           </div>
         </div>
 

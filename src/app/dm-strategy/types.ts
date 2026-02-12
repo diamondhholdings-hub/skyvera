@@ -29,7 +29,10 @@ export interface Recommendation {
 
 export interface BusinessUnitMetrics {
   name: BusinessUnit;
-  currentDM: number; // percentage
+  currentDM: number; // TTM (trailing 12 months) - primary metric
+  monthlyDM: number; // current month DM%
+  quarterlyDM: number; // current quarter DM%
+  ttmDM: number; // trailing 12 months DM% (same as currentDM for backward compat)
   targetDM: number; // percentage
   trend: TrendDirection;
   trendValue: number; // percentage points change
@@ -80,7 +83,10 @@ export interface AccountHealthSummary {
 }
 
 export interface DashboardStats {
-  currentDM: number;
+  currentDM: number; // TTM (primary display)
+  monthlyDM: number; // current month
+  quarterlyDM: number; // current quarter
+  ttmDM: number; // trailing 12 months
   potentialARR: number;
   activeRecommendations: number;
   totalAccounts: number;

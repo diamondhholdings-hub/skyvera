@@ -13,7 +13,10 @@ import '../styles.css';
 
 // Sample Data
 const sampleStats: DashboardStats = {
-  currentDM: 94.8,      // Portfolio-wide 94.8% retention (weighted average)
+  currentDM: 94.8,       // TTM - Primary metric (trailing 12 months)
+  monthlyDM: 93.5,       // January 2026 (volatile, one bad month)
+  quarterlyDM: 94.2,     // Q1'26 (3-month average)
+  ttmDM: 94.8,           // Trailing 12 months (most stable)
   potentialARR: 2100000, // $2.1M ARR at risk or recoverable
   activeRecommendations: 12,
   totalAccounts: 140,
@@ -23,10 +26,13 @@ const sampleStats: DashboardStats = {
 const sampleBusinessUnits: BusinessUnitMetrics[] = [
   {
     name: 'Cloudsense',
-    currentDM: 94.7, // 94.7% retention (lost 5.3% of revenue)
-    targetDM: 95.0,  // Target 95% retention
-    trend: 'down',   // Getting worse (retention declining)
-    trendValue: -0.3, // Down 0.3 percentage points
+    currentDM: 94.7,  // TTM - Primary metric
+    monthlyDM: 93.2,  // January 2026 (bad month, lost key account)
+    quarterlyDM: 94.1, // Q1'26 (recovering)
+    ttmDM: 94.7,      // Trailing 12 months (stable trend)
+    targetDM: 95.0,   // Target 95% retention
+    trend: 'down',    // TTM trending down vs prior period
+    trendValue: -0.3, // Down 0.3pp vs prior TTM
     arr: 8000000,
     accountCount: 65,
     recommendationCount: 5,
@@ -34,10 +40,13 @@ const sampleBusinessUnits: BusinessUnitMetrics[] = [
   },
   {
     name: 'Kandy',
-    currentDM: 97.8, // 97.8% retention (lost 2.2% of revenue)
-    targetDM: 95.0,  // Target 95% retention (exceeding!)
-    trend: 'up',     // Getting better (retention improving)
-    trendValue: 0.5, // Up 0.5 percentage points
+    currentDM: 97.8,  // TTM - Primary metric
+    monthlyDM: 98.5,  // January 2026 (excellent month!)
+    quarterlyDM: 98.1, // Q1'26 (strong quarter)
+    ttmDM: 97.8,      // Trailing 12 months (consistently strong)
+    targetDM: 95.0,   // Target 95% retention (exceeding!)
+    trend: 'up',      // TTM trending up vs prior period
+    trendValue: 0.5,  // Up 0.5pp vs prior TTM
     arr: 3300000,
     accountCount: 45,
     recommendationCount: 4,
@@ -45,10 +54,13 @@ const sampleBusinessUnits: BusinessUnitMetrics[] = [
   },
   {
     name: 'STL',
-    currentDM: 92.5, // 92.5% retention (lost 7.5% of revenue)
-    targetDM: 95.0,  // Target 95% retention (below target)
-    trend: 'neutral',
-    trendValue: 0.0,
+    currentDM: 92.5,  // TTM - Primary metric
+    monthlyDM: 91.8,  // January 2026 (below target)
+    quarterlyDM: 92.2, // Q1'26 (struggling)
+    ttmDM: 92.5,      // Trailing 12 months (needs improvement)
+    targetDM: 95.0,   // Target 95% retention (below target)
+    trend: 'neutral', // TTM flat vs prior period
+    trendValue: 0.0,  // No change vs prior TTM
     arr: 1000000,
     accountCount: 30,
     recommendationCount: 3,
