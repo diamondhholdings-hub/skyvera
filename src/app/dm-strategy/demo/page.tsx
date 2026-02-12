@@ -13,20 +13,20 @@ import '../styles.css';
 
 // Sample Data
 const sampleStats: DashboardStats = {
-  currentDM: 8.2,
-  potentialARR: 2100000,
+  currentDM: 94.8,      // Portfolio-wide 94.8% retention (weighted average)
+  potentialARR: 2100000, // $2.1M ARR at risk or recoverable
   activeRecommendations: 12,
   totalAccounts: 140,
-  atRiskAccounts: 8
+  atRiskAccounts: 8      // 8 accounts below 90% retention threshold
 };
 
 const sampleBusinessUnits: BusinessUnitMetrics[] = [
   {
     name: 'Cloudsense',
-    currentDM: 7.8,
-    targetDM: 7.0,
-    trend: 'down',
-    trendValue: -0.5,
+    currentDM: 94.7, // 94.7% retention (lost 5.3% of revenue)
+    targetDM: 95.0,  // Target 95% retention
+    trend: 'down',   // Getting worse (retention declining)
+    trendValue: -0.3, // Down 0.3 percentage points
     arr: 8000000,
     accountCount: 65,
     recommendationCount: 5,
@@ -34,10 +34,10 @@ const sampleBusinessUnits: BusinessUnitMetrics[] = [
   },
   {
     name: 'Kandy',
-    currentDM: 9.2,
-    targetDM: 8.0,
-    trend: 'up',
-    trendValue: 0.3,
+    currentDM: 97.8, // 97.8% retention (lost 2.2% of revenue)
+    targetDM: 95.0,  // Target 95% retention (exceeding!)
+    trend: 'up',     // Getting better (retention improving)
+    trendValue: 0.5, // Up 0.5 percentage points
     arr: 3300000,
     accountCount: 45,
     recommendationCount: 4,
@@ -45,8 +45,8 @@ const sampleBusinessUnits: BusinessUnitMetrics[] = [
   },
   {
     name: 'STL',
-    currentDM: 7.5,
-    targetDM: 8.0,
+    currentDM: 92.5, // 92.5% retention (lost 7.5% of revenue)
+    targetDM: 95.0,  // Target 95% retention (below target)
     trend: 'neutral',
     trendValue: 0.0,
     arr: 1000000,
@@ -265,7 +265,7 @@ const sampleRecommendations: Recommendation[] = [
 
 export default function DMStrategyDemoPage() {
   return (
-    <div style={{ minHeight: '100vh', background: 'var(--background)' }}>
+    <div style={{ minHeight: '100vh', background: '#FAFAFA' }}>
       {/* Hero Section */}
       <DMStrategyHero stats={sampleStats} />
 
