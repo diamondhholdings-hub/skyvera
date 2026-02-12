@@ -104,8 +104,6 @@ export async function CustomerSummarySection() {
             textDecoration: 'none',
             transition: 'all 0.3s'
           }}
-          onMouseEnter={(e) => e.currentTarget.style.background = '#764ba2'}
-          onMouseLeave={(e) => e.currentTarget.style.background = '#667eea'}
         >
           View All Accounts →
         </Link>

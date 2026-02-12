@@ -1,3 +1,5 @@
+'use client'
+
 /**
  * BU Performance Table
  * Exact match to reference HTML styling

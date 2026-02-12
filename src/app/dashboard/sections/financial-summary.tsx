@@ -149,9 +149,7 @@ export async function FinancialSummarySection() {
             </tr>
           </thead>
           <tbody style={{ background: 'white' }}>
-            <tr style={{ borderBottom: '1px solid #e2e8f0' }}
-              onMouseEnter={(e) => e.currentTarget.style.background = '#f8fafc'}
-              onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}>
+            <tr style={{ borderBottom: '1px solid #e2e8f0' }}>
               <td style={{ padding: '12px', fontSize: '0.9em' }}>HC COGS Increase</td>
               <td style={{ padding: '12px', fontSize: '0.9em' }}>
                 <span style={{
@@ -168,9 +166,7 @@ export async function FinancialSummarySection() {
               </td>
               <td style={{ padding: '12px', fontSize: '0.9em' }}>43 new XO contractors hired</td>
             </tr>
-            <tr style={{ borderBottom: '1px solid #e2e8f0' }}
-              onMouseEnter={(e) => e.currentTarget.style.background = '#f8fafc'}
-              onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}>
+            <tr style={{ borderBottom: '1px solid #e2e8f0' }}>
               <td style={{ padding: '12px', fontSize: '0.9em' }}>RR Decline</td>
               <td style={{ padding: '12px', fontSize: '0.9em' }}>
                 <span style={{
@@ -187,9 +183,7 @@ export async function FinancialSummarySection() {
               </td>
               <td style={{ padding: '12px', fontSize: '0.9em' }}>Recurring revenue down vs. prior plan</td>
             </tr>
-            <tr style={{ borderBottom: '1px solid #e2e8f0' }}
-              onMouseEnter={(e) => e.currentTarget.style.background = '#f8fafc'}
-              onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}>
+            <tr style={{ borderBottom: '1px solid #e2e8f0' }}>
               <td style={{ padding: '12px', fontSize: '0.9em' }}>NHC Expenses Up</td>
               <td style={{ padding: '12px', fontSize: '0.9em' }}>
                 <span style={{
@@ -206,8 +200,7 @@ export async function FinancialSummarySection() {
               </td>
               <td style={{ padding: '12px', fontSize: '0.9em' }}>Software/professional services</td>
             </tr>
-            <tr onMouseEnter={(e) => e.currentTarget.style.background = '#f8fafc'}
-              onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}>
+            <tr>
               <td style={{ padding: '12px', fontSize: '0.9em' }}>CF COGS Down</td>
               <td style={{ padding: '12px', fontSize: '0.9em' }}>
                 <span style={{
@@ -268,9 +261,7 @@ export async function FinancialSummarySection() {
                 variance < 0 ? '#f5576c' : variance < 50000 ? '#fa709a' : '#4facfe'
 
               return (
-                <tr key={bu.bu} style={{ borderBottom: '1px solid #e2e8f0' }}
-                  onMouseEnter={(e) => e.currentTarget.style.background = '#f8fafc'}
-                  onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}>
+                <tr key={bu.bu} style={{ borderBottom: '1px solid #e2e8f0' }}>
                   <td style={{ padding: '12px', fontSize: '0.9em' }}>{bu.bu}</td>
                   <td style={{ padding: '12px', fontSize: '0.9em' }}>${(bu.totalRR / 1e6).toFixed(2)}M</td>
                   <td style={{ padding: '12px', fontSize: '0.9em' }}>${(priorPlan / 1e6).toFixed(2)}M</td>

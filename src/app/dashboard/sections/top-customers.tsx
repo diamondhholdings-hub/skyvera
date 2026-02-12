@@ -51,14 +51,13 @@ export async function TopCustomersSection() {
                   : '#ef4444'
 
             return (
-              <tr key={`${customer.customer_name}-${index}`} style={{ borderBottom: '1px solid #e2e8f0', transition: 'background-color 0.15s ease-in-out' }} onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#f8fafc')} onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}>
+              <tr key={`${customer.customer_name}-${index}`} style={{ borderBottom: '1px solid #e2e8f0', transition: 'background-color 0.15s ease-in-out' }}>
                 <td style={{ padding: '0.75rem', fontSize: '0.875rem', fontWeight: '600' }}>{index + 1}</td>
                 <td style={{ padding: '0.75rem', fontSize: '0.875rem' }}>
                   <Link
                     href={`/accounts/${encodeURIComponent(customer.customer_name)}`}
-                    style={{ color: '#667eea', fontWeight: '500', textDecoration: 'none', transition: 'color 0.15s ease-in-out' }}
-                    onMouseEnter={(e) => { e.currentTarget.style.color = '#764ba2'; e.currentTarget.style.textDecoration = 'underline' }}
-                    onMouseLeave={(e) => { e.currentTarget.style.color = '#667eea'; e.currentTarget.style.textDecoration = 'none' }}
+                    className="hover:text-purple-600 hover:underline transition-colors"
+                    style={{ color: '#667eea', fontWeight: '500', textDecoration: 'none' }}
                   >
                     {customer.customer_name}
                   </Link>
@@ -76,9 +75,8 @@ export async function TopCustomersSection() {
                 <td style={{ padding: '0.75rem', fontSize: '0.875rem' }}>
                   <Link
                     href={`/accounts/${encodeURIComponent(customer.customer_name)}`}
-                    style={{ color: '#667eea', fontSize: '0.75rem', fontWeight: '500', textDecoration: 'none', transition: 'color 0.15s ease-in-out' }}
-                    onMouseEnter={(e) => { e.currentTarget.style.color = '#764ba2' }}
-                    onMouseLeave={(e) => { e.currentTarget.style.color = '#667eea' }}
+                    className="hover:text-purple-600 hover:underline transition-colors"
+                    style={{ color: '#667eea', fontSize: '0.75rem', fontWeight: '500', textDecoration: 'none' }}
                   >
                     View Plan →
                   </Link>
