@@ -27,12 +27,19 @@ export interface Recommendation {
   dueDate?: Date;
 }
 
+export interface MonthlyDMData {
+  month: string; // e.g., "Jan 2025", "Feb 2025"
+  dmPercent: number; // DM% for that month
+  revenue: number; // actual revenue for the month
+  targetDM: number; // target for reference
+}
+
 export interface BusinessUnitMetrics {
   name: BusinessUnit;
   currentDM: number; // TTM (trailing 12 months) - primary metric
   monthlyDM: number; // current month DM%
   quarterlyDM: number; // current quarter DM%
-  ttmDM: number; // trailing 12 months DM% (same as currentDM for backward compat)
+  ttmDM: number; // trailing 12 months DM% (calculated from history)
   targetDM: number; // percentage
   trend: TrendDirection;
   trendValue: number; // percentage points change
@@ -40,6 +47,7 @@ export interface BusinessUnitMetrics {
   accountCount: number;
   recommendationCount: number;
   color: string; // hex color for branding
+  history?: MonthlyDMData[]; // 12-24 months of historical data for charting
 }
 
 export interface ImpactProjection {

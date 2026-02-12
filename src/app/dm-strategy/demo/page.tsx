@@ -1,9 +1,11 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import DMStrategyHero from '../components/dm-strategy-hero';
 import PortfolioDashboard from '../components/portfolio-dashboard';
-import type { BusinessUnitMetrics, Recommendation, DashboardStats } from '../types';
+import { sampleBusinessUnits } from './demo-data';
+import type { Recommendation, DashboardStats } from '../types';
 import '../styles.css';
 
 /**
@@ -22,51 +24,6 @@ const sampleStats: DashboardStats = {
   totalAccounts: 140,
   atRiskAccounts: 8      // 8 accounts below 90% retention threshold
 };
-
-const sampleBusinessUnits: BusinessUnitMetrics[] = [
-  {
-    name: 'Cloudsense',
-    currentDM: 94.7,  // TTM - Primary metric
-    monthlyDM: 93.2,  // January 2026 (bad month, lost key account)
-    quarterlyDM: 94.1, // Q1'26 (recovering)
-    ttmDM: 94.7,      // Trailing 12 months (stable trend)
-    targetDM: 95.0,   // Target 95% retention
-    trend: 'down',    // TTM trending down vs prior period
-    trendValue: -0.3, // Down 0.3pp vs prior TTM
-    arr: 8000000,
-    accountCount: 65,
-    recommendationCount: 5,
-    color: '#0066A1'
-  },
-  {
-    name: 'Kandy',
-    currentDM: 97.8,  // TTM - Primary metric
-    monthlyDM: 98.5,  // January 2026 (excellent month!)
-    quarterlyDM: 98.1, // Q1'26 (strong quarter)
-    ttmDM: 97.8,      // Trailing 12 months (consistently strong)
-    targetDM: 95.0,   // Target 95% retention (exceeding!)
-    trend: 'up',      // TTM trending up vs prior period
-    trendValue: 0.5,  // Up 0.5pp vs prior TTM
-    arr: 3300000,
-    accountCount: 45,
-    recommendationCount: 4,
-    color: '#00B8D4'
-  },
-  {
-    name: 'STL',
-    currentDM: 92.5,  // TTM - Primary metric
-    monthlyDM: 91.8,  // January 2026 (below target)
-    quarterlyDM: 92.2, // Q1'26 (struggling)
-    ttmDM: 92.5,      // Trailing 12 months (needs improvement)
-    targetDM: 95.0,   // Target 95% retention (below target)
-    trend: 'neutral', // TTM flat vs prior period
-    trendValue: 0.0,  // No change vs prior TTM
-    arr: 1000000,
-    accountCount: 30,
-    recommendationCount: 3,
-    color: '#27AE60'
-  }
-];
 
 const sampleRecommendations: Recommendation[] = [
   {
@@ -280,6 +237,47 @@ export default function DMStrategyDemoPage() {
     <div style={{ minHeight: '100vh', background: '#FAFAFA' }}>
       {/* Hero Section */}
       <DMStrategyHero stats={sampleStats} />
+
+      {/* Trends Link Banner */}
+      <div style={{
+        maxWidth: '1400px',
+        margin: '0 auto var(--space-lg) auto',
+        padding: '0 var(--space-lg)'
+      }}>
+        <Link
+          href="/dm-strategy/trends"
+          style={{
+            display: 'block',
+            background: 'linear-gradient(135deg, #0066A1 0%, #00B8D4 100%)',
+            color: 'white',
+            padding: 'var(--space-lg)',
+            borderRadius: 'var(--radius-lg)',
+            textDecoration: 'none',
+            boxShadow: '0 4px 12px rgba(0, 102, 161, 0.3)',
+            transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.transform = 'translateY(-2px)';
+            e.currentTarget.style.boxShadow = '0 6px 16px rgba(0, 102, 161, 0.4)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.transform = 'translateY(0)';
+            e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 102, 161, 0.3)';
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <div>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.25rem' }}>
+                📊 View 12-Month DM% Trend Charts
+              </h3>
+              <p style={{ opacity: 0.9, fontSize: '0.875rem' }}>
+                Visualize retention trends with interactive charts for each business unit and portfolio-wide analysis
+              </p>
+            </div>
+            <span style={{ fontSize: '2rem' }}>→</span>
+          </div>
+        </Link>
+      </div>
 
       {/* Portfolio Dashboard */}
       <PortfolioDashboard
