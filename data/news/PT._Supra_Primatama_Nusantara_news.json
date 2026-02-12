@@ -1,0 +1,31 @@
+{
+  "customer_name": "PT. Supra Primatama Nusantara",
+  "last_updated": "2026-02-12",
+  "article_count": 3,
+  "articles": [
+    {
+      "title": "PT. Supra Primatama Nusantara Announces Digital Transformation Initiative",
+      "url": "https://example.com/news/pt.-supra-primatama-nusantara-strategic-initiative",
+      "source": "Industry News Daily",
+      "published": "2026-01-28",
+      "summary": "PT. Supra Primatama Nusantara has unveiled a comprehensive digital transformation strategy aimed at modernizing its technology infrastructure and improving customer experience. The initiative includes investments in cloud platforms, automation, and data analytics.",
+      "relevance_score": 89
+    },
+    {
+      "title": "PT. Supra Primatama Nusantara Reports Strong Financial Performance",
+      "url": "https://example.com/news/pt.-supra-primatama-nusantara-financial-results",
+      "source": "Financial Times",
+      "published": "2026-01-05",
+      "summary": "PT. Supra Primatama Nusantara has reported solid financial results for the quarter, with revenue growth driven by strong performance in core business areas. The company reaffirmed its commitment to investing in technology and innovation.",
+      "relevance_score": 83
+    },
+    {
+      "title": "PT. Supra Primatama Nusantara Announces Strategic Partnership to Expand Services",
+      "url": "https://example.com/news/pt.-supra-primatama-nusantara-partnership",
+      "source": "Business Wire",
+      "published": "2025-11-19",
+      "summary": "PT. Supra Primatama Nusantara has formed a strategic partnership aimed at expanding its service offerings and reaching new markets. The collaboration will leverage complementary strengths to deliver enhanced value to customers.",
+      "relevance_score": 76
+    }
+  ]
+}

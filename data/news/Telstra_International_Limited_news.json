@@ -1,0 +1,31 @@
+{
+  "customer_name": "Telstra International Limited",
+  "last_updated": "2026-02-12",
+  "article_count": 3,
+  "articles": [
+    {
+      "title": "Telstra International Limited Launches Innovation Program for Telecommunications",
+      "url": "https://example.com/news/telstra-international-limited-strategic-initiative",
+      "source": "Industry News Daily",
+      "published": "2026-01-15",
+      "summary": "Telstra International Limited has announced a new innovation program focused on leveraging emerging technologies to drive growth in the telecommunications sector. The program will focus on AI, automation, and customer engagement.",
+      "relevance_score": 92
+    },
+    {
+      "title": "Telstra International Limited Reports Strong Financial Performance",
+      "url": "https://example.com/news/telstra-international-limited-financial-results",
+      "source": "Financial Times",
+      "published": "2025-12-30",
+      "summary": "Telstra International Limited has reported solid financial results for the quarter, with revenue growth driven by strong performance in core business areas. The company reaffirmed its commitment to investing in technology and innovation.",
+      "relevance_score": 80
+    },
+    {
+      "title": "Telstra International Limited Announces Strategic Partnership to Expand Services",
+      "url": "https://example.com/news/telstra-international-limited-partnership",
+      "source": "Business Wire",
+      "published": "2025-12-13",
+      "summary": "Telstra International Limited has formed a strategic partnership aimed at expanding its service offerings and reaching new markets. The collaboration will leverage complementary strengths to deliver enhanced value to customers.",
+      "relevance_score": 70
+    }
+  ]
+}

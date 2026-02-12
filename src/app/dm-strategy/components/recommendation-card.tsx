@@ -1,0 +1,219 @@
+'use client';
+
+import React from 'react';
+import type { Recommendation } from '../types';
+import '../styles.css';
+
+interface RecommendationCardProps {
+  recommendation: Recommendation;
+  onAccept?: (id: string) => void;
+  onReview?: (id: string) => void;
+  onDefer?: (id: string) => void;
+}
+
+const priorityConfig = {
+  critical: {
+    color: '#E74C3C',
+    label: 'Critical',
+    icon: '🔴'
+  },
+  high: {
+    color: '#F39C12',
+    label: 'High',
+    icon: '🟠'
+  },
+  medium: {
+    color: '#27AE60',
+    label: 'Medium',
+    icon: '🟢'
+  },
+  low: {
+    color: '#95A5A6',
+    label: 'Low',
+    icon: '⚪'
+  }
+};
+
+const buConfig = {
+  Cloudsense: '#0066A1',
+  Kandy: '#00B8D4',
+  STL: '#27AE60'
+};
+
+export default function RecommendationCard({
+  recommendation,
+  onAccept,
+  onReview,
+  onDefer
+}: RecommendationCardProps) {
+  const priorityInfo = priorityConfig[recommendation.priority];
+  const buColor = buConfig[recommendation.businessUnit];
+
+  const formatCurrency = (value: number): string => {
+    if (value >= 1000000) {
+      return `$${(value / 1000000).toFixed(2)}M`;
+    }
+    if (value >= 1000) {
+      return `$${(value / 1000).toFixed(1)}K`;
+    }
+    return `$${value.toFixed(0)}`;
+  };
+
+  const formatPercentage = (value: number): string => {
+    return `${value >= 0 ? '+' : ''}${value.toFixed(1)}%`;
+  };
+
+  return (
+    <div
+      className="dm-card"
+      style={{
+        borderLeft: `4px solid ${priorityInfo.color}`,
+        position: 'relative'
+      }}
+    >
+      {/* Priority Badge */}
+      <div className="dm-flex dm-justify-between dm-items-start dm-mb-md">
+        <span
+          className="dm-priority-badge"
+          style={{
+            background: priorityInfo.color,
+            color: '#FFFFFF'
+          }}
+        >
+          {priorityInfo.icon} {priorityInfo.label}
+        </span>
+      </div>
+
+      {/* Account & BU */}
+      <div className="dm-flex dm-items-center dm-gap-sm dm-mb-sm">
+        <span className="dm-h4" style={{ margin: 0 }}>
+          {recommendation.accountName}
+        </span>
+        <span
+          className="dm-badge"
+          style={{
+            background: `${buColor}15`,
+            color: buColor,
+            fontWeight: 600
+          }}
+        >
+          {recommendation.businessUnit}
+        </span>
+      </div>
+
+      {/* Recommendation Title */}
+      <h3 className="dm-h3" style={{ marginTop: 'var(--space-sm)', marginBottom: 'var(--space-md)' }}>
+        {recommendation.title}
+      </h3>
+
+      {/* Description */}
+      <p className="dm-body-sm" style={{ color: 'var(--text-light)', marginBottom: 'var(--space-lg)' }}>
+        {recommendation.description}
+      </p>
+
+      {/* Impact Metrics */}
+      <div style={{ marginBottom: 'var(--space-lg)' }}>
+        <div className="dm-metric-row">
+          <span className="dm-metric-label">DM% Impact</span>
+          <span
+            className="dm-metric-value"
+            style={{
+              color: recommendation.dmImpact > 0 ? 'var(--success)' : 'var(--critical)',
+              fontWeight: 700
+            }}
+          >
+            {formatPercentage(recommendation.dmImpact)}
+          </span>
+        </div>
+        <div className="dm-metric-row">
+          <span className="dm-metric-label">ARR Impact</span>
+          <span
+            className="dm-metric-value"
+            style={{
+              color: recommendation.arrImpact > 0 ? 'var(--success)' : 'var(--critical)',
+              fontWeight: 700
+            }}
+          >
+            {formatCurrency(recommendation.arrImpact)}
+          </span>
+        </div>
+        <div className="dm-metric-row">
+          <span className="dm-metric-label">Confidence</span>
+          <span className="dm-metric-value">
+            {recommendation.confidence}%
+          </span>
+        </div>
+      </div>
+
+      {/* Metadata Tags */}
+      <div className="dm-flex dm-flex-wrap dm-gap-sm dm-mb-lg">
+        {recommendation.owner && (
+          <span className="dm-tag">
+            👤 {recommendation.owner}
+          </span>
+        )}
+        <span className="dm-tag">
+          📅 {recommendation.timeline}
+        </span>
+        <span className="dm-tag">
+          ⚠️ {recommendation.risk} Risk
+        </span>
+        {recommendation.category && (
+          <span className="dm-tag">
+            🏷️ {recommendation.category}
+          </span>
+        )}
+      </div>
+
+      {/* Action Buttons */}
+      <div className="dm-flex dm-gap-sm dm-flex-wrap">
+        {onAccept && (
+          <button
+            className="dm-btn dm-btn-primary dm-btn-md"
+            onClick={() => onAccept(recommendation.id)}
+            style={{ flex: '1 1 auto' }}
+          >
+            ✓ Accept & Create Action
+          </button>
+        )}
+        {onReview && (
+          <button
+            className="dm-btn dm-btn-secondary dm-btn-md"
+            onClick={() => onReview(recommendation.id)}
+            style={{ flex: '1 1 auto' }}
+          >
+            👁️ Review Details
+          </button>
+        )}
+        {onDefer && (
+          <button
+            className="dm-btn dm-btn-tertiary dm-btn-md"
+            onClick={() => onDefer(recommendation.id)}
+          >
+            ⏸️ Defer
+          </button>
+        )}
+      </div>
+
+      {/* Status Indicator (if not pending) */}
+      {recommendation.status !== 'pending' && (
+        <div
+          style={{
+            position: 'absolute',
+            top: 'var(--space-md)',
+            right: 'var(--space-md)',
+            padding: '4px 8px',
+            background: 'var(--background)',
+            borderRadius: 'var(--radius-sm)',
+            fontSize: '0.75rem',
+            fontWeight: 600,
+            color: 'var(--text-light)',
+            textTransform: 'uppercase'
+          }}
+        >
+          {recommendation.status}
+        </div>
+      )}
+    </div>
+  );
+}

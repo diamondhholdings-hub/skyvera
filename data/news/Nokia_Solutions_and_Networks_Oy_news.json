@@ -1,0 +1,31 @@
+{
+  "customer_name": "Nokia Solutions and Networks Oy",
+  "last_updated": "2026-02-12",
+  "article_count": 3,
+  "articles": [
+    {
+      "title": "Nokia Solutions and Networks Oy Launches Innovation Program for Technology & Software",
+      "url": "https://example.com/news/nokia-solutions-and-networks-oy-strategic-initiative",
+      "source": "Industry News Daily",
+      "published": "2026-01-15",
+      "summary": "Nokia Solutions and Networks Oy has announced a new innovation program focused on leveraging emerging technologies to drive growth in the technology & software sector. The program will focus on AI, automation, and customer engagement.",
+      "relevance_score": 85
+    },
+    {
+      "title": "Nokia Solutions and Networks Oy Reports Strong Financial Performance",
+      "url": "https://example.com/news/nokia-solutions-and-networks-oy-financial-results",
+      "source": "Financial Times",
+      "published": "2025-12-24",
+      "summary": "Nokia Solutions and Networks Oy has reported solid financial results for the quarter, with revenue growth driven by strong performance in core business areas. The company reaffirmed its commitment to investing in technology and innovation.",
+      "relevance_score": 83
+    },
+    {
+      "title": "Nokia Solutions and Networks Oy Announces Strategic Partnership to Expand Services",
+      "url": "https://example.com/news/nokia-solutions-and-networks-oy-partnership",
+      "source": "Business Wire",
+      "published": "2025-12-07",
+      "summary": "Nokia Solutions and Networks Oy has formed a strategic partnership aimed at expanding its service offerings and reaching new markets. The collaboration will leverage complementary strengths to deliver enhanced value to customers.",
+      "relevance_score": 80
+    }
+  ]
+}

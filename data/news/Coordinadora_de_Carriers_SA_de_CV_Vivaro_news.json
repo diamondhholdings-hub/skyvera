@@ -1,0 +1,31 @@
+{
+  "customer_name": "Coordinadora de Carriers SA de CV Vivaro",
+  "last_updated": "2026-02-12",
+  "article_count": 3,
+  "articles": [
+    {
+      "title": "Coordinadora de Carriers SA de CV Vivaro Announces Digital Transformation Initiative",
+      "url": "https://example.com/news/coordinadora-de-carriers-sa-de-cv-vivaro-strategic-initiative",
+      "source": "Industry News Daily",
+      "published": "2026-01-15",
+      "summary": "Coordinadora de Carriers SA de CV Vivaro has unveiled a comprehensive digital transformation strategy aimed at modernizing its technology infrastructure and improving customer experience. The initiative includes investments in cloud platforms, automation, and data analytics.",
+      "relevance_score": 93
+    },
+    {
+      "title": "Coordinadora de Carriers SA de CV Vivaro Reports Strong Financial Performance",
+      "url": "https://example.com/news/coordinadora-de-carriers-sa-de-cv-vivaro-financial-results",
+      "source": "Financial Times",
+      "published": "2026-01-05",
+      "summary": "Coordinadora de Carriers SA de CV Vivaro has reported solid financial results for the quarter, with revenue growth driven by strong performance in core business areas. The company reaffirmed its commitment to investing in technology and innovation.",
+      "relevance_score": 84
+    },
+    {
+      "title": "Coordinadora de Carriers SA de CV Vivaro Announces Strategic Partnership to Expand Services",
+      "url": "https://example.com/news/coordinadora-de-carriers-sa-de-cv-vivaro-partnership",
+      "source": "Business Wire",
+      "published": "2025-11-19",
+      "summary": "Coordinadora de Carriers SA de CV Vivaro has formed a strategic partnership aimed at expanding its service offerings and reaching new markets. The collaboration will leverage complementary strengths to deliver enhanced value to customers.",
+      "relevance_score": 75
+    }
+  ]
+}

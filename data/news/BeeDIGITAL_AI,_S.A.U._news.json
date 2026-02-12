@@ -1,0 +1,31 @@
+{
+  "customer_name": "BeeDIGITAL AI, S.A.U.",
+  "last_updated": "2026-02-12",
+  "article_count": 3,
+  "articles": [
+    {
+      "title": "BeeDIGITAL AI, S.A.U. Launches Innovation Program for Technology & Software",
+      "url": "https://example.com/news/beedigital-ai,-s.a.u.-strategic-initiative",
+      "source": "Industry News Daily",
+      "published": "2026-01-23",
+      "summary": "BeeDIGITAL AI, S.A.U. has announced a new innovation program focused on leveraging emerging technologies to drive growth in the technology & software sector. The program will focus on AI, automation, and customer engagement.",
+      "relevance_score": 88
+    },
+    {
+      "title": "BeeDIGITAL AI, S.A.U. Reports Strong Financial Performance",
+      "url": "https://example.com/news/beedigital-ai,-s.a.u.-financial-results",
+      "source": "Financial Times",
+      "published": "2026-01-01",
+      "summary": "BeeDIGITAL AI, S.A.U. has reported solid financial results for the quarter, with revenue growth driven by strong performance in core business areas. The company reaffirmed its commitment to investing in technology and innovation.",
+      "relevance_score": 77
+    },
+    {
+      "title": "BeeDIGITAL AI, S.A.U. Launches New Product Suite for Technology & Software",
+      "url": "https://example.com/news/beedigital-ai,-s.a.u.-partnership",
+      "source": "Business Wire",
+      "published": "2025-12-14",
+      "summary": "BeeDIGITAL AI, S.A.U. has introduced a new suite of products designed specifically for the technology & software market. The launch represents a significant investment in innovation and customer experience.",
+      "relevance_score": 73
+    }
+  ]
+}

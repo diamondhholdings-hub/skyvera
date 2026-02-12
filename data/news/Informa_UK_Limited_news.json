@@ -1,0 +1,31 @@
+{
+  "customer_name": "Informa UK Limited",
+  "last_updated": "2026-02-12",
+  "article_count": 3,
+  "articles": [
+    {
+      "title": "Informa UK Limited Launches Innovation Program for Enterprise Services",
+      "url": "https://example.com/news/informa-uk-limited-strategic-initiative",
+      "source": "Industry News Daily",
+      "published": "2026-01-26",
+      "summary": "Informa UK Limited has announced a new innovation program focused on leveraging emerging technologies to drive growth in the enterprise services sector. The program will focus on AI, automation, and customer engagement.",
+      "relevance_score": 88
+    },
+    {
+      "title": "Informa UK Limited Reports Strong Financial Performance",
+      "url": "https://example.com/news/informa-uk-limited-financial-results",
+      "source": "Financial Times",
+      "published": "2026-01-04",
+      "summary": "Informa UK Limited has reported solid financial results for the quarter, with revenue growth driven by strong performance in core business areas. The company reaffirmed its commitment to investing in technology and innovation.",
+      "relevance_score": 76
+    },
+    {
+      "title": "Informa UK Limited Expands Operations in United Kingdom",
+      "url": "https://example.com/news/informa-uk-limited-partnership",
+      "source": "Business Wire",
+      "published": "2025-11-25",
+      "summary": "Informa UK Limited is expanding its operational footprint in United Kingdom with new facilities and increased investment. The expansion supports the company's growth strategy and commitment to the region.",
+      "relevance_score": 79
+    }
+  ]
+}

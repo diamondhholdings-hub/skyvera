@@ -1,0 +1,31 @@
+{
+  "customer_name": "Vodafone Egypt",
+  "last_updated": "2026-02-12",
+  "article_count": 3,
+  "articles": [
+    {
+      "title": "Vodafone Egypt Launches Innovation Program for Telecommunications",
+      "url": "https://example.com/news/vodafone-egypt-strategic-initiative",
+      "source": "Industry News Daily",
+      "published": "2026-01-25",
+      "summary": "Vodafone Egypt has announced a new innovation program focused on leveraging emerging technologies to drive growth in the telecommunications sector. The program will focus on AI, automation, and customer engagement.",
+      "relevance_score": 89
+    },
+    {
+      "title": "Vodafone Egypt Reports Strong Financial Performance",
+      "url": "https://example.com/news/vodafone-egypt-financial-results",
+      "source": "Financial Times",
+      "published": "2026-01-10",
+      "summary": "Vodafone Egypt has reported solid financial results for the quarter, with revenue growth driven by strong performance in core business areas. The company reaffirmed its commitment to investing in technology and innovation.",
+      "relevance_score": 78
+    },
+    {
+      "title": "Vodafone Egypt Announces Strategic Partnership to Expand Services",
+      "url": "https://example.com/news/vodafone-egypt-partnership",
+      "source": "Business Wire",
+      "published": "2025-12-12",
+      "summary": "Vodafone Egypt has formed a strategic partnership aimed at expanding its service offerings and reaching new markets. The collaboration will leverage complementary strengths to deliver enhanced value to customers.",
+      "relevance_score": 83
+    }
+  ]
+}

@@ -9,6 +9,7 @@ import type { Result } from '@/lib/types/result'
 import { ok, err } from '@/lib/types/result'
 import { ExcelAdapter } from '../adapters/excel/parser'
 import { NewsAPIAdapter } from '../adapters/external/newsapi'
+import { NotionAdapter } from '../adapters/external/notion'
 
 export type AdapterStatus = 'connected' | 'degraded' | 'failed'
 
@@ -291,6 +292,7 @@ export async function getConnectorFactory(): Promise<ConnectorFactory> {
     // Register adapters
     instance.register(new ExcelAdapter())
     instance.register(new NewsAPIAdapter())
+    instance.register(new NotionAdapter())
 
     // Initialize all adapters
     await instance.initialize()

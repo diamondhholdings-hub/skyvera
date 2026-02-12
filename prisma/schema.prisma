@@ -5,6 +5,7 @@ generator client {
 
 datasource db {
   provider = "sqlite"
+  url      = env("DATABASE_URL")
 }
 
 model Customer {
@@ -265,4 +266,200 @@ model PRDLifecycle {
   updatedAt              DateTime @updatedAt
 
   @@index([prdId])
+}
+
+// Conversational Scenario System
+
+// Scenario Conversation Session
+model ScenarioConversation {
+  id               Int                      @id @default(autoincrement())
+  conversationId   String                   @unique @default(cuid())
+
+  // Session info
+  title            String?                  // Auto-generated from first message
+  status           String                   // active/completed/archived
+
+  // Current scenario state (JSON)
+  currentScenario  String?                  // JSON representation of current scenario
+  scenarioType     String?                  // financial/headcount/customer/custom
+
+  // Conversation metadata
+  messageCount     Int                      @default(0)
+  iterationCount   Int                      @default(0)
+
+  // Results tracking
+  finalRecommendation String?               // APPROVE/APPROVE_WITH_CONDITIONS/REJECT
+  wasImplemented      Boolean               @default(false)
+  implementedAt       DateTime?
+
+  // Timestamps
+  createdAt        DateTime                 @default(now())
+  updatedAt        DateTime                 @updatedAt
+  lastMessageAt    DateTime                 @default(now())
+
+  // Relationships
+  messages         ScenarioMessage[]
+  versions         ScenarioVersion[]
+
+  @@index([conversationId])
+  @@index([status])
+  @@index([createdAt])
+  @@index([lastMessageAt])
+}
+
+// Individual messages in a conversation
+model ScenarioMessage {
+  id               Int                   @id @default(autoincrement())
+  conversationId   String
+  conversation     ScenarioConversation  @relation(fields: [conversationId], references: [conversationId], onDelete: Cascade)
+
+  // Message details
+  role             String                // user/assistant/system
+  content          String                // Message text
+
+  // Context
+  messageType      String                // query/clarification/refinement/analysis/confirmation
+
+  // AI metadata (for assistant messages)
+  promptUsed       String?               // Prompt template used
+  tokensUsed       Int?
+  confidence       String?               // HIGH/MEDIUM/LOW
+
+  // Attachments (JSON)
+  attachments      String?               // JSON array of calculations, charts, etc.
+
+  // Timestamps
+  createdAt        DateTime              @default(now())
+
+  @@index([conversationId])
+  @@index([createdAt])
+}
+
+// Scenario versions (as conversation iterates)
+model ScenarioVersion {
+  id               Int                   @id @default(autoincrement())
+  conversationId   String
+  conversation     ScenarioConversation  @relation(fields: [conversationId], references: [conversationId], onDelete: Cascade)
+
+  versionNumber    Int                   // 1, 2, 3...
+
+  // Scenario definition (JSON)
+  scenarioData     String                // Complete scenario parameters
+  scenarioType     String                // financial/headcount/customer/custom
+
+  // Results (JSON)
+  calculatedMetrics String               // Impact metrics
+  claudeAnalysis    String?              // AI analysis
+
+  // Comparison to baseline
+  impactSummary    String?
+  keyChanges       String?               // JSON array of key changes
+
+  // Version metadata
+  label            String?               // "Initial", "After price adjustment", etc.
+  notes            String?
+
+  createdAt        DateTime              @default(now())
+
+  @@unique([conversationId, versionNumber])
+  @@index([conversationId])
+  @@index([createdAt])
+}
+
+// Scenario templates for quick starts
+model ScenarioTemplate {
+  id               Int      @id @default(autoincrement())
+  templateId       String   @unique @default(cuid())
+
+  // Template details
+  name             String
+  description      String
+  category         String   // pricing/headcount/customer/market/acquisition
+
+  // Template structure (JSON)
+  structure        String   // Questions to ask, parameters needed
+
+  // Usage tracking
+  usageCount       Int      @default(0)
+  lastUsedAt       DateTime?
+
+  // Metadata
+  isActive         Boolean  @default(true)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@index([templateId])
+  @@index([category])
+  @@index([usageCount])
+}
+
+// DM% Strategy Engine - Recommendations for Revenue Retention
+model DMRecommendation {
+  id                  Int      @id @default(autoincrement())
+  recommendationId    String   @unique @default(cuid())
+
+  // Account context
+  accountName         String
+  bu                  String
+
+  // Recommendation details
+  type                String   // pricing/product_enhancement/account_intervention/upsell/contract_restructure/competitive_defense/churn_prevention/portfolio_optimization
+  priority            String   // critical/high/medium/low
+  title               String
+  description         String
+  reasoning           String
+
+  // Impact metrics
+  arrImpact           Float    // Expected ARR impact in dollars
+  dmImpact            Float    // Expected DM% change (percentage points)
+  marginImpact        Float    // Expected margin impact (percentage points)
+  confidenceLevel     Int      // 0-100 confidence score
+
+  // Execution
+  timeline            String   // immediate/short-term/medium-term/long-term
+  ownerTeam           String   // CSM/Sales/Product/Engineering/Executive/Finance
+  risk                String   // high/medium/low
+
+  // Status tracking
+  status              String   @default("pending") // pending/accepted/deferred/completed/rejected
+  deferredReason      String?
+  linkedActionItemId  String?  // Link to ActionItem if accepted
+
+  // Timestamps
+  createdAt           DateTime @default(now())
+  acceptedAt          DateTime?
+  completedAt         DateTime?
+
+  @@index([recommendationId])
+  @@index([accountName])
+  @@index([bu])
+  @@index([status])
+  @@index([priority])
+  @@index([type])
+  @@index([createdAt])
+}
+
+// DM Strategy Analysis Run Tracking
+model DMAnalysisRun {
+  id                          Int      @id @default(autoincrement())
+  runId                       String   @unique
+
+  // Run details
+  runDate                     DateTime @default(now())
+  bu                          String?
+  accountsAnalyzed            Int
+  recommendationsGenerated    Int
+  totalPotentialARR           Float
+  totalPotentialDM            Float
+
+  // Status
+  status                      String   // running/completed/failed
+  error                       String?
+
+  // Timestamps
+  completedAt                 DateTime?
+
+  @@index([runId])
+  @@index([runDate])
+  @@index([status])
 }

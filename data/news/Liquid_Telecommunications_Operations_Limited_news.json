@@ -1,0 +1,31 @@
+{
+  "customer_name": "Liquid Telecommunications Operations Limited",
+  "last_updated": "2026-02-12",
+  "article_count": 3,
+  "articles": [
+    {
+      "title": "Liquid Telecommunications Operations Limited Invests in Cloud-Native Infrastructure",
+      "url": "https://example.com/news/liquid-telecommunications-operations-limited-strategic-initiative",
+      "source": "Industry News Daily",
+      "published": "2026-01-20",
+      "summary": "In a strategic move to enhance operational efficiency, Liquid Telecommunications Operations Limited is migrating key business systems to cloud-native platforms. The transformation is expected to reduce costs and improve scalability.",
+      "relevance_score": 85
+    },
+    {
+      "title": "Liquid Telecommunications Operations Limited Reports Strong Financial Performance",
+      "url": "https://example.com/news/liquid-telecommunications-operations-limited-financial-results",
+      "source": "Financial Times",
+      "published": "2025-12-28",
+      "summary": "Liquid Telecommunications Operations Limited has reported solid financial results for the quarter, with revenue growth driven by strong performance in core business areas. The company reaffirmed its commitment to investing in technology and innovation.",
+      "relevance_score": 79
+    },
+    {
+      "title": "Liquid Telecommunications Operations Limited Announces Strategic Partnership to Expand Services",
+      "url": "https://example.com/news/liquid-telecommunications-operations-limited-partnership",
+      "source": "Business Wire",
+      "published": "2025-11-24",
+      "summary": "Liquid Telecommunications Operations Limited has formed a strategic partnership aimed at expanding its service offerings and reaching new markets. The collaboration will leverage complementary strengths to deliver enhanced value to customers.",
+      "relevance_score": 73
+    }
+  ]
+}

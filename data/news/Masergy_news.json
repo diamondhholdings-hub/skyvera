@@ -1,0 +1,31 @@
+{
+  "customer_name": "Masergy",
+  "last_updated": "2026-02-12",
+  "article_count": 3,
+  "articles": [
+    {
+      "title": "Masergy Announces Digital Transformation Initiative",
+      "url": "https://example.com/news/masergy-strategic-initiative",
+      "source": "Industry News Daily",
+      "published": "2026-01-24",
+      "summary": "Masergy has unveiled a comprehensive digital transformation strategy aimed at modernizing its technology infrastructure and improving customer experience. The initiative includes investments in cloud platforms, automation, and data analytics.",
+      "relevance_score": 94
+    },
+    {
+      "title": "Masergy Reports Strong Financial Performance",
+      "url": "https://example.com/news/masergy-financial-results",
+      "source": "Financial Times",
+      "published": "2025-12-29",
+      "summary": "Masergy has reported solid financial results for the quarter, with revenue growth driven by strong performance in core business areas. The company reaffirmed its commitment to investing in technology and innovation.",
+      "relevance_score": 78
+    },
+    {
+      "title": "Masergy Announces Strategic Partnership to Expand Services",
+      "url": "https://example.com/news/masergy-partnership",
+      "source": "Business Wire",
+      "published": "2025-11-21",
+      "summary": "Masergy has formed a strategic partnership aimed at expanding its service offerings and reaching new markets. The collaboration will leverage complementary strengths to deliver enhanced value to customers.",
+      "relevance_score": 80
+    }
+  ]
+}

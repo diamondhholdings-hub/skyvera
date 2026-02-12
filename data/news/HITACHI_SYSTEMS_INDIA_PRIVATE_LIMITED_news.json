@@ -1,0 +1,31 @@
+{
+  "customer_name": "HITACHI SYSTEMS INDIA PRIVATE LIMITED",
+  "last_updated": "2026-02-12",
+  "article_count": 3,
+  "articles": [
+    {
+      "title": "HITACHI SYSTEMS INDIA PRIVATE LIMITED Launches Innovation Program for Technology & Software",
+      "url": "https://example.com/news/hitachi-systems-india-private-limited-strategic-initiative",
+      "source": "Industry News Daily",
+      "published": "2026-01-18",
+      "summary": "HITACHI SYSTEMS INDIA PRIVATE LIMITED has announced a new innovation program focused on leveraging emerging technologies to drive growth in the technology & software sector. The program will focus on AI, automation, and customer engagement.",
+      "relevance_score": 90
+    },
+    {
+      "title": "HITACHI SYSTEMS INDIA PRIVATE LIMITED Reports Strong Financial Performance",
+      "url": "https://example.com/news/hitachi-systems-india-private-limited-financial-results",
+      "source": "Financial Times",
+      "published": "2026-01-02",
+      "summary": "HITACHI SYSTEMS INDIA PRIVATE LIMITED has reported solid financial results for the quarter, with revenue growth driven by strong performance in core business areas. The company reaffirmed its commitment to investing in technology and innovation.",
+      "relevance_score": 82
+    },
+    {
+      "title": "HITACHI SYSTEMS INDIA PRIVATE LIMITED Expands Operations in Europe",
+      "url": "https://example.com/news/hitachi-systems-india-private-limited-partnership",
+      "source": "Business Wire",
+      "published": "2025-12-08",
+      "summary": "HITACHI SYSTEMS INDIA PRIVATE LIMITED is expanding its operational footprint in Europe with new facilities and increased investment. The expansion supports the company's growth strategy and commitment to the region.",
+      "relevance_score": 81
+    }
+  ]
+}

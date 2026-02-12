@@ -1,0 +1,31 @@
+{
+  "customer_name": "Hawaiian Telcom Communications, Inc.",
+  "last_updated": "2026-02-12",
+  "article_count": 3,
+  "articles": [
+    {
+      "title": "Hawaiian Telcom Communications, Inc. Launches Innovation Program for Telecommunications",
+      "url": "https://example.com/news/hawaiian-telcom-communications,-inc.-strategic-initiative",
+      "source": "Industry News Daily",
+      "published": "2026-01-20",
+      "summary": "Hawaiian Telcom Communications, Inc. has announced a new innovation program focused on leveraging emerging technologies to drive growth in the telecommunications sector. The program will focus on AI, automation, and customer engagement.",
+      "relevance_score": 92
+    },
+    {
+      "title": "Hawaiian Telcom Communications, Inc. Reports Strong Financial Performance",
+      "url": "https://example.com/news/hawaiian-telcom-communications,-inc.-financial-results",
+      "source": "Financial Times",
+      "published": "2025-12-23",
+      "summary": "Hawaiian Telcom Communications, Inc. has reported solid financial results for the quarter, with revenue growth driven by strong performance in core business areas. The company reaffirmed its commitment to investing in technology and innovation.",
+      "relevance_score": 79
+    },
+    {
+      "title": "Hawaiian Telcom Communications, Inc. Launches New Product Suite for Telecommunications",
+      "url": "https://example.com/news/hawaiian-telcom-communications,-inc.-partnership",
+      "source": "Business Wire",
+      "published": "2025-12-09",
+      "summary": "Hawaiian Telcom Communications, Inc. has introduced a new suite of products designed specifically for the telecommunications market. The launch represents a significant investment in innovation and customer experience.",
+      "relevance_score": 82
+    }
+  ]
+}

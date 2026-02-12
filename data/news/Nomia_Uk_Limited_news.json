@@ -1,0 +1,31 @@
+{
+  "customer_name": "Nomia Uk Limited",
+  "last_updated": "2026-02-12",
+  "article_count": 3,
+  "articles": [
+    {
+      "title": "Nomia Uk Limited Invests in Cloud-Native Infrastructure",
+      "url": "https://example.com/news/nomia-uk-limited-strategic-initiative",
+      "source": "Industry News Daily",
+      "published": "2026-01-30",
+      "summary": "In a strategic move to enhance operational efficiency, Nomia Uk Limited is migrating key business systems to cloud-native platforms. The transformation is expected to reduce costs and improve scalability.",
+      "relevance_score": 90
+    },
+    {
+      "title": "Nomia Uk Limited Reports Strong Financial Performance",
+      "url": "https://example.com/news/nomia-uk-limited-financial-results",
+      "source": "Financial Times",
+      "published": "2025-12-18",
+      "summary": "Nomia Uk Limited has reported solid financial results for the quarter, with revenue growth driven by strong performance in core business areas. The company reaffirmed its commitment to investing in technology and innovation.",
+      "relevance_score": 81
+    },
+    {
+      "title": "Nomia Uk Limited Announces Strategic Partnership to Expand Services",
+      "url": "https://example.com/news/nomia-uk-limited-partnership",
+      "source": "Business Wire",
+      "published": "2025-12-14",
+      "summary": "Nomia Uk Limited has formed a strategic partnership aimed at expanding its service offerings and reaching new markets. The collaboration will leverage complementary strengths to deliver enhanced value to customers.",
+      "relevance_score": 81
+    }
+  ]
+}

@@ -60,7 +60,7 @@ export async function getAllCustomersWithHealth(): Promise<
         continue // Skip this BU but continue with others
       }
 
-      const customers = buResult.value.data as Customer[]
+      const customers = buResult.value.value as Customer[]
 
       // For each customer, annotate with BU and calculate health
       for (const customer of customers) {
@@ -115,7 +115,7 @@ export async function getCustomersByBU(bu: BU): Promise<Result<CustomerWithHealt
       return err(result.error)
     }
 
-    const customers = result.value.data as Customer[]
+    const customers = result.value.value as Customer[]
 
     // Annotate with BU and calculate health for each customer
     const customersWithHealth: CustomerWithHealth[] = customers.map((customer) => {

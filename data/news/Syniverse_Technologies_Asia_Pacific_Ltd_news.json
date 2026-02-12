@@ -1,0 +1,31 @@
+{
+  "customer_name": "Syniverse Technologies Asia Pacific Ltd",
+  "last_updated": "2026-02-12",
+  "article_count": 3,
+  "articles": [
+    {
+      "title": "Syniverse Technologies Asia Pacific Ltd Invests in Cloud-Native Infrastructure",
+      "url": "https://example.com/news/syniverse-technologies-asia-pacific-ltd-strategic-initiative",
+      "source": "Industry News Daily",
+      "published": "2026-01-29",
+      "summary": "In a strategic move to enhance operational efficiency, Syniverse Technologies Asia Pacific Ltd is migrating key business systems to cloud-native platforms. The transformation is expected to reduce costs and improve scalability.",
+      "relevance_score": 91
+    },
+    {
+      "title": "Syniverse Technologies Asia Pacific Ltd Reports Strong Financial Performance",
+      "url": "https://example.com/news/syniverse-technologies-asia-pacific-ltd-financial-results",
+      "source": "Financial Times",
+      "published": "2025-12-20",
+      "summary": "Syniverse Technologies Asia Pacific Ltd has reported solid financial results for the quarter, with revenue growth driven by strong performance in core business areas. The company reaffirmed its commitment to investing in technology and innovation.",
+      "relevance_score": 82
+    },
+    {
+      "title": "Syniverse Technologies Asia Pacific Ltd Expands Operations in Asia Pacific",
+      "url": "https://example.com/news/syniverse-technologies-asia-pacific-ltd-partnership",
+      "source": "Business Wire",
+      "published": "2025-11-17",
+      "summary": "Syniverse Technologies Asia Pacific Ltd is expanding its operational footprint in Asia Pacific with new facilities and increased investment. The expansion supports the company's growth strategy and commitment to the region.",
+      "relevance_score": 78
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "customer_name": "Bell TSII Ltd Merkezi Ingiltere Istanbul Merkez Subesi",
+  "last_updated": "2026-02-12",
+  "article_count": 3,
+  "articles": [
+    {
+      "title": "Bell TSII Ltd Merkezi Ingiltere Istanbul Merkez Subesi Announces Digital Transformation Initiative",
+      "url": "https://example.com/news/bell-tsii-ltd-merkezi-ingiltere-istanbul-merkez-subesi-strategic-initiative",
+      "source": "Industry News Daily",
+      "published": "2026-01-16",
+      "summary": "Bell TSII Ltd Merkezi Ingiltere Istanbul Merkez Subesi has unveiled a comprehensive digital transformation strategy aimed at modernizing its technology infrastructure and improving customer experience. The initiative includes investments in cloud platforms, automation, and data analytics.",
+      "relevance_score": 93
+    },
+    {
+      "title": "Bell TSII Ltd Merkezi Ingiltere Istanbul Merkez Subesi Reports Strong Financial Performance",
+      "url": "https://example.com/news/bell-tsii-ltd-merkezi-ingiltere-istanbul-merkez-subesi-financial-results",
+      "source": "Financial Times",
+      "published": "2025-12-16",
+      "summary": "Bell TSII Ltd Merkezi Ingiltere Istanbul Merkez Subesi has reported solid financial results for the quarter, with revenue growth driven by strong performance in core business areas. The company reaffirmed its commitment to investing in technology and innovation.",
+      "relevance_score": 82
+    },
+    {
+      "title": "Bell TSII Ltd Merkezi Ingiltere Istanbul Merkez Subesi Expands Operations in Europe",
+      "url": "https://example.com/news/bell-tsii-ltd-merkezi-ingiltere-istanbul-merkez-subesi-partnership",
+      "source": "Business Wire",
+      "published": "2025-11-18",
+      "summary": "Bell TSII Ltd Merkezi Ingiltere Istanbul Merkez Subesi is expanding its operational footprint in Europe with new facilities and increased investment. The expansion supports the company's growth strategy and commitment to the region.",
+      "relevance_score": 73
+    }
+  ]
+}

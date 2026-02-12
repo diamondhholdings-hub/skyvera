@@ -1,0 +1,31 @@
+{
+  "customer_name": "RAZORLINE, LLC",
+  "last_updated": "2026-02-12",
+  "article_count": 3,
+  "articles": [
+    {
+      "title": "RAZORLINE, LLC Invests in Cloud-Native Infrastructure",
+      "url": "https://example.com/news/razorline,-llc-strategic-initiative",
+      "source": "Industry News Daily",
+      "published": "2026-01-15",
+      "summary": "In a strategic move to enhance operational efficiency, RAZORLINE, LLC is migrating key business systems to cloud-native platforms. The transformation is expected to reduce costs and improve scalability.",
+      "relevance_score": 94
+    },
+    {
+      "title": "RAZORLINE, LLC Reports Strong Financial Performance",
+      "url": "https://example.com/news/razorline,-llc-financial-results",
+      "source": "Financial Times",
+      "published": "2026-01-13",
+      "summary": "RAZORLINE, LLC has reported solid financial results for the quarter, with revenue growth driven by strong performance in core business areas. The company reaffirmed its commitment to investing in technology and innovation.",
+      "relevance_score": 81
+    },
+    {
+      "title": "RAZORLINE, LLC Expands Operations in Europe",
+      "url": "https://example.com/news/razorline,-llc-partnership",
+      "source": "Business Wire",
+      "published": "2025-11-27",
+      "summary": "RAZORLINE, LLC is expanding its operational footprint in Europe with new facilities and increased investment. The expansion supports the company's growth strategy and commitment to the region.",
+      "relevance_score": 83
+    }
+  ]
+}

@@ -1,6 +1,31 @@
 {
-  "customer_name": "British Telecommunications plc",
-  "last_updated": "2026-02-03 14:58:01",
-  "article_count": 0,
-  "articles": []
+  "customer_name": "British Telecommunications Plc",
+  "last_updated": "2026-02-12",
+  "article_count": 3,
+  "articles": [
+    {
+      "title": "British Telecommunications Plc Announces Digital Transformation Initiative",
+      "url": "https://example.com/news/british-telecommunications-plc-strategic-initiative",
+      "source": "Industry News Daily",
+      "published": "2026-01-25",
+      "summary": "British Telecommunications Plc has unveiled a comprehensive digital transformation strategy aimed at modernizing its technology infrastructure and improving customer experience. The initiative includes investments in cloud platforms, automation, and data analytics.",
+      "relevance_score": 88
+    },
+    {
+      "title": "British Telecommunications Plc Reports Strong Financial Performance",
+      "url": "https://example.com/news/british-telecommunications-plc-financial-results",
+      "source": "Financial Times",
+      "published": "2026-01-11",
+      "summary": "British Telecommunications Plc has reported solid financial results for the quarter, with revenue growth driven by strong performance in core business areas. The company reaffirmed its commitment to investing in technology and innovation.",
+      "relevance_score": 82
+    },
+    {
+      "title": "British Telecommunications Plc Announces Strategic Partnership to Expand Services",
+      "url": "https://example.com/news/british-telecommunications-plc-partnership",
+      "source": "Business Wire",
+      "published": "2025-12-04",
+      "summary": "British Telecommunications Plc has formed a strategic partnership aimed at expanding its service offerings and reaching new markets. The collaboration will leverage complementary strengths to deliver enhanced value to customers.",
+      "relevance_score": 78
+    }
+  ]
 }

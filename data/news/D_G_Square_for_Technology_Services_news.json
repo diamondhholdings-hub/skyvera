@@ -1,0 +1,31 @@
+{
+  "customer_name": "D G Square for Technology Services",
+  "last_updated": "2026-02-12",
+  "article_count": 3,
+  "articles": [
+    {
+      "title": "D G Square for Technology Services Launches Innovation Program for Technology & Software",
+      "url": "https://example.com/news/d-g-square-for-technology-services-strategic-initiative",
+      "source": "Industry News Daily",
+      "published": "2026-01-22",
+      "summary": "D G Square for Technology Services has announced a new innovation program focused on leveraging emerging technologies to drive growth in the technology & software sector. The program will focus on AI, automation, and customer engagement.",
+      "relevance_score": 88
+    },
+    {
+      "title": "D G Square for Technology Services Reports Strong Financial Performance",
+      "url": "https://example.com/news/d-g-square-for-technology-services-financial-results",
+      "source": "Financial Times",
+      "published": "2025-12-20",
+      "summary": "D G Square for Technology Services has reported solid financial results for the quarter, with revenue growth driven by strong performance in core business areas. The company reaffirmed its commitment to investing in technology and innovation.",
+      "relevance_score": 82
+    },
+    {
+      "title": "D G Square for Technology Services Launches New Product Suite for Technology & Software",
+      "url": "https://example.com/news/d-g-square-for-technology-services-partnership",
+      "source": "Business Wire",
+      "published": "2025-12-02",
+      "summary": "D G Square for Technology Services has introduced a new suite of products designed specifically for the technology & software market. The launch represents a significant investment in innovation and customer experience.",
+      "relevance_score": 78
+    }
+  ]
+}

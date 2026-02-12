@@ -1,0 +1,49 @@
+[
+  {
+    "id": "dm-rec-8",
+    "recommendationId": "dm-rec-vz-001",
+    "accountName": "Verizon Communications Inc.",
+    "title": "Address Support Response Time SLA Breach",
+    "description": "Customer escalated 3 support tickets in Q4 2025 citing slow response times (avg 8 hours vs 4-hour SLA). Assign dedicated technical account manager and implement priority support queue. Failure to address will risk renewal.",
+    "priority": "high",
+    "arrImpact": 155000,
+    "dmImpact": 3.1,
+    "confidence": 94,
+    "timeline": "Immediate (within 7 days)",
+    "owner": "Support Operations",
+    "status": "pending",
+    "createdAt": "2026-02-10T09:00:00Z"
+  },
+  {
+    "id": "dm-rec-9",
+    "recommendationId": "dm-rec-vz-002",
+    "accountName": "Verizon Communications Inc.",
+    "title": "Expand into IoT Division",
+    "description": "Verizon's IoT division (separate budget) is growing 45% YoY and currently uses competitor solution. Introduce IoT-specific use cases and reference customers in telecom vertical. Potential for $280K incremental ARR.",
+    "priority": "medium",
+    "arrImpact": 280000,
+    "dmImpact": 5.6,
+    "marginImpact": 4.2,
+    "confidence": 65,
+    "timeline": "120-180 days",
+    "owner": "Strategic Account Executive",
+    "status": "pending",
+    "createdAt": "2026-02-10T09:00:00Z"
+  },
+  {
+    "id": "dm-rec-10",
+    "recommendationId": "dm-rec-vz-003",
+    "accountName": "Verizon Communications Inc.",
+    "title": "Usage-Based Pricing Migration",
+    "description": "Current flat-rate pricing creates budget predictability but customer is over-provisioned by 35%. Propose usage-based pricing that reduces immediate costs but aligns with their growth trajectory. This improves satisfaction and locks in long-term expansion.",
+    "priority": "low",
+    "arrImpact": -45000,
+    "dmImpact": -0.9,
+    "marginImpact": 1.8,
+    "confidence": 58,
+    "timeline": "90 days",
+    "owner": "Pricing Strategy Team",
+    "status": "pending",
+    "createdAt": "2026-02-10T09:00:00Z"
+  }
+]

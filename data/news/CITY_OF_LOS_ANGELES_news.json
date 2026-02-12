@@ -1,0 +1,31 @@
+{
+  "customer_name": "CITY OF LOS ANGELES",
+  "last_updated": "2026-02-12",
+  "article_count": 3,
+  "articles": [
+    {
+      "title": "CITY OF LOS ANGELES Invests in Cloud-Native Infrastructure",
+      "url": "https://example.com/news/city-of-los-angeles-strategic-initiative",
+      "source": "Industry News Daily",
+      "published": "2026-01-28",
+      "summary": "In a strategic move to enhance operational efficiency, CITY OF LOS ANGELES is migrating key business systems to cloud-native platforms. The transformation is expected to reduce costs and improve scalability.",
+      "relevance_score": 88
+    },
+    {
+      "title": "CITY OF LOS ANGELES Reports Strong Financial Performance",
+      "url": "https://example.com/news/city-of-los-angeles-financial-results",
+      "source": "Financial Times",
+      "published": "2025-12-23",
+      "summary": "CITY OF LOS ANGELES has reported solid financial results for the quarter, with revenue growth driven by strong performance in core business areas. The company reaffirmed its commitment to investing in technology and innovation.",
+      "relevance_score": 79
+    },
+    {
+      "title": "CITY OF LOS ANGELES Launches New Product Suite for Enterprise Services",
+      "url": "https://example.com/news/city-of-los-angeles-partnership",
+      "source": "Business Wire",
+      "published": "2025-11-15",
+      "summary": "CITY OF LOS ANGELES has introduced a new suite of products designed specifically for the enterprise services market. The launch represents a significant investment in innovation and customer experience.",
+      "relevance_score": 83
+    }
+  ]
+}

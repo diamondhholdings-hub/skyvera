@@ -10,9 +10,36 @@ export default function TestAnalysisPage() {
   const [results, setResults] = useState<any>(null);
   const [generatingPRD, setGeneratingPRD] = useState<string | null>(null);
   const [viewingPRD, setViewingPRD] = useState<any>(null);
+  const [generationProgress, setGenerationProgress] = useState<string>('');
 
   const generatePRD = async (patternId: string) => {
     setGeneratingPRD(patternId);
+    setGenerationProgress('Initializing PRD generation...');
+
+    // Show immediate feedback
+    const startTime = Date.now();
+    console.log('[UI] PRD generation started...');
+
+    // Simulate progress updates
+    const progressMessages = [
+      'Analyzing pattern data...',
+      'Consulting Claude Sonnet 4.5...',
+      'Generating comprehensive PRD...',
+      'Writing Executive Summary...',
+      'Defining Success Metrics...',
+      'Documenting Technical Approach...',
+      'Analyzing Risks...',
+      'Finalizing PRD document...',
+      'Saving to database...'
+    ];
+
+    let messageIndex = 0;
+    const progressInterval = setInterval(() => {
+      if (messageIndex < progressMessages.length) {
+        setGenerationProgress(progressMessages[messageIndex]);
+        messageIndex++;
+      }
+    }, 3000);
 
     try {
       const response = await fetch('/api/product-agent/generate-prd', {
@@ -20,6 +47,10 @@ export default function TestAnalysisPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ patternId })
       });
+
+      clearInterval(progressInterval);
+      const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
+      console.log(`[UI] PRD generation completed in ${elapsed}s`);
 
       if (!response.ok) {
         throw new Error(`Failed to generate PRD: ${response.statusText}`);
@@ -34,10 +65,12 @@ export default function TestAnalysisPage() {
         alert(`Error: ${data.error || 'Unknown error'}`);
       }
     } catch (error) {
+      clearInterval(progressInterval);
       console.error('PRD generation error:', error);
       alert(`Error generating PRD: ${error instanceof Error ? error.message : 'Unknown error'}`);
     } finally {
       setGeneratingPRD(null);
+      setGenerationProgress('');
     }
   };
 
@@ -108,6 +141,18 @@ export default function TestAnalysisPage() {
   return (
     <div className="min-h-screen bg-gray-50 p-8">
       <div className="max-w-6xl mx-auto">
+        {/* PRD Generation Progress Banner */}
+        {generationProgress && (
+          <div className="mb-6 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-4 rounded-lg shadow-lg flex items-center gap-4">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-white"></div>
+            <div className="flex-1">
+              <div className="font-bold text-lg">🤖 Generating PRD with Claude Sonnet 4.5</div>
+              <div className="text-sm text-blue-100 mt-1">{generationProgress}</div>
+              <div className="text-xs text-blue-200 mt-1">This may take 20-30 seconds...</div>
+            </div>
+          </div>
+        )}
+
         {/* Header */}
         <div className="mb-8">
           <Link href="/product-agent" className="text-blue-600 hover:text-blue-800 mb-4 inline-block">

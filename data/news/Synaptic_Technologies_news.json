@@ -1,0 +1,31 @@
+{
+  "customer_name": "Synaptic Technologies",
+  "last_updated": "2026-02-12",
+  "article_count": 3,
+  "articles": [
+    {
+      "title": "Synaptic Technologies Announces Digital Transformation Initiative",
+      "url": "https://example.com/news/synaptic-technologies-strategic-initiative",
+      "source": "Industry News Daily",
+      "published": "2026-02-01",
+      "summary": "Synaptic Technologies has unveiled a comprehensive digital transformation strategy aimed at modernizing its technology infrastructure and improving customer experience. The initiative includes investments in cloud platforms, automation, and data analytics.",
+      "relevance_score": 88
+    },
+    {
+      "title": "Synaptic Technologies Reports Strong Financial Performance",
+      "url": "https://example.com/news/synaptic-technologies-financial-results",
+      "source": "Financial Times",
+      "published": "2025-12-25",
+      "summary": "Synaptic Technologies has reported solid financial results for the quarter, with revenue growth driven by strong performance in core business areas. The company reaffirmed its commitment to investing in technology and innovation.",
+      "relevance_score": 80
+    },
+    {
+      "title": "Synaptic Technologies Announces Strategic Partnership to Expand Services",
+      "url": "https://example.com/news/synaptic-technologies-partnership",
+      "source": "Business Wire",
+      "published": "2025-12-13",
+      "summary": "Synaptic Technologies has formed a strategic partnership aimed at expanding its service offerings and reaching new markets. The collaboration will leverage complementary strengths to deliver enhanced value to customers.",
+      "relevance_score": 83
+    }
+  ]
+}

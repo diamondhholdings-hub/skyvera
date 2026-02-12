@@ -1,0 +1,31 @@
+{
+  "customer_name": "Asianet Satellite Communications Ltd",
+  "last_updated": "2026-02-12",
+  "article_count": 3,
+  "articles": [
+    {
+      "title": "Asianet Satellite Communications Ltd Launches Innovation Program for Enterprise Services",
+      "url": "https://example.com/news/asianet-satellite-communications-ltd-strategic-initiative",
+      "source": "Industry News Daily",
+      "published": "2026-01-17",
+      "summary": "Asianet Satellite Communications Ltd has announced a new innovation program focused on leveraging emerging technologies to drive growth in the enterprise services sector. The program will focus on AI, automation, and customer engagement.",
+      "relevance_score": 91
+    },
+    {
+      "title": "Asianet Satellite Communications Ltd Reports Strong Financial Performance",
+      "url": "https://example.com/news/asianet-satellite-communications-ltd-financial-results",
+      "source": "Financial Times",
+      "published": "2025-12-21",
+      "summary": "Asianet Satellite Communications Ltd has reported solid financial results for the quarter, with revenue growth driven by strong performance in core business areas. The company reaffirmed its commitment to investing in technology and innovation.",
+      "relevance_score": 75
+    },
+    {
+      "title": "Asianet Satellite Communications Ltd Expands Operations in Asia Pacific",
+      "url": "https://example.com/news/asianet-satellite-communications-ltd-partnership",
+      "source": "Business Wire",
+      "published": "2025-11-24",
+      "summary": "Asianet Satellite Communications Ltd is expanding its operational footprint in Asia Pacific with new facilities and increased investment. The expansion supports the company's growth strategy and commitment to the region.",
+      "relevance_score": 83
+    }
+  ]
+}

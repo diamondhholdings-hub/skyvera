@@ -1,0 +1,31 @@
+{
+  "customer_name": "VOICEFLEX LIMITED",
+  "last_updated": "2026-02-12",
+  "article_count": 3,
+  "articles": [
+    {
+      "title": "VOICEFLEX LIMITED Announces Digital Transformation Initiative",
+      "url": "https://example.com/news/voiceflex-limited-strategic-initiative",
+      "source": "Industry News Daily",
+      "published": "2026-01-28",
+      "summary": "VOICEFLEX LIMITED has unveiled a comprehensive digital transformation strategy aimed at modernizing its technology infrastructure and improving customer experience. The initiative includes investments in cloud platforms, automation, and data analytics.",
+      "relevance_score": 90
+    },
+    {
+      "title": "VOICEFLEX LIMITED Reports Strong Financial Performance",
+      "url": "https://example.com/news/voiceflex-limited-financial-results",
+      "source": "Financial Times",
+      "published": "2026-01-09",
+      "summary": "VOICEFLEX LIMITED has reported solid financial results for the quarter, with revenue growth driven by strong performance in core business areas. The company reaffirmed its commitment to investing in technology and innovation.",
+      "relevance_score": 79
+    },
+    {
+      "title": "VOICEFLEX LIMITED Launches New Product Suite for Enterprise Services",
+      "url": "https://example.com/news/voiceflex-limited-partnership",
+      "source": "Business Wire",
+      "published": "2025-12-04",
+      "summary": "VOICEFLEX LIMITED has introduced a new suite of products designed specifically for the enterprise services market. The launch represents a significant investment in innovation and customer experience.",
+      "relevance_score": 72
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "customer_name": "Commverge Solutions Philippines Inc.",
+  "last_updated": "2026-02-12",
+  "article_count": 3,
+  "articles": [
+    {
+      "title": "Commverge Solutions Philippines Inc. Invests in Cloud-Native Infrastructure",
+      "url": "https://example.com/news/commverge-solutions-philippines-inc.-strategic-initiative",
+      "source": "Industry News Daily",
+      "published": "2026-01-24",
+      "summary": "In a strategic move to enhance operational efficiency, Commverge Solutions Philippines Inc. is migrating key business systems to cloud-native platforms. The transformation is expected to reduce costs and improve scalability.",
+      "relevance_score": 89
+    },
+    {
+      "title": "Commverge Solutions Philippines Inc. Reports Strong Financial Performance",
+      "url": "https://example.com/news/commverge-solutions-philippines-inc.-financial-results",
+      "source": "Financial Times",
+      "published": "2025-12-27",
+      "summary": "Commverge Solutions Philippines Inc. has reported solid financial results for the quarter, with revenue growth driven by strong performance in core business areas. The company reaffirmed its commitment to investing in technology and innovation.",
+      "relevance_score": 81
+    },
+    {
+      "title": "Commverge Solutions Philippines Inc. Launches New Product Suite for Technology & Software",
+      "url": "https://example.com/news/commverge-solutions-philippines-inc.-partnership",
+      "source": "Business Wire",
+      "published": "2025-12-04",
+      "summary": "Commverge Solutions Philippines Inc. has introduced a new suite of products designed specifically for the technology & software market. The launch represents a significant investment in innovation and customer experience.",
+      "relevance_score": 78
+    }
+  ]
+}

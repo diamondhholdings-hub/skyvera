@@ -13,6 +13,7 @@ import type {
   ActionItem,
   Competitor,
   IntelligenceReport,
+  PainPoint,
 } from '@/lib/types/account-plan'
 import type { NewsArticle } from '@/lib/types/news'
 import {
@@ -348,3 +349,194 @@ export async function getAccountPlanData(customerName: string) {
 
 // Import z for validation
 import { z } from 'zod'
+import type {
+  DMRecommendation,
+  DMRiskLevel,
+  RetentionStrategy,
+} from '@/lib/types/account-plan'
+import { DMRecommendationSchema, RetentionStrategySchema } from '@/lib/types/account-plan'
+
+/**
+ * Calculate DM% risk level based on multiple factors
+ * Risk factors:
+ * - Health score < 60: +40 points
+ * - Health score < 75: +20 points
+ * - Renewal within 90 days: +30 points
+ * - Renewal within 180 days: +15 points
+ * - More than 2 open pain points: +20 points
+ * - Active competitive evaluation: +10 points
+ *
+ * Risk levels:
+ * - HIGH: 60+ points
+ * - MEDIUM: 30-59 points
+ * - LOW: 0-29 points
+ */
+function calculateDMRisk(params: {
+  healthScore: number
+  renewalDate?: string
+  openPainPointCount: number
+  hasActiveCompetitorEvaluation: boolean
+}): {
+  riskLevel: DMRiskLevel
+  riskScore: number
+  riskFactors: string[]
+  daysToRenewal?: number
+} {
+  let riskScore = 0
+  const riskFactors: string[] = []
+  let daysToRenewal: number | undefined
+
+  // Health score factor
+  if (params.healthScore < 60) {
+    riskScore += 40
+    riskFactors.push(`Critical health score (${params.healthScore})`)
+  } else if (params.healthScore < 75) {
+    riskScore += 20
+    riskFactors.push(`Below-target health score (${params.healthScore})`)
+  }
+
+  // Renewal proximity factor
+  if (params.renewalDate) {
+    const renewalDateObj = new Date(params.renewalDate)
+    const today = new Date()
+    daysToRenewal = Math.floor((renewalDateObj.getTime() - today.getTime()) / (1000 * 60 * 60 * 24))
+
+    if (daysToRenewal < 90) {
+      riskScore += 30
+      riskFactors.push(`Renewal imminent (${daysToRenewal} days)`)
+    } else if (daysToRenewal < 180) {
+      riskScore += 15
+      riskFactors.push(`Renewal approaching (${daysToRenewal} days)`)
+    }
+  }
+
+  // Unresolved pain points factor
+  if (params.openPainPointCount > 2) {
+    riskScore += 20
+    riskFactors.push(`${params.openPainPointCount} unresolved pain points`)
+  }
+
+  // Competitive threat factor
+  if (params.hasActiveCompetitorEvaluation) {
+    riskScore += 10
+    riskFactors.push('Active competitive evaluation')
+  }
+
+  // Determine risk level
+  let riskLevel: DMRiskLevel
+  if (riskScore >= 60) {
+    riskLevel = 'HIGH'
+  } else if (riskScore >= 30) {
+    riskLevel = 'MEDIUM'
+  } else {
+    riskLevel = 'LOW'
+  }
+
+  return { riskLevel, riskScore, riskFactors, daysToRenewal }
+}
+
+/**
+ * Get DM recommendations for account
+ * Returns empty array if file not found (graceful degradation)
+ */
+export async function getDMRecommendations(
+  customerName: string
+): Promise<Result<DMRecommendation[], Error>> {
+  const slug = slugifyCustomerName(customerName)
+  const filePath = path.join(process.cwd(), `data/account-plans/dm-recommendations/${slug}.json`)
+
+  try {
+    const content = await readFile(filePath, 'utf-8')
+    const data = JSON.parse(content)
+
+    // Validate with Zod
+    const recommendations = z.array(DMRecommendationSchema).parse(data)
+
+    return ok(recommendations)
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code === 'ENOENT') {
+      // File not found - return empty array, not error
+      return ok([])
+    }
+    console.error(`[getDMRecommendations] Error loading recommendations for ${customerName}:`, error)
+    return err(
+      new Error(
+        `Failed to load DM recommendations: ${error instanceof Error ? error.message : 'Unknown error'}`
+      )
+    )
+  }
+}
+
+/**
+ * Convert health score string to numeric value
+ * green -> 85, yellow -> 65, red -> 35
+ */
+function healthScoreToNumber(healthScore: 'green' | 'yellow' | 'red'): number {
+  const scoreMap = {
+    green: 85,
+    yellow: 65,
+    red: 35,
+  }
+  return scoreMap[healthScore]
+}
+
+/**
+ * Get retention strategy for account
+ * Includes DM recommendations and calculated risk level
+ */
+export async function getAccountRetentionStrategy(
+  customerName: string,
+  params: {
+    healthScore: 'green' | 'yellow' | 'red' | number
+    renewalDate?: string
+    painPoints: PainPoint[]
+    competitors: Competitor[]
+  }
+): Promise<Result<RetentionStrategy, Error>> {
+  try {
+    // Fetch DM recommendations
+    const recommendationsResult = await getDMRecommendations(customerName)
+    if (!recommendationsResult.success) {
+      return err(recommendationsResult.error)
+    }
+
+    const recommendations = recommendationsResult.value
+
+    // Convert health score to number if it's a string
+    const numericHealthScore = typeof params.healthScore === 'string'
+      ? healthScoreToNumber(params.healthScore)
+      : params.healthScore
+
+    // Calculate risk factors
+    const openPainPointCount = params.painPoints.filter((p) => p.status === 'active').length
+
+    // Check for active competitive evaluations
+    // Note: Competitor schema doesn't have evaluationStatus, so we'll check if any competitors exist
+    const hasActiveCompetitorEvaluation = params.competitors.length > 0
+
+    const riskAssessment = calculateDMRisk({
+      healthScore: numericHealthScore,
+      renewalDate: params.renewalDate,
+      openPainPointCount,
+      hasActiveCompetitorEvaluation,
+    })
+
+    const retentionStrategy: RetentionStrategy = {
+      recommendations,
+      riskLevel: riskAssessment.riskLevel,
+      riskScore: riskAssessment.riskScore,
+      riskFactors: riskAssessment.riskFactors,
+      healthScore: numericHealthScore,
+      daysToRenewal: riskAssessment.daysToRenewal,
+    }
+
+    return ok(retentionStrategy)
+  } catch (error) {
+    console.error(`[getAccountRetentionStrategy] Error for ${customerName}:`, error)
+    return err(
+      new Error(
+        `Failed to get retention strategy: ${error instanceof Error ? error.message : 'Unknown error'}`
+      )
+    )
+  }
+}

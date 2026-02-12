@@ -1,0 +1,31 @@
+{
+  "customer_name": "Thryv Australia Pty Ltd",
+  "last_updated": "2026-02-12",
+  "article_count": 3,
+  "articles": [
+    {
+      "title": "Thryv Australia Pty Ltd Invests in Cloud-Native Infrastructure",
+      "url": "https://example.com/news/thryv-australia-pty-ltd-strategic-initiative",
+      "source": "Industry News Daily",
+      "published": "2026-01-16",
+      "summary": "In a strategic move to enhance operational efficiency, Thryv Australia Pty Ltd is migrating key business systems to cloud-native platforms. The transformation is expected to reduce costs and improve scalability.",
+      "relevance_score": 85
+    },
+    {
+      "title": "Thryv Australia Pty Ltd Reports Strong Financial Performance",
+      "url": "https://example.com/news/thryv-australia-pty-ltd-financial-results",
+      "source": "Financial Times",
+      "published": "2026-01-03",
+      "summary": "Thryv Australia Pty Ltd has reported solid financial results for the quarter, with revenue growth driven by strong performance in core business areas. The company reaffirmed its commitment to investing in technology and innovation.",
+      "relevance_score": 79
+    },
+    {
+      "title": "Thryv Australia Pty Ltd Announces Strategic Partnership to Expand Services",
+      "url": "https://example.com/news/thryv-australia-pty-ltd-partnership",
+      "source": "Business Wire",
+      "published": "2025-11-18",
+      "summary": "Thryv Australia Pty Ltd has formed a strategic partnership aimed at expanding its service offerings and reaching new markets. The collaboration will leverage complementary strengths to deliver enhanced value to customers.",
+      "relevance_score": 83
+    }
+  ]
+}

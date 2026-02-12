@@ -1,0 +1,31 @@
+{
+  "customer_name": "PropertyGuru Pte Ltd",
+  "last_updated": "2026-02-12",
+  "article_count": 3,
+  "articles": [
+    {
+      "title": "PropertyGuru Pte Ltd Invests in Cloud-Native Infrastructure",
+      "url": "https://example.com/news/propertyguru-pte-ltd-strategic-initiative",
+      "source": "Industry News Daily",
+      "published": "2026-01-23",
+      "summary": "In a strategic move to enhance operational efficiency, PropertyGuru Pte Ltd is migrating key business systems to cloud-native platforms. The transformation is expected to reduce costs and improve scalability.",
+      "relevance_score": 93
+    },
+    {
+      "title": "PropertyGuru Pte Ltd Reports Strong Financial Performance",
+      "url": "https://example.com/news/propertyguru-pte-ltd-financial-results",
+      "source": "Financial Times",
+      "published": "2026-01-09",
+      "summary": "PropertyGuru Pte Ltd has reported solid financial results for the quarter, with revenue growth driven by strong performance in core business areas. The company reaffirmed its commitment to investing in technology and innovation.",
+      "relevance_score": 78
+    },
+    {
+      "title": "PropertyGuru Pte Ltd Launches New Product Suite for Enterprise Services",
+      "url": "https://example.com/news/propertyguru-pte-ltd-partnership",
+      "source": "Business Wire",
+      "published": "2025-12-02",
+      "summary": "PropertyGuru Pte Ltd has introduced a new suite of products designed specifically for the enterprise services market. The launch represents a significant investment in innovation and customer experience.",
+      "relevance_score": 74
+    }
+  ]
+}

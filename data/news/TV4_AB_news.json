@@ -1,0 +1,31 @@
+{
+  "customer_name": "TV4 AB",
+  "last_updated": "2026-02-12",
+  "article_count": 3,
+  "articles": [
+    {
+      "title": "TV4 AB Launches Innovation Program for Enterprise Services",
+      "url": "https://example.com/news/tv4-ab-strategic-initiative",
+      "source": "Industry News Daily",
+      "published": "2026-01-20",
+      "summary": "TV4 AB has announced a new innovation program focused on leveraging emerging technologies to drive growth in the enterprise services sector. The program will focus on AI, automation, and customer engagement.",
+      "relevance_score": 93
+    },
+    {
+      "title": "TV4 AB Reports Strong Financial Performance",
+      "url": "https://example.com/news/tv4-ab-financial-results",
+      "source": "Financial Times",
+      "published": "2026-01-02",
+      "summary": "TV4 AB has reported solid financial results for the quarter, with revenue growth driven by strong performance in core business areas. The company reaffirmed its commitment to investing in technology and innovation.",
+      "relevance_score": 78
+    },
+    {
+      "title": "TV4 AB Launches New Product Suite for Enterprise Services",
+      "url": "https://example.com/news/tv4-ab-partnership",
+      "source": "Business Wire",
+      "published": "2025-11-17",
+      "summary": "TV4 AB has introduced a new suite of products designed specifically for the enterprise services market. The launch represents a significant investment in innovation and customer experience.",
+      "relevance_score": 81
+    }
+  ]
+}

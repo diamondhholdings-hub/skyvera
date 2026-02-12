@@ -16,6 +16,7 @@ export function NavBar() {
     { href: '/accounts', label: 'Accounts' },
     { href: '/alerts', label: 'Alerts' },
     { href: '/scenario', label: 'Scenarios' },
+    { href: '/dm-strategy', label: 'DM Strategy' },
     { href: '/query', label: 'Ask' },
   ]
 

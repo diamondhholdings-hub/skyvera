@@ -1,0 +1,31 @@
+{
+  "customer_name": "DPG Media BV",
+  "last_updated": "2026-02-12",
+  "article_count": 3,
+  "articles": [
+    {
+      "title": "DPG Media BV Launches Innovation Program for Media & Entertainment",
+      "url": "https://example.com/news/dpg-media-bv-strategic-initiative",
+      "source": "Industry News Daily",
+      "published": "2026-01-26",
+      "summary": "DPG Media BV has announced a new innovation program focused on leveraging emerging technologies to drive growth in the media & entertainment sector. The program will focus on AI, automation, and customer engagement.",
+      "relevance_score": 93
+    },
+    {
+      "title": "DPG Media BV Reports Strong Financial Performance",
+      "url": "https://example.com/news/dpg-media-bv-financial-results",
+      "source": "Financial Times",
+      "published": "2025-12-26",
+      "summary": "DPG Media BV has reported solid financial results for the quarter, with revenue growth driven by strong performance in core business areas. The company reaffirmed its commitment to investing in technology and innovation.",
+      "relevance_score": 78
+    },
+    {
+      "title": "DPG Media BV Announces Strategic Partnership to Expand Services",
+      "url": "https://example.com/news/dpg-media-bv-partnership",
+      "source": "Business Wire",
+      "published": "2025-12-11",
+      "summary": "DPG Media BV has formed a strategic partnership aimed at expanding its service offerings and reaching new markets. The collaboration will leverage complementary strengths to deliver enhanced value to customers.",
+      "relevance_score": 71
+    }
+  ]
+}

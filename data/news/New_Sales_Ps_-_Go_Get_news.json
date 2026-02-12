@@ -1,0 +1,31 @@
+{
+  "customer_name": "New Sales Ps - Go Get",
+  "last_updated": "2026-02-12",
+  "article_count": 3,
+  "articles": [
+    {
+      "title": "New Sales Ps - Go Get Invests in Cloud-Native Infrastructure",
+      "url": "https://example.com/news/new-sales-ps---go-get-strategic-initiative",
+      "source": "Industry News Daily",
+      "published": "2026-01-14",
+      "summary": "In a strategic move to enhance operational efficiency, New Sales Ps - Go Get is migrating key business systems to cloud-native platforms. The transformation is expected to reduce costs and improve scalability.",
+      "relevance_score": 88
+    },
+    {
+      "title": "New Sales Ps - Go Get Reports Strong Financial Performance",
+      "url": "https://example.com/news/new-sales-ps---go-get-financial-results",
+      "source": "Financial Times",
+      "published": "2025-12-29",
+      "summary": "New Sales Ps - Go Get has reported solid financial results for the quarter, with revenue growth driven by strong performance in core business areas. The company reaffirmed its commitment to investing in technology and innovation.",
+      "relevance_score": 78
+    },
+    {
+      "title": "New Sales Ps - Go Get Launches New Product Suite for Enterprise Services",
+      "url": "https://example.com/news/new-sales-ps---go-get-partnership",
+      "source": "Business Wire",
+      "published": "2025-11-17",
+      "summary": "New Sales Ps - Go Get has introduced a new suite of products designed specifically for the enterprise services market. The launch represents a significant investment in innovation and customer experience.",
+      "relevance_score": 71
+    }
+  ]
+}

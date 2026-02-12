@@ -1,0 +1,31 @@
+{
+  "customer_name": "Liberty Global Services B.V. (NL)",
+  "last_updated": "2026-02-12",
+  "article_count": 3,
+  "articles": [
+    {
+      "title": "Liberty Global Services B.V. (NL) Launches Innovation Program for Enterprise Services",
+      "url": "https://example.com/news/liberty-global-services-b.v.-(nl)-strategic-initiative",
+      "source": "Industry News Daily",
+      "published": "2026-01-30",
+      "summary": "Liberty Global Services B.V. (NL) has announced a new innovation program focused on leveraging emerging technologies to drive growth in the enterprise services sector. The program will focus on AI, automation, and customer engagement.",
+      "relevance_score": 94
+    },
+    {
+      "title": "Liberty Global Services B.V. (NL) Reports Strong Financial Performance",
+      "url": "https://example.com/news/liberty-global-services-b.v.-(nl)-financial-results",
+      "source": "Financial Times",
+      "published": "2025-12-20",
+      "summary": "Liberty Global Services B.V. (NL) has reported solid financial results for the quarter, with revenue growth driven by strong performance in core business areas. The company reaffirmed its commitment to investing in technology and innovation.",
+      "relevance_score": 80
+    },
+    {
+      "title": "Liberty Global Services B.V. (NL) Announces Strategic Partnership to Expand Services",
+      "url": "https://example.com/news/liberty-global-services-b.v.-(nl)-partnership",
+      "source": "Business Wire",
+      "published": "2025-11-15",
+      "summary": "Liberty Global Services B.V. (NL) has formed a strategic partnership aimed at expanding its service offerings and reaching new markets. The collaboration will leverage complementary strengths to deliver enhanced value to customers.",
+      "relevance_score": 71
+    }
+  ]
+}

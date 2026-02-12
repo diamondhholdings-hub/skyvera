@@ -1,0 +1,31 @@
+{
+  "customer_name": "TATA Communications (America) Inc.",
+  "last_updated": "2026-02-12",
+  "article_count": 3,
+  "articles": [
+    {
+      "title": "TATA Communications (America) Inc. Announces Digital Transformation Initiative",
+      "url": "https://example.com/news/tata-communications-(america)-inc.-strategic-initiative",
+      "source": "Industry News Daily",
+      "published": "2026-01-21",
+      "summary": "TATA Communications (America) Inc. has unveiled a comprehensive digital transformation strategy aimed at modernizing its technology infrastructure and improving customer experience. The initiative includes investments in cloud platforms, automation, and data analytics.",
+      "relevance_score": 92
+    },
+    {
+      "title": "TATA Communications (America) Inc. Reports Strong Financial Performance",
+      "url": "https://example.com/news/tata-communications-(america)-inc.-financial-results",
+      "source": "Financial Times",
+      "published": "2026-01-07",
+      "summary": "TATA Communications (America) Inc. has reported solid financial results for the quarter, with revenue growth driven by strong performance in core business areas. The company reaffirmed its commitment to investing in technology and innovation.",
+      "relevance_score": 77
+    },
+    {
+      "title": "TATA Communications (America) Inc. Expands Operations in United States",
+      "url": "https://example.com/news/tata-communications-(america)-inc.-partnership",
+      "source": "Business Wire",
+      "published": "2025-11-24",
+      "summary": "TATA Communications (America) Inc. is expanding its operational footprint in United States with new facilities and increased investment. The expansion supports the company's growth strategy and commitment to the region.",
+      "relevance_score": 73
+    }
+  ]
+}

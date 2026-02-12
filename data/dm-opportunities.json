@@ -1,0 +1,1964 @@
+{
+  "analyzedAt": "2026-02-12T17:31:13.802Z",
+  "totalAccounts": 87,
+  "opportunitiesFound": 72,
+  "totalPotentialArrImpact": 14083319,
+  "byType": {
+    "pricing": 38,
+    "churn_risk": 5,
+    "contract_optimization": 25,
+    "upsell": 4
+  },
+  "bySeverity": {
+    "medium": 29,
+    "high": 8,
+    "low": 35
+  },
+  "opportunities": [
+    {
+      "accountName": "British Telecommunications plc",
+      "bu": "Cloudsense",
+      "type": "contract_optimization",
+      "severity": "high",
+      "title": "Contract Optimization - Multi-year",
+      "description": "Account on Enterprise Annual contract with ARR $1,404,790.63. Strong candidate for multi-year agreement to lock in revenue.",
+      "reasoning": "Current contract type (Enterprise Annual) with ARR $1,404,790.63 and strong health score suggests multi-year stability.",
+      "expectedArrImpact": 3511977,
+      "expectedDmImpact": 0,
+      "confidence": "high",
+      "timelineWeeks": 8,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer may prefer annual flexibility",
+        "Procurement approval may be required",
+        "Competitive renewal process risk"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 1404790.63,
+        "healthScore": 81,
+        "dmPercent": 95.2,
+        "daysToRenewal": 30,
+        "productCount": 3
+      }
+    },
+    {
+      "accountName": "Maxis Broadband Sdn Bhd",
+      "bu": "Cloudsense",
+      "type": "contract_optimization",
+      "severity": "high",
+      "title": "Contract Optimization - Multi-year",
+      "description": "Account on Enterprise Annual contract with ARR $1,234,734. Strong candidate for multi-year agreement to lock in revenue.",
+      "reasoning": "Current contract type (Enterprise Annual) with ARR $1,234,734 and strong health score suggests multi-year stability.",
+      "expectedArrImpact": 3086835,
+      "expectedDmImpact": 0,
+      "confidence": "high",
+      "timelineWeeks": 8,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer may prefer annual flexibility",
+        "Procurement approval may be required",
+        "Competitive renewal process risk"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 1234734,
+        "healthScore": 90,
+        "dmPercent": 101.2,
+        "daysToRenewal": 108,
+        "productCount": 3
+      }
+    },
+    {
+      "accountName": "Liquid Telecom",
+      "bu": "Cloudsense",
+      "type": "contract_optimization",
+      "severity": "high",
+      "title": "Contract Optimization - Multi-year",
+      "description": "Account on Enterprise Annual contract with ARR $1,073,619.8. Strong candidate for multi-year agreement to lock in revenue.",
+      "reasoning": "Current contract type (Enterprise Annual) with ARR $1,073,619.8 and strong health score suggests multi-year stability.",
+      "expectedArrImpact": 2684050,
+      "expectedDmImpact": 0,
+      "confidence": "high",
+      "timelineWeeks": 8,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer may prefer annual flexibility",
+        "Procurement approval may be required",
+        "Competitive renewal process risk"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 1073619.8,
+        "healthScore": 92,
+        "dmPercent": 102.3,
+        "daysToRenewal": 300,
+        "productCount": 3
+      }
+    },
+    {
+      "accountName": "Centrica Services Ltd",
+      "bu": "Cloudsense",
+      "type": "contract_optimization",
+      "severity": "high",
+      "title": "Contract Optimization - Multi-year",
+      "description": "Account on Enterprise Annual contract with ARR $1,053,982.65. Strong candidate for multi-year agreement to lock in revenue.",
+      "reasoning": "Current contract type (Enterprise Annual) with ARR $1,053,982.65 and strong health score suggests multi-year stability.",
+      "expectedArrImpact": 2634957,
+      "expectedDmImpact": 0,
+      "confidence": "medium",
+      "timelineWeeks": 8,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer may prefer annual flexibility",
+        "Procurement approval may be required",
+        "Competitive renewal process risk"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 1053982.65,
+        "healthScore": 77,
+        "dmPercent": 91.4,
+        "daysToRenewal": 120,
+        "productCount": 3
+      }
+    },
+    {
+      "accountName": "Telefonica UK Limited",
+      "bu": "Cloudsense",
+      "type": "churn_risk",
+      "severity": "high",
+      "title": "Churn Risk - Immediate Intervention Required",
+      "description": "Account shows multiple risk signals: Low health score (56), Revenue declining (87.4% DM), Renewal in 30 days.",
+      "reasoning": "Health score 56 indicates dissatisfaction. DM% of 87.4% shows revenue contraction. Upcoming renewal creates urgency.",
+      "expectedArrImpact": 303564,
+      "expectedDmImpact": 12.6,
+      "confidence": "high",
+      "timelineWeeks": 4,
+      "ownerTeam": "Customer Success",
+      "risks": [
+        "Customer may have already decided to churn",
+        "Competitor may be actively pursuing",
+        "Product gaps may be difficult to address quickly"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 2104857.01,
+        "healthScore": 56,
+        "dmPercent": 87.4,
+        "daysToRenewal": 30,
+        "productCount": 4
+      }
+    },
+    {
+      "accountName": "AT&T SERVICES, INC.",
+      "bu": "Kandy",
+      "type": "pricing",
+      "severity": "high",
+      "title": "Pricing Recovery Opportunity",
+      "description": "Account pricing has declined 10.5% vs prior year and is 10.5% below peer average. Strategic price adjustment could recover revenue.",
+      "reasoning": "Current ARR: $1,798,094.55, Prior: $2,009,708.53 (-10.5% decline). Peer average DM: 100.0%. This suggests pricing pressure or undervaluation.",
+      "expectedArrImpact": 211614,
+      "expectedDmImpact": 10.5,
+      "confidence": "high",
+      "timelineWeeks": 8,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer pushback on price increase",
+        "Competitive pricing pressure",
+        "May require product/service enhancements to justify"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 1798094.55,
+        "healthScore": 67,
+        "dmPercent": 89.5,
+        "daysToRenewal": 30,
+        "productCount": 4
+      }
+    },
+    {
+      "accountName": "Informa UK Limited",
+      "bu": "Cloudsense",
+      "type": "churn_risk",
+      "severity": "high",
+      "title": "Churn Risk - Immediate Intervention Required",
+      "description": "Account shows multiple risk signals: Low health score (59), Revenue declining (89.6% DM), Renewal in 120 days.",
+      "reasoning": "Health score 59 indicates dissatisfaction. DM% of 89.6% shows revenue contraction. Upcoming renewal creates urgency.",
+      "expectedArrImpact": 48050,
+      "expectedDmImpact": 10.4,
+      "confidence": "high",
+      "timelineWeeks": 4,
+      "ownerTeam": "Customer Success",
+      "risks": [
+        "Customer may have already decided to churn",
+        "Competitor may be actively pursuing",
+        "Product gaps may be difficult to address quickly"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 412442.44,
+        "healthScore": 59,
+        "dmPercent": 89.6,
+        "daysToRenewal": 120,
+        "productCount": 1
+      }
+    },
+    {
+      "accountName": "HERTZ EUROPE LIMITED",
+      "bu": "Kandy",
+      "type": "churn_risk",
+      "severity": "high",
+      "title": "Churn Risk - Immediate Intervention Required",
+      "description": "Account shows multiple risk signals: Low health score (59), Revenue declining (89.2% DM), Renewal in 30 days.",
+      "reasoning": "Health score 59 indicates dissatisfaction. DM% of 89.2% shows revenue contraction. Upcoming renewal creates urgency.",
+      "expectedArrImpact": 5618,
+      "expectedDmImpact": 10.8,
+      "confidence": "high",
+      "timelineWeeks": 4,
+      "ownerTeam": "Customer Success",
+      "risks": [
+        "Customer may have already decided to churn",
+        "Competitor may be actively pursuing",
+        "Product gaps may be difficult to address quickly"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 46534.91,
+        "healthScore": 59,
+        "dmPercent": 89.2,
+        "daysToRenewal": 30,
+        "productCount": 1
+      }
+    },
+    {
+      "accountName": "AT&T SERVICES, INC.",
+      "bu": "Kandy",
+      "type": "churn_risk",
+      "severity": "medium",
+      "title": "Churn Risk - Immediate Intervention Required",
+      "description": "Account shows multiple risk signals: Low health score (67), Revenue declining (89.5% DM), Renewal in 30 days.",
+      "reasoning": "Health score 67 indicates dissatisfaction. DM% of 89.5% shows revenue contraction. Upcoming renewal creates urgency.",
+      "expectedArrImpact": 211614,
+      "expectedDmImpact": 10.5,
+      "confidence": "medium",
+      "timelineWeeks": 4,
+      "ownerTeam": "Customer Success",
+      "risks": [
+        "Customer may have already decided to churn",
+        "Competitor may be actively pursuing",
+        "Product gaps may be difficult to address quickly"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 1798094.55,
+        "healthScore": 67,
+        "dmPercent": 89.5,
+        "daysToRenewal": 30,
+        "productCount": 4
+      }
+    },
+    {
+      "accountName": "Vodafone Netherlands",
+      "bu": "Cloudsense",
+      "type": "pricing",
+      "severity": "medium",
+      "title": "Pricing Recovery Opportunity",
+      "description": "Account pricing has declined 13.5% vs prior year. Strategic price adjustment could recover revenue.",
+      "reasoning": "Current ARR: $1,843,190.03, Prior: $2,129,995.95 (-13.5% decline). Peer average DM: 93.4%. This suggests pricing pressure or undervaluation.",
+      "expectedArrImpact": 146759,
+      "expectedDmImpact": 6.9,
+      "confidence": "medium",
+      "timelineWeeks": 8,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer pushback on price increase",
+        "Competitive pricing pressure",
+        "May require product/service enhancements to justify"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 1843190.03,
+        "healthScore": 60,
+        "dmPercent": 86.5,
+        "daysToRenewal": 365,
+        "productCount": 4
+      }
+    },
+    {
+      "accountName": "Advance Publications US",
+      "bu": "Cloudsense",
+      "type": "upsell",
+      "severity": "medium",
+      "title": "Cross-Sell & Expansion Opportunity",
+      "description": "Strong account (health: 77, DM: 96.8%) using only 2 product(s). High potential for product expansion.",
+      "reasoning": "Account demonstrates strong satisfaction and retention (96.8% DM). Currently using CloudSense CPQ Core, Advanced Configuration Engine. Similar accounts typically adopt 4-5 products. ARR of $659,200 suggests budget capacity.",
+      "expectedArrImpact": 131840,
+      "expectedDmImpact": 20,
+      "confidence": "medium",
+      "timelineWeeks": 12,
+      "ownerTeam": "Sales",
+      "risks": [
+        "Customer may not see value in additional products",
+        "Budget constraints or approval required",
+        "Competitive products may already be in use"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 659200,
+        "healthScore": 77,
+        "dmPercent": 96.8,
+        "daysToRenewal": 365,
+        "productCount": 2
+      }
+    },
+    {
+      "accountName": "Virgin Media Limited",
+      "bu": "Cloudsense",
+      "type": "upsell",
+      "severity": "medium",
+      "title": "Cross-Sell & Expansion Opportunity",
+      "description": "Strong account (health: 77, DM: 95.6%) using only 2 product(s). High potential for product expansion.",
+      "reasoning": "Account demonstrates strong satisfaction and retention (95.6% DM). Currently using CloudSense CPQ Core, Advanced Configuration Engine. Similar accounts typically adopt 4-5 products. ARR of $655,607.51 suggests budget capacity.",
+      "expectedArrImpact": 131122,
+      "expectedDmImpact": 20,
+      "confidence": "medium",
+      "timelineWeeks": 12,
+      "ownerTeam": "Sales",
+      "risks": [
+        "Customer may not see value in additional products",
+        "Budget constraints or approval required",
+        "Competitive products may already be in use"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 655607.51,
+        "healthScore": 77,
+        "dmPercent": 95.6,
+        "daysToRenewal": 120,
+        "productCount": 2
+      }
+    },
+    {
+      "accountName": "Foxtel Management Pty Limited",
+      "bu": "Cloudsense",
+      "type": "upsell",
+      "severity": "medium",
+      "title": "Cross-Sell & Expansion Opportunity",
+      "description": "Strong account (health: 95, DM: 103.1%) using only 2 product(s). High potential for product expansion.",
+      "reasoning": "Account demonstrates strong satisfaction and retention (103.1% DM). Currently using CloudSense CPQ Core, Advanced Configuration Engine. Similar accounts typically adopt 4-5 products. ARR of $640,260.52 suggests budget capacity.",
+      "expectedArrImpact": 128052,
+      "expectedDmImpact": 20,
+      "confidence": "high",
+      "timelineWeeks": 12,
+      "ownerTeam": "Sales",
+      "risks": [
+        "Customer may not see value in additional products",
+        "Budget constraints or approval required",
+        "Competitive products may already be in use"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 640260.52,
+        "healthScore": 95,
+        "dmPercent": 103.1,
+        "daysToRenewal": 365,
+        "productCount": 2
+      }
+    },
+    {
+      "accountName": "Telefonica UK Limited",
+      "bu": "Cloudsense",
+      "type": "pricing",
+      "severity": "medium",
+      "title": "Pricing Recovery Opportunity",
+      "description": "Account pricing has declined 12.6% vs prior year. Strategic price adjustment could recover revenue.",
+      "reasoning": "Current ARR: $2,104,857.01, Prior: $2,408,421.11 (-12.6% decline). Peer average DM: 92.5%. This suggests pricing pressure or undervaluation.",
+      "expectedArrImpact": 123735,
+      "expectedDmImpact": 5.1,
+      "confidence": "medium",
+      "timelineWeeks": 8,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer pushback on price increase",
+        "Competitive pricing pressure",
+        "May require product/service enhancements to justify"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 2104857.01,
+        "healthScore": 56,
+        "dmPercent": 87.4,
+        "daysToRenewal": 30,
+        "productCount": 4
+      }
+    },
+    {
+      "accountName": "PostNL Holding BV",
+      "bu": "Cloudsense",
+      "type": "upsell",
+      "severity": "medium",
+      "title": "Cross-Sell & Expansion Opportunity",
+      "description": "Strong account (health: 82, DM: 95.3%) using only 2 product(s). High potential for product expansion.",
+      "reasoning": "Account demonstrates strong satisfaction and retention (95.3% DM). Currently using CloudSense CPQ Core, Advanced Configuration Engine. Similar accounts typically adopt 4-5 products. ARR of $576,494.75 suggests budget capacity.",
+      "expectedArrImpact": 115299,
+      "expectedDmImpact": 20,
+      "confidence": "high",
+      "timelineWeeks": 12,
+      "ownerTeam": "Sales",
+      "risks": [
+        "Customer may not see value in additional products",
+        "Budget constraints or approval required",
+        "Competitive products may already be in use"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 576494.75,
+        "healthScore": 82,
+        "dmPercent": 95.3,
+        "daysToRenewal": 365,
+        "productCount": 2
+      }
+    },
+    {
+      "accountName": "A1 Telekom Austria AG.",
+      "bu": "Cloudsense",
+      "type": "churn_risk",
+      "severity": "medium",
+      "title": "Churn Risk - Immediate Intervention Required",
+      "description": "Account shows multiple risk signals: Low health score (64), Revenue declining (86.2% DM), Renewal in 120 days.",
+      "reasoning": "Health score 64 indicates dissatisfaction. DM% of 86.2% shows revenue contraction. Upcoming renewal creates urgency.",
+      "expectedArrImpact": 83562,
+      "expectedDmImpact": 13.8,
+      "confidence": "medium",
+      "timelineWeeks": 4,
+      "ownerTeam": "Customer Success",
+      "risks": [
+        "Customer may have already decided to churn",
+        "Competitor may be actively pursuing",
+        "Product gaps may be difficult to address quickly"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 520967.79,
+        "healthScore": 64,
+        "dmPercent": 86.2,
+        "daysToRenewal": 120,
+        "productCount": 2
+      }
+    },
+    {
+      "accountName": "ISSQUARED, INC.",
+      "bu": "Kandy",
+      "type": "contract_optimization",
+      "severity": "medium",
+      "title": "Contract Optimization - Early-renewal",
+      "description": "Account on Standard Annual contract with ARR $295,121.61. Renewal in 30 days - opportunity for early renewal with increase.",
+      "reasoning": "Current contract type (Standard Annual) with ARR $295,121.61 and upcoming renewal (30 days) creates negotiation opportunity.",
+      "expectedArrImpact": 14756,
+      "expectedDmImpact": 0,
+      "confidence": "medium",
+      "timelineWeeks": 4,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer may resist pricing increase",
+        "Procurement approval may be required",
+        "Competitive renewal process risk"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 295121.61,
+        "healthScore": 77,
+        "dmPercent": 95.1,
+        "daysToRenewal": 30,
+        "productCount": 1
+      }
+    },
+    {
+      "accountName": "Ericsson Telecommunications, Inc.",
+      "bu": "STL",
+      "type": "contract_optimization",
+      "severity": "medium",
+      "title": "Contract Optimization - Early-renewal",
+      "description": "Account on Standard Annual contract with ARR $176,902.02. Renewal in 30 days - opportunity for early renewal with increase.",
+      "reasoning": "Current contract type (Standard Annual) with ARR $176,902.02 and upcoming renewal (30 days) creates negotiation opportunity.",
+      "expectedArrImpact": 8845,
+      "expectedDmImpact": 0,
+      "confidence": "high",
+      "timelineWeeks": 4,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer may resist pricing increase",
+        "Procurement approval may be required",
+        "Competitive renewal process risk"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 176902.02,
+        "healthScore": 97,
+        "dmPercent": 123,
+        "daysToRenewal": 30,
+        "productCount": 1
+      }
+    },
+    {
+      "accountName": "HARGRAY COMMUNICATIONS GROUP",
+      "bu": "Kandy",
+      "type": "contract_optimization",
+      "severity": "medium",
+      "title": "Contract Optimization - Early-renewal",
+      "description": "Account on Standard Annual contract with ARR $158,226.87. Renewal in 30 days - opportunity for early renewal with increase.",
+      "reasoning": "Current contract type (Standard Annual) with ARR $158,226.87 and upcoming renewal (30 days) creates negotiation opportunity.",
+      "expectedArrImpact": 7911,
+      "expectedDmImpact": 0,
+      "confidence": "medium",
+      "timelineWeeks": 4,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer may resist pricing increase",
+        "Procurement approval may be required",
+        "Competitive renewal process risk"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 158226.87,
+        "healthScore": 76,
+        "dmPercent": 92.7,
+        "daysToRenewal": 30,
+        "productCount": 1
+      }
+    },
+    {
+      "accountName": "MTN Zambia",
+      "bu": "STL",
+      "type": "contract_optimization",
+      "severity": "medium",
+      "title": "Contract Optimization - Early-renewal",
+      "description": "Account on Basic Annual contract with ARR $97,500. Renewal in 30 days - opportunity for early renewal with increase.",
+      "reasoning": "Current contract type (Basic Annual) with ARR $97,500 and upcoming renewal (30 days) creates negotiation opportunity.",
+      "expectedArrImpact": 4875,
+      "expectedDmImpact": 0,
+      "confidence": "high",
+      "timelineWeeks": 4,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer may resist pricing increase",
+        "Procurement approval may be required",
+        "Competitive renewal process risk"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 97500,
+        "healthScore": 87,
+        "dmPercent": 128.6,
+        "daysToRenewal": 30,
+        "productCount": 1
+      }
+    },
+    {
+      "accountName": "RAZORLINE, LLC",
+      "bu": "Kandy",
+      "type": "contract_optimization",
+      "severity": "medium",
+      "title": "Contract Optimization - Early-renewal",
+      "description": "Account on Basic Annual contract with ARR $82,547.3. Renewal in 30 days - opportunity for early renewal with increase.",
+      "reasoning": "Current contract type (Basic Annual) with ARR $82,547.3 and upcoming renewal (30 days) creates negotiation opportunity.",
+      "expectedArrImpact": 4127,
+      "expectedDmImpact": 0,
+      "confidence": "high",
+      "timelineWeeks": 4,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer may resist pricing increase",
+        "Procurement approval may be required",
+        "Competitive renewal process risk"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 82547.3,
+        "healthScore": 81,
+        "dmPercent": 92.5,
+        "daysToRenewal": 30,
+        "productCount": 1
+      }
+    },
+    {
+      "accountName": "WHOLESALE CARRIER SERVICES INC.",
+      "bu": "Kandy",
+      "type": "contract_optimization",
+      "severity": "medium",
+      "title": "Contract Optimization - Early-renewal",
+      "description": "Account on Basic Annual contract with ARR $73,785.88. Renewal in 30 days - opportunity for early renewal with increase.",
+      "reasoning": "Current contract type (Basic Annual) with ARR $73,785.88 and upcoming renewal (30 days) creates negotiation opportunity.",
+      "expectedArrImpact": 3689,
+      "expectedDmImpact": 0,
+      "confidence": "high",
+      "timelineWeeks": 4,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer may resist pricing increase",
+        "Procurement approval may be required",
+        "Competitive renewal process risk"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 73785.88,
+        "healthScore": 82,
+        "dmPercent": 90.4,
+        "daysToRenewal": 30,
+        "productCount": 1
+      }
+    },
+    {
+      "accountName": "COMPORIUM, INC.",
+      "bu": "Kandy",
+      "type": "contract_optimization",
+      "severity": "medium",
+      "title": "Contract Optimization - Early-renewal",
+      "description": "Account on Basic Annual contract with ARR $73,104.65. Renewal in 30 days - opportunity for early renewal with increase.",
+      "reasoning": "Current contract type (Basic Annual) with ARR $73,104.65 and upcoming renewal (30 days) creates negotiation opportunity.",
+      "expectedArrImpact": 3655,
+      "expectedDmImpact": 0,
+      "confidence": "high",
+      "timelineWeeks": 4,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer may resist pricing increase",
+        "Procurement approval may be required",
+        "Competitive renewal process risk"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 73104.65,
+        "healthScore": 91,
+        "dmPercent": 100.5,
+        "daysToRenewal": 30,
+        "productCount": 1
+      }
+    },
+    {
+      "accountName": "NUWAVE COMMUNICATIONS, INC.",
+      "bu": "Kandy",
+      "type": "contract_optimization",
+      "severity": "medium",
+      "title": "Contract Optimization - Early-renewal",
+      "description": "Account on Basic Annual contract with ARR $72,730.96. Renewal in 30 days - opportunity for early renewal with increase.",
+      "reasoning": "Current contract type (Basic Annual) with ARR $72,730.96 and upcoming renewal (30 days) creates negotiation opportunity.",
+      "expectedArrImpact": 3637,
+      "expectedDmImpact": 0,
+      "confidence": "high",
+      "timelineWeeks": 4,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer may resist pricing increase",
+        "Procurement approval may be required",
+        "Competitive renewal process risk"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 72730.96,
+        "healthScore": 88,
+        "dmPercent": 100.1,
+        "daysToRenewal": 30,
+        "productCount": 1
+      }
+    },
+    {
+      "accountName": "YADKIN VALLEY TEL MEMBERSHIP CORP",
+      "bu": "Kandy",
+      "type": "contract_optimization",
+      "severity": "medium",
+      "title": "Contract Optimization - Early-renewal",
+      "description": "Account on Basic Annual contract with ARR $49,606.51. Renewal in 30 days - opportunity for early renewal with increase.",
+      "reasoning": "Current contract type (Basic Annual) with ARR $49,606.51 and upcoming renewal (30 days) creates negotiation opportunity.",
+      "expectedArrImpact": 2480,
+      "expectedDmImpact": 0,
+      "confidence": "high",
+      "timelineWeeks": 4,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer may resist pricing increase",
+        "Procurement approval may be required",
+        "Competitive renewal process risk"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 49606.51,
+        "healthScore": 88,
+        "dmPercent": 96.6,
+        "daysToRenewal": 30,
+        "productCount": 1
+      }
+    },
+    {
+      "accountName": "Juxto - Ontario",
+      "bu": "Kandy",
+      "type": "contract_optimization",
+      "severity": "medium",
+      "title": "Contract Optimization - Early-renewal",
+      "description": "Account on Basic Annual contract with ARR $48,793.63. Renewal in 30 days - opportunity for early renewal with increase.",
+      "reasoning": "Current contract type (Basic Annual) with ARR $48,793.63 and upcoming renewal (30 days) creates negotiation opportunity.",
+      "expectedArrImpact": 2440,
+      "expectedDmImpact": 0,
+      "confidence": "medium",
+      "timelineWeeks": 4,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer may resist pricing increase",
+        "Procurement approval may be required",
+        "Competitive renewal process risk"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 48793.63,
+        "healthScore": 78,
+        "dmPercent": 99.7,
+        "daysToRenewal": 30,
+        "productCount": 1
+      }
+    },
+    {
+      "accountName": "VOICEFLEX LIMITED",
+      "bu": "Kandy",
+      "type": "contract_optimization",
+      "severity": "medium",
+      "title": "Contract Optimization - Early-renewal",
+      "description": "Account on Basic Annual contract with ARR $46,972.52. Renewal in 30 days - opportunity for early renewal with increase.",
+      "reasoning": "Current contract type (Basic Annual) with ARR $46,972.52 and upcoming renewal (30 days) creates negotiation opportunity.",
+      "expectedArrImpact": 2349,
+      "expectedDmImpact": 0,
+      "confidence": "medium",
+      "timelineWeeks": 4,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer may resist pricing increase",
+        "Procurement approval may be required",
+        "Competitive renewal process risk"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 46972.52,
+        "healthScore": 78,
+        "dmPercent": 91.1,
+        "daysToRenewal": 30,
+        "productCount": 1
+      }
+    },
+    {
+      "accountName": "ERICSSON (THAILAND) LTD",
+      "bu": "STL",
+      "type": "contract_optimization",
+      "severity": "medium",
+      "title": "Contract Optimization - Early-renewal",
+      "description": "Account on Basic Annual contract with ARR $38,000. Renewal in 30 days - opportunity for early renewal with increase.",
+      "reasoning": "Current contract type (Basic Annual) with ARR $38,000 and upcoming renewal (30 days) creates negotiation opportunity.",
+      "expectedArrImpact": 1900,
+      "expectedDmImpact": 0,
+      "confidence": "high",
+      "timelineWeeks": 4,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer may resist pricing increase",
+        "Procurement approval may be required",
+        "Competitive renewal process risk"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 38000,
+        "healthScore": 95,
+        "dmPercent": 113.5,
+        "daysToRenewal": 30,
+        "productCount": 1
+      }
+    },
+    {
+      "accountName": "Bharti Airtel Limited - Mumbai",
+      "bu": "STL",
+      "type": "contract_optimization",
+      "severity": "medium",
+      "title": "Contract Optimization - Early-renewal",
+      "description": "Account on Basic Annual contract with ARR $35,356.12. Renewal in 30 days - opportunity for early renewal with increase.",
+      "reasoning": "Current contract type (Basic Annual) with ARR $35,356.12 and upcoming renewal (30 days) creates negotiation opportunity.",
+      "expectedArrImpact": 1768,
+      "expectedDmImpact": 0,
+      "confidence": "high",
+      "timelineWeeks": 4,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer may resist pricing increase",
+        "Procurement approval may be required",
+        "Competitive renewal process risk"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 35356.12,
+        "healthScore": 91,
+        "dmPercent": 126.8,
+        "daysToRenewal": 30,
+        "productCount": 1
+      }
+    },
+    {
+      "accountName": "CROSS TELEPHONE COMPANY LLC (OK)",
+      "bu": "Kandy",
+      "type": "contract_optimization",
+      "severity": "medium",
+      "title": "Contract Optimization - Early-renewal",
+      "description": "Account on Basic Annual contract with ARR $34,655.89. Renewal in 30 days - opportunity for early renewal with increase.",
+      "reasoning": "Current contract type (Basic Annual) with ARR $34,655.89 and upcoming renewal (30 days) creates negotiation opportunity.",
+      "expectedArrImpact": 1733,
+      "expectedDmImpact": 0,
+      "confidence": "high",
+      "timelineWeeks": 4,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer may resist pricing increase",
+        "Procurement approval may be required",
+        "Competitive renewal process risk"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 34655.89,
+        "healthScore": 87,
+        "dmPercent": 100.2,
+        "daysToRenewal": 30,
+        "productCount": 1
+      }
+    },
+    {
+      "accountName": "Bharti Airtel Limited - Gurgaon",
+      "bu": "STL",
+      "type": "contract_optimization",
+      "severity": "medium",
+      "title": "Contract Optimization - Early-renewal",
+      "description": "Account on Basic Annual contract with ARR $33,450.14. Renewal in 30 days - opportunity for early renewal with increase.",
+      "reasoning": "Current contract type (Basic Annual) with ARR $33,450.14 and upcoming renewal (30 days) creates negotiation opportunity.",
+      "expectedArrImpact": 1673,
+      "expectedDmImpact": 0,
+      "confidence": "high",
+      "timelineWeeks": 4,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer may resist pricing increase",
+        "Procurement approval may be required",
+        "Competitive renewal process risk"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 33450.14,
+        "healthScore": 96,
+        "dmPercent": 131.2,
+        "daysToRenewal": 30,
+        "productCount": 1
+      }
+    },
+    {
+      "accountName": "COEO SOLUTIONS LLC",
+      "bu": "Kandy",
+      "type": "contract_optimization",
+      "severity": "medium",
+      "title": "Contract Optimization - Early-renewal",
+      "description": "Account on Basic Annual contract with ARR $22,551.22. Renewal in 30 days - opportunity for early renewal with increase.",
+      "reasoning": "Current contract type (Basic Annual) with ARR $22,551.22 and upcoming renewal (30 days) creates negotiation opportunity.",
+      "expectedArrImpact": 1128,
+      "expectedDmImpact": 0,
+      "confidence": "high",
+      "timelineWeeks": 4,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer may resist pricing increase",
+        "Procurement approval may be required",
+        "Competitive renewal process risk"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 22551.22,
+        "healthScore": 87,
+        "dmPercent": 108.6,
+        "daysToRenewal": 30,
+        "productCount": 1
+      }
+    },
+    {
+      "accountName": "EVOLUTIO CLOUD ENABLER S.A.",
+      "bu": "Kandy",
+      "type": "contract_optimization",
+      "severity": "medium",
+      "title": "Contract Optimization - Early-renewal",
+      "description": "Account on Basic Annual contract with ARR $20,787.42. Renewal in 30 days - opportunity for early renewal with increase.",
+      "reasoning": "Current contract type (Basic Annual) with ARR $20,787.42 and upcoming renewal (30 days) creates negotiation opportunity.",
+      "expectedArrImpact": 1039,
+      "expectedDmImpact": 0,
+      "confidence": "medium",
+      "timelineWeeks": 4,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer may resist pricing increase",
+        "Procurement approval may be required",
+        "Competitive renewal process risk"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 20787.42,
+        "healthScore": 78,
+        "dmPercent": 94.4,
+        "daysToRenewal": 30,
+        "productCount": 1
+      }
+    },
+    {
+      "accountName": "EMPIRE TELEPHONE CORPORATION",
+      "bu": "Kandy",
+      "type": "contract_optimization",
+      "severity": "medium",
+      "title": "Contract Optimization - Early-renewal",
+      "description": "Account on Basic Annual contract with ARR $16,935.51. Renewal in 30 days - opportunity for early renewal with increase.",
+      "reasoning": "Current contract type (Basic Annual) with ARR $16,935.51 and upcoming renewal (30 days) creates negotiation opportunity.",
+      "expectedArrImpact": 847,
+      "expectedDmImpact": 0,
+      "confidence": "medium",
+      "timelineWeeks": 4,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer may resist pricing increase",
+        "Procurement approval may be required",
+        "Competitive renewal process risk"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 16935.51,
+        "healthScore": 78,
+        "dmPercent": 90.1,
+        "daysToRenewal": 30,
+        "productCount": 1
+      }
+    },
+    {
+      "accountName": "VODAFONE FIJI LIMITED",
+      "bu": "Kandy",
+      "type": "contract_optimization",
+      "severity": "medium",
+      "title": "Contract Optimization - Early-renewal",
+      "description": "Account on Basic Annual contract with ARR $10,823.16. Renewal in 30 days - opportunity for early renewal with increase.",
+      "reasoning": "Current contract type (Basic Annual) with ARR $10,823.16 and upcoming renewal (30 days) creates negotiation opportunity.",
+      "expectedArrImpact": 541,
+      "expectedDmImpact": 0,
+      "confidence": "high",
+      "timelineWeeks": 4,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer may resist pricing increase",
+        "Procurement approval may be required",
+        "Competitive renewal process risk"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 10823.16,
+        "healthScore": 93,
+        "dmPercent": 104.1,
+        "daysToRenewal": 30,
+        "productCount": 1
+      }
+    },
+    {
+      "accountName": "ISSQUARED, Inc.",
+      "bu": "Kandy",
+      "type": "contract_optimization",
+      "severity": "medium",
+      "title": "Contract Optimization - Early-renewal",
+      "description": "Account on Basic Annual contract with ARR $3,986.16. Renewal in 30 days - opportunity for early renewal with increase.",
+      "reasoning": "Current contract type (Basic Annual) with ARR $3,986.16 and upcoming renewal (30 days) creates negotiation opportunity.",
+      "expectedArrImpact": 199,
+      "expectedDmImpact": 0,
+      "confidence": "medium",
+      "timelineWeeks": 4,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer may resist pricing increase",
+        "Procurement approval may be required",
+        "Competitive renewal process risk"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 3986.16,
+        "healthScore": 77,
+        "dmPercent": 95.3,
+        "daysToRenewal": 30,
+        "productCount": 1
+      }
+    },
+    {
+      "accountName": "AGT",
+      "bu": "Kandy",
+      "type": "contract_optimization",
+      "severity": "medium",
+      "title": "Contract Optimization - Early-renewal",
+      "description": "Account on Basic Annual contract with ARR $2,268.24. Renewal in 30 days - opportunity for early renewal with increase.",
+      "reasoning": "Current contract type (Basic Annual) with ARR $2,268.24 and upcoming renewal (30 days) creates negotiation opportunity.",
+      "expectedArrImpact": 113,
+      "expectedDmImpact": 0,
+      "confidence": "high",
+      "timelineWeeks": 4,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer may resist pricing increase",
+        "Procurement approval may be required",
+        "Competitive renewal process risk"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 2268.24,
+        "healthScore": 95,
+        "dmPercent": 106.8,
+        "daysToRenewal": 30,
+        "productCount": 1
+      }
+    },
+    {
+      "accountName": "Elisa Oyj",
+      "bu": "Cloudsense",
+      "type": "pricing",
+      "severity": "low",
+      "title": "Pricing Recovery Opportunity",
+      "description": "Account pricing has declined 13.1% vs prior year. Strategic price adjustment could recover revenue.",
+      "reasoning": "Current ARR: $723,512.49, Prior: $832,111.39 (-13.1% decline). Peer average DM: 93.9%. This suggests pricing pressure or undervaluation.",
+      "expectedArrImpact": 57528,
+      "expectedDmImpact": 7,
+      "confidence": "medium",
+      "timelineWeeks": 8,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer pushback on price increase",
+        "Competitive pricing pressure",
+        "May require product/service enhancements to justify"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 723512.49,
+        "healthScore": 65,
+        "dmPercent": 86.9,
+        "daysToRenewal": 365,
+        "productCount": 2
+      }
+    },
+    {
+      "accountName": "Centrica Services Ltd",
+      "bu": "Cloudsense",
+      "type": "pricing",
+      "severity": "low",
+      "title": "Pricing Recovery Opportunity",
+      "description": "Account pricing has declined 8.6% vs prior year. Strategic price adjustment could recover revenue.",
+      "reasoning": "Current ARR: $1,053,982.65, Prior: $1,152,578.84 (-8.6% decline). Peer average DM: 96.2%. This suggests pricing pressure or undervaluation.",
+      "expectedArrImpact": 55086,
+      "expectedDmImpact": 4.8,
+      "confidence": "medium",
+      "timelineWeeks": 8,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer pushback on price increase",
+        "Competitive pricing pressure",
+        "May require product/service enhancements to justify"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 1053982.65,
+        "healthScore": 77,
+        "dmPercent": 91.4,
+        "daysToRenewal": 120,
+        "productCount": 3
+      }
+    },
+    {
+      "accountName": "A1 Telekom Austria AG.",
+      "bu": "Cloudsense",
+      "type": "pricing",
+      "severity": "low",
+      "title": "Pricing Recovery Opportunity",
+      "description": "Account pricing has declined 13.8% vs prior year. Strategic price adjustment could recover revenue.",
+      "reasoning": "Current ARR: $520,967.79, Prior: $604,530.08 (-13.8% decline). Peer average DM: 93.0%. This suggests pricing pressure or undervaluation.",
+      "expectedArrImpact": 41025,
+      "expectedDmImpact": 6.8,
+      "confidence": "medium",
+      "timelineWeeks": 8,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer pushback on price increase",
+        "Competitive pricing pressure",
+        "May require product/service enhancements to justify"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 520967.79,
+        "healthScore": 64,
+        "dmPercent": 86.2,
+        "daysToRenewal": 120,
+        "productCount": 2
+      }
+    },
+    {
+      "accountName": "Abbott Laboratories",
+      "bu": "Cloudsense",
+      "type": "pricing",
+      "severity": "low",
+      "title": "Pricing Recovery Opportunity",
+      "description": "Account pricing has declined 9.8% vs prior year. Strategic price adjustment could recover revenue.",
+      "reasoning": "Current ARR: $816,927.6, Prior: $906,046.31 (-9.8% decline). Peer average DM: 94.3%. This suggests pricing pressure or undervaluation.",
+      "expectedArrImpact": 37733,
+      "expectedDmImpact": 4.1,
+      "confidence": "medium",
+      "timelineWeeks": 8,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer pushback on price increase",
+        "Competitive pricing pressure",
+        "May require product/service enhancements to justify"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 816927.6,
+        "healthScore": 77,
+        "dmPercent": 90.2,
+        "daysToRenewal": 365,
+        "productCount": 2
+      }
+    },
+    {
+      "accountName": "Telefonica Germany GmbH & Co. OHG",
+      "bu": "Cloudsense",
+      "type": "pricing",
+      "severity": "low",
+      "title": "Pricing Recovery Opportunity",
+      "description": "Account pricing has declined 13.0% vs prior year. Strategic price adjustment could recover revenue.",
+      "reasoning": "Current ARR: $460,063.27, Prior: $528,993.99 (-13.0% decline). Peer average DM: 92.1%. This suggests pricing pressure or undervaluation.",
+      "expectedArrImpact": 26920,
+      "expectedDmImpact": 5.1,
+      "confidence": "medium",
+      "timelineWeeks": 8,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer pushback on price increase",
+        "Competitive pricing pressure",
+        "May require product/service enhancements to justify"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 460063.27,
+        "healthScore": 59,
+        "dmPercent": 87,
+        "daysToRenewal": 365,
+        "productCount": 1
+      }
+    },
+    {
+      "accountName": "Luminus Hasselt NV/SA",
+      "bu": "Cloudsense",
+      "type": "pricing",
+      "severity": "low",
+      "title": "Pricing Recovery Opportunity",
+      "description": "Account pricing has declined 12.7% vs prior year. Strategic price adjustment could recover revenue.",
+      "reasoning": "Current ARR: $493,023.17, Prior: $564,694.64 (-12.7% decline). Peer average DM: 92.0%. This suggests pricing pressure or undervaluation.",
+      "expectedArrImpact": 26342,
+      "expectedDmImpact": 4.7,
+      "confidence": "medium",
+      "timelineWeeks": 8,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer pushback on price increase",
+        "Competitive pricing pressure",
+        "May require product/service enhancements to justify"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 493023.17,
+        "healthScore": 65,
+        "dmPercent": 87.3,
+        "daysToRenewal": 365,
+        "productCount": 1
+      }
+    },
+    {
+      "accountName": "StarHub Ltd",
+      "bu": "Cloudsense",
+      "type": "pricing",
+      "severity": "low",
+      "title": "Pricing Recovery Opportunity",
+      "description": "Account pricing has declined 8.8% vs prior year. Strategic price adjustment could recover revenue.",
+      "reasoning": "Current ARR: $749,638.9, Prior: $821,957.73 (-8.8% decline). Peer average DM: 94.3%. This suggests pricing pressure or undervaluation.",
+      "expectedArrImpact": 25820,
+      "expectedDmImpact": 3.1,
+      "confidence": "medium",
+      "timelineWeeks": 8,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer pushback on price increase",
+        "Competitive pricing pressure",
+        "May require product/service enhancements to justify"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 749638.9,
+        "healthScore": 83,
+        "dmPercent": 91.2,
+        "daysToRenewal": 300,
+        "productCount": 2
+      }
+    },
+    {
+      "accountName": "Proximus NV",
+      "bu": "Cloudsense",
+      "type": "pricing",
+      "severity": "low",
+      "title": "Pricing Recovery Opportunity",
+      "description": "Account pricing has declined 12.3% vs prior year. Strategic price adjustment could recover revenue.",
+      "reasoning": "Current ARR: $400,146.55, Prior: $456,135.98 (-12.3% decline). Peer average DM: 93.2%. This suggests pricing pressure or undervaluation.",
+      "expectedArrImpact": 25124,
+      "expectedDmImpact": 5.5,
+      "confidence": "medium",
+      "timelineWeeks": 8,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer pushback on price increase",
+        "Competitive pricing pressure",
+        "May require product/service enhancements to justify"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 400146.55,
+        "healthScore": 58,
+        "dmPercent": 87.7,
+        "daysToRenewal": 365,
+        "productCount": 1
+      }
+    },
+    {
+      "accountName": "Hubexo South UK Ltd",
+      "bu": "Cloudsense",
+      "type": "pricing",
+      "severity": "low",
+      "title": "Pricing Recovery Opportunity",
+      "description": "Account pricing has declined 13.2% vs prior year. Strategic price adjustment could recover revenue.",
+      "reasoning": "Current ARR: $173,411.91, Prior: $199,703.67 (-13.2% decline). Peer average DM: 94.5%. This suggests pricing pressure or undervaluation.",
+      "expectedArrImpact": 15408,
+      "expectedDmImpact": 7.8,
+      "confidence": "medium",
+      "timelineWeeks": 8,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer pushback on price increase",
+        "Competitive pricing pressure",
+        "May require product/service enhancements to justify"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 173411.91,
+        "healthScore": 60,
+        "dmPercent": 86.8,
+        "daysToRenewal": 210,
+        "productCount": 1
+      }
+    },
+    {
+      "accountName": "PIONEER TELEPHONE COOPERATIVE (OK)",
+      "bu": "Kandy",
+      "type": "pricing",
+      "severity": "low",
+      "title": "Pricing Recovery Opportunity",
+      "description": "Account pricing has declined 9.1% vs prior year. Strategic price adjustment could recover revenue.",
+      "reasoning": "Current ARR: $301,771.06, Prior: $331,870.04 (-9.1% decline). Peer average DM: 95.1%. This suggests pricing pressure or undervaluation.",
+      "expectedArrImpact": 13837,
+      "expectedDmImpact": 4.2,
+      "confidence": "medium",
+      "timelineWeeks": 8,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer pushback on price increase",
+        "Competitive pricing pressure",
+        "May require product/service enhancements to justify"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 301771.06,
+        "healthScore": 72,
+        "dmPercent": 90.9,
+        "daysToRenewal": 30,
+        "productCount": 2
+      }
+    },
+    {
+      "accountName": "Informa UK Limited",
+      "bu": "Cloudsense",
+      "type": "pricing",
+      "severity": "low",
+      "title": "Pricing Recovery Opportunity",
+      "description": "Account pricing has declined 10.4% vs prior year. Strategic price adjustment could recover revenue.",
+      "reasoning": "Current ARR: $412,442.44, Prior: $460,492.24 (-10.4% decline). Peer average DM: 92.5%. This suggests pricing pressure or undervaluation.",
+      "expectedArrImpact": 13725,
+      "expectedDmImpact": 2.9,
+      "confidence": "medium",
+      "timelineWeeks": 8,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer pushback on price increase",
+        "Competitive pricing pressure",
+        "May require product/service enhancements to justify"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 412442.44,
+        "healthScore": 59,
+        "dmPercent": 89.6,
+        "daysToRenewal": 120,
+        "productCount": 1
+      }
+    },
+    {
+      "accountName": "PropertyGuru Pte Ltd",
+      "bu": "Cloudsense",
+      "type": "pricing",
+      "severity": "low",
+      "title": "Pricing Recovery Opportunity",
+      "description": "Account pricing has declined 9.0% vs prior year. Strategic price adjustment could recover revenue.",
+      "reasoning": "Current ARR: $262,147.67, Prior: $288,128.57 (-9.0% decline). Peer average DM: 95.5%. This suggests pricing pressure or undervaluation.",
+      "expectedArrImpact": 13097,
+      "expectedDmImpact": 4.5,
+      "confidence": "medium",
+      "timelineWeeks": 8,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer pushback on price increase",
+        "Competitive pricing pressure",
+        "May require product/service enhancements to justify"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 262147.67,
+        "healthScore": 81,
+        "dmPercent": 91,
+        "daysToRenewal": 120,
+        "productCount": 1
+      }
+    },
+    {
+      "accountName": "Sky Italia",
+      "bu": "Cloudsense",
+      "type": "pricing",
+      "severity": "low",
+      "title": "Pricing Recovery Opportunity",
+      "description": "Account pricing has declined 13.3% vs prior year. Strategic price adjustment could recover revenue.",
+      "reasoning": "Current ARR: $151,282.16, Prior: $174,416.76 (-13.3% decline). Peer average DM: 94.1%. This suggests pricing pressure or undervaluation.",
+      "expectedArrImpact": 12883,
+      "expectedDmImpact": 7.4,
+      "confidence": "medium",
+      "timelineWeeks": 8,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer pushback on price increase",
+        "Competitive pricing pressure",
+        "May require product/service enhancements to justify"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 151282.16,
+        "healthScore": 57,
+        "dmPercent": 86.7,
+        "daysToRenewal": 365,
+        "productCount": 1
+      }
+    },
+    {
+      "accountName": "HARGRAY COMMUNICATIONS GROUP",
+      "bu": "Kandy",
+      "type": "pricing",
+      "severity": "low",
+      "title": "Pricing Recovery Opportunity",
+      "description": "Account pricing has declined 7.3% vs prior year. Strategic price adjustment could recover revenue.",
+      "reasoning": "Current ARR: $158,226.87, Prior: $170,680.56 (-7.3% decline). Peer average DM: 100.0%. This suggests pricing pressure or undervaluation.",
+      "expectedArrImpact": 12454,
+      "expectedDmImpact": 7.3,
+      "confidence": "medium",
+      "timelineWeeks": 8,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer pushback on price increase",
+        "Competitive pricing pressure",
+        "May require product/service enhancements to justify"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 158226.87,
+        "healthScore": 76,
+        "dmPercent": 92.7,
+        "daysToRenewal": 30,
+        "productCount": 1
+      }
+    },
+    {
+      "accountName": "DPG Media BV",
+      "bu": "Cloudsense",
+      "type": "pricing",
+      "severity": "low",
+      "title": "Pricing Recovery Opportunity",
+      "description": "Account pricing has declined 9.3% vs prior year. Strategic price adjustment could recover revenue.",
+      "reasoning": "Current ARR: $358,970.62, Prior: $395,945.48 (-9.3% decline). Peer average DM: 93.3%. This suggests pricing pressure or undervaluation.",
+      "expectedArrImpact": 10414,
+      "expectedDmImpact": 2.6,
+      "confidence": "medium",
+      "timelineWeeks": 8,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer pushback on price increase",
+        "Competitive pricing pressure",
+        "May require product/service enhancements to justify"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 358970.62,
+        "healthScore": 80,
+        "dmPercent": 90.7,
+        "daysToRenewal": 210,
+        "productCount": 1
+      }
+    },
+    {
+      "accountName": "Interxion Headquarters BV",
+      "bu": "Cloudsense",
+      "type": "pricing",
+      "severity": "low",
+      "title": "Pricing Recovery Opportunity",
+      "description": "Account pricing has declined 8.2% vs prior year. Strategic price adjustment could recover revenue.",
+      "reasoning": "Current ARR: $296,425.37, Prior: $322,950.16 (-8.2% decline). Peer average DM: 94.8%. This suggests pricing pressure or undervaluation.",
+      "expectedArrImpact": 9893,
+      "expectedDmImpact": 3,
+      "confidence": "medium",
+      "timelineWeeks": 8,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer pushback on price increase",
+        "Competitive pricing pressure",
+        "May require product/service enhancements to justify"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 296425.37,
+        "healthScore": 76,
+        "dmPercent": 91.8,
+        "daysToRenewal": 210,
+        "productCount": 1
+      }
+    },
+    {
+      "accountName": "DPLAY ENTERTAINMENT LTD",
+      "bu": "Cloudsense",
+      "type": "pricing",
+      "severity": "low",
+      "title": "Pricing Recovery Opportunity",
+      "description": "Account pricing has declined 9.8% vs prior year. Strategic price adjustment could recover revenue.",
+      "reasoning": "Current ARR: $427,660.68, Prior: $473,896.17 (-9.8% decline). Peer average DM: 92.0%. This suggests pricing pressure or undervaluation.",
+      "expectedArrImpact": 8410,
+      "expectedDmImpact": 1.8,
+      "confidence": "medium",
+      "timelineWeeks": 8,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer pushback on price increase",
+        "Competitive pricing pressure",
+        "May require product/service enhancements to justify"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 427660.68,
+        "healthScore": 74,
+        "dmPercent": 90.2,
+        "daysToRenewal": 120,
+        "productCount": 1
+      }
+    },
+    {
+      "accountName": "WHOLESALE CARRIER SERVICES INC.",
+      "bu": "Kandy",
+      "type": "pricing",
+      "severity": "low",
+      "title": "Pricing Recovery Opportunity",
+      "description": "Account pricing has declined 9.6% vs prior year. Strategic price adjustment could recover revenue.",
+      "reasoning": "Current ARR: $73,785.88, Prior: $81,579.59 (-9.6% decline). Peer average DM: 97.7%. This suggests pricing pressure or undervaluation.",
+      "expectedArrImpact": 5917,
+      "expectedDmImpact": 7.3,
+      "confidence": "medium",
+      "timelineWeeks": 8,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer pushback on price increase",
+        "Competitive pricing pressure",
+        "May require product/service enhancements to justify"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 73785.88,
+        "healthScore": 82,
+        "dmPercent": 90.4,
+        "daysToRenewal": 30,
+        "productCount": 1
+      }
+    },
+    {
+      "accountName": "Masergy Communications, Inc.",
+      "bu": "Cloudsense",
+      "type": "pricing",
+      "severity": "low",
+      "title": "Pricing Recovery Opportunity",
+      "description": "Account pricing has declined 8.1% vs prior year. Strategic price adjustment could recover revenue.",
+      "reasoning": "Current ARR: $349,943.99, Prior: $380,755.32 (-8.1% decline). Peer average DM: 93.4%. This suggests pricing pressure or undervaluation.",
+      "expectedArrImpact": 5605,
+      "expectedDmImpact": 1.5,
+      "confidence": "medium",
+      "timelineWeeks": 8,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer pushback on price increase",
+        "Competitive pricing pressure",
+        "May require product/service enhancements to justify"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 349943.99,
+        "healthScore": 77,
+        "dmPercent": 91.9,
+        "daysToRenewal": 365,
+        "productCount": 1
+      }
+    },
+    {
+      "accountName": "MasterCard Worldwide",
+      "bu": "Cloudsense",
+      "type": "pricing",
+      "severity": "low",
+      "title": "Pricing Recovery Opportunity",
+      "description": "Account pricing has declined 7.9% vs prior year. Strategic price adjustment could recover revenue.",
+      "reasoning": "Current ARR: $323,385, Prior: $351,045.91 (-7.9% decline). Peer average DM: 93.6%. This suggests pricing pressure or undervaluation.",
+      "expectedArrImpact": 5124,
+      "expectedDmImpact": 1.5,
+      "confidence": "medium",
+      "timelineWeeks": 8,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer pushback on price increase",
+        "Competitive pricing pressure",
+        "May require product/service enhancements to justify"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 323385,
+        "healthScore": 77,
+        "dmPercent": 92.1,
+        "daysToRenewal": 365,
+        "productCount": 1
+      }
+    },
+    {
+      "accountName": "Unidad Editorial S.A.",
+      "bu": "Cloudsense",
+      "type": "pricing",
+      "severity": "low",
+      "title": "Pricing Recovery Opportunity",
+      "description": "Account pricing has declined 13.7% vs prior year. Strategic price adjustment could recover revenue.",
+      "reasoning": "Current ARR: $85,056.37, Prior: $98,545.46 (-13.7% decline). Peer average DM: 91.1%. This suggests pricing pressure or undervaluation.",
+      "expectedArrImpact": 4719,
+      "expectedDmImpact": 4.8,
+      "confidence": "medium",
+      "timelineWeeks": 8,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer pushback on price increase",
+        "Competitive pricing pressure",
+        "May require product/service enhancements to justify"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 85056.37,
+        "healthScore": 60,
+        "dmPercent": 86.3,
+        "daysToRenewal": 365,
+        "productCount": 1
+      }
+    },
+    {
+      "accountName": "Il Sole 24 ORE SpA",
+      "bu": "Cloudsense",
+      "type": "pricing",
+      "severity": "low",
+      "title": "Pricing Recovery Opportunity",
+      "description": "Account pricing has declined 9.4% vs prior year. Strategic price adjustment could recover revenue.",
+      "reasoning": "Current ARR: $106,120.64, Prior: $117,071.96 (-9.4% decline). Peer average DM: 94.3%. This suggests pricing pressure or undervaluation.",
+      "expectedArrImpact": 4220,
+      "expectedDmImpact": 3.7,
+      "confidence": "medium",
+      "timelineWeeks": 8,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer pushback on price increase",
+        "Competitive pricing pressure",
+        "May require product/service enhancements to justify"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 106120.64,
+        "healthScore": 78,
+        "dmPercent": 90.6,
+        "daysToRenewal": 365,
+        "productCount": 1
+      }
+    },
+    {
+      "accountName": "TATA Communications (America) Inc.",
+      "bu": "Cloudsense",
+      "type": "pricing",
+      "severity": "low",
+      "title": "Pricing Recovery Opportunity",
+      "description": "Account pricing has declined 8.5% vs prior year. Strategic price adjustment could recover revenue.",
+      "reasoning": "Current ARR: $180,936, Prior: $197,743.35 (-8.5% decline). Peer average DM: 93.6%. This suggests pricing pressure or undervaluation.",
+      "expectedArrImpact": 4180,
+      "expectedDmImpact": 2.1,
+      "confidence": "medium",
+      "timelineWeeks": 8,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer pushback on price increase",
+        "Competitive pricing pressure",
+        "May require product/service enhancements to justify"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 180936,
+        "healthScore": 81,
+        "dmPercent": 91.5,
+        "daysToRenewal": 300,
+        "productCount": 1
+      }
+    },
+    {
+      "accountName": "RAZORLINE, LLC",
+      "bu": "Kandy",
+      "type": "pricing",
+      "severity": "low",
+      "title": "Pricing Recovery Opportunity",
+      "description": "Account pricing has declined 7.5% vs prior year. Strategic price adjustment could recover revenue.",
+      "reasoning": "Current ARR: $82,547.3, Prior: $89,230.31 (-7.5% decline). Peer average DM: 97.0%. This suggests pricing pressure or undervaluation.",
+      "expectedArrImpact": 4006,
+      "expectedDmImpact": 4.5,
+      "confidence": "medium",
+      "timelineWeeks": 8,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer pushback on price increase",
+        "Competitive pricing pressure",
+        "May require product/service enhancements to justify"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 82547.3,
+        "healthScore": 81,
+        "dmPercent": 92.5,
+        "daysToRenewal": 30,
+        "productCount": 1
+      }
+    },
+    {
+      "accountName": "Coordinadora de Carriers SA de CV Vivaro",
+      "bu": "Kandy",
+      "type": "pricing",
+      "severity": "low",
+      "title": "Pricing Recovery Opportunity",
+      "description": "Account pricing has declined 9.2% vs prior year. Strategic price adjustment could recover revenue.",
+      "reasoning": "Current ARR: $35,394.27, Prior: $38,988.44 (-9.2% decline). Peer average DM: 100.2%. This suggests pricing pressure or undervaluation.",
+      "expectedArrImpact": 3594,
+      "expectedDmImpact": 9.2,
+      "confidence": "medium",
+      "timelineWeeks": 8,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer pushback on price increase",
+        "Competitive pricing pressure",
+        "May require product/service enhancements to justify"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 35394.27,
+        "healthScore": 74,
+        "dmPercent": 90.8,
+        "daysToRenewal": 30,
+        "productCount": 1
+      }
+    },
+    {
+      "accountName": "Telstra International Limited",
+      "bu": "Cloudsense",
+      "type": "pricing",
+      "severity": "low",
+      "title": "Pricing Recovery Opportunity",
+      "description": "Account pricing has declined 12.8% vs prior year. Strategic price adjustment could recover revenue.",
+      "reasoning": "Current ARR: $34,640.81, Prior: $39,727.58 (-12.8% decline). Peer average DM: 96.2%. This suggests pricing pressure or undervaluation.",
+      "expectedArrImpact": 3577,
+      "expectedDmImpact": 9,
+      "confidence": "medium",
+      "timelineWeeks": 8,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer pushback on price increase",
+        "Competitive pricing pressure",
+        "May require product/service enhancements to justify"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 34640.81,
+        "healthScore": 75,
+        "dmPercent": 87.2,
+        "daysToRenewal": 210,
+        "productCount": 1
+      }
+    },
+    {
+      "accountName": "BeeDIGITAL AI, S.A.U.",
+      "bu": "Cloudsense",
+      "type": "pricing",
+      "severity": "low",
+      "title": "Pricing Recovery Opportunity",
+      "description": "Account pricing has declined 8.3% vs prior year. Strategic price adjustment could recover revenue.",
+      "reasoning": "Current ARR: $188,692.05, Prior: $205,692.02 (-8.3% decline). Peer average DM: 93.4%. This suggests pricing pressure or undervaluation.",
+      "expectedArrImpact": 3501,
+      "expectedDmImpact": 1.7,
+      "confidence": "medium",
+      "timelineWeeks": 8,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer pushback on price increase",
+        "Competitive pricing pressure",
+        "May require product/service enhancements to justify"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 188692.05,
+        "healthScore": 72,
+        "dmPercent": 91.7,
+        "daysToRenewal": 210,
+        "productCount": 1
+      }
+    },
+    {
+      "accountName": "HERTZ EUROPE LIMITED",
+      "bu": "Kandy",
+      "type": "pricing",
+      "severity": "low",
+      "title": "Pricing Recovery Opportunity",
+      "description": "Account pricing has declined 10.8% vs prior year. Strategic price adjustment could recover revenue.",
+      "reasoning": "Current ARR: $46,534.91, Prior: $52,153.39 (-10.8% decline). Peer average DM: 95.7%. This suggests pricing pressure or undervaluation.",
+      "expectedArrImpact": 3365,
+      "expectedDmImpact": 6.5,
+      "confidence": "medium",
+      "timelineWeeks": 8,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer pushback on price increase",
+        "Competitive pricing pressure",
+        "May require product/service enhancements to justify"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 46534.91,
+        "healthScore": 59,
+        "dmPercent": 89.2,
+        "daysToRenewal": 30,
+        "productCount": 1
+      }
+    },
+    {
+      "accountName": "VOICEFLEX LIMITED",
+      "bu": "Kandy",
+      "type": "pricing",
+      "severity": "low",
+      "title": "Pricing Recovery Opportunity",
+      "description": "Account pricing has declined 8.9% vs prior year. Strategic price adjustment could recover revenue.",
+      "reasoning": "Current ARR: $46,972.52, Prior: $51,545.2 (-8.9% decline). Peer average DM: 95.3%. This suggests pricing pressure or undervaluation.",
+      "expectedArrImpact": 2150,
+      "expectedDmImpact": 4.2,
+      "confidence": "medium",
+      "timelineWeeks": 8,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer pushback on price increase",
+        "Competitive pricing pressure",
+        "May require product/service enhancements to justify"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 46972.52,
+        "healthScore": 78,
+        "dmPercent": 91.1,
+        "daysToRenewal": 30,
+        "productCount": 1
+      }
+    },
+    {
+      "accountName": "Momentum Energy",
+      "bu": "Cloudsense",
+      "type": "pricing",
+      "severity": "low",
+      "title": "Pricing Recovery Opportunity",
+      "description": "Account pricing has declined 7.6% vs prior year. Strategic price adjustment could recover revenue.",
+      "reasoning": "Current ARR: $240,683.73, Prior: $260,554.7 (-7.6% decline). Peer average DM: 93.1%. This suggests pricing pressure or undervaluation.",
+      "expectedArrImpact": 1893,
+      "expectedDmImpact": 0.7,
+      "confidence": "medium",
+      "timelineWeeks": 8,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer pushback on price increase",
+        "Competitive pricing pressure",
+        "May require product/service enhancements to justify"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 240683.73,
+        "healthScore": 77,
+        "dmPercent": 92.4,
+        "daysToRenewal": 365,
+        "productCount": 1
+      }
+    },
+    {
+      "accountName": "EVOLUTIO CLOUD ENABLER S.A.",
+      "bu": "Kandy",
+      "type": "pricing",
+      "severity": "low",
+      "title": "Pricing Recovery Opportunity",
+      "description": "Account pricing has declined 5.6% vs prior year. Strategic price adjustment could recover revenue.",
+      "reasoning": "Current ARR: $20,787.42, Prior: $22,018.39 (-5.6% decline). Peer average DM: 99.3%. This suggests pricing pressure or undervaluation.",
+      "expectedArrImpact": 1088,
+      "expectedDmImpact": 4.9,
+      "confidence": "medium",
+      "timelineWeeks": 8,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer pushback on price increase",
+        "Competitive pricing pressure",
+        "May require product/service enhancements to justify"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 20787.42,
+        "healthScore": 78,
+        "dmPercent": 94.4,
+        "daysToRenewal": 30,
+        "productCount": 1
+      }
+    },
+    {
+      "accountName": "EMPIRE TELEPHONE CORPORATION",
+      "bu": "Kandy",
+      "type": "pricing",
+      "severity": "low",
+      "title": "Pricing Recovery Opportunity",
+      "description": "Account pricing has declined 9.9% vs prior year. Strategic price adjustment could recover revenue.",
+      "reasoning": "Current ARR: $16,935.51, Prior: $18,790.05 (-9.9% decline). Peer average DM: 94.4%. This suggests pricing pressure or undervaluation.",
+      "expectedArrImpact": 802,
+      "expectedDmImpact": 4.3,
+      "confidence": "medium",
+      "timelineWeeks": 8,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer pushback on price increase",
+        "Competitive pricing pressure",
+        "May require product/service enhancements to justify"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 16935.51,
+        "healthScore": 78,
+        "dmPercent": 90.1,
+        "daysToRenewal": 30,
+        "productCount": 1
+      }
+    },
+    {
+      "accountName": "Rakuten Marketing",
+      "bu": "Cloudsense",
+      "type": "pricing",
+      "severity": "low",
+      "title": "Pricing Recovery Opportunity",
+      "description": "Account pricing has declined 13.2% vs prior year. Strategic price adjustment could recover revenue.",
+      "reasoning": "Current ARR: $70,421.39, Prior: $81,147.07 (-13.2% decline). Peer average DM: 86.3%. This suggests pricing pressure or undervaluation.",
+      "expectedArrImpact": -391,
+      "expectedDmImpact": -0.5,
+      "confidence": "medium",
+      "timelineWeeks": 8,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer pushback on price increase",
+        "Competitive pricing pressure",
+        "May require product/service enhancements to justify"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 70421.39,
+        "healthScore": 57,
+        "dmPercent": 86.8,
+        "daysToRenewal": 365,
+        "productCount": 1
+      }
+    },
+    {
+      "accountName": "Newsday",
+      "bu": "Cloudsense",
+      "type": "pricing",
+      "severity": "low",
+      "title": "Pricing Recovery Opportunity",
+      "description": "Account pricing has declined 5.7% vs prior year. Strategic price adjustment could recover revenue.",
+      "reasoning": "Current ARR: $26,731.16, Prior: $28,340.57 (-5.7% decline). Peer average DM: 92.7%. This suggests pricing pressure or undervaluation.",
+      "expectedArrImpact": -474,
+      "expectedDmImpact": -1.6,
+      "confidence": "medium",
+      "timelineWeeks": 8,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer pushback on price increase",
+        "Competitive pricing pressure",
+        "May require product/service enhancements to justify"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 26731.16,
+        "healthScore": 81,
+        "dmPercent": 94.3,
+        "daysToRenewal": 365,
+        "productCount": 1
+      }
+    },
+    {
+      "accountName": "Thryv Australia Pty Ltd",
+      "bu": "Cloudsense",
+      "type": "pricing",
+      "severity": "low",
+      "title": "Pricing Recovery Opportunity",
+      "description": "Account pricing has declined 7.5% vs prior year. Strategic price adjustment could recover revenue.",
+      "reasoning": "Current ARR: $567,978.58, Prior: $613,889.85 (-7.5% decline). Peer average DM: 91.9%. This suggests pricing pressure or undervaluation.",
+      "expectedArrImpact": -3609,
+      "expectedDmImpact": -0.6,
+      "confidence": "medium",
+      "timelineWeeks": 8,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer pushback on price increase",
+        "Competitive pricing pressure",
+        "May require product/service enhancements to justify"
+      ],
+      "dataQuality": "complete",
+      "metrics": {
+        "currentARR": 567978.58,
+        "healthScore": 73,
+        "dmPercent": 92.5,
+        "daysToRenewal": 30,
+        "productCount": 2
+      }
+    }
+  ],
+  "dataQualityIssues": []
+}

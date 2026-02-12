@@ -1,0 +1,31 @@
+{
+  "customer_name": "COEO SOLUTIONS LLC",
+  "last_updated": "2026-02-12",
+  "article_count": 3,
+  "articles": [
+    {
+      "title": "COEO SOLUTIONS LLC Invests in Cloud-Native Infrastructure",
+      "url": "https://example.com/news/coeo-solutions-llc-strategic-initiative",
+      "source": "Industry News Daily",
+      "published": "2026-01-24",
+      "summary": "In a strategic move to enhance operational efficiency, COEO SOLUTIONS LLC is migrating key business systems to cloud-native platforms. The transformation is expected to reduce costs and improve scalability.",
+      "relevance_score": 87
+    },
+    {
+      "title": "COEO SOLUTIONS LLC Reports Strong Financial Performance",
+      "url": "https://example.com/news/coeo-solutions-llc-financial-results",
+      "source": "Financial Times",
+      "published": "2026-01-02",
+      "summary": "COEO SOLUTIONS LLC has reported solid financial results for the quarter, with revenue growth driven by strong performance in core business areas. The company reaffirmed its commitment to investing in technology and innovation.",
+      "relevance_score": 83
+    },
+    {
+      "title": "COEO SOLUTIONS LLC Announces Strategic Partnership to Expand Services",
+      "url": "https://example.com/news/coeo-solutions-llc-partnership",
+      "source": "Business Wire",
+      "published": "2025-11-18",
+      "summary": "COEO SOLUTIONS LLC has formed a strategic partnership aimed at expanding its service offerings and reaching new markets. The collaboration will leverage complementary strengths to deliver enhanced value to customers.",
+      "relevance_score": 79
+    }
+  ]
+}

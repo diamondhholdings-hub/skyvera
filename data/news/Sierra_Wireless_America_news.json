@@ -1,0 +1,31 @@
+{
+  "customer_name": "Sierra Wireless America",
+  "last_updated": "2026-02-12",
+  "article_count": 3,
+  "articles": [
+    {
+      "title": "Sierra Wireless America Launches Innovation Program for Telecommunications",
+      "url": "https://example.com/news/sierra-wireless-america-strategic-initiative",
+      "source": "Industry News Daily",
+      "published": "2026-01-19",
+      "summary": "Sierra Wireless America has announced a new innovation program focused on leveraging emerging technologies to drive growth in the telecommunications sector. The program will focus on AI, automation, and customer engagement.",
+      "relevance_score": 94
+    },
+    {
+      "title": "Sierra Wireless America Reports Strong Financial Performance",
+      "url": "https://example.com/news/sierra-wireless-america-financial-results",
+      "source": "Financial Times",
+      "published": "2025-12-18",
+      "summary": "Sierra Wireless America has reported solid financial results for the quarter, with revenue growth driven by strong performance in core business areas. The company reaffirmed its commitment to investing in technology and innovation.",
+      "relevance_score": 84
+    },
+    {
+      "title": "Sierra Wireless America Expands Operations in Europe",
+      "url": "https://example.com/news/sierra-wireless-america-partnership",
+      "source": "Business Wire",
+      "published": "2025-11-22",
+      "summary": "Sierra Wireless America is expanding its operational footprint in Europe with new facilities and increased investment. The expansion supports the company's growth strategy and commitment to the region.",
+      "relevance_score": 76
+    }
+  ]
+}

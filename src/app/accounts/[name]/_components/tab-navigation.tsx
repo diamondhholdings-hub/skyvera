@@ -22,6 +22,7 @@ const tabs = [
   { id: 'competitive', label: 'Competitive' },
   { id: 'intelligence', label: 'Intelligence' },
   { id: 'action-items', label: 'Action Items' },
+  { id: 'retention', label: 'Retention Strategy' },
 ] as const
 
 function TabNavigationContent({ accountName }: TabNavigationProps) {

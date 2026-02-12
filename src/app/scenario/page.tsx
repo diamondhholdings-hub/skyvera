@@ -1,11 +1,11 @@
 /**
  * Scenario Modeling Page - Server Component
- * Fetches baseline metrics and renders scenario form
+ * Fetches baseline metrics and renders scenario interface (conversational or form-based)
  */
 
 import { Suspense } from 'react'
 import { getBaselineMetrics } from '@/lib/data/server/scenario-data'
-import ScenarioForm from './components/scenario-form'
+import ScenarioModeSelector from './components/scenario-mode-selector'
 import ScenarioLoading from './loading'
 import { RefreshButton } from '@/components/ui/refresh-button'
 
@@ -37,7 +37,7 @@ export default async function ScenarioPage() {
           <div>
             <h1 className="font-display text-4xl font-light text-[var(--paper)]">Scenario Modeling</h1>
             <p className="text-[var(--paper)]/80 mt-2">
-              Model what-if scenarios and see financial impact with AI-powered analysis
+              Model what-if scenarios with AI-powered conversational analysis or traditional form-based input
             </p>
           </div>
           <RefreshButton label="Refresh Data" />
@@ -46,9 +46,9 @@ export default async function ScenarioPage() {
 
       {/* Content */}
       <div className="max-w-[1400px] mx-auto px-8 py-8">
-        {/* Scenario Form */}
+        {/* Scenario Interface */}
         <Suspense fallback={<ScenarioLoading />}>
-          <ScenarioForm baseline={baseline} />
+          <ScenarioModeSelector baseline={baseline} />
         </Suspense>
       </div>
     </div>

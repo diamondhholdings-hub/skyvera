@@ -1,0 +1,31 @@
+{
+  "customer_name": "New License Sales - Skyvera",
+  "last_updated": "2026-02-12",
+  "article_count": 3,
+  "articles": [
+    {
+      "title": "New License Sales - Skyvera Launches Innovation Program for Enterprise Services",
+      "url": "https://example.com/news/new-license-sales---skyvera-strategic-initiative",
+      "source": "Industry News Daily",
+      "published": "2026-01-20",
+      "summary": "New License Sales - Skyvera has announced a new innovation program focused on leveraging emerging technologies to drive growth in the enterprise services sector. The program will focus on AI, automation, and customer engagement.",
+      "relevance_score": 86
+    },
+    {
+      "title": "New License Sales - Skyvera Reports Strong Financial Performance",
+      "url": "https://example.com/news/new-license-sales---skyvera-financial-results",
+      "source": "Financial Times",
+      "published": "2025-12-28",
+      "summary": "New License Sales - Skyvera has reported solid financial results for the quarter, with revenue growth driven by strong performance in core business areas. The company reaffirmed its commitment to investing in technology and innovation.",
+      "relevance_score": 76
+    },
+    {
+      "title": "New License Sales - Skyvera Expands Operations in Europe",
+      "url": "https://example.com/news/new-license-sales---skyvera-partnership",
+      "source": "Business Wire",
+      "published": "2025-11-26",
+      "summary": "New License Sales - Skyvera is expanding its operational footprint in Europe with new facilities and increased investment. The expansion supports the company's growth strategy and commitment to the region.",
+      "relevance_score": 76
+    }
+  ]
+}

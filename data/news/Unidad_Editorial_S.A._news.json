@@ -1,0 +1,31 @@
+{
+  "customer_name": "Unidad Editorial S.A.",
+  "last_updated": "2026-02-12",
+  "article_count": 3,
+  "articles": [
+    {
+      "title": "Unidad Editorial S.A. Launches Innovation Program for Enterprise Services",
+      "url": "https://example.com/news/unidad-editorial-s.a.-strategic-initiative",
+      "source": "Industry News Daily",
+      "published": "2026-01-16",
+      "summary": "Unidad Editorial S.A. has announced a new innovation program focused on leveraging emerging technologies to drive growth in the enterprise services sector. The program will focus on AI, automation, and customer engagement.",
+      "relevance_score": 93
+    },
+    {
+      "title": "Unidad Editorial S.A. Reports Strong Financial Performance",
+      "url": "https://example.com/news/unidad-editorial-s.a.-financial-results",
+      "source": "Financial Times",
+      "published": "2026-01-05",
+      "summary": "Unidad Editorial S.A. has reported solid financial results for the quarter, with revenue growth driven by strong performance in core business areas. The company reaffirmed its commitment to investing in technology and innovation.",
+      "relevance_score": 75
+    },
+    {
+      "title": "Unidad Editorial S.A. Launches New Product Suite for Enterprise Services",
+      "url": "https://example.com/news/unidad-editorial-s.a.-partnership",
+      "source": "Business Wire",
+      "published": "2025-12-01",
+      "summary": "Unidad Editorial S.A. has introduced a new suite of products designed specifically for the enterprise services market. The launch represents a significant investment in innovation and customer experience.",
+      "relevance_score": 70
+    }
+  ]
+}

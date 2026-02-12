@@ -20,20 +20,22 @@
     "@dnd-kit/sortable": "^10.0.0",
     "@dnd-kit/utilities": "^3.2.2",
     "@hookform/resolvers": "^5.2.2",
-    "@prisma/client": "^7.3.0",
+    "@libsql/client": "^0.17.0",
+    "@prisma/adapter-libsql": "^7.3.0",
+    "@prisma/client": "5.22.0",
     "@tanstack/react-table": "^8.21.3",
-    "@types/node": "^25.2.2",
     "@types/react": "^19.2.13",
     "@types/react-dom": "^19.2.3",
     "autoprefixer": "^10.4.24",
     "better-sqlite3": "^12.6.2",
+    "chart.js": "^4.5.1",
     "date-fns": "^4.1.0",
     "eslint": "^9.39.2",
     "eslint-config-next": "^16.1.6",
     "lucide-react": "^0.563.0",
     "next": "^16.1.6",
     "postcss": "^8.5.6",
-    "prisma": "^7.3.0",
+    "prisma": "5.22.0",
     "rate-limiter-flexible": "^9.1.1",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
@@ -41,7 +43,6 @@
     "recharts": "^3.7.0",
     "sonner": "^2.0.7",
     "tailwindcss": "^4.1.18",
-    "typescript": "^5.9.3",
     "zod": "^4.3.6"
   },
   "devDependencies": {
@@ -49,6 +50,9 @@
     "@playwright/test": "^1.58.2",
     "@tailwindcss/postcss": "^4.1.18",
     "@types/better-sqlite3": "^7.6.13",
-    "dotenv": "^17.2.4"
+    "@types/node": "^25.2.2",
+    "dotenv": "^17.2.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
   }
 }

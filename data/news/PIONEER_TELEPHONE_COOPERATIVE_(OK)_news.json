@@ -1,0 +1,31 @@
+{
+  "customer_name": "PIONEER TELEPHONE COOPERATIVE (OK)",
+  "last_updated": "2026-02-12",
+  "article_count": 3,
+  "articles": [
+    {
+      "title": "PIONEER TELEPHONE COOPERATIVE (OK) Announces Digital Transformation Initiative",
+      "url": "https://example.com/news/pioneer-telephone-cooperative-(ok)-strategic-initiative",
+      "source": "Industry News Daily",
+      "published": "2026-02-02",
+      "summary": "PIONEER TELEPHONE COOPERATIVE (OK) has unveiled a comprehensive digital transformation strategy aimed at modernizing its technology infrastructure and improving customer experience. The initiative includes investments in cloud platforms, automation, and data analytics.",
+      "relevance_score": 88
+    },
+    {
+      "title": "PIONEER TELEPHONE COOPERATIVE (OK) Reports Strong Financial Performance",
+      "url": "https://example.com/news/pioneer-telephone-cooperative-(ok)-financial-results",
+      "source": "Financial Times",
+      "published": "2026-01-01",
+      "summary": "PIONEER TELEPHONE COOPERATIVE (OK) has reported solid financial results for the quarter, with revenue growth driven by strong performance in core business areas. The company reaffirmed its commitment to investing in technology and innovation.",
+      "relevance_score": 83
+    },
+    {
+      "title": "PIONEER TELEPHONE COOPERATIVE (OK) Expands Operations in Europe",
+      "url": "https://example.com/news/pioneer-telephone-cooperative-(ok)-partnership",
+      "source": "Business Wire",
+      "published": "2025-12-04",
+      "summary": "PIONEER TELEPHONE COOPERATIVE (OK) is expanding its operational footprint in Europe with new facilities and increased investment. The expansion supports the company's growth strategy and commitment to the region.",
+      "relevance_score": 73
+    }
+  ]
+}

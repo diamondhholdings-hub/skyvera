@@ -1,0 +1,31 @@
+{
+  "customer_name": "VODAFONE FIJI LIMITED",
+  "last_updated": "2026-02-12",
+  "article_count": 3,
+  "articles": [
+    {
+      "title": "VODAFONE FIJI LIMITED Launches Innovation Program for Telecommunications",
+      "url": "https://example.com/news/vodafone-fiji-limited-strategic-initiative",
+      "source": "Industry News Daily",
+      "published": "2026-01-22",
+      "summary": "VODAFONE FIJI LIMITED has announced a new innovation program focused on leveraging emerging technologies to drive growth in the telecommunications sector. The program will focus on AI, automation, and customer engagement.",
+      "relevance_score": 92
+    },
+    {
+      "title": "VODAFONE FIJI LIMITED Reports Strong Financial Performance",
+      "url": "https://example.com/news/vodafone-fiji-limited-financial-results",
+      "source": "Financial Times",
+      "published": "2025-12-26",
+      "summary": "VODAFONE FIJI LIMITED has reported solid financial results for the quarter, with revenue growth driven by strong performance in core business areas. The company reaffirmed its commitment to investing in technology and innovation.",
+      "relevance_score": 77
+    },
+    {
+      "title": "VODAFONE FIJI LIMITED Expands Operations in Europe",
+      "url": "https://example.com/news/vodafone-fiji-limited-partnership",
+      "source": "Business Wire",
+      "published": "2025-12-07",
+      "summary": "VODAFONE FIJI LIMITED is expanding its operational footprint in Europe with new facilities and increased investment. The expansion supports the company's growth strategy and commitment to the region.",
+      "relevance_score": 72
+    }
+  ]
+}

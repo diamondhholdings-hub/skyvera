@@ -172,3 +172,48 @@ export const IntelligenceReportSchema = z.object({
   recommendations: z.array(IntelligenceRecommendationSchema),
 })
 export type IntelligenceReport = z.infer<typeof IntelligenceReportSchema>
+
+// DM% Strategy Recommendation schema
+export const DMRecommendationStatusSchema = z.enum([
+  'pending',
+  'accepted',
+  'implemented',
+  'dismissed',
+])
+export type DMRecommendationStatus = z.infer<typeof DMRecommendationStatusSchema>
+
+export const DMRecommendationSchema = z.object({
+  id: z.string(),
+  recommendationId: z.string(),
+  accountName: z.string(),
+  title: z.string(),
+  description: z.string(),
+  priority: ActionPrioritySchema, // Reuse high/medium/low
+  arrImpact: z.number(),
+  dmImpact: z.number(), // Percentage points
+  marginImpact: z.number().optional(),
+  confidence: z.number().min(0).max(100), // 0-100 confidence score
+  timeline: z.string(),
+  owner: z.string().optional(),
+  status: DMRecommendationStatusSchema,
+  acceptedAt: z.string().optional(), // ISO date string
+  implementedAt: z.string().optional(), // ISO date string
+  linkedActionId: z.string().optional(),
+  createdAt: z.string(), // ISO date string
+})
+export type DMRecommendation = z.infer<typeof DMRecommendationSchema>
+
+// DM% Risk Level
+export const DMRiskLevelSchema = z.enum(['HIGH', 'MEDIUM', 'LOW'])
+export type DMRiskLevel = z.infer<typeof DMRiskLevelSchema>
+
+// Retention Strategy Data (recommendations + risk assessment)
+export const RetentionStrategySchema = z.object({
+  recommendations: z.array(DMRecommendationSchema),
+  riskLevel: DMRiskLevelSchema,
+  riskScore: z.number().min(0).max(100),
+  riskFactors: z.array(z.string()),
+  healthScore: z.number(),
+  daysToRenewal: z.number().optional(),
+})
+export type RetentionStrategy = z.infer<typeof RetentionStrategySchema>

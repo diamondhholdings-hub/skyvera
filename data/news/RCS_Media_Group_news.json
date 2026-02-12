@@ -1,0 +1,31 @@
+{
+  "customer_name": "RCS Media Group",
+  "last_updated": "2026-02-12",
+  "article_count": 3,
+  "articles": [
+    {
+      "title": "RCS Media Group Invests in Cloud-Native Infrastructure",
+      "url": "https://example.com/news/rcs-media-group-strategic-initiative",
+      "source": "Industry News Daily",
+      "published": "2026-01-24",
+      "summary": "In a strategic move to enhance operational efficiency, RCS Media Group is migrating key business systems to cloud-native platforms. The transformation is expected to reduce costs and improve scalability.",
+      "relevance_score": 93
+    },
+    {
+      "title": "RCS Media Group Reports Strong Financial Performance",
+      "url": "https://example.com/news/rcs-media-group-financial-results",
+      "source": "Financial Times",
+      "published": "2026-01-12",
+      "summary": "RCS Media Group has reported solid financial results for the quarter, with revenue growth driven by strong performance in core business areas. The company reaffirmed its commitment to investing in technology and innovation.",
+      "relevance_score": 78
+    },
+    {
+      "title": "RCS Media Group Announces Strategic Partnership to Expand Services",
+      "url": "https://example.com/news/rcs-media-group-partnership",
+      "source": "Business Wire",
+      "published": "2025-11-24",
+      "summary": "RCS Media Group has formed a strategic partnership aimed at expanding its service offerings and reaching new markets. The collaboration will leverage complementary strengths to deliver enhanced value to customers.",
+      "relevance_score": 77
+    }
+  ]
+}

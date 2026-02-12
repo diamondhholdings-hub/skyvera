@@ -1,0 +1,31 @@
+{
+  "customer_name": "Star Hub",
+  "last_updated": "2026-02-12",
+  "article_count": 3,
+  "articles": [
+    {
+      "title": "Star Hub Invests in Cloud-Native Infrastructure",
+      "url": "https://example.com/news/star-hub-strategic-initiative",
+      "source": "Industry News Daily",
+      "published": "2026-01-20",
+      "summary": "In a strategic move to enhance operational efficiency, Star Hub is migrating key business systems to cloud-native platforms. The transformation is expected to reduce costs and improve scalability.",
+      "relevance_score": 87
+    },
+    {
+      "title": "Star Hub Reports Strong Financial Performance",
+      "url": "https://example.com/news/star-hub-financial-results",
+      "source": "Financial Times",
+      "published": "2025-12-27",
+      "summary": "Star Hub has reported solid financial results for the quarter, with revenue growth driven by strong performance in core business areas. The company reaffirmed its commitment to investing in technology and innovation.",
+      "relevance_score": 75
+    },
+    {
+      "title": "Star Hub Announces Strategic Partnership to Expand Services",
+      "url": "https://example.com/news/star-hub-partnership",
+      "source": "Business Wire",
+      "published": "2025-11-21",
+      "summary": "Star Hub has formed a strategic partnership aimed at expanding its service offerings and reaching new markets. The collaboration will leverage complementary strengths to deliver enhanced value to customers.",
+      "relevance_score": 83
+    }
+  ]
+}

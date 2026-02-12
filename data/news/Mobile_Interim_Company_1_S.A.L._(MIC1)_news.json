@@ -1,0 +1,31 @@
+{
+  "customer_name": "Mobile Interim Company 1 S.A.L. (MIC1)",
+  "last_updated": "2026-02-12",
+  "article_count": 3,
+  "articles": [
+    {
+      "title": "Mobile Interim Company 1 S.A.L. (MIC1) Invests in Cloud-Native Infrastructure",
+      "url": "https://example.com/news/mobile-interim-company-1-s.a.l.-(mic1)-strategic-initiative",
+      "source": "Industry News Daily",
+      "published": "2026-01-29",
+      "summary": "In a strategic move to enhance operational efficiency, Mobile Interim Company 1 S.A.L. (MIC1) is migrating key business systems to cloud-native platforms. The transformation is expected to reduce costs and improve scalability.",
+      "relevance_score": 89
+    },
+    {
+      "title": "Mobile Interim Company 1 S.A.L. (MIC1) Reports Strong Financial Performance",
+      "url": "https://example.com/news/mobile-interim-company-1-s.a.l.-(mic1)-financial-results",
+      "source": "Financial Times",
+      "published": "2026-01-07",
+      "summary": "Mobile Interim Company 1 S.A.L. (MIC1) has reported solid financial results for the quarter, with revenue growth driven by strong performance in core business areas. The company reaffirmed its commitment to investing in technology and innovation.",
+      "relevance_score": 84
+    },
+    {
+      "title": "Mobile Interim Company 1 S.A.L. (MIC1) Launches New Product Suite for Telecommunications",
+      "url": "https://example.com/news/mobile-interim-company-1-s.a.l.-(mic1)-partnership",
+      "source": "Business Wire",
+      "published": "2025-12-13",
+      "summary": "Mobile Interim Company 1 S.A.L. (MIC1) has introduced a new suite of products designed specifically for the telecommunications market. The launch represents a significant investment in innovation and customer experience.",
+      "relevance_score": 77
+    }
+  ]
+}

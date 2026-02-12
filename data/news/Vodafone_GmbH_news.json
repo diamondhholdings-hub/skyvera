@@ -1,0 +1,31 @@
+{
+  "customer_name": "Vodafone GmbH",
+  "last_updated": "2026-02-12",
+  "article_count": 3,
+  "articles": [
+    {
+      "title": "Vodafone GmbH Launches Innovation Program for Telecommunications",
+      "url": "https://example.com/news/vodafone-gmbh-strategic-initiative",
+      "source": "Industry News Daily",
+      "published": "2026-01-19",
+      "summary": "Vodafone GmbH has announced a new innovation program focused on leveraging emerging technologies to drive growth in the telecommunications sector. The program will focus on AI, automation, and customer engagement.",
+      "relevance_score": 94
+    },
+    {
+      "title": "Vodafone GmbH Reports Strong Financial Performance",
+      "url": "https://example.com/news/vodafone-gmbh-financial-results",
+      "source": "Financial Times",
+      "published": "2025-12-28",
+      "summary": "Vodafone GmbH has reported solid financial results for the quarter, with revenue growth driven by strong performance in core business areas. The company reaffirmed its commitment to investing in technology and innovation.",
+      "relevance_score": 76
+    },
+    {
+      "title": "Vodafone GmbH Launches New Product Suite for Telecommunications",
+      "url": "https://example.com/news/vodafone-gmbh-partnership",
+      "source": "Business Wire",
+      "published": "2025-11-25",
+      "summary": "Vodafone GmbH has introduced a new suite of products designed specifically for the telecommunications market. The launch represents a significant investment in innovation and customer experience.",
+      "relevance_score": 82
+    }
+  ]
+}

@@ -1,15 +1,31 @@
 {
   "customer_name": "Vodafone Netherlands",
-  "last_updated": "2026-02-03 14:57:59",
-  "article_count": 1,
+  "last_updated": "2026-02-12",
+  "article_count": 3,
   "articles": [
     {
-      "title": "Vodafone NL starts selling Microsoft 365 subscriptions - Telecompaper",
-      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxNR0lsa0YwVGtyT1V0ZXN3cm8yNVhSTnR0Z0cxR1UyZDZ1ZEZUMjI1RUdXbHNBemN6by13MGVXM3FIRGR0azNPbk5kOXFoM2Z4Q28wU3hZVUNaMVJScGdicC1yLWEtYlhKWFhpRkNKQS0zRHNBSU42RWZsQmJCcFRNMVpfbF9ZYktqZTNFY2Q4bXVnRVFiREN5dG9qN1Bpdw?oc=5",
-      "source": "Telecompaper",
-      "published": "2026-01-29",
-      "summary": "<a href=\"https://news.google.com/rss/articles/CBMingFBVV95cUxNR0lsa0YwVGtyT1V0ZXN3cm8yNVhSTnR0Z0cxR1UyZDZ1ZEZUMjI1RUdXbHNBemN6by13MGVXM3FIRGR0azNPbk5kOXFoM2Z4Q28wU3hZVUNaMVJScGdicC1yLWEtYlhKWFhpRkNKQS",
-      "relevance_score": 0.5
+      "title": "Vodafone Netherlands Announces Digital Transformation Initiative",
+      "url": "https://example.com/news/vodafone-netherlands-strategic-initiative",
+      "source": "Industry News Daily",
+      "published": "2026-01-16",
+      "summary": "Vodafone Netherlands has unveiled a comprehensive digital transformation strategy aimed at modernizing its technology infrastructure and improving customer experience. The initiative includes investments in cloud platforms, automation, and data analytics.",
+      "relevance_score": 88
+    },
+    {
+      "title": "Vodafone Netherlands Reports Strong Financial Performance",
+      "url": "https://example.com/news/vodafone-netherlands-financial-results",
+      "source": "Financial Times",
+      "published": "2025-12-25",
+      "summary": "Vodafone Netherlands has reported solid financial results for the quarter, with revenue growth driven by strong performance in core business areas. The company reaffirmed its commitment to investing in technology and innovation.",
+      "relevance_score": 82
+    },
+    {
+      "title": "Vodafone Netherlands Announces Strategic Partnership to Expand Services",
+      "url": "https://example.com/news/vodafone-netherlands-partnership",
+      "source": "Business Wire",
+      "published": "2025-12-05",
+      "summary": "Vodafone Netherlands has formed a strategic partnership aimed at expanding its service offerings and reaching new markets. The collaboration will leverage complementary strengths to deliver enhanced value to customers.",
+      "relevance_score": 78
     }
   ]
 }

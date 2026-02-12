@@ -1,0 +1,31 @@
+{
+  "customer_name": "Telekom Romania Mobile Communications S.A. (Formerly COSMOTE ROMANIAN TELECOM)",
+  "last_updated": "2026-02-12",
+  "article_count": 3,
+  "articles": [
+    {
+      "title": "Telekom Romania Mobile Communications S.A. (Formerly COSMOTE ROMANIAN TELECOM) Announces Digital Transformation Initiative",
+      "url": "https://example.com/news/telekom-romania-mobile-communications-s.a.-(formerly-cosmote-romanian-telecom)-strategic-initiative",
+      "source": "Industry News Daily",
+      "published": "2026-01-23",
+      "summary": "Telekom Romania Mobile Communications S.A. (Formerly COSMOTE ROMANIAN TELECOM) has unveiled a comprehensive digital transformation strategy aimed at modernizing its technology infrastructure and improving customer experience. The initiative includes investments in cloud platforms, automation, and data analytics.",
+      "relevance_score": 85
+    },
+    {
+      "title": "Telekom Romania Mobile Communications S.A. (Formerly COSMOTE ROMANIAN TELECOM) Reports Strong Financial Performance",
+      "url": "https://example.com/news/telekom-romania-mobile-communications-s.a.-(formerly-cosmote-romanian-telecom)-financial-results",
+      "source": "Financial Times",
+      "published": "2026-01-02",
+      "summary": "Telekom Romania Mobile Communications S.A. (Formerly COSMOTE ROMANIAN TELECOM) has reported solid financial results for the quarter, with revenue growth driven by strong performance in core business areas. The company reaffirmed its commitment to investing in technology and innovation.",
+      "relevance_score": 78
+    },
+    {
+      "title": "Telekom Romania Mobile Communications S.A. (Formerly COSMOTE ROMANIAN TELECOM) Announces Strategic Partnership to Expand Services",
+      "url": "https://example.com/news/telekom-romania-mobile-communications-s.a.-(formerly-cosmote-romanian-telecom)-partnership",
+      "source": "Business Wire",
+      "published": "2025-12-14",
+      "summary": "Telekom Romania Mobile Communications S.A. (Formerly COSMOTE ROMANIAN TELECOM) has formed a strategic partnership aimed at expanding its service offerings and reaching new markets. The collaboration will leverage complementary strengths to deliver enhanced value to customers.",
+      "relevance_score": 79
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+[
+  {
+    "id": "dm-rec-5",
+    "recommendationId": "dm-rec-att-001",
+    "accountName": "AT&T SERVICES, INC.",
+    "title": "Executive Engagement Campaign - CIO Alignment",
+    "description": "Current relationship is primarily at VP level. Intelligence suggests CIO is evaluating strategic vendor consolidation. Initiate executive engagement to position Skyvera as strategic partner and secure executive sponsorship. This significantly reduces churn risk.",
+    "priority": "high",
+    "arrImpact": 210000,
+    "dmImpact": 4.2,
+    "confidence": 81,
+    "timeline": "45-60 days",
+    "owner": "VP Sales - Enterprise",
+    "status": "pending",
+    "createdAt": "2026-02-10T08:30:00Z"
+  },
+  {
+    "id": "dm-rec-6",
+    "recommendationId": "dm-rec-att-002",
+    "accountName": "AT&T SERVICES, INC.",
+    "title": "Competitive Defense Against Oracle Cloud",
+    "description": "Competitor intelligence shows Oracle is actively pitching integrated cloud solution to AT&T procurement team. Prepare defensive battlecard highlighting our 40% lower TCO, superior uptime (99.97% vs 99.8%), and faster deployment cycles. Schedule competitive briefing with decision makers.",
+    "priority": "high",
+    "arrImpact": 185000,
+    "dmImpact": 3.7,
+    "confidence": 88,
+    "timeline": "Immediate (within 14 days)",
+    "owner": "Competitive Strategy Team",
+    "status": "pending",
+    "createdAt": "2026-02-10T08:30:00Z"
+  },
+  {
+    "id": "dm-rec-7",
+    "recommendationId": "dm-rec-att-003",
+    "accountName": "AT&T SERVICES, INC.",
+    "title": "Success Story Co-Marketing Initiative",
+    "description": "AT&T achieved 32% operational efficiency gains using our platform. Propose joint case study and speaking engagement at industry conference. This deepens relationship, provides marketing value to AT&T, and creates switching cost through public association.",
+    "priority": "medium",
+    "arrImpact": 45000,
+    "dmImpact": 0.9,
+    "marginImpact": 0.5,
+    "confidence": 68,
+    "timeline": "90 days",
+    "owner": "Marketing & CSM Team",
+    "status": "pending",
+    "createdAt": "2026-02-10T08:30:00Z"
+  }
+]

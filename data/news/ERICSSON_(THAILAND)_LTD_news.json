@@ -1,0 +1,31 @@
+{
+  "customer_name": "ERICSSON (THAILAND) LTD",
+  "last_updated": "2026-02-12",
+  "article_count": 3,
+  "articles": [
+    {
+      "title": "ERICSSON (THAILAND) LTD Invests in Cloud-Native Infrastructure",
+      "url": "https://example.com/news/ericsson-(thailand)-ltd-strategic-initiative",
+      "source": "Industry News Daily",
+      "published": "2026-01-31",
+      "summary": "In a strategic move to enhance operational efficiency, ERICSSON (THAILAND) LTD is migrating key business systems to cloud-native platforms. The transformation is expected to reduce costs and improve scalability.",
+      "relevance_score": 93
+    },
+    {
+      "title": "ERICSSON (THAILAND) LTD Reports Strong Financial Performance",
+      "url": "https://example.com/news/ericsson-(thailand)-ltd-financial-results",
+      "source": "Financial Times",
+      "published": "2025-12-24",
+      "summary": "ERICSSON (THAILAND) LTD has reported solid financial results for the quarter, with revenue growth driven by strong performance in core business areas. The company reaffirmed its commitment to investing in technology and innovation.",
+      "relevance_score": 76
+    },
+    {
+      "title": "ERICSSON (THAILAND) LTD Announces Strategic Partnership to Expand Services",
+      "url": "https://example.com/news/ericsson-(thailand)-ltd-partnership",
+      "source": "Business Wire",
+      "published": "2025-12-10",
+      "summary": "ERICSSON (THAILAND) LTD has formed a strategic partnership aimed at expanding its service offerings and reaching new markets. The collaboration will leverage complementary strengths to deliver enhanced value to customers.",
+      "relevance_score": 76
+    }
+  ]
+}

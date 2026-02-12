@@ -1,0 +1,1414 @@
+{
+  "generatedAt": "2026-02-12T17:31:45.096Z",
+  "totalRecommendations": 37,
+  "totalPotentialArrImpact": 13628353,
+  "accountsCovered": 35,
+  "recommendations": [
+    {
+      "opportunityId": "british-telecommunications-plc-contract_optimization",
+      "accountName": "British Telecommunications plc",
+      "bu": "Cloudsense",
+      "type": "contract_optimization",
+      "title": "Contract Optimization - Multi-year",
+      "description": "Account on Enterprise Annual contract with ARR $1,404,790.63. Strong candidate for multi-year agreement to lock in revenue.",
+      "reasoning": "Current contract type (Enterprise Annual) with ARR $1,404,790.63 and strong health score suggests multi-year stability.",
+      "specificActions": [
+        "Review current contract terms and renewal timeline",
+        "Prepare multi-year proposal with strategic pricing",
+        "Schedule renewal discussion 90 days before expiration",
+        "Negotiate mutually beneficial terms with legal review"
+      ],
+      "expectedArrImpact": 3511977,
+      "expectedDmImpact": 0,
+      "confidence": "high",
+      "timelineWeeks": 8,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer may prefer annual flexibility",
+        "Procurement approval may be required",
+        "Competitive renewal process risk"
+      ],
+      "successFactors": [
+        "Long-term partnership mindset from customer",
+        "Competitive differentiation and switching costs",
+        "Flexible terms that align with customer needs"
+      ],
+      "metrics": {
+        "currentARR": 1404790.63,
+        "healthScore": 81,
+        "dmPercent": 95.2,
+        "daysToRenewal": 30,
+        "productCount": 3
+      },
+      "generatedAt": "2026-02-12T17:31:45.095Z"
+    },
+    {
+      "opportunityId": "maxis-broadband-sdn-bhd-contract_optimization",
+      "accountName": "Maxis Broadband Sdn Bhd",
+      "bu": "Cloudsense",
+      "type": "contract_optimization",
+      "title": "Contract Optimization - Multi-year",
+      "description": "Account on Enterprise Annual contract with ARR $1,234,734. Strong candidate for multi-year agreement to lock in revenue.",
+      "reasoning": "Current contract type (Enterprise Annual) with ARR $1,234,734 and strong health score suggests multi-year stability.",
+      "specificActions": [
+        "Review current contract terms and renewal timeline",
+        "Prepare multi-year proposal with strategic pricing",
+        "Schedule renewal discussion 90 days before expiration",
+        "Negotiate mutually beneficial terms with legal review"
+      ],
+      "expectedArrImpact": 3086835,
+      "expectedDmImpact": 0,
+      "confidence": "high",
+      "timelineWeeks": 8,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer may prefer annual flexibility",
+        "Procurement approval may be required",
+        "Competitive renewal process risk"
+      ],
+      "successFactors": [
+        "Long-term partnership mindset from customer",
+        "Competitive differentiation and switching costs",
+        "Flexible terms that align with customer needs"
+      ],
+      "metrics": {
+        "currentARR": 1234734,
+        "healthScore": 90,
+        "dmPercent": 101.2,
+        "daysToRenewal": 108,
+        "productCount": 3
+      },
+      "generatedAt": "2026-02-12T17:31:45.096Z"
+    },
+    {
+      "opportunityId": "liquid-telecom-contract_optimization",
+      "accountName": "Liquid Telecom",
+      "bu": "Cloudsense",
+      "type": "contract_optimization",
+      "title": "Contract Optimization - Multi-year",
+      "description": "Account on Enterprise Annual contract with ARR $1,073,619.8. Strong candidate for multi-year agreement to lock in revenue.",
+      "reasoning": "Current contract type (Enterprise Annual) with ARR $1,073,619.8 and strong health score suggests multi-year stability.",
+      "specificActions": [
+        "Review current contract terms and renewal timeline",
+        "Prepare multi-year proposal with strategic pricing",
+        "Schedule renewal discussion 90 days before expiration",
+        "Negotiate mutually beneficial terms with legal review"
+      ],
+      "expectedArrImpact": 2684050,
+      "expectedDmImpact": 0,
+      "confidence": "high",
+      "timelineWeeks": 8,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer may prefer annual flexibility",
+        "Procurement approval may be required",
+        "Competitive renewal process risk"
+      ],
+      "successFactors": [
+        "Long-term partnership mindset from customer",
+        "Competitive differentiation and switching costs",
+        "Flexible terms that align with customer needs"
+      ],
+      "metrics": {
+        "currentARR": 1073619.8,
+        "healthScore": 92,
+        "dmPercent": 102.3,
+        "daysToRenewal": 300,
+        "productCount": 3
+      },
+      "generatedAt": "2026-02-12T17:31:45.096Z"
+    },
+    {
+      "opportunityId": "centrica-services-ltd-contract_optimization",
+      "accountName": "Centrica Services Ltd",
+      "bu": "Cloudsense",
+      "type": "contract_optimization",
+      "title": "Contract Optimization - Multi-year",
+      "description": "Account on Enterprise Annual contract with ARR $1,053,982.65. Strong candidate for multi-year agreement to lock in revenue.",
+      "reasoning": "Current contract type (Enterprise Annual) with ARR $1,053,982.65 and strong health score suggests multi-year stability.",
+      "specificActions": [
+        "Review current contract terms and renewal timeline",
+        "Prepare multi-year proposal with strategic pricing",
+        "Schedule renewal discussion 90 days before expiration",
+        "Negotiate mutually beneficial terms with legal review"
+      ],
+      "expectedArrImpact": 2634957,
+      "expectedDmImpact": 0,
+      "confidence": "medium",
+      "timelineWeeks": 8,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer may prefer annual flexibility",
+        "Procurement approval may be required",
+        "Competitive renewal process risk"
+      ],
+      "successFactors": [
+        "Long-term partnership mindset from customer",
+        "Competitive differentiation and switching costs",
+        "Flexible terms that align with customer needs"
+      ],
+      "metrics": {
+        "currentARR": 1053982.65,
+        "healthScore": 77,
+        "dmPercent": 91.4,
+        "daysToRenewal": 120,
+        "productCount": 3
+      },
+      "generatedAt": "2026-02-12T17:31:45.096Z"
+    },
+    {
+      "opportunityId": "telefonica-uk-limited-churn_risk",
+      "accountName": "Telefonica UK Limited",
+      "bu": "Cloudsense",
+      "type": "churn_risk",
+      "title": "Churn Risk - Immediate Intervention Required",
+      "description": "Account shows multiple risk signals: Low health score (56), Revenue declining (87.4% DM), Renewal in 30 days.",
+      "reasoning": "Health score 56 indicates dissatisfaction. DM% of 87.4% shows revenue contraction. Upcoming renewal creates urgency.",
+      "specificActions": [
+        "Schedule immediate stakeholder meeting to understand concerns",
+        "Conduct product usage analysis to identify friction points",
+        "Develop 90-day success plan with clear milestones",
+        "Assign dedicated CSM resource for intensive support"
+      ],
+      "expectedArrImpact": 303564,
+      "expectedDmImpact": 12.6,
+      "confidence": "high",
+      "timelineWeeks": 4,
+      "ownerTeam": "Customer Success",
+      "risks": [
+        "Customer may have already decided to churn",
+        "Competitor may be actively pursuing",
+        "Product gaps may be difficult to address quickly"
+      ],
+      "successFactors": [
+        "Quick identification and resolution of pain points",
+        "Executive escalation and commitment",
+        "Competitive positioning and product roadmap alignment"
+      ],
+      "metrics": {
+        "currentARR": 2104857.01,
+        "healthScore": 56,
+        "dmPercent": 87.4,
+        "daysToRenewal": 30,
+        "productCount": 4
+      },
+      "generatedAt": "2026-02-12T17:31:45.096Z"
+    },
+    {
+      "opportunityId": "at&t-services,-inc.-pricing",
+      "accountName": "AT&T SERVICES, INC.",
+      "bu": "Kandy",
+      "type": "pricing",
+      "title": "Pricing Recovery Opportunity",
+      "description": "Account pricing has declined 10.5% vs prior year and is 10.5% below peer average. Strategic price adjustment could recover revenue.",
+      "reasoning": "Current ARR: $1,798,094.55, Prior: $2,009,708.53 (-10.5% decline). Peer average DM: 100.0%. This suggests pricing pressure or undervaluation.",
+      "specificActions": [
+        "Conduct competitive pricing analysis within 2 weeks",
+        "Schedule executive business review to discuss value delivered",
+        "Prepare pricing justification document with ROI metrics",
+        "Present pricing adjustment proposal with 30-day notice"
+      ],
+      "expectedArrImpact": 211614,
+      "expectedDmImpact": 10.5,
+      "confidence": "high",
+      "timelineWeeks": 8,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer pushback on price increase",
+        "Competitive pricing pressure",
+        "May require product/service enhancements to justify"
+      ],
+      "successFactors": [
+        "Strong demonstrated ROI and value delivery",
+        "Executive relationship and trust established",
+        "Market rates support pricing adjustment"
+      ],
+      "metrics": {
+        "currentARR": 1798094.55,
+        "healthScore": 67,
+        "dmPercent": 89.5,
+        "daysToRenewal": 30,
+        "productCount": 4
+      },
+      "generatedAt": "2026-02-12T17:31:45.096Z"
+    },
+    {
+      "opportunityId": "informa-uk-limited-churn_risk",
+      "accountName": "Informa UK Limited",
+      "bu": "Cloudsense",
+      "type": "churn_risk",
+      "title": "Churn Risk - Immediate Intervention Required",
+      "description": "Account shows multiple risk signals: Low health score (59), Revenue declining (89.6% DM), Renewal in 120 days.",
+      "reasoning": "Health score 59 indicates dissatisfaction. DM% of 89.6% shows revenue contraction. Upcoming renewal creates urgency.",
+      "specificActions": [
+        "Schedule immediate stakeholder meeting to understand concerns",
+        "Conduct product usage analysis to identify friction points",
+        "Develop 90-day success plan with clear milestones",
+        "Assign dedicated CSM resource for intensive support"
+      ],
+      "expectedArrImpact": 48050,
+      "expectedDmImpact": 10.4,
+      "confidence": "high",
+      "timelineWeeks": 4,
+      "ownerTeam": "Customer Success",
+      "risks": [
+        "Customer may have already decided to churn",
+        "Competitor may be actively pursuing",
+        "Product gaps may be difficult to address quickly"
+      ],
+      "successFactors": [
+        "Quick identification and resolution of pain points",
+        "Executive escalation and commitment",
+        "Competitive positioning and product roadmap alignment"
+      ],
+      "metrics": {
+        "currentARR": 412442.44,
+        "healthScore": 59,
+        "dmPercent": 89.6,
+        "daysToRenewal": 120,
+        "productCount": 1
+      },
+      "generatedAt": "2026-02-12T17:31:45.096Z"
+    },
+    {
+      "opportunityId": "hertz-europe-limited-churn_risk",
+      "accountName": "HERTZ EUROPE LIMITED",
+      "bu": "Kandy",
+      "type": "churn_risk",
+      "title": "Churn Risk - Immediate Intervention Required",
+      "description": "Account shows multiple risk signals: Low health score (59), Revenue declining (89.2% DM), Renewal in 30 days.",
+      "reasoning": "Health score 59 indicates dissatisfaction. DM% of 89.2% shows revenue contraction. Upcoming renewal creates urgency.",
+      "specificActions": [
+        "Schedule immediate stakeholder meeting to understand concerns",
+        "Conduct product usage analysis to identify friction points",
+        "Develop 90-day success plan with clear milestones",
+        "Assign dedicated CSM resource for intensive support"
+      ],
+      "expectedArrImpact": 5618,
+      "expectedDmImpact": 10.8,
+      "confidence": "high",
+      "timelineWeeks": 4,
+      "ownerTeam": "Customer Success",
+      "risks": [
+        "Customer may have already decided to churn",
+        "Competitor may be actively pursuing",
+        "Product gaps may be difficult to address quickly"
+      ],
+      "successFactors": [
+        "Quick identification and resolution of pain points",
+        "Executive escalation and commitment",
+        "Competitive positioning and product roadmap alignment"
+      ],
+      "metrics": {
+        "currentARR": 46534.91,
+        "healthScore": 59,
+        "dmPercent": 89.2,
+        "daysToRenewal": 30,
+        "productCount": 1
+      },
+      "generatedAt": "2026-02-12T17:31:45.096Z"
+    },
+    {
+      "opportunityId": "at&t-services,-inc.-churn_risk",
+      "accountName": "AT&T SERVICES, INC.",
+      "bu": "Kandy",
+      "type": "churn_risk",
+      "title": "Churn Risk - Immediate Intervention Required",
+      "description": "Account shows multiple risk signals: Low health score (67), Revenue declining (89.5% DM), Renewal in 30 days.",
+      "reasoning": "Health score 67 indicates dissatisfaction. DM% of 89.5% shows revenue contraction. Upcoming renewal creates urgency.",
+      "specificActions": [
+        "Schedule immediate stakeholder meeting to understand concerns",
+        "Conduct product usage analysis to identify friction points",
+        "Develop 90-day success plan with clear milestones",
+        "Assign dedicated CSM resource for intensive support"
+      ],
+      "expectedArrImpact": 211614,
+      "expectedDmImpact": 10.5,
+      "confidence": "medium",
+      "timelineWeeks": 4,
+      "ownerTeam": "Customer Success",
+      "risks": [
+        "Customer may have already decided to churn",
+        "Competitor may be actively pursuing",
+        "Product gaps may be difficult to address quickly"
+      ],
+      "successFactors": [
+        "Quick identification and resolution of pain points",
+        "Executive escalation and commitment",
+        "Competitive positioning and product roadmap alignment"
+      ],
+      "metrics": {
+        "currentARR": 1798094.55,
+        "healthScore": 67,
+        "dmPercent": 89.5,
+        "daysToRenewal": 30,
+        "productCount": 4
+      },
+      "generatedAt": "2026-02-12T17:31:45.096Z"
+    },
+    {
+      "opportunityId": "vodafone-netherlands-pricing",
+      "accountName": "Vodafone Netherlands",
+      "bu": "Cloudsense",
+      "type": "pricing",
+      "title": "Pricing Recovery Opportunity",
+      "description": "Account pricing has declined 13.5% vs prior year. Strategic price adjustment could recover revenue.",
+      "reasoning": "Current ARR: $1,843,190.03, Prior: $2,129,995.95 (-13.5% decline). Peer average DM: 93.4%. This suggests pricing pressure or undervaluation.",
+      "specificActions": [
+        "Conduct competitive pricing analysis within 2 weeks",
+        "Schedule executive business review to discuss value delivered",
+        "Prepare pricing justification document with ROI metrics",
+        "Present pricing adjustment proposal with 30-day notice"
+      ],
+      "expectedArrImpact": 146759,
+      "expectedDmImpact": 6.9,
+      "confidence": "medium",
+      "timelineWeeks": 8,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer pushback on price increase",
+        "Competitive pricing pressure",
+        "May require product/service enhancements to justify"
+      ],
+      "successFactors": [
+        "Strong demonstrated ROI and value delivery",
+        "Executive relationship and trust established",
+        "Market rates support pricing adjustment"
+      ],
+      "metrics": {
+        "currentARR": 1843190.03,
+        "healthScore": 60,
+        "dmPercent": 86.5,
+        "daysToRenewal": 365,
+        "productCount": 4
+      },
+      "generatedAt": "2026-02-12T17:31:45.096Z"
+    },
+    {
+      "opportunityId": "advance-publications-us-upsell",
+      "accountName": "Advance Publications US",
+      "bu": "Cloudsense",
+      "type": "upsell",
+      "title": "Cross-Sell & Expansion Opportunity",
+      "description": "Strong account (health: 77, DM: 96.8%) using only 2 product(s). High potential for product expansion.",
+      "reasoning": "Account demonstrates strong satisfaction and retention (96.8% DM). Currently using CloudSense CPQ Core, Advanced Configuration Engine. Similar accounts typically adopt 4-5 products. ARR of $659,200 suggests budget capacity.",
+      "specificActions": [
+        "Analyze usage patterns to identify expansion opportunities",
+        "Schedule product roadmap session with customer stakeholders",
+        "Develop custom expansion proposal with ROI projections",
+        "Present pilot program for additional products/services"
+      ],
+      "expectedArrImpact": 131840,
+      "expectedDmImpact": 20,
+      "confidence": "medium",
+      "timelineWeeks": 12,
+      "ownerTeam": "Sales",
+      "risks": [
+        "Customer may not see value in additional products",
+        "Budget constraints or approval required",
+        "Competitive products may already be in use"
+      ],
+      "successFactors": [
+        "Strong existing relationship and satisfaction",
+        "Clear business case for expansion",
+        "Budget availability and stakeholder buy-in"
+      ],
+      "metrics": {
+        "currentARR": 659200,
+        "healthScore": 77,
+        "dmPercent": 96.8,
+        "daysToRenewal": 365,
+        "productCount": 2
+      },
+      "generatedAt": "2026-02-12T17:31:45.096Z"
+    },
+    {
+      "opportunityId": "virgin-media-limited-upsell",
+      "accountName": "Virgin Media Limited",
+      "bu": "Cloudsense",
+      "type": "upsell",
+      "title": "Cross-Sell & Expansion Opportunity",
+      "description": "Strong account (health: 77, DM: 95.6%) using only 2 product(s). High potential for product expansion.",
+      "reasoning": "Account demonstrates strong satisfaction and retention (95.6% DM). Currently using CloudSense CPQ Core, Advanced Configuration Engine. Similar accounts typically adopt 4-5 products. ARR of $655,607.51 suggests budget capacity.",
+      "specificActions": [
+        "Analyze usage patterns to identify expansion opportunities",
+        "Schedule product roadmap session with customer stakeholders",
+        "Develop custom expansion proposal with ROI projections",
+        "Present pilot program for additional products/services"
+      ],
+      "expectedArrImpact": 131122,
+      "expectedDmImpact": 20,
+      "confidence": "medium",
+      "timelineWeeks": 12,
+      "ownerTeam": "Sales",
+      "risks": [
+        "Customer may not see value in additional products",
+        "Budget constraints or approval required",
+        "Competitive products may already be in use"
+      ],
+      "successFactors": [
+        "Strong existing relationship and satisfaction",
+        "Clear business case for expansion",
+        "Budget availability and stakeholder buy-in"
+      ],
+      "metrics": {
+        "currentARR": 655607.51,
+        "healthScore": 77,
+        "dmPercent": 95.6,
+        "daysToRenewal": 120,
+        "productCount": 2
+      },
+      "generatedAt": "2026-02-12T17:31:45.096Z"
+    },
+    {
+      "opportunityId": "foxtel-management-pty-limited-upsell",
+      "accountName": "Foxtel Management Pty Limited",
+      "bu": "Cloudsense",
+      "type": "upsell",
+      "title": "Cross-Sell & Expansion Opportunity",
+      "description": "Strong account (health: 95, DM: 103.1%) using only 2 product(s). High potential for product expansion.",
+      "reasoning": "Account demonstrates strong satisfaction and retention (103.1% DM). Currently using CloudSense CPQ Core, Advanced Configuration Engine. Similar accounts typically adopt 4-5 products. ARR of $640,260.52 suggests budget capacity.",
+      "specificActions": [
+        "Analyze usage patterns to identify expansion opportunities",
+        "Schedule product roadmap session with customer stakeholders",
+        "Develop custom expansion proposal with ROI projections",
+        "Present pilot program for additional products/services"
+      ],
+      "expectedArrImpact": 128052,
+      "expectedDmImpact": 20,
+      "confidence": "high",
+      "timelineWeeks": 12,
+      "ownerTeam": "Sales",
+      "risks": [
+        "Customer may not see value in additional products",
+        "Budget constraints or approval required",
+        "Competitive products may already be in use"
+      ],
+      "successFactors": [
+        "Strong existing relationship and satisfaction",
+        "Clear business case for expansion",
+        "Budget availability and stakeholder buy-in"
+      ],
+      "metrics": {
+        "currentARR": 640260.52,
+        "healthScore": 95,
+        "dmPercent": 103.1,
+        "daysToRenewal": 365,
+        "productCount": 2
+      },
+      "generatedAt": "2026-02-12T17:31:45.096Z"
+    },
+    {
+      "opportunityId": "telefonica-uk-limited-pricing",
+      "accountName": "Telefonica UK Limited",
+      "bu": "Cloudsense",
+      "type": "pricing",
+      "title": "Pricing Recovery Opportunity",
+      "description": "Account pricing has declined 12.6% vs prior year. Strategic price adjustment could recover revenue.",
+      "reasoning": "Current ARR: $2,104,857.01, Prior: $2,408,421.11 (-12.6% decline). Peer average DM: 92.5%. This suggests pricing pressure or undervaluation.",
+      "specificActions": [
+        "Conduct competitive pricing analysis within 2 weeks",
+        "Schedule executive business review to discuss value delivered",
+        "Prepare pricing justification document with ROI metrics",
+        "Present pricing adjustment proposal with 30-day notice"
+      ],
+      "expectedArrImpact": 123735,
+      "expectedDmImpact": 5.1,
+      "confidence": "medium",
+      "timelineWeeks": 8,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer pushback on price increase",
+        "Competitive pricing pressure",
+        "May require product/service enhancements to justify"
+      ],
+      "successFactors": [
+        "Strong demonstrated ROI and value delivery",
+        "Executive relationship and trust established",
+        "Market rates support pricing adjustment"
+      ],
+      "metrics": {
+        "currentARR": 2104857.01,
+        "healthScore": 56,
+        "dmPercent": 87.4,
+        "daysToRenewal": 30,
+        "productCount": 4
+      },
+      "generatedAt": "2026-02-12T17:31:45.096Z"
+    },
+    {
+      "opportunityId": "postnl-holding-bv-upsell",
+      "accountName": "PostNL Holding BV",
+      "bu": "Cloudsense",
+      "type": "upsell",
+      "title": "Cross-Sell & Expansion Opportunity",
+      "description": "Strong account (health: 82, DM: 95.3%) using only 2 product(s). High potential for product expansion.",
+      "reasoning": "Account demonstrates strong satisfaction and retention (95.3% DM). Currently using CloudSense CPQ Core, Advanced Configuration Engine. Similar accounts typically adopt 4-5 products. ARR of $576,494.75 suggests budget capacity.",
+      "specificActions": [
+        "Analyze usage patterns to identify expansion opportunities",
+        "Schedule product roadmap session with customer stakeholders",
+        "Develop custom expansion proposal with ROI projections",
+        "Present pilot program for additional products/services"
+      ],
+      "expectedArrImpact": 115299,
+      "expectedDmImpact": 20,
+      "confidence": "high",
+      "timelineWeeks": 12,
+      "ownerTeam": "Sales",
+      "risks": [
+        "Customer may not see value in additional products",
+        "Budget constraints or approval required",
+        "Competitive products may already be in use"
+      ],
+      "successFactors": [
+        "Strong existing relationship and satisfaction",
+        "Clear business case for expansion",
+        "Budget availability and stakeholder buy-in"
+      ],
+      "metrics": {
+        "currentARR": 576494.75,
+        "healthScore": 82,
+        "dmPercent": 95.3,
+        "daysToRenewal": 365,
+        "productCount": 2
+      },
+      "generatedAt": "2026-02-12T17:31:45.096Z"
+    },
+    {
+      "opportunityId": "a1-telekom-austria-ag.-churn_risk",
+      "accountName": "A1 Telekom Austria AG.",
+      "bu": "Cloudsense",
+      "type": "churn_risk",
+      "title": "Churn Risk - Immediate Intervention Required",
+      "description": "Account shows multiple risk signals: Low health score (64), Revenue declining (86.2% DM), Renewal in 120 days.",
+      "reasoning": "Health score 64 indicates dissatisfaction. DM% of 86.2% shows revenue contraction. Upcoming renewal creates urgency.",
+      "specificActions": [
+        "Schedule immediate stakeholder meeting to understand concerns",
+        "Conduct product usage analysis to identify friction points",
+        "Develop 90-day success plan with clear milestones",
+        "Assign dedicated CSM resource for intensive support"
+      ],
+      "expectedArrImpact": 83562,
+      "expectedDmImpact": 13.8,
+      "confidence": "medium",
+      "timelineWeeks": 4,
+      "ownerTeam": "Customer Success",
+      "risks": [
+        "Customer may have already decided to churn",
+        "Competitor may be actively pursuing",
+        "Product gaps may be difficult to address quickly"
+      ],
+      "successFactors": [
+        "Quick identification and resolution of pain points",
+        "Executive escalation and commitment",
+        "Competitive positioning and product roadmap alignment"
+      ],
+      "metrics": {
+        "currentARR": 520967.79,
+        "healthScore": 64,
+        "dmPercent": 86.2,
+        "daysToRenewal": 120,
+        "productCount": 2
+      },
+      "generatedAt": "2026-02-12T17:31:45.096Z"
+    },
+    {
+      "opportunityId": "issquared,-inc.-contract_optimization",
+      "accountName": "ISSQUARED, INC.",
+      "bu": "Kandy",
+      "type": "contract_optimization",
+      "title": "Contract Optimization - Early-renewal",
+      "description": "Account on Standard Annual contract with ARR $295,121.61. Renewal in 30 days - opportunity for early renewal with increase.",
+      "reasoning": "Current contract type (Standard Annual) with ARR $295,121.61 and upcoming renewal (30 days) creates negotiation opportunity.",
+      "specificActions": [
+        "Review current contract terms and renewal timeline",
+        "Prepare multi-year proposal with strategic pricing",
+        "Schedule renewal discussion 90 days before expiration",
+        "Negotiate mutually beneficial terms with legal review"
+      ],
+      "expectedArrImpact": 14756,
+      "expectedDmImpact": 0,
+      "confidence": "medium",
+      "timelineWeeks": 4,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer may resist pricing increase",
+        "Procurement approval may be required",
+        "Competitive renewal process risk"
+      ],
+      "successFactors": [
+        "Long-term partnership mindset from customer",
+        "Competitive differentiation and switching costs",
+        "Flexible terms that align with customer needs"
+      ],
+      "metrics": {
+        "currentARR": 295121.61,
+        "healthScore": 77,
+        "dmPercent": 95.1,
+        "daysToRenewal": 30,
+        "productCount": 1
+      },
+      "generatedAt": "2026-02-12T17:31:45.096Z"
+    },
+    {
+      "opportunityId": "ericsson-telecommunications,-inc.-contract_optimization",
+      "accountName": "Ericsson Telecommunications, Inc.",
+      "bu": "STL",
+      "type": "contract_optimization",
+      "title": "Contract Optimization - Early-renewal",
+      "description": "Account on Standard Annual contract with ARR $176,902.02. Renewal in 30 days - opportunity for early renewal with increase.",
+      "reasoning": "Current contract type (Standard Annual) with ARR $176,902.02 and upcoming renewal (30 days) creates negotiation opportunity.",
+      "specificActions": [
+        "Review current contract terms and renewal timeline",
+        "Prepare multi-year proposal with strategic pricing",
+        "Schedule renewal discussion 90 days before expiration",
+        "Negotiate mutually beneficial terms with legal review"
+      ],
+      "expectedArrImpact": 8845,
+      "expectedDmImpact": 0,
+      "confidence": "high",
+      "timelineWeeks": 4,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer may resist pricing increase",
+        "Procurement approval may be required",
+        "Competitive renewal process risk"
+      ],
+      "successFactors": [
+        "Long-term partnership mindset from customer",
+        "Competitive differentiation and switching costs",
+        "Flexible terms that align with customer needs"
+      ],
+      "metrics": {
+        "currentARR": 176902.02,
+        "healthScore": 97,
+        "dmPercent": 123,
+        "daysToRenewal": 30,
+        "productCount": 1
+      },
+      "generatedAt": "2026-02-12T17:31:45.096Z"
+    },
+    {
+      "opportunityId": "hargray-communications-group-contract_optimization",
+      "accountName": "HARGRAY COMMUNICATIONS GROUP",
+      "bu": "Kandy",
+      "type": "contract_optimization",
+      "title": "Contract Optimization - Early-renewal",
+      "description": "Account on Standard Annual contract with ARR $158,226.87. Renewal in 30 days - opportunity for early renewal with increase.",
+      "reasoning": "Current contract type (Standard Annual) with ARR $158,226.87 and upcoming renewal (30 days) creates negotiation opportunity.",
+      "specificActions": [
+        "Review current contract terms and renewal timeline",
+        "Prepare multi-year proposal with strategic pricing",
+        "Schedule renewal discussion 90 days before expiration",
+        "Negotiate mutually beneficial terms with legal review"
+      ],
+      "expectedArrImpact": 7911,
+      "expectedDmImpact": 0,
+      "confidence": "medium",
+      "timelineWeeks": 4,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer may resist pricing increase",
+        "Procurement approval may be required",
+        "Competitive renewal process risk"
+      ],
+      "successFactors": [
+        "Long-term partnership mindset from customer",
+        "Competitive differentiation and switching costs",
+        "Flexible terms that align with customer needs"
+      ],
+      "metrics": {
+        "currentARR": 158226.87,
+        "healthScore": 76,
+        "dmPercent": 92.7,
+        "daysToRenewal": 30,
+        "productCount": 1
+      },
+      "generatedAt": "2026-02-12T17:31:45.096Z"
+    },
+    {
+      "opportunityId": "mtn-zambia-contract_optimization",
+      "accountName": "MTN Zambia",
+      "bu": "STL",
+      "type": "contract_optimization",
+      "title": "Contract Optimization - Early-renewal",
+      "description": "Account on Basic Annual contract with ARR $97,500. Renewal in 30 days - opportunity for early renewal with increase.",
+      "reasoning": "Current contract type (Basic Annual) with ARR $97,500 and upcoming renewal (30 days) creates negotiation opportunity.",
+      "specificActions": [
+        "Review current contract terms and renewal timeline",
+        "Prepare multi-year proposal with strategic pricing",
+        "Schedule renewal discussion 90 days before expiration",
+        "Negotiate mutually beneficial terms with legal review"
+      ],
+      "expectedArrImpact": 4875,
+      "expectedDmImpact": 0,
+      "confidence": "high",
+      "timelineWeeks": 4,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer may resist pricing increase",
+        "Procurement approval may be required",
+        "Competitive renewal process risk"
+      ],
+      "successFactors": [
+        "Long-term partnership mindset from customer",
+        "Competitive differentiation and switching costs",
+        "Flexible terms that align with customer needs"
+      ],
+      "metrics": {
+        "currentARR": 97500,
+        "healthScore": 87,
+        "dmPercent": 128.6,
+        "daysToRenewal": 30,
+        "productCount": 1
+      },
+      "generatedAt": "2026-02-12T17:31:45.096Z"
+    },
+    {
+      "opportunityId": "razorline,-llc-contract_optimization",
+      "accountName": "RAZORLINE, LLC",
+      "bu": "Kandy",
+      "type": "contract_optimization",
+      "title": "Contract Optimization - Early-renewal",
+      "description": "Account on Basic Annual contract with ARR $82,547.3. Renewal in 30 days - opportunity for early renewal with increase.",
+      "reasoning": "Current contract type (Basic Annual) with ARR $82,547.3 and upcoming renewal (30 days) creates negotiation opportunity.",
+      "specificActions": [
+        "Review current contract terms and renewal timeline",
+        "Prepare multi-year proposal with strategic pricing",
+        "Schedule renewal discussion 90 days before expiration",
+        "Negotiate mutually beneficial terms with legal review"
+      ],
+      "expectedArrImpact": 4127,
+      "expectedDmImpact": 0,
+      "confidence": "high",
+      "timelineWeeks": 4,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer may resist pricing increase",
+        "Procurement approval may be required",
+        "Competitive renewal process risk"
+      ],
+      "successFactors": [
+        "Long-term partnership mindset from customer",
+        "Competitive differentiation and switching costs",
+        "Flexible terms that align with customer needs"
+      ],
+      "metrics": {
+        "currentARR": 82547.3,
+        "healthScore": 81,
+        "dmPercent": 92.5,
+        "daysToRenewal": 30,
+        "productCount": 1
+      },
+      "generatedAt": "2026-02-12T17:31:45.096Z"
+    },
+    {
+      "opportunityId": "wholesale-carrier-services-inc.-contract_optimization",
+      "accountName": "WHOLESALE CARRIER SERVICES INC.",
+      "bu": "Kandy",
+      "type": "contract_optimization",
+      "title": "Contract Optimization - Early-renewal",
+      "description": "Account on Basic Annual contract with ARR $73,785.88. Renewal in 30 days - opportunity for early renewal with increase.",
+      "reasoning": "Current contract type (Basic Annual) with ARR $73,785.88 and upcoming renewal (30 days) creates negotiation opportunity.",
+      "specificActions": [
+        "Review current contract terms and renewal timeline",
+        "Prepare multi-year proposal with strategic pricing",
+        "Schedule renewal discussion 90 days before expiration",
+        "Negotiate mutually beneficial terms with legal review"
+      ],
+      "expectedArrImpact": 3689,
+      "expectedDmImpact": 0,
+      "confidence": "high",
+      "timelineWeeks": 4,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer may resist pricing increase",
+        "Procurement approval may be required",
+        "Competitive renewal process risk"
+      ],
+      "successFactors": [
+        "Long-term partnership mindset from customer",
+        "Competitive differentiation and switching costs",
+        "Flexible terms that align with customer needs"
+      ],
+      "metrics": {
+        "currentARR": 73785.88,
+        "healthScore": 82,
+        "dmPercent": 90.4,
+        "daysToRenewal": 30,
+        "productCount": 1
+      },
+      "generatedAt": "2026-02-12T17:31:45.096Z"
+    },
+    {
+      "opportunityId": "comporium,-inc.-contract_optimization",
+      "accountName": "COMPORIUM, INC.",
+      "bu": "Kandy",
+      "type": "contract_optimization",
+      "title": "Contract Optimization - Early-renewal",
+      "description": "Account on Basic Annual contract with ARR $73,104.65. Renewal in 30 days - opportunity for early renewal with increase.",
+      "reasoning": "Current contract type (Basic Annual) with ARR $73,104.65 and upcoming renewal (30 days) creates negotiation opportunity.",
+      "specificActions": [
+        "Review current contract terms and renewal timeline",
+        "Prepare multi-year proposal with strategic pricing",
+        "Schedule renewal discussion 90 days before expiration",
+        "Negotiate mutually beneficial terms with legal review"
+      ],
+      "expectedArrImpact": 3655,
+      "expectedDmImpact": 0,
+      "confidence": "high",
+      "timelineWeeks": 4,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer may resist pricing increase",
+        "Procurement approval may be required",
+        "Competitive renewal process risk"
+      ],
+      "successFactors": [
+        "Long-term partnership mindset from customer",
+        "Competitive differentiation and switching costs",
+        "Flexible terms that align with customer needs"
+      ],
+      "metrics": {
+        "currentARR": 73104.65,
+        "healthScore": 91,
+        "dmPercent": 100.5,
+        "daysToRenewal": 30,
+        "productCount": 1
+      },
+      "generatedAt": "2026-02-12T17:31:45.096Z"
+    },
+    {
+      "opportunityId": "nuwave-communications,-inc.-contract_optimization",
+      "accountName": "NUWAVE COMMUNICATIONS, INC.",
+      "bu": "Kandy",
+      "type": "contract_optimization",
+      "title": "Contract Optimization - Early-renewal",
+      "description": "Account on Basic Annual contract with ARR $72,730.96. Renewal in 30 days - opportunity for early renewal with increase.",
+      "reasoning": "Current contract type (Basic Annual) with ARR $72,730.96 and upcoming renewal (30 days) creates negotiation opportunity.",
+      "specificActions": [
+        "Review current contract terms and renewal timeline",
+        "Prepare multi-year proposal with strategic pricing",
+        "Schedule renewal discussion 90 days before expiration",
+        "Negotiate mutually beneficial terms with legal review"
+      ],
+      "expectedArrImpact": 3637,
+      "expectedDmImpact": 0,
+      "confidence": "high",
+      "timelineWeeks": 4,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer may resist pricing increase",
+        "Procurement approval may be required",
+        "Competitive renewal process risk"
+      ],
+      "successFactors": [
+        "Long-term partnership mindset from customer",
+        "Competitive differentiation and switching costs",
+        "Flexible terms that align with customer needs"
+      ],
+      "metrics": {
+        "currentARR": 72730.96,
+        "healthScore": 88,
+        "dmPercent": 100.1,
+        "daysToRenewal": 30,
+        "productCount": 1
+      },
+      "generatedAt": "2026-02-12T17:31:45.096Z"
+    },
+    {
+      "opportunityId": "yadkin-valley-tel-membership-corp-contract_optimization",
+      "accountName": "YADKIN VALLEY TEL MEMBERSHIP CORP",
+      "bu": "Kandy",
+      "type": "contract_optimization",
+      "title": "Contract Optimization - Early-renewal",
+      "description": "Account on Basic Annual contract with ARR $49,606.51. Renewal in 30 days - opportunity for early renewal with increase.",
+      "reasoning": "Current contract type (Basic Annual) with ARR $49,606.51 and upcoming renewal (30 days) creates negotiation opportunity.",
+      "specificActions": [
+        "Review current contract terms and renewal timeline",
+        "Prepare multi-year proposal with strategic pricing",
+        "Schedule renewal discussion 90 days before expiration",
+        "Negotiate mutually beneficial terms with legal review"
+      ],
+      "expectedArrImpact": 2480,
+      "expectedDmImpact": 0,
+      "confidence": "high",
+      "timelineWeeks": 4,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer may resist pricing increase",
+        "Procurement approval may be required",
+        "Competitive renewal process risk"
+      ],
+      "successFactors": [
+        "Long-term partnership mindset from customer",
+        "Competitive differentiation and switching costs",
+        "Flexible terms that align with customer needs"
+      ],
+      "metrics": {
+        "currentARR": 49606.51,
+        "healthScore": 88,
+        "dmPercent": 96.6,
+        "daysToRenewal": 30,
+        "productCount": 1
+      },
+      "generatedAt": "2026-02-12T17:31:45.096Z"
+    },
+    {
+      "opportunityId": "juxto---ontario-contract_optimization",
+      "accountName": "Juxto - Ontario",
+      "bu": "Kandy",
+      "type": "contract_optimization",
+      "title": "Contract Optimization - Early-renewal",
+      "description": "Account on Basic Annual contract with ARR $48,793.63. Renewal in 30 days - opportunity for early renewal with increase.",
+      "reasoning": "Current contract type (Basic Annual) with ARR $48,793.63 and upcoming renewal (30 days) creates negotiation opportunity.",
+      "specificActions": [
+        "Review current contract terms and renewal timeline",
+        "Prepare multi-year proposal with strategic pricing",
+        "Schedule renewal discussion 90 days before expiration",
+        "Negotiate mutually beneficial terms with legal review"
+      ],
+      "expectedArrImpact": 2440,
+      "expectedDmImpact": 0,
+      "confidence": "medium",
+      "timelineWeeks": 4,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer may resist pricing increase",
+        "Procurement approval may be required",
+        "Competitive renewal process risk"
+      ],
+      "successFactors": [
+        "Long-term partnership mindset from customer",
+        "Competitive differentiation and switching costs",
+        "Flexible terms that align with customer needs"
+      ],
+      "metrics": {
+        "currentARR": 48793.63,
+        "healthScore": 78,
+        "dmPercent": 99.7,
+        "daysToRenewal": 30,
+        "productCount": 1
+      },
+      "generatedAt": "2026-02-12T17:31:45.096Z"
+    },
+    {
+      "opportunityId": "voiceflex-limited-contract_optimization",
+      "accountName": "VOICEFLEX LIMITED",
+      "bu": "Kandy",
+      "type": "contract_optimization",
+      "title": "Contract Optimization - Early-renewal",
+      "description": "Account on Basic Annual contract with ARR $46,972.52. Renewal in 30 days - opportunity for early renewal with increase.",
+      "reasoning": "Current contract type (Basic Annual) with ARR $46,972.52 and upcoming renewal (30 days) creates negotiation opportunity.",
+      "specificActions": [
+        "Review current contract terms and renewal timeline",
+        "Prepare multi-year proposal with strategic pricing",
+        "Schedule renewal discussion 90 days before expiration",
+        "Negotiate mutually beneficial terms with legal review"
+      ],
+      "expectedArrImpact": 2349,
+      "expectedDmImpact": 0,
+      "confidence": "medium",
+      "timelineWeeks": 4,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer may resist pricing increase",
+        "Procurement approval may be required",
+        "Competitive renewal process risk"
+      ],
+      "successFactors": [
+        "Long-term partnership mindset from customer",
+        "Competitive differentiation and switching costs",
+        "Flexible terms that align with customer needs"
+      ],
+      "metrics": {
+        "currentARR": 46972.52,
+        "healthScore": 78,
+        "dmPercent": 91.1,
+        "daysToRenewal": 30,
+        "productCount": 1
+      },
+      "generatedAt": "2026-02-12T17:31:45.096Z"
+    },
+    {
+      "opportunityId": "ericsson-(thailand)-ltd-contract_optimization",
+      "accountName": "ERICSSON (THAILAND) LTD",
+      "bu": "STL",
+      "type": "contract_optimization",
+      "title": "Contract Optimization - Early-renewal",
+      "description": "Account on Basic Annual contract with ARR $38,000. Renewal in 30 days - opportunity for early renewal with increase.",
+      "reasoning": "Current contract type (Basic Annual) with ARR $38,000 and upcoming renewal (30 days) creates negotiation opportunity.",
+      "specificActions": [
+        "Review current contract terms and renewal timeline",
+        "Prepare multi-year proposal with strategic pricing",
+        "Schedule renewal discussion 90 days before expiration",
+        "Negotiate mutually beneficial terms with legal review"
+      ],
+      "expectedArrImpact": 1900,
+      "expectedDmImpact": 0,
+      "confidence": "high",
+      "timelineWeeks": 4,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer may resist pricing increase",
+        "Procurement approval may be required",
+        "Competitive renewal process risk"
+      ],
+      "successFactors": [
+        "Long-term partnership mindset from customer",
+        "Competitive differentiation and switching costs",
+        "Flexible terms that align with customer needs"
+      ],
+      "metrics": {
+        "currentARR": 38000,
+        "healthScore": 95,
+        "dmPercent": 113.5,
+        "daysToRenewal": 30,
+        "productCount": 1
+      },
+      "generatedAt": "2026-02-12T17:31:45.096Z"
+    },
+    {
+      "opportunityId": "bharti-airtel-limited---mumbai-contract_optimization",
+      "accountName": "Bharti Airtel Limited - Mumbai",
+      "bu": "STL",
+      "type": "contract_optimization",
+      "title": "Contract Optimization - Early-renewal",
+      "description": "Account on Basic Annual contract with ARR $35,356.12. Renewal in 30 days - opportunity for early renewal with increase.",
+      "reasoning": "Current contract type (Basic Annual) with ARR $35,356.12 and upcoming renewal (30 days) creates negotiation opportunity.",
+      "specificActions": [
+        "Review current contract terms and renewal timeline",
+        "Prepare multi-year proposal with strategic pricing",
+        "Schedule renewal discussion 90 days before expiration",
+        "Negotiate mutually beneficial terms with legal review"
+      ],
+      "expectedArrImpact": 1768,
+      "expectedDmImpact": 0,
+      "confidence": "high",
+      "timelineWeeks": 4,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer may resist pricing increase",
+        "Procurement approval may be required",
+        "Competitive renewal process risk"
+      ],
+      "successFactors": [
+        "Long-term partnership mindset from customer",
+        "Competitive differentiation and switching costs",
+        "Flexible terms that align with customer needs"
+      ],
+      "metrics": {
+        "currentARR": 35356.12,
+        "healthScore": 91,
+        "dmPercent": 126.8,
+        "daysToRenewal": 30,
+        "productCount": 1
+      },
+      "generatedAt": "2026-02-12T17:31:45.096Z"
+    },
+    {
+      "opportunityId": "cross-telephone-company-llc-(ok)-contract_optimization",
+      "accountName": "CROSS TELEPHONE COMPANY LLC (OK)",
+      "bu": "Kandy",
+      "type": "contract_optimization",
+      "title": "Contract Optimization - Early-renewal",
+      "description": "Account on Basic Annual contract with ARR $34,655.89. Renewal in 30 days - opportunity for early renewal with increase.",
+      "reasoning": "Current contract type (Basic Annual) with ARR $34,655.89 and upcoming renewal (30 days) creates negotiation opportunity.",
+      "specificActions": [
+        "Review current contract terms and renewal timeline",
+        "Prepare multi-year proposal with strategic pricing",
+        "Schedule renewal discussion 90 days before expiration",
+        "Negotiate mutually beneficial terms with legal review"
+      ],
+      "expectedArrImpact": 1733,
+      "expectedDmImpact": 0,
+      "confidence": "high",
+      "timelineWeeks": 4,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer may resist pricing increase",
+        "Procurement approval may be required",
+        "Competitive renewal process risk"
+      ],
+      "successFactors": [
+        "Long-term partnership mindset from customer",
+        "Competitive differentiation and switching costs",
+        "Flexible terms that align with customer needs"
+      ],
+      "metrics": {
+        "currentARR": 34655.89,
+        "healthScore": 87,
+        "dmPercent": 100.2,
+        "daysToRenewal": 30,
+        "productCount": 1
+      },
+      "generatedAt": "2026-02-12T17:31:45.096Z"
+    },
+    {
+      "opportunityId": "bharti-airtel-limited---gurgaon-contract_optimization",
+      "accountName": "Bharti Airtel Limited - Gurgaon",
+      "bu": "STL",
+      "type": "contract_optimization",
+      "title": "Contract Optimization - Early-renewal",
+      "description": "Account on Basic Annual contract with ARR $33,450.14. Renewal in 30 days - opportunity for early renewal with increase.",
+      "reasoning": "Current contract type (Basic Annual) with ARR $33,450.14 and upcoming renewal (30 days) creates negotiation opportunity.",
+      "specificActions": [
+        "Review current contract terms and renewal timeline",
+        "Prepare multi-year proposal with strategic pricing",
+        "Schedule renewal discussion 90 days before expiration",
+        "Negotiate mutually beneficial terms with legal review"
+      ],
+      "expectedArrImpact": 1673,
+      "expectedDmImpact": 0,
+      "confidence": "high",
+      "timelineWeeks": 4,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer may resist pricing increase",
+        "Procurement approval may be required",
+        "Competitive renewal process risk"
+      ],
+      "successFactors": [
+        "Long-term partnership mindset from customer",
+        "Competitive differentiation and switching costs",
+        "Flexible terms that align with customer needs"
+      ],
+      "metrics": {
+        "currentARR": 33450.14,
+        "healthScore": 96,
+        "dmPercent": 131.2,
+        "daysToRenewal": 30,
+        "productCount": 1
+      },
+      "generatedAt": "2026-02-12T17:31:45.096Z"
+    },
+    {
+      "opportunityId": "coeo-solutions-llc-contract_optimization",
+      "accountName": "COEO SOLUTIONS LLC",
+      "bu": "Kandy",
+      "type": "contract_optimization",
+      "title": "Contract Optimization - Early-renewal",
+      "description": "Account on Basic Annual contract with ARR $22,551.22. Renewal in 30 days - opportunity for early renewal with increase.",
+      "reasoning": "Current contract type (Basic Annual) with ARR $22,551.22 and upcoming renewal (30 days) creates negotiation opportunity.",
+      "specificActions": [
+        "Review current contract terms and renewal timeline",
+        "Prepare multi-year proposal with strategic pricing",
+        "Schedule renewal discussion 90 days before expiration",
+        "Negotiate mutually beneficial terms with legal review"
+      ],
+      "expectedArrImpact": 1128,
+      "expectedDmImpact": 0,
+      "confidence": "high",
+      "timelineWeeks": 4,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer may resist pricing increase",
+        "Procurement approval may be required",
+        "Competitive renewal process risk"
+      ],
+      "successFactors": [
+        "Long-term partnership mindset from customer",
+        "Competitive differentiation and switching costs",
+        "Flexible terms that align with customer needs"
+      ],
+      "metrics": {
+        "currentARR": 22551.22,
+        "healthScore": 87,
+        "dmPercent": 108.6,
+        "daysToRenewal": 30,
+        "productCount": 1
+      },
+      "generatedAt": "2026-02-12T17:31:45.096Z"
+    },
+    {
+      "opportunityId": "evolutio-cloud-enabler-s.a.-contract_optimization",
+      "accountName": "EVOLUTIO CLOUD ENABLER S.A.",
+      "bu": "Kandy",
+      "type": "contract_optimization",
+      "title": "Contract Optimization - Early-renewal",
+      "description": "Account on Basic Annual contract with ARR $20,787.42. Renewal in 30 days - opportunity for early renewal with increase.",
+      "reasoning": "Current contract type (Basic Annual) with ARR $20,787.42 and upcoming renewal (30 days) creates negotiation opportunity.",
+      "specificActions": [
+        "Review current contract terms and renewal timeline",
+        "Prepare multi-year proposal with strategic pricing",
+        "Schedule renewal discussion 90 days before expiration",
+        "Negotiate mutually beneficial terms with legal review"
+      ],
+      "expectedArrImpact": 1039,
+      "expectedDmImpact": 0,
+      "confidence": "medium",
+      "timelineWeeks": 4,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer may resist pricing increase",
+        "Procurement approval may be required",
+        "Competitive renewal process risk"
+      ],
+      "successFactors": [
+        "Long-term partnership mindset from customer",
+        "Competitive differentiation and switching costs",
+        "Flexible terms that align with customer needs"
+      ],
+      "metrics": {
+        "currentARR": 20787.42,
+        "healthScore": 78,
+        "dmPercent": 94.4,
+        "daysToRenewal": 30,
+        "productCount": 1
+      },
+      "generatedAt": "2026-02-12T17:31:45.096Z"
+    },
+    {
+      "opportunityId": "empire-telephone-corporation-contract_optimization",
+      "accountName": "EMPIRE TELEPHONE CORPORATION",
+      "bu": "Kandy",
+      "type": "contract_optimization",
+      "title": "Contract Optimization - Early-renewal",
+      "description": "Account on Basic Annual contract with ARR $16,935.51. Renewal in 30 days - opportunity for early renewal with increase.",
+      "reasoning": "Current contract type (Basic Annual) with ARR $16,935.51 and upcoming renewal (30 days) creates negotiation opportunity.",
+      "specificActions": [
+        "Review current contract terms and renewal timeline",
+        "Prepare multi-year proposal with strategic pricing",
+        "Schedule renewal discussion 90 days before expiration",
+        "Negotiate mutually beneficial terms with legal review"
+      ],
+      "expectedArrImpact": 847,
+      "expectedDmImpact": 0,
+      "confidence": "medium",
+      "timelineWeeks": 4,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer may resist pricing increase",
+        "Procurement approval may be required",
+        "Competitive renewal process risk"
+      ],
+      "successFactors": [
+        "Long-term partnership mindset from customer",
+        "Competitive differentiation and switching costs",
+        "Flexible terms that align with customer needs"
+      ],
+      "metrics": {
+        "currentARR": 16935.51,
+        "healthScore": 78,
+        "dmPercent": 90.1,
+        "daysToRenewal": 30,
+        "productCount": 1
+      },
+      "generatedAt": "2026-02-12T17:31:45.096Z"
+    },
+    {
+      "opportunityId": "vodafone-fiji-limited-contract_optimization",
+      "accountName": "VODAFONE FIJI LIMITED",
+      "bu": "Kandy",
+      "type": "contract_optimization",
+      "title": "Contract Optimization - Early-renewal",
+      "description": "Account on Basic Annual contract with ARR $10,823.16. Renewal in 30 days - opportunity for early renewal with increase.",
+      "reasoning": "Current contract type (Basic Annual) with ARR $10,823.16 and upcoming renewal (30 days) creates negotiation opportunity.",
+      "specificActions": [
+        "Review current contract terms and renewal timeline",
+        "Prepare multi-year proposal with strategic pricing",
+        "Schedule renewal discussion 90 days before expiration",
+        "Negotiate mutually beneficial terms with legal review"
+      ],
+      "expectedArrImpact": 541,
+      "expectedDmImpact": 0,
+      "confidence": "high",
+      "timelineWeeks": 4,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer may resist pricing increase",
+        "Procurement approval may be required",
+        "Competitive renewal process risk"
+      ],
+      "successFactors": [
+        "Long-term partnership mindset from customer",
+        "Competitive differentiation and switching costs",
+        "Flexible terms that align with customer needs"
+      ],
+      "metrics": {
+        "currentARR": 10823.16,
+        "healthScore": 93,
+        "dmPercent": 104.1,
+        "daysToRenewal": 30,
+        "productCount": 1
+      },
+      "generatedAt": "2026-02-12T17:31:45.096Z"
+    },
+    {
+      "opportunityId": "issquared,-inc.-contract_optimization",
+      "accountName": "ISSQUARED, Inc.",
+      "bu": "Kandy",
+      "type": "contract_optimization",
+      "title": "Contract Optimization - Early-renewal",
+      "description": "Account on Basic Annual contract with ARR $3,986.16. Renewal in 30 days - opportunity for early renewal with increase.",
+      "reasoning": "Current contract type (Basic Annual) with ARR $3,986.16 and upcoming renewal (30 days) creates negotiation opportunity.",
+      "specificActions": [
+        "Review current contract terms and renewal timeline",
+        "Prepare multi-year proposal with strategic pricing",
+        "Schedule renewal discussion 90 days before expiration",
+        "Negotiate mutually beneficial terms with legal review"
+      ],
+      "expectedArrImpact": 199,
+      "expectedDmImpact": 0,
+      "confidence": "medium",
+      "timelineWeeks": 4,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer may resist pricing increase",
+        "Procurement approval may be required",
+        "Competitive renewal process risk"
+      ],
+      "successFactors": [
+        "Long-term partnership mindset from customer",
+        "Competitive differentiation and switching costs",
+        "Flexible terms that align with customer needs"
+      ],
+      "metrics": {
+        "currentARR": 3986.16,
+        "healthScore": 77,
+        "dmPercent": 95.3,
+        "daysToRenewal": 30,
+        "productCount": 1
+      },
+      "generatedAt": "2026-02-12T17:31:45.096Z"
+    },
+    {
+      "opportunityId": "agt-contract_optimization",
+      "accountName": "AGT",
+      "bu": "Kandy",
+      "type": "contract_optimization",
+      "title": "Contract Optimization - Early-renewal",
+      "description": "Account on Basic Annual contract with ARR $2,268.24. Renewal in 30 days - opportunity for early renewal with increase.",
+      "reasoning": "Current contract type (Basic Annual) with ARR $2,268.24 and upcoming renewal (30 days) creates negotiation opportunity.",
+      "specificActions": [
+        "Review current contract terms and renewal timeline",
+        "Prepare multi-year proposal with strategic pricing",
+        "Schedule renewal discussion 90 days before expiration",
+        "Negotiate mutually beneficial terms with legal review"
+      ],
+      "expectedArrImpact": 113,
+      "expectedDmImpact": 0,
+      "confidence": "high",
+      "timelineWeeks": 4,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer may resist pricing increase",
+        "Procurement approval may be required",
+        "Competitive renewal process risk"
+      ],
+      "successFactors": [
+        "Long-term partnership mindset from customer",
+        "Competitive differentiation and switching costs",
+        "Flexible terms that align with customer needs"
+      ],
+      "metrics": {
+        "currentARR": 2268.24,
+        "healthScore": 95,
+        "dmPercent": 106.8,
+        "daysToRenewal": 30,
+        "productCount": 1
+      },
+      "generatedAt": "2026-02-12T17:31:45.096Z"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "customer_name": "Elisa Oyj",
+  "last_updated": "2026-02-12",
+  "article_count": 3,
+  "articles": [
+    {
+      "title": "Elisa Oyj Invests in Cloud-Native Infrastructure",
+      "url": "https://example.com/news/elisa-oyj-strategic-initiative",
+      "source": "Industry News Daily",
+      "published": "2026-01-19",
+      "summary": "In a strategic move to enhance operational efficiency, Elisa Oyj is migrating key business systems to cloud-native platforms. The transformation is expected to reduce costs and improve scalability.",
+      "relevance_score": 93
+    },
+    {
+      "title": "Elisa Oyj Reports Strong Financial Performance",
+      "url": "https://example.com/news/elisa-oyj-financial-results",
+      "source": "Financial Times",
+      "published": "2025-12-16",
+      "summary": "Elisa Oyj has reported solid financial results for the quarter, with revenue growth driven by strong performance in core business areas. The company reaffirmed its commitment to investing in technology and innovation.",
+      "relevance_score": 78
+    },
+    {
+      "title": "Elisa Oyj Expands Operations in Nordic Region",
+      "url": "https://example.com/news/elisa-oyj-partnership",
+      "source": "Business Wire",
+      "published": "2025-12-13",
+      "summary": "Elisa Oyj is expanding its operational footprint in Nordic Region with new facilities and increased investment. The expansion supports the company's growth strategy and commitment to the region.",
+      "relevance_score": 84
+    }
+  ]
+}

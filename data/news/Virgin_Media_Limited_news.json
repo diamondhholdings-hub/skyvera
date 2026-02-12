@@ -1,0 +1,31 @@
+{
+  "customer_name": "Virgin Media Limited",
+  "last_updated": "2026-02-12",
+  "article_count": 3,
+  "articles": [
+    {
+      "title": "Virgin Media Limited Launches Innovation Program for Media & Entertainment",
+      "url": "https://example.com/news/virgin-media-limited-strategic-initiative",
+      "source": "Industry News Daily",
+      "published": "2026-01-19",
+      "summary": "Virgin Media Limited has announced a new innovation program focused on leveraging emerging technologies to drive growth in the media & entertainment sector. The program will focus on AI, automation, and customer engagement.",
+      "relevance_score": 88
+    },
+    {
+      "title": "Virgin Media Limited Reports Strong Financial Performance",
+      "url": "https://example.com/news/virgin-media-limited-financial-results",
+      "source": "Financial Times",
+      "published": "2026-01-09",
+      "summary": "Virgin Media Limited has reported solid financial results for the quarter, with revenue growth driven by strong performance in core business areas. The company reaffirmed its commitment to investing in technology and innovation.",
+      "relevance_score": 80
+    },
+    {
+      "title": "Virgin Media Limited Launches New Product Suite for Media & Entertainment",
+      "url": "https://example.com/news/virgin-media-limited-partnership",
+      "source": "Business Wire",
+      "published": "2025-11-16",
+      "summary": "Virgin Media Limited has introduced a new suite of products designed specifically for the media & entertainment market. The launch represents a significant investment in innovation and customer experience.",
+      "relevance_score": 84
+    }
+  ]
+}

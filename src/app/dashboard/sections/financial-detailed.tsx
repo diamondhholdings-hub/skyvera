@@ -1,7 +1,9 @@
 /**
  * Financial Detailed Analysis Section
- * Deep dive into cost structure and margin drivers
+ * Deep dive into cost structure, margin drivers, and DM% tracking
  */
+
+import { DMTracker } from '../components/dm-tracker'
 
 export async function FinancialDetailedSection() {
   return (
@@ -16,9 +18,12 @@ export async function FinancialDetailedSection() {
       }}>
         Detailed Financial Analysis
       </h2>
-      <div style={{ color: '#64748b', textAlign: 'center', padding: '50px 0' }}>
-        <p style={{ fontSize: '1.1em' }}>Cost structure analysis, margin waterfall, and financial drivers</p>
-        <p style={{ fontSize: '0.9em', marginTop: '10px' }}>Coming in next implementation phase</p>
+
+      {/* DM% Tracking & Forecasting */}
+      <DMTracker />
+
+      <div style={{ color: '#64748b', textAlign: 'center', padding: '50px 0', marginTop: '40px' }}>
+        <p style={{ fontSize: '1.1em' }}>Additional cost structure analysis and margin waterfall coming soon</p>
       </div>
     </section>
   )

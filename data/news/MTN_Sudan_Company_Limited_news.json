@@ -1,0 +1,31 @@
+{
+  "customer_name": "MTN Sudan Company Limited",
+  "last_updated": "2026-02-12",
+  "article_count": 3,
+  "articles": [
+    {
+      "title": "MTN Sudan Company Limited Invests in Cloud-Native Infrastructure",
+      "url": "https://example.com/news/mtn-sudan-company-limited-strategic-initiative",
+      "source": "Industry News Daily",
+      "published": "2026-01-26",
+      "summary": "In a strategic move to enhance operational efficiency, MTN Sudan Company Limited is migrating key business systems to cloud-native platforms. The transformation is expected to reduce costs and improve scalability.",
+      "relevance_score": 85
+    },
+    {
+      "title": "MTN Sudan Company Limited Reports Strong Financial Performance",
+      "url": "https://example.com/news/mtn-sudan-company-limited-financial-results",
+      "source": "Financial Times",
+      "published": "2025-12-31",
+      "summary": "MTN Sudan Company Limited has reported solid financial results for the quarter, with revenue growth driven by strong performance in core business areas. The company reaffirmed its commitment to investing in technology and innovation.",
+      "relevance_score": 75
+    },
+    {
+      "title": "MTN Sudan Company Limited Expands Operations in Europe",
+      "url": "https://example.com/news/mtn-sudan-company-limited-partnership",
+      "source": "Business Wire",
+      "published": "2025-11-18",
+      "summary": "MTN Sudan Company Limited is expanding its operational footprint in Europe with new facilities and increased investment. The expansion supports the company's growth strategy and commitment to the region.",
+      "relevance_score": 82
+    }
+  ]
+}

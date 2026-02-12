@@ -1,0 +1,31 @@
+{
+  "customer_name": "Telstra - Ges(a)",
+  "last_updated": "2026-02-12",
+  "article_count": 3,
+  "articles": [
+    {
+      "title": "Telstra - Ges(a) Launches Innovation Program for Telecommunications",
+      "url": "https://example.com/news/telstra---ges(a)-strategic-initiative",
+      "source": "Industry News Daily",
+      "published": "2026-01-25",
+      "summary": "Telstra - Ges(a) has announced a new innovation program focused on leveraging emerging technologies to drive growth in the telecommunications sector. The program will focus on AI, automation, and customer engagement.",
+      "relevance_score": 93
+    },
+    {
+      "title": "Telstra - Ges(a) Reports Strong Financial Performance",
+      "url": "https://example.com/news/telstra---ges(a)-financial-results",
+      "source": "Financial Times",
+      "published": "2026-01-11",
+      "summary": "Telstra - Ges(a) has reported solid financial results for the quarter, with revenue growth driven by strong performance in core business areas. The company reaffirmed its commitment to investing in technology and innovation.",
+      "relevance_score": 81
+    },
+    {
+      "title": "Telstra - Ges(a) Expands Operations in Australia",
+      "url": "https://example.com/news/telstra---ges(a)-partnership",
+      "source": "Business Wire",
+      "published": "2025-11-23",
+      "summary": "Telstra - Ges(a) is expanding its operational footprint in Australia with new facilities and increased investment. The expansion supports the company's growth strategy and commitment to the region.",
+      "relevance_score": 76
+    }
+  ]
+}

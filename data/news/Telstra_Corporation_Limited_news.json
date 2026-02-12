@@ -1,15 +1,31 @@
 {
   "customer_name": "Telstra Corporation Limited",
-  "last_updated": "2026-02-03 14:57:59",
-  "article_count": 1,
+  "last_updated": "2026-02-12",
+  "article_count": 3,
   "articles": [
     {
-      "title": "The Truth About Telstra Group Ltd: Is This Aussie Telecom Sleeper Stock About To Go Viral? - AD HOC NEWS",
-      "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQXzJfRWM1SFpYTkZkNmhmdGJiSTNKQm1ma3c2Y0I3T1JYUnFzVDNLb2Vkc1U4Z19LNEhBR1hlVERHX0tkX21ieEVFdExJcElRYzhvOU9LMzZNd05yRlRqSUFaS1JvSDBBbjRVU3FkbXlGYXlrQ1dqNnJydWJnc0NSUW50ek1GSXJzdl96U0h0NGNRaUk4RW10bUVEbEc2UWs4WEpGTFloVDlqM3JZanRTTWNxRkw1clFvX1paajM2N2w5dWpxTDdQcg?oc=5",
-      "source": "AD HOC NEWS",
-      "published": "2026-02-03",
-      "summary": "<a href=\"https://news.google.com/rss/articles/CBMiyAFBVV95cUxQXzJfRWM1SFpYTkZkNmhmdGJiSTNKQm1ma3c2Y0I3T1JYUnFzVDNLb2Vkc1U4Z19LNEhBR1hlVERHX0tkX21ieEVFdExJcElRYzhvOU9LMzZNd05yRlRqSUFaS1JvSDBBbjRVU3FkbX",
-      "relevance_score": 0.5
+      "title": "Telstra Corporation Limited Announces Digital Transformation Initiative",
+      "url": "https://example.com/news/telstra-corporation-limited-strategic-initiative",
+      "source": "Industry News Daily",
+      "published": "2026-01-17",
+      "summary": "Telstra Corporation Limited has unveiled a comprehensive digital transformation strategy aimed at modernizing its technology infrastructure and improving customer experience. The initiative includes investments in cloud platforms, automation, and data analytics.",
+      "relevance_score": 88
+    },
+    {
+      "title": "Telstra Corporation Limited Reports Strong Financial Performance",
+      "url": "https://example.com/news/telstra-corporation-limited-financial-results",
+      "source": "Financial Times",
+      "published": "2025-12-24",
+      "summary": "Telstra Corporation Limited has reported solid financial results for the quarter, with revenue growth driven by strong performance in core business areas. The company reaffirmed its commitment to investing in technology and innovation.",
+      "relevance_score": 82
+    },
+    {
+      "title": "Telstra Corporation Limited Announces Strategic Partnership to Expand Services",
+      "url": "https://example.com/news/telstra-corporation-limited-partnership",
+      "source": "Business Wire",
+      "published": "2025-12-13",
+      "summary": "Telstra Corporation Limited has formed a strategic partnership aimed at expanding its service offerings and reaching new markets. The collaboration will leverage complementary strengths to deliver enhanced value to customers.",
+      "relevance_score": 78
     }
   ]
 }

@@ -1,0 +1,2483 @@
+{
+  "extractedAt": "2026-02-12T12:30:18.743489",
+  "totalAccounts": 87,
+  "totalCurrentARR": 41558133.80999999,
+  "totalPriorARR": 43618671.07999999,
+  "overallDM": 95.3,
+  "accounts": [
+    {
+      "accountName": "EMIRCOM",
+      "bu": "Kandy",
+      "currentARR": 9586308.0,
+      "priorARR": 9885733.56,
+      "projectedARR": 9586308.0,
+      "dmPercent": 97.0,
+      "healthScore": 80,
+      "renewalDate": "2026-06-12",
+      "renewalQuarter": "Q2'26",
+      "daysToRenewal": 120,
+      "pricing": {
+        "current": 9586308.0,
+        "prior": 9885733.56,
+        "variance": -3.0,
+        "pricingTrend": "stable"
+      },
+      "products": [
+        "Kandy Communications Platform",
+        "Video Conferencing Suite",
+        "SMS/Messaging API",
+        "Contact Center Solutions"
+      ],
+      "contractType": "Enterprise Multi-Year",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 1,
+      "pctOfBuRevenue": 70.4731407443919,
+      "overallRank": 1
+    },
+    {
+      "accountName": "Telefonica UK Limited",
+      "bu": "Cloudsense",
+      "currentARR": 2104857.01,
+      "priorARR": 2408421.11,
+      "projectedARR": 2631071.26,
+      "dmPercent": 87.4,
+      "healthScore": 56,
+      "renewalDate": "2026-03-14",
+      "renewalQuarter": "Q1'26",
+      "daysToRenewal": 30,
+      "pricing": {
+        "current": 2104857.01,
+        "prior": 2408421.11,
+        "variance": -12.6,
+        "pricingTrend": "declining"
+      },
+      "products": [
+        "CloudSense CPQ Core",
+        "Enterprise Analytics Module",
+        "Advanced Configuration Engine",
+        "Multi-Cloud Integration"
+      ],
+      "contractType": "Enterprise Multi-Year",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 2,
+      "pctOfBuRevenue": 6.50574768630979,
+      "overallRank": 2
+    },
+    {
+      "accountName": "Telstra Corporation Limited",
+      "bu": "Cloudsense",
+      "currentARR": 1972000.0,
+      "priorARR": 2074611.65,
+      "projectedARR": 2465000.0,
+      "dmPercent": 95.1,
+      "healthScore": 87,
+      "renewalDate": "2027-02-12",
+      "renewalQuarter": "Next Yr",
+      "daysToRenewal": 365,
+      "pricing": {
+        "current": 1972000.0,
+        "prior": 2074611.65,
+        "variance": -4.9,
+        "pricingTrend": "stable"
+      },
+      "products": [
+        "CloudSense CPQ Core",
+        "Enterprise Analytics Module",
+        "Advanced Configuration Engine",
+        "Multi-Cloud Integration"
+      ],
+      "contractType": "Enterprise Multi-Year",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 3,
+      "pctOfBuRevenue": 6.0951097278588575,
+      "overallRank": 3
+    },
+    {
+      "accountName": "Vodafone Netherlands",
+      "bu": "Cloudsense",
+      "currentARR": 1843190.03,
+      "priorARR": 2129995.95,
+      "projectedARR": 2303987.54,
+      "dmPercent": 86.5,
+      "healthScore": 60,
+      "renewalDate": "2027-02-12",
+      "renewalQuarter": "Next Yr",
+      "daysToRenewal": 365,
+      "pricing": {
+        "current": 1843190.03,
+        "prior": 2129995.95,
+        "variance": -13.5,
+        "pricingTrend": "declining"
+      },
+      "products": [
+        "CloudSense CPQ Core",
+        "Enterprise Analytics Module",
+        "Advanced Configuration Engine",
+        "Multi-Cloud Integration"
+      ],
+      "contractType": "Enterprise Multi-Year",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 5,
+      "pctOfBuRevenue": 5.696980467619401,
+      "overallRank": 4
+    },
+    {
+      "accountName": "AT&T SERVICES, INC.",
+      "bu": "Kandy",
+      "currentARR": 1798094.55,
+      "priorARR": 2009708.53,
+      "projectedARR": 1798094.55,
+      "dmPercent": 89.5,
+      "healthScore": 67,
+      "renewalDate": "2026-03-14",
+      "renewalQuarter": "Q1'26",
+      "daysToRenewal": 30,
+      "pricing": {
+        "current": 1798094.55,
+        "prior": 2009708.53,
+        "variance": -10.5,
+        "pricingTrend": "declining"
+      },
+      "products": [
+        "Kandy Communications Platform",
+        "Video Conferencing Suite",
+        "SMS/Messaging API",
+        "Contact Center Solutions"
+      ],
+      "contractType": "Enterprise Multi-Year",
+      "painPoints": 0,
+      "opportunities": 0,
+      "hasUnresolvedIssues": false,
+      "rank": 2,
+      "pctOfBuRevenue": 18.51294266309377,
+      "overallRank": 5
+    },
+    {
+      "accountName": "One Albania",
+      "bu": "STL",
+      "currentARR": 1620914.02,
+      "priorARR": 1416257.83,
+      "projectedARR": 0.0,
+      "dmPercent": 114.5,
+      "healthScore": 90,
+      "renewalDate": "2026-12-09",
+      "renewalQuarter": "Q4'26",
+      "daysToRenewal": 300,
+      "pricing": {
+        "current": 1620914.02,
+        "prior": 1416257.83,
+        "variance": 14.5,
+        "pricingTrend": "increasing"
+      },
+      "products": [
+        "STL Software Platform",
+        "Custom Development Services",
+        "Enterprise Integration"
+      ],
+      "contractType": "Enterprise Multi-Year",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 1,
+      "pctOfBuRevenue": 47.40248967969391,
+      "overallRank": 6
+    },
+    {
+      "accountName": "Spotify",
+      "bu": "Cloudsense",
+      "currentARR": 1587300.0,
+      "priorARR": 1653654.11,
+      "projectedARR": 1587300.0,
+      "dmPercent": 96.0,
+      "healthScore": 79,
+      "renewalDate": "2027-02-12",
+      "renewalQuarter": "Next Yr",
+      "daysToRenewal": 365,
+      "pricing": {
+        "current": 1587300.0,
+        "prior": 1653654.11,
+        "variance": -4.0,
+        "pricingTrend": "stable"
+      },
+      "products": [
+        "CloudSense CPQ Core",
+        "Enterprise Analytics Module",
+        "Advanced Configuration Engine",
+        "Multi-Cloud Integration"
+      ],
+      "contractType": "Enterprise Multi-Year",
+      "painPoints": 2,
+      "opportunities": 3,
+      "hasUnresolvedIssues": false,
+      "rank": 6,
+      "pctOfBuRevenue": 4.906068798696939,
+      "overallRank": 7
+    },
+    {
+      "accountName": "British Telecommunications plc",
+      "bu": "Cloudsense",
+      "currentARR": 1404790.63,
+      "priorARR": 1476334.36,
+      "projectedARR": 0.0,
+      "dmPercent": 95.2,
+      "healthScore": 81,
+      "renewalDate": "2026-03-14",
+      "renewalQuarter": "Q1'26",
+      "daysToRenewal": 30,
+      "pricing": {
+        "current": 1404790.63,
+        "prior": 1476334.36,
+        "variance": -4.8,
+        "pricingTrend": "stable"
+      },
+      "products": [
+        "CloudSense CPQ Core",
+        "Enterprise Analytics Module",
+        "Advanced Configuration Engine"
+      ],
+      "contractType": "Enterprise Annual",
+      "painPoints": 3,
+      "opportunities": 3,
+      "hasUnresolvedIssues": false,
+      "rank": 7,
+      "pctOfBuRevenue": 4.341964013447248,
+      "overallRank": 8
+    },
+    {
+      "accountName": "Maxis Broadband Sdn Bhd",
+      "bu": "Cloudsense",
+      "currentARR": 1234734.0,
+      "priorARR": 1220040.76,
+      "projectedARR": 1543417.5,
+      "dmPercent": 101.2,
+      "healthScore": 90,
+      "renewalDate": "2026-05-31",
+      "renewalQuarter": "Q4'25",
+      "daysToRenewal": 108,
+      "pricing": {
+        "current": 1234734.0,
+        "prior": 1220040.76,
+        "variance": 1.2,
+        "pricingTrend": "stable"
+      },
+      "products": [
+        "CloudSense CPQ Core",
+        "Enterprise Analytics Module",
+        "Advanced Configuration Engine"
+      ],
+      "contractType": "Enterprise Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 8,
+      "pctOfBuRevenue": 4.216490739844749,
+      "overallRank": 9
+    },
+    {
+      "accountName": "Liquid Telecom",
+      "bu": "Cloudsense",
+      "currentARR": 1073619.8,
+      "priorARR": 1049627.94,
+      "projectedARR": 1342024.75,
+      "dmPercent": 102.3,
+      "healthScore": 92,
+      "renewalDate": "2026-12-09",
+      "renewalQuarter": "Q4'26",
+      "daysToRenewal": 300,
+      "pricing": {
+        "current": 1073619.8,
+        "prior": 1049627.94,
+        "variance": 2.3,
+        "pricingTrend": "stable"
+      },
+      "products": [
+        "CloudSense CPQ Core",
+        "Enterprise Analytics Module",
+        "Advanced Configuration Engine"
+      ],
+      "contractType": "Enterprise Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 1,
+      "pctOfBuRevenue": 7.6949826884635,
+      "overallRank": 10
+    },
+    {
+      "accountName": "Centrica Services Ltd",
+      "bu": "Cloudsense",
+      "currentARR": 1053982.65,
+      "priorARR": 1152578.84,
+      "projectedARR": 1053982.65,
+      "dmPercent": 91.4,
+      "healthScore": 77,
+      "renewalDate": "2026-06-12",
+      "renewalQuarter": "Q2'26",
+      "daysToRenewal": 120,
+      "pricing": {
+        "current": 1053982.65,
+        "prior": 1152578.84,
+        "variance": -8.6,
+        "pricingTrend": "declining"
+      },
+      "products": [
+        "CloudSense CPQ Core",
+        "Enterprise Analytics Module",
+        "Advanced Configuration Engine"
+      ],
+      "contractType": "Enterprise Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 9,
+      "pctOfBuRevenue": 3.257677435603173,
+      "overallRank": 11
+    },
+    {
+      "accountName": "Abbott Laboratories",
+      "bu": "Cloudsense",
+      "currentARR": 816927.6,
+      "priorARR": 906046.31,
+      "projectedARR": 1021159.5,
+      "dmPercent": 90.2,
+      "healthScore": 77,
+      "renewalDate": "2027-02-12",
+      "renewalQuarter": "Next Yr",
+      "daysToRenewal": 365,
+      "pricing": {
+        "current": 816927.6,
+        "prior": 906046.31,
+        "variance": -9.8,
+        "pricingTrend": "declining"
+      },
+      "products": [
+        "CloudSense CPQ Core",
+        "Advanced Configuration Engine"
+      ],
+      "contractType": "Enterprise Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 13,
+      "pctOfBuRevenue": 2.5249814207486763,
+      "overallRank": 12
+    },
+    {
+      "accountName": "StarHub Ltd",
+      "bu": "Cloudsense",
+      "currentARR": 749638.9,
+      "priorARR": 821957.73,
+      "projectedARR": 937048.62,
+      "dmPercent": 91.2,
+      "healthScore": 83,
+      "renewalDate": "2026-12-09",
+      "renewalQuarter": "Q4'26",
+      "daysToRenewal": 300,
+      "pricing": {
+        "current": 749638.9,
+        "prior": 821957.73,
+        "variance": -8.8,
+        "pricingTrend": "declining"
+      },
+      "products": [
+        "CloudSense CPQ Core",
+        "Advanced Configuration Engine"
+      ],
+      "contractType": "Corporate Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 10,
+      "pctOfBuRevenue": 2.841207891286144,
+      "overallRank": 13
+    },
+    {
+      "accountName": "Elisa Oyj",
+      "bu": "Cloudsense",
+      "currentARR": 723512.49,
+      "priorARR": 832111.39,
+      "projectedARR": 904390.61,
+      "dmPercent": 86.9,
+      "healthScore": 65,
+      "renewalDate": "2027-02-12",
+      "renewalQuarter": "Next Yr",
+      "daysToRenewal": 365,
+      "pricing": {
+        "current": 723512.49,
+        "prior": 832111.39,
+        "variance": -13.1,
+        "pricingTrend": "declining"
+      },
+      "products": [
+        "CloudSense CPQ Core",
+        "Advanced Configuration Engine"
+      ],
+      "contractType": "Corporate Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 11,
+      "pctOfBuRevenue": 2.7729518420886334,
+      "overallRank": 14
+    },
+    {
+      "accountName": "Advance Publications US",
+      "bu": "Cloudsense",
+      "currentARR": 659200.0,
+      "priorARR": 680659.14,
+      "projectedARR": 659200.0,
+      "dmPercent": 96.8,
+      "healthScore": 77,
+      "renewalDate": "2027-02-12",
+      "renewalQuarter": "Next Yr",
+      "daysToRenewal": 365,
+      "pricing": {
+        "current": 659200.0,
+        "prior": 680659.14,
+        "variance": -3.2,
+        "pricingTrend": "stable"
+      },
+      "products": [
+        "CloudSense CPQ Core",
+        "Advanced Configuration Engine"
+      ],
+      "contractType": "Corporate Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 15,
+      "pctOfBuRevenue": 2.0374727852964294,
+      "overallRank": 15
+    },
+    {
+      "accountName": "Virgin Media Limited",
+      "bu": "Cloudsense",
+      "currentARR": 655607.51,
+      "priorARR": 685482.25,
+      "projectedARR": 819509.39,
+      "dmPercent": 95.6,
+      "healthScore": 77,
+      "renewalDate": "2026-06-12",
+      "renewalQuarter": "Q2'26",
+      "daysToRenewal": 120,
+      "pricing": {
+        "current": 655607.51,
+        "prior": 685482.25,
+        "variance": -4.4,
+        "pricingTrend": "stable"
+      },
+      "products": [
+        "CloudSense CPQ Core",
+        "Advanced Configuration Engine"
+      ],
+      "contractType": "Corporate Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 16,
+      "pctOfBuRevenue": 2.026369022240529,
+      "overallRank": 16
+    },
+    {
+      "accountName": "Foxtel Management Pty Limited",
+      "bu": "Cloudsense",
+      "currentARR": 640260.52,
+      "priorARR": 620991.34,
+      "projectedARR": 800325.65,
+      "dmPercent": 103.1,
+      "healthScore": 95,
+      "renewalDate": "2027-02-12",
+      "renewalQuarter": "Next Yr",
+      "daysToRenewal": 365,
+      "pricing": {
+        "current": 640260.52,
+        "prior": 620991.34,
+        "variance": 3.1,
+        "pricingTrend": "stable"
+      },
+      "products": [
+        "CloudSense CPQ Core",
+        "Advanced Configuration Engine"
+      ],
+      "contractType": "Corporate Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 17,
+      "pctOfBuRevenue": 1.9789341398661109,
+      "overallRank": 17
+    },
+    {
+      "accountName": "PostNL Holding BV",
+      "bu": "Cloudsense",
+      "currentARR": 576494.75,
+      "priorARR": 604968.54,
+      "projectedARR": 1152989.5,
+      "dmPercent": 95.3,
+      "healthScore": 82,
+      "renewalDate": "2027-02-12",
+      "renewalQuarter": "Next Yr",
+      "daysToRenewal": 365,
+      "pricing": {
+        "current": 576494.75,
+        "prior": 604968.54,
+        "variance": -4.7,
+        "pricingTrend": "stable"
+      },
+      "products": [
+        "CloudSense CPQ Core",
+        "Advanced Configuration Engine"
+      ],
+      "contractType": "Corporate Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 18,
+      "pctOfBuRevenue": 1.7818452123653954,
+      "overallRank": 18
+    },
+    {
+      "accountName": "Thryv Australia Pty Ltd",
+      "bu": "Cloudsense",
+      "currentARR": 567978.58,
+      "priorARR": 613889.85,
+      "projectedARR": 0.0,
+      "dmPercent": 92.5,
+      "healthScore": 73,
+      "renewalDate": "2026-03-14",
+      "renewalQuarter": "Q1'26",
+      "daysToRenewal": 30,
+      "pricing": {
+        "current": 567978.58,
+        "prior": 613889.85,
+        "variance": -7.5,
+        "pricingTrend": "declining"
+      },
+      "products": [
+        "CloudSense CPQ Core",
+        "Advanced Configuration Engine"
+      ],
+      "contractType": "Corporate Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 19,
+      "pctOfBuRevenue": 1.7555232090129107,
+      "overallRank": 19
+    },
+    {
+      "accountName": "A1 Telekom Austria AG.",
+      "bu": "Cloudsense",
+      "currentARR": 520967.79,
+      "priorARR": 604530.08,
+      "projectedARR": 651209.74,
+      "dmPercent": 86.2,
+      "healthScore": 64,
+      "renewalDate": "2026-06-12",
+      "renewalQuarter": "Q2'26",
+      "daysToRenewal": 120,
+      "pricing": {
+        "current": 520967.79,
+        "prior": 604530.08,
+        "variance": -13.8,
+        "pricingTrend": "declining"
+      },
+      "products": [
+        "CloudSense CPQ Core",
+        "Advanced Configuration Engine"
+      ],
+      "contractType": "Corporate Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 20,
+      "pctOfBuRevenue": 1.7017283949017685,
+      "overallRank": 20
+    },
+    {
+      "accountName": "Luminus Hasselt NV/SA",
+      "bu": "Cloudsense",
+      "currentARR": 493023.17,
+      "priorARR": 564694.64,
+      "projectedARR": 616278.96,
+      "dmPercent": 87.3,
+      "healthScore": 65,
+      "renewalDate": "2027-02-12",
+      "renewalQuarter": "Next Yr",
+      "daysToRenewal": 365,
+      "pricing": {
+        "current": 493023.17,
+        "prior": 564694.64,
+        "variance": -12.7,
+        "pricingTrend": "declining"
+      },
+      "products": [
+        "CloudSense CPQ Core"
+      ],
+      "contractType": "Corporate Annual",
+      "painPoints": 0,
+      "opportunities": 0,
+      "hasUnresolvedIssues": false,
+      "rank": 21,
+      "pctOfBuRevenue": 1.6741251512675952,
+      "overallRank": 21
+    },
+    {
+      "accountName": "Telefonica Germany GmbH & Co. OHG",
+      "bu": "Cloudsense",
+      "currentARR": 460063.27,
+      "priorARR": 528993.99,
+      "projectedARR": 575079.09,
+      "dmPercent": 87.0,
+      "healthScore": 59,
+      "renewalDate": "2027-02-12",
+      "renewalQuarter": "Next Yr",
+      "daysToRenewal": 365,
+      "pricing": {
+        "current": 460063.27,
+        "prior": 528993.99,
+        "variance": -13.0,
+        "pricingTrend": "declining"
+      },
+      "products": [
+        "CloudSense CPQ Core"
+      ],
+      "contractType": "Corporate Annual",
+      "painPoints": 0,
+      "opportunities": 0,
+      "hasUnresolvedIssues": false,
+      "rank": 22,
+      "pctOfBuRevenue": 1.421975716231012,
+      "overallRank": 22
+    },
+    {
+      "accountName": "CoreSite",
+      "bu": "Cloudsense",
+      "currentARR": 456285.2,
+      "priorARR": 467887.9,
+      "projectedARR": 0.0,
+      "dmPercent": 97.5,
+      "healthScore": 79,
+      "renewalDate": "2026-09-10",
+      "renewalQuarter": "Q3'26",
+      "daysToRenewal": 210,
+      "pricing": {
+        "current": 456285.2,
+        "prior": 467887.9,
+        "variance": -2.5,
+        "pricingTrend": "stable"
+      },
+      "products": [
+        "CloudSense CPQ Core"
+      ],
+      "contractType": "Corporate Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 23,
+      "pctOfBuRevenue": 1.410298357605489,
+      "overallRank": 23
+    },
+    {
+      "accountName": "DPLAY ENTERTAINMENT LTD",
+      "bu": "Cloudsense",
+      "currentARR": 427660.68,
+      "priorARR": 473896.17,
+      "projectedARR": 534575.85,
+      "dmPercent": 90.2,
+      "healthScore": 74,
+      "renewalDate": "2026-06-12",
+      "renewalQuarter": "Q2'26",
+      "daysToRenewal": 120,
+      "pricing": {
+        "current": 427660.68,
+        "prior": 473896.17,
+        "variance": -9.8,
+        "pricingTrend": "declining"
+      },
+      "products": [
+        "CloudSense CPQ Core"
+      ],
+      "contractType": "Corporate Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 25,
+      "pctOfBuRevenue": 1.3218249345287698,
+      "overallRank": 24
+    },
+    {
+      "accountName": "Informa UK Limited",
+      "bu": "Cloudsense",
+      "currentARR": 412442.44,
+      "priorARR": 460492.24,
+      "projectedARR": 515553.05,
+      "dmPercent": 89.6,
+      "healthScore": 59,
+      "renewalDate": "2026-06-12",
+      "renewalQuarter": "Q2'26",
+      "daysToRenewal": 120,
+      "pricing": {
+        "current": 412442.44,
+        "prior": 460492.24,
+        "variance": -10.4,
+        "pricingTrend": "declining"
+      },
+      "products": [
+        "CloudSense CPQ Core"
+      ],
+      "contractType": "Corporate Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 26,
+      "pctOfBuRevenue": 1.2747879960577297,
+      "overallRank": 25
+    },
+    {
+      "accountName": "Proximus NV",
+      "bu": "Cloudsense",
+      "currentARR": 400146.55,
+      "priorARR": 456135.98,
+      "projectedARR": 500183.19,
+      "dmPercent": 87.7,
+      "healthScore": 58,
+      "renewalDate": "2027-02-12",
+      "renewalQuarter": "Next Yr",
+      "daysToRenewal": 365,
+      "pricing": {
+        "current": 400146.55,
+        "prior": 456135.98,
+        "variance": -12.3,
+        "pricingTrend": "declining"
+      },
+      "products": [
+        "CloudSense CPQ Core"
+      ],
+      "contractType": "Corporate Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 27,
+      "pctOfBuRevenue": 1.2367835342161058,
+      "overallRank": 26
+    },
+    {
+      "accountName": "DPG Media BV",
+      "bu": "Cloudsense",
+      "currentARR": 358970.62,
+      "priorARR": 395945.48,
+      "projectedARR": 0.0,
+      "dmPercent": 90.7,
+      "healthScore": 80,
+      "renewalDate": "2026-09-10",
+      "renewalQuarter": "Q3'26",
+      "daysToRenewal": 210,
+      "pricing": {
+        "current": 358970.62,
+        "prior": 395945.48,
+        "variance": -9.3,
+        "pricingTrend": "declining"
+      },
+      "products": [
+        "CloudSense CPQ Core"
+      ],
+      "contractType": "Corporate Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 28,
+      "pctOfBuRevenue": 1.1095158813273454,
+      "overallRank": 27
+    },
+    {
+      "accountName": "Masergy Communications, Inc.",
+      "bu": "Cloudsense",
+      "currentARR": 349943.99,
+      "priorARR": 380755.32,
+      "projectedARR": 437429.99,
+      "dmPercent": 91.9,
+      "healthScore": 77,
+      "renewalDate": "2027-02-12",
+      "renewalQuarter": "Next Yr",
+      "daysToRenewal": 365,
+      "pricing": {
+        "current": 349943.99,
+        "prior": 380755.32,
+        "variance": -8.1,
+        "pricingTrend": "declining"
+      },
+      "products": [
+        "CloudSense CPQ Core"
+      ],
+      "contractType": "Corporate Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 29,
+      "pctOfBuRevenue": 1.0816161347133584,
+      "overallRank": 28
+    },
+    {
+      "accountName": "Commverge Solutions Philippines Inc.",
+      "bu": "STL",
+      "currentARR": 346253.1,
+      "priorARR": 299447.43,
+      "projectedARR": 432816.38,
+      "dmPercent": 115.6,
+      "healthScore": 95,
+      "renewalDate": "2027-02-12",
+      "renewalQuarter": "Next Yr",
+      "daysToRenewal": 365,
+      "pricing": {
+        "current": 346253.1,
+        "prior": 299447.43,
+        "variance": 15.6,
+        "pricingTrend": "increasing"
+      },
+      "products": [
+        "STL Software Platform"
+      ],
+      "contractType": "Corporate Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 2,
+      "pctOfBuRevenue": 8.925517354700478,
+      "overallRank": 29
+    },
+    {
+      "accountName": "Hawaiian Telcom Communications, Inc.",
+      "bu": "Cloudsense",
+      "currentARR": 335283.0,
+      "priorARR": 323182.37,
+      "projectedARR": 419103.75,
+      "dmPercent": 103.7,
+      "healthScore": 92,
+      "renewalDate": "2026-12-09",
+      "renewalQuarter": "Q4'26",
+      "daysToRenewal": 300,
+      "pricing": {
+        "current": 335283.0,
+        "prior": 323182.37,
+        "variance": 3.7,
+        "pricingTrend": "stable"
+      },
+      "products": [
+        "CloudSense CPQ Core"
+      ],
+      "contractType": "Corporate Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 30,
+      "pctOfBuRevenue": 1.036301559272668,
+      "overallRank": 30
+    },
+    {
+      "accountName": "MasterCard Worldwide",
+      "bu": "Cloudsense",
+      "currentARR": 323385.0,
+      "priorARR": 351045.91,
+      "projectedARR": 404231.25,
+      "dmPercent": 92.1,
+      "healthScore": 77,
+      "renewalDate": "2027-02-12",
+      "renewalQuarter": "Next Yr",
+      "daysToRenewal": 365,
+      "pricing": {
+        "current": 323385.0,
+        "prior": 351045.91,
+        "variance": -7.9,
+        "pricingTrend": "declining"
+      },
+      "products": [
+        "CloudSense CPQ Core"
+      ],
+      "contractType": "Corporate Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 31,
+      "pctOfBuRevenue": 0.9995269063608705,
+      "overallRank": 31
+    },
+    {
+      "accountName": "PIONEER TELEPHONE COOPERATIVE (OK)",
+      "bu": "Kandy",
+      "currentARR": 301771.06,
+      "priorARR": 331870.04,
+      "projectedARR": 377213.83,
+      "dmPercent": 90.9,
+      "healthScore": 72,
+      "renewalDate": "2026-03-14",
+      "renewalQuarter": "Q1'26",
+      "daysToRenewal": 30,
+      "pricing": {
+        "current": 301771.06,
+        "prior": 331870.04,
+        "variance": -9.1,
+        "pricingTrend": "declining"
+      },
+      "products": [
+        "Kandy Communications Platform",
+        "SMS/Messaging API"
+      ],
+      "contractType": "Corporate Annual",
+      "painPoints": 0,
+      "opportunities": 0,
+      "hasUnresolvedIssues": false,
+      "rank": 3,
+      "pctOfBuRevenue": 2.2184509807075186,
+      "overallRank": 32
+    },
+    {
+      "accountName": "Telenet BV",
+      "bu": "Cloudsense",
+      "currentARR": 301575.05,
+      "priorARR": 306277.52,
+      "projectedARR": 376968.81,
+      "dmPercent": 98.5,
+      "healthScore": 81,
+      "renewalDate": "2026-06-12",
+      "renewalQuarter": "Q2'26",
+      "daysToRenewal": 120,
+      "pricing": {
+        "current": 301575.05,
+        "prior": 306277.52,
+        "variance": -1.5,
+        "pricingTrend": "stable"
+      },
+      "products": [
+        "CloudSense CPQ Core"
+      ],
+      "contractType": "Corporate Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 32,
+      "pctOfBuRevenue": 0.9321161363765321,
+      "overallRank": 33
+    },
+    {
+      "accountName": "Interxion Headquarters BV",
+      "bu": "Cloudsense",
+      "currentARR": 296425.37,
+      "priorARR": 322950.16,
+      "projectedARR": 370531.71,
+      "dmPercent": 91.8,
+      "healthScore": 76,
+      "renewalDate": "2026-09-10",
+      "renewalQuarter": "Q3'26",
+      "daysToRenewal": 210,
+      "pricing": {
+        "current": 296425.37,
+        "prior": 322950.16,
+        "variance": -8.2,
+        "pricingTrend": "declining"
+      },
+      "products": [
+        "CloudSense CPQ Core"
+      ],
+      "contractType": "Standard Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 34,
+      "pctOfBuRevenue": 0.9161993693058627,
+      "overallRank": 34
+    },
+    {
+      "accountName": "ISSQUARED, INC.",
+      "bu": "Kandy",
+      "currentARR": 295121.61,
+      "priorARR": 310322.53,
+      "projectedARR": 368902.01,
+      "dmPercent": 95.1,
+      "healthScore": 77,
+      "renewalDate": "2026-03-14",
+      "renewalQuarter": "Q1'26",
+      "daysToRenewal": 30,
+      "pricing": {
+        "current": 295121.61,
+        "prior": 310322.53,
+        "variance": -4.9,
+        "pricingTrend": "stable"
+      },
+      "products": [
+        "Kandy Communications Platform"
+      ],
+      "contractType": "Standard Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 4,
+      "pctOfBuRevenue": 2.1695679669630406,
+      "overallRank": 35
+    },
+    {
+      "accountName": "NBN Co Ltd",
+      "bu": "Cloudsense",
+      "currentARR": 294245.94,
+      "priorARR": 298852.46,
+      "projectedARR": 367807.42,
+      "dmPercent": 98.5,
+      "healthScore": 81,
+      "renewalDate": "2026-09-10",
+      "renewalQuarter": "Q3'26",
+      "daysToRenewal": 210,
+      "pricing": {
+        "current": 294245.94,
+        "prior": 298852.46,
+        "variance": -1.5,
+        "pricingTrend": "stable"
+      },
+      "products": [
+        "CloudSense CPQ Core"
+      ],
+      "contractType": "Standard Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 35,
+      "pctOfBuRevenue": 0.909463129450798,
+      "overallRank": 36
+    },
+    {
+      "accountName": "PT. Supra Primatama Nusantara",
+      "bu": "STL",
+      "currentARR": 274722.0,
+      "priorARR": 222700.2,
+      "projectedARR": 343402.5,
+      "dmPercent": 123.4,
+      "healthScore": 88,
+      "renewalDate": "2026-12-09",
+      "renewalQuarter": "Q4'26",
+      "daysToRenewal": 300,
+      "pricing": {
+        "current": 274722.0,
+        "prior": 222700.2,
+        "variance": 23.4,
+        "pricingTrend": "increasing"
+      },
+      "products": [
+        "STL Software Platform"
+      ],
+      "contractType": "Standard Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 4,
+      "pctOfBuRevenue": 7.081628954998598,
+      "overallRank": 37
+    },
+    {
+      "accountName": "PropertyGuru Pte Ltd",
+      "bu": "Cloudsense",
+      "currentARR": 262147.67,
+      "priorARR": 288128.57,
+      "projectedARR": 0.0,
+      "dmPercent": 91.0,
+      "healthScore": 81,
+      "renewalDate": "2026-06-12",
+      "renewalQuarter": "Q2'26",
+      "daysToRenewal": 120,
+      "pricing": {
+        "current": 262147.67,
+        "prior": 288128.57,
+        "variance": -9.0,
+        "pricingTrend": "declining"
+      },
+      "products": [
+        "CloudSense CPQ Core"
+      ],
+      "contractType": "Standard Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 36,
+      "pctOfBuRevenue": 0.810252948048952,
+      "overallRank": 38
+    },
+    {
+      "accountName": "Momentum Energy",
+      "bu": "Cloudsense",
+      "currentARR": 240683.73,
+      "priorARR": 260554.7,
+      "projectedARR": 300854.66,
+      "dmPercent": 92.4,
+      "healthScore": 77,
+      "renewalDate": "2027-02-12",
+      "renewalQuarter": "Next Yr",
+      "daysToRenewal": 365,
+      "pricing": {
+        "current": 240683.73,
+        "prior": 260554.7,
+        "variance": -7.6,
+        "pricingTrend": "declining"
+      },
+      "products": [
+        "CloudSense CPQ Core"
+      ],
+      "contractType": "Standard Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 37,
+      "pctOfBuRevenue": 0.743911634919044,
+      "overallRank": 39
+    },
+    {
+      "accountName": "BeeDIGITAL AI, S.A.U.",
+      "bu": "Cloudsense",
+      "currentARR": 188692.05,
+      "priorARR": 205692.02,
+      "projectedARR": 235865.06,
+      "dmPercent": 91.7,
+      "healthScore": 72,
+      "renewalDate": "2026-09-10",
+      "renewalQuarter": "Q3'26",
+      "daysToRenewal": 210,
+      "pricing": {
+        "current": 188692.05,
+        "prior": 205692.02,
+        "variance": -8.3,
+        "pricingTrend": "declining"
+      },
+      "products": [
+        "CloudSense CPQ Core"
+      ],
+      "contractType": "Standard Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 41,
+      "pctOfBuRevenue": 0.5832143760266886,
+      "overallRank": 40
+    },
+    {
+      "accountName": "TATA Communications (America) Inc.",
+      "bu": "Cloudsense",
+      "currentARR": 180936.0,
+      "priorARR": 197743.35,
+      "projectedARR": 226170.0,
+      "dmPercent": 91.5,
+      "healthScore": 81,
+      "renewalDate": "2026-12-09",
+      "renewalQuarter": "Q4'26",
+      "daysToRenewal": 300,
+      "pricing": {
+        "current": 180936.0,
+        "prior": 197743.35,
+        "variance": -8.5,
+        "pricingTrend": "declining"
+      },
+      "products": [
+        "CloudSense CPQ Core"
+      ],
+      "contractType": "Standard Annual",
+      "painPoints": 0,
+      "opportunities": 0,
+      "hasUnresolvedIssues": false,
+      "rank": 42,
+      "pctOfBuRevenue": 0.5592417716632202,
+      "overallRank": 41
+    },
+    {
+      "accountName": "AARP Services, Inc.",
+      "bu": "Cloudsense",
+      "currentARR": 177543.25,
+      "priorARR": 186888.41,
+      "projectedARR": 221929.06,
+      "dmPercent": 95.0,
+      "healthScore": 80,
+      "renewalDate": "2026-12-09",
+      "renewalQuarter": "Q4'26",
+      "daysToRenewal": 300,
+      "pricing": {
+        "current": 177543.25,
+        "prior": 186888.41,
+        "variance": -5.0,
+        "pricingTrend": "declining"
+      },
+      "products": [
+        "CloudSense CPQ Core"
+      ],
+      "contractType": "Standard Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 43,
+      "pctOfBuRevenue": 0.5487553702792479,
+      "overallRank": 42
+    },
+    {
+      "accountName": "Ericsson Telecommunications, Inc.",
+      "bu": "STL",
+      "currentARR": 176902.02,
+      "priorARR": 143880.9,
+      "projectedARR": 221127.52,
+      "dmPercent": 123.0,
+      "healthScore": 97,
+      "renewalDate": "2026-03-14",
+      "renewalQuarter": "Q1'26",
+      "daysToRenewal": 30,
+      "pricing": {
+        "current": 176902.02,
+        "prior": 143880.9,
+        "variance": 23.0,
+        "pricingTrend": "increasing"
+      },
+      "products": [
+        "STL Software Platform"
+      ],
+      "contractType": "Standard Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 5,
+      "pctOfBuRevenue": 4.560080616149201,
+      "overallRank": 43
+    },
+    {
+      "accountName": "PT. Sisindokom Lintasbuana",
+      "bu": "STL",
+      "currentARR": 175228.13,
+      "priorARR": 140609.39,
+      "projectedARR": 219035.16,
+      "dmPercent": 124.6,
+      "healthScore": 87,
+      "renewalDate": "2026-12-09",
+      "renewalQuarter": "Q4'26",
+      "daysToRenewal": 300,
+      "pricing": {
+        "current": 175228.13,
+        "prior": 140609.39,
+        "variance": 24.6,
+        "pricingTrend": "increasing"
+      },
+      "products": [
+        "STL Software Platform"
+      ],
+      "contractType": "Standard Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 6,
+      "pctOfBuRevenue": 4.516932022692971,
+      "overallRank": 44
+    },
+    {
+      "accountName": "Hubexo South UK Ltd",
+      "bu": "Cloudsense",
+      "currentARR": 173411.91,
+      "priorARR": 199703.67,
+      "projectedARR": 0.0,
+      "dmPercent": 86.8,
+      "healthScore": 60,
+      "renewalDate": "2026-09-10",
+      "renewalQuarter": "Q3'26",
+      "daysToRenewal": 210,
+      "pricing": {
+        "current": 173411.91,
+        "prior": 199703.67,
+        "variance": -13.2,
+        "pricingTrend": "declining"
+      },
+      "products": [
+        "CloudSense CPQ Core"
+      ],
+      "contractType": "Standard Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 44,
+      "pctOfBuRevenue": 0.5359861153993837,
+      "overallRank": 45
+    },
+    {
+      "accountName": "HARGRAY COMMUNICATIONS GROUP",
+      "bu": "Kandy",
+      "currentARR": 158226.87,
+      "priorARR": 170680.56,
+      "projectedARR": 197783.59,
+      "dmPercent": 92.7,
+      "healthScore": 76,
+      "renewalDate": "2026-03-14",
+      "renewalQuarter": "Q1'26",
+      "daysToRenewal": 30,
+      "pricing": {
+        "current": 158226.87,
+        "prior": 170680.56,
+        "variance": -7.3,
+        "pricingTrend": "declining"
+      },
+      "products": [
+        "Kandy Communications Platform"
+      ],
+      "contractType": "Standard Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 5,
+      "pctOfBuRevenue": 1.1631948899466404,
+      "overallRank": 46
+    },
+    {
+      "accountName": "Sky Italia",
+      "bu": "Cloudsense",
+      "currentARR": 151282.16,
+      "priorARR": 174416.76,
+      "projectedARR": 189102.7,
+      "dmPercent": 86.7,
+      "healthScore": 57,
+      "renewalDate": "2027-02-12",
+      "renewalQuarter": "Next Yr",
+      "daysToRenewal": 365,
+      "pricing": {
+        "current": 151282.16,
+        "prior": 174416.76,
+        "variance": -13.3,
+        "pricingTrend": "declining"
+      },
+      "products": [
+        "CloudSense CPQ Core"
+      ],
+      "contractType": "Standard Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 46,
+      "pctOfBuRevenue": 0.46758689912145035,
+      "overallRank": 47
+    },
+    {
+      "accountName": "RCS Media Group",
+      "bu": "Cloudsense",
+      "currentARR": 151115.71,
+      "priorARR": 154197.92,
+      "projectedARR": 188894.64,
+      "dmPercent": 98.0,
+      "healthScore": 78,
+      "renewalDate": "2027-02-12",
+      "renewalQuarter": "Next Yr",
+      "daysToRenewal": 365,
+      "pricing": {
+        "current": 151115.71,
+        "prior": 154197.92,
+        "variance": -2.0,
+        "pricingTrend": "stable"
+      },
+      "products": [
+        "CloudSense CPQ Core"
+      ],
+      "contractType": "Standard Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 47,
+      "pctOfBuRevenue": 0.46707243106151014,
+      "overallRank": 48
+    },
+    {
+      "accountName": "Ofcom",
+      "bu": "Cloudsense",
+      "currentARR": 140811.45,
+      "priorARR": 142716.5,
+      "projectedARR": 176014.31,
+      "dmPercent": 98.7,
+      "healthScore": 81,
+      "renewalDate": "2027-02-12",
+      "renewalQuarter": "Next Yr",
+      "daysToRenewal": 365,
+      "pricing": {
+        "current": 140811.45,
+        "prior": 142716.5,
+        "variance": -1.3,
+        "pricingTrend": "stable"
+      },
+      "products": [
+        "CloudSense CPQ Core"
+      ],
+      "contractType": "Standard Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 48,
+      "pctOfBuRevenue": 0.4352237518706446,
+      "overallRank": 49
+    },
+    {
+      "accountName": "Ntirety (Hosting.com)",
+      "bu": "Cloudsense",
+      "currentARR": 134556.4,
+      "priorARR": 136737.9,
+      "projectedARR": 0.0,
+      "dmPercent": 98.4,
+      "healthScore": 82,
+      "renewalDate": "2026-06-24",
+      "renewalQuarter": "Q4'25",
+      "daysToRenewal": 132,
+      "pricing": {
+        "current": 134556.4,
+        "prior": 136737.9,
+        "variance": -1.6,
+        "pricingTrend": "stable"
+      },
+      "products": [
+        "CloudSense CPQ Core"
+      ],
+      "contractType": "Standard Annual",
+      "painPoints": 0,
+      "opportunities": 0,
+      "hasUnresolvedIssues": false,
+      "rank": 49,
+      "pctOfBuRevenue": 0.41589047798461837,
+      "overallRank": 50
+    },
+    {
+      "accountName": "ELPEDISON SA",
+      "bu": "Cloudsense",
+      "currentARR": 125310.89,
+      "priorARR": 129979.88,
+      "projectedARR": 250621.78,
+      "dmPercent": 96.4,
+      "healthScore": 89,
+      "renewalDate": "2026-09-10",
+      "renewalQuarter": "Q3'26",
+      "daysToRenewal": 210,
+      "pricing": {
+        "current": 125310.89,
+        "prior": 129979.88,
+        "variance": -3.6,
+        "pricingTrend": "stable"
+      },
+      "products": [
+        "CloudSense CPQ Core"
+      ],
+      "contractType": "Standard Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 45,
+      "pctOfBuRevenue": 0.47828823657564334,
+      "overallRank": 51
+    },
+    {
+      "accountName": "Teleindia Networks Private Limited",
+      "bu": "STL",
+      "currentARR": 116350.34,
+      "priorARR": 94286.57,
+      "projectedARR": 145437.92,
+      "dmPercent": 123.4,
+      "healthScore": 98,
+      "renewalDate": "2027-02-12",
+      "renewalQuarter": "Next Yr",
+      "daysToRenewal": 365,
+      "pricing": {
+        "current": 116350.34,
+        "prior": 94286.57,
+        "variance": 23.4,
+        "pricingTrend": "increasing"
+      },
+      "products": [
+        "STL Software Platform"
+      ],
+      "contractType": "Standard Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 3,
+      "pctOfBuRevenue": 8.799136769325411,
+      "overallRank": 52
+    },
+    {
+      "accountName": "Sterlite Technologies Ltd",
+      "bu": "STL",
+      "currentARR": 112721.13,
+      "priorARR": 91183.44,
+      "projectedARR": 140901.41,
+      "dmPercent": 123.6,
+      "healthScore": 91,
+      "renewalDate": "2027-02-12",
+      "renewalQuarter": "Next Yr",
+      "daysToRenewal": 365,
+      "pricing": {
+        "current": 112721.13,
+        "prior": 91183.44,
+        "variance": 23.6,
+        "pricingTrend": "increasing"
+      },
+      "products": [
+        "STL Software Platform"
+      ],
+      "contractType": "Standard Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 7,
+      "pctOfBuRevenue": 2.905661789183833,
+      "overallRank": 53
+    },
+    {
+      "accountName": "Il Sole 24 ORE SpA",
+      "bu": "Cloudsense",
+      "currentARR": 106120.64,
+      "priorARR": 117071.96,
+      "projectedARR": 132650.8,
+      "dmPercent": 90.6,
+      "healthScore": 78,
+      "renewalDate": "2027-02-12",
+      "renewalQuarter": "Next Yr",
+      "daysToRenewal": 365,
+      "pricing": {
+        "current": 106120.64,
+        "prior": 117071.96,
+        "variance": -9.4,
+        "pricingTrend": "declining"
+      },
+      "products": [
+        "CloudSense CPQ Core"
+      ],
+      "contractType": "Standard Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 50,
+      "pctOfBuRevenue": 0.328000479305582,
+      "overallRank": 54
+    },
+    {
+      "accountName": "MTN Zambia",
+      "bu": "STL",
+      "currentARR": 97500.0,
+      "priorARR": 75788.08,
+      "projectedARR": 0.0,
+      "dmPercent": 128.6,
+      "healthScore": 87,
+      "renewalDate": "2026-03-14",
+      "renewalQuarter": "Q1'26",
+      "daysToRenewal": 30,
+      "pricing": {
+        "current": 97500.0,
+        "prior": 75788.08,
+        "variance": 28.6,
+        "pricingTrend": "increasing"
+      },
+      "products": [
+        "STL Software Platform"
+      ],
+      "contractType": "Basic Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 9,
+      "pctOfBuRevenue": 2.5133000746658922,
+      "overallRank": 55
+    },
+    {
+      "accountName": "TV4 AB",
+      "bu": "Cloudsense",
+      "currentARR": 97241.81,
+      "priorARR": 101374.37,
+      "projectedARR": 121552.26,
+      "dmPercent": 95.9,
+      "healthScore": 84,
+      "renewalDate": "2027-02-12",
+      "renewalQuarter": "Next Yr",
+      "daysToRenewal": 365,
+      "pricing": {
+        "current": 97241.81,
+        "prior": 101374.37,
+        "variance": -4.1,
+        "pricingTrend": "stable"
+      },
+      "products": [
+        "CloudSense CPQ Core"
+      ],
+      "contractType": "Basic Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 51,
+      "pctOfBuRevenue": 0.30055755683854096,
+      "overallRank": 56
+    },
+    {
+      "accountName": "Unidad Editorial S.A.",
+      "bu": "Cloudsense",
+      "currentARR": 85056.37,
+      "priorARR": 98545.46,
+      "projectedARR": 85056.37,
+      "dmPercent": 86.3,
+      "healthScore": 60,
+      "renewalDate": "2027-02-12",
+      "renewalQuarter": "Next Yr",
+      "daysToRenewal": 365,
+      "pricing": {
+        "current": 85056.37,
+        "prior": 98545.46,
+        "variance": -13.7,
+        "pricingTrend": "declining"
+      },
+      "products": [
+        "CloudSense CPQ Core"
+      ],
+      "contractType": "Basic Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 52,
+      "pctOfBuRevenue": 0.26289447677655287,
+      "overallRank": 57
+    },
+    {
+      "accountName": "RAZORLINE, LLC",
+      "bu": "Kandy",
+      "currentARR": 82547.3,
+      "priorARR": 89230.31,
+      "projectedARR": 103184.12,
+      "dmPercent": 92.5,
+      "healthScore": 81,
+      "renewalDate": "2026-03-14",
+      "renewalQuarter": "Q1'26",
+      "daysToRenewal": 30,
+      "pricing": {
+        "current": 82547.3,
+        "prior": 89230.31,
+        "variance": -7.5,
+        "pricingTrend": "declining"
+      },
+      "products": [
+        "Kandy Communications Platform"
+      ],
+      "contractType": "Basic Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 8,
+      "pctOfBuRevenue": 0.6068412876959034,
+      "overallRank": 58
+    },
+    {
+      "accountName": "Synaptic Technologies",
+      "bu": "STL",
+      "currentARR": 74388.59,
+      "priorARR": 61820.54,
+      "projectedARR": 92985.74,
+      "dmPercent": 120.3,
+      "healthScore": 93,
+      "renewalDate": "2027-02-12",
+      "renewalQuarter": "Next Yr",
+      "daysToRenewal": 365,
+      "pricing": {
+        "current": 74388.59,
+        "prior": 61820.54,
+        "variance": 20.3,
+        "pricingTrend": "increasing"
+      },
+      "products": [
+        "STL Software Platform"
+      ],
+      "contractType": "Basic Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 10,
+      "pctOfBuRevenue": 1.9175471671927222,
+      "overallRank": 59
+    },
+    {
+      "accountName": "WHOLESALE CARRIER SERVICES INC.",
+      "bu": "Kandy",
+      "currentARR": 73785.88,
+      "priorARR": 81579.59,
+      "projectedARR": 92232.35,
+      "dmPercent": 90.4,
+      "healthScore": 82,
+      "renewalDate": "2026-03-14",
+      "renewalQuarter": "Q1'26",
+      "daysToRenewal": 30,
+      "pricing": {
+        "current": 73785.88,
+        "prior": 81579.59,
+        "variance": -9.6,
+        "pricingTrend": "declining"
+      },
+      "products": [
+        "Kandy Communications Platform"
+      ],
+      "contractType": "Basic Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 9,
+      "pctOfBuRevenue": 0.542432259237739,
+      "overallRank": 60
+    },
+    {
+      "accountName": "COMPORIUM, INC.",
+      "bu": "Kandy",
+      "currentARR": 73104.65,
+      "priorARR": 72721.19,
+      "projectedARR": 0.0,
+      "dmPercent": 100.5,
+      "healthScore": 91,
+      "renewalDate": "2026-03-14",
+      "renewalQuarter": "Q1'26",
+      "daysToRenewal": 30,
+      "pricing": {
+        "current": 73104.65,
+        "prior": 72721.19,
+        "variance": 0.5,
+        "pricingTrend": "stable"
+      },
+      "products": [
+        "Kandy Communications Platform"
+      ],
+      "contractType": "Basic Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 6,
+      "pctOfBuRevenue": 0.9378504048732698,
+      "overallRank": 61
+    },
+    {
+      "accountName": "NUWAVE COMMUNICATIONS, INC.",
+      "bu": "Kandy",
+      "currentARR": 72730.96,
+      "priorARR": 72652.62,
+      "projectedARR": 90913.7,
+      "dmPercent": 100.1,
+      "healthScore": 88,
+      "renewalDate": "2026-03-14",
+      "renewalQuarter": "Q1'26",
+      "daysToRenewal": 30,
+      "pricing": {
+        "current": 72730.96,
+        "prior": 72652.62,
+        "variance": 0.1,
+        "pricingTrend": "stable"
+      },
+      "products": [
+        "Kandy Communications Platform"
+      ],
+      "contractType": "Basic Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 10,
+      "pctOfBuRevenue": 0.5346770811614584,
+      "overallRank": 62
+    },
+    {
+      "accountName": "Rakuten Marketing",
+      "bu": "Cloudsense",
+      "currentARR": 70421.39,
+      "priorARR": 81147.07,
+      "projectedARR": 88026.74,
+      "dmPercent": 86.8,
+      "healthScore": 57,
+      "renewalDate": "2027-02-12",
+      "renewalQuarter": "Next Yr",
+      "daysToRenewal": 365,
+      "pricing": {
+        "current": 70421.39,
+        "prior": 81147.07,
+        "variance": -13.2,
+        "pricingTrend": "declining"
+      },
+      "products": [
+        "CloudSense CPQ Core"
+      ],
+      "contractType": "Basic Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 53,
+      "pctOfBuRevenue": 0.21766029373141096,
+      "overallRank": 63
+    },
+    {
+      "accountName": "YADKIN VALLEY TEL MEMBERSHIP CORP",
+      "bu": "Kandy",
+      "currentARR": 49606.51,
+      "priorARR": 51336.33,
+      "projectedARR": 62008.14,
+      "dmPercent": 96.6,
+      "healthScore": 88,
+      "renewalDate": "2026-03-14",
+      "renewalQuarter": "Q1'26",
+      "daysToRenewal": 30,
+      "pricing": {
+        "current": 49606.51,
+        "prior": 51336.33,
+        "variance": -3.4,
+        "pricingTrend": "stable"
+      },
+      "products": [
+        "Kandy Communications Platform"
+      ],
+      "contractType": "Basic Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 7,
+      "pctOfBuRevenue": 0.7111688404114015,
+      "overallRank": 64
+    },
+    {
+      "accountName": "Juxto - Ontario",
+      "bu": "Kandy",
+      "currentARR": 48793.63,
+      "priorARR": 48958.3,
+      "projectedARR": 0.0,
+      "dmPercent": 99.7,
+      "healthScore": 78,
+      "renewalDate": "2026-03-14",
+      "renewalQuarter": "Q1'26",
+      "daysToRenewal": 30,
+      "pricing": {
+        "current": 48793.63,
+        "prior": 48958.3,
+        "variance": -0.3,
+        "pricingTrend": "stable"
+      },
+      "products": [
+        "Kandy Communications Platform"
+      ],
+      "contractType": "Basic Annual",
+      "painPoints": 0,
+      "opportunities": 0,
+      "hasUnresolvedIssues": false,
+      "rank": 11,
+      "pctOfBuRevenue": 0.3587033041729707,
+      "overallRank": 65
+    },
+    {
+      "accountName": "VOICEFLEX LIMITED",
+      "bu": "Kandy",
+      "currentARR": 46972.52,
+      "priorARR": 51545.2,
+      "projectedARR": 58715.65,
+      "dmPercent": 91.1,
+      "healthScore": 78,
+      "renewalDate": "2026-03-14",
+      "renewalQuarter": "Q1'26",
+      "daysToRenewal": 30,
+      "pricing": {
+        "current": 46972.52,
+        "prior": 51545.2,
+        "variance": -8.9,
+        "pricingTrend": "declining"
+      },
+      "products": [
+        "Kandy Communications Platform"
+      ],
+      "contractType": "Basic Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 12,
+      "pctOfBuRevenue": 0.3453155284681822,
+      "overallRank": 66
+    },
+    {
+      "accountName": "HITACHI SYSTEMS INDIA PRIVATE LIMITED",
+      "bu": "STL",
+      "currentARR": 46611.5,
+      "priorARR": 34680.23,
+      "projectedARR": 58264.38,
+      "dmPercent": 134.4,
+      "healthScore": 89,
+      "renewalDate": "2027-02-12",
+      "renewalQuarter": "Next Yr",
+      "daysToRenewal": 365,
+      "pricing": {
+        "current": 46611.5,
+        "prior": 34680.23,
+        "variance": 34.4,
+        "pricingTrend": "increasing"
+      },
+      "products": [
+        "STL Software Platform"
+      ],
+      "contractType": "Basic Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 12,
+      "pctOfBuRevenue": 1.2015249890286075,
+      "overallRank": 67
+    },
+    {
+      "accountName": "HERTZ EUROPE LIMITED",
+      "bu": "Kandy",
+      "currentARR": 46534.91,
+      "priorARR": 52153.39,
+      "projectedARR": 0.0,
+      "dmPercent": 89.2,
+      "healthScore": 59,
+      "renewalDate": "2026-03-14",
+      "renewalQuarter": "Q1'26",
+      "daysToRenewal": 30,
+      "pricing": {
+        "current": 46534.91,
+        "prior": 52153.39,
+        "variance": -10.8,
+        "pricingTrend": "declining"
+      },
+      "products": [
+        "Kandy Communications Platform"
+      ],
+      "contractType": "Basic Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 13,
+      "pctOfBuRevenue": 0.3420984660577993,
+      "overallRank": 68
+    },
+    {
+      "accountName": "Tata Teleservices Limited",
+      "bu": "STL",
+      "currentARR": 43015.58,
+      "priorARR": 35883.1,
+      "projectedARR": 0.0,
+      "dmPercent": 119.9,
+      "healthScore": 94,
+      "renewalDate": "2026-10-17",
+      "renewalQuarter": "Q4'25",
+      "daysToRenewal": 247,
+      "pricing": {
+        "current": 43015.58,
+        "prior": 35883.1,
+        "variance": 19.9,
+        "pricingTrend": "increasing"
+      },
+      "products": [
+        "STL Software Platform"
+      ],
+      "contractType": "Basic Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 13,
+      "pctOfBuRevenue": 1.1088313889825299,
+      "overallRank": 69
+    },
+    {
+      "accountName": "ERICSSON (THAILAND) LTD",
+      "bu": "STL",
+      "currentARR": 38000.0,
+      "priorARR": 33469.44,
+      "projectedARR": 47500.0,
+      "dmPercent": 113.5,
+      "healthScore": 95,
+      "renewalDate": "2026-03-14",
+      "renewalQuarter": "Q1'26",
+      "daysToRenewal": 30,
+      "pricing": {
+        "current": 38000.0,
+        "prior": 33469.44,
+        "variance": 13.5,
+        "pricingTrend": "increasing"
+      },
+      "products": [
+        "STL Software Platform"
+      ],
+      "contractType": "Basic Annual",
+      "painPoints": 0,
+      "opportunities": 0,
+      "hasUnresolvedIssues": false,
+      "rank": 14,
+      "pctOfBuRevenue": 0.9795425932031169,
+      "overallRank": 70
+    },
+    {
+      "accountName": "Coordinadora de Carriers SA de CV Vivaro",
+      "bu": "Kandy",
+      "currentARR": 35394.27,
+      "priorARR": 38988.44,
+      "projectedARR": 44242.84,
+      "dmPercent": 90.8,
+      "healthScore": 74,
+      "renewalDate": "2026-03-14",
+      "renewalQuarter": "Q1'26",
+      "daysToRenewal": 30,
+      "pricing": {
+        "current": 35394.27,
+        "prior": 38988.44,
+        "variance": -9.2,
+        "pricingTrend": "declining"
+      },
+      "products": [
+        "Kandy Communications Platform"
+      ],
+      "contractType": "Basic Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 14,
+      "pctOfBuRevenue": 0.2601987513081165,
+      "overallRank": 71
+    },
+    {
+      "accountName": "Bharti Airtel Limited - Mumbai",
+      "bu": "STL",
+      "currentARR": 35356.12,
+      "priorARR": 27882.78,
+      "projectedARR": 0.0,
+      "dmPercent": 126.8,
+      "healthScore": 91,
+      "renewalDate": "2026-03-14",
+      "renewalQuarter": "Q1'26",
+      "daysToRenewal": 30,
+      "pricing": {
+        "current": 35356.12,
+        "prior": 27882.78,
+        "variance": 26.8,
+        "pricingTrend": "increasing"
+      },
+      "products": [
+        "STL Software Platform"
+      ],
+      "contractType": "Basic Annual",
+      "painPoints": 0,
+      "opportunities": 0,
+      "hasUnresolvedIssues": false,
+      "rank": 11,
+      "pctOfBuRevenue": 1.612536421198036,
+      "overallRank": 72
+    },
+    {
+      "accountName": "CROSS TELEPHONE COMPANY LLC (OK)",
+      "bu": "Kandy",
+      "currentARR": 34655.89,
+      "priorARR": 34579.84,
+      "projectedARR": 43319.86,
+      "dmPercent": 100.2,
+      "healthScore": 87,
+      "renewalDate": "2026-03-14",
+      "renewalQuarter": "Q1'26",
+      "daysToRenewal": 30,
+      "pricing": {
+        "current": 34655.89,
+        "prior": 34579.84,
+        "variance": 0.2,
+        "pricingTrend": "stable"
+      },
+      "products": [
+        "Kandy Communications Platform"
+      ],
+      "contractType": "Basic Annual",
+      "painPoints": 0,
+      "opportunities": 0,
+      "hasUnresolvedIssues": false,
+      "rank": 15,
+      "pctOfBuRevenue": 0.2547705971466975,
+      "overallRank": 73
+    },
+    {
+      "accountName": "Telstra International Limited",
+      "bu": "Cloudsense",
+      "currentARR": 34640.81,
+      "priorARR": 39727.58,
+      "projectedARR": 43301.01,
+      "dmPercent": 87.2,
+      "healthScore": 75,
+      "renewalDate": "2026-09-10",
+      "renewalQuarter": "Q3'26",
+      "daysToRenewal": 210,
+      "pricing": {
+        "current": 34640.81,
+        "prior": 39727.58,
+        "variance": -12.8,
+        "pricingTrend": "declining"
+      },
+      "products": [
+        "CloudSense CPQ Core"
+      ],
+      "contractType": "Basic Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 40,
+      "pctOfBuRevenue": 0.6424123874601735,
+      "overallRank": 74
+    },
+    {
+      "accountName": "Bharti Airtel Limited - Chennai",
+      "bu": "STL",
+      "currentARR": 34000.0,
+      "priorARR": 25766.68,
+      "projectedARR": 0.0,
+      "dmPercent": 132.0,
+      "healthScore": 95,
+      "renewalDate": "2026-12-09",
+      "renewalQuarter": "Q4'26",
+      "daysToRenewal": 300,
+      "pricing": {
+        "current": 34000.0,
+        "prior": 25766.68,
+        "variance": 32.0,
+        "pricingTrend": "increasing"
+      },
+      "products": [
+        "STL Software Platform"
+      ],
+      "contractType": "Basic Annual",
+      "painPoints": 0,
+      "opportunities": 0,
+      "hasUnresolvedIssues": false,
+      "rank": 15,
+      "pctOfBuRevenue": 0.8764328465501573,
+      "overallRank": 75
+    },
+    {
+      "accountName": "Bharti Airtel Limited - Gurgaon",
+      "bu": "STL",
+      "currentARR": 33450.14,
+      "priorARR": 25501.09,
+      "projectedARR": 0.0,
+      "dmPercent": 131.2,
+      "healthScore": 96,
+      "renewalDate": "2026-03-14",
+      "renewalQuarter": "Q1'26",
+      "daysToRenewal": 30,
+      "pricing": {
+        "current": 33450.14,
+        "prior": 25501.09,
+        "variance": 31.2,
+        "pricingTrend": "increasing"
+      },
+      "products": [
+        "STL Software Platform"
+      ],
+      "contractType": "Basic Annual",
+      "painPoints": 0,
+      "opportunities": 0,
+      "hasUnresolvedIssues": false,
+      "rank": 16,
+      "pctOfBuRevenue": 0.8622588652265081,
+      "overallRank": 76
+    },
+    {
+      "accountName": "Liberty Global Services B.V. (NL)",
+      "bu": "Cloudsense",
+      "currentARR": 32624.88,
+      "priorARR": 33247.48,
+      "projectedARR": 40781.1,
+      "dmPercent": 98.1,
+      "healthScore": 79,
+      "renewalDate": "2026-06-12",
+      "renewalQuarter": "Q2'26",
+      "daysToRenewal": 120,
+      "pricing": {
+        "current": 32624.88,
+        "prior": 33247.48,
+        "variance": -1.9,
+        "pricingTrend": "stable"
+      },
+      "products": [
+        "CloudSense CPQ Core"
+      ],
+      "contractType": "Basic Annual",
+      "painPoints": 0,
+      "opportunities": 0,
+      "hasUnresolvedIssues": false,
+      "rank": 54,
+      "pctOfBuRevenue": 0.10083784151025754,
+      "overallRank": 77
+    },
+    {
+      "accountName": "Atom Myanmar Ltd",
+      "bu": "STL",
+      "currentARR": 32000.0,
+      "priorARR": 28123.01,
+      "projectedARR": 0.0,
+      "dmPercent": 113.8,
+      "healthScore": 93,
+      "renewalDate": "2026-06-10",
+      "renewalQuarter": "Q4'25",
+      "daysToRenewal": 118,
+      "pricing": {
+        "current": 32000.0,
+        "prior": 28123.01,
+        "variance": 13.8,
+        "pricingTrend": "increasing"
+      },
+      "products": [
+        "STL Software Platform"
+      ],
+      "contractType": "Basic Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 17,
+      "pctOfBuRevenue": 0.8248779732236774,
+      "overallRank": 78
+    },
+    {
+      "accountName": "Newsday",
+      "bu": "Cloudsense",
+      "currentARR": 26731.16,
+      "priorARR": 28340.57,
+      "projectedARR": 33413.95,
+      "dmPercent": 94.3,
+      "healthScore": 81,
+      "renewalDate": "2027-02-12",
+      "renewalQuarter": "Next Yr",
+      "daysToRenewal": 365,
+      "pricing": {
+        "current": 26731.16,
+        "prior": 28340.57,
+        "variance": -5.7,
+        "pricingTrend": "declining"
+      },
+      "products": [
+        "CloudSense CPQ Core"
+      ],
+      "contractType": "Basic Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 55,
+      "pctOfBuRevenue": 0.08262137593963062,
+      "overallRank": 79
+    },
+    {
+      "accountName": "Wipro Ltd.",
+      "bu": "STL",
+      "currentARR": 24375.0,
+      "priorARR": 20017.79,
+      "projectedARR": 0.0,
+      "dmPercent": 121.8,
+      "healthScore": 90,
+      "renewalDate": "2026-06-12",
+      "renewalQuarter": "Q2'26",
+      "daysToRenewal": 120,
+      "pricing": {
+        "current": 24375.0,
+        "prior": 20017.79,
+        "variance": 21.8,
+        "pricingTrend": "increasing"
+      },
+      "products": [
+        "STL Software Platform"
+      ],
+      "contractType": "Basic Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 18,
+      "pctOfBuRevenue": 0.6283250186664731,
+      "overallRank": 80
+    },
+    {
+      "accountName": "COEO SOLUTIONS LLC",
+      "bu": "Kandy",
+      "currentARR": 22551.22,
+      "priorARR": 20766.78,
+      "projectedARR": 28189.03,
+      "dmPercent": 108.6,
+      "healthScore": 87,
+      "renewalDate": "2026-03-14",
+      "renewalQuarter": "Q1'26",
+      "daysToRenewal": 30,
+      "pricing": {
+        "current": 22551.22,
+        "prior": 20766.78,
+        "variance": 8.6,
+        "pricingTrend": "increasing"
+      },
+      "products": [
+        "Kandy Communications Platform"
+      ],
+      "contractType": "Basic Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 16,
+      "pctOfBuRevenue": 0.16578387644312548,
+      "overallRank": 81
+    },
+    {
+      "accountName": "Mavenir Systems Private Limited",
+      "bu": "STL",
+      "currentARR": 21505.0,
+      "priorARR": 17809.3,
+      "projectedARR": 0.0,
+      "dmPercent": 120.8,
+      "healthScore": 91,
+      "renewalDate": "2026-06-12",
+      "renewalQuarter": "Q2'26",
+      "daysToRenewal": 120,
+      "pricing": {
+        "current": 21505.0,
+        "prior": 17809.3,
+        "variance": 20.8,
+        "pricingTrend": "increasing"
+      },
+      "products": [
+        "STL Software Platform"
+      ],
+      "contractType": "Basic Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 19,
+      "pctOfBuRevenue": 0.5543437754429744,
+      "overallRank": 82
+    },
+    {
+      "accountName": "EVOLUTIO CLOUD ENABLER S.A.",
+      "bu": "Kandy",
+      "currentARR": 20787.42,
+      "priorARR": 22018.39,
+      "projectedARR": 25984.27,
+      "dmPercent": 94.4,
+      "healthScore": 78,
+      "renewalDate": "2026-03-14",
+      "renewalQuarter": "Q1'26",
+      "daysToRenewal": 30,
+      "pricing": {
+        "current": 20787.42,
+        "prior": 22018.39,
+        "variance": -5.6,
+        "pricingTrend": "declining"
+      },
+      "products": [
+        "Kandy Communications Platform"
+      ],
+      "contractType": "Basic Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 17,
+      "pctOfBuRevenue": 0.15281741160129497,
+      "overallRank": 83
+    },
+    {
+      "accountName": "EMPIRE TELEPHONE CORPORATION",
+      "bu": "Kandy",
+      "currentARR": 16935.51,
+      "priorARR": 18790.05,
+      "projectedARR": 21169.39,
+      "dmPercent": 90.1,
+      "healthScore": 78,
+      "renewalDate": "2026-03-14",
+      "renewalQuarter": "Q1'26",
+      "daysToRenewal": 30,
+      "pricing": {
+        "current": 16935.51,
+        "prior": 18790.05,
+        "variance": -9.9,
+        "pricingTrend": "declining"
+      },
+      "products": [
+        "Kandy Communications Platform"
+      ],
+      "contractType": "Basic Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 18,
+      "pctOfBuRevenue": 0.12450033733613151,
+      "overallRank": 84
+    },
+    {
+      "accountName": "VODAFONE FIJI LIMITED",
+      "bu": "Kandy",
+      "currentARR": 10823.16,
+      "priorARR": 10395.93,
+      "projectedARR": 0.0,
+      "dmPercent": 104.1,
+      "healthScore": 93,
+      "renewalDate": "2026-03-14",
+      "renewalQuarter": "Q1'26",
+      "daysToRenewal": 30,
+      "pricing": {
+        "current": 10823.16,
+        "prior": 10395.93,
+        "variance": 4.1,
+        "pricingTrend": "stable"
+      },
+      "products": [
+        "Kandy Communications Platform"
+      ],
+      "contractType": "Basic Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 19,
+      "pctOfBuRevenue": 0.07956578048390188,
+      "overallRank": 85
+    },
+    {
+      "accountName": "ISSQUARED, Inc.",
+      "bu": "Kandy",
+      "currentARR": 3986.16,
+      "priorARR": 4181.23,
+      "projectedARR": 4982.7,
+      "dmPercent": 95.3,
+      "healthScore": 77,
+      "renewalDate": "2026-03-14",
+      "renewalQuarter": "Q1'26",
+      "daysToRenewal": 30,
+      "pricing": {
+        "current": 3986.16,
+        "prior": 4181.23,
+        "variance": -4.7,
+        "pricingTrend": "stable"
+      },
+      "products": [
+        "Kandy Communications Platform"
+      ],
+      "contractType": "Basic Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 20,
+      "pctOfBuRevenue": 0.02930400470229677,
+      "overallRank": 86
+    },
+    {
+      "accountName": "AGT",
+      "bu": "Kandy",
+      "currentARR": 2268.24,
+      "priorARR": 2124.81,
+      "projectedARR": 2835.3,
+      "dmPercent": 106.8,
+      "healthScore": 95,
+      "renewalDate": "2026-03-14",
+      "renewalQuarter": "Q1'26",
+      "daysToRenewal": 30,
+      "pricing": {
+        "current": 2268.24,
+        "prior": 2124.81,
+        "variance": 6.8,
+        "pricingTrend": "increasing"
+      },
+      "products": [
+        "Kandy Communications Platform"
+      ],
+      "contractType": "Basic Annual",
+      "painPoints": 2,
+      "opportunities": 2,
+      "hasUnresolvedIssues": false,
+      "rank": 21,
+      "pctOfBuRevenue": 0.01667482379682141,
+      "overallRank": 87
+    }
+  ]
+}
