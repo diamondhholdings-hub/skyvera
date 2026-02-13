@@ -87,8 +87,8 @@ export class AccountPlanPage {
    * Wait for tab content to load
    */
   async waitForTabContent() {
-    // Wait for network to settle
-    await this.page.waitForLoadState('networkidle', { timeout: 15000 })
+    // Wait for URL to update (faster than networkidle)
+    await this.page.waitForURL(/tab=/, { timeout: 3000 })
 
     // Small delay for tab content to render
     await this.page.waitForTimeout(500)
