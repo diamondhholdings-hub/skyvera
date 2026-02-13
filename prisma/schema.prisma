@@ -463,3 +463,34 @@ model DMAnalysisRun {
   @@index([runDate])
   @@index([status])
 }
+
+// Action Items created from accepted DM Recommendations
+model ActionItem {
+  id                    Int      @id @default(autoincrement())
+  actionItemId          String   @unique @default(cuid())
+
+  // Link to recommendation
+  recommendationId      String
+
+  // Assignment
+  assignedTo            String   // Team or person responsible
+  dueDate               DateTime
+  priority              String   // critical/high/medium/low
+
+  // Organization
+  board                 String   // Board/project this belongs to
+  notes                 String?  // Additional context
+
+  // Status tracking
+  status                String   @default("todo") // todo/in_progress/completed
+  completedAt           DateTime?
+
+  // Metadata
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+
+  @@index([recommendationId])
+  @@index([assignedTo])
+  @@index([status])
+  @@index([dueDate])
+}

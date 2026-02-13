@@ -101,14 +101,56 @@ export default function PortfolioDashboard({ businessUnits, recommendations }: P
     // Navigate to detailed view
   };
 
-  const handleDefer = (id: string) => {
-    console.log('Defer recommendation:', id);
-    // Update recommendation status
+  const handleDefer = async (id: string) => {
+    const reason = prompt('Please provide a reason for deferring this recommendation:');
+    if (!reason) return;
+
+    try {
+      const response = await fetch('/api/dm-strategy/defer-recommendation', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ recommendationId: id, reason }),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        alert('Recommendation deferred successfully');
+        window.location.reload(); // Reload to show updated status
+      } else {
+        alert(`Error: ${data.error || 'Failed to defer recommendation'}`);
+      }
+    } catch (error) {
+      console.error('Defer error:', error);
+      alert('Failed to defer recommendation');
+    }
   };
 
-  const handleModalSubmit = (actionItem: any) => {
-    console.log('Action item created:', actionItem);
-    // Submit action item to backend
+  const handleModalSubmit = async (actionItem: any) => {
+    if (!selectedRecommendation) return;
+
+    try {
+      const response = await fetch('/api/dm-strategy/accept-recommendation', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          recommendationId: selectedRecommendation.id,
+          actionItem,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        alert('✓ Recommendation accepted and action item created!');
+        window.location.reload(); // Reload to show updated status
+      } else {
+        alert(`Error: ${data.error || 'Failed to accept recommendation'}`);
+      }
+    } catch (error) {
+      console.error('Accept error:', error);
+      alert('Failed to accept recommendation');
+    }
   };
 
   return (

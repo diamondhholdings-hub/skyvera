@@ -36,11 +36,11 @@ export async function POST(request: Request) {
       )
     }
 
-    // Update recommendation status
+    // Update recommendation status (use 'dismissed' to match data layer schema)
     const updated = await prisma.dMRecommendation.update({
       where: { recommendationId },
       data: {
-        status: 'deferred',
+        status: 'dismissed',
         deferredReason: reason,
       },
     })
