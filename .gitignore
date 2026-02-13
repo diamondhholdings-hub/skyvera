@@ -30,3 +30,9 @@ yarn-error.log*
 
 # Vercel
 .vercel
+
+# Playwright test artifacts
+test-*.js
+*-screenshot.png
+demo-page-error.png
+trends-page-error.png
