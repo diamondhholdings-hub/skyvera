@@ -30,7 +30,7 @@ export function NavBar() {
   ]
 
   return (
-    <nav className="bg-ink border-b border-ink">
+    <nav className="bg-ink border-b border-ink mb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo/Brand */}
@@ -39,9 +39,9 @@ export function NavBar() {
               <Image
                 src="/skyvera-logo.png"
                 alt="Skyvera"
-                width={180}
-                height={40}
-                className="h-8 w-auto"
+                width={160}
+                height={36}
+                className="h-7 w-auto"
                 priority
               />
               <div className="text-xs text-paper/60 hidden lg:block border-l border-paper/20 pl-3">
@@ -51,7 +51,7 @@ export function NavBar() {
           </div>
 
           {/* Navigation Icons */}
-          <div className="flex space-x-2">
+          <div className="flex space-x-4">
             {links.map((link) => {
               const isActive = pathname === link.href || pathname?.startsWith(link.href + '/')
               const Icon = link.icon
