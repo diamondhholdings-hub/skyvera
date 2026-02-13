@@ -1,161 +1,70 @@
 DM RECOMMENDATIONS EXECUTIVE SUMMARY
-Generated: 2026-02-12
+Generated: 2/13/2026, 9:40:27 AM
 
 OVERVIEW
 ========
 Total Recommendations: 37
 Accounts Covered: 35
-Total Potential ARR Impact: $13,628,353
+Total Potential ARR Impact: $11,110,348
 
 BY TYPE
 =======
-contract_optimization     25 recommendations  $11,987,524 ARR impact
-churn_risk                 5 recommendations     $652,408 ARR impact
-upsell                     4 recommendations     $506,313 ARR impact
-pricing                    3 recommendations     $482,108 ARR impact
+contract_optimization      25 recommendations  $   9,281,412 ARR impact
+churn_risk                  5 recommendations  $     405,936 ARR impact
+upsell                      4 recommendations  $     830,000 ARR impact
+pricing                     3 recommendations  $     593,000 ARR impact
 
 BY BUSINESS UNIT
 ================
-Cloudsense      32 recommendations  $12,806,843 ARR impact
-Kandy            3 recommendations     $677,046 ARR impact
-STL              2 recommendations     $144,464 ARR impact
+Kandy            19 recommendations  $     621,026 ARR impact
+Cloudsense       13 recommendations  $  10,418,434 ARR impact
+STL               5 recommendations  $      70,888 ARR impact
 
 BY CONFIDENCE
 =============
-high        18 recommendations  $11,842,062 ARR impact
-medium      17 recommendations   $1,725,562 ARR impact
-low          2 recommendations      $60,729 ARR impact
+high        21 recommendations  $  10,019,582 ARR impact
+medium      16 recommendations  $   1,090,766 ARR impact
+low          0 recommendations  $           0 ARR impact
 
 TOP 10 HIGH-IMPACT RECOMMENDATIONS
 ===================================
 
 1. British Telecommunications plc (Cloudsense)
-   Type: contract_optimization  |  Impact: $14,467,027  |  Timeline: 8 weeks
-   Contract Optimization - Multi-year
+   Type: contract_optimization  |  Impact: $2,607,209  |  Timeline: 6 weeks
+   Secure 3-Year Deal with 15% Discount & Enhanced SLA Package
 
-2. Liquid Telecom (Cloudsense)
-   Type: upsell  |  Impact: $747,558  |  Timeline: 12 weeks
-   Cross-Sell & Expansion Opportunity
+2. Maxis Broadband Sdn Bhd (Cloudsense)
+   Type: contract_optimization  |  Impact: $2,469,468  |  Timeline: 10 weeks
+   3-Year Contract with 15% Discount & Expansion Lock-in
 
-3. Telstra Corporation Limited (Cloudsense)
-   Type: contract_optimization  |  Impact: $4,520,000  |  Timeline: 8 weeks
-   Contract Optimization - Multi-year
+3. Liquid Telecom (Cloudsense)
+   Type: contract_optimization  |  Impact: $2,200,000  |  Timeline: 12 weeks
+   3-Year Contract Lock with 15% Discount & Feature Roadmap Access
 
-4. Vodafone Netherlands (Cloudsense)
-   Type: contract_optimization  |  Impact: $4,222,795  |  Timeline: 8 weeks
-   Contract Optimization - Multi-year
+4. Centrica Services Ltd (Cloudsense)
+   Type: contract_optimization  |  Impact: $1,742,000  |  Timeline: 12 weeks
+   3-Year Enterprise Plus Contract with 15% Multi-Year Discount
 
-5. Masergy (Cloudsense)
-   Type: contract_optimization  |  Impact: $4,406,000  |  Timeline: 8 weeks
-   Contract Optimization - Multi-year
+5. AT&T SERVICES, INC. (Kandy)
+   Type: churn_risk  |  Impact: $269,714  |  Timeline: 3 weeks
+   AT&T Executive Recovery Sprint with Kandy Roadmap Alignment
 
-6. Centrica Services Ltd (Cloudsense)
-   Type: contract_optimization  |  Impact: $3,950,495  |  Timeline: 8 weeks
-   Contract Optimization - Multi-year
+6. Foxtel Management Pty Limited (Cloudsense)
+   Type: upsell  |  Impact: $240,000  |  Timeline: 12 weeks
+   Q2 Product Expansion: Target 2 Additional CloudSense Modules
 
-7. British Telecommunications plc (Cloudsense)
-   Type: churn_risk  |  Impact: $1,263,514  |  Timeline: 4 weeks
-   Churn Risk - Immediate Intervention Required
+7. Advance Publications US (Cloudsense)
+   Type: upsell  |  Impact: $230,000  |  Timeline: 12 weeks
+   Q1 2024 Product Expansion Campaign for Advance Publications
 
-8. Telefonica UK Limited (Cloudsense)
-   Type: contract_optimization  |  Impact: $2,631,071  |  Timeline: 4 weeks
-   Contract Optimization - Early-renewal
+8. Vodafone Netherlands (Cloudsense)
+   Type: pricing  |  Impact: $225,000  |  Timeline: 12 weeks
+   Vodafone NL Value-Based Pricing Recovery Program
 
-9. Deutsche Telekom AG (Cloudsense)
-   Type: contract_optimization  |  Impact: $2,366,288  |  Timeline: 8 weeks
-   Contract Optimization - Multi-year
+9. Telefonica UK Limited (Cloudsense)
+   Type: pricing  |  Impact: $215,000  |  Timeline: 5 weeks
+   Telefonica Value-Based Pricing Recovery Initiative
 
-10. Ooredoo QSC (Cloudsense)
-   Type: contract_optimization  |  Impact: $2,296,000  |  Timeline: 8 weeks
-   Contract Optimization - Multi-year
-
-KEY INSIGHTS
-============
-
-1. CONTRACT OPTIMIZATION DOMINATES
-   - 68% of opportunities are contract restructuring
-   - $12M potential ARR impact from multi-year deals
-   - Focus on accounts > $1M ARR for maximum impact
-
-2. CLOUDSENSE CONCENTRATION
-   - 86% of opportunities are in CloudSense BU
-   - Reflects larger account base and ARR
-   - Kandy and STL need targeted analysis
-
-3. HIGH CONFIDENCE OPPORTUNITIES
-   - 49% of recommendations are high confidence
-   - These should be prioritized for immediate action
-   - $11.8M ARR impact from high-confidence recommendations alone
-
-4. CRITICAL PRIORITIES
-   - 8 critical recommendations require immediate attention
-   - Focus on churn risk accounts first (revenue defense)
-   - Then pursue contract optimization for revenue lock-in
-
-5. EXECUTION FOCUS
-   - Account Management owns majority of actions
-   - 4-week timeline for churn intervention
-   - 8-12 week timeline for contract restructuring/upsell
-
-NEXT ACTIONS
-============
-
-1. IMMEDIATE (This Week)
-   - Review all 5 churn risk accounts
-   - Schedule intervention meetings
-   - Assign dedicated CSM resources
-
-2. SHORT-TERM (Next 30 Days)
-   - Initiate top 10 contract optimization discussions
-   - Prepare multi-year proposals for $1M+ accounts
-   - Develop pricing analysis for 3 pricing opportunities
-
-3. MEDIUM-TERM (Next Quarter)
-   - Execute upsell campaigns for 4 expansion accounts
-   - Complete contract renewals and restructuring
-   - Measure actual vs. expected ARR impact
-
-4. ONGOING
-   - Re-run pipeline monthly to detect new opportunities
-   - Track recommendation success rates
-   - Refine AI prompts and detection logic
-
-RISK MITIGATION
-================
-
-Top Risks Across All Recommendations:
-- Customer pushback on pricing/terms (mentioned 28 times)
-- Competitive pressure (mentioned 18 times)
-- Budget constraints (mentioned 15 times)
-- Product gaps (mentioned 8 times)
-
-Mitigation Strategies:
-- Prepare strong ROI/value justification
-- Conduct executive business reviews
-- Offer flexible payment terms
-- Align with product roadmap
-
-SUCCESS FACTORS
-================
-
-Most Common Success Factors:
-- Strong executive relationships (32 recommendations)
-- Clear value proposition/ROI (28 recommendations)
-- Competitive differentiation (25 recommendations)
-- Long-term partnership mindset (22 recommendations)
-
-Focus Areas:
-- Executive engagement is critical
-- Quantify value delivered
-- Emphasize switching costs
-- Build multi-year trust
-
----
-
-Generated by DM Recommendations Pipeline
-Run Date: 2026-02-12
-Pipeline Version: 1.0
-Data Source: 2025-12-11 Skyvera - Budget - Q1'26 - For Todd.xlsx
-Accounts Analyzed: 87
-Total Current ARR: $41,558,134
-Overall DM%: 95.3%
+10. Virgin Media Limited (Cloudsense)
+   Type: upsell  |  Impact: $180,000  |  Timeline: 8 weeks
+   Virgin Media Product Portfolio Expansion Initiative

@@ -1,5 +1,5 @@
 {
-  "processed": 10,
+  "processed": 30,
   "total": 37,
   "recommendations": [
     {
@@ -7,29 +7,29 @@
       "accountName": "British Telecommunications plc",
       "bu": "Cloudsense",
       "type": "contract_optimization",
-      "title": "Secure 3-Year Enterprise Plus Deal with BT",
-      "description": "Convert BT's current $1.4M annual contract to a 3-year Enterprise Plus agreement with 8% annual growth escalators and expanded product suite. Target signing within 30 days before renewal to lock in $4.5M+ total contract value.",
-      "reasoning": "BT's exceptional 95.2% retention rate and 81/100 health score demonstrates strong product satisfaction and low churn risk, making them ideal for multi-year commitment. As a large telecommunications provider, BT values predictable costs and strategic partnerships, making the timing perfect with only 30 days to renewal.",
+      "title": "Secure 3-Year Deal with 15% Discount & Enhanced SLA Package",
+      "description": "Propose a 3-year contract extension at $4.01M total value ($1.337M annually) with enhanced enterprise support, priority feature access, and dedicated CSM. Lock in revenue while providing BT with cost savings and premium service guarantees.",
+      "reasoning": "BT's 95.2% retention rate and 81/100 health score indicate strong satisfaction and low churn risk. As a major telecom requiring long-term infrastructure planning, BT values predictable costs and premium support. The 4.8% annual discount justifies their 3-year commitment while securing our revenue.",
       "specificActions": [
-        "Week 1: Schedule C-level meeting with BT's CTO and procurement lead to present 3-year proposal with 15% discount on Year 1 pricing",
-        "Week 2: Conduct technical roadmap alignment session showing how CloudSense's 2024-2026 product releases directly support BT's digital transformation goals",
-        "Week 3: Present detailed ROI analysis showing $280K savings over 3 years vs. annual renewals, plus guaranteed SLA improvements",
-        "Week 4: Negotiate final terms including 8% annual escalators, expanded support tier, and quarterly business reviews with dedicated CSM",
-        "Week 4: Execute contract signing with legal teams and implement immediate account expansion planning session"
+        "Week 1: Schedule C-level meeting with BT's IT Director and Procurement lead to present 3-year proposal with ROI analysis showing $210K savings vs annual renewals",
+        "Week 2: Prepare enhanced SLA package including 99.9% uptime guarantee, 4-hour response time, and quarterly business reviews with dedicated Technical Account Manager",
+        "Week 3: Create custom contract terms including annual price protection (no increases), priority access to new CloudSense modules, and flexible usage scaling up to 25%",
+        "Week 4: Present final proposal with implementation timeline and dedicated onboarding for any new features included in enhanced package",
+        "Week 6: Target contract signature with effective date aligned to current renewal cycle"
       ],
-      "expectedArrImpact": 2950000,
-      "expectedDmImpact": 4.8,
+      "expectedArrImpact": 2607209,
+      "expectedDmImpact": 3.8,
       "confidence": "high",
-      "timelineWeeks": 4,
+      "timelineWeeks": 6,
       "ownerTeam": "Account Management",
       "risks": [
-        "BT procurement may resist multi-year commitment due to internal budget cycles",
-        "Competitor could undercut pricing during renewal window"
+        "BT procurement may push for deeper discounts beyond 15%",
+        "Internal approval processes at BT could extend timeline past renewal date"
       ],
       "successFactors": [
-        "Strong existing relationship evidenced by 95.2% retention rate provides negotiation leverage",
-        "High health score (81/100) indicates product-market fit and reduced churn risk for BT",
-        "30-day renewal timeline creates urgency and decision-forcing event for both parties"
+        "Emphasize cost predictability and budget planning benefits for BT's 3-year IT strategy",
+        "Highlight enhanced SLA value proposition given BT's critical infrastructure needs",
+        "Leverage existing strong relationship and high satisfaction scores as proof of partnership value"
       ],
       "metrics": {
         "currentARR": 1404790.63,
@@ -38,36 +38,36 @@
         "daysToRenewal": 30,
         "productCount": 3
       },
-      "generatedAt": "2026-02-13T14:22:42.298Z"
+      "generatedAt": "2026-02-13T14:31:34.657Z"
     },
     {
       "opportunityId": "maxis-broadband-sdn-bhd-contract_optimization",
       "accountName": "Maxis Broadband Sdn Bhd",
       "bu": "Cloudsense",
       "type": "contract_optimization",
-      "title": "3-Year Enterprise Plus Contract with 15% Discount Lock-in",
-      "description": "Propose upgrading Maxis to a 3-year Enterprise Plus contract with a 15% discount in exchange for revenue commitment, leveraging their exceptional health score and growth trajectory. Structure the deal with annual payment terms and built-in expansion options for their growing broadband infrastructure needs.",
-      "reasoning": "With a 90/100 health score and 101.2% retention rate, Maxis demonstrates strong product satisfaction and organic growth. As Malaysia's leading telco, they value long-term partnerships and budget predictability. The 108-day renewal window provides adequate time for procurement approval cycles typical in Malaysian enterprises.",
+      "title": "3-Year Contract with 15% Discount & Expansion Lock-in",
+      "description": "Propose a 3-year enterprise agreement with 15% annual discount, structured payment terms, and built-in expansion rights for additional products. This leverages their excellent health score and current satisfaction to secure long-term revenue commitment while providing immediate value to the customer.",
+      "reasoning": "With 101.2% retention rate and 90/100 health score, Maxis demonstrates strong product adoption and growth trajectory. As a major Malaysian telco, they likely prefer predictable multi-year budgeting cycles. The 108-day renewal window provides sufficient time for complex procurement approval processes typical in large telecommunications companies.",
       "specificActions": [
-        "Week 1: Schedule C-level meeting with Maxis CFO and CTO to present 3-year proposal with detailed ROI analysis showing $185,210 savings over contract term",
-        "Week 2-3: Create custom contract proposal including 15% discount ($1,049,524 annual ARR), quarterly business reviews, and dedicated technical account manager assignment",
-        "Week 4-6: Negotiate expansion clauses allowing 20% capacity increases annually without renegotiation, addressing their broadband growth projections",
-        "Week 7-8: Involve legal teams to finalize contract terms with annual payment structure and performance SLAs",
-        "Week 9-10: Execute contract signing with implementation timeline for any additional services"
+        "Week 1: Schedule C-suite meeting with Maxis CFO and IT Director to present 3-year proposal with detailed ROI analysis showing 15% savings ($185K annually)",
+        "Week 2-3: Collaborate with Maxis procurement team to structure quarterly payment terms aligned with their fiscal calendar (Q1 Malaysia: Jan-Mar)",
+        "Week 4-5: Include expansion clause allowing 20% additional user growth at locked-in rates plus right-of-first-refusal on 2 complementary CloudSense modules",
+        "Week 6-8: Create custom SLA guarantees specific to Malaysian market requirements and regulatory compliance (MCMC standards)",
+        "Week 9-10: Present final contract with implementation timeline for any new features, targeting signature 30 days before current renewal date"
       ],
-      "expectedArrImpact": 2149048,
+      "expectedArrImpact": 2469468,
       "expectedDmImpact": 8.5,
       "confidence": "high",
       "timelineWeeks": 10,
       "ownerTeam": "Account Management",
       "risks": [
-        "Procurement delays due to Malaysian regulatory approval processes",
-        "Competitor intervention during extended negotiation period"
+        "Procurement delays due to Malaysian corporate approval processes",
+        "Competition may counter-offer during extended negotiation period"
       ],
       "successFactors": [
-        "Emphasize budget certainty and cost savings aligning with Maxis' financial planning cycles",
-        "Leverage existing strong relationship and high satisfaction scores as trust foundation",
-        "Position as strategic partnership supporting their 5G infrastructure expansion plans"
+        "Emphasize cost predictability and budget planning benefits for 3-year cycle",
+        "Leverage existing strong relationship and satisfaction metrics as proof points",
+        "Align contract terms with Maxis's fiscal year and regional business practices"
       ],
       "metrics": {
         "currentARR": 1234734,
@@ -76,36 +76,36 @@
         "daysToRenewal": 108,
         "productCount": 3
       },
-      "generatedAt": "2026-02-13T14:22:57.359Z"
+      "generatedAt": "2026-02-13T14:31:50.378Z"
     },
     {
       "opportunityId": "liquid-telecom-contract_optimization",
       "accountName": "Liquid Telecom",
       "bu": "Cloudsense",
       "type": "contract_optimization",
-      "title": "3-Year Multi-Product Bundle with 15% Discount Lock-In",
-      "description": "Convert Liquid Telecom's Enterprise Annual contract to a 3-year multi-product agreement with tiered pricing that locks in $3.2M+ revenue while providing immediate cost savings. Leverage their 102.3% retention rate and 92 health score to secure long-term commitment with expansion built-in.",
-      "reasoning": "With 300 days to renewal and exceptional health metrics (92/100 score, 102.3% retention), Liquid Telecom demonstrates strong product adoption and growth trajectory. Their telecom industry requires long-term infrastructure planning, making multi-year commitments strategically valuable for their business continuity.",
+      "title": "3-Year Contract Lock with 15% Discount & Feature Roadmap Access",
+      "description": "Convert Liquid Telecom's Enterprise Annual contract to a 3-year agreement with graduated pricing, early access to CloudSense AI features, and dedicated technical roadmap sessions. Leverage their 92 health score and 102.3% retention rate to secure $3.2M+ in committed revenue.",
+      "reasoning": "With 300 days to renewal and exceptional health metrics, Liquid Telecom is demonstrating strong product adoption and growth (102.3% retention). Their telecom infrastructure business requires long-term technology partnerships, making them ideal for multi-year commitments with strategic value-adds beyond just pricing.",
       "specificActions": [
-        "Week 1-2: Conduct executive stakeholder mapping and schedule C-level meeting with CEO/CFO to discuss 3-year strategic partnership framework",
-        "Week 3-4: Present custom 3-year proposal: $3.22M total value (15% discount vs annual renewals), with built-in 8% annual escalation and additional product modules at 25% discount",
-        "Week 5-6: Negotiate payment terms offering 5% additional discount for annual pre-payment ($305K Year 1, $329K Year 2, $355K Year 3)",
-        "Week 7-8: Include contractual commitment for quarterly business reviews and dedicated customer success manager to ensure continued high performance",
-        "Week 9-10: Finalize legal terms with early renewal option at 18 months if expansion needs exceed 25% of current usage"
+        "Week 1-2: CSM conducts stakeholder mapping call to identify 3-4 key decision makers and their 2024-2026 CloudSense expansion priorities",
+        "Week 3-4: Account Manager creates custom 3-year proposal: Year 1 at $1,073K (current), Year 2 at $1,150K, Year 3 at $1,225K with 15% annual discount vs standard pricing",
+        "Week 5-6: Product team schedules exclusive CloudSense AI roadmap session with Liquid Telecom's technical team, positioning early access as multi-year benefit",
+        "Week 7-8: Present proposal with dedicated implementation manager assignment and quarterly business reviews as additional multi-year perks",
+        "Week 9-12: Negotiate final terms with legal, targeting signature 90 days before current renewal date"
       ],
-      "expectedArrImpact": 2146381,
-      "expectedDmImpact": 12.5,
+      "expectedArrImpact": 2200000,
+      "expectedDmImpact": 5.2,
       "confidence": "high",
-      "timelineWeeks": 10,
+      "timelineWeeks": 12,
       "ownerTeam": "Account Management",
       "risks": [
-        "Customer may negotiate for deeper discounts reducing margin",
-        "Economic downturn could impact their 3-year commitment appetite"
+        "Budget approval delays in large telecom organization could push decision past optimal timing",
+        "Competitor may counter with aggressive short-term pricing during negotiation period"
       ],
       "successFactors": [
-        "Position as strategic partnership enabling their African expansion plans with predictable costs",
-        "Demonstrate ROI through case studies of similar telecom clients who achieved 30%+ operational efficiency gains",
-        "Offer exclusive access to beta features and priority support as multi-year customer benefits"
+        "Strong existing relationship evidenced by 92 health score creates trust for long-term commitment",
+        "Telecom industry's need for infrastructure stability aligns with multi-year technology partnerships",
+        "Current 102.3% retention rate demonstrates product-market fit and expansion potential"
       ],
       "metrics": {
         "currentARR": 1073619.8,
@@ -114,36 +114,36 @@
         "daysToRenewal": 300,
         "productCount": 3
       },
-      "generatedAt": "2026-02-13T14:23:13.495Z"
+      "generatedAt": "2026-02-13T14:32:06.367Z"
     },
     {
       "opportunityId": "centrica-services-ltd-contract_optimization",
       "accountName": "Centrica Services Ltd",
       "bu": "Cloudsense",
       "type": "contract_optimization",
-      "title": "3-Year Contract Lock with 15% Discount & Expansion Incentive",
-      "description": "Propose a 3-year enterprise agreement with 15% annual discount in exchange for contract security, plus built-in expansion credits for additional products. Structure includes annual true-up mechanism and performance guarantees.",
-      "reasoning": "With 77/100 health score and 91.4% retention rate, Centrica shows strong product satisfaction and low churn risk. Their $1M+ ARR indicates enterprise maturity ready for longer commitments, while 120 days to renewal provides sufficient negotiation runway.",
+      "title": "3-Year Enterprise Plus Contract with 15% Multi-Year Discount",
+      "description": "Convert Centrica's current Enterprise Annual contract to a 3-year Enterprise Plus agreement with enhanced support and strategic roadmap alignment. Offer 15% discount on years 2-3 to secure $2.7M+ in committed revenue.",
+      "reasoning": "With 77/100 health score and 91.4% retention rate, Centrica demonstrates strong product satisfaction and low churn risk. Their enterprise scale ($1M+ ARR) indicates budget authority for multi-year commitments, and 120 days to renewal provides sufficient negotiation runway.",
       "specificActions": [
-        "Week 1: CSM conducts stakeholder mapping call to identify procurement decision-makers and budget approval process timeline",
-        "Week 2: Account Manager creates custom 3-year proposal: $2.7M total value (15% discount = $186K savings) with 20% expansion credits ($211K) for new products",
-        "Week 4: Present executive business case showing 3-year ROI projections and include quarterly business reviews with performance SLAs",
-        "Week 6: Negotiate contract terms including annual usage true-ups and early termination clauses to address their risk concerns",
-        "Week 8: Involve legal teams for contract finalization with implementation timeline extending current contract if needed"
+        "Week 1: Schedule C-level stakeholder meeting to present 3-year strategic technology roadmap alignment proposal",
+        "Week 2-3: Conduct comprehensive business review highlighting ROI metrics and propose Enterprise Plus tier with dedicated CSM and priority support",
+        "Week 4-6: Present formal 3-year proposal: Year 1 at current $1,053,983, Years 2-3 at $896,885 each (15% discount)",
+        "Week 7-10: Negotiate contract terms including annual usage reviews, expansion rights, and early renewal incentives",
+        "Week 11-12: Execute legal review and contract signing with procurement team"
       ],
-      "expectedArrImpact": 2700000,
-      "expectedDmImpact": 8.6,
+      "expectedArrImpact": 1742000,
+      "expectedDmImpact": 6.5,
       "confidence": "high",
-      "timelineWeeks": 10,
+      "timelineWeeks": 12,
       "ownerTeam": "Account Management",
       "risks": [
-        "Procurement may require competitive bidding process for 3-year commitment",
-        "Budget constraints could limit their ability to commit to full 3-year value upfront"
+        "Budget approval delays due to multi-year commitment",
+        "Competitive pressure during extended negotiation period"
       ],
       "successFactors": [
         "Strong existing relationship with 77 health score provides negotiation foundation",
-        "Significant cost savings ($186K discount + expansion credits) creates compelling business case",
-        "120-day renewal window allows proper stakeholder alignment and approval process"
+        "Enterprise scale customer likely has multi-year budgeting cycles",
+        "15% discount creates compelling financial incentive while securing revenue predictability"
       ],
       "metrics": {
         "currentARR": 1053982.65,
@@ -152,22 +152,22 @@
         "daysToRenewal": 120,
         "productCount": 3
       },
-      "generatedAt": "2026-02-13T14:23:28.759Z"
+      "generatedAt": "2026-02-13T14:32:20.192Z"
     },
     {
       "opportunityId": "telefonica-uk-limited-churn_risk",
       "accountName": "Telefonica UK Limited",
       "bu": "Cloudsense",
       "type": "churn_risk",
-      "title": "Emergency C-Suite Value Realization & Renewal Rescue",
-      "description": "Launch immediate executive engagement with Telefonica UK's C-suite to demonstrate concrete ROI from current CloudSense deployment and secure a bridge contract while addressing underlying satisfaction issues. Focus on quantifying business impact and creating a 90-day value acceleration plan.",
-      "reasoning": "With only 30 days to renewal and 12.6% revenue contraction, traditional account management won't work. Telefonica UK is a major telecom requiring executive-level intervention to understand their strategic pain points. The low health score suggests operational issues that can be quickly addressed with dedicated resources, while the high ARR justifies significant investment.",
+      "title": "Emergency C-Suite Value Audit & Renewal Bridge Program",
+      "description": "Launch an immediate executive-level engagement program combining a comprehensive value audit, competitive positioning workshop, and phased renewal strategy to address dissatisfaction and prevent churn. Deploy senior resources to rebuild trust and demonstrate ROI within the 30-day renewal window.",
+      "reasoning": "Given Telefonica UK's size and strategic importance, the combination of low health score and revenue decline suggests executive-level dissatisfaction or competitive pressure. A C-suite focused approach with immediate value demonstration can leverage their existing 4-product investment and address decision-maker concerns before renewal deadline.",
       "specificActions": [
-        "Day 1-3: CloudSense VP/GM schedules emergency meeting with Telefonica UK CTO and Operations Director to review current deployment ROI and identify immediate pain points",
-        "Day 4-7: Deploy dedicated Customer Success Engineer on-site for 2 weeks to audit all 4 products, identify quick wins, and document specific usage gaps causing dissatisfaction",
-        "Day 8-14: Present executive business case showing £500K+ annual savings from optimized CloudSense usage, with 90-day improvement roadmap addressing identified issues",
-        "Day 15-21: Negotiate 6-month bridge renewal at 95% of current ARR ($1,999,614) with committed SLA improvements and dedicated support resources",
-        "Day 22-30: Implement top 3 quick-win improvements and establish monthly executive steering committee for ongoing relationship management"
+        "Day 1-3: Schedule emergency C-suite meeting with VP Customer Success and Product VP to present customized ROI analysis and competitive differentiation deck",
+        "Day 4-10: Conduct comprehensive value audit across all 4 products, documenting usage gaps, optimization opportunities, and quantified business impact achieved",
+        "Day 11-15: Deliver executive workshop presenting audit findings, 90-day optimization roadmap, and propose 6-month bridge renewal at 95% of current ARR ($1,999,614)",
+        "Day 16-25: Implement quick-win optimizations and assign dedicated Customer Success Manager for weekly check-ins through renewal period",
+        "Day 26-30: Execute renewal negotiation with documented value proof and commitment to quarterly business reviews with executive sponsor"
       ],
       "expectedArrImpact": -105243,
       "expectedDmImpact": 7.6,
@@ -175,13 +175,13 @@
       "timelineWeeks": 4,
       "ownerTeam": "Account Management",
       "risks": [
-        "Executive team may already have decided to churn and refuse engagement",
-        "Operational issues may be too deep to resolve in 30-day timeframe"
+        "Customer may have already decided to switch vendors and bridge renewal may only delay inevitable churn",
+        "Reduced ARR in bridge renewal could set precedent for future pricing negotiations"
       ],
       "successFactors": [
-        "Telefonica UK agrees to executive meeting within 72 hours",
-        "On-site engineer identifies at least 3 implementable quick wins",
-        "Customer Success team can demonstrate measurable ROI within existing deployment"
+        "Executive sponsor buy-in and commitment to quarterly business reviews",
+        "Demonstration of measurable ROI and competitive advantages within first 10 days",
+        "Assignment of dedicated senior resources to rebuild relationship trust"
       ],
       "metrics": {
         "currentARR": 2104857.01,
@@ -190,36 +190,36 @@
         "daysToRenewal": 30,
         "productCount": 4
       },
-      "generatedAt": "2026-02-13T14:23:44.779Z"
+      "generatedAt": "2026-02-13T14:32:36.983Z"
     },
     {
       "opportunityId": "at&t-services,-inc.-pricing",
       "accountName": "AT&T SERVICES, INC.",
       "bu": "Kandy",
       "type": "pricing",
-      "title": "Emergency Value-Based Pricing Recovery Initiative",
-      "description": "Execute immediate pricing recovery strategy targeting 6-8% ARR increase through value demonstration and strategic contract restructuring. Focus on usage optimization analysis and competitive positioning to justify pricing adjustment before 30-day renewal deadline.",
-      "reasoning": "AT&T's 10.5% pricing decline indicates either contract concessions or reduced usage that can be addressed through value engineering. As a major telecom with complex communication needs, they likely have untapped Kandy platform value that justifies premium pricing, especially given their 89.5% retention shows satisfaction with the solution.",
+      "title": "AT&T Value-Based Pricing Recovery Initiative",
+      "description": "Execute a structured pricing recovery plan targeting $150K+ ARR increase through value demonstration, competitive benchmarking, and strategic renewal negotiation. Focus on AT&T's enterprise communications needs and Kandy's unique CPaaS positioning.",
+      "reasoning": "AT&T as a major telecom provider understands the strategic value of communications platforms and has budget authority for enterprise solutions. The 30-day renewal window creates urgency, and their 89.5% retention rate indicates satisfaction with the product despite pricing pressure.",
       "specificActions": [
-        "Day 1-3: Conduct emergency usage analysis across all 4 products to identify underutilized features worth $150K+ annually",
-        "Day 4-7: Schedule C-level stakeholder meeting with AT&T to present ROI analysis and competitive pricing benchmarks",
-        "Day 8-14: Propose tiered pricing model with 7% increase ($125K) tied to expanded feature access and dedicated support",
-        "Day 15-21: Negotiate contract restructuring with multi-year commitment discount to secure 6% net pricing improvement",
-        "Day 22-28: Finalize renewal with pricing recovery and document value realization plan for ongoing relationship"
+        "Week 1: Conduct executive stakeholder meeting with AT&T's procurement and technical teams to present comprehensive ROI analysis showing $2.1M in cost savings from Kandy integration",
+        "Week 2: Deliver competitive pricing analysis demonstrating AT&T is paying 10.5% below market rate, positioning increase as market alignment rather than penalty",
+        "Week 3: Propose tiered pricing structure with 8.5% base increase ($153K ARR recovery) plus usage-based scaling tied to AT&T's customer growth metrics",
+        "Week 4: Present multi-year contract option (2-3 years) with 6% annual increases capped at market rate, offering 90-day implementation support as renewal incentive",
+        "Ongoing: Establish quarterly business reviews with C-suite sponsor to maintain value visibility and prevent future pricing erosion"
       ],
-      "expectedArrImpact": 125000,
-      "expectedDmImpact": 6.5,
+      "expectedArrImpact": 153000,
+      "expectedDmImpact": 8.5,
       "confidence": "medium",
       "timelineWeeks": 4,
       "ownerTeam": "Account Management",
       "risks": [
-        "AT&T may resist pricing increases citing budget constraints",
-        "Competitive alternatives could be leveraged to maintain lower pricing"
+        "AT&T may leverage competitive alternatives during renewal negotiation",
+        "Procurement team may resist any price increase given current economic pressures"
       ],
       "successFactors": [
-        "Clear ROI demonstration with specific telecom industry metrics",
-        "Executive-level relationship leverage and strategic partnership positioning",
-        "Flexible contract terms that provide AT&T perceived value while recovering pricing"
+        "Strong executive sponsorship from AT&T's technology leadership who understands CPaaS strategic value",
+        "Documented ROI metrics and cost savings that justify premium pricing position",
+        "Multi-year contract structure that provides AT&T budget predictability while securing pricing recovery"
       ],
       "metrics": {
         "currentARR": 1798094.55,
@@ -228,36 +228,36 @@
         "daysToRenewal": 30,
         "productCount": 4
       },
-      "generatedAt": "2026-02-13T14:24:03.132Z"
+      "generatedAt": "2026-02-13T14:32:52.488Z"
     },
     {
       "opportunityId": "informa-uk-limited-churn_risk",
       "accountName": "Informa UK Limited",
       "bu": "Cloudsense",
       "type": "churn_risk",
-      "title": "120-Day Renewal Recovery with Executive Business Review",
-      "description": "Execute an immediate executive business review program with Informa UK's C-suite to identify specific pain points causing the 10.4% revenue decline and health score drop. Position CloudSense as essential to their digital transformation goals while negotiating a bridge contract to allow time for value demonstration.",
-      "reasoning": "As a major UK publishing and events company, Informa likely faces post-pandemic digital transformation pressures. The 59 health score suggests specific feature gaps or adoption issues rather than fundamental product rejection. With 120 days remaining, there's sufficient time for a structured recovery approach that addresses their enterprise publishing workflow needs.",
+      "title": "Executive Value Audit & Expansion Roadmap Initiative",
+      "description": "Conduct a comprehensive C-level business value assessment within 30 days to identify underutilized CloudSense capabilities and create a 6-month expansion roadmap. Position renewal as a strategic growth partnership rather than a cost center discussion.",
+      "reasoning": "With 120 days to renewal and declining revenue, we need to shift from defensive retention to offensive value creation. Informa UK is a large media conglomerate that likely has untapped use cases across their diverse portfolio of brands and events - CloudSense's single product deployment suggests significant expansion potential.",
       "specificActions": [
-        "Week 1: Schedule C-level executive business review with Informa's CTO and Head of Digital within 10 days, involving CloudSense VP of Customer Success",
-        "Week 2-3: Conduct detailed usage analysis of their single CloudSense product, identifying specific features causing the 10.4% usage decline and document 3-5 critical pain points",
-        "Week 4-6: Deploy dedicated CloudSense solution architect for 30-day intensive optimization, focusing on Informa's event management and content publishing workflows",
-        "Week 8: Present customized ROI analysis showing potential $200K+ annual savings through improved CloudSense utilization, with specific metrics tied to their publishing operations",
-        "Week 10-12: Negotiate 6-month bridge renewal at 95% of current ARR ($391,820) with performance milestones tied to health score improvements"
+        "Week 1: Schedule C-level executive business review with Informa's CTO and Operations Director to audit current CloudSense utilization across all business units",
+        "Week 2-3: Conduct technical assessment of their current single product implementation and identify 3-5 specific expansion opportunities (additional products, user seats, or advanced features)",
+        "Week 4: Present detailed ROI analysis showing potential $200K+ value from expanded CloudSense usage across Informa's events, publishing, and intelligence divisions",
+        "Week 6: Propose 18-month strategic partnership agreement with 15% discount on expansion in exchange for 2-year commitment",
+        "Week 8: Implement quick-win enhancement to current product (within 30 days) to demonstrate immediate value and improve health score"
       ],
-      "expectedArrImpact": 350000,
-      "expectedDmImpact": 8.5,
+      "expectedArrImpact": 85000,
+      "expectedDmImpact": 25.4,
       "confidence": "medium",
-      "timelineWeeks": 12,
-      "ownerTeam": "Customer Success",
+      "timelineWeeks": 8,
+      "ownerTeam": "Account Management",
       "risks": [
-        "Informa may have already selected a competitive solution and be in advanced procurement",
-        "Executive stakeholders may not be available for intensive engagement during their busy Q4 period"
+        "Executive stakeholders may not be available for deep-dive sessions",
+        "Competitive solution may already be in evaluation phase"
       ],
       "successFactors": [
-        "Ability to demonstrate measurable ROI improvements within the 30-day solution architect engagement period",
-        "Strong existing relationships with Informa's technical team to facilitate C-level introductions",
-        "CloudSense's willingness to offer flexible contract terms and dedicated resources for this high-value recovery effort"
+        "Securing C-level engagement early in the process",
+        "Demonstrating tangible ROI across Informa's diverse business portfolio",
+        "Delivering quick-win improvement to boost confidence before renewal discussions"
       ],
       "metrics": {
         "currentARR": 412442.44,
@@ -266,36 +266,36 @@
         "daysToRenewal": 120,
         "productCount": 1
       },
-      "generatedAt": "2026-02-13T14:24:19.979Z"
+      "generatedAt": "2026-02-13T14:33:07.129Z"
     },
     {
       "opportunityId": "hertz-europe-limited-churn_risk",
       "accountName": "HERTZ EUROPE LIMITED",
       "bu": "Kandy",
       "type": "churn_risk",
-      "title": "Emergency Hertz Europe Value Recovery & Renewal Rescue",
-      "description": "Execute immediate C-level engagement with comprehensive business case review and competitive retention package. Deploy senior technical resources for rapid issue resolution while presenting strategic expansion opportunities tied to Hertz's European fleet digitization needs.",
-      "reasoning": "Hertz Europe's 10.8% revenue decline with 30-day renewal window requires immediate executive intervention. As a major European car rental operator, they likely face post-pandemic operational challenges where Kandy's communication solutions could be repositioned as cost-saving fleet management tools rather than just communication services.",
+      "title": "Emergency Fleet Communications Value Recovery Program",
+      "description": "Launch an immediate 3-week intensive program to demonstrate Kandy's critical value to Hertz's European fleet operations through usage optimization, competitive differentiation showcase, and executive alignment. Focus on quantifying communication cost savings and operational efficiency gains specific to their rental car fleet management.",
+      "reasoning": "Hertz operates a complex European fleet requiring reliable communications infrastructure - exactly Kandy's strength. The 10.8% revenue decline suggests underutilization rather than product failure. With 30 days to renewal, there's sufficient time for a focused value demonstration that addresses their specific fleet communication challenges across multiple European markets.",
       "specificActions": [
-        "Day 1-3: CSM schedules emergency C-level call with Hertz Europe IT Director and CFO, bringing Kandy VP of Sales for authority",
-        "Day 4-7: Technical audit team conducts comprehensive platform health check and identifies specific pain points causing dissatisfaction",
-        "Day 8-14: Present customized ROI analysis showing Kandy's impact on Hertz's customer service efficiency and cost per rental transaction",
-        "Day 15-21: Offer 15% discount on renewal plus free implementation of additional Kandy features for fleet communication optimization",
-        "Day 22-28: Negotiate multi-year deal with graduated pricing and success-based milestones tied to Hertz's operational KPIs"
+        "Day 1-3: Conduct emergency usage audit to identify underutilized Kandy features and quantify current communication costs vs. potential savings",
+        "Day 4-7: Schedule C-level executive briefing with Hertz EU leadership presenting fleet-specific ROI analysis and competitive landscape positioning",
+        "Day 8-14: Deploy dedicated technical consultant to optimize current Kandy implementation for peak fleet season (30-day pilot)",
+        "Day 15-18: Present renewal proposal with 15% discount contingent on expanded usage commitment, targeting $53,000 ARR",
+        "Day 19-21: Secure multi-year agreement with quarterly business reviews and dedicated fleet communications roadmap"
       ],
-      "expectedArrImpact": 8500,
-      "expectedDmImpact": 15,
+      "expectedArrImpact": 6465,
+      "expectedDmImpact": 25,
       "confidence": "medium",
-      "timelineWeeks": 4,
+      "timelineWeeks": 3,
       "ownerTeam": "Account Management",
       "risks": [
         "Hertz may have already committed to competitor solution",
-        "Budget constraints from post-pandemic recovery may limit negotiation flexibility"
+        "Technical optimization may reveal deeper integration issues requiring longer timeline"
       ],
       "successFactors": [
-        "Direct access to Hertz Europe's decision-makers within 72 hours",
-        "Ability to demonstrate immediate technical improvements and cost savings",
-        "Flexibility to offer competitive pricing while maintaining margin requirements"
+        "Executive engagement and buy-in from Hertz EU leadership",
+        "Demonstrable improvement in fleet communication efficiency within 2-week pilot",
+        "Clear ROI presentation linking Kandy features to Hertz's specific European fleet operational challenges"
       ],
       "metrics": {
         "currentARR": 46534.91,
@@ -304,37 +304,36 @@
         "daysToRenewal": 30,
         "productCount": 1
       },
-      "generatedAt": "2026-02-13T14:24:34.715Z"
+      "generatedAt": "2026-02-13T14:33:22.704Z"
     },
     {
       "opportunityId": "at&t-services,-inc.-churn_risk",
       "accountName": "AT&T SERVICES, INC.",
       "bu": "Kandy",
       "type": "churn_risk",
-      "title": "AT&T Executive Renewal Summit + Product Optimization Plan",
-      "description": "Execute a 3-week intensive engagement starting with a C-level executive summit to address dissatisfaction, followed by immediate product optimization and competitive positioning. Target recovering $189K in at-risk revenue through strategic realignment and value demonstration.",
-      "reasoning": "AT&T's size and 4-product complexity suggests organizational misalignment rather than product failure. A high-touch executive approach leverages their enterprise decision-making structure, while the 30-day window creates urgency that can accelerate commitment if handled strategically.",
+      "title": "AT&T Executive Recovery Sprint with Kandy Roadmap Alignment",
+      "description": "Launch an immediate 3-week executive engagement program to address AT&T's dissatisfaction through direct C-level meetings, competitive analysis defense, and exclusive early access to Kandy's Q2 2024 enterprise features. Target full ARR retention plus 15% expansion through strategic roadmap alignment.",
+      "reasoning": "AT&T's size ($1.8M ARR) and telecom industry position make them ideal for executive-level engagement and early access programs. Their 10.5% revenue decline suggests specific unmet needs rather than broad dissatisfaction, which can be addressed through strategic product roadmap discussions and competitive positioning.",
       "specificActions": [
-        "Week 1: Schedule C-level executive summit with AT&T leadership (CSO, CTO) and our CEO/VP by Day 3, focusing on strategic roadmap alignment and competitive differentiation",
-        "Week 1-2: Conduct technical deep-dive audit of all 4 products with AT&T's technical teams, identifying 3-5 specific optimization opportunities and usage gaps",
-        "Week 2: Present customized ROI analysis showing $2.5M+ value realization over next 24 months, including competitive TCO comparison against top 2 alternatives",
-        "Week 2-3: Negotiate 18-month renewal with 15% discount ($269K reduction) in exchange for expanded commitment to underutilized products and case study participation",
-        "Week 3: Implement dedicated AT&T success pod with weekly check-ins and quarterly business reviews for next 6 months"
+        "Week 1: Schedule C-level meeting between Kandy's VP/GM and AT&T's telecom technology leadership within 5 business days to discuss strategic partnership expansion",
+        "Week 1: Conduct detailed competitive threat assessment - interview 3 key AT&T stakeholders to identify specific competitor advantages they're considering",
+        "Week 2: Present exclusive Q2 2024 Kandy enterprise roadmap preview with 2-3 features specifically addressing AT&T's identified pain points",
+        "Week 2: Offer 6-month early access beta program for new enterprise features at current pricing locked through 2025",
+        "Week 3: Deliver comprehensive ROI analysis showing AT&T's current Kandy utilization vs. potential with roadmap features, targeting 25% efficiency gains"
       ],
-      "expectedArrImpact": 189000,
-      "expectedDmImpact": 8.5,
+      "expectedArrImpact": 269714,
+      "expectedDmImpact": 25.5,
       "confidence": "medium",
       "timelineWeeks": 3,
       "ownerTeam": "Account Management",
       "risks": [
-        "Executive summit could expose deeper strategic misalignment",
-        "Discount expectation may become precedent for future negotiations",
-        "30-day timeline may be insufficient for complex enterprise decision-making"
+        "Executive meetings may reveal deeper strategic misalignment",
+        "Competitor may counter with aggressive pricing during 3-week window"
       ],
       "successFactors": [
-        "Securing C-level participation in executive summit within 5 business days",
-        "Identifying and addressing specific technical/usage gaps in product audit",
-        "Demonstrating clear competitive advantages and switching costs during ROI presentation"
+        "AT&T's telecom expertise aligns with Kandy's communication platform strengths",
+        "Early access programs typically drive 20-30% higher retention for enterprise accounts",
+        "Executive-level engagement creates strategic partnership momentum beyond single renewal cycle"
       ],
       "metrics": {
         "currentARR": 1798094.55,
@@ -343,36 +342,36 @@
         "daysToRenewal": 30,
         "productCount": 4
       },
-      "generatedAt": "2026-02-13T14:24:50.351Z"
+      "generatedAt": "2026-02-13T14:33:38.236Z"
     },
     {
       "opportunityId": "vodafone-netherlands-pricing",
       "accountName": "Vodafone Netherlands",
       "bu": "Cloudsense",
       "type": "pricing",
-      "title": "Vodafone NL Value-Based Pricing Recovery Initiative",
-      "description": "Execute a comprehensive pricing recovery strategy targeting $200K+ ARR increase through competitive benchmarking, value demonstration, and strategic contract restructuring. Focus on justifying price increases through ROI documentation and expanded service offerings.",
-      "reasoning": "Vodafone Netherlands is a Tier 1 telecom with strong market position and ability to pay market rates. The 13.5% pricing decline suggests previous contract negotiations under pressure rather than actual value reduction. With 365 days to renewal and 4 products deployed, there's sufficient time to demonstrate value and justify pricing alignment with 93.4% peer average.",
+      "title": "Vodafone NL Value-Based Pricing Recovery Program",
+      "description": "Execute a structured 3-phase approach to recover $200K+ ARR through value demonstration, competitive benchmarking, and strategic pricing realignment. Target 6-8% price increase through enhanced service tiers and proven ROI documentation.",
+      "reasoning": "Vodafone Netherlands, as a major telecom operator, values data-driven justification for pricing changes. Their 86.5% retention rate vs 93.4% peer average indicates room for improvement through better value articulation rather than pure cost competition. The 365-day renewal runway provides sufficient time for relationship building and value proof.",
       "specificActions": [
-        "Week 2: Conduct competitive pricing analysis for Vodafone's market segment and prepare benchmarking report showing 15-20% pricing gap vs peers",
-        "Week 4: Schedule executive business review with Vodafone's procurement and IT leadership to present ROI analysis and value realization metrics",
-        "Week 8: Propose tiered pricing model with 12% base increase ($220K) plus optional premium features worth additional $80K ARR",
-        "Week 12: Negotiate contract amendment for mid-cycle pricing adjustment of 8% ($147K) effective in 6 months, with full pricing in renewal",
-        "Week 16: Implement quarterly value reporting dashboard to justify pricing and prevent future reductions"
+        "Week 1-2: Conduct comprehensive usage audit across all 4 products to identify underutilized features worth $50K+ annually",
+        "Week 3-4: CSM to schedule executive business review with Vodafone's IT and Finance leads, presenting ROI analysis showing 15-20% operational efficiency gains",
+        "Week 5-8: Account Manager to develop tiered service proposal with premium support level (+$75K) and advanced analytics module (+$125K)",
+        "Week 9-10: Present competitive analysis showing Vodafone's current pricing is 12% below market rate for similar telecom operators",
+        "Week 11-12: Negotiate phased price increase: 4% at renewal + 4% at month 6, contingent on achieving agreed KPIs"
       ],
-      "expectedArrImpact": 220000,
-      "expectedDmImpact": 6.9,
+      "expectedArrImpact": 225000,
+      "expectedDmImpact": 6.5,
       "confidence": "medium",
-      "timelineWeeks": 16,
+      "timelineWeeks": 12,
       "ownerTeam": "Account Management",
       "risks": [
-        "Vodafone may resist mid-cycle pricing changes and wait for renewal",
-        "Competitive alternatives could be introduced during negotiation period"
+        "Vodafone may leverage competitive alternatives during price negotiation",
+        "Internal budget constraints in telecom industry could delay approval process"
       ],
       "successFactors": [
-        "Strong ROI documentation showing measurable business impact from CloudSense platform",
-        "Executive-level relationship building with decision makers beyond procurement",
-        "Flexible pricing structure offering value-add options rather than flat increases"
+        "Strong quantitative ROI documentation showing measurable business impact",
+        "Executive-level relationship building with both IT and procurement stakeholders",
+        "Gradual implementation approach that ties price increases to value delivery milestones"
       ],
       "metrics": {
         "currentARR": 1843190.03,
@@ -381,7 +380,767 @@
         "daysToRenewal": 365,
         "productCount": 4
       },
-      "generatedAt": "2026-02-13T14:25:05.546Z"
+      "generatedAt": "2026-02-13T14:33:52.453Z"
+    },
+    {
+      "opportunityId": "advance-publications-us-upsell",
+      "accountName": "Advance Publications US",
+      "bu": "Cloudsense",
+      "type": "upsell",
+      "title": "Q1 2024 Product Expansion Campaign for Advance Publications",
+      "description": "Launch a targeted 12-week expansion campaign to introduce Advanced Analytics Suite and Workflow Automation to Advance Publications, leveraging their strong satisfaction with existing CloudSense products. Focus on demonstrating ROI through their current CPQ and configuration workflows.",
+      "reasoning": "With 96.8% retention and $659K ARR, Advance Publications has proven budget authority and satisfaction with CloudSense. As a media company, they likely have complex approval workflows and need detailed analytics for their publishing operations - perfect fit for our Advanced Analytics and Workflow Automation products.",
+      "specificActions": [
+        "Week 1-2: CSM conducts usage analysis of current CPQ Core and Advanced Configuration Engine to identify 3-4 specific workflow pain points",
+        "Week 3-4: Schedule executive business review with Advance Publications' IT Director and Finance lead to present expansion roadmap with ROI projections",
+        "Week 5-8: Deliver customized 2-week pilot of Advanced Analytics Suite focusing on their quote-to-cash cycle metrics",
+        "Week 9-10: Present pilot results showing projected 15-20% efficiency gains and propose Workflow Automation integration",
+        "Week 11-12: Negotiate expansion contract with 6-month implementation timeline starting Q2 2024"
+      ],
+      "expectedArrImpact": 230000,
+      "expectedDmImpact": 1.5,
+      "confidence": "high",
+      "timelineWeeks": 12,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Budget freeze due to media industry economic pressures",
+        "Internal IT resource constraints for new product implementation"
+      ],
+      "successFactors": [
+        "Demonstrate clear ROI using their actual CPQ data during pilot phase",
+        "Align expansion timeline with their fiscal year budget planning (likely Q4)",
+        "Leverage existing strong relationship and 77 health score to gain executive access"
+      ],
+      "metrics": {
+        "currentARR": 659200,
+        "healthScore": 77,
+        "dmPercent": 96.8,
+        "daysToRenewal": 365,
+        "productCount": 2
+      },
+      "generatedAt": "2026-02-13T14:34:06.551Z"
+    },
+    {
+      "opportunityId": "virgin-media-limited-upsell",
+      "accountName": "Virgin Media Limited",
+      "bu": "Cloudsense",
+      "type": "upsell",
+      "title": "Virgin Media Product Portfolio Expansion Initiative",
+      "description": "Launch a structured 8-week expansion campaign targeting Virgin Media's telecom-specific needs with CloudSense Revenue Management and Billing Solutions. Position this as a strategic partnership expansion leveraging their current success with CPQ Core and Advanced Configuration Engine.",
+      "reasoning": "Virgin Media's 95.6% retention rate and $655K ARR indicates strong product-market fit and budget authority. As a major telecom provider, they likely have complex revenue recognition and billing challenges that CloudSense's additional products directly address. Their current 2-product usage is significantly below the 4-5 product average for similar enterprise telecom accounts.",
+      "specificActions": [
+        "Week 1-2: Conduct stakeholder mapping session with Virgin Media's Finance and IT teams to identify revenue management pain points, targeting 3-4 decision makers",
+        "Week 3: Present customized ROI analysis showing potential 15-20% billing process efficiency gains using Virgin Media's current transaction volumes",
+        "Week 4-5: Arrange technical demonstration of Revenue Management module integrated with their existing CPQ setup, involving Virgin Media's technical team",
+        "Week 6: Propose pilot program for Revenue Management on 2-3 Virgin Media service lines with 90-day evaluation period",
+        "Week 7-8: Negotiate expansion contract with target implementation start date 30 days before renewal"
+      ],
+      "expectedArrImpact": 180000,
+      "expectedDmImpact": 2.5,
+      "confidence": "high",
+      "timelineWeeks": 8,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Virgin Media may have existing billing system integrations that create technical barriers",
+        "Budget approval cycles for telecom companies can extend beyond 120-day renewal window"
+      ],
+      "successFactors": [
+        "Leverage existing strong relationship and 77 health score to gain access to Finance stakeholders",
+        "Focus on telecom-specific use cases and ROI metrics that resonate with Virgin Media's business model",
+        "Position expansion as enhancement to existing successful CloudSense implementation rather than new vendor relationship"
+      ],
+      "metrics": {
+        "currentARR": 655607.51,
+        "healthScore": 77,
+        "dmPercent": 95.6,
+        "daysToRenewal": 120,
+        "productCount": 2
+      },
+      "generatedAt": "2026-02-13T14:34:21.875Z"
+    },
+    {
+      "opportunityId": "foxtel-management-pty-limited-upsell",
+      "accountName": "Foxtel Management Pty Limited",
+      "bu": "Cloudsense",
+      "type": "upsell",
+      "title": "Q2 Product Expansion: Target 2 Additional CloudSense Modules",
+      "description": "Execute a structured product expansion campaign targeting Foxtel's proven success with CPQ Core and Advanced Configuration Engine to introduce Quote-to-Cash Analytics and Pricing Optimization modules. Leverage their 103.1% retention rate and $640K ARR to justify expanded investment in Q2 2024.",
+      "reasoning": "Foxtel's exceptional health score (95) and positive growth (103.1% DM) indicate they're extracting significant value from current CloudSense products, making them ideal for expansion. Their substantial ARR suggests budget authority exists, and the 365-day renewal window provides perfect timing for a mid-contract expansion discussion without renewal pressure.",
+      "specificActions": [
+        "Week 1-2: CSM schedules executive business review with Foxtel's procurement and IT leads to present ROI analysis showing 15-20% efficiency gains from Quote-to-Cash Analytics",
+        "Week 3-4: Technical team conducts proof-of-concept demo using Foxtel's actual CPQ data to showcase Pricing Optimization module integration capabilities",
+        "Week 5-6: Account Manager presents tiered expansion proposal: $180K for Analytics module alone or $280K for both modules with 15% bundle discount",
+        "Week 7-8: Negotiate pilot program: 90-day trial of both modules at 50% cost ($140K) with full conversion option",
+        "Week 9-12: Implementation support and success measurement against agreed KPIs (quote processing time, pricing accuracy)"
+      ],
+      "expectedArrImpact": 240000,
+      "expectedDmImpact": 5.2,
+      "confidence": "high",
+      "timelineWeeks": 12,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Internal budget freezes due to economic conditions",
+        "Competing technology initiatives consuming IT resources"
+      ],
+      "successFactors": [
+        "Demonstrable ROI using Foxtel's actual data and use cases",
+        "Executive sponsorship from current CloudSense champions",
+        "Flexible pilot structure reducing perceived implementation risk"
+      ],
+      "metrics": {
+        "currentARR": 640260.52,
+        "healthScore": 95,
+        "dmPercent": 103.1,
+        "daysToRenewal": 365,
+        "productCount": 2
+      },
+      "generatedAt": "2026-02-13T14:34:36.971Z"
+    },
+    {
+      "opportunityId": "telefonica-uk-limited-pricing",
+      "accountName": "Telefonica UK Limited",
+      "bu": "Cloudsense",
+      "type": "pricing",
+      "title": "Telefonica Value-Based Pricing Recovery Initiative",
+      "description": "Execute a structured pricing recovery plan targeting $200K+ ARR increase through value demonstration, competitive benchmarking, and strategic renewal negotiation. Focus on demonstrating ROI from existing 4 products while positioning premium features that align with Telefonica's digital transformation goals.",
+      "reasoning": "As a major telecom operator, Telefonica UK values operational efficiency and competitive differentiation. The 12.6% pricing decline suggests previous negotiations focused on cost reduction rather than value delivery. With 30 days to renewal and 4 active products, there's opportunity to demonstrate consolidated value and justify market-rate pricing through measurable business impact metrics.",
+      "specificActions": [
+        "Week 1: Conduct comprehensive value audit with Telefonica stakeholders to quantify ROI from all 4 CloudSense products, targeting 3 key business metrics (cost savings, efficiency gains, revenue impact)",
+        "Week 2: Prepare competitive pricing analysis showing Telefonica's current rates are 15-20% below market average, supported by 3 peer telecom case studies and feature comparison matrix",
+        "Week 3: Present tiered renewal proposal with current pricing (+8% adjustment to $2,273,246), market-rate option (+15% to $2,420,586), and premium package (+20% with additional features at $2,525,829)",
+        "Week 4: Negotiate final terms with CFO and procurement, emphasizing multi-year commitment discount (5% off for 2-year term) and success-based pricing guarantees",
+        "Week 5: Execute renewal with minimum 8% price increase and establish quarterly business reviews to prevent future pricing erosion"
+      ],
+      "expectedArrImpact": 215000,
+      "expectedDmImpact": 3.2,
+      "confidence": "medium",
+      "timelineWeeks": 5,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Telefonica may leverage competitive alternatives during negotiation given tight timeline",
+        "Economic pressures in telecom sector could limit budget flexibility for price increases"
+      ],
+      "successFactors": [
+        "Strong quantified value story demonstrating measurable business impact from existing products",
+        "Executive-level relationships with both technical and financial decision makers",
+        "Competitive differentiation evidence showing unique CloudSense capabilities vs alternatives"
+      ],
+      "metrics": {
+        "currentARR": 2104857.01,
+        "healthScore": 56,
+        "dmPercent": 87.4,
+        "daysToRenewal": 30,
+        "productCount": 4
+      },
+      "generatedAt": "2026-02-13T14:34:53.470Z"
+    },
+    {
+      "opportunityId": "postnl-holding-bv-upsell",
+      "accountName": "PostNL Holding BV",
+      "bu": "Cloudsense",
+      "type": "upsell",
+      "title": "PostNL Product Expansion via ROI-Driven Pilot Program",
+      "description": "Launch a 90-day pilot program introducing PostNL to CloudSense Pricing Optimization and Quote Analytics modules, leveraging their strong CPQ foundation. Position this as a strategic initiative to maximize their existing investment while demonstrating measurable ROI through their complex logistics pricing scenarios.",
+      "reasoning": "PostNL's high health score (82) and retention rate (95.3%) indicate strong satisfaction with current CloudSense products, making them ideal for expansion. As a major logistics company, they likely have complex pricing scenarios that would benefit significantly from advanced pricing optimization and analytics capabilities that complement their existing CPQ setup.",
+      "specificActions": [
+        "Week 1-2: Schedule executive briefing with PostNL's procurement and operations teams to present logistics-specific ROI case studies from similar CloudSense customers",
+        "Week 3-4: Configure 90-day pilot of Pricing Optimization module using PostNL's actual shipping rate data, with success metrics defined as 3-5% pricing efficiency improvement",
+        "Week 6-8: Conduct mid-pilot business review showcasing preliminary results and introduce Quote Analytics for pipeline visibility enhancement",
+        "Week 10-12: Present comprehensive ROI analysis with projected annual savings of €150K+ and formal expansion proposal for both modules",
+        "Week 13-16: Negotiate pilot-to-purchase conversion with 15% discount incentive for Q1 commitment"
+      ],
+      "expectedArrImpact": 180000,
+      "expectedDmImpact": 2.5,
+      "confidence": "high",
+      "timelineWeeks": 16,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Pilot may not demonstrate sufficient ROI in PostNL's specific logistics use cases",
+        "Internal budget constraints despite strong ARR, given economic pressures in logistics sector"
+      ],
+      "successFactors": [
+        "Strong existing relationship and high satisfaction scores provide foundation for expansion conversations",
+        "Logistics industry complexity creates natural fit for advanced pricing and analytics capabilities",
+        "Pilot approach reduces risk and allows PostNL to validate value before full commitment"
+      ],
+      "metrics": {
+        "currentARR": 576494.75,
+        "healthScore": 82,
+        "dmPercent": 95.3,
+        "daysToRenewal": 365,
+        "productCount": 2
+      },
+      "generatedAt": "2026-02-13T14:35:08.731Z"
+    },
+    {
+      "opportunityId": "a1-telekom-austria-ag.-churn_risk",
+      "accountName": "A1 Telekom Austria AG.",
+      "bu": "Cloudsense",
+      "type": "churn_risk",
+      "title": "90-Day Value Recovery & Expansion Sprint for A1 Telekom",
+      "description": "Execute a comprehensive value demonstration and product optimization program targeting A1 Telekom's specific telco challenges. Deploy dedicated CloudSense experts to conduct deep-dive usage analysis, implement custom integrations, and present a strategic roadmap that positions CloudSense as critical infrastructure for their digital transformation initiatives.",
+      "reasoning": "A1 Telekom Austria is a major telecommunications provider undergoing digital transformation, making them highly receptive to solutions that demonstrate clear operational value. The 120-day renewal window provides sufficient time for a structured value recovery program, while their substantial $520K ARR indicates they have budget and see strategic value in CloudSense capabilities.",
+      "specificActions": [
+        "Week 1-2: Deploy CloudSense solution architect for 3-day on-site assessment to identify underutilized features and integration gaps with A1's existing telco infrastructure",
+        "Week 3-4: Present customized ROI analysis showing potential 25% operational cost savings and deliver quick-win implementations of 2-3 high-impact CloudSense features",
+        "Week 5-8: Implement dedicated CloudSense connector for A1's OSS/BSS systems and provide specialized training for 8-10 key A1 technical users",
+        "Week 9-10: Conduct executive business review with A1 C-level presenting 12-month strategic roadmap and propose expansion into network automation use cases worth $200K additional ARR",
+        "Week 11-12: Negotiate renewal with 15% discount on expanded contract to secure 105% net retention and 3-year commitment"
+      ],
+      "expectedArrImpact": 150000,
+      "expectedDmImpact": 18.8,
+      "confidence": "medium",
+      "timelineWeeks": 12,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "A1 may have already committed to competitive solution during evaluation period",
+        "Custom integration complexity could delay value demonstration beyond renewal deadline"
+      ],
+      "successFactors": [
+        "A1's active digital transformation initiatives create natural alignment with CloudSense capabilities",
+        "Substantial existing ARR indicates proven budget and strategic commitment to cloud solutions",
+        "120-day timeline allows for comprehensive value demonstration and relationship rebuilding"
+      ],
+      "metrics": {
+        "currentARR": 520967.79,
+        "healthScore": 64,
+        "dmPercent": 86.2,
+        "daysToRenewal": 120,
+        "productCount": 2
+      },
+      "generatedAt": "2026-02-13T14:35:25.404Z"
+    },
+    {
+      "opportunityId": "issquared,-inc.-contract_optimization",
+      "accountName": "ISSQUARED, INC.",
+      "bu": "Kandy",
+      "type": "contract_optimization",
+      "title": "3-Year Early Renewal with 15% Discount & Usage Tier Upgrade",
+      "description": "Propose immediate 3-year contract renewal with 15% annual discount in exchange for 20% ARR increase through usage tier upgrade and additional product adoption. Lock in $354K ARR with $708K total contract value over 3 years.",
+      "reasoning": "With 95.1% retention rate and 77 health score, ISSQUARED shows strong product satisfaction and low churn risk. Their single-product usage suggests untapped expansion potential, making them ideal for a multi-year commitment with immediate upsell.",
+      "specificActions": [
+        "Action 1: Schedule renewal strategy call with ISSQUARED by Day 3, presenting 3-year proposal with detailed ROI analysis",
+        "Action 2: Prepare usage analytics report by Day 5 showing current utilization vs. next tier benefits to justify upgrade",
+        "Action 3: Offer 48-hour decision window (Days 8-10) with additional 5% early-bird discount for immediate signature",
+        "Action 4: Present complementary Kandy product demo by Day 12 to showcase integrated solution value",
+        "Action 5: Execute contract signing by Day 15 with implementation timeline for upgraded features"
+      ],
+      "expectedArrImpact": 59000,
+      "expectedDmImpact": 4.9,
+      "confidence": "high",
+      "timelineWeeks": 3,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer may prefer annual flexibility over 3-year commitment",
+        "Budget approval delays for 20% ARR increase"
+      ],
+      "successFactors": [
+        "Strong existing relationship evidenced by 95.1% retention",
+        "Healthy account score provides negotiation leverage",
+        "30-day renewal urgency creates decision catalyst"
+      ],
+      "metrics": {
+        "currentARR": 295121.61,
+        "healthScore": 77,
+        "dmPercent": 95.1,
+        "daysToRenewal": 30,
+        "productCount": 1
+      },
+      "generatedAt": "2026-02-13T14:35:39.030Z"
+    },
+    {
+      "opportunityId": "ericsson-telecommunications,-inc.-contract_optimization",
+      "accountName": "Ericsson Telecommunications, Inc.",
+      "bu": "STL",
+      "type": "contract_optimization",
+      "title": "3-Year Early Renewal with 15% Uplift + Multi-Product Bundle",
+      "description": "Propose immediate early renewal to 3-year contract with 15% ARR increase ($203,437) plus introduction of complementary STL products. Leverage their excellent health score and 123% retention rate as negotiation strength for multi-year commitment discount.",
+      "reasoning": "With 97/100 health score and 123% retention rate, Ericsson is clearly deriving strong value and expanding usage. Their telecommunications industry requires long-term stability, making multi-year contracts attractive. The 30-day renewal window creates urgency while their strong metrics give us negotiation leverage.",
+      "specificActions": [
+        "Week 1: Schedule C-level meeting with Ericsson's procurement and IT leadership to present 3-year early renewal proposal with 15% increase to $203,437 ARR",
+        "Week 2: Conduct technical deep-dive session showcasing 2 complementary STL products that align with their telecommunications infrastructure needs",
+        "Week 3: Present formal contract proposal with 3-year terms, 15% uplift, 5% multi-year discount, and pilot pricing for additional products",
+        "Week 4: Negotiate final terms and execute contract 1 week before current renewal deadline",
+        "Week 5-6: Implement contract changes and initiate onboarding for any additional products"
+      ],
+      "expectedArrImpact": 26535,
+      "expectedDmImpact": 12,
+      "confidence": "high",
+      "timelineWeeks": 6,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Procurement may resist 15% increase despite strong performance metrics",
+        "Competitor interference during extended negotiation period"
+      ],
+      "successFactors": [
+        "Leverage their 123% retention rate as proof of expanding value and justify price increase",
+        "Position multi-year contract as strategic partnership with telecommunications industry expertise",
+        "Use their 97/100 health score to demonstrate ROI and reduce perceived risk of longer commitment"
+      ],
+      "metrics": {
+        "currentARR": 176902.02,
+        "healthScore": 97,
+        "dmPercent": 123,
+        "daysToRenewal": 30,
+        "productCount": 1
+      },
+      "generatedAt": "2026-02-13T14:35:53.245Z"
+    },
+    {
+      "opportunityId": "hargray-communications-group-contract_optimization",
+      "accountName": "HARGRAY COMMUNICATIONS GROUP",
+      "bu": "Kandy",
+      "type": "contract_optimization",
+      "title": "3-Year Early Renewal with 18% ARR Uplift Strategy",
+      "description": "Execute an early renewal strategy offering HARGRAY a 3-year contract with expanded Kandy capabilities and volume-based pricing tiers to capture growth potential. Leverage their strong health score (76) and high retention rate (92.7%) to secure commitment before the 30-day renewal deadline.",
+      "reasoning": "HARGRAY's telecommunications background and single-product usage suggests untapped potential for Kandy's full communication suite. Their strong retention rate indicates satisfaction, making them ideal candidates for multi-year commitment with expanded services. The 30-day window creates urgency for negotiation leverage.",
+      "specificActions": [
+        "Week 1: Schedule executive alignment call with HARGRAY's IT Director and CFO to present 3-year strategic roadmap and pricing proposal by Day 7",
+        "Week 2: Deliver detailed ROI analysis showing 23% cost savings over 3 years vs annual renewals, plus expanded user capacity from 500 to 750 seats",
+        "Week 3: Propose pilot expansion of 2 additional Kandy modules (Video Conferencing + Contact Center) with 90-day trial included in new contract",
+        "Week 4: Present final contract with 12% discount on Year 1, 8% on Year 2, standard pricing Year 3, contingent on signing 10 days before current renewal date",
+        "Week 4: Include quarterly business reviews and dedicated CSM assignment as value-adds to justify premium positioning"
+      ],
+      "expectedArrImpact": 28500,
+      "expectedDmImpact": 5.3,
+      "confidence": "medium",
+      "timelineWeeks": 4,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer may prefer flexibility of annual contracts in uncertain economic climate",
+        "Budget approval for increased commitment may require longer decision cycle than 30 days"
+      ],
+      "successFactors": [
+        "Strong existing relationship evidenced by 92.7% retention rate provides negotiation foundation",
+        "Telecommunications industry alignment with Kandy's core value proposition increases expansion appeal",
+        "Executive-level engagement early in process ensures decision-maker buy-in and faster approval cycles"
+      ],
+      "metrics": {
+        "currentARR": 158226.87,
+        "healthScore": 76,
+        "dmPercent": 92.7,
+        "daysToRenewal": 30,
+        "productCount": 1
+      },
+      "generatedAt": "2026-02-13T14:36:11.340Z"
+    },
+    {
+      "opportunityId": "mtn-zambia-contract_optimization",
+      "accountName": "MTN Zambia",
+      "bu": "STL",
+      "type": "contract_optimization",
+      "title": "Early Multi-Year Renewal with 25% Uplift Strategy",
+      "description": "Negotiate an immediate 2-year contract renewal at $122,000 ARR (25% increase) by positioning multi-year discount against inflation protection and additional STL product modules. Leverage the 30-day renewal window and strong health score to secure early commitment.",
+      "reasoning": "MTN Zambia's exceptional 128.6% retention rate and 87/100 health score indicate high satisfaction and growth potential. As a major telecom operator, they value predictable costs and expanded capabilities, making them ideal candidates for multi-year commitment with strategic product bundling.",
+      "specificActions": [
+        "Week 1: Account Manager schedules C-level meeting to present 2-year renewal proposal with 25% ARR increase ($122K) offset by 15% multi-year discount positioning",
+        "Week 2: Technical team conducts product roadmap session showcasing 2 complementary STL modules that align with MTN Zambia's network expansion plans",
+        "Week 3: Finance team prepares custom ROI analysis showing 18-month payback period and cost predictability benefits vs. annual renewals",
+        "Week 4: Legal finalizes contract with early renewal incentives: 30-day implementation support and priority technical support tier upgrade",
+        "Week 4: Executive sponsor from STL joins final negotiation call to reinforce strategic partnership commitment"
+      ],
+      "expectedArrImpact": 24500,
+      "expectedDmImpact": 15,
+      "confidence": "high",
+      "timelineWeeks": 4,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Budget approval delays due to multi-year commitment requirement",
+        "Competitor intervention during extended negotiation period"
+      ],
+      "successFactors": [
+        "Leverage existing high satisfaction (87 health score) as negotiation foundation",
+        "Position additional STL modules as strategic network enhancement rather than upsell",
+        "Emphasize cost predictability and inflation protection for telecom infrastructure planning"
+      ],
+      "metrics": {
+        "currentARR": 97500,
+        "healthScore": 87,
+        "dmPercent": 128.6,
+        "daysToRenewal": 30,
+        "productCount": 1
+      },
+      "generatedAt": "2026-02-13T14:36:26.166Z"
+    },
+    {
+      "opportunityId": "razorline,-llc-contract_optimization",
+      "accountName": "RAZORLINE, LLC",
+      "bu": "Kandy",
+      "type": "contract_optimization",
+      "title": "Early Multi-Year Renewal with 15% Uplift Strategy",
+      "description": "Propose an immediate 2-year contract renewal at $95,000 ARR (15% increase) in exchange for locking in current pricing and avoiding future price increases. Position this as a strategic partnership opportunity with enhanced support benefits.",
+      "reasoning": "With 92.5% retention rate and 81 health score, RAZORLINE shows strong product satisfaction and low churn risk. The 30-day renewal window creates urgency, and their Basic Annual contract suggests they may be underutilizing available features that could justify an upgrade.",
+      "specificActions": [
+        "Week 1: Account manager schedules executive alignment call with RAZORLINE decision maker to present 2-year strategic partnership proposal",
+        "Week 1-2: Customer Success team conducts usage audit to identify unutilized features worth $12-15K annually that justify the uplift",
+        "Week 2: Present formal proposal: 2-year contract at $95K ARR with price lock guarantee, priority support, and quarterly business reviews",
+        "Week 3: Negotiate final terms including 10% early payment discount if signed 15 days before current renewal date",
+        "Week 4: Execute contract with legal review and implementation of enhanced service level"
+      ],
+      "expectedArrImpact": 12453,
+      "expectedDmImpact": 5,
+      "confidence": "medium",
+      "timelineWeeks": 4,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer may resist price increase without clear value demonstration",
+        "Competitor could undercut during negotiation period"
+      ],
+      "successFactors": [
+        "Strong existing relationship evidenced by high health score",
+        "Market inflation creates credible justification for price protection value",
+        "Multi-year commitment reduces customer's future procurement overhead"
+      ],
+      "metrics": {
+        "currentARR": 82547.3,
+        "healthScore": 81,
+        "dmPercent": 92.5,
+        "daysToRenewal": 30,
+        "productCount": 1
+      },
+      "generatedAt": "2026-02-13T14:36:39.525Z"
+    },
+    {
+      "opportunityId": "wholesale-carrier-services-inc.-contract_optimization",
+      "accountName": "WHOLESALE CARRIER SERVICES INC.",
+      "bu": "Kandy",
+      "type": "contract_optimization",
+      "title": "2-Year Early Renewal + Premium Upgrade Package",
+      "description": "Propose immediate 2-year contract renewal with upgrade to Premium Annual plan, offering 15% early renewal discount and additional premium features. Target signing within 15 days to secure expanded commitment before current contract expires.",
+      "reasoning": "With 90.4% retention rate and strong 82 health score, WHOLESALE CARRIER SERVICES shows high satisfaction and low churn risk. As a wholesale carrier, they likely need enhanced reliability and scalability features that Premium offers, making the upgrade valuable for their business growth.",
+      "specificActions": [
+        "Day 1-2: Account Manager schedules renewal discussion call with decision maker to present 2-year Premium upgrade proposal",
+        "Day 3-7: Prepare customized ROI analysis showing cost savings of 2-year commitment vs annual renewals plus Premium feature value",
+        "Day 8-12: Present formal proposal: 2-year Premium contract at $165,000 total ($82,500/year) with 15% early renewal discount",
+        "Day 13-15: Negotiate final terms and secure signature with expedited legal review process",
+        "Day 16-30: Implement Premium features and conduct success check-in calls"
+      ],
+      "expectedArrImpact": 8714,
+      "expectedDmImpact": 5.6,
+      "confidence": "medium",
+      "timelineWeeks": 4,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer may prefer to stick with current Basic plan to control costs",
+        "30-day timeline may create pressure that backfires in negotiations"
+      ],
+      "successFactors": [
+        "Strong health score (82) indicates customer satisfaction with current service",
+        "High retention rate (90.4%) suggests low churn risk for longer commitment",
+        "Wholesale carrier business model likely benefits from Premium scalability features"
+      ],
+      "metrics": {
+        "currentARR": 73785.88,
+        "healthScore": 82,
+        "dmPercent": 90.4,
+        "daysToRenewal": 30,
+        "productCount": 1
+      },
+      "generatedAt": "2026-02-13T14:36:53.014Z"
+    },
+    {
+      "opportunityId": "comporium,-inc.-contract_optimization",
+      "accountName": "COMPORIUM, INC.",
+      "bu": "Kandy",
+      "type": "contract_optimization",
+      "title": "Early 3-Year Renewal with 25% Uplift & Multi-Product Expansion",
+      "description": "Leverage COMPORIUM's excellent health score (91) and perfect retention (100.5%) to secure an early 3-year renewal at $91,380 ARR with additional Kandy products. Position this as a strategic partnership investment with locked-in pricing protection against future increases.",
+      "reasoning": "With 30 days to renewal and exceptional performance metrics, COMPORIUM is in an ideal position for expansion. Their 100.5% retention rate indicates they're likely underutilizing current capacity and could benefit from additional Kandy communication features. The timing creates urgency while their high satisfaction reduces price sensitivity.",
+      "specificActions": [
+        "Day 1-3: CSM conducts usage analysis to identify 2-3 underutilized Kandy features that align with COMPORIUM's communication needs",
+        "Day 4-7: Account Manager schedules C-level meeting to present 3-year strategic partnership proposal with 15% early renewal discount plus 25% capacity increase",
+        "Day 8-14: Demo advanced Kandy features (video conferencing, advanced analytics) showing ROI projections specific to COMPORIUM's telecom business",
+        "Day 15-21: Present final proposal: 3-year contract at $91,380 ARR (25% increase) with price lock guarantee and premium support tier",
+        "Day 22-30: Negotiate final terms and secure signature before current contract expires"
+      ],
+      "expectedArrImpact": 18276,
+      "expectedDmImpact": 5,
+      "confidence": "high",
+      "timelineWeeks": 4,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer may prefer shorter contract terms due to budget cycles",
+        "Competition might emerge during extended negotiation period"
+      ],
+      "successFactors": [
+        "High health score demonstrates strong product-market fit",
+        "Perfect retention rate indicates expansion readiness",
+        "30-day renewal window creates natural urgency for decision-making"
+      ],
+      "metrics": {
+        "currentARR": 73104.65,
+        "healthScore": 91,
+        "dmPercent": 100.5,
+        "daysToRenewal": 30,
+        "productCount": 1
+      },
+      "generatedAt": "2026-02-13T14:37:07.467Z"
+    },
+    {
+      "opportunityId": "nuwave-communications,-inc.-contract_optimization",
+      "accountName": "NUWAVE COMMUNICATIONS, INC.",
+      "bu": "Kandy",
+      "type": "contract_optimization",
+      "title": "18-Month Early Renewal + Multi-Year Lock-in Strategy",
+      "description": "Propose an immediate 18-month early renewal with 15% ARR increase to $83,640, followed by a 3-year contract at current pricing to secure long-term retention. This leverages the customer's excellent health score and current satisfaction while creating urgency around pricing protection.",
+      "reasoning": "With a 88/100 health score and 100.1% retention rate, NUWAVE is clearly satisfied and likely to renew. Their single-product usage suggests untapped potential, and the 30-day renewal window creates perfect timing to negotiate from a position of mutual benefit rather than desperation.",
+      "specificActions": [
+        "Week 1: CSM schedules strategic business review with NUWAVE's IT leadership to discuss 2024-2025 communication roadmap and identify expansion needs",
+        "Week 2: Account Manager presents early renewal proposal: 18-month extension at $83,640 ARR (15% increase) with guaranteed rate lock for subsequent 3-year term",
+        "Week 3: Offer additional Kandy product demo/trial as sweetener for early commitment, targeting their single-product limitation",
+        "Week 4: Negotiate final terms with decision maker, emphasizing cost predictability and avoiding 2025 price increases",
+        "Week 5: Execute contract signing with legal teams and process early renewal documentation"
+      ],
+      "expectedArrImpact": 10910,
+      "expectedDmImpact": 5,
+      "confidence": "high",
+      "timelineWeeks": 5,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer may resist 15% increase despite value proposition",
+        "Early renewal timing might conflict with their budget cycle planning"
+      ],
+      "successFactors": [
+        "Leverage their high satisfaction score as proof of value received",
+        "Position rate lock as protection against future market increases",
+        "Use single-product status to show growth runway and justify investment"
+      ],
+      "metrics": {
+        "currentARR": 72730.96,
+        "healthScore": 88,
+        "dmPercent": 100.1,
+        "daysToRenewal": 30,
+        "productCount": 1
+      },
+      "generatedAt": "2026-02-13T14:37:21.903Z"
+    },
+    {
+      "opportunityId": "yadkin-valley-tel-membership-corp-contract_optimization",
+      "accountName": "YADKIN VALLEY TEL MEMBERSHIP CORP",
+      "bu": "Kandy",
+      "type": "contract_optimization",
+      "title": "3-Year Early Renewal with 15% Uplift + Multi-Product Bundle",
+      "description": "Negotiate a 3-year early renewal with 15% annual increase plus introduce complementary Kandy products to create a comprehensive communications platform bundle. Leverage the high health score and strong retention rate to secure multi-year commitment with growth.",
+      "reasoning": "With 88/100 health score and 96.6% retention rate, YADKIN VALLEY shows strong product satisfaction and loyalty. As a telecommunications membership cooperative, they likely value long-term partnerships and cost predictability that a multi-year deal provides, while the 30-day renewal window creates urgency for negotiation.",
+      "specificActions": [
+        "Week 1: Schedule executive-level meeting with YADKIN VALLEY leadership to present 3-year strategic partnership proposal with 15% annual growth ($57,047 Year 1 ARR)",
+        "Week 2: Conduct technical demo of 2-3 complementary Kandy products that enhance their current solution, targeting $15K-25K additional ARR",
+        "Week 3: Present bundled pricing proposal: 3-year deal at $165K total contract value (vs. current $149K over 3 years) with locked-in rates and additional product credits",
+        "Week 4: Finalize contract terms with early renewal incentives: 5% discount on additional products if signed 2 weeks before current expiration",
+        "Week 5: Execute contract signing and initiate expanded product implementation plan"
+      ],
+      "expectedArrImpact": 22500,
+      "expectedDmImpact": 2,
+      "confidence": "medium",
+      "timelineWeeks": 5,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer may prefer annual flexibility over multi-year commitment",
+        "Budget constraints for additional products in current fiscal year"
+      ],
+      "successFactors": [
+        "Emphasize cost savings and rate protection over 3-year term",
+        "Demonstrate clear ROI on additional Kandy products for telecom operations",
+        "Leverage existing strong relationship and high satisfaction scores"
+      ],
+      "metrics": {
+        "currentARR": 49606.51,
+        "healthScore": 88,
+        "dmPercent": 96.6,
+        "daysToRenewal": 30,
+        "productCount": 1
+      },
+      "generatedAt": "2026-02-13T14:37:36.811Z"
+    },
+    {
+      "opportunityId": "juxto---ontario-contract_optimization",
+      "accountName": "Juxto - Ontario",
+      "bu": "Kandy",
+      "type": "contract_optimization",
+      "title": "18-Month Early Renewal + Multi-Year Discount Strategy",
+      "description": "Propose an immediate 18-month renewal with 8% discount in exchange for 15% ARR increase through upgraded features and extended commitment. This leverages the 30-day renewal window to secure longer-term revenue while improving contract terms.",
+      "reasoning": "With a 78/100 health score and 99.7% retention rate, Juxto shows strong product satisfaction but Basic Annual suggests underutilization. The tight 30-day renewal timeline creates urgency for both parties to negotiate, making them receptive to a win-win early renewal scenario.",
+      "specificActions": [
+        "Day 1-3: Account Manager conducts usage analysis to identify 2-3 premium features that align with Juxto's current workflows and growth trajectory",
+        "Day 4-7: Schedule executive-level meeting with Juxto's decision maker to present 18-month early renewal proposal with specific ROI calculations for upgraded features",
+        "Day 8-14: Negotiate final terms including 8% annual discount for 18-month commitment and implementation timeline for new features",
+        "Day 15-21: Execute contract amendment with legal review and secure signatures before original renewal deadline",
+        "Day 22-30: Begin premium feature onboarding with dedicated Customer Success support to ensure adoption"
+      ],
+      "expectedArrImpact": 7319,
+      "expectedDmImpact": 0.3,
+      "confidence": "high",
+      "timelineWeeks": 4,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer may prefer status quo given high satisfaction with current setup",
+        "Compressed timeline may rush decision-making and reduce negotiation flexibility"
+      ],
+      "successFactors": [
+        "Strong existing relationship evidenced by 99.7% retention rate provides trust foundation for upsell conversation",
+        "30-day renewal deadline creates natural urgency and negotiation catalyst",
+        "Healthy account score indicates customer success team can ensure smooth feature adoption and value realization"
+      ],
+      "metrics": {
+        "currentARR": 48793.63,
+        "healthScore": 78,
+        "dmPercent": 99.7,
+        "daysToRenewal": 30,
+        "productCount": 1
+      },
+      "generatedAt": "2026-02-13T14:37:51.223Z"
+    },
+    {
+      "opportunityId": "voiceflex-limited-contract_optimization",
+      "accountName": "VOICEFLEX LIMITED",
+      "bu": "Kandy",
+      "type": "contract_optimization",
+      "title": "Early Renewal + Multi-Year Lock with 15% ARR Uplift",
+      "description": "Execute immediate early renewal negotiation offering 8% discount on Year 2-3 in exchange for 3-year commitment and 15% ARR increase. Target signing within 15 days to capture budget cycle timing and avoid renewal uncertainty.",
+      "reasoning": "With 91.1% retention rate and 78 health score, VOICEFLEX shows strong product satisfaction but Basic Annual suggests they're price-sensitive. Early renewal creates urgency while multi-year discount addresses cost concerns and secures long-term revenue predictability.",
+      "specificActions": [
+        "Day 1-2: CSM conducts usage analysis call to identify 2-3 underutilized features that justify upgrade value",
+        "Day 3-5: Account Manager presents '3-Year Partnership Proposal' with 15% ARR increase ($54,018 Year 1) but 8% discount Years 2-3",
+        "Day 6-10: Schedule executive-level call with VOICEFLEX decision maker to discuss strategic roadmap alignment and multi-year benefits",
+        "Day 11-15: Deliver final proposal with implementation timeline for additional features and dedicated support tier",
+        "Day 16-20: Execute contract signing with legal review and onboarding plan for upgraded features"
+      ],
+      "expectedArrImpact": 7046,
+      "expectedDmImpact": 4.5,
+      "confidence": "medium",
+      "timelineWeeks": 3,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer may prefer to evaluate alternatives during normal renewal cycle",
+        "Budget constraints could limit ability to accept 15% increase despite multi-year savings"
+      ],
+      "successFactors": [
+        "Demonstrate clear ROI from underutilized features during usage analysis",
+        "Position multi-year commitment as strategic partnership rather than just cost savings",
+        "Create urgency through limited-time early renewal incentive structure"
+      ],
+      "metrics": {
+        "currentARR": 46972.52,
+        "healthScore": 78,
+        "dmPercent": 91.1,
+        "daysToRenewal": 30,
+        "productCount": 1
+      },
+      "generatedAt": "2026-02-13T14:38:05.318Z"
+    },
+    {
+      "opportunityId": "ericsson-(thailand)-ltd-contract_optimization",
+      "accountName": "ERICSSON (THAILAND) LTD",
+      "bu": "STL",
+      "type": "contract_optimization",
+      "title": "Early Multi-Year Renewal with 25% ARR Increase",
+      "description": "Leverage Ericsson Thailand's exceptional health score (95/100) and 113.5% retention rate to secure an early 2-year renewal with upgraded contract terms. Position this as a strategic partnership expansion with volume discounts and enhanced service levels.",
+      "reasoning": "Ericsson Thailand's outstanding health metrics indicate high satisfaction and growth potential. As a major telecom infrastructure company, they value long-term partnerships and predictable costs. Their current single-product usage suggests untapped expansion opportunities within STL's portfolio.",
+      "specificActions": [
+        "Week 1: Schedule C-level meeting with Ericsson Thailand's CTO/IT Director to present 2-year strategic partnership proposal with 15% early renewal discount",
+        "Week 2: Conduct technical deep-dive session showcasing 2 complementary STL products that align with their infrastructure roadmap",
+        "Week 3: Present customized proposal: $95,000 2-year contract ($47,500 annual) including current product plus one additional module with dedicated support",
+        "Week 4: Negotiate final terms with procurement team, emphasizing budget predictability and enhanced SLA commitments",
+        "Week 5: Execute contract signing with implementation timeline for new product module"
+      ],
+      "expectedArrImpact": 9500,
+      "expectedDmImpact": 5,
+      "confidence": "high",
+      "timelineWeeks": 5,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Procurement may resist early renewal without significant discount",
+        "Budget approval delays in large enterprise environment"
+      ],
+      "successFactors": [
+        "Emphasize cost savings from early renewal discount",
+        "Demonstrate ROI from additional product capabilities",
+        "Leverage existing strong relationship and satisfaction scores"
+      ],
+      "metrics": {
+        "currentARR": 38000,
+        "healthScore": 95,
+        "dmPercent": 113.5,
+        "daysToRenewal": 30,
+        "productCount": 1
+      },
+      "generatedAt": "2026-02-13T14:38:19.115Z"
+    },
+    {
+      "opportunityId": "bharti-airtel-limited---mumbai-contract_optimization",
+      "accountName": "Bharti Airtel Limited - Mumbai",
+      "bu": "STL",
+      "type": "contract_optimization",
+      "title": "Early Renewal with Multi-Year Lock-in at 15% Premium",
+      "description": "Propose an immediate 2-year contract renewal at $40,659 ARR (15% increase) in exchange for enhanced STL features and priority support. Leverage the strong health score and 126.8% retention rate to justify premium pricing while securing long-term commitment.",
+      "reasoning": "With a 91/100 health score and 126.8% retention rate, Bharti Airtel is clearly extracting significant value from STL. As a major telecom operator in Mumbai, they likely need enhanced scalability and premium support that justifies higher pricing. Early renewal eliminates renewal risk and provides budget certainty.",
+      "specificActions": [
+        "Week 1: Schedule executive briefing with Bharti's IT leadership to present 2-year renewal proposal with 15% ARR increase to $40,659",
+        "Week 2: Conduct technical deep-dive session showcasing premium STL features (advanced analytics, priority APIs) worth the upgrade",
+        "Week 3: Present comparative ROI analysis showing cost savings vs. competitive solutions and propose 60-day early renewal incentive",
+        "Week 4: Negotiate final terms with legal teams and secure signed 24-month contract with quarterly business reviews",
+        "Week 5: Execute contract transition and implement enhanced support tier"
+      ],
+      "expectedArrImpact": 5303,
+      "expectedDmImpact": 8,
+      "confidence": "high",
+      "timelineWeeks": 5,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer may resist 15% price increase despite value demonstration",
+        "Competitor intervention during extended negotiation period"
+      ],
+      "successFactors": [
+        "Leverage existing 126.8% retention rate as proof of value realization",
+        "Position premium features as essential for Bharti's scale and growth trajectory",
+        "Create urgency with limited-time early renewal discount on setup fees"
+      ],
+      "metrics": {
+        "currentARR": 35356.12,
+        "healthScore": 91,
+        "dmPercent": 126.8,
+        "daysToRenewal": 30,
+        "productCount": 1
+      },
+      "generatedAt": "2026-02-13T14:38:32.751Z"
+    },
+    {
+      "opportunityId": "cross-telephone-company-llc-(ok)-contract_optimization",
+      "accountName": "CROSS TELEPHONE COMPANY LLC (OK)",
+      "bu": "Kandy",
+      "type": "contract_optimization",
+      "title": "Early Multi-Year Renewal with 15% Uplift Strategy",
+      "description": "Execute an early renewal strategy offering Cross Telephone a 2-year contract with enhanced features and 15% annual increase, leveraging their excellent health score and growth trajectory. Position this as a strategic partnership opportunity with locked-in pricing protection against future rate increases.",
+      "reasoning": "With a 100.2% retention rate and 87/100 health score, Cross Telephone is clearly seeing value and growth in Kandy services. As a telecommunications company, they understand the value of long-term partnerships and price stability. The 30-day renewal window creates urgency while their strong metrics indicate willingness to invest more.",
+      "specificActions": [
+        "Week 1: Account manager schedules executive alignment call with Cross Telephone's decision makers to present 24-month early renewal proposal",
+        "Week 2: Technical success manager conducts usage analysis showing 15% growth opportunity areas and presents expanded feature roadmap",
+        "Week 3: Deliver formal proposal: 24-month contract at $39,854 annual ARR (15% increase) with 6-month price protection guarantee",
+        "Week 4: Negotiate final terms including quarterly business reviews and dedicated technical support tier",
+        "Week 4: Execute contract signing with immediate effective date, avoiding any service interruption risk"
+      ],
+      "expectedArrImpact": 5198,
+      "expectedDmImpact": 5,
+      "confidence": "high",
+      "timelineWeeks": 4,
+      "ownerTeam": "Account Management",
+      "risks": [
+        "Customer may prefer to stick with current pricing given economic uncertainty",
+        "Competitor could use renewal timing to present alternative solution"
+      ],
+      "successFactors": [
+        "Emphasize price protection and partnership value proposition",
+        "Leverage strong health score metrics as proof of ROI",
+        "Present clear technical roadmap showing future value delivery"
+      ],
+      "metrics": {
+        "currentARR": 34655.89,
+        "healthScore": 87,
+        "dmPercent": 100.2,
+        "daysToRenewal": 30,
+        "productCount": 1
+      },
+      "generatedAt": "2026-02-13T14:38:46.835Z"
     }
   ]
 }
