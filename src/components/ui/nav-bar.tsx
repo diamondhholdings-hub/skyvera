@@ -2,9 +2,17 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import {
+  LayoutDashboard,
+  Building2,
+  Bell,
+  GitBranch,
+  TrendingUp,
+  MessageSquare
+} from 'lucide-react'
 
 /**
- * NavBar - Top navigation bar with Skyvera branding and page links
+ * NavBar - Top navigation bar with Skyvera branding and icon-based navigation
  * Client Component because it uses usePathname() for active link highlighting
  * Editorial theme: dark ink background, accent logo, paper text
  */
@@ -12,12 +20,12 @@ export function NavBar() {
   const pathname = usePathname()
 
   const links = [
-    { href: '/dashboard', label: 'Dashboard' },
-    { href: '/accounts', label: 'Accounts' },
-    { href: '/alerts', label: 'Alerts' },
-    { href: '/scenario', label: 'Scenarios' },
-    { href: '/dm-strategy', label: 'DM Strategy' },
-    { href: '/query', label: 'Ask' },
+    { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
+    { href: '/accounts', label: 'Accounts', icon: Building2 },
+    { href: '/alerts', label: 'Alerts', icon: Bell },
+    { href: '/scenario', label: 'Scenarios', icon: GitBranch },
+    { href: '/dm-strategy', label: 'DM Strategy', icon: TrendingUp },
+    { href: '/query', label: 'Ask', icon: MessageSquare },
   ]
 
   return (
@@ -36,22 +44,24 @@ export function NavBar() {
             </Link>
           </div>
 
-          {/* Navigation Links */}
-          <div className="flex space-x-1">
+          {/* Navigation Icons */}
+          <div className="flex space-x-2">
             {links.map((link) => {
               const isActive = pathname === link.href || pathname?.startsWith(link.href + '/')
+              const Icon = link.icon
 
               return (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                  title={link.label}
+                  className={`p-2.5 rounded-md transition-all hover:scale-105 ${
                     isActive
-                      ? 'bg-white/10 text-paper'
-                      : 'text-paper/70 hover:text-paper'
+                      ? 'bg-white/10 text-accent'
+                      : 'text-paper/70 hover:text-paper hover:bg-white/5'
                   }`}
                 >
-                  {link.label}
+                  <Icon className="h-5 w-5" strokeWidth={2} />
                 </Link>
               )
             })}
