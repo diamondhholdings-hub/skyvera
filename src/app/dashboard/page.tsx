@@ -12,6 +12,7 @@ import { TopCustomersSection } from './sections/top-customers'
 import { AtRiskSection } from './sections/at-risk'
 import { ExpansionSection } from './sections/expansion'
 import { ActionPlanSection } from './sections/action-plan'
+import { DMBriefingSection } from './sections/dm-briefing'
 import { DashboardNavigation } from './components/dashboard-navigation'
 
 // Skeleton fallback
@@ -77,6 +78,9 @@ export default function DashboardPage() {
         {/* Content Area */}
         <div style={{ padding: '40px' }}>
           <Suspense fallback={<DashboardSkeleton />}>
+            {/* DM% Strategy Briefing - Top Priority Recommendations */}
+            <DMBriefingSection />
+
             {/* All sections render, visibility controlled by client component */}
             <FinancialSummarySection />
             <FinancialDetailedSection />
