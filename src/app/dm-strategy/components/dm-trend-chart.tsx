@@ -93,7 +93,9 @@ export default function DMTrendChart({
               marginBottom: '8px',
               color: '#111827',
             }}
-            formatter={(value: number) => [`${value.toFixed(1)}%`, 'DM%']}
+            formatter={(value: number | undefined) =>
+              value !== undefined ? [`${value.toFixed(1)}%`, 'DM%'] : ['N/A', 'DM%']
+            }
           />
 
           <Legend

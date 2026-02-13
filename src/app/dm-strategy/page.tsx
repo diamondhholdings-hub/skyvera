@@ -2,90 +2,93 @@
  * DM Strategy Page
  * Main page for DM% Strategy Center with recommendations and portfolio overview
  *
- * NOTE: Currently using demo data. Data layer integration pending type alignment.
+ * NOW USING REAL DATA via type adapter layer!
  */
 
-'use client'
-
+import { getDMStrategyUIData } from '@/lib/intelligence/dm-strategy/data-provider'
 import DMStrategyHero from './components/dm-strategy-hero'
 import PortfolioDashboard from './components/portfolio-dashboard'
-import type { DashboardStats, BusinessUnitMetrics, Recommendation } from './types'
+import Link from 'next/link'
 
-// Demo stats - TODO: Replace with real data after type alignment
-const demoStats: DashboardStats = {
-  currentDM: 8.2,
-  potentialARR: 2100000,
-  activeRecommendations: 12,
-  totalAccounts: 140,
-  atRiskAccounts: 8
-}
+export default async function DMStrategyPage() {
+  // Fetch real data from backend via adapter layer
+  const result = await getDMStrategyUIData()
 
-const demoBusinessUnits: BusinessUnitMetrics[] = [
-  {
-    name: 'Cloudsense',
-    currentDM: 7.8,
-    targetDM: 7.0,
-    trend: 'down',
-    trendValue: -0.5,
-    arr: 8000000,
-    accountCount: 65,
-    recommendationCount: 5,
-    color: '#0066A1'
-  },
-  {
-    name: 'Kandy',
-    currentDM: 9.2,
-    targetDM: 8.0,
-    trend: 'up',
-    trendValue: 0.3,
-    arr: 3300000,
-    accountCount: 45,
-    recommendationCount: 4,
-    color: '#00B8D4'
-  },
-  {
-    name: 'STL',
-    currentDM: 7.5,
-    targetDM: 8.0,
-    trend: 'neutral',
-    trendValue: 0.0,
-    arr: 1000000,
-    accountCount: 30,
-    recommendationCount: 3,
-    color: '#27AE60'
+  // Handle loading error
+  if (!result.success) {
+    return (
+      <div className="min-h-screen bg-[var(--paper)] flex items-center justify-center">
+        <div className="bg-white rounded-lg shadow-lg border border-red-200 p-8 max-w-2xl">
+          <h2 className="text-2xl font-semibold text-red-600 mb-4">
+            ⚠️ Unable to Load DM Strategy Data
+          </h2>
+          <p className="text-gray-700 mb-4">
+            {result.error.message}
+          </p>
+          <p className="text-sm text-gray-600 mb-6">
+            This usually means the DM tracker data hasn't been generated yet. Run the Excel
+            extraction script to populate the database with DM% metrics.
+          </p>
+          <div className="flex gap-4">
+            <Link
+              href="/dm-strategy/demo"
+              className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+            >
+              View Demo Page
+            </Link>
+            <Link
+              href="/"
+              className="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300"
+            >
+              Back to Dashboard
+            </Link>
+          </div>
+        </div>
+      </div>
+    )
   }
-]
 
-const demoRecommendations: Recommendation[] = []
+  const { businessUnits, dashboardStats, recommendations } = result.value
 
-export default function DMStrategyPage() {
   return (
     <div className="min-h-screen bg-[var(--paper)]">
       {/* Hero Section */}
-      <DMStrategyHero stats={demoStats} />
+      <DMStrategyHero stats={dashboardStats} />
+
+      {/* Link to Trends Page */}
+      <div className="max-w-7xl mx-auto px-6 py-4">
+        <Link
+          href="/dm-strategy/trends"
+          className="block bg-gradient-to-r from-blue-600 to-cyan-500 text-white p-4 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
+        >
+          <div className="flex items-center justify-between">
+            <div>
+              <h3 className="text-lg font-semibold mb-1">
+                📊 View 12-Month DM% Trend Charts
+              </h3>
+              <p className="text-sm opacity-90">
+                Visualize retention trends with interactive charts for each business unit
+              </p>
+            </div>
+            <span className="text-3xl">→</span>
+          </div>
+        </Link>
+      </div>
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-6 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-          {/* Left Sidebar: Portfolio Overview */}
-          <aside className="lg:col-span-1">
-            <PortfolioDashboard businessUnits={demoBusinessUnits} recommendations={demoRecommendations} />
-          </aside>
+        <PortfolioDashboard
+          businessUnits={businessUnits}
+          recommendations={recommendations}
+        />
+      </div>
 
-          {/* Main Content: Recommendations */}
-          <main className="lg:col-span-3">
-            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-              <h2 className="text-2xl font-semibold text-gray-800 mb-4">Active Recommendations</h2>
-              <p className="text-gray-600 mb-4">
-                Recommendation feed with real data integration pending type alignment between data layer and UI components.
-              </p>
-              <div className="bg-blue-50 border border-blue-200 rounded p-4">
-                <p className="text-sm text-blue-800">
-                  <strong>Note:</strong> See <code className="bg-blue-100 px-2 py-1 rounded">/dm-strategy/demo</code> for full component showcase with sample recommendations.
-                </p>
-              </div>
-            </div>
-          </main>
+      {/* Data Source Indicator */}
+      <div className="max-w-7xl mx-auto px-6 pb-8">
+        <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+          <p className="text-sm text-green-800">
+            ✓ <strong>Live Data:</strong> Connected to DM tracker data ({businessUnits.length} business units, {recommendations.length} recommendations)
+          </p>
         </div>
       </div>
     </div>
