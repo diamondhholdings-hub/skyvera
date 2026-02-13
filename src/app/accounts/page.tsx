@@ -8,10 +8,25 @@ import { getAllCustomersWithHealth, getCustomerCount } from '@/lib/data/server/a
 import { RefreshButton } from '@/components/ui/refresh-button'
 import { AccountStats } from './components/account-stats'
 import { AccountTable } from './components/account-table'
+import { Suspense } from 'react'
 
 export const metadata = {
   title: 'Customer Accounts - Skyvera',
   description: 'Browse all customers with health scores and financial metrics',
+}
+
+// Loading skeleton component
+function TableSkeleton() {
+  return (
+    <div className="animate-pulse">
+      <div className="h-12 bg-gray-200 rounded mb-4"></div>
+      <div className="space-y-3">
+        {[...Array(5)].map((_, i) => (
+          <div key={i} className="h-16 bg-gray-100 rounded"></div>
+        ))}
+      </div>
+    </div>
+  )
 }
 
 export default async function AccountsPage() {
@@ -73,7 +88,14 @@ export default async function AccountsPage() {
       {/* Content Container */}
       <div className="max-w-[1400px] mx-auto py-8 px-8">
         {/* Customer Table */}
-        <AccountTable customers={customers} />
+        <Suspense fallback={<TableSkeleton />}>
+          <AccountTable customers={customers} />
+        </Suspense>
+
+        {/* Debug info - remove after fixing */}
+        <div className="mt-4 p-4 bg-blue-50 border border-blue-200 rounded text-sm">
+          <p><strong>Debug:</strong> Loaded {customers.length} customers at {lastUpdated.toLocaleTimeString()}</p>
+        </div>
       </div>
     </div>
   )

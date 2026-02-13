@@ -29,11 +29,11 @@ export class AccountsPage {
     // Search/filter input - using placeholder text or role
     this.searchInput = page.getByPlaceholder(/search/i).or(page.getByRole('searchbox')).first()
 
-    // Table elements
-    this.accountTable = page.getByRole('table').or(page.locator('table')).first()
+    // Table elements - now using card-based grid layout
+    this.accountTable = page.locator('.grid').first()
 
-    // First account row in table body
-    this.firstAccountRow = page.locator('tbody tr').first()
+    // First account card in grid
+    this.firstAccountRow = page.locator('.grid a').first()
 
     // Stats
     this.totalAccountsCount = page.getByText(/total accounts/i)
@@ -57,12 +57,11 @@ export class AccountsPage {
   }
 
   /**
-   * Click first account in table (clicks the customer name link)
+   * Click first account card (clicks the entire card which is a link)
    */
   async clickFirstAccount() {
-    // Click the customer name link within the first row (it's a blue link)
-    const firstLink = this.firstAccountRow.locator('a').first()
-    await firstLink.click()
+    // Click the first card (it's entirely a link now)
+    await this.firstAccountRow.click()
   }
 
   /**
@@ -80,10 +79,10 @@ export class AccountsPage {
   }
 
   /**
-   * Get number of visible account rows
+   * Get number of visible account cards
    */
   async getAccountRowCount(): Promise<number> {
-    return await this.page.locator('tbody tr').count()
+    return await this.page.locator('.grid a').count()
   }
 
   /**

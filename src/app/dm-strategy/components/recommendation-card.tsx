@@ -65,7 +65,7 @@ export default function RecommendationCard({
 
   return (
     <div
-      className="dm-card"
+      className="dm-card card-hover animate-fade-in-up"
       style={{
         borderLeft: `4px solid ${priorityInfo.color}`,
         position: 'relative'
@@ -169,7 +169,7 @@ export default function RecommendationCard({
       <div className="dm-flex dm-gap-sm dm-flex-wrap">
         {onAccept && (
           <button
-            className="dm-btn dm-btn-primary dm-btn-md"
+            className="dm-btn dm-btn-primary dm-btn-md button-press"
             onClick={() => onAccept(recommendation.id)}
             style={{ flex: '1 1 auto' }}
           >
@@ -178,7 +178,7 @@ export default function RecommendationCard({
         )}
         {onReview && (
           <button
-            className="dm-btn dm-btn-secondary dm-btn-md"
+            className="dm-btn dm-btn-secondary dm-btn-md button-press"
             onClick={() => onReview(recommendation.id)}
             style={{ flex: '1 1 auto' }}
           >
@@ -187,7 +187,7 @@ export default function RecommendationCard({
         )}
         {onDefer && (
           <button
-            className="dm-btn dm-btn-tertiary dm-btn-md"
+            className="dm-btn dm-btn-tertiary dm-btn-md button-press"
             onClick={() => onDefer(recommendation.id)}
           >
             ⏸️ Defer

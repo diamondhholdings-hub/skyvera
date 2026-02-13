@@ -39,6 +39,7 @@ export function BUPerformanceTable({ buSummaries }: BUPerformanceTableProps) {
           return (
             <tr
               key={bu.bu}
+              className="table-row-hover"
               style={{ borderBottom: '1px solid #e9ecef', cursor: 'pointer' }}
               onMouseEnter={(e) => e.currentTarget.style.background = '#f8f9fa'}
               onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}

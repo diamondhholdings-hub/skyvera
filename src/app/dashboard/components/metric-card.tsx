@@ -45,7 +45,7 @@ const variantStyles: Record<MetricCardVariant, React.CSSProperties> = {
 
 export function MetricCard({ variant, label, value, subtitle }: MetricCardProps) {
   return (
-    <div style={variantStyles[variant]}>
+    <div className="card-hover animate-fade-in" style={variantStyles[variant]}>
       <div style={{ fontSize: '0.85em', opacity: 0.9, marginBottom: '10px' }}>{label}</div>
       <div style={{ fontSize: '2.3em', fontWeight: 700 }}>{value}</div>
       <div style={{ fontSize: '0.8em', opacity: 0.85, marginTop: '5px' }}>{subtitle}</div>

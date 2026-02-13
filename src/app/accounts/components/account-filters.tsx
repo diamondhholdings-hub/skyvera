@@ -37,7 +37,7 @@ export function AccountFilters({
             <button
               key={bu}
               onClick={() => onBUFilter(bu === 'All' ? null : bu)}
-              className={`px-3 py-1.5 rounded text-sm font-medium transition-colors border ${
+              className={`px-3 py-1.5 rounded text-sm font-medium transition-colors border button-press ${
                 (bu === 'All' && activeBU === null) || activeBU === bu
                   ? 'bg-accent text-white border-accent'
                   : 'bg-highlight text-ink border-[var(--border)] hover:border-accent'
@@ -64,7 +64,7 @@ export function AccountFilters({
                 onClick={() =>
                   onHealthFilter(health === 'All' ? null : healthScoreMap[health])
                 }
-                className={`px-3 py-1.5 rounded text-sm font-medium transition-colors border ${
+                className={`px-3 py-1.5 rounded text-sm font-medium transition-colors border button-press ${
                   isActive
                     ? health === 'Healthy'
                       ? 'bg-green-600 text-white border-green-600'

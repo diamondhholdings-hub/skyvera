@@ -47,7 +47,7 @@ export async function BUBreakdown() {
           return (
             <div
               key={buSummary.bu}
-              className="bg-white/5 border border-white/10 rounded-[10px] p-5"
+              className="bg-white/5 border border-white/10 rounded-[10px] p-5 card-hover animate-fade-in-up"
             >
               {/* BU Header */}
               <div className="flex items-center justify-between mb-3">

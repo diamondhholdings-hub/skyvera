@@ -28,7 +28,8 @@ export class DashboardPage {
     // Main elements
     this.pageTitle = page.getByRole('heading', { name: 'Executive Dashboard', level: 1 })
     this.refreshButton = page.getByRole('button', { name: /refresh/i })
-    this.accountsNavLink = page.getByRole('link', { name: 'Accounts' })
+    // Icon-based navigation - select by href instead of text
+    this.accountsNavLink = page.locator('a[href="/accounts"]')
 
     // KPI cards - using role heading for specificity (avoids duplicates)
     this.totalRevenueKPI = page.getByRole('heading', { name: 'Total Revenue' })

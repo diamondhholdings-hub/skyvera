@@ -15,7 +15,7 @@ interface CardProps {
 
 export function Card({ title, children, className = '' }: CardProps) {
   return (
-    <div className={`bg-white rounded border border-[var(--border)] shadow-sm ${className}`}>
+    <div className={`bg-white rounded border border-[var(--border)] shadow-sm card-hover animate-fade-in-up ${className}`}>
       {title && (
         <div className="border-b border-[var(--border)] px-6 py-4">
           <h2 className="font-display text-lg font-semibold text-secondary m-0">{title}</h2>

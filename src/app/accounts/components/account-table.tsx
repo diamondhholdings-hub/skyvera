@@ -163,7 +163,7 @@ export function AccountTable({ customers }: AccountTableProps) {
   return (
     <div>
       {/* Search Input - Centered */}
-      <div className="mb-6 flex justify-center">
+      <div className="mb-6 flex justify-center animate-fade-in">
         <input
           type="text"
           value={globalFilter}
@@ -199,7 +199,7 @@ export function AccountTable({ customers }: AccountTableProps) {
         </select>
         <button
           onClick={() => setSorting([{ id: sorting[0]?.id || 'total', desc: !sorting[0]?.desc }])}
-          className="px-3 py-1.5 border border-[var(--border)] rounded text-sm hover:bg-highlight transition-colors"
+          className="px-3 py-1.5 border border-[var(--border)] rounded text-sm hover:bg-highlight transition-colors button-press"
         >
           {sorting[0]?.desc ? '↓ Descending' : '↑ Ascending'}
         </button>
@@ -213,7 +213,7 @@ export function AccountTable({ customers }: AccountTableProps) {
             <Link
               key={row.id}
               href={`/accounts/${encodeURIComponent(customer.customer_name)}`}
-              className="bg-white border-2 border-[var(--border)] p-6 rounded-lg cursor-pointer transition-all duration-300 hover:border-accent hover:shadow-lg hover:-translate-y-1 relative block"
+              className="bg-white border-2 border-[var(--border)] p-6 rounded-lg cursor-pointer card-hover animate-fade-in-up relative block"
             >
               {/* Rank Badge */}
               <div className="absolute top-4 right-4 bg-accent text-white px-3 py-1 rounded font-bold text-lg">

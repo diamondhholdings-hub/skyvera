@@ -129,7 +129,7 @@ function KPICard({
   }
 
   return (
-    <div className="bg-highlight p-5 border-l-3 border-accent shadow-sm">
+    <div className="bg-highlight p-5 border-l-3 border-accent shadow-sm card-hover animate-fade-in">
       <h3 className="text-xs uppercase tracking-wider text-muted font-semibold">{title}</h3>
       {isHealth ? (
         <div className="mt-2">
