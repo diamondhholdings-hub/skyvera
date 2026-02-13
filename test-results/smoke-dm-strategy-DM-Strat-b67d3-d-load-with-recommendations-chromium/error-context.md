@@ -4,160 +4,166 @@
 - generic [active] [ref=e1]:
   - navigation [ref=e2]:
     - generic [ref=e4]:
-      - link "SKYVERA" [ref=e6] [cursor=pointer]:
+      - link "Skyvera" [ref=e6] [cursor=pointer]:
         - /url: /dashboard
-        - generic [ref=e7]: SKYVERA
+        - img "Skyvera" [ref=e7]
       - generic [ref=e8]:
         - link "Dashboard" [ref=e9] [cursor=pointer]:
           - /url: /dashboard
-        - link "Accounts" [ref=e10] [cursor=pointer]:
+          - img [ref=e10]
+        - link "Accounts" [ref=e15] [cursor=pointer]:
           - /url: /accounts
-        - link "Alerts" [ref=e11] [cursor=pointer]:
+          - img [ref=e16]
+        - link "Alerts" [ref=e20] [cursor=pointer]:
           - /url: /alerts
-        - link "Scenarios" [ref=e12] [cursor=pointer]:
+          - img [ref=e21]
+        - link "Scenarios" [ref=e24] [cursor=pointer]:
           - /url: /scenario
-        - link "DM Strategy" [ref=e13] [cursor=pointer]:
+          - img [ref=e25]
+        - link "DM Strategy" [ref=e29] [cursor=pointer]:
           - /url: /dm-strategy
-        - link "Ask" [ref=e14] [cursor=pointer]:
+          - img [ref=e30]
+        - link "Ask" [ref=e33] [cursor=pointer]:
           - /url: /query
-  - main [ref=e15]:
-    - generic [ref=e16]:
-      - generic [ref=e17]:
-        - heading "DM% Strategy & Revenue Retention" [level=1] [ref=e18]
-        - paragraph [ref=e19]: AI-powered recommendations to optimize decline/maintenance rates, maximize recurring revenue, and strengthen customer retention across all business units.
-        - generic [ref=e20]:
-          - generic [ref=e21]:
-            - generic [ref=e22]: 97.4%
-            - generic [ref=e23]: This Month (Jan)
-          - generic [ref=e24]:
-            - generic [ref=e25]: 97.4%
-            - generic [ref=e26]: This Quarter (Q1'26)
-          - generic [ref=e27]:
-            - generic [ref=e28]: Primary
-            - generic [ref=e29]: 97.4%
-            - generic [ref=e30]: TTM (12 Months)
-          - generic [ref=e31]:
-            - generic [ref=e32]: High Impact
-            - generic [ref=e33]: $1.59M
-            - generic [ref=e34]: Potential ARR Recovery
-          - generic [ref=e35]:
-            - generic [ref=e36]: "4"
-            - generic [ref=e37]: Active Recommendations
-          - generic [ref=e38]:
-            - generic [ref=e39]: "140"
-            - generic [ref=e40]: Accounts Analyzed
-        - paragraph [ref=e42]: 💡 Recommendations are prioritized by impact and confidence
-      - link "📊 View 12-Month DM% Trend Charts Visualize retention trends with interactive charts for each business unit →" [ref=e44] [cursor=pointer]:
+          - img [ref=e34]
+  - main [ref=e36]:
+    - generic [ref=e37]:
+      - generic [ref=e38]:
+        - heading "DM% Strategy & Revenue Retention" [level=1] [ref=e39]
+        - paragraph [ref=e40]: AI-powered recommendations to optimize decline/maintenance rates, maximize recurring revenue, and strengthen customer retention across all business units.
+        - generic [ref=e41]:
+          - generic [ref=e42]:
+            - generic [ref=e43]: 97.4%
+            - generic [ref=e44]: This Month (Jan)
+          - generic [ref=e45]:
+            - generic [ref=e46]: 97.4%
+            - generic [ref=e47]: This Quarter (Q1'26)
+          - generic [ref=e48]:
+            - generic [ref=e49]: Primary
+            - generic [ref=e50]: 97.4%
+            - generic [ref=e51]: TTM (12 Months)
+          - generic [ref=e52]:
+            - generic [ref=e53]: High Impact
+            - generic [ref=e54]: $1.59M
+            - generic [ref=e55]: Potential ARR Recovery
+          - generic [ref=e56]:
+            - generic [ref=e57]: "4"
+            - generic [ref=e58]: Active Recommendations
+          - generic [ref=e59]:
+            - generic [ref=e60]: "140"
+            - generic [ref=e61]: Accounts Analyzed
+        - paragraph [ref=e63]: 💡 Recommendations are prioritized by impact and confidence
+      - link "📊 View 12-Month DM% Trend Charts Visualize retention trends with interactive charts for each business unit →" [ref=e65] [cursor=pointer]:
         - /url: /dm-strategy/trends
-        - generic [ref=e45]:
-          - generic [ref=e46]:
-            - heading "📊 View 12-Month DM% Trend Charts" [level=3] [ref=e47]
-            - paragraph [ref=e48]: Visualize retention trends with interactive charts for each business unit
-          - generic [ref=e49]: →
-      - generic [ref=e52]:
-        - generic [ref=e53]:
-          - heading "Business Units" [level=2] [ref=e54]
-          - generic [ref=e55]:
-            - generic [ref=e56] [cursor=pointer]:
-              - generic [ref=e57]:
-                - heading "Cloudsense" [level=3] [ref=e58]
-                - generic [ref=e59]: "1"
-              - generic [ref=e61]:
-                - generic [ref=e62]:
-                  - generic [ref=e63]: This Month (Jan)
-                  - generic [ref=e64]: 94.7%
-                - generic [ref=e65]:
-                  - generic [ref=e66]: This Quarter (Q1)
-                  - generic [ref=e67]: 94.7%
-                - generic [ref=e68]:
-                  - generic [ref=e69]: TTM (12 Mo.)
-                  - generic [ref=e70]: 94.7%
-                - generic [ref=e71]: "Target: 95.0%"
-              - generic [ref=e72]:
-                - generic [ref=e73]: ↓
-                - generic [ref=e74]: "-2.3% vs Last Quarter"
-              - generic [ref=e75]:
-                - generic [ref=e76]:
-                  - generic [ref=e77]: ARR
-                  - generic [ref=e78]: $6.4M
-                - generic [ref=e79]:
-                  - generic [ref=e80]: Accounts
-                  - generic [ref=e81]: "65"
-                - generic [ref=e82]:
-                  - generic [ref=e83]: Status
-                  - generic [ref=e84]: ⚠️ Below Target
-            - generic [ref=e85] [cursor=pointer]:
-              - generic [ref=e86]:
-                - heading "Kandy" [level=3] [ref=e87]
-                - generic [ref=e88]: "2"
-              - generic [ref=e90]:
-                - generic [ref=e91]:
-                  - generic [ref=e92]: This Month (Jan)
-                  - generic [ref=e93]: 97.8%
-                - generic [ref=e94]:
-                  - generic [ref=e95]: This Quarter (Q1)
-                  - generic [ref=e96]: 97.8%
+        - generic [ref=e66]:
+          - generic [ref=e67]:
+            - heading "📊 View 12-Month DM% Trend Charts" [level=3] [ref=e68]
+            - paragraph [ref=e69]: Visualize retention trends with interactive charts for each business unit
+          - generic [ref=e70]: →
+      - generic [ref=e73]:
+        - generic [ref=e74]:
+          - heading "Business Units" [level=2] [ref=e75]
+          - generic [ref=e76]:
+            - generic [ref=e77] [cursor=pointer]:
+              - generic [ref=e78]:
+                - heading "Cloudsense" [level=3] [ref=e79]
+                - generic [ref=e80]: "1"
+              - generic [ref=e82]:
+                - generic [ref=e83]:
+                  - generic [ref=e84]: This Month (Jan)
+                  - generic [ref=e85]: 94.7%
+                - generic [ref=e86]:
+                  - generic [ref=e87]: This Quarter (Q1)
+                  - generic [ref=e88]: 94.7%
+                - generic [ref=e89]:
+                  - generic [ref=e90]: TTM (12 Mo.)
+                  - generic [ref=e91]: 94.7%
+                - generic [ref=e92]: "Target: 95.0%"
+              - generic [ref=e93]:
+                - generic [ref=e94]: ↓
+                - generic [ref=e95]: "-2.3% vs Last Quarter"
+              - generic [ref=e96]:
                 - generic [ref=e97]:
-                  - generic [ref=e98]: TTM (12 Mo.)
-                  - generic [ref=e99]: 97.8%
-                - generic [ref=e100]: "Target: 95.0%"
-              - generic [ref=e101]:
-                - generic [ref=e102]: ↑
-                - generic [ref=e103]: +0.8% vs Last Quarter
-              - generic [ref=e104]:
-                - generic [ref=e105]:
-                  - generic [ref=e106]: ARR
-                  - generic [ref=e107]: $3.3M
-                - generic [ref=e108]:
-                  - generic [ref=e109]: Accounts
-                  - generic [ref=e110]: "45"
-                - generic [ref=e111]:
-                  - generic [ref=e112]: Status
-                  - generic [ref=e113]: ✓ On Target
-            - generic [ref=e114] [cursor=pointer]:
-              - generic [ref=e115]:
-                - heading "STL" [level=3] [ref=e116]
-                - generic [ref=e117]: "1"
-              - generic [ref=e119]:
-                - generic [ref=e120]:
-                  - generic [ref=e121]: This Month (Jan)
-                  - generic [ref=e122]: 122.2%
-                - generic [ref=e123]:
-                  - generic [ref=e124]: This Quarter (Q1)
-                  - generic [ref=e125]: 122.2%
+                  - generic [ref=e98]: ARR
+                  - generic [ref=e99]: $6.4M
+                - generic [ref=e100]:
+                  - generic [ref=e101]: Accounts
+                  - generic [ref=e102]: "65"
+                - generic [ref=e103]:
+                  - generic [ref=e104]: Status
+                  - generic [ref=e105]: ⚠️ Below Target
+            - generic [ref=e106] [cursor=pointer]:
+              - generic [ref=e107]:
+                - heading "Kandy" [level=3] [ref=e108]
+                - generic [ref=e109]: "2"
+              - generic [ref=e111]:
+                - generic [ref=e112]:
+                  - generic [ref=e113]: This Month (Jan)
+                  - generic [ref=e114]: 97.8%
+                - generic [ref=e115]:
+                  - generic [ref=e116]: This Quarter (Q1)
+                  - generic [ref=e117]: 97.8%
+                - generic [ref=e118]:
+                  - generic [ref=e119]: TTM (12 Mo.)
+                  - generic [ref=e120]: 97.8%
+                - generic [ref=e121]: "Target: 95.0%"
+              - generic [ref=e122]:
+                - generic [ref=e123]: ↑
+                - generic [ref=e124]: +0.8% vs Last Quarter
+              - generic [ref=e125]:
                 - generic [ref=e126]:
-                  - generic [ref=e127]: TTM (12 Mo.)
-                  - generic [ref=e128]: 122.2%
-                - generic [ref=e129]: "Target: 95.0%"
-              - generic [ref=e130]:
-                - generic [ref=e131]: ↑
-                - generic [ref=e132]: +25.2% vs Last Quarter
-              - generic [ref=e133]:
-                - generic [ref=e134]:
-                  - generic [ref=e135]: ARR
-                  - generic [ref=e136]: $804K
-                - generic [ref=e137]:
-                  - generic [ref=e138]: Accounts
-                  - generic [ref=e139]: "30"
-                - generic [ref=e140]:
-                  - generic [ref=e141]: Status
-                  - generic [ref=e142]: ✓ On Target
-        - generic [ref=e143]:
-          - generic [ref=e144]:
-            - button "All 4" [ref=e145] [cursor=pointer]:
+                  - generic [ref=e127]: ARR
+                  - generic [ref=e128]: $3.3M
+                - generic [ref=e129]:
+                  - generic [ref=e130]: Accounts
+                  - generic [ref=e131]: "45"
+                - generic [ref=e132]:
+                  - generic [ref=e133]: Status
+                  - generic [ref=e134]: ✓ On Target
+            - generic [ref=e135] [cursor=pointer]:
+              - generic [ref=e136]:
+                - heading "STL" [level=3] [ref=e137]
+                - generic [ref=e138]: "1"
+              - generic [ref=e140]:
+                - generic [ref=e141]:
+                  - generic [ref=e142]: This Month (Jan)
+                  - generic [ref=e143]: 122.2%
+                - generic [ref=e144]:
+                  - generic [ref=e145]: This Quarter (Q1)
+                  - generic [ref=e146]: 122.2%
+                - generic [ref=e147]:
+                  - generic [ref=e148]: TTM (12 Mo.)
+                  - generic [ref=e149]: 122.2%
+                - generic [ref=e150]: "Target: 95.0%"
+              - generic [ref=e151]:
+                - generic [ref=e152]: ↑
+                - generic [ref=e153]: +25.2% vs Last Quarter
+              - generic [ref=e154]:
+                - generic [ref=e155]:
+                  - generic [ref=e156]: ARR
+                  - generic [ref=e157]: $804K
+                - generic [ref=e158]:
+                  - generic [ref=e159]: Accounts
+                  - generic [ref=e160]: "30"
+                - generic [ref=e161]:
+                  - generic [ref=e162]: Status
+                  - generic [ref=e163]: ✓ On Target
+        - generic [ref=e164]:
+          - generic [ref=e165]:
+            - button "All 4" [ref=e166] [cursor=pointer]:
               - text: All
-              - generic [ref=e146]: "4"
-            - button "Critical 0" [ref=e147] [cursor=pointer]:
+              - generic [ref=e167]: "4"
+            - button "Critical 0" [ref=e168] [cursor=pointer]:
               - text: Critical
-              - generic [ref=e148]: "0"
-            - button "High Impact 1" [ref=e149] [cursor=pointer]:
+              - generic [ref=e169]: "0"
+            - button "High Impact 1" [ref=e170] [cursor=pointer]:
               - text: High Impact
-              - generic [ref=e150]: "1"
-            - button "Quick Wins 0" [ref=e151] [cursor=pointer]:
+              - generic [ref=e171]: "1"
+            - button "Quick Wins 0" [ref=e172] [cursor=pointer]:
               - text: Quick Wins
-              - generic [ref=e152]: "0"
-          - generic [ref=e153]:
-            - combobox [ref=e154] [cursor=pointer]:
+              - generic [ref=e173]: "0"
+          - generic [ref=e174]:
+            - combobox [ref=e175] [cursor=pointer]:
               - option "All Categories" [selected]
               - option "Retention"
               - option "Expansion"
@@ -165,164 +171,164 @@
               - option "Product"
               - option "Engagement"
               - option "Health"
-            - combobox [ref=e155] [cursor=pointer]:
+            - combobox [ref=e176] [cursor=pointer]:
               - option "All Priorities" [selected]
               - option "Critical"
               - option "High"
               - option "Medium"
               - option "Low"
-          - generic [ref=e156]:
-            - generic [ref=e157]:
-              - generic [ref=e159]: 🟠 High
-              - generic [ref=e160]:
-                - generic [ref=e161]: Portfolio-wide
-                - generic [ref=e162]: Cloudsense
-              - heading "Cloudsense Product Health Investigation" [level=3] [ref=e163]
-              - paragraph [ref=e164]: Cloudsense shows declining DM% trend over recent quarters. Product satisfaction may be declining.
-              - generic [ref=e165]:
-                - generic [ref=e166]:
-                  - generic [ref=e167]: DM% Impact
-                  - generic [ref=e168]: +3.0%
-                - generic [ref=e169]:
-                  - generic [ref=e170]: ARR Impact
-                  - generic [ref=e171]: $637.0K
-                - generic [ref=e172]:
-                  - generic [ref=e173]: Confidence
-                  - generic [ref=e174]: 70%
-              - generic [ref=e175]:
-                - generic [ref=e176]: 📅 90 days
-                - generic [ref=e177]: ⚠️ High Risk
-                - generic [ref=e178]: 🏷️ Product
-              - generic [ref=e179]:
-                - button "✓ Accept & Create Action" [ref=e180] [cursor=pointer]
-                - button "👁️ Review Details" [ref=e181] [cursor=pointer]
-                - button "⏸️ Defer" [ref=e182] [cursor=pointer]
-            - generic [ref=e183]:
-              - generic [ref=e185]: 🟠 High
+          - generic [ref=e177]:
+            - generic [ref=e178]:
+              - generic [ref=e180]: 🟠 High
+              - generic [ref=e181]:
+                - generic [ref=e182]: Portfolio-wide
+                - generic [ref=e183]: Cloudsense
+              - heading "Cloudsense Product Health Investigation" [level=3] [ref=e184]
+              - paragraph [ref=e185]: Cloudsense shows declining DM% trend over recent quarters. Product satisfaction may be declining.
               - generic [ref=e186]:
-                - generic [ref=e187]: Portfolio-wide
-                - generic [ref=e188]: Kandy
-              - heading "Kandy Product Health Investigation" [level=3] [ref=e189]
-              - paragraph [ref=e190]: Kandy shows declining DM% trend over recent quarters. Product satisfaction may be declining.
-              - generic [ref=e191]:
-                - generic [ref=e192]:
-                  - generic [ref=e193]: DM% Impact
-                  - generic [ref=e194]: +3.0%
-                - generic [ref=e195]:
-                  - generic [ref=e196]: ARR Impact
-                  - generic [ref=e197]: $332.2K
-                - generic [ref=e198]:
-                  - generic [ref=e199]: Confidence
-                  - generic [ref=e200]: 70%
-              - generic [ref=e201]:
-                - generic [ref=e202]: 📅 90 days
-                - generic [ref=e203]: ⚠️ High Risk
-                - generic [ref=e204]: 🏷️ Product
-              - generic [ref=e205]:
-                - button "✓ Accept & Create Action" [ref=e206] [cursor=pointer]
-                - button "👁️ Review Details" [ref=e207] [cursor=pointer]
-                - button "⏸️ Defer" [ref=e208] [cursor=pointer]
-            - generic [ref=e209]:
-              - generic [ref=e211]: 🟢 Medium
+                - generic [ref=e187]:
+                  - generic [ref=e188]: DM% Impact
+                  - generic [ref=e189]: +3.0%
+                - generic [ref=e190]:
+                  - generic [ref=e191]: ARR Impact
+                  - generic [ref=e192]: $637.0K
+                - generic [ref=e193]:
+                  - generic [ref=e194]: Confidence
+                  - generic [ref=e195]: 70%
+              - generic [ref=e196]:
+                - generic [ref=e197]: 📅 90 days
+                - generic [ref=e198]: ⚠️ High Risk
+                - generic [ref=e199]: 🏷️ Product
+              - generic [ref=e200]:
+                - button "✓ Accept & Create Action" [ref=e201] [cursor=pointer]
+                - button "👁️ Review Details" [ref=e202] [cursor=pointer]
+                - button "⏸️ Defer" [ref=e203] [cursor=pointer]
+            - generic [ref=e204]:
+              - generic [ref=e206]: 🟠 High
+              - generic [ref=e207]:
+                - generic [ref=e208]: Portfolio-wide
+                - generic [ref=e209]: Kandy
+              - heading "Kandy Product Health Investigation" [level=3] [ref=e210]
+              - paragraph [ref=e211]: Kandy shows declining DM% trend over recent quarters. Product satisfaction may be declining.
               - generic [ref=e212]:
-                - generic [ref=e213]: Portfolio-wide
-                - generic [ref=e214]: Kandy
-              - heading "Kandy Upsell & Expansion Opportunity" [level=3] [ref=e215]
-              - paragraph [ref=e216]: Kandy DM% is strong at 97.8%. Healthy retention creates ideal conditions for expansion.
-              - generic [ref=e217]:
-                - generic [ref=e218]:
-                  - generic [ref=e219]: DM% Impact
-                  - generic [ref=e220]: +2.0%
-                - generic [ref=e221]:
-                  - generic [ref=e222]: ARR Impact
-                  - generic [ref=e223]: $498.4K
-                - generic [ref=e224]:
-                  - generic [ref=e225]: Confidence
-                  - generic [ref=e226]: 70%
-              - generic [ref=e227]:
-                - generic [ref=e228]: 📅 Q2'26
-                - generic [ref=e229]: ⚠️ Medium Risk
-                - generic [ref=e230]: 🏷️ Expansion
-              - generic [ref=e231]:
-                - button "✓ Accept & Create Action" [ref=e232] [cursor=pointer]
-                - button "👁️ Review Details" [ref=e233] [cursor=pointer]
-                - button "⏸️ Defer" [ref=e234] [cursor=pointer]
-            - generic [ref=e235]:
-              - generic [ref=e237]: 🟢 Medium
+                - generic [ref=e213]:
+                  - generic [ref=e214]: DM% Impact
+                  - generic [ref=e215]: +3.0%
+                - generic [ref=e216]:
+                  - generic [ref=e217]: ARR Impact
+                  - generic [ref=e218]: $332.2K
+                - generic [ref=e219]:
+                  - generic [ref=e220]: Confidence
+                  - generic [ref=e221]: 70%
+              - generic [ref=e222]:
+                - generic [ref=e223]: 📅 90 days
+                - generic [ref=e224]: ⚠️ High Risk
+                - generic [ref=e225]: 🏷️ Product
+              - generic [ref=e226]:
+                - button "✓ Accept & Create Action" [ref=e227] [cursor=pointer]
+                - button "👁️ Review Details" [ref=e228] [cursor=pointer]
+                - button "⏸️ Defer" [ref=e229] [cursor=pointer]
+            - generic [ref=e230]:
+              - generic [ref=e232]: 🟢 Medium
+              - generic [ref=e233]:
+                - generic [ref=e234]: Portfolio-wide
+                - generic [ref=e235]: Kandy
+              - heading "Kandy Upsell & Expansion Opportunity" [level=3] [ref=e236]
+              - paragraph [ref=e237]: Kandy DM% is strong at 97.8%. Healthy retention creates ideal conditions for expansion.
               - generic [ref=e238]:
-                - generic [ref=e239]: Portfolio-wide
-                - generic [ref=e240]: STL
-              - heading "STL Upsell & Expansion Opportunity" [level=3] [ref=e241]
-              - paragraph [ref=e242]: STL DM% is strong at 122.2%. Healthy retention creates ideal conditions for expansion.
-              - generic [ref=e243]:
-                - generic [ref=e244]:
-                  - generic [ref=e245]: DM% Impact
-                  - generic [ref=e246]: +2.0%
-                - generic [ref=e247]:
-                  - generic [ref=e248]: ARR Impact
-                  - generic [ref=e249]: $120.6K
-                - generic [ref=e250]:
-                  - generic [ref=e251]: Confidence
-                  - generic [ref=e252]: 70%
-              - generic [ref=e253]:
-                - generic [ref=e254]: 📅 Q2'26
-                - generic [ref=e255]: ⚠️ Medium Risk
-                - generic [ref=e256]: 🏷️ Expansion
-              - generic [ref=e257]:
-                - button "✓ Accept & Create Action" [ref=e258] [cursor=pointer]
-                - button "👁️ Review Details" [ref=e259] [cursor=pointer]
-                - button "⏸️ Defer" [ref=e260] [cursor=pointer]
-        - generic [ref=e263]:
-          - generic [ref=e264]:
-            - heading "📊 Projected Impact" [level=3] [ref=e265]
-            - paragraph [ref=e266]: Based on 0 of 4 recommendations
-          - generic [ref=e267]:
-            - generic [ref=e268]: DM% Rate
-            - generic [ref=e269]:
-              - generic [ref=e270]:
-                - generic [ref=e271]: Current
-                - generic [ref=e272]: 104.9%
-              - generic [ref=e273]: →
+                - generic [ref=e239]:
+                  - generic [ref=e240]: DM% Impact
+                  - generic [ref=e241]: +2.0%
+                - generic [ref=e242]:
+                  - generic [ref=e243]: ARR Impact
+                  - generic [ref=e244]: $498.4K
+                - generic [ref=e245]:
+                  - generic [ref=e246]: Confidence
+                  - generic [ref=e247]: 70%
+              - generic [ref=e248]:
+                - generic [ref=e249]: 📅 Q2'26
+                - generic [ref=e250]: ⚠️ Medium Risk
+                - generic [ref=e251]: 🏷️ Expansion
+              - generic [ref=e252]:
+                - button "✓ Accept & Create Action" [ref=e253] [cursor=pointer]
+                - button "👁️ Review Details" [ref=e254] [cursor=pointer]
+                - button "⏸️ Defer" [ref=e255] [cursor=pointer]
+            - generic [ref=e256]:
+              - generic [ref=e258]: 🟢 Medium
+              - generic [ref=e259]:
+                - generic [ref=e260]: Portfolio-wide
+                - generic [ref=e261]: STL
+              - heading "STL Upsell & Expansion Opportunity" [level=3] [ref=e262]
+              - paragraph [ref=e263]: STL DM% is strong at 122.2%. Healthy retention creates ideal conditions for expansion.
+              - generic [ref=e264]:
+                - generic [ref=e265]:
+                  - generic [ref=e266]: DM% Impact
+                  - generic [ref=e267]: +2.0%
+                - generic [ref=e268]:
+                  - generic [ref=e269]: ARR Impact
+                  - generic [ref=e270]: $120.6K
+                - generic [ref=e271]:
+                  - generic [ref=e272]: Confidence
+                  - generic [ref=e273]: 70%
               - generic [ref=e274]:
-                - generic [ref=e275]: Projected
-                - generic [ref=e276]: 104.9%
-          - generic [ref=e277]:
-            - generic [ref=e278]: +0.0%
-            - generic [ref=e279]: DM% Improvement
-          - generic [ref=e280]:
-            - generic [ref=e281]: Annual Recurring Revenue
-            - generic [ref=e282]:
-              - generic [ref=e283]:
-                - generic [ref=e284]: Current
-                - generic [ref=e285]: $10.50M
-              - generic [ref=e286]: →
-              - generic [ref=e287]:
-                - generic [ref=e288]: Projected
-                - generic [ref=e289]: $10.50M
-          - generic [ref=e290]:
-            - generic [ref=e291]: $0
-            - generic [ref=e292]: Additional ARR
-          - generic [ref=e294]:
-            - generic [ref=e295]: Implementation Progress
-            - generic [ref=e296]: 0/4
-          - button "⚡ Accept All High Priority" [ref=e298] [cursor=pointer]
-          - generic [ref=e299]:
-            - generic [ref=e300]: Key Metrics
-            - generic [ref=e301]:
-              - generic [ref=e302]: DM% Lift
-              - generic [ref=e303]: 0.0 pts
-            - generic [ref=e304]:
-              - generic [ref=e305]: ARR Growth
-              - generic [ref=e306]: 0.0%
-            - generic [ref=e307]:
-              - generic [ref=e308]: Confidence
-              - generic [ref=e309]: High
-      - paragraph [ref=e312]:
+                - generic [ref=e275]: 📅 Q2'26
+                - generic [ref=e276]: ⚠️ Medium Risk
+                - generic [ref=e277]: 🏷️ Expansion
+              - generic [ref=e278]:
+                - button "✓ Accept & Create Action" [ref=e279] [cursor=pointer]
+                - button "👁️ Review Details" [ref=e280] [cursor=pointer]
+                - button "⏸️ Defer" [ref=e281] [cursor=pointer]
+        - generic [ref=e284]:
+          - generic [ref=e285]:
+            - heading "📊 Projected Impact" [level=3] [ref=e286]
+            - paragraph [ref=e287]: Based on 0 of 4 recommendations
+          - generic [ref=e288]:
+            - generic [ref=e289]: DM% Rate
+            - generic [ref=e290]:
+              - generic [ref=e291]:
+                - generic [ref=e292]: Current
+                - generic [ref=e293]: 104.9%
+              - generic [ref=e294]: →
+              - generic [ref=e295]:
+                - generic [ref=e296]: Projected
+                - generic [ref=e297]: 104.9%
+          - generic [ref=e298]:
+            - generic [ref=e299]: +0.0%
+            - generic [ref=e300]: DM% Improvement
+          - generic [ref=e301]:
+            - generic [ref=e302]: Annual Recurring Revenue
+            - generic [ref=e303]:
+              - generic [ref=e304]:
+                - generic [ref=e305]: Current
+                - generic [ref=e306]: $10.50M
+              - generic [ref=e307]: →
+              - generic [ref=e308]:
+                - generic [ref=e309]: Projected
+                - generic [ref=e310]: $10.50M
+          - generic [ref=e311]:
+            - generic [ref=e312]: $0
+            - generic [ref=e313]: Additional ARR
+          - generic [ref=e315]:
+            - generic [ref=e316]: Implementation Progress
+            - generic [ref=e317]: 0/4
+          - button "⚡ Accept All High Priority" [ref=e319] [cursor=pointer]
+          - generic [ref=e320]:
+            - generic [ref=e321]: Key Metrics
+            - generic [ref=e322]:
+              - generic [ref=e323]: DM% Lift
+              - generic [ref=e324]: 0.0 pts
+            - generic [ref=e325]:
+              - generic [ref=e326]: ARR Growth
+              - generic [ref=e327]: 0.0%
+            - generic [ref=e328]:
+              - generic [ref=e329]: Confidence
+              - generic [ref=e330]: High
+      - paragraph [ref=e333]:
         - text: ✓
-        - strong [ref=e313]: "Live Data:"
+        - strong [ref=e334]: "Live Data:"
         - text: Connected to DM tracker data (3 business units, 4 recommendations)
   - region "Notifications alt+T"
-  - button "Open Next.js Dev Tools" [ref=e319] [cursor=pointer]:
-    - img [ref=e320]
-  - alert [ref=e323]
+  - button "Open Next.js Dev Tools" [ref=e340] [cursor=pointer]:
+    - img [ref=e341]
+  - alert [ref=e344]
 ```

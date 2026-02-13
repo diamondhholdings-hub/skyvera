@@ -1,0 +1,117 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e4]:
+      - link "Skyvera" [ref=e6] [cursor=pointer]:
+        - /url: /dashboard
+        - img "Skyvera" [ref=e7]
+      - generic [ref=e8]:
+        - link "Dashboard" [ref=e9] [cursor=pointer]:
+          - /url: /dashboard
+          - img [ref=e10]
+        - link "Accounts" [ref=e15] [cursor=pointer]:
+          - /url: /accounts
+          - img [ref=e16]
+        - link "Alerts" [ref=e20] [cursor=pointer]:
+          - /url: /alerts
+          - img [ref=e21]
+        - link "Scenarios" [ref=e24] [cursor=pointer]:
+          - /url: /scenario
+          - img [ref=e25]
+        - link "DM Strategy" [ref=e29] [cursor=pointer]:
+          - /url: /dm-strategy
+          - img [ref=e30]
+        - link "Ask" [ref=e33] [cursor=pointer]:
+          - /url: /query
+          - img [ref=e34]
+  - main [ref=e36]:
+    - generic [ref=e37]:
+      - generic [ref=e38]: "✅ Account Plan Page Loaded: British Telecommunications plc (Cloudsense)"
+      - link "← Back to Accounts" [ref=e40] [cursor=pointer]:
+        - /url: /accounts
+      - generic [ref=e42]:
+        - generic [ref=e43]:
+          - generic [ref=e44]:
+            - heading "British Telecommunications plc" [level=1] [ref=e45]
+            - generic [ref=e46]:
+              - generic [ref=e47]: Strategic Account Plan
+              - generic [ref=e48]: "|"
+              - generic [ref=e49]: Cloudsense Business Unit
+              - generic [ref=e50]: "|"
+              - 'generic "Account health: Critical" [ref=e51]':
+                - generic [ref=e52]: ✕
+                - generic [ref=e53]: Critical
+              - generic [ref=e54]: "|"
+              - generic [ref=e55]: Q1 2026
+          - button "Refresh Data" [ref=e56]:
+            - img
+        - generic [ref=e58]:
+          - generic [ref=e59]:
+            - generic [ref=e60]: Total Revenue
+            - generic [ref=e61]: $1,404,790.63
+          - generic [ref=e62]:
+            - generic [ref=e63]: Recurring Revenue
+            - generic [ref=e64]: $1,404,790.63
+          - generic [ref=e65]:
+            - generic [ref=e66]: Non-Recurring Revenue
+            - generic [ref=e67]: $0
+          - generic [ref=e68]:
+            - generic [ref=e69]: Health Score
+            - generic [ref=e70]: red%
+      - generic [ref=e71]:
+        - generic [ref=e72]: Select tab
+        - combobox "Select tab" [ref=e73]:
+          - option "Overview"
+          - option "Financials"
+          - option "Organization"
+          - option "Strategy"
+          - option "Competitive"
+          - option "Intelligence" [selected]
+          - option "Action Items"
+          - option "Retention Strategy"
+      - generic [ref=e75]:
+        - generic [ref=e76]:
+          - heading "Strategic Intelligence" [level=2] [ref=e77]
+          - generic [ref=e79]:
+            - generic [ref=e81]: "# BRITISH TELECOMMUNICATIONS PLC (BT GROUP) - STRATEGIC ACCOUNT PLAN ## CloudSense Business Unit | Skyvera ### Q1 2026 - Prepared February 2026 --- ## EXECUTIVE SUMMARY **Account:** British Telecommunications plc (BT Group) **Status:** Tier 1 Strategic Account - #7 Customer (by ARR) **Account Health Score:** 7/10 (Medium-High Confidence) | Metric | Value | |--------|-------| | **Current ARR** | $1,504,000 | | **% of CloudSense Revenue** | 4.5% | | **Contract Status** | Active, renewal Next Year | | **Renewal Risk** | LOW | | **Will Renew** | Yes (Confirmed) | | **Active Subscriptions** | 1 | | **Strategic Value** | VERY HIGH | | **Reference Value** | HIGH | **Key Insight:** BT Group is one of the world's largest telecommunications companies and a flagship CloudSense customer, demonstrating the platform's ability to support enterprise-scale B2B digital transformation. The account is stable with confirmed renewal, but presents significant expansion opportunities as BT executes on its 3 billion cost savings initiative through digital transformation, with Salesforce and CloudSense at the core of their B2B sales modernization strategy. --- ## 1. COMPANY INTELLIGENCE ### 1.1 Company Overview **British Telecommunications plc (BT Group)** is one of the world's leading telecommunications services companies, headquartered in London, UK. The company provides fixed-line services, broadband, mobile, TV products, and managed services to consumers, businesses, and public sector organizations. | Attribute | Detail | |-----------|--------| | **Legal Name** | British Telecommunications public limited company | | **Trading As** | BT Group plc | | **Headquarters** | One Braham, London, UK | | **CEO** | Allison Kirkby (since January 31, 2024) | | **Chairman** | Adam Crozier (since December 2021) | | **Employees** | ~130,000 (reducing to 75,000-100,000 by end of decade) | | **FY2025 Revenue** | GBP 20.8 billion (~$26.2 billion USD) | | **Market Capitalization** | $23.3 billion ... (read full report for more)"
+            - paragraph [ref=e82]: Full intelligence report available - parsed from account analysis
+        - generic [ref=e83]:
+          - heading "Recent News & Intelligence" [level=2] [ref=e84]
+          - generic [ref=e85]:
+            - generic [ref=e86]:
+              - link "British Telecommunications Plc Announces Digital Transformation Initiative" [ref=e87] [cursor=pointer]:
+                - /url: https://example.com/news/british-telecommunications-plc-strategic-initiative
+              - generic [ref=e88]:
+                - generic [ref=e89]: Industry News Daily
+                - generic [ref=e90]: •
+                - generic [ref=e91]: 20 days ago
+                - generic [ref=e92]: •
+                - generic [ref=e93]: High relevance
+              - paragraph [ref=e94]: British Telecommunications Plc has unveiled a comprehensive digital transformation strategy aimed at modernizing its technology infrastructure and improving customer experience. The initiative include...
+            - generic [ref=e95]:
+              - link "British Telecommunications Plc Reports Strong Financial Performance" [ref=e96] [cursor=pointer]:
+                - /url: https://example.com/news/british-telecommunications-plc-financial-results
+              - generic [ref=e97]:
+                - generic [ref=e98]: Financial Times
+                - generic [ref=e99]: •
+                - generic [ref=e100]: about 1 month ago
+                - generic [ref=e101]: •
+                - generic [ref=e102]: High relevance
+              - paragraph [ref=e103]: British Telecommunications Plc has reported solid financial results for the quarter, with revenue growth driven by strong performance in core business areas. The company reaffirmed its commitment to i...
+            - generic [ref=e104]:
+              - link "British Telecommunications Plc Announces Strategic Partnership to Expand Services" [ref=e105] [cursor=pointer]:
+                - /url: https://example.com/news/british-telecommunications-plc-partnership
+              - generic [ref=e106]:
+                - generic [ref=e107]: Business Wire
+                - generic [ref=e108]: •
+                - generic [ref=e109]: 2 months ago
+                - generic [ref=e110]: •
+                - generic [ref=e111]: High relevance
+              - paragraph [ref=e112]: British Telecommunications Plc has formed a strategic partnership aimed at expanding its service offerings and reaching new markets. The collaboration will leverage complementary strengths to deliver ...
+  - region "Notifications alt+T"
+  - button "Open Next.js Dev Tools" [ref=e118] [cursor=pointer]:
+    - img [ref=e119]
+  - alert [ref=e122]
+```

@@ -93,7 +93,7 @@ export default async function AccountsPage() {
         </Suspense>
 
         {/* Debug info - remove after fixing */}
-        <div className="mt-4 p-4 bg-blue-50 border border-blue-200 rounded text-sm">
+        <div className="mt-4 p-4 bg-blue-50 border border-blue-200 rounded text-sm" suppressHydrationWarning>
           <p><strong>Debug:</strong> Loaded {customers.length} customers at {lastUpdated.toLocaleTimeString()}</p>
         </div>
       </div>

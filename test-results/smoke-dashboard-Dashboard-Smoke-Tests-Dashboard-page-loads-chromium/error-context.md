@@ -1,0 +1,239 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e4]:
+      - link "Skyvera" [ref=e6] [cursor=pointer]:
+        - /url: /dashboard
+        - img "Skyvera" [ref=e7]
+      - generic [ref=e8]:
+        - link "Dashboard" [ref=e9] [cursor=pointer]:
+          - /url: /dashboard
+          - img [ref=e10]
+        - link "Accounts" [ref=e15] [cursor=pointer]:
+          - /url: /accounts
+          - img [ref=e16]
+        - link "Alerts" [ref=e20] [cursor=pointer]:
+          - /url: /alerts
+          - img [ref=e21]
+        - link "Scenarios" [ref=e24] [cursor=pointer]:
+          - /url: /scenario
+          - img [ref=e25]
+        - link "DM Strategy" [ref=e29] [cursor=pointer]:
+          - /url: /dm-strategy
+          - img [ref=e30]
+        - link "Ask" [ref=e33] [cursor=pointer]:
+          - /url: /query
+          - img [ref=e34]
+  - main [ref=e36]:
+    - generic [ref=e38]:
+      - generic [ref=e39]:
+        - heading "Skyvera Executive Intelligence Report" [level=1] [ref=e40]
+        - generic [ref=e41]: Financial & Customer Intelligence Analysis - Q1'26
+        - generic [ref=e42]: "Report Date: February 13, 2026 | Classification: Executive Confidential"
+      - navigation [ref=e43]:
+        - button "Financial Summary" [ref=e44] [cursor=pointer]
+        - button "Financial Analysis" [ref=e45] [cursor=pointer]
+        - button "Customer Summary" [ref=e46] [cursor=pointer]
+        - button "Top Customers" [ref=e47] [cursor=pointer]
+        - button "At-Risk Accounts" [ref=e48] [cursor=pointer]
+        - button "Expansion Pipeline" [ref=e49] [cursor=pointer]
+        - button "Action Plan" [ref=e50] [cursor=pointer]
+      - generic [ref=e51]:
+        - generic [ref=e53]:
+          - generic [ref=e54]:
+            - heading "💡 Revenue Retention Briefing" [level=3] [ref=e55]
+            - link "View All →" [ref=e56] [cursor=pointer]:
+              - /url: /dm-strategy
+          - generic [ref=e57]:
+            - generic [ref=e58]:
+              - generic [ref=e59]:
+                - generic [ref=e60]:
+                  - generic [ref=e62]: Portfolio-wide
+                  - generic [ref=e63]: Cloudsense
+                - paragraph [ref=e64]: Cloudsense Product Health Investigation
+                - generic [ref=e65]:
+                  - generic [ref=e66]: $637K ARR
+                  - generic [ref=e67]:
+                    - button "Accept" [ref=e68] [cursor=pointer]
+                    - link "Details" [ref=e69] [cursor=pointer]:
+                      - /url: /dm-strategy?rec=Cloudsense-product-health
+                      - button "Details" [ref=e70]
+              - generic [ref=e71]:
+                - generic [ref=e72]:
+                  - generic [ref=e74]: Portfolio-wide
+                  - generic [ref=e75]: Kandy
+                - paragraph [ref=e76]: Kandy Product Health Investigation
+                - generic [ref=e77]:
+                  - generic [ref=e78]: $332K ARR
+                  - generic [ref=e79]:
+                    - button "Accept" [ref=e80] [cursor=pointer]
+                    - link "Details" [ref=e81] [cursor=pointer]:
+                      - /url: /dm-strategy?rec=Kandy-product-health
+                      - button "Details" [ref=e82]
+            - generic [ref=e84]:
+              - generic [ref=e85]: Total Potential Impact
+              - generic [ref=e86]: $969K
+        - generic [ref=e87]:
+          - heading "Financial Executive Summary" [level=2] [ref=e88]
+          - generic [ref=e89]:
+            - strong [ref=e91]: "OVERALL ASSESSMENT: PROCEED WITH CAUTION"
+            - generic [ref=e92]: Skyvera demonstrates strong profitability metrics (61.6% EBITDA margin, $16.7M quarterly EBITDA) but faces significant structural challenges with declining recurring revenue (-11.9% YoY) and margin compression (-$1932K gap to target).
+          - generic [ref=e93]:
+            - generic [ref=e94]:
+              - generic [ref=e95]: Total Revenue (Q1'26)
+              - generic [ref=e96]: $27.1M
+              - generic [ref=e97]: 85% Recurring
+            - generic [ref=e98]:
+              - generic [ref=e99]: EBITDA
+              - generic [ref=e100]: $16.7M
+              - generic [ref=e101]: 61.6% Margin
+            - generic [ref=e102]:
+              - generic [ref=e103]: Net Margin Gap
+              - generic [ref=e104]: "-$1932K"
+              - generic [ref=e105]: "-7.1 pts below target"
+            - generic [ref=e106]:
+              - generic [ref=e107]: ARR (Annualized)
+              - generic [ref=e108]: $92.4M
+              - generic [ref=e109]: DOWN 11.9% YoY
+            - generic [ref=e110]:
+              - generic [ref=e111]: Rule of 40
+              - generic [ref=e112]: 50.6%
+              - generic [ref=e113]: PASSING
+            - generic [ref=e114]:
+              - generic [ref=e115]: AR >90 Days
+              - generic [ref=e116]: $11.5M
+              - generic [ref=e117]: 12.5% of ARR
+          - heading "Critical Financial Issues" [level=3] [ref=e118]
+          - generic [ref=e119]:
+            - generic [ref=e120]: "1. Margin Gap: -$1932K (-7.1 percentage points)"
+            - table [ref=e121]:
+              - rowgroup [ref=e122]:
+                - row "Driver Impact Explanation" [ref=e123]:
+                  - columnheader "Driver" [ref=e124]
+                  - columnheader "Impact" [ref=e125]
+                  - columnheader "Explanation" [ref=e126]
+              - rowgroup [ref=e127]:
+                - row "HC COGS Increase +$779K 43 new XO contractors hired" [ref=e128]:
+                  - cell "HC COGS Increase" [ref=e129]
+                  - cell "+$779K" [ref=e130]:
+                    - generic [ref=e131]: +$779K
+                  - cell "43 new XO contractors hired" [ref=e132]
+                - row "RR Decline -$336K Recurring revenue down vs. prior plan" [ref=e133]:
+                  - cell "RR Decline" [ref=e134]
+                  - cell "-$336K" [ref=e135]:
+                    - generic [ref=e136]: "-$336K"
+                  - cell "Recurring revenue down vs. prior plan" [ref=e137]
+                - row "NHC Expenses Up +$177K Software/professional services" [ref=e138]:
+                  - cell "NHC Expenses Up" [ref=e139]
+                  - cell "+$177K" [ref=e140]:
+                    - generic [ref=e141]: +$177K
+                  - cell "Software/professional services" [ref=e142]
+                - row "CF COGS Down -$920K Vendor optimization (positive)" [ref=e143]:
+                  - cell "CF COGS Down" [ref=e144]
+                  - cell "-$920K" [ref=e145]:
+                    - generic [ref=e146]: "-$920K"
+                  - cell "Vendor optimization (positive)" [ref=e147]
+          - generic [ref=e148]:
+            - generic [ref=e149]: "2. Recurring Revenue Declining: -$336K"
+            - table [ref=e150]:
+              - rowgroup [ref=e151]:
+                - row "Business Unit Q1'26 Plan Prior Plan Variance" [ref=e152]:
+                  - columnheader "Business Unit" [ref=e153]
+                  - columnheader "Q1'26 Plan" [ref=e154]
+                  - columnheader "Prior Plan" [ref=e155]
+                  - columnheader "Variance" [ref=e156]
+              - rowgroup [ref=e157]:
+                - row "Cloudsense $6.37M $6.73M $-355K" [ref=e158]:
+                  - cell "Cloudsense" [ref=e159]
+                  - cell "$6.37M" [ref=e160]
+                  - cell "$6.73M" [ref=e161]
+                  - cell "$-355K" [ref=e162]:
+                    - generic [ref=e163]: $-355K
+                - row "Kandy $3.32M $3.40M $-75K" [ref=e164]:
+                  - cell "Kandy" [ref=e165]
+                  - cell "$3.32M" [ref=e166]
+                  - cell "$3.40M" [ref=e167]
+                  - cell "$-75K" [ref=e168]:
+                    - generic [ref=e169]: $-75K
+                - row "STL $0.80M $0.66M +$146K" [ref=e170]:
+                  - cell "STL" [ref=e171]
+                  - cell "$0.80M" [ref=e172]
+                  - cell "$0.66M" [ref=e173]
+                  - cell "+$146K" [ref=e174]:
+                    - generic [ref=e175]: +$146K
+          - generic [ref=e176]:
+            - generic [ref=e177]: "3. Salesforce UK Contract: $4.1M Annual"
+            - generic [ref=e178]:
+              - strong [ref=e179]: "CRITICAL CONCERN:"
+              - text: This contract consumes 64% of Cloudsense's recurring revenue. At this cost ratio, every dollar of Cloudsense RR decline makes this contract increasingly burdensome.
+              - list [ref=e180]:
+                - listitem [ref=e181]: "Annual Cost: $4.1M"
+                - listitem [ref=e182]: "Cloudsense RR: $6.37M (quarterly)"
+                - listitem [ref=e183]: "As % of Cloudsense RR: 64%"
+                - listitem [ref=e184]:
+                  - strong [ref=e185]: "Action Required:"
+                  - text: Urgent review of utilization and renegotiation options
+          - heading "Business Unit Performance" [level=3] [ref=e186]
+          - table [ref=e187]:
+            - rowgroup [ref=e188]:
+              - row "Business Unit Revenue Customers Net Margin Target Delta" [ref=e189]:
+                - columnheader "Business Unit" [ref=e190]
+                - columnheader "Revenue" [ref=e191]
+                - columnheader "Customers" [ref=e192]
+                - columnheader "Net Margin" [ref=e193]
+                - columnheader "Target" [ref=e194]
+                - columnheader "Delta" [ref=e195]
+            - rowgroup [ref=e196]:
+              - row "Cloudsense $8.07M 68 59.2% 63.6% -$354K" [ref=e197] [cursor=pointer]:
+                - cell "Cloudsense" [ref=e198]
+                - cell "$8.07M" [ref=e199]
+                - cell "68" [ref=e200]
+                - cell "59.2%" [ref=e201]
+                - cell "63.6%" [ref=e202]
+                - cell "-$354K" [ref=e203]:
+                  - generic [ref=e204]: "-$354K"
+              - row "Kandy $3.32M 27 63.2% 75.0% -$390K" [ref=e205] [cursor=pointer]:
+                - cell "Kandy" [ref=e206]
+                - cell "$3.32M" [ref=e207]
+                - cell "27" [ref=e208]
+                - cell "63.2%" [ref=e209]
+                - cell "75.0%" [ref=e210]
+                - cell "-$390K" [ref=e211]:
+                  - generic [ref=e212]: "-$390K"
+              - row "STL $0.95M 21 61.2% 75.0% -$131K" [ref=e213] [cursor=pointer]:
+                - cell "STL" [ref=e214]
+                - cell "$0.95M" [ref=e215]
+                - cell "21" [ref=e216]
+                - cell "61.2%" [ref=e217]
+                - cell "75.0%" [ref=e218]
+                - cell "-$131K" [ref=e219]:
+                  - generic [ref=e220]: "-$131K"
+              - row "Skyvera $14.72M 116 62.5% 70.0% -$1105K" [ref=e221] [cursor=pointer]:
+                - cell "Skyvera" [ref=e222]
+                - cell "$14.72M" [ref=e223]
+                - cell "116" [ref=e224]
+                - cell "62.5%" [ref=e225]
+                - cell "70.0%" [ref=e226]
+                - cell "-$1105K" [ref=e227]:
+                  - generic [ref=e228]: "-$1105K"
+      - generic [ref=e229]:
+        - generic [ref=e230]:
+          - generic [ref=e231]: Skyvera Intelligence Platform
+          - generic [ref=e232]: Powered by AI-driven analysis and real-time data integration
+        - generic [ref=e233]: © 2026 Skyvera. Executive Confidential. All Rights Reserved.
+  - region "Notifications alt+T"
+  - generic [ref=e238] [cursor=pointer]:
+    - button "Open Next.js Dev Tools" [ref=e239]:
+      - img [ref=e240]
+    - generic [ref=e243]:
+      - button "Open issues overlay" [ref=e244]:
+        - generic [ref=e245]:
+          - generic [ref=e246]: "0"
+          - generic [ref=e247]: "1"
+        - generic [ref=e248]: Issue
+      - button "Collapse issues badge" [ref=e249]:
+        - img [ref=e250]
+  - alert [ref=e252]
+```

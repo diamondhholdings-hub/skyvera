@@ -67,7 +67,7 @@ export default function DashboardPage() {
           }}>
             Financial & Customer Intelligence Analysis - Q1'26
           </div>
-          <div style={{ fontSize: '1em', opacity: 0.8 }}>
+          <div style={{ fontSize: '1em', opacity: 0.8 }} suppressHydrationWarning>
             Report Date: {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })} | Classification: Executive Confidential
           </div>
         </header>
