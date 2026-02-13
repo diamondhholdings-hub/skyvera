@@ -23,6 +23,27 @@ export function DashboardNavigation() {
   const searchParams = useSearchParams()
   const activeSection = searchParams.get('section') || 'financial-summary'
 
+  // Inject keyframes CSS once on mount
+  useEffect(() => {
+    if (!document.getElementById('dashboard-keyframes')) {
+      const style = document.createElement('style')
+      style.id = 'dashboard-keyframes'
+      style.textContent = `
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `
+      document.head.appendChild(style)
+    }
+  }, [])
+
   // Hide/show sections based on active state
   useEffect(() => {
     // Hide all sections
@@ -93,24 +114,6 @@ export function DashboardNavigation() {
           </button>
         ))}
       </nav>
-
-      {/* CSS for fade-in animation - injected once */}
-      {typeof window !== 'undefined' && !document.getElementById('dashboard-keyframes') && (
-        <style id="dashboard-keyframes" dangerouslySetInnerHTML={{
-          __html: `
-            @keyframes fadeIn {
-              from {
-                opacity: 0;
-                transform: translateY(20px);
-              }
-              to {
-                opacity: 1;
-                transform: translateY(0);
-              }
-            }
-          `
-        }} />
-      )}
     </>
   )
 }
