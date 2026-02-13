@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import {
   LayoutDashboard,
@@ -34,11 +35,16 @@ export function NavBar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo/Brand */}
           <div className="flex items-center">
-            <Link href="/dashboard" className="flex items-center space-x-2">
-              <div className="text-2xl font-bold text-accent">
-                SKYVERA
-              </div>
-              <div className="text-sm text-paper opacity-80 hidden sm:block">
+            <Link href="/dashboard" className="flex items-center space-x-3 hover:opacity-90 transition-opacity">
+              <Image
+                src="/skyvera-logo.png"
+                alt="Skyvera"
+                width={180}
+                height={40}
+                className="h-8 w-auto"
+                priority
+              />
+              <div className="text-xs text-paper/60 hidden lg:block border-l border-paper/20 pl-3">
                 Intelligence Platform
               </div>
             </Link>
