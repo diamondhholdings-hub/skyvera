@@ -25,14 +25,14 @@ test.describe('Account Plan Smoke Tests', () => {
     await accountPlan.verifyNoErrors()
   })
 
-  test('All 7 tabs are visible', async ({ page }) => {
+  test('All 8 tabs are visible', async ({ page }) => {
     const accountPlan = new AccountPlanPage(page)
     await accountPlan.goto(HERO_ACCOUNT)
 
     // Wait for page to load
     await expect(accountPlan.customerName).toBeVisible()
 
-    // Verify all 7 tabs
+    // Verify all 8 tabs
     await accountPlan.verifyAllTabsVisible()
   })
 

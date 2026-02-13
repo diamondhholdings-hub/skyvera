@@ -213,7 +213,7 @@ export function AccountTable({ customers }: AccountTableProps) {
             <Link
               key={row.id}
               href={`/accounts/${encodeURIComponent(customer.customer_name)}`}
-              className="bg-white border-2 border-[var(--border)] p-6 rounded-lg cursor-pointer card-hover animate-fade-in-up relative block"
+              className="bg-white border-2 border-[var(--border)] p-6 rounded-lg cursor-pointer card-hover relative block"
             >
               {/* Rank Badge */}
               <div className="absolute top-4 right-4 bg-accent text-white px-3 py-1 rounded font-bold text-lg">

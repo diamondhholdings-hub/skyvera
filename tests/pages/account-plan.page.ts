@@ -20,6 +20,7 @@ export class AccountPlanPage {
   readonly competitiveTab: Locator
   readonly intelligenceTab: Locator
   readonly actionItemsTab: Locator
+  readonly retentionTab: Locator
 
   // Tab content area
   readonly tabContent: Locator
@@ -40,6 +41,7 @@ export class AccountPlanPage {
     this.competitiveTab = page.locator('#tab-select').or(page.getByRole('button', { name: 'Competitive' }))
     this.intelligenceTab = page.locator('#tab-select').or(page.getByRole('button', { name: 'Intelligence' }))
     this.actionItemsTab = page.locator('#tab-select').or(page.getByRole('button', { name: 'Action Items' }))
+    this.retentionTab = page.locator('#tab-select').or(page.getByRole('button', { name: 'Retention Strategy' }))
 
     // Tab content container
     this.tabContent = page.locator('main').or(page.locator('[role="tabpanel"]'))
@@ -56,7 +58,7 @@ export class AccountPlanPage {
   /**
    * Click a specific tab by name (works with both desktop buttons and mobile select)
    */
-  async clickTab(tabName: 'overview' | 'financials' | 'organization' | 'strategy' | 'competitive' | 'intelligence' | 'action-items') {
+  async clickTab(tabName: 'overview' | 'financials' | 'organization' | 'strategy' | 'competitive' | 'intelligence' | 'action-items' | 'retention') {
     // Check if mobile select is visible
     const select = this.page.locator('#tab-select')
     const isSelectVisible = await select.isVisible()
@@ -66,9 +68,17 @@ export class AccountPlanPage {
       await select.selectOption({ value: tabName })
     } else {
       // Desktop: click button
-      const button = this.page.getByRole('button', {
-        name: tabName === 'action-items' ? 'Action Items' : tabName.charAt(0).toUpperCase() + tabName.slice(1)
-      })
+      const labelMap: Record<string, string> = {
+        'overview': 'Overview',
+        'financials': 'Financials',
+        'organization': 'Organization',
+        'strategy': 'Strategy',
+        'competitive': 'Competitive',
+        'intelligence': 'Intelligence',
+        'action-items': 'Action Items',
+        'retention': 'Retention Strategy'
+      }
+      const button = this.page.getByRole('button', { name: labelMap[tabName] })
       await button.click()
     }
   }
@@ -85,15 +95,15 @@ export class AccountPlanPage {
   }
 
   /**
-   * Verify all 7 tabs are accessible (via select dropdown - responsive design shows select on current viewport)
+   * Verify all 8 tabs are accessible (via select dropdown - responsive design shows select on current viewport)
    */
   async verifyAllTabsVisible() {
-    // Current viewport shows mobile select, so just verify it has 7 options
+    // Current viewport shows mobile select, so just verify it has 8 options
     const select = this.page.locator('#tab-select')
     await expect(select).toBeVisible({ timeout: 5000 })
 
     const options = await select.locator('option').count()
-    expect(options).toBe(7)
+    expect(options).toBe(8)
   }
 
   /**
