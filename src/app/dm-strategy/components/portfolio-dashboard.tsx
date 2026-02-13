@@ -17,10 +17,12 @@ interface PortfolioDashboardProps {
 export default function PortfolioDashboard({ businessUnits, recommendations }: PortfolioDashboardProps) {
   const [selectedBU, setSelectedBU] = useState<string | null>(null);
   const [activeFilter, setActiveFilter] = useState<string>('all');
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [selectedPriority, setSelectedPriority] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedRecommendation, setSelectedRecommendation] = useState<Recommendation | null>(null);
 
-  // Filter recommendations based on selected BU and active filter
+  // Filter recommendations based on all active filters
   const filteredRecommendations = recommendations.filter((rec) => {
     // Filter by BU
     if (selectedBU && rec.businessUnit !== selectedBU) return false;
@@ -28,7 +30,13 @@ export default function PortfolioDashboard({ businessUnits, recommendations }: P
     // Filter by status (only show pending)
     if (rec.status !== 'pending') return false;
 
-    // Filter by priority/type
+    // Filter by category
+    if (selectedCategory && rec.category !== selectedCategory) return false;
+
+    // Filter by priority
+    if (selectedPriority && rec.priority !== selectedPriority) return false;
+
+    // Filter by preset filters
     if (activeFilter === 'critical' && rec.priority !== 'critical') return false;
     if (activeFilter === 'high-impact' && rec.arrImpact < 500000) return false;
     if (activeFilter === 'quick-wins' && (rec.risk !== 'Low' || rec.arrImpact < 100000)) return false;
@@ -190,6 +198,74 @@ export default function PortfolioDashboard({ businessUnits, recommendations }: P
             filters={filterOptions}
             onFilterChange={setActiveFilter}
           />
+
+          {/* Additional Filters */}
+          <div style={{ display: 'flex', gap: 'var(--space-md)', marginBottom: 'var(--space-lg)', flexWrap: 'wrap' }}>
+            {/* Category Filter */}
+            <select
+              value={selectedCategory || ''}
+              onChange={(e) => setSelectedCategory(e.target.value || null)}
+              style={{
+                padding: 'var(--space-sm) var(--space-md)',
+                border: '1px solid var(--border)',
+                borderRadius: 'var(--radius-sm)',
+                fontSize: '0.875rem',
+                background: 'white',
+                cursor: 'pointer'
+              }}
+            >
+              <option value="">All Categories</option>
+              <option value="Retention">Retention</option>
+              <option value="Expansion">Expansion</option>
+              <option value="Pricing">Pricing</option>
+              <option value="Product">Product</option>
+              <option value="Engagement">Engagement</option>
+              <option value="Health">Health</option>
+            </select>
+
+            {/* Priority Filter */}
+            <select
+              value={selectedPriority || ''}
+              onChange={(e) => setSelectedPriority(e.target.value || null)}
+              style={{
+                padding: 'var(--space-sm) var(--space-md)',
+                border: '1px solid var(--border)',
+                borderRadius: 'var(--radius-sm)',
+                fontSize: '0.875rem',
+                background: 'white',
+                cursor: 'pointer'
+              }}
+            >
+              <option value="">All Priorities</option>
+              <option value="critical">Critical</option>
+              <option value="high">High</option>
+              <option value="medium">Medium</option>
+              <option value="low">Low</option>
+            </select>
+
+            {/* Clear Filters Button */}
+            {(selectedCategory || selectedPriority || selectedBU) && (
+              <button
+                onClick={() => {
+                  setSelectedCategory(null);
+                  setSelectedPriority(null);
+                  setSelectedBU(null);
+                  setActiveFilter('all');
+                }}
+                style={{
+                  padding: 'var(--space-sm) var(--space-md)',
+                  background: 'var(--background)',
+                  border: '1px solid var(--border)',
+                  borderRadius: 'var(--radius-sm)',
+                  fontSize: '0.875rem',
+                  cursor: 'pointer',
+                  color: 'var(--text-light)'
+                }}
+              >
+                ✕ Clear All Filters
+              </button>
+            )}
+          </div>
 
           {filteredRecommendations.length === 0 ? (
             <div
