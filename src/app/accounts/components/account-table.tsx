@@ -33,6 +33,9 @@ export function AccountTable({ customers }: AccountTableProps) {
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
   const [debouncedGlobalFilter, setDebouncedGlobalFilter] = useState('')
 
+  // Debug logging
+  console.log('[AccountTable] Received customers:', customers?.length || 0)
+
   // Debounce global filter with 300ms delay
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -133,6 +136,9 @@ export function AccountTable({ customers }: AccountTableProps) {
     },
   })
 
+  // Debug logging
+  console.log('[AccountTable] Table rows:', table.getRowModel().rows.length)
+
   // Filter handlers
   const handleBUFilter = (bu: string | null) => {
     if (bu === null) {
@@ -162,6 +168,11 @@ export function AccountTable({ customers }: AccountTableProps) {
 
   return (
     <div>
+      {/* DEBUG BANNER */}
+      <div className="bg-yellow-100 border-2 border-yellow-600 p-3 mb-4 text-center font-bold">
+        🐛 AccountTable Debug: Received {customers?.length || 0} customers, Rendering {table.getRowModel().rows.length} rows
+      </div>
+
       {/* Search Input - Centered */}
       <div className="mb-6 flex justify-center animate-fade-in">
         <input
