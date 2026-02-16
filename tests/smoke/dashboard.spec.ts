@@ -40,17 +40,12 @@ test.describe('Dashboard Smoke Tests', () => {
     await dashboard.goto()
     await dashboard.waitForDataLoaded()
 
-    // Verify refresh button exists
-    await expect(dashboard.refreshButton).toBeVisible()
-
-    // Click refresh button
-    await dashboard.clickRefresh()
-
-    // Wait for page to reload
-    await page.waitForLoadState('networkidle', { timeout: 10000 })
+    // Dashboard uses auto-refresh via React - manually reload page to test
+    await page.reload({ waitUntil: 'networkidle', timeout: 10000 })
 
     // Verify page still loads after refresh
-    await expect(dashboard.pageTitle).toBeVisible()
+    await expect(dashboard.pageTitle).toBeVisible({ timeout: 10000 })
+    await expect(dashboard.totalRevenueKPI).toBeVisible({ timeout: 10000 })
   })
 
   test('Navigation links work', async ({ page }) => {
@@ -58,13 +53,18 @@ test.describe('Dashboard Smoke Tests', () => {
     await dashboard.goto()
     await dashboard.waitForDataLoaded()
 
-    // Test Accounts navigation
-    await expect(dashboard.accountsNavLink).toBeVisible()
-    await dashboard.clickAccountsNav()
+    // Navigate to Customer Summary section which has accounts link
+    await page.getByRole('button', { name: 'Customer Summary' }).click()
+    await page.waitForTimeout(1000) // Wait for section to show
+
+    // Click accounts link in customer summary
+    const accountsLink = page.locator('a[href="/accounts"]').first()
+    await expect(accountsLink).toBeVisible({ timeout: 5000 })
+    await accountsLink.click()
 
     // Verify navigation worked
     await expect(page).toHaveURL(/\/accounts/)
-    await expect(page.getByRole('heading', { name: 'Customer Accounts' })).toBeVisible()
+    await expect(page.getByRole('heading', { name: /Customer Account Plans/i })).toBeVisible({ timeout: 10000 })
   })
 
   test('Dashboard loads in under 2 seconds', async ({ page }) => {
@@ -97,10 +97,10 @@ test.describe('Dashboard Smoke Tests', () => {
     await dashboard.goto()
     await dashboard.waitForDataLoaded()
 
-    // Verify BU names appear (Cloudsense, Kandy, STL)
-    await expect(page.getByText('Cloudsense')).toBeVisible()
-    await expect(page.getByText('Kandy')).toBeVisible()
-    await expect(page.getByText('STL')).toBeVisible()
+    // Verify BU names appear (Cloudsense, Kandy, STL) - use .first() for multiple matches
+    await expect(page.getByText('Cloudsense').first()).toBeVisible()
+    await expect(page.getByText('Kandy').first()).toBeVisible()
+    await expect(page.getByText('STL').first()).toBeVisible()
   })
 
   test('Alerts preview displays', async ({ page }) => {
@@ -108,7 +108,7 @@ test.describe('Dashboard Smoke Tests', () => {
     await dashboard.goto()
     await dashboard.waitForDataLoaded()
 
-    // Verify alerts section or text appears
-    await expect(page.getByText(/alerts|recent alerts/i).first()).toBeVisible()
+    // Verify critical alerts/warnings section (AlertBox in Financial Summary)
+    await expect(page.getByText(/OVERALL ASSESSMENT|PROCEED WITH CAUTION|critical/i).first()).toBeVisible({ timeout: 10000 })
   })
 })

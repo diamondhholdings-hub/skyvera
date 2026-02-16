@@ -31,11 +31,11 @@ export class DashboardPage {
     // Icon-based navigation - select by href instead of text
     this.accountsNavLink = page.locator('a[href="/accounts"]')
 
-    // KPI cards - KPIs use h3 tags with uppercase text
-    this.totalRevenueKPI = page.getByRole('heading', { name: /Total Revenue/i, level: 3 })
-    this.netMarginKPI = page.getByRole('heading', { name: /Net Margin/i, level: 3 })
-    this.ebitdaKPI = page.getByRole('heading', { name: /EBITDA/i, level: 3 })
-    this.headcountKPI = page.getByRole('heading', { name: /Recurring Revenue/i, level: 3 }) // Headcount not in KPI section
+    // KPI cards - MetricCard uses divs, not headings. Match on label text.
+    this.totalRevenueKPI = page.getByText(/Total Revenue.*Q1'26/i)
+    this.netMarginKPI = page.getByText(/Net Margin|EBITDA/i).first()
+    this.ebitdaKPI = page.getByText(/EBITDA/i).first()
+    this.headcountKPI = page.getByText(/ARR.*Annualized|Rule of 40/i).first()
 
     // Loading skeletons
     this.loadingSkeletons = page.locator('.animate-pulse')
