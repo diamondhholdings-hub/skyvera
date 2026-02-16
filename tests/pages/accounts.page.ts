@@ -23,7 +23,7 @@ export class AccountsPage {
     this.page = page
 
     // Main elements
-    this.pageTitle = page.getByRole('heading', { name: 'Customer Accounts', level: 1 })
+    this.pageTitle = page.getByRole('heading', { name: /Customer Account Plans/i, level: 1 })
     this.refreshButton = page.getByRole('button', { name: /refresh/i })
 
     // Search/filter input - using placeholder text or role

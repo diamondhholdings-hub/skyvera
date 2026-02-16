@@ -26,16 +26,16 @@ export class DashboardPage {
     this.page = page
 
     // Main elements
-    this.pageTitle = page.getByRole('heading', { name: 'Executive Dashboard', level: 1 })
+    this.pageTitle = page.getByRole('heading', { name: /Executive Intelligence Report/i, level: 1 })
     this.refreshButton = page.getByRole('button', { name: /refresh/i })
     // Icon-based navigation - select by href instead of text
     this.accountsNavLink = page.locator('a[href="/accounts"]')
 
-    // KPI cards - using role heading for specificity (avoids duplicates)
-    this.totalRevenueKPI = page.getByRole('heading', { name: 'Total Revenue' })
-    this.netMarginKPI = page.getByRole('heading', { name: 'Net Margin' })
-    this.ebitdaKPI = page.getByRole('heading', { name: 'EBITDA' })
-    this.headcountKPI = page.getByRole('heading', { name: 'Headcount' })
+    // KPI cards - KPIs use h3 tags with uppercase text
+    this.totalRevenueKPI = page.getByRole('heading', { name: /Total Revenue/i, level: 3 })
+    this.netMarginKPI = page.getByRole('heading', { name: /Net Margin/i, level: 3 })
+    this.ebitdaKPI = page.getByRole('heading', { name: /EBITDA/i, level: 3 })
+    this.headcountKPI = page.getByRole('heading', { name: /Recurring Revenue/i, level: 3 }) // Headcount not in KPI section
 
     // Loading skeletons
     this.loadingSkeletons = page.locator('.animate-pulse')

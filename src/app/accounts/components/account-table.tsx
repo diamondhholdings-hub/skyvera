@@ -33,8 +33,7 @@ export function AccountTable({ customers }: AccountTableProps) {
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
   const [debouncedGlobalFilter, setDebouncedGlobalFilter] = useState('')
 
-  // Debug logging
-  console.log('[AccountTable] Received customers:', customers?.length || 0)
+  // Removed debug logging - issue was test selectors, not rendering
 
   // Debounce global filter with 300ms delay
   useEffect(() => {
@@ -136,8 +135,7 @@ export function AccountTable({ customers }: AccountTableProps) {
     },
   })
 
-  // Debug logging
-  console.log('[AccountTable] Table rows:', table.getRowModel().rows.length)
+  // Removed debug logging - issue was test selectors, not rendering
 
   // Filter handlers
   const handleBUFilter = (bu: string | null) => {
@@ -168,11 +166,6 @@ export function AccountTable({ customers }: AccountTableProps) {
 
   return (
     <div>
-      {/* DEBUG BANNER */}
-      <div className="bg-yellow-100 border-2 border-yellow-600 p-3 mb-4 text-center font-bold">
-        🐛 AccountTable Debug: Received {customers?.length || 0} customers, Rendering {table.getRowModel().rows.length} rows
-      </div>
-
       {/* Search Input - Centered */}
       <div className="mb-6 flex justify-center animate-fade-in">
         <input
