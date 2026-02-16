@@ -35,9 +35,9 @@ export class AccountsPage {
     // First account card in grid
     this.firstAccountRow = page.locator('.grid a').first()
 
-    // Stats
-    this.totalAccountsCount = page.getByText(/total accounts/i)
-    this.healthyAccountsCount = page.getByText(/healthy/i)
+    // Stats - match actual component text
+    this.totalAccountsCount = page.getByText(/Total Customers/i)
+    this.healthyAccountsCount = page.getByText(/Healthy Accounts/i)
   }
 
   /**

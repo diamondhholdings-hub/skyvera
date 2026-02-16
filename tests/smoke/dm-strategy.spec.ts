@@ -44,11 +44,11 @@ test.describe('DM Strategy Page', () => {
     await page.goto('http://localhost:3000/dm-strategy');
     await page.waitForSelector('text=DM% Strategy & Revenue Retention');
 
-    // Check for ARR impact values
-    await expect(page.locator('text=/\\$[0-9,]+/')).toBeVisible();
+    // Check for ARR impact values (use .first() to avoid strict mode violation)
+    await expect(page.locator('text=/\\$[0-9,]+/').first()).toBeVisible();
 
-    // Check for DM% values
-    await expect(page.locator('text=/[0-9]+\\.[0-9]+%/')).toBeVisible();
+    // Check for DM% values (use .first() to avoid strict mode violation)
+    await expect(page.locator('text=/[0-9]+\\.[0-9]+%/').first()).toBeVisible();
 
     console.log('✓ Recommendation details are displayed');
   });

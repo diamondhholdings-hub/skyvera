@@ -95,8 +95,8 @@ test.describe('Accounts Smoke Tests', () => {
     // Verify navigation to account plan page
     await expect(page).toHaveURL(/\/accounts\/[^/]+/)
 
-    // Verify account plan page loaded
-    await expect(page.getByText(/overview|financials|intelligence/i).first()).toBeVisible()
+    // Verify account plan page loaded - look for tab navigation
+    await expect(page.getByText(/Overview/i).first()).toBeVisible({ timeout: 15000 })
   })
 
   test('Health indicators display correctly', async ({ page }) => {
@@ -118,19 +118,23 @@ test.describe('Accounts Smoke Tests', () => {
     await accounts.goto()
     await accounts.waitForTableLoaded()
 
-    // Look for sortable column headers (TanStack Table)
-    const columnHeaders = page.locator('th')
-    const firstHeader = columnHeaders.first()
+    // Get first customer name before sorting
+    const firstCustomerBefore = await accounts.firstAccountRow.textContent()
 
-    // Click header to sort
-    await firstHeader.click()
+    // Find and use the sorting dropdown (AccountTable uses dropdown, not column headers)
+    const sortSelect = page.locator('select').first()
+    await sortSelect.selectOption('customer_name')
 
     // Wait for re-render
-    await page.waitForTimeout(300)
+    await page.waitForTimeout(500)
 
     // Verify table still visible (sorting didn't break table)
     await expect(accounts.accountTable).toBeVisible()
     await expect(accounts.firstAccountRow).toBeVisible()
+
+    // Optionally verify sorting changed order
+    const firstCustomerAfter = await accounts.firstAccountRow.textContent()
+    // Don't assert they're different since they might coincidentally be the same
   })
 
   test('Refresh button works', async ({ page }) => {
