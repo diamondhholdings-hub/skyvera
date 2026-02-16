@@ -1,0 +1,336 @@
+{
+  "project": "Skyvera",
+  "branchName": "ralph/fix-failing-tests",
+  "description": "Fix all 19 failing Playwright tests to achieve 100% test coverage",
+  "userStories": [
+    {
+      "id": "US-001",
+      "title": "Investigate and document account plan tab switching failures",
+      "description": "As a developer, I need to understand why 8 account plan tab tests are failing before fixing them.",
+      "acceptanceCriteria": [
+        "Run failing account plan tests in headed mode and capture error messages",
+        "Document root cause in ralph/investigation.md",
+        "Identify if issue is: hydration, timing, selectors, or navigation",
+        "Create fix strategy for remaining tab tests",
+        "Typecheck passes"
+      ],
+      "priority": 1,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-002",
+      "title": "Fix Financials tab switching test",
+      "description": "As a developer, I want the Financials tab test to pass by fixing the identified issue.",
+      "acceptanceCriteria": [
+        "Test 'Tab switching works - Financials' passes",
+        "Tab content loads and displays correctly",
+        "No console errors during tab switch",
+        "Run: npx playwright test tests/smoke/account-plan.spec.ts -g 'Financials'",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 2,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-003",
+      "title": "Fix Organization tab switching test",
+      "description": "As a developer, I want the Organization tab test to pass.",
+      "acceptanceCriteria": [
+        "Test 'Tab switching works - Organization' passes",
+        "Tab content loads and displays correctly",
+        "Run: npx playwright test tests/smoke/account-plan.spec.ts -g 'Organization'",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 3,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-004",
+      "title": "Fix Competitive tab switching test",
+      "description": "As a developer, I want the Competitive tab test to pass.",
+      "acceptanceCriteria": [
+        "Test 'Tab switching works - Competitive' passes",
+        "Tab content loads and displays correctly",
+        "Run: npx playwright test tests/smoke/account-plan.spec.ts -g 'Competitive'",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 4,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-005",
+      "title": "Fix Intelligence tab switching test",
+      "description": "As a developer, I want the Intelligence tab test to pass.",
+      "acceptanceCriteria": [
+        "Test 'Tab switching works - Intelligence' passes",
+        "Tab content loads and displays correctly",
+        "Run: npx playwright test tests/smoke/account-plan.spec.ts -g 'Intelligence'",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 5,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-006",
+      "title": "Fix Action Items tab switching test",
+      "description": "As a developer, I want the Action Items tab test to pass.",
+      "acceptanceCriteria": [
+        "Test 'Tab switching works - Action Items' passes",
+        "Tab content loads and displays correctly",
+        "Run: npx playwright test tests/smoke/account-plan.spec.ts -g 'Action Items'",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 6,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-007",
+      "title": "Fix Back link navigation test",
+      "description": "As a developer, I want the back link test to pass.",
+      "acceptanceCriteria": [
+        "Test 'Back link returns to accounts list' passes",
+        "Clicking back link navigates to /accounts",
+        "Accounts list loads correctly after navigation",
+        "Run: npx playwright test tests/smoke/account-plan.spec.ts -g 'Back link'",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 7,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-008",
+      "title": "Fix Health indicator display test",
+      "description": "As a developer, I want the health indicator test to pass.",
+      "acceptanceCriteria": [
+        "Test 'Health indicator displays' passes",
+        "Health indicator visible on account plan page",
+        "Correct health status shown (healthy/at-risk/stable)",
+        "Run: npx playwright test tests/smoke/account-plan.spec.ts -g 'Health indicator'",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 8,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-009",
+      "title": "Fix Direct tab URL navigation test",
+      "description": "As a developer, I want direct tab URL navigation to work.",
+      "acceptanceCriteria": [
+        "Test 'Direct tab URL navigation works' passes",
+        "Navigating to /accounts/[id]?tab=financials loads correct tab",
+        "Tab content displays without requiring click",
+        "Run: npx playwright test tests/smoke/account-plan.spec.ts -g 'Direct tab URL'",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 9,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-010",
+      "title": "Investigate and fix dashboard KPI display test",
+      "description": "As a developer, I want KPIs to display real values correctly.",
+      "acceptanceCriteria": [
+        "Test 'KPIs display real values' passes",
+        "All KPIs show numeric values (not loading states)",
+        "Values match expected data from database",
+        "Run: npx playwright test tests/smoke/dashboard.spec.ts -g 'KPIs display'",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 10,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-011",
+      "title": "Fix dashboard refresh button test",
+      "description": "As a developer, I want the refresh button test to pass.",
+      "acceptanceCriteria": [
+        "Test 'Refresh button is visible and clickable' passes",
+        "Refresh button is visible on page",
+        "Clicking refresh button reloads data",
+        "Run: npx playwright test tests/smoke/dashboard.spec.ts -g 'Refresh button'",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 11,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-012",
+      "title": "Fix dashboard navigation links test",
+      "description": "As a developer, I want navigation links to work correctly.",
+      "acceptanceCriteria": [
+        "Test 'Navigation links work' passes",
+        "All navigation links are clickable",
+        "Clicking links navigates to correct pages",
+        "Run: npx playwright test tests/smoke/dashboard.spec.ts -g 'Navigation links'",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 12,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-013",
+      "title": "Fix dashboard charts rendering test",
+      "description": "As a developer, I want charts and visualizations to render.",
+      "acceptanceCriteria": [
+        "Test 'Charts and visualizations render' passes",
+        "All chart canvases are present in DOM",
+        "Charts display data (not empty)",
+        "Run: npx playwright test tests/smoke/dashboard.spec.ts -g 'Charts and visualizations'",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 13,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-014",
+      "title": "Fix Business Unit breakdown display test",
+      "description": "As a developer, I want the BU breakdown to display correctly.",
+      "acceptanceCriteria": [
+        "Test 'Business Unit breakdown displays' passes",
+        "Business unit breakdown section is visible",
+        "Shows Cloudsense, Kandy, and STL data",
+        "Run: npx playwright test tests/smoke/dashboard.spec.ts -g 'Business Unit breakdown'",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 14,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-015",
+      "title": "Fix Alerts preview display test",
+      "description": "As a developer, I want the alerts preview to display.",
+      "acceptanceCriteria": [
+        "Test 'Alerts preview displays' passes",
+        "Alerts preview section is visible",
+        "Shows at least one alert or empty state",
+        "Run: npx playwright test tests/smoke/dashboard.spec.ts -g 'Alerts preview'",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 15,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-016",
+      "title": "Fix dashboard load time test",
+      "description": "As a developer, I want the dashboard to load under 2 seconds.",
+      "acceptanceCriteria": [
+        "Test 'Dashboard loads in under 2 seconds' passes",
+        "Dashboard fully loads within 2000ms",
+        "All critical data is loaded (not lazy-loaded beyond timeout)",
+        "Run: npx playwright test tests/smoke/dashboard.spec.ts -g 'loads in under 2 seconds'",
+        "Typecheck passes"
+      ],
+      "priority": 16,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-017",
+      "title": "Fix DM Strategy recommendations loading test",
+      "description": "As a developer, I want DM Strategy page to load with recommendations.",
+      "acceptanceCriteria": [
+        "Test 'Should load with recommendations' passes",
+        "Recommendations section displays",
+        "At least one recommendation card is visible",
+        "Run: npx playwright test tests/smoke/dm-strategy.spec.ts -g 'load with recommendations'",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 17,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-018",
+      "title": "Fix DM Strategy business unit filter test",
+      "description": "As a developer, I want business unit filtering to work.",
+      "acceptanceCriteria": [
+        "Test 'Should filter by business unit' passes",
+        "Clicking a business unit filters recommendations",
+        "Filtered view shows correct recommendations",
+        "Run: npx playwright test tests/smoke/dm-strategy.spec.ts -g 'filter by business unit'",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 18,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-019",
+      "title": "Fix E2E complete demo walkthrough test",
+      "description": "As a developer, I want the full E2E demo flow to pass.",
+      "acceptanceCriteria": [
+        "Test 'Complete demo walkthrough' passes",
+        "All steps of demo flow execute successfully",
+        "No errors during full walkthrough",
+        "Run: npx playwright test tests/e2e/demo-flow.spec.ts -g 'Complete demo walkthrough'",
+        "Typecheck passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 19,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-020",
+      "title": "Fix E2E consecutive passes test",
+      "description": "As a developer, I want the demo flow to be stable (3 consecutive passes).",
+      "acceptanceCriteria": [
+        "Test 'Demo flow passes 3 consecutive times' passes",
+        "Demo flow runs successfully 3 times in a row",
+        "No flakiness or timing issues",
+        "Run: npx playwright test tests/e2e/demo-flow.spec.ts -g 'passes 3 consecutive times'",
+        "Typecheck passes"
+      ],
+      "priority": 20,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-021",
+      "title": "Verify all tests pass and update TODO.md",
+      "description": "As a developer, I want to confirm 100% test coverage and update documentation.",
+      "acceptanceCriteria": [
+        "Run full test suite: npx playwright test",
+        "All 34 tests pass (100% coverage)",
+        "Update TODO.md to check off all critical test items",
+        "Update test metrics in TODO.md: 34/34 passing (100%)",
+        "Commit changes with message: 'fix: resolve all 19 failing tests - achieve 100% coverage'",
+        "Typecheck passes"
+      ],
+      "priority": 21,
+      "passes": false,
+      "notes": ""
+    }
+  ]
+}
