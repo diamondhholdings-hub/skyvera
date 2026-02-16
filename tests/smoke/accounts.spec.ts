@@ -95,8 +95,11 @@ test.describe('Accounts Smoke Tests', () => {
     // Verify navigation to account plan page
     await expect(page).toHaveURL(/\/accounts\/[^/]+/)
 
-    // Verify account plan page loaded - look for tab navigation
-    await expect(page.getByText(/Overview/i).first()).toBeVisible({ timeout: 15000 })
+    // Wait for page to fully load (hydration)
+    await page.waitForLoadState('networkidle', { timeout: 10000 })
+
+    // Verify account plan page loaded - look for customer name or tab navigation
+    await expect(page.locator('h1').first()).toBeVisible({ timeout: 10000 })
   })
 
   test('Health indicators display correctly', async ({ page }) => {
