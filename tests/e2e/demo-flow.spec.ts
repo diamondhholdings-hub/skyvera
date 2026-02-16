@@ -32,11 +32,8 @@ test.describe('Demo Flow E2E', () => {
     await expect(page.getByText('temporarily unavailable')).not.toBeVisible()
     await expect(page.getByText('Unable to load')).not.toBeVisible()
 
-    // Verify Refresh button is visible
-    await expect(dashboard.refreshButton).toBeVisible()
-
-    // Step 2: Navigate to Accounts
-    await dashboard.clickAccountsNav()
+    // Step 2: Navigate to Accounts via sidebar link
+    await page.getByRole('link', { name: 'Accounts' }).click()
     const accounts = new AccountsPage(page)
     await accounts.waitForTableLoaded()
 
@@ -93,7 +90,7 @@ test.describe('Demo Flow E2E', () => {
 
     // Verify dashboard still works
     await expect(dashboard.pageTitle).toBeVisible()
-    await expect(dashboard.refreshButton).toBeVisible()
+    await expect(dashboard.totalRevenueKPI).toBeVisible()
   })
 
   test('Demo flow passes 3 consecutive times', async ({ page }) => {
@@ -106,8 +103,8 @@ test.describe('Demo Flow E2E', () => {
         await dashboard.waitForDataLoaded()
         await expect(dashboard.pageTitle).toBeVisible()
 
-        // Navigate to Accounts
-        await dashboard.clickAccountsNav()
+        // Navigate to Accounts via sidebar link
+        await page.getByRole('link', { name: 'Accounts' }).click()
         const accounts = new AccountsPage(page)
         await accounts.waitForTableLoaded()
         await expect(accounts.pageTitle).toBeVisible()

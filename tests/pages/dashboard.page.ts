@@ -28,8 +28,8 @@ export class DashboardPage {
     // Main elements
     this.pageTitle = page.getByRole('heading', { name: /Executive Intelligence Report/i, level: 1 })
     this.refreshButton = page.getByRole('button', { name: /refresh/i })
-    // Icon-based navigation - select by href instead of text
-    this.accountsNavLink = page.locator('a[href="/accounts"]')
+    // Icon-based navigation - use role link with title to avoid ambiguity
+    this.accountsNavLink = page.getByRole('link', { name: 'Accounts' })
 
     // KPI cards - MetricCard uses divs, not headings. Match on label text.
     this.totalRevenueKPI = page.getByText(/Total Revenue.*Q1'26/i)
