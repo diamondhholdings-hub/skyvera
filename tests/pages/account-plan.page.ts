@@ -59,26 +59,37 @@ export class AccountPlanPage {
    * Click a specific tab by name (works with both desktop buttons and mobile select)
    */
   async clickTab(tabName: 'overview' | 'financials' | 'organization' | 'strategy' | 'competitive' | 'intelligence' | 'action-items' | 'retention') {
-    // Check if mobile select is visible
+    const labelMap: Record<string, string> = {
+      'overview': 'Overview',
+      'financials': 'Financials',
+      'organization': 'Organization',
+      'strategy': 'Strategy',
+      'competitive': 'Competitive',
+      'intelligence': 'Intelligence',
+      'action-items': 'Action Items',
+      'retention': 'Retention Strategy'
+    }
+
+    // Wait for either desktop buttons or mobile select to be visible (handles hydration)
+    const button = this.page.getByRole('button', { name: labelMap[tabName] })
     const select = this.page.locator('#tab-select')
-    const isSelectVisible = await select.isVisible()
+
+    await Promise.race([
+      button.waitFor({ state: 'visible', timeout: 10000 }),
+      select.waitFor({ state: 'visible', timeout: 10000 })
+    ]).catch(() => {
+      // If neither appears, continue - locator will handle the error
+    })
+
+    // Check if mobile select is visible
+    const isSelectVisible = await select.isVisible().catch(() => false)
 
     if (isSelectVisible) {
       // Mobile: use select dropdown
       await select.selectOption({ value: tabName })
     } else {
-      // Desktop: click button
-      const labelMap: Record<string, string> = {
-        'overview': 'Overview',
-        'financials': 'Financials',
-        'organization': 'Organization',
-        'strategy': 'Strategy',
-        'competitive': 'Competitive',
-        'intelligence': 'Intelligence',
-        'action-items': 'Action Items',
-        'retention': 'Retention Strategy'
-      }
-      const button = this.page.getByRole('button', { name: labelMap[tabName] })
+      // Desktop: click button (wait for it to be ready)
+      await button.waitFor({ state: 'visible', timeout: 5000 })
       await button.click()
     }
   }
