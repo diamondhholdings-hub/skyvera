@@ -104,7 +104,7 @@ export function CannedQueries({ queries, onQuerySelect }: CannedQueriesProps) {
                           {query.label}
                         </span>
                         {requiresFilters && (
-                          <span className="text-xs px-2 py-0.5 bg-amber-100 text-amber-700 rounded-full flex-shrink-0">
+                          <span className="text-xs px-2 py-0.5 bg-[var(--warning)]/10 text-[var(--warning)] rounded-full flex-shrink-0">
                             requires filters
                           </span>
                         )}
@@ -113,16 +113,16 @@ export function CannedQueries({ queries, onQuerySelect }: CannedQueriesProps) {
 
                     {/* Filter selection (shown when expanded) */}
                     {isExpanded && requiresBU && (
-                      <div className="mt-2 p-3 bg-slate-50 border border-slate-200 rounded-lg space-y-3">
+                      <div className="mt-2 p-3 bg-[var(--highlight)] border border-[var(--border)] rounded-lg space-y-3">
                         <label className="block">
-                          <span className="text-xs font-medium text-slate-700 uppercase tracking-wide">
+                          <span className="text-xs font-medium text-[var(--ink)] uppercase tracking-wide">
                             Select Business Unit
                           </span>
                           <select
                             value={selectedBU}
                             onChange={(e) => setSelectedBU(e.target.value)}
-                            className="mt-1 block w-full px-3 py-2 border border-slate-300 rounded-md
-                                       focus:ring-2 focus:ring-blue-500 focus:border-blue-500
+                            className="mt-1 block w-full px-3 py-2 border-2 border-[var(--border)] rounded-md
+                                       focus:border-[var(--accent)] focus:ring-1 focus:ring-[var(--accent)]
                                        text-sm"
                           >
                             <option value="">Choose...</option>
@@ -138,8 +138,8 @@ export function CannedQueries({ queries, onQuerySelect }: CannedQueriesProps) {
                           <button
                             onClick={() => handleFilterSubmit(query)}
                             disabled={!selectedBU}
-                            className="flex-1 px-3 py-1.5 bg-blue-600 text-white rounded-md
-                                       hover:bg-blue-700 disabled:bg-slate-300
+                            className="flex-1 px-3 py-1.5 bg-[var(--accent)] text-white rounded-md
+                                       hover:bg-[var(--accent)]/90 disabled:bg-[var(--muted)]
                                        disabled:cursor-not-allowed
                                        text-sm font-medium
                                        transition-colors"
@@ -151,8 +151,8 @@ export function CannedQueries({ queries, onQuerySelect }: CannedQueriesProps) {
                               setSelectedQueryId(null)
                               setSelectedBU('')
                             }}
-                            className="px-3 py-1.5 border border-slate-300 text-slate-700 rounded-md
-                                       hover:bg-slate-50
+                            className="px-3 py-1.5 border border-[var(--border)] text-[var(--ink)] rounded-md
+                                       hover:bg-[var(--highlight)]
                                        text-sm font-medium
                                        transition-colors"
                           >

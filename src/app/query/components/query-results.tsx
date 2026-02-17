@@ -21,10 +21,10 @@ export function QueryResults({
   // Empty state
   if (!result) {
     return (
-      <div className="border-2 border-dashed border-slate-300 rounded-lg p-12">
-        <div className="text-center text-slate-500">
+      <div className="border-2 border-dashed border-[var(--border)] rounded-lg p-12">
+        <div className="text-center text-[var(--muted)]">
           <svg
-            className="w-16 h-16 mx-auto mb-4 text-slate-400"
+            className="w-16 h-16 mx-auto mb-4 text-[var(--muted)]"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -36,7 +36,7 @@ export function QueryResults({
               d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
             />
           </svg>
-          <p className="text-lg font-medium mb-1">Ready to answer your questions</p>
+          <p className="text-lg font-display font-medium mb-1 text-[var(--ink)]">Ready to answer your questions</p>
           <p className="text-sm">Select a common question or type your own to get started</p>
         </div>
       </div>
@@ -48,10 +48,10 @@ export function QueryResults({
   // Clarification needed
   if (response.needsClarification) {
     return (
-      <div className="bg-amber-50 border border-amber-200 rounded-lg p-6 space-y-4">
+      <div className="bg-[var(--warning)]/10 border border-[var(--warning)]/30 rounded-lg p-6 space-y-4">
         <div className="flex items-start gap-3">
           <svg
-            className="w-6 h-6 text-amber-600 flex-shrink-0 mt-0.5"
+            className="w-6 h-6 text-[var(--warning)] flex-shrink-0 mt-0.5"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -64,12 +64,12 @@ export function QueryResults({
             />
           </svg>
           <div className="flex-1">
-            <h3 className="font-semibold text-amber-900 mb-1">Need clarification</h3>
-            <p className="text-sm text-amber-800 mb-3">
+            <h3 className="font-display font-semibold text-[var(--warning)] mb-1">Need clarification</h3>
+            <p className="text-sm text-[var(--ink)] mb-3">
               I think you&apos;re asking about: <strong>{response.interpretation}</strong>
             </p>
             {response.clarificationQuestion && (
-              <p className="text-sm text-amber-900 font-medium mb-3">
+              <p className="text-sm text-[var(--ink)] font-medium mb-3">
                 {response.clarificationQuestion}
               </p>
             )}
@@ -83,10 +83,10 @@ export function QueryResults({
               <button
                 key={idx}
                 onClick={() => onClarificationSelect(option)}
-                className="w-full text-left px-4 py-3 bg-white border border-amber-300 rounded-lg
-                           hover:bg-amber-100 hover:border-amber-400
-                           transition-colors
-                           text-sm text-slate-900"
+                className="w-full text-left px-4 py-3 bg-white border border-[var(--border)] rounded-lg
+                           hover:border-[var(--accent)] hover:shadow-sm
+                           transition-all
+                           text-sm text-[var(--ink)]"
               >
                 {option}
               </button>
@@ -125,15 +125,15 @@ export function QueryResults({
 
         {/* Data points */}
         {response.dataPoints && Object.keys(response.dataPoints).length > 0 && (
-          <div className="bg-slate-50 rounded-lg p-4">
-            <p className="text-xs font-medium text-slate-500 uppercase tracking-wide mb-3">
+          <div className="bg-[var(--highlight)] rounded-lg p-4">
+            <p className="text-xs font-medium text-[var(--muted)] uppercase tracking-wide mb-3">
               Key Metrics
             </p>
             <dl className="space-y-2">
               {Object.entries(response.dataPoints).map(([key, value]) => (
                 <div key={key} className="flex justify-between items-baseline">
-                  <dt className="text-sm text-slate-600">{key}</dt>
-                  <dd className="text-sm font-semibold text-slate-900">
+                  <dt className="text-sm text-[var(--ink)]">{key}</dt>
+                  <dd className="text-sm font-display font-semibold text-[var(--ink)]">
                     {formatValue(value)}
                   </dd>
                 </div>
@@ -164,7 +164,7 @@ export function QueryResults({
         {/* Suggested follow-ups */}
         {response.suggestedFollowUps && response.suggestedFollowUps.length > 0 && (
           <div>
-            <p className="text-xs font-medium text-slate-500 uppercase tracking-wide mb-2">
+            <p className="text-xs font-medium text-[var(--muted)] uppercase tracking-wide mb-2">
               Suggested Follow-ups
             </p>
             <div className="space-y-2">
@@ -172,10 +172,10 @@ export function QueryResults({
                 <button
                   key={idx}
                   onClick={() => onFollowUp(question)}
-                  className="block w-full text-left px-3 py-2 text-sm text-blue-700
-                             bg-blue-50 border border-blue-200 rounded-md
-                             hover:bg-blue-100 hover:border-blue-300
-                             transition-colors"
+                  className="block w-full text-left px-3 py-2 text-sm text-[var(--accent)]
+                             bg-[var(--accent)]/5 border border-[var(--border)] rounded-md
+                             hover:border-[var(--accent)] hover:shadow-sm
+                             transition-all"
                 >
                   {question}
                 </button>
@@ -194,9 +194,9 @@ export function QueryResults({
 function ConfidenceBadge({ level }: { level: 'HIGH' | 'MEDIUM' | 'LOW' }) {
   const config = {
     HIGH: {
-      bg: 'bg-green-100',
-      text: 'text-green-800',
-      border: 'border-green-300',
+      bg: 'bg-[var(--success)]/10',
+      text: 'text-[var(--success)]',
+      border: 'border-[var(--success)]/30',
       icon: (
         <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
           <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
@@ -205,9 +205,9 @@ function ConfidenceBadge({ level }: { level: 'HIGH' | 'MEDIUM' | 'LOW' }) {
       label: 'High Confidence',
     },
     MEDIUM: {
-      bg: 'bg-yellow-100',
-      text: 'text-yellow-800',
-      border: 'border-yellow-300',
+      bg: 'bg-[var(--warning)]/10',
+      text: 'text-[var(--warning)]',
+      border: 'border-[var(--warning)]/30',
       icon: (
         <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
           <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
@@ -216,9 +216,9 @@ function ConfidenceBadge({ level }: { level: 'HIGH' | 'MEDIUM' | 'LOW' }) {
       label: 'Medium Confidence',
     },
     LOW: {
-      bg: 'bg-red-100',
-      text: 'text-red-800',
-      border: 'border-red-300',
+      bg: 'bg-[var(--critical)]/10',
+      text: 'text-[var(--critical)]',
+      border: 'border-[var(--critical)]/30',
       icon: (
         <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
           <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />

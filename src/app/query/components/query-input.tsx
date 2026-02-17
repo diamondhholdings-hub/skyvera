@@ -60,7 +60,7 @@ export function QueryInput({ onSubmit, isLoading }: QueryInputProps) {
             type="button"
             onClick={handleClear}
             className="absolute right-20 top-1/2 -translate-y-1/2
-                       text-slate-400 hover:text-slate-600
+                       text-[var(--muted)] hover:text-[var(--ink)]
                        transition-colors"
             aria-label="Clear input"
           >
@@ -138,10 +138,10 @@ export function QueryInput({ onSubmit, isLoading }: QueryInputProps) {
 
       {/* Character counter */}
       {inputValue.length > 0 && (
-        <div className="mt-1 text-xs text-slate-500 text-right">
+        <div className="mt-1 text-xs text-[var(--muted)] text-right">
           {inputValue.length}/500 characters
           {inputValue.trim().length < 3 && inputValue.trim().length > 0 && (
-            <span className="text-red-500 ml-2">Minimum 3 characters</span>
+            <span className="text-[var(--critical)] ml-2">Minimum 3 characters</span>
           )}
         </div>
       )}

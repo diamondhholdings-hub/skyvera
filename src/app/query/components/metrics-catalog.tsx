@@ -45,7 +45,7 @@ export function MetricsCatalog({ metrics }: MetricsCatalogProps) {
       >
         <h2 className="font-display text-lg font-semibold text-[var(--secondary)]">Browse Metrics Catalog</h2>
         <svg
-          className={`w-5 h-5 text-slate-600 transition-transform ${
+          className={`w-5 h-5 text-[var(--muted)] transition-transform ${
             isExpanded ? 'rotate-180' : ''
           }`}
           fill="none"
@@ -71,12 +71,12 @@ export function MetricsCatalog({ metrics }: MetricsCatalogProps) {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Search metrics..."
-              className="w-full px-3 py-2 pl-9 border border-slate-300 rounded-md
-                         focus:ring-2 focus:ring-blue-500 focus:border-blue-500
+              className="w-full px-3 py-2 pl-9 border-2 border-[var(--border)] rounded-md
+                         focus:border-[var(--accent)] focus:ring-1 focus:ring-[var(--accent)]
                          text-sm"
             />
             <svg
-              className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2"
+              className="w-4 h-4 text-[var(--muted)] absolute left-3 top-1/2 -translate-y-1/2"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -91,7 +91,7 @@ export function MetricsCatalog({ metrics }: MetricsCatalogProps) {
           </div>
 
           {/* Results count */}
-          <p className="text-xs text-slate-500">
+          <p className="text-xs text-[var(--muted)]">
             Showing {filteredMetrics.length} of {metricsList.length} metrics
           </p>
 
@@ -104,7 +104,7 @@ export function MetricsCatalog({ metrics }: MetricsCatalogProps) {
 
           {/* No results */}
           {filteredMetrics.length === 0 && (
-            <div className="text-center py-8 text-slate-500">
+            <div className="text-center py-8 text-[var(--muted)]">
               <p className="text-sm">No metrics found matching &quot;{searchTerm}&quot;</p>
             </div>
           )}
@@ -143,15 +143,15 @@ function MetricCard({ metric }: { metric: SerializableMetricDefinition }) {
       <p className="text-xs text-[var(--muted)] leading-relaxed">{metric.description}</p>
 
       {/* Formula */}
-      <div className="pt-2 border-t border-slate-200">
-        <p className="text-xs text-slate-500 mb-1">Formula</p>
-        <code className="text-xs bg-slate-800 text-slate-100 px-2 py-1 rounded font-mono">
+      <div className="pt-2 border-t border-[var(--border)]">
+        <p className="text-xs text-[var(--muted)] mb-1">Formula</p>
+        <code className="text-xs bg-[var(--secondary)] text-[var(--paper)] px-2 py-1 rounded font-mono">
           {metric.formula}
         </code>
       </div>
 
       {/* Source */}
-      <div className="flex items-center gap-1.5 text-xs text-slate-500">
+      <div className="flex items-center gap-1.5 text-xs text-[var(--muted)]">
         <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
           <path d="M9 2a2 2 0 00-2 2v8a2 2 0 002 2h6a2 2 0 002-2V6.414A2 2 0 0016.414 5L14 2.586A2 2 0 0012.586 2H9z" />
           <path d="M3 8a2 2 0 012-2v10h8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z" />
