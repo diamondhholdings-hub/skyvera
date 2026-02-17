@@ -36,3 +36,5 @@ test-*.js
 *-screenshot.png
 demo-page-error.png
 trends-page-error.png
+playwright-report/
+test-results/
