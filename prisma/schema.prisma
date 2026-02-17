@@ -24,6 +24,9 @@ model Customer {
 
   @@index([bu])
   @@index([customerName])
+  @@index([healthScore])
+  @@index([totalRevenue])
+  @@index([bu, healthScore])
 }
 
 model Subscription {
@@ -37,6 +40,8 @@ model Subscription {
   customer     Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
 
   @@index([customerId])
+  @@index([renewalQtr])
+  @@index([willRenew])
 }
 
 model FinancialSnapshot {
@@ -437,6 +442,8 @@ model DMRecommendation {
   @@index([priority])
   @@index([type])
   @@index([createdAt])
+  @@index([bu, status, priority])
+  @@index([accountName, status])
 }
 
 // DM Strategy Analysis Run Tracking

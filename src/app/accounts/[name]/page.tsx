@@ -107,11 +107,6 @@ export default async function AccountPlanPage({ params, searchParams }: AccountP
 
   return (
     <div>
-      {/* Debug Banner */}
-      <div className="bg-green-100 border-2 border-green-600 p-3 text-center font-bold">
-        ✅ Account Plan Page Loaded: {customer.customer_name} ({customer.bu})
-      </div>
-
       {/* Back link */}
       <div className="max-w-[1400px] mx-auto px-8 pt-4">
         <Link

@@ -160,8 +160,7 @@ export default function DMBriefingWidget({ recommendations, maxItems = 5 }: DMBr
                     <button
                       className="dm-btn dm-btn-primary dm-btn-sm"
                       onClick={() => {
-                        // Handle accept
-                        console.log('Accept recommendation:', rec.id);
+                        // TODO: Implement accept recommendation functionality
                       }}
                       style={{ fontSize: '0.75rem', padding: '4px 8px' }}
                     >

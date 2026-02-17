@@ -105,8 +105,7 @@ export default function PortfolioDashboard({ businessUnits, recommendations }: P
   };
 
   const handleReview = (id: string) => {
-    console.log('Review recommendation:', id);
-    // Navigate to detailed view
+    // TODO: Navigate to detailed view
   };
 
   const handleDefer = async (id: string) => {
@@ -298,7 +297,7 @@ export default function PortfolioDashboard({ businessUnits, recommendations }: P
           <ImpactCalculator
             projection={projection}
             onAcceptAll={() => {
-              console.log('Accept all high priority recommendations');
+              // TODO: Implement accept all functionality
             }}
           />
         </div>
