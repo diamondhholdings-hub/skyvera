@@ -15,14 +15,13 @@ interface TabNavigationProps {
 }
 
 const tabs = [
-  { id: 'overview', label: 'Overview' },
-  { id: 'financials', label: 'Financials' },
-  { id: 'organization', label: 'Organization' },
-  { id: 'strategy', label: 'Strategy' },
-  { id: 'competitive', label: 'Competitive' },
-  { id: 'intelligence', label: 'Intelligence' },
-  { id: 'action-items', label: 'Action Items' },
-  { id: 'retention', label: 'Retention Strategy' },
+  { id: 'overview', label: '📊 Overview' },
+  { id: 'organization', label: '🏢 Organization' },
+  { id: 'strategy', label: '💡 Strategy & Pain Points' },
+  { id: 'competitive', label: '⚔️ Competitive' },
+  { id: 'action-items', label: '📋 Action Plan' },
+  { id: 'financials', label: '💰 Financial' },
+  { id: 'intelligence', label: '🔍 Intelligence' },
 ] as const
 
 function TabNavigationContent({ accountName }: TabNavigationProps) {

@@ -30,8 +30,51 @@ export function OverviewTab({ customer, intelligenceReport }: OverviewTabProps) 
     ? intelligenceReport.substring(0, 500) + (intelligenceReport.length > 500 ? '...' : '')
     : null
 
+  // Determine if account needs critical alert (yellow or red health)
+  const showCriticalAlert = customer.healthScore === 'yellow' || customer.healthScore === 'red'
+
   return (
     <div className="space-y-6">
+      {/* Critical Alert Banner (if health is at risk) */}
+      {showCriticalAlert && (
+        <div className="bg-gradient-to-r from-[var(--critical)] to-[#c62828] text-white p-6 rounded border-l-4 border-[#8b1a1a] shadow-lg">
+          <h3 className="font-display text-xl font-semibold mb-2">
+            🚨 CRITICAL: Account Health Alert
+          </h3>
+          <p className="text-white/90">
+            This account shows {customer.healthScore === 'red' ? 'high-risk' : 'moderate-risk'} indicators.
+            {customer.healthFactors && customer.healthFactors.length > 0
+              ? ` Key concerns: ${customer.healthFactors.slice(0, 2).join(', ')}.`
+              : ' Immediate attention required.'}
+            {' '}Review the Strategy tab for specific action items and competitive threats.
+          </p>
+        </div>
+      )}
+
+      {/* Keys to Success (Next 90 Days) */}
+      <Card title="Keys to Success in Next 90 Days">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="bg-highlight/50 p-4 border-l-3 border-accent">
+            <div className="text-xs uppercase tracking-wider text-muted font-bold mb-1">#1 Priority</div>
+            <div className="font-display text-base font-semibold text-secondary">
+              {customer.healthScore === 'red' ? 'Stabilize Account Relationship' : 'Strengthen Executive Engagement'}
+            </div>
+          </div>
+          <div className="bg-highlight/50 p-4 border-l-3 border-accent">
+            <div className="text-xs uppercase tracking-wider text-muted font-bold mb-1">#2 Priority</div>
+            <div className="font-display text-base font-semibold text-secondary">
+              {subscriptionCount > 0 ? `Secure ${subscriptionCount} Subscription Renewals` : 'Identify Expansion Opportunities'}
+            </div>
+          </div>
+          <div className="bg-highlight/50 p-4 border-l-3 border-accent">
+            <div className="text-xs uppercase tracking-wider text-muted font-bold mb-1">#3 Priority</div>
+            <div className="font-display text-base font-semibold text-secondary">
+              Execute Upsell Strategy
+            </div>
+          </div>
+        </div>
+      </Card>
+
       {/* KPI Row */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         <KPICard title="ARR" value={formatCurrency(arr)} />

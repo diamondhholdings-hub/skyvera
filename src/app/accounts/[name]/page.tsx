@@ -8,7 +8,7 @@
 import { Suspense } from 'react'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { getAccountPlanData, getAccountRetentionStrategy } from '@/lib/data/server/account-plan-data'
+import { getAccountPlanData } from '@/lib/data/server/account-plan-data'
 import { getAllCustomersWithHealth } from '@/lib/data/server/account-data'
 import { TabNavigation } from './_components/tab-navigation'
 import { OverviewTab } from './_components/overview-tab'
@@ -18,7 +18,6 @@ import { CompetitiveTab } from './_components/competitive-tab'
 import { OrganizationTab } from './_components/organization-tab'
 import { IntelligenceTab } from './_components/intelligence-tab'
 import { ActionItemsTab } from './_components/action-items-tab'
-import { RetentionTab } from './_components/retention-tab'
 import { Badge } from '@/components/ui/badge'
 import { HealthIndicator } from '@/components/ui/health-indicator'
 import { RefreshButton } from '@/components/ui/refresh-button'
@@ -63,8 +62,6 @@ export default async function AccountPlanPage({ params, searchParams }: AccountP
 
   const accountData = accountDataResult.value
 
-  // Fetch retention strategy (will need customer data first)
-  let retentionStrategy = null
 
   // Fetch customer financial data and health
   const customersResult = await getAllCustomersWithHealth()
@@ -93,17 +90,6 @@ export default async function AccountPlanPage({ params, searchParams }: AccountP
   const totalRevenue = (customer.rr || 0) + (customer.nrr || 0)
   const arr = (customer.rr || 0) * 4
 
-  // Fetch retention strategy now that we have customer data
-  const retentionStrategyResult = await getAccountRetentionStrategy(customerName, {
-    healthScore: customer.healthScore,
-    renewalDate: undefined, // TODO: Add renewal date to customer data
-    painPoints: accountData.strategy.painPoints,
-    competitors: accountData.competitors,
-  })
-
-  if (retentionStrategyResult.success) {
-    retentionStrategy = retentionStrategyResult.value
-  }
 
   return (
     <div>
@@ -227,22 +213,6 @@ export default async function AccountPlanPage({ params, searchParams }: AccountP
         {activeTab === 'action-items' && (
           <Suspense fallback={<TabSkeleton />}>
             <ActionItemsTab initialActions={accountData.actions} />
-          </Suspense>
-        )}
-
-        {activeTab === 'retention' && (
-          <Suspense fallback={<TabSkeleton />}>
-            {retentionStrategy ? (
-              <RetentionTab
-                retentionStrategy={retentionStrategy}
-                accountName={customerName}
-                arr={arr}
-              />
-            ) : (
-              <div className="text-center py-12 bg-slate-50 rounded-lg">
-                <p className="text-slate-600">Unable to load retention strategy data</p>
-              </div>
-            )}
           </Suspense>
         )}
       </div>
