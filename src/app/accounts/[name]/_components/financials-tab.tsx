@@ -38,7 +38,10 @@ export function FinancialsTab({ customer }: FinancialsTabProps) {
       <Card title="Subscriptions">
         {customer.subscriptions && customer.subscriptions.length > 0 ? (
           <div className="overflow-x-auto">
-            <table className="w-full">
+            <table
+              className="w-full"
+              style={{ borderCollapse: 'separate', borderSpacing: 0, fontSize: '0.95rem' }}
+            >
               <thead>
                 <tr>
                   <th className="bg-secondary text-white p-4 text-left font-semibold text-xs uppercase tracking-wider">
@@ -60,16 +63,16 @@ export function FinancialsTab({ customer }: FinancialsTabProps) {
               </thead>
               <tbody>
                 {customer.subscriptions.map((sub) => (
-                  <tr key={sub.sub_id} className="hover:bg-highlight border-b border-[var(--border)]">
-                    <td className="py-3 px-4 text-sm text-ink">{sub.sub_id}</td>
-                    <td className="py-3 px-4 text-sm font-display font-semibold text-ink text-right">
+                  <tr key={sub.sub_id} className="hover:bg-[var(--highlight)] border-b border-[var(--border)]">
+                    <td className="p-4 text-sm text-ink">{sub.sub_id}</td>
+                    <td className="p-4 text-sm font-display font-semibold text-ink text-right">
                       {sub.arr !== null ? formatCurrency(sub.arr) : 'N/A'}
                     </td>
-                    <td className="py-3 px-4 text-sm text-ink">{sub.renewal_qtr || 'N/A'}</td>
-                    <td className="py-3 px-4 text-center">
+                    <td className="p-4 text-sm text-ink">{sub.renewal_qtr || 'N/A'}</td>
+                    <td className="p-4 text-center">
                       <RenewalBadge willRenew={sub.will_renew || 'TBD'} />
                     </td>
-                    <td className="py-3 px-4 text-sm font-display font-semibold text-ink text-right">
+                    <td className="p-4 text-sm font-display font-semibold text-ink text-right">
                       {sub.projected_arr !== null ? formatCurrency(sub.projected_arr) : 'N/A'}
                     </td>
                   </tr>
