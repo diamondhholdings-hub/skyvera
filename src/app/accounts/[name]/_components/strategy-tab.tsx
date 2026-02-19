@@ -1,7 +1,7 @@
 /**
  * StrategyTab - Pain points and opportunities with status tracking
  * Server Component - receives pain points and opportunities as props
- * Two-column responsive grid with color-coded status badges (WCAG compliant)
+ * Includes Pain Point Analysis table view + card grid (WCAG compliant)
  */
 
 import type { PainPoint, Opportunity } from '@/lib/types/account-plan'
@@ -14,53 +14,101 @@ interface StrategyTabProps {
 
 export function StrategyTab({ painPoints, opportunities }: StrategyTabProps) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-      {/* Pain Points Column */}
+    <div className="space-y-8">
+      {/* W1-P1-007: Pain Point Analysis table */}
       <div>
-        <div className="flex items-center gap-3 mb-4">
-          <h2 className="font-display text-xl font-semibold text-secondary">Pain Points</h2>
-          <Badge variant="default">{painPoints.length}</Badge>
-        </div>
-
+        <h2 className="font-display text-xl font-semibold text-secondary mb-4">Pain Point Analysis</h2>
         {painPoints.length > 0 ? (
-          <div className="space-y-4">
-            {painPoints.map((painPoint) => (
-              <PainPointCard key={painPoint.id} painPoint={painPoint} />
-            ))}
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm" style={{ borderCollapse: 'separate', borderSpacing: 0 }}>
+              <thead>
+                <tr className="bg-[var(--secondary)] text-[var(--paper)]">
+                  <th className="p-4 text-left font-medium">Pain Point</th>
+                  <th className="p-4 text-left font-medium">Urgency</th>
+                  <th className="p-4 text-left font-medium">CloudSense Solution</th>
+                </tr>
+              </thead>
+              <tbody>
+                {painPoints.map((p, i) => (
+                  <tr key={p.id} className={i % 2 === 0 ? 'bg-[var(--paper)]' : 'bg-[var(--highlight)]'}>
+                    <td className="p-4 text-[var(--ink)] font-medium">{p.title}</td>
+                    <td className="p-4">
+                      <span
+                        className={`px-2 py-1 rounded text-xs font-medium ${
+                          p.severity === 'high'
+                            ? 'bg-[var(--critical)]/10 text-[var(--critical)]'
+                            : 'bg-[var(--warning)]/10 text-[var(--warning)]'
+                        }`}
+                      >
+                        {p.severity}
+                      </span>
+                    </td>
+                    <td className="p-4 text-[var(--muted)]">{p.description}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         ) : (
-          <div className="bg-slate-50 border border-slate-200 rounded-lg p-8 text-center">
+          <div className="bg-[var(--highlight)] border border-[var(--border)] rounded-lg p-8 text-center">
             <div className="text-4xl mb-2">✓</div>
-            <p className="text-slate-600 font-medium">No pain points tracked yet</p>
-            <p className="text-sm text-slate-500 mt-1">
+            <p className="text-[var(--muted)] font-medium">No pain points tracked yet</p>
+            <p className="text-sm text-[var(--muted)] mt-1">
               Pain points will appear here as they are identified
             </p>
           </div>
         )}
       </div>
 
-      {/* Opportunities Column */}
-      <div>
-        <div className="flex items-center gap-3 mb-4">
-          <h2 className="font-display text-xl font-semibold text-secondary">Opportunities</h2>
-          <Badge variant="default">{opportunities.length}</Badge>
+      {/* Two-column card grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Pain Points Column */}
+        <div>
+          <div className="flex items-center gap-3 mb-4">
+            <h2 className="font-display text-xl font-semibold text-secondary">Pain Points</h2>
+            <Badge variant="default">{painPoints.length}</Badge>
+          </div>
+
+          {painPoints.length > 0 ? (
+            <div className="space-y-4">
+              {painPoints.map((painPoint) => (
+                <PainPointCard key={painPoint.id} painPoint={painPoint} />
+              ))}
+            </div>
+          ) : (
+            <div className="bg-[var(--highlight)] border border-[var(--border)] rounded-lg p-8 text-center">
+              <div className="text-4xl mb-2">✓</div>
+              <p className="text-[var(--muted)] font-medium">No pain points tracked yet</p>
+              <p className="text-sm text-[var(--muted)] mt-1">
+                Pain points will appear here as they are identified
+              </p>
+            </div>
+          )}
         </div>
 
-        {opportunities.length > 0 ? (
-          <div className="space-y-4">
-            {opportunities.map((opportunity) => (
-              <OpportunityCard key={opportunity.id} opportunity={opportunity} />
-            ))}
+        {/* Opportunities Column */}
+        <div>
+          <div className="flex items-center gap-3 mb-4">
+            <h2 className="font-display text-xl font-semibold text-secondary">Opportunities</h2>
+            <Badge variant="default">{opportunities.length}</Badge>
           </div>
-        ) : (
-          <div className="bg-slate-50 border border-slate-200 rounded-lg p-8 text-center">
-            <div className="text-4xl mb-2">🔍</div>
-            <p className="text-slate-600 font-medium">No opportunities identified yet</p>
-            <p className="text-sm text-slate-500 mt-1">
-              Opportunities will appear here as they are discovered
-            </p>
-          </div>
-        )}
+
+          {opportunities.length > 0 ? (
+            <div className="space-y-4">
+              {opportunities.map((opportunity) => (
+                <OpportunityCard key={opportunity.id} opportunity={opportunity} />
+              ))}
+            </div>
+          ) : (
+            <div className="bg-[var(--highlight)] border border-[var(--border)] rounded-lg p-8 text-center">
+              <div className="text-4xl mb-2">🔍</div>
+              <p className="text-[var(--muted)] font-medium">No opportunities identified yet</p>
+              <p className="text-sm text-[var(--muted)] mt-1">
+                Opportunities will appear here as they are discovered
+              </p>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   )
@@ -73,7 +121,8 @@ function PainPointCard({ painPoint }: { painPoint: PainPoint }) {
   return (
     <div className="bg-white border border-[var(--border)] rounded p-4 shadow-sm hover:shadow-md transition-shadow">
       <div className="flex items-start justify-between gap-2 mb-2">
-        <h3 className="font-semibold text-ink">{painPoint.title}</h3>
+        {/* W1-P3-003: font-display on h3 */}
+        <h3 className="font-display font-semibold text-ink">{painPoint.title}</h3>
         <SeverityBadge severity={painPoint.severity} />
       </div>
 
@@ -100,7 +149,8 @@ function OpportunityCard({ opportunity }: { opportunity: Opportunity }) {
   return (
     <div className="bg-white border border-[var(--border)] rounded p-4 shadow-sm hover:shadow-md transition-shadow">
       <div className="flex items-start justify-between gap-2 mb-2">
-        <h3 className="font-semibold text-ink">{opportunity.title}</h3>
+        {/* W1-P3-003: font-display on h3 */}
+        <h3 className="font-display font-semibold text-ink">{opportunity.title}</h3>
         <OpportunityStatusBadge status={opportunity.status} />
       </div>
 
