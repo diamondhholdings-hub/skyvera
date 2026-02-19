@@ -15,12 +15,8 @@ export default function TestAnalysisPage() {
   const generatePRD = async (patternId: string) => {
     setGeneratingPRD(patternId);
     setGenerationProgress('Initializing PRD generation...');
-
-    // Show immediate feedback
     const startTime = Date.now();
-    console.log('[UI] PRD generation started...');
 
-    // Simulate progress updates
     const progressMessages = [
       'Analyzing pattern data...',
       'Consulting Claude Sonnet 4.5...',
@@ -50,24 +46,23 @@ export default function TestAnalysisPage() {
 
       clearInterval(progressInterval);
       const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
-      console.log(`[UI] PRD generation completed in ${elapsed}s`);
+      console.log('[UI] PRD generation completed in ' + elapsed + 's');
 
       if (!response.ok) {
-        throw new Error(`Failed to generate PRD: ${response.statusText}`);
+        throw new Error('Failed to generate PRD: ' + response.statusText);
       }
 
       const data = await response.json();
 
       if (data.success) {
-        // Show the PRD in a modal
         setViewingPRD(data.prd);
       } else {
-        alert(`Error: ${data.error || 'Unknown error'}`);
+        alert('Error: ' + (data.error || 'Unknown error'));
       }
     } catch (error) {
       clearInterval(progressInterval);
       console.error('PRD generation error:', error);
-      alert(`Error generating PRD: ${error instanceof Error ? error.message : 'Unknown error'}`);
+      alert('Error generating PRD: ' + (error instanceof Error ? error.message : 'Unknown error'));
     } finally {
       setGeneratingPRD(null);
       setGenerationProgress('');
@@ -80,7 +75,6 @@ export default function TestAnalysisPage() {
     setCurrentStage('Initializing...');
 
     try {
-      // Simulate progress updates
       const progressInterval = setInterval(() => {
         setProgress(prev => Math.min(prev + 5, 90));
       }, 200);
@@ -102,7 +96,6 @@ export default function TestAnalysisPage() {
         }
       }, 800);
 
-      // Call real API
       const response = await fetch('/api/product-agent/analyze', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -118,20 +111,17 @@ export default function TestAnalysisPage() {
       clearInterval(stageInterval);
 
       if (!response.ok) {
-        throw new Error(`API error: ${response.statusText}`);
+        throw new Error('API error: ' + response.statusText);
       }
 
       const data = await response.json();
-
       setProgress(100);
       setCurrentStage('Complete!');
-
       await new Promise(resolve => setTimeout(resolve, 500));
-
       setResults(data);
     } catch (error) {
       console.error('Analysis error:', error);
-      setCurrentStage(`Error: ${error instanceof Error ? error.message : 'Unknown error'}`);
+      setCurrentStage('Error: ' + (error instanceof Error ? error.message : 'Unknown error'));
       await new Promise(resolve => setTimeout(resolve, 2000));
     } finally {
       setIsAnalyzing(false);
@@ -139,44 +129,40 @@ export default function TestAnalysisPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 p-8">
+    <div className="min-h-screen bg-[var(--paper)] p-8">
       <div className="max-w-6xl mx-auto">
-        {/* PRD Generation Progress Banner */}
+
         {generationProgress && (
-          <div className="mb-6 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-4 rounded-lg shadow-lg flex items-center gap-4">
+          <div className="mb-6 bg-gradient-to-r from-[var(--secondary)] to-[#1a2332] text-white px-6 py-4 rounded-lg shadow-lg flex items-center gap-4">
             <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-white"></div>
             <div className="flex-1">
-              <div className="font-bold text-lg">🤖 Generating PRD with Claude Sonnet 4.5</div>
-              <div className="text-sm text-blue-100 mt-1">{generationProgress}</div>
-              <div className="text-xs text-blue-200 mt-1">This may take 20-30 seconds...</div>
+              <div className="font-bold text-lg">Generating PRD with Claude Sonnet 4.5</div>
+              <div className="text-sm mt-1 opacity-80">{generationProgress}</div>
+              <div className="text-xs mt-1 opacity-60">This may take 20-30 seconds...</div>
             </div>
           </div>
         )}
 
-        {/* Header */}
         <div className="mb-8">
-          <Link href="/product-agent" className="text-blue-600 hover:text-blue-800 mb-4 inline-block">
-            ← Back to Product Agent
+          <Link href="/product-agent" className="text-[var(--secondary)] hover:text-[var(--secondary)]/80 mb-4 inline-block">
+            Back to Product Agent
           </Link>
-          <h1 className="text-4xl font-bold text-gray-900 mb-2">
+          <h1 className="text-4xl font-light font-display text-[var(--secondary)] mb-2">
             Test Analysis
           </h1>
-          <p className="text-lg text-gray-600">
+          <p className="text-lg text-[var(--muted)]">
             Analyze your existing Skyvera customer data to identify product opportunities
           </p>
         </div>
 
-        {/* Analysis Configuration */}
         {!isAnalyzing && !results && (
           <div className="bg-white rounded-lg shadow-md p-6 mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">Analysis Configuration</h2>
+            <h2 className="text-2xl font-semibold text-[var(--ink)] mb-4">Analysis Configuration</h2>
 
             <div className="space-y-4 mb-6">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Scope
-                </label>
-                <select className="w-full border border-gray-300 rounded-lg px-4 py-2">
+                <label className="block text-sm font-medium text-[var(--ink)] mb-2">Scope</label>
+                <select className="w-full border border-[var(--border)] rounded-lg px-4 py-2">
                   <option>All Business Units (Cloudsense, Kandy, STL)</option>
                   <option>Cloudsense only</option>
                   <option>Kandy only</option>
@@ -185,10 +171,8 @@ export default function TestAnalysisPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Focus Area
-                </label>
-                <select className="w-full border border-gray-300 rounded-lg px-4 py-2">
+                <label className="block text-sm font-medium text-[var(--ink)] mb-2">Focus Area</label>
+                <select className="w-full border border-[var(--border)] rounded-lg px-4 py-2">
                   <option>Churn risk + Expansion opportunities (Recommended)</option>
                   <option>Churn risk only</option>
                   <option>Expansion opportunities only</option>
@@ -198,10 +182,8 @@ export default function TestAnalysisPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Time Window
-                </label>
-                <select className="w-full border border-gray-300 rounded-lg px-4 py-2">
+                <label className="block text-sm font-medium text-[var(--ink)] mb-2">Time Window</label>
+                <select className="w-full border border-[var(--border)] rounded-lg px-4 py-2">
                   <option>Last 90 days (Recommended)</option>
                   <option>Last 30 days</option>
                   <option>Last 180 days</option>
@@ -211,88 +193,81 @@ export default function TestAnalysisPage() {
 
               <div className="flex items-center">
                 <input type="checkbox" id="generate-prds" className="mr-2" defaultChecked />
-                <label htmlFor="generate-prds" className="text-sm text-gray-700">
-                  Generate PRDs for high-confidence patterns (≥85%)
+                <label htmlFor="generate-prds" className="text-sm text-[var(--ink)]">
+                  Generate PRDs for high-confidence patterns (85%+)
                 </label>
               </div>
             </div>
 
             <button
               onClick={runAnalysis}
-              className="w-full px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors"
+              className="w-full px-6 py-3 bg-[var(--accent)] text-white font-semibold rounded-lg hover:bg-[var(--accent)]/90 transition-colors"
             >
-              🚀 Run Analysis
+              Run Analysis
             </button>
 
-            <p className="text-sm text-gray-500 mt-4">
-              <strong>Note:</strong> This is a test environment. Analysis will scan your real customer data but won't publish PRDs to production.
+            <p className="text-sm text-[var(--muted)] mt-4">
+              <strong>Note:</strong> This is a test environment. Analysis will scan your real customer data but will not publish PRDs to production.
             </p>
           </div>
         )}
 
-        {/* Analysis Progress */}
         {isAnalyzing && (
           <div className="bg-white rounded-lg shadow-md p-8">
             <div className="text-center mb-8">
-              <div className="inline-block animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600 mb-4"></div>
-              <h2 className="text-2xl font-semibold text-gray-900 mb-2">Analyzing...</h2>
-              <p className="text-gray-600">{currentStage}</p>
+              <div className="inline-block animate-spin rounded-full h-16 w-16 border-b-2 border-[var(--accent)] mb-4"></div>
+              <h2 className="text-2xl font-semibold text-[var(--ink)] mb-2">Analyzing...</h2>
+              <p className="text-[var(--muted)]">{currentStage}</p>
             </div>
-
-            <div className="w-full bg-gray-200 rounded-full h-4 mb-4">
+            <div className="w-full bg-[var(--highlight)] rounded-full h-4 mb-4">
               <div
-                className="bg-blue-600 h-4 rounded-full transition-all duration-500"
-                style={{ width: `${progress}%` }}
+                className="bg-[var(--accent)] h-4 rounded-full transition-all duration-500"
+                style={{ width: progress + '%' }}
               ></div>
             </div>
-            <p className="text-center text-gray-600">{progress}%</p>
+            <p className="text-center text-[var(--muted)]">{progress}%</p>
           </div>
         )}
 
-        {/* Results */}
         {results && (
           <div className="space-y-6">
-            {/* Summary */}
             <div className="bg-white rounded-lg shadow-md p-6">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">Analysis Complete</h2>
-
+              <h2 className="text-2xl font-semibold text-[var(--ink)] mb-4">Analysis Complete</h2>
               <div className="grid grid-cols-3 gap-6 mb-6">
-                <div className="text-center p-4 bg-blue-50 rounded-lg">
-                  <div className="text-3xl font-bold text-blue-600">{results.patterns_detected}</div>
-                  <div className="text-sm text-gray-600">Patterns Detected</div>
+                <div className="text-center p-4 bg-[var(--highlight)] rounded-lg">
+                  <div className="text-3xl font-bold text-[var(--secondary)]">{results.patterns_detected}</div>
+                  <div className="text-sm text-[var(--muted)]">Patterns Detected</div>
                 </div>
-                <div className="text-center p-4 bg-green-50 rounded-lg">
-                  <div className="text-3xl font-bold text-green-600">{results.prds_recommended}</div>
-                  <div className="text-sm text-gray-600">PRDs Recommended</div>
+                <div className="text-center p-4 bg-[var(--highlight)] rounded-lg">
+                  <div className="text-3xl font-bold text-[var(--success)]">{results.prds_recommended}</div>
+                  <div className="text-sm text-[var(--muted)]">PRDs Recommended</div>
                 </div>
-                <div className="text-center p-4 bg-purple-50 rounded-lg">
-                  <div className="text-3xl font-bold text-purple-600">
+                <div className="text-center p-4 bg-[var(--highlight)] rounded-lg">
+                  <div className="text-3xl font-bold text-[var(--accent)]">
                     ${(results.total_arr_opportunity / 1000000).toFixed(1)}M
                   </div>
-                  <div className="text-sm text-gray-600">Total ARR Opportunity</div>
+                  <div className="text-sm text-[var(--muted)]">Total ARR Opportunity</div>
                 </div>
               </div>
             </div>
 
-            {/* Patterns */}
             {results.patterns.map((pattern: any) => (
               <div key={pattern.id} className="bg-white rounded-lg shadow-md p-6">
                 <div className="flex items-start justify-between mb-4">
                   <div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">{pattern.name}</h3>
-                    <p className="text-gray-600">{pattern.signal}</p>
+                    <h3 className="text-xl font-semibold text-[var(--ink)] mb-2">{pattern.name}</h3>
+                    <p className="text-[var(--muted)]">{pattern.signal}</p>
                   </div>
                   <div className="text-right">
-                    <div className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium mb-2">
+                    <div className="px-3 py-1 bg-[var(--highlight)] text-[var(--secondary)] rounded-full text-sm font-medium mb-2">
                       Confidence: {(pattern.confidence * 100).toFixed(0)}%
                     </div>
-                    {pattern.recommended_prd && (
-                      <div className="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium">
-                        ✓ PRD Recommended
+                    {pattern.recommended_prd ? (
+                      <div className="px-3 py-1 bg-[var(--highlight)] text-[var(--success)] rounded-full text-sm font-medium">
+                        PRD Recommended
                       </div>
-                    )}
-                    {!pattern.recommended_prd && (
-                      <div className="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm font-medium">
+                    ) : (
+                      <div className="px-3 py-1 bg-[var(--highlight)] text-[var(--muted)] rounded-full text-sm font-medium">
                         Below Threshold
                       </div>
                     )}
@@ -301,52 +276,50 @@ export default function TestAnalysisPage() {
 
                 <div className="grid grid-cols-2 gap-4 mb-4">
                   <div>
-                    <div className="text-sm font-medium text-gray-700 mb-1">Affected Customers</div>
-                    <div className="text-sm text-gray-600">
+                    <div className="text-sm font-medium text-[var(--ink)] mb-1">Affected Customers</div>
+                    <div className="text-sm text-[var(--muted)]">
                       {Array.isArray(pattern.customers) ? pattern.customers.join(', ') : pattern.customers}
                     </div>
                   </div>
                   <div>
-                    <div className="text-sm font-medium text-gray-700 mb-1">Financial Impact</div>
-                    <div className="text-lg font-semibold text-gray-900">
-                      {pattern.arr_at_risk && `$${(pattern.arr_at_risk / 1000).toFixed(0)}K ARR at risk`}
-                      {pattern.financial_impact && `$${(pattern.financial_impact / 1000).toFixed(0)}K impact`}
-                      {pattern.arr_opportunity && `$${(pattern.arr_opportunity / 1000).toFixed(0)}K opportunity`}
+                    <div className="text-sm font-medium text-[var(--ink)] mb-1">Financial Impact</div>
+                    <div className="text-lg font-semibold text-[var(--ink)]">
+                      {pattern.arr_at_risk && '$' + (pattern.arr_at_risk / 1000).toFixed(0) + 'K ARR at risk'}
+                      {pattern.financial_impact && '$' + (pattern.financial_impact / 1000).toFixed(0) + 'K impact'}
+                      {pattern.arr_opportunity && '$' + (pattern.arr_opportunity / 1000).toFixed(0) + 'K opportunity'}
                     </div>
                   </div>
                 </div>
 
-                <div className="bg-gray-50 rounded-lg p-4 mb-4">
-                  <div className="text-sm font-medium text-gray-700 mb-1">Opportunity</div>
-                  <div className="text-gray-900">{pattern.opportunity}</div>
+                <div className="bg-[var(--paper)] rounded-lg p-4 mb-4">
+                  <div className="text-sm font-medium text-[var(--ink)] mb-1">Opportunity</div>
+                  <div className="text-[var(--ink)]">{pattern.opportunity}</div>
                 </div>
 
                 {pattern.recommended_prd && (
-                  <div className="flex items-center justify-between pt-4 border-t border-gray-200">
+                  <div className="flex items-center justify-between pt-4 border-t border-[var(--border)]">
                     <div>
-                      <div className="text-sm font-medium text-gray-700">Recommended PRD</div>
-                      <div className="text-lg font-semibold text-gray-900">{pattern.prd_title}</div>
+                      <div className="text-sm font-medium text-[var(--ink)]">Recommended PRD</div>
+                      <div className="text-lg font-semibold text-[var(--ink)]">{pattern.prd_title}</div>
                     </div>
                     <button
                       onClick={() => generatePRD(pattern.patternId)}
                       disabled={generatingPRD === pattern.patternId}
-                      className="px-4 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
+                      className="px-4 py-2 bg-[var(--accent)] text-white font-medium rounded-lg hover:bg-[var(--accent)]/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       {generatingPRD === pattern.patternId ? (
                         <span className="flex items-center gap-2">
                           <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
                           Generating...
                         </span>
-                      ) : (
-                        'Generate PRD'
-                      )}
+                      ) : 'Generate PRD'}
                     </button>
                   </div>
                 )}
 
                 {!pattern.recommended_prd && pattern.reason && (
-                  <div className="pt-4 border-t border-gray-200">
-                    <div className="text-sm text-gray-600">
+                  <div className="pt-4 border-t border-[var(--border)]">
+                    <div className="text-sm text-[var(--muted)]">
                       <strong>Why not recommended:</strong> {pattern.reason}
                     </div>
                   </div>
@@ -354,87 +327,72 @@ export default function TestAnalysisPage() {
               </div>
             ))}
 
-            {/* Actions */}
-            <div className="bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg shadow-lg p-6 text-white">
+            <div className="bg-gradient-to-r from-[var(--secondary)] to-[#1a2332] rounded-lg shadow-lg p-6 text-white">
               <h3 className="text-xl font-bold mb-4">Next Steps</h3>
               <div className="space-y-2 mb-6">
-                <p>✓ {results.patterns_detected} patterns identified in your Skyvera data</p>
-                <p>✓ {results.prds_recommended} high-confidence PRDs ready to generate</p>
-                <p>✓ ${(results.total_arr_opportunity / 1000000).toFixed(1)}M total ARR opportunity identified</p>
+                <p>{results.patterns_detected} patterns identified in your Skyvera data</p>
+                <p>{results.prds_recommended} high-confidence PRDs ready to generate</p>
+                <p>${(results.total_arr_opportunity / 1000000).toFixed(1)}M total ARR opportunity identified</p>
               </div>
               <div className="flex gap-4">
                 <button
-                  onClick={() => {
-                    setResults(null);
-                    setProgress(0);
-                  }}
-                  className="px-6 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors"
+                  onClick={() => { setResults(null); setProgress(0); }}
+                  className="px-6 py-3 bg-white text-[var(--secondary)] font-semibold rounded-lg hover:bg-[var(--highlight)] transition-colors"
                 >
                   Run Another Analysis
                 </button>
-                <Link
-                  href="/product-agent/backlog"
-                  className="px-6 py-3 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-blue-600 transition-colors inline-block"
+                <button
+                  type="button"
+                  disabled
+                  title="Coming soon"
+                  className="px-6 py-3 border-2 border-white text-white font-semibold rounded-lg opacity-50 cursor-not-allowed"
                 >
                   View Product Backlog
-                </Link>
+                </button>
               </div>
             </div>
           </div>
         )}
 
-        {/* PRD Modal */}
         {viewingPRD && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
             <div className="bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-hidden flex flex-col">
-              {/* Header */}
-              <div className="flex items-center justify-between p-6 border-b border-gray-200">
+              <div className="flex items-center justify-between p-6 border-b border-[var(--border)]">
                 <div>
                   <div className="flex items-center gap-3 mb-2">
-                    <h2 className="text-2xl font-bold text-gray-900">{viewingPRD.title}</h2>
-                    <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
+                    <h2 className="text-2xl font-bold text-[var(--ink)]">{viewingPRD.title}</h2>
+                    <span className="px-3 py-1 bg-[var(--highlight)] text-[var(--secondary)] rounded-full text-sm font-medium">
                       {viewingPRD.prdId}
                     </span>
-                    <span className={`px-3 py-1 rounded-full text-sm font-medium ${
-                      viewingPRD.priorityClass === 'P0' ? 'bg-red-100 text-red-800' :
-                      viewingPRD.priorityClass === 'P1' ? 'bg-orange-100 text-orange-800' :
-                      viewingPRD.priorityClass === 'P2' ? 'bg-yellow-100 text-yellow-800' :
-                      'bg-gray-100 text-gray-800'
-                    }`}>
+                    <span className={'px-3 py-1 rounded-full text-sm font-medium ' + (
+                      viewingPRD.priorityClass === 'P0' ? 'bg-[var(--critical)]/10 text-[var(--critical)]' :
+                      viewingPRD.priorityClass === 'P1' ? 'bg-[var(--warning)]/10 text-[var(--warning)]' :
+                      'bg-[var(--highlight)] text-[var(--muted)]'
+                    )}>
                       {viewingPRD.priorityClass}
                     </span>
                   </div>
-                  <div className="flex items-center gap-4 text-sm text-gray-600">
+                  <div className="flex items-center gap-4 text-sm text-[var(--muted)]">
                     <span>Priority Score: {viewingPRD.priorityScore}/100</span>
-                    <span>•</span>
                     <span>Confidence: {viewingPRD.confidenceScore}%</span>
-                    <span>•</span>
                     <span>Status: {viewingPRD.status}</span>
-                    <span>•</span>
                     <span>ARR Impact: ${(viewingPRD.arrImpact / 1000).toFixed(0)}K</span>
                   </div>
                 </div>
-                <button
-                  onClick={() => setViewingPRD(null)}
-                  className="text-gray-400 hover:text-gray-600 transition-colors"
-                >
+                <button onClick={() => setViewingPRD(null)} className="text-[var(--muted)] hover:text-[var(--ink)] transition-colors">
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                   </svg>
                 </button>
               </div>
 
-              {/* Content */}
               <div className="flex-1 overflow-y-auto p-6">
-                <div className="prose prose-sm max-w-none">
-                  <div dangerouslySetInnerHTML={{ __html: markdownToHtml(viewingPRD.content) }} />
-                </div>
+                <pre className="whitespace-pre-wrap text-sm text-[var(--ink)] font-mono">{viewingPRD.content}</pre>
               </div>
 
-              {/* Footer */}
-              <div className="flex items-center justify-between p-6 border-t border-gray-200 bg-gray-50">
-                <div className="text-sm text-gray-600">
-                  {viewingPRD.customerCount} customers affected • {viewingPRD.implementationWeeks} week implementation
+              <div className="flex items-center justify-between p-6 border-t border-[var(--border)] bg-[var(--paper)]">
+                <div className="text-sm text-[var(--muted)]">
+                  {viewingPRD.customerCount} customers affected &bull; {viewingPRD.implementationWeeks} week implementation
                 </div>
                 <div className="flex gap-3">
                   <button
@@ -443,19 +401,19 @@ export default function TestAnalysisPage() {
                       const url = URL.createObjectURL(blob);
                       const a = document.createElement('a');
                       a.href = url;
-                      a.download = `${viewingPRD.prdId}-${viewingPRD.title.replace(/[^a-z0-9]/gi, '-').toLowerCase()}.md`;
+                      a.download = viewingPRD.prdId + '-' + viewingPRD.title.replace(/[^a-z0-9]/gi, '-').toLowerCase() + '.md';
                       document.body.appendChild(a);
                       a.click();
                       document.body.removeChild(a);
                       URL.revokeObjectURL(url);
                     }}
-                    className="px-4 py-2 border border-gray-300 text-gray-700 font-medium rounded-lg hover:bg-gray-100 transition-colors"
+                    className="px-4 py-2 border border-[var(--border)] text-[var(--ink)] font-medium rounded-lg hover:bg-[var(--highlight)] transition-colors"
                   >
                     Download Markdown
                   </button>
                   <button
                     onClick={() => setViewingPRD(null)}
-                    className="px-4 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"
+                    className="px-4 py-2 bg-[var(--accent)] text-white font-medium rounded-lg hover:bg-[var(--accent)]/90 transition-colors"
                   >
                     Close
                   </button>
@@ -467,31 +425,4 @@ export default function TestAnalysisPage() {
       </div>
     </div>
   );
-}
-
-// Simple markdown to HTML converter (basic version)
-function markdownToHtml(markdown: string): string {
-  let html = markdown;
-
-  // Headers
-  html = html.replace(/^### (.*$)/gim, '<h3>$1</h3>');
-  html = html.replace(/^## (.*$)/gim, '<h2>$1</h2>');
-  html = html.replace(/^# (.*$)/gim, '<h1>$1</h1>');
-
-  // Bold
-  html = html.replace(/\*\*(.*?)\*\*/gim, '<strong>$1</strong>');
-
-  // Italic
-  html = html.replace(/\*(.*?)\*/gim, '<em>$1</em>');
-
-  // Lists
-  html = html.replace(/^\* (.*$)/gim, '<li>$1</li>');
-  html = html.replace(/^- (.*$)/gim, '<li>$1</li>');
-  html = html.replace(/(<li>[\s\S]*<\/li>)/, '<ul>$1</ul>');
-
-  // Line breaks
-  html = html.replace(/\n\n/g, '</p><p>');
-  html = '<p>' + html + '</p>';
-
-  return html;
 }
