@@ -133,7 +133,7 @@ h3 {
 
 /* Loading skeleton */
 .skeleton {
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background: linear-gradient(90deg, var(--highlight) 25%, var(--border) 50%, var(--highlight) 75%);
   background-size: 2000px 100%;
   animation: shimmer 2s infinite;
 }
