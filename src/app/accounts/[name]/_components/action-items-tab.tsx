@@ -14,15 +14,16 @@ import {
   type DragStartEvent,
   type DragEndEvent,
 } from '@dnd-kit/core'
-import type { ActionItem } from '@/lib/types/account-plan'
+import type { ActionItem, Stakeholder } from '@/lib/types/account-plan'
 import { KanbanColumn } from './kanban-column'
 import { ActionCard } from './action-card'
 
 interface ActionItemsTabProps {
   initialActions: ActionItem[]
+  stakeholders?: Stakeholder[]
 }
 
-export function ActionItemsTab({ initialActions }: ActionItemsTabProps) {
+export function ActionItemsTab({ initialActions, stakeholders = [] }: ActionItemsTabProps) {
   const [actions, setActions] = useState<ActionItem[]>(initialActions)
   const [activeId, setActiveId] = useState<string | null>(null)
 
@@ -105,9 +106,9 @@ export function ActionItemsTab({ initialActions }: ActionItemsTabProps) {
     <div className="space-y-6">
       {/* Empty state */}
       {actions.length === 0 && (
-        <div className="text-center py-12 bg-slate-50 rounded-lg">
-          <p className="text-slate-600 mb-2">No action items yet</p>
-          <p className="text-sm text-slate-500">Create your first action using the form below</p>
+        <div className="text-center py-12 bg-[var(--highlight)] rounded-lg border border-[var(--border)]">
+          <p className="text-[var(--muted)] mb-2">No action items yet</p>
+          <p className="text-sm text-[var(--muted)]">Create your first action using the form below</p>
         </div>
       )}
 
@@ -163,6 +164,46 @@ export function ActionItemsTab({ initialActions }: ActionItemsTabProps) {
           </div>
         </div>
       )}
+
+      {/* W1-P2-006: Key Messages by Stakeholder */}
+      {stakeholders && stakeholders.length > 0 && (
+        <div className="mt-8">
+          <h3 className="font-display text-xl text-[var(--secondary)] mb-4">Key Messages by Stakeholder</h3>
+          <div className="grid grid-cols-2 gap-4">
+            {stakeholders.slice(0, 4).map((s) => (
+              <div
+                key={s.id}
+                className="p-6 bg-[var(--highlight)] border-l-[3px] border-[var(--accent)] rounded-r-lg"
+              >
+                <h4 className="font-display font-semibold text-[var(--secondary)] mb-2">
+                  To {s.name} ({s.role})
+                </h4>
+                <p className="text-sm text-[var(--ink)]">
+                  {`Focus on ${s.name}'s strategic priorities and demonstrate CloudSense's value in addressing their key challenges.`}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* W1-P2-007: Escalation Triggers */}
+      <div className="mt-6 border-l-4 border-[var(--critical)] bg-[var(--paper)] rounded-r-lg p-6 shadow-sm">
+        <h3 className="font-display font-semibold text-[var(--ink)] mb-2">
+          ⚠ Escalation Triggers to Skyvera Leadership
+        </h3>
+        <p className="text-sm text-[var(--muted)] mb-3">
+          Escalate immediately if any of the following occur:
+        </p>
+        <ul className="list-disc pl-5 space-y-1 text-sm text-[var(--ink)]">
+          <li>Contract renewal discussions stall or customer requests pricing concessions {`>`} 20%</li>
+          <li>Key champion or executive sponsor departs the organization</li>
+          <li>Customer escalates a support issue to their C-suite</li>
+          <li>Competitive POC or RFP initiated without Skyvera involvement</li>
+          <li>Health score drops below 6.0 or transitions to red status</li>
+          <li>Invoice payment overdue {`>`} 60 days</li>
+        </ul>
+      </div>
     </div>
   )
 }

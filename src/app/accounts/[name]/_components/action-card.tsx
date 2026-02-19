@@ -23,11 +23,13 @@ interface ActionCardProps {
 export function ActionCard({ action, isDragging }: ActionCardProps) {
   const isPastDue = action.dueDate && new Date(action.dueDate) < new Date()
 
+  const isDone = action.status === 'done'
+
   return (
     <div
       className={`bg-white border border-[var(--border)] p-4 rounded shadow-sm cursor-move ${
         isDragging ? 'opacity-50' : ''
-      }`}
+      } ${isDone ? 'opacity-60 border-l-4 border-l-[var(--success)]' : 'border-l-4 border-l-[var(--accent)]'}`}
     >
       {/* Top row: title + priority badge */}
       <div className="flex items-start gap-2 mb-2">
