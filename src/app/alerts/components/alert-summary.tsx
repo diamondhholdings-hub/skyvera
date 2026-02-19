@@ -21,7 +21,9 @@ export function AlertSummary({ alerts }: AlertSummaryProps) {
       <div className="bg-white rounded shadow-sm border border-[var(--border)] p-5">
         <div className="flex items-center gap-3">
           <svg
-            className="w-8 h-8 text-[var(--accent)]"
+            className="w-8 h-8 flex-shrink-0 text-[var(--accent)]"
+            width="32"
+            height="32"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
