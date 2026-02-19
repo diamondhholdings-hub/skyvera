@@ -1,0 +1,3 @@
+TimeoutError: page.goto: Timeout 15000ms exceeded.
+Call log:
+[2m  - navigating to "http://localhost:3000/scenario", waiting until "networkidle"[22m
