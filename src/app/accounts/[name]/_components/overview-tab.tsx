@@ -5,15 +5,18 @@
  */
 
 import type { CustomerWithHealth } from '@/lib/types/customer'
+import type { PainPoint, Opportunity } from '@/lib/types/account-plan'
 import { Card } from '@/components/ui/card'
 import Link from 'next/link'
 
 interface OverviewTabProps {
   customer: CustomerWithHealth
   intelligenceReport: string // Raw markdown
+  painPoints?: PainPoint[]
+  opportunities?: Opportunity[]
 }
 
-export function OverviewTab({ customer, intelligenceReport }: OverviewTabProps) {
+export function OverviewTab({ customer, intelligenceReport, painPoints = [], opportunities = [] }: OverviewTabProps) {
   const arr = customer.rr * 4
   const subscriptionCount = customer.subscriptions?.length || 0
 
@@ -37,7 +40,10 @@ export function OverviewTab({ customer, intelligenceReport }: OverviewTabProps) 
     <div className="space-y-6">
       {/* Critical Alert Banner (if health is at risk) */}
       {showCriticalAlert && (
-        <div className="bg-gradient-to-r from-[var(--critical)] to-[#c62828] text-white p-6 rounded border-l-4 border-[#8b1a1a] shadow-lg">
+        <div
+          className="bg-gradient-to-r from-[var(--critical)] to-[#c62828] text-white p-6 border-l-4 border-[#8b1a1a]"
+          style={{ boxShadow: '0 4px 12px rgba(197,75,49,0.2)' }}
+        >
           <h3 className="font-display text-xl font-semibold mb-2">
             🚨 CRITICAL: Account Health Alert
           </h3>
@@ -149,6 +155,41 @@ export function OverviewTab({ customer, intelligenceReport }: OverviewTabProps) 
           <p className="text-sm text-muted">No specific health factors recorded</p>
         )}
       </Card>
+
+      {/* W1-P1-005: Risk & Opportunity Summary */}
+      {(painPoints.length > 0 || opportunities.length > 0) && (
+        <div className="bg-[var(--paper)] border border-[var(--border)] rounded-lg p-6">
+          <h3 className="font-display text-xl text-[var(--secondary)] mb-4">Risk & Opportunity Summary</h3>
+          <div className="grid grid-cols-2 gap-6">
+            <div>
+              <h4 className="text-sm font-semibold uppercase tracking-wider text-[var(--critical)] mb-3">Top Risks</h4>
+              <ul className="space-y-2">
+                {painPoints.slice(0, 3).map((p) => (
+                  <li key={p.id} className="text-sm text-[var(--ink)] flex gap-2">
+                    <span className="text-[var(--critical)] flex-shrink-0">▸</span>{p.title}
+                  </li>
+                ))}
+                {painPoints.length === 0 && (
+                  <li className="text-sm text-[var(--muted)]">No risks identified</li>
+                )}
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-sm font-semibold uppercase tracking-wider text-[var(--success)] mb-3">Top Opportunities</h4>
+              <ul className="space-y-2">
+                {opportunities.slice(0, 3).map((o) => (
+                  <li key={o.id} className="text-sm text-[var(--ink)] flex gap-2">
+                    <span className="text-[var(--success)] flex-shrink-0">▸</span>{o.title}
+                  </li>
+                ))}
+                {opportunities.length === 0 && (
+                  <li className="text-sm text-[var(--muted)]">No opportunities identified</li>
+                )}
+              </ul>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

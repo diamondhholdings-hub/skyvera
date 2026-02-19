@@ -197,7 +197,12 @@ export default async function AccountPlanPage({ params, searchParams }: AccountP
       <div className="max-w-[1400px] mx-auto px-8 py-6">
         {activeTab === 'overview' && (
           <Suspense fallback={<TabSkeleton />}>
-            <OverviewTab customer={customer} intelligenceReport={accountData.intelligence.raw} />
+            <OverviewTab
+              customer={customer}
+              intelligenceReport={accountData.intelligence.raw}
+              painPoints={accountData.strategy.painPoints}
+              opportunities={accountData.strategy.opportunities}
+            />
           </Suspense>
         )}
 
