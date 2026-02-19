@@ -88,8 +88,8 @@ export function OrganizationTab({ stakeholders }: OrganizationTabProps) {
         >
           {/* Connector line for non-root nodes */}
           {level > 0 && (
-            <div className="absolute left-0 top-0 bottom-0 border-l-2 border-slate-300" style={{ left: `${(level - 1) * 48 + 16}px` }}>
-              <div className="absolute top-8 w-8 border-t-2 border-slate-300" />
+            <div className="absolute left-0 top-0 bottom-0 border-l-2 border-[var(--border)]" style={{ left: `${(level - 1) * 48 + 16}px` }}>
+              <div className="absolute top-8 w-8 border-t-2 border-[var(--border)]" />
             </div>
           )}
 
@@ -108,8 +108,8 @@ export function OrganizationTab({ stakeholders }: OrganizationTabProps) {
   if (localStakeholders.length === 0) {
     return (
       <div className="text-center py-12">
-        <p className="text-lg font-medium text-slate-700 mb-2">No stakeholders mapped yet</p>
-        <p className="text-sm text-slate-500">
+        <p className="text-lg font-medium text-[var(--secondary)] mb-2">No stakeholders mapped yet</p>
+        <p className="text-sm text-[var(--muted)]">
           Add stakeholder data to visualize the organization structure
         </p>
       </div>
@@ -130,16 +130,16 @@ export function OrganizationTab({ stakeholders }: OrganizationTabProps) {
       {/* Summary stats */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Role breakdown */}
-        <div className="bg-white p-6 rounded-lg border border-[var(--border)] shadow-sm">
+        <div className="bg-[var(--paper)] p-6 rounded-lg border border-[var(--border)] shadow-sm">
           <h3 className="font-display text-lg font-semibold text-secondary mb-4">Roles</h3>
           <div className="space-y-2">
             <div className="flex items-center justify-between text-sm">
-              <span className="text-muted">Total Stakeholders</span>
+              <span className="text-[var(--muted)]">Total Stakeholders</span>
               <span className="font-semibold text-ink">{localStakeholders.length}</span>
             </div>
             {Object.entries(roleCounts).map(([role, count]) => (
               <div key={role} className="flex items-center justify-between text-sm">
-                <span className="text-muted capitalize">
+                <span className="text-[var(--muted)] capitalize">
                   {roleLabels[role] || role}
                   {count > 1 ? 's' : ''}
                 </span>
@@ -150,24 +150,26 @@ export function OrganizationTab({ stakeholders }: OrganizationTabProps) {
         </div>
 
         {/* Relationship health */}
-        <div className="bg-white p-6 rounded-lg border border-[var(--border)] shadow-sm">
+        <div className="bg-[var(--paper)] p-6 rounded-lg border border-[var(--border)] shadow-sm">
           <h3 className="font-display text-lg font-semibold text-secondary mb-4">Relationship Health</h3>
           <div className="space-y-2">
             {Object.entries(relationshipCounts).map(([strength, count]) => (
               <div key={strength} className="flex items-center justify-between text-sm">
                 <div className="flex items-center gap-2">
                   <div
-                    className={`w-3 h-3 rounded-full ${
-                      strength === 'strong'
-                        ? 'bg-success'
-                        : strength === 'moderate'
-                        ? 'bg-warning'
-                        : strength === 'weak'
-                        ? 'bg-critical'
-                        : 'bg-muted'
-                    }`}
+                    className="w-3 h-3 rounded-full"
+                    style={{
+                      backgroundColor:
+                        strength === 'strong'
+                          ? 'var(--success)'
+                          : strength === 'moderate'
+                          ? 'var(--warning)'
+                          : strength === 'weak'
+                          ? 'var(--critical)'
+                          : 'var(--muted)',
+                    }}
                   />
-                  <span className="text-muted capitalize">{strength}</span>
+                  <span className="text-[var(--muted)] capitalize">{strength}</span>
                 </div>
                 <span className="font-medium text-ink">{count}</span>
               </div>
