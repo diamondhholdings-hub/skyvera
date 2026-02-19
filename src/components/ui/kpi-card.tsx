@@ -26,20 +26,20 @@ export function KPICard({ title, value, target, format = 'number' }: KPICardProp
     <div
       className="bg-white/5 p-6 rounded-[15px] border border-white/10 backdrop-blur-sm"
     >
-      <h3 className="text-xs font-semibold uppercase tracking-wider text-[#888] mb-2">
+      <h3 className="text-xs font-semibold uppercase tracking-wider text-[var(--muted)] mb-2">
         {title}
       </h3>
       <p className="text-3xl font-bold text-white my-3">
         {formatValue(value)}
       </p>
       <div className="flex items-center gap-3 mt-3">
-        <span className="text-sm text-[#aaa]">Target: {formatValue(target)}</span>
+        <span className="text-sm text-[var(--muted)]/80">Target: {formatValue(target)}</span>
         {target !== 0 && (
           <span
             className={`text-xs font-semibold px-3 py-1 rounded-full ${
               isPositive
-                ? 'bg-[#2ecc71]/20 text-[#2ecc71]'
-                : 'bg-[#e74c3c]/20 text-[#e74c3c]'
+                ? 'bg-[var(--success)]/20 text-[var(--success)]'
+                : 'bg-[var(--critical)]/20 text-[var(--critical)]'
             }`}
           >
             {isPositive ? '▲' : '▼'} {Math.abs(delta).toFixed(1)}%
