@@ -2,7 +2,7 @@
 
 /**
  * 7-Section Dashboard Navigation
- * Exact match to reference HTML navigation
+ * Uses CSS design tokens throughout — no hardcoded hex colors
  */
 
 import { useSearchParams, useRouter } from 'next/navigation'
@@ -63,57 +63,22 @@ export function DashboardNavigation() {
   }
 
   return (
-    <>
-      {/* Navigation Bar - exact styling from reference */}
-      <nav style={{
-        background: '#f8f9fa',
-        padding: '15px 40px',
-        borderBottom: '2px solid #e9ecef',
-        display: 'flex',
-        gap: '10px',
-        flexWrap: 'wrap',
-        position: 'sticky',
-        top: 0,
-        zIndex: 100
-      }}>
-        {sections.map(({ id, label }) => (
-          <button
-            key={id}
-            onClick={() => handleSectionChange(id)}
-            style={{
-              padding: '10px 18px',
-              border: 'none',
-              background: activeSection === id ? '#1e3c72' : '#667eea',
-              color: 'white',
-              borderRadius: '8px',
-              cursor: 'pointer',
-              fontWeight: 600,
-              fontSize: '0.9em',
-              transition: 'all 0.3s',
-              ...(activeSection !== id && {
-                ':hover': {
-                  background: '#764ba2',
-                  transform: 'translateY(-2px)'
-                }
-              })
-            }}
-            onMouseEnter={(e) => {
-              if (activeSection !== id) {
-                e.currentTarget.style.background = '#764ba2'
-                e.currentTarget.style.transform = 'translateY(-2px)'
-              }
-            }}
-            onMouseLeave={(e) => {
-              if (activeSection !== id) {
-                e.currentTarget.style.background = '#667eea'
-                e.currentTarget.style.transform = 'translateY(0)'
-              }
-            }}
-          >
-            {label}
-          </button>
-        ))}
-      </nav>
-    </>
+    <nav
+      className="bg-[var(--highlight)] border-b border-[var(--border)] flex gap-2 flex-wrap px-10 py-4 sticky top-0 z-[100]"
+    >
+      {sections.map(({ id, label }) => (
+        <button
+          key={id}
+          onClick={() => handleSectionChange(id)}
+          className={`px-[18px] py-2.5 rounded-lg font-semibold text-sm transition-all ${
+            activeSection === id
+              ? 'bg-[var(--secondary)] text-[var(--paper)]'
+              : 'bg-transparent text-[var(--muted)] hover:bg-[var(--secondary)]/10 hover:text-[var(--ink)]'
+          }`}
+        >
+          {label}
+        </button>
+      ))}
+    </nav>
   )
 }

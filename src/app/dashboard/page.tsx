@@ -1,7 +1,6 @@
 /**
  * Executive Intelligence Dashboard
- * Exact match to Skyvera_Executive_Intelligence_Report.html
- * Uses inline styles extracted from reference HTML
+ * Editorial design system — uses CSS design tokens throughout
  */
 
 import { Suspense } from 'react'
@@ -19,10 +18,10 @@ import { DashboardNavigation } from './components/dashboard-navigation'
 function DashboardSkeleton() {
   return (
     <div className="animate-pulse space-y-6">
-      <div className="h-64 bg-slate-100 rounded-[15px]" />
+      <div className="h-64 bg-[var(--border)] rounded-[15px]" />
       <div className="grid grid-cols-3 gap-5">
         {[...Array(6)].map((_, i) => (
-          <div key={i} className="h-32 bg-slate-100 rounded-[15px]" />
+          <div key={i} className="h-32 bg-[var(--border)] rounded-[15px]" />
         ))}
       </div>
     </div>
@@ -31,92 +30,54 @@ function DashboardSkeleton() {
 
 export default function DashboardPage() {
   return (
-    <div style={{
-      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
-      background: 'linear-gradient(135deg, #1e3c72 0%, #2a5298 100%)',
-      minHeight: '100vh',
-      padding: '20px',
-      lineHeight: 1.6
-    }}>
-      <div style={{
-        maxWidth: '1600px',
-        margin: '0 auto',
-        background: 'white',
-        borderRadius: '20px',
-        boxShadow: '0 20px 60px rgba(0,0,0,0.3)',
-        overflow: 'hidden'
-      }}>
-        {/* Header - exact match */}
-        <header style={{
-          background: 'linear-gradient(135deg, #1e3c72 0%, #2a5298 100%)',
-          color: 'white',
-          padding: '40px',
-          textAlign: 'center'
-        }}>
-          <h1 style={{
-            fontSize: '2.8em',
-            marginBottom: '10px',
-            fontWeight: 700
-          }}>
-            Skyvera Executive Intelligence Report
-          </h1>
-          <div style={{
-            fontSize: '1.3em',
-            opacity: 0.9,
-            marginBottom: '10px'
-          }}>
-            Financial & Customer Intelligence Analysis - Q1'26
-          </div>
-          <div style={{ fontSize: '1em', opacity: 0.8 }} suppressHydrationWarning>
-            Report Date: {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })} | Classification: Executive Confidential
-          </div>
-        </header>
-
-        {/* 7-Section Navigation - exact match */}
-        <DashboardNavigation />
-
-        {/* Content Area */}
-        <div style={{ padding: '40px' }}>
-          <Suspense fallback={<DashboardSkeleton />}>
-            {/* DM% Strategy Briefing - Top Priority Recommendations */}
-            <DMBriefingSection />
-
-            {/* All sections render, visibility controlled by client component */}
-            <FinancialSummarySection />
-            <FinancialDetailedSection />
-            <CustomerSummarySection />
-            <TopCustomersSection />
-            <AtRiskSection />
-            <ExpansionSection />
-            <ActionPlanSection />
-          </Suspense>
+    <div>
+      {/* Header */}
+      <header className="bg-gradient-to-br from-[var(--secondary)] to-[#1a2332] text-[var(--paper)] px-10 pt-12 pb-10 text-center">
+        <h1 className="font-display text-5xl font-light text-[var(--paper)] mb-3">
+          Skyvera Executive Intelligence Report
+        </h1>
+        <div className="text-lg text-[var(--paper)]/90 mb-2">
+          Financial &amp; Customer Intelligence Analysis - Q1&apos;26
         </div>
+        <div className="text-sm text-[var(--paper)]/70" suppressHydrationWarning>
+          Report Date: {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })} | Classification: Executive Confidential
+        </div>
+      </header>
 
-        {/* Footer - exact match */}
-        <footer style={{
-          background: '#1e3c72',
-          color: 'white',
-          padding: '30px 40px',
-          textAlign: 'center'
-        }}>
-          <div style={{ marginBottom: '20px' }}>
-            <div style={{ fontSize: '1.2em', fontWeight: 600, marginBottom: '10px' }}>
-              Skyvera Intelligence Platform
-            </div>
-            <div style={{ opacity: 0.8, fontSize: '0.95em' }}>
-              Powered by AI-driven analysis and real-time data integration
-            </div>
-          </div>
-          <div style={{
-            paddingTop: '20px',
-            borderTop: '1px solid rgba(255,255,255,0.2)',
-            opacity: 0.7,
-            fontSize: '0.9em'
-          }}>
-            © 2026 Skyvera. Executive Confidential. All Rights Reserved.
-          </div>
-        </footer>
+      {/* 7-Section Navigation */}
+      <Suspense fallback={<div className="h-10 bg-[var(--border)] animate-pulse rounded" />}>
+        <DashboardNavigation />
+      </Suspense>
+
+      {/* Content Area */}
+      <div className="max-w-[1400px] mx-auto px-8 py-10">
+        <Suspense fallback={<DashboardSkeleton />}>
+          {/* DM% Strategy Briefing - Top Priority Recommendations */}
+          <DMBriefingSection />
+
+          {/* All sections render, visibility controlled by client component */}
+          <FinancialSummarySection />
+          <FinancialDetailedSection />
+          <CustomerSummarySection />
+          <TopCustomersSection />
+          <AtRiskSection />
+          <ExpansionSection />
+          <ActionPlanSection />
+        </Suspense>
       </div>
+
+      {/* Footer */}
+      <footer className="bg-[var(--secondary)] text-[var(--paper)] px-10 py-8 text-center">
+        <div className="mb-5">
+          <div className="text-lg font-semibold mb-2">Skyvera Intelligence Platform</div>
+          <div className="text-[var(--paper)]/80 text-sm">
+            Powered by AI-driven analysis and real-time data integration
+          </div>
+        </div>
+        <div className="pt-5 border-t border-[var(--paper)]/20 text-[var(--paper)]/70 text-sm">
+          &copy; 2026 Skyvera. Executive Confidential. All Rights Reserved.
+        </div>
+      </footer>
     </div>
   )
 }

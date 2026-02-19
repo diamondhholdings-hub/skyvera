@@ -1,6 +1,7 @@
 /**
  * Financial Summary Section
  * Executive overview with gradient metric cards and critical issues
+ * Uses CSS design tokens — no hardcoded hex colors
  */
 
 import { getDashboardData, getBUSummaries } from '@/lib/data/server/dashboard-data'
@@ -14,7 +15,7 @@ export async function FinancialSummarySection() {
 
   if (!dashboardResult.success || !buSummariesResult.success) {
     return (
-      <div id="financial-summary" style={{ padding: '40px', textAlign: 'center', color: '#64748b' }}>
+      <div id="financial-summary" className="py-10 text-center text-[var(--muted)]">
         Failed to load financial data
       </div>
     )
@@ -35,23 +36,16 @@ export async function FinancialSummarySection() {
   return (
     <section id="financial-summary">
       {/* Section Header */}
-      <h2 style={{
-        fontSize: '1.8em',
-        color: '#1e3c72',
-        fontWeight: 'semibold',
-        margin: '30px 0 20px 0',
-        paddingBottom: '10px',
-        borderBottom: '3px solid #667eea'
-      }}>
+      <h2 className="font-display text-3xl font-semibold text-[var(--secondary)] mt-8 mb-5 pb-3 border-b-4 border-[var(--secondary)]">
         Financial Executive Summary
       </h2>
 
       {/* Overall Assessment Alert */}
       <AlertBox variant="critical">
-        <div style={{ fontSize: '1.1em' }}>
-          <strong>OVERALL ASSESSMENT: PROCEED WITH CAUTION</strong>
+        <div className="text-base font-bold">
+          OVERALL ASSESSMENT: PROCEED WITH CAUTION
         </div>
-        <div style={{ marginTop: '10px', lineHeight: 1.7 }}>
+        <div className="mt-2 leading-7">
           Skyvera demonstrates strong profitability metrics ({data.netMarginPct.toFixed(1)}% EBITDA
           margin, ${(data.ebitda / 1e6).toFixed(1)}M quarterly EBITDA) but faces significant
           structural challenges with declining recurring revenue ({arrYoYChange}% YoY) and margin
@@ -60,12 +54,7 @@ export async function FinancialSummarySection() {
       </AlertBox>
 
       {/* Metric Cards Grid */}
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
-        gap: '20px',
-        margin: '30px 0'
-      }}>
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-5 my-8">
         <MetricCard
           variant="primary"
           label="Total Revenue (Q1'26)"
@@ -105,176 +94,102 @@ export async function FinancialSummarySection() {
       </div>
 
       {/* Critical Financial Issues */}
-      <h3 style={{
-        fontSize: '1.5em',
-        fontWeight: 700,
-        color: '#2a5298',
-        marginTop: '30px',
-        marginBottom: '15px',
-        paddingBottom: '10px',
-        borderBottom: '2px solid #e2e8f0'
-      }}>
+      <h3 className="font-display text-2xl font-semibold text-[var(--secondary)] mt-8 mb-4 pb-3 border-b-2 border-[var(--border)]">
         Critical Financial Issues
       </h3>
 
       {/* Issue 1: Margin Gap */}
-      <div style={{
-        background: '#f8fafc',
-        borderRadius: '15px',
-        padding: '20px',
-        margin: '15px 0',
-        borderLeft: '5px solid #667eea'
-      }}>
-        <div style={{
-          fontSize: '1.2em',
-          fontWeight: 700,
-          color: '#1e3c72',
-          marginBottom: '15px'
-        }}>
+      <div className="bg-[var(--highlight)] rounded-[15px] p-5 my-4 border-l-[5px] border-l-[var(--secondary)]">
+        <div className="text-lg font-bold text-[var(--secondary)] mb-4">
           1. Margin Gap: -${Math.abs(marginGap / 1e3).toFixed(0)}K (
           {marginGapPct.toFixed(1)} percentage points)
         </div>
-        <table style={{
-          width: '100%',
-          borderCollapse: 'collapse',
-          borderRadius: '10px',
-          overflow: 'hidden',
-          boxShadow: '0 2px 10px rgba(0,0,0,0.1)'
-        }}>
+        <table
+          className="w-full border-collapse rounded-[10px] overflow-hidden"
+          style={{ boxShadow: '0 2px 10px rgba(0,0,0,0.1)' }}
+        >
           <thead>
-            <tr style={{ background: '#1e3c72', color: 'white', textAlign: 'left' as const }}>
-              <th style={{ padding: '15px', fontWeight: 600, fontSize: '0.9em' }}>Driver</th>
-              <th style={{ padding: '15px', fontWeight: 600, fontSize: '0.9em' }}>Impact</th>
-              <th style={{ padding: '15px', fontWeight: 600, fontSize: '0.9em' }}>Explanation</th>
+            <tr className="bg-[var(--secondary)] text-[var(--paper)] text-left">
+              <th className="p-[15px] font-semibold text-sm">Driver</th>
+              <th className="p-[15px] font-semibold text-sm">Impact</th>
+              <th className="p-[15px] font-semibold text-sm">Explanation</th>
             </tr>
           </thead>
-          <tbody style={{ background: 'white' }}>
-            <tr style={{ borderBottom: '1px solid #e2e8f0' }}>
-              <td style={{ padding: '12px', fontSize: '0.9em' }}>HC COGS Increase</td>
-              <td style={{ padding: '12px', fontSize: '0.9em' }}>
-                <span style={{
-                  display: 'inline-block',
-                  padding: '5px 12px',
-                  borderRadius: '15px',
-                  background: '#f5576c',
-                  color: 'white',
-                  fontSize: '0.8em',
-                  fontWeight: 600
-                }}>
+          <tbody className="bg-white">
+            <tr className="border-b border-[var(--border)]">
+              <td className="p-3 text-sm">HC COGS Increase</td>
+              <td className="p-3 text-sm">
+                <span className="inline-block px-3 py-1 rounded-[15px] bg-[var(--critical)] text-white text-xs font-semibold">
                   +$779K
                 </span>
               </td>
-              <td style={{ padding: '12px', fontSize: '0.9em' }}>43 new XO contractors hired</td>
+              <td className="p-3 text-sm">43 new XO contractors hired</td>
             </tr>
-            <tr style={{ borderBottom: '1px solid #e2e8f0' }}>
-              <td style={{ padding: '12px', fontSize: '0.9em' }}>RR Decline</td>
-              <td style={{ padding: '12px', fontSize: '0.9em' }}>
-                <span style={{
-                  display: 'inline-block',
-                  padding: '5px 12px',
-                  borderRadius: '15px',
-                  background: '#f5576c',
-                  color: 'white',
-                  fontSize: '0.8em',
-                  fontWeight: 600
-                }}>
+            <tr className="border-b border-[var(--border)]">
+              <td className="p-3 text-sm">RR Decline</td>
+              <td className="p-3 text-sm">
+                <span className="inline-block px-3 py-1 rounded-[15px] bg-[var(--critical)] text-white text-xs font-semibold">
                   -$336K
                 </span>
               </td>
-              <td style={{ padding: '12px', fontSize: '0.9em' }}>Recurring revenue down vs. prior plan</td>
+              <td className="p-3 text-sm">Recurring revenue down vs. prior plan</td>
             </tr>
-            <tr style={{ borderBottom: '1px solid #e2e8f0' }}>
-              <td style={{ padding: '12px', fontSize: '0.9em' }}>NHC Expenses Up</td>
-              <td style={{ padding: '12px', fontSize: '0.9em' }}>
-                <span style={{
-                  display: 'inline-block',
-                  padding: '5px 12px',
-                  borderRadius: '15px',
-                  background: '#fa709a',
-                  color: 'white',
-                  fontSize: '0.8em',
-                  fontWeight: 600
-                }}>
+            <tr className="border-b border-[var(--border)]">
+              <td className="p-3 text-sm">NHC Expenses Up</td>
+              <td className="p-3 text-sm">
+                <span className="inline-block px-3 py-1 rounded-[15px] bg-[var(--critical)] text-white text-xs font-semibold">
                   +$177K
                 </span>
               </td>
-              <td style={{ padding: '12px', fontSize: '0.9em' }}>Software/professional services</td>
+              <td className="p-3 text-sm">Software/professional services</td>
             </tr>
             <tr>
-              <td style={{ padding: '12px', fontSize: '0.9em' }}>CF COGS Down</td>
-              <td style={{ padding: '12px', fontSize: '0.9em' }}>
-                <span style={{
-                  display: 'inline-block',
-                  padding: '5px 12px',
-                  borderRadius: '15px',
-                  background: '#4facfe',
-                  color: 'white',
-                  fontSize: '0.8em',
-                  fontWeight: 600
-                }}>
+              <td className="p-3 text-sm">CF COGS Down</td>
+              <td className="p-3 text-sm">
+                <span className="inline-block px-3 py-1 rounded-[15px] bg-[var(--success)] text-white text-xs font-semibold">
                   -$920K
                 </span>
               </td>
-              <td style={{ padding: '12px', fontSize: '0.9em' }}>Vendor optimization (positive)</td>
+              <td className="p-3 text-sm">Vendor optimization (positive)</td>
             </tr>
           </tbody>
         </table>
       </div>
 
       {/* Issue 2: RR Declining */}
-      <div style={{
-        background: '#f8fafc',
-        borderRadius: '15px',
-        padding: '20px',
-        margin: '15px 0',
-        borderLeft: '5px solid #667eea'
-      }}>
-        <div style={{
-          fontSize: '1.2em',
-          fontWeight: 700,
-          color: '#1e3c72',
-          marginBottom: '15px'
-        }}>
+      <div className="bg-[var(--highlight)] rounded-[15px] p-5 my-4 border-l-[5px] border-l-[var(--secondary)]">
+        <div className="text-lg font-bold text-[var(--secondary)] mb-4">
           2. Recurring Revenue Declining: -$336K
         </div>
-        <table style={{
-          width: '100%',
-          borderCollapse: 'collapse',
-          borderRadius: '10px',
-          overflow: 'hidden',
-          boxShadow: '0 2px 10px rgba(0,0,0,0.1)'
-        }}>
+        <table
+          className="w-full border-collapse rounded-[10px] overflow-hidden"
+          style={{ boxShadow: '0 2px 10px rgba(0,0,0,0.1)' }}
+        >
           <thead>
-            <tr style={{ background: '#1e3c72', color: 'white', textAlign: 'left' as const }}>
-              <th style={{ padding: '15px', fontWeight: 600, fontSize: '0.9em' }}>Business Unit</th>
-              <th style={{ padding: '15px', fontWeight: 600, fontSize: '0.9em' }}>Q1'26 Plan</th>
-              <th style={{ padding: '15px', fontWeight: 600, fontSize: '0.9em' }}>Prior Plan</th>
-              <th style={{ padding: '15px', fontWeight: 600, fontSize: '0.9em' }}>Variance</th>
+            <tr className="bg-[var(--secondary)] text-[var(--paper)] text-left">
+              <th className="p-[15px] font-semibold text-sm">Business Unit</th>
+              <th className="p-[15px] font-semibold text-sm">Q1&apos;26 Plan</th>
+              <th className="p-[15px] font-semibold text-sm">Prior Plan</th>
+              <th className="p-[15px] font-semibold text-sm">Variance</th>
             </tr>
           </thead>
-          <tbody style={{ background: 'white' }}>
+          <tbody className="bg-white">
             {buSummaries.slice(0, 3).map((bu) => {
               // Mock prior plan data (would come from actual data source)
               const variance = bu.bu === 'Cloudsense' ? -355000 : bu.bu === 'Kandy' ? -75000 : 146000
               const priorPlan = bu.totalRR - variance
-              const variantColor =
-                variance < 0 ? '#f5576c' : variance < 50000 ? '#fa709a' : '#4facfe'
+              const variantColorClass =
+                variance < 0 ? 'bg-[var(--critical)]' : 'bg-[var(--success)]'
 
               return (
-                <tr key={bu.bu} style={{ borderBottom: '1px solid #e2e8f0' }}>
-                  <td style={{ padding: '12px', fontSize: '0.9em' }}>{bu.bu}</td>
-                  <td style={{ padding: '12px', fontSize: '0.9em' }}>${(bu.totalRR / 1e6).toFixed(2)}M</td>
-                  <td style={{ padding: '12px', fontSize: '0.9em' }}>${(priorPlan / 1e6).toFixed(2)}M</td>
-                  <td style={{ padding: '12px', fontSize: '0.9em' }}>
-                    <span style={{
-                      display: 'inline-block',
-                      padding: '5px 12px',
-                      borderRadius: '15px',
-                      background: variantColor,
-                      color: 'white',
-                      fontSize: '0.8em',
-                      fontWeight: 600
-                    }}>
+                <tr key={bu.bu} className="border-b border-[var(--border)]">
+                  <td className="p-3 text-sm">{bu.bu}</td>
+                  <td className="p-3 text-sm">${(bu.totalRR / 1e6).toFixed(2)}M</td>
+                  <td className="p-3 text-sm">${(priorPlan / 1e6).toFixed(2)}M</td>
+                  <td className="p-3 text-sm">
+                    <span
+                      className={`inline-block px-3 py-1 rounded-[15px] ${variantColorClass} text-white text-xs font-semibold`}
+                    >
                       {variance > 0 ? '+' : ''}${(variance / 1e3).toFixed(0)}K
                     </span>
                   </td>
@@ -286,26 +201,15 @@ export async function FinancialSummarySection() {
       </div>
 
       {/* Issue 3: Salesforce Contract */}
-      <div style={{
-        background: '#f8fafc',
-        borderRadius: '15px',
-        padding: '20px',
-        margin: '15px 0',
-        borderLeft: '5px solid #667eea'
-      }}>
-        <div style={{
-          fontSize: '1.2em',
-          fontWeight: 700,
-          color: '#1e3c72',
-          marginBottom: '15px'
-        }}>
+      <div className="bg-[var(--highlight)] rounded-[15px] p-5 my-4 border-l-[5px] border-l-[var(--secondary)]">
+        <div className="text-lg font-bold text-[var(--secondary)] mb-4">
           3. Salesforce UK Contract: $4.1M Annual
         </div>
         <AlertBox variant="critical">
-          <strong>CRITICAL CONCERN:</strong> This contract consumes 64% of Cloudsense's recurring
+          <strong>CRITICAL CONCERN:</strong> This contract consumes 64% of Cloudsense&apos;s recurring
           revenue. At this cost ratio, every dollar of Cloudsense RR decline makes this contract
           increasingly burdensome.
-          <ul style={{ marginTop: '15px', marginLeft: '25px', lineHeight: 2 }}>
+          <ul className="mt-4 ml-6 leading-8 list-disc">
             <li>Annual Cost: $4.1M</li>
             <li>Cloudsense RR: $6.37M (quarterly)</li>
             <li>As % of Cloudsense RR: 64%</li>
@@ -318,15 +222,7 @@ export async function FinancialSummarySection() {
       </div>
 
       {/* BU Performance Table */}
-      <h3 style={{
-        fontSize: '1.5em',
-        fontWeight: 700,
-        color: '#2a5298',
-        marginTop: '30px',
-        marginBottom: '15px',
-        paddingBottom: '10px',
-        borderBottom: '2px solid #e2e8f0'
-      }}>
+      <h3 className="font-display text-2xl font-semibold text-[var(--secondary)] mt-8 mb-4 pb-3 border-b-2 border-[var(--border)]">
         Business Unit Performance
       </h3>
       <BUPerformanceTable buSummaries={buSummaries} />
