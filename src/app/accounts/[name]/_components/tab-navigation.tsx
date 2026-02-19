@@ -17,7 +17,7 @@ interface TabNavigationProps {
 const tabs = [
   { id: 'overview', label: '📊 Overview' },
   { id: 'organization', label: '🏢 Organization' },
-  { id: 'strategy', label: '💡 Strategy & Pain Points' },
+  { id: 'strategy', label: '💡 Pain Points' },
   { id: 'competitive', label: '⚔️ Competitive' },
   { id: 'action-items', label: '📋 Action Plan' },
   { id: 'financials', label: '💰 Financial' },
@@ -36,7 +36,10 @@ function TabNavigationContent({ accountName }: TabNavigationProps) {
   return (
     <>
       {/* Desktop: Horizontal tab bar */}
-      <div className="hidden md:block sticky top-0 z-50 bg-white border-b-2 border-[var(--border)] shadow-sm">
+      <div
+        className="hidden md:block sticky top-0 z-50 bg-white border-b-2 border-[var(--border)]"
+        style={{ boxShadow: '0 2px 8px rgba(0,0,0,0.05)' }}
+      >
         <nav className="max-w-[1400px] mx-auto px-8 flex overflow-x-auto" aria-label="Account tabs">
           {tabs.map((tab) => (
             <button
@@ -44,11 +47,11 @@ function TabNavigationContent({ accountName }: TabNavigationProps) {
               onClick={() => handleTabChange(tab.id)}
               className={`py-5 px-6 border-b-3 border-transparent font-medium text-muted whitespace-nowrap transition-all duration-300 ${
                 activeTab === tab.id
-                  ? 'text-accent border-accent bg-accent/5'
+                  ? 'text-accent bg-[var(--paper)]'
                   : 'hover:text-secondary hover:bg-highlight'
               }`}
               style={{
-                borderBottomWidth: activeTab === tab.id ? '3px' : '3px',
+                borderBottomWidth: '3px',
                 borderBottomColor: activeTab === tab.id ? 'var(--accent)' : 'transparent',
               }}
               aria-current={activeTab === tab.id ? 'page' : undefined}
@@ -85,7 +88,10 @@ export function TabNavigation({ accountName }: TabNavigationProps) {
   return (
     <Suspense
       fallback={
-        <div className="sticky top-0 z-50 bg-white border-b-2 border-[var(--border)] shadow-sm">
+        <div
+          className="sticky top-0 z-50 bg-white border-b-2 border-[var(--border)]"
+          style={{ boxShadow: '0 2px 8px rgba(0,0,0,0.05)' }}
+        >
           <div className="h-16 animate-pulse bg-highlight/50"></div>
         </div>
       }
