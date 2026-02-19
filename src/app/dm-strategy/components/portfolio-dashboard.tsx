@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { toast } from 'sonner';
 import type { BusinessUnitMetrics, Recommendation, FilterOption, ImpactProjection } from '../types';
 import BUCard from './bu-card';
 import RecommendationCard from './recommendation-card';
@@ -21,6 +22,8 @@ export default function PortfolioDashboard({ businessUnits, recommendations }: P
   const [selectedPriority, setSelectedPriority] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedRecommendation, setSelectedRecommendation] = useState<Recommendation | null>(null);
+  const [deferringId, setDeferringId] = useState<string | null>(null);
+  const [deferReason, setDeferReason] = useState('');
 
   // Filter recommendations based on all active filters
   const filteredRecommendations = recommendations.filter((rec) => {
@@ -108,29 +111,44 @@ export default function PortfolioDashboard({ businessUnits, recommendations }: P
     // TODO: Navigate to detailed view
   };
 
-  const handleDefer = async (id: string) => {
-    const reason = prompt('Please provide a reason for deferring this recommendation:');
-    if (!reason) return;
+  const handleDeferOpen = (id: string) => {
+    setDeferringId(id);
+    setDeferReason('');
+  };
+
+  const handleDeferSubmit = async () => {
+    if (!deferringId || !deferReason.trim()) {
+      toast.error('Please provide a reason for deferring this recommendation.');
+      return;
+    }
+
+    const id = deferringId;
+    setDeferringId(null);
 
     try {
       const response = await fetch('/api/dm-strategy/defer-recommendation', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ recommendationId: id, reason }),
+        body: JSON.stringify({ recommendationId: id, reason: deferReason }),
       });
 
       const data = await response.json();
 
       if (data.success) {
-        alert('Recommendation deferred successfully');
-        window.location.reload(); // Reload to show updated status
+        toast.success('Recommendation deferred successfully.');
+        window.location.reload();
       } else {
-        alert(`Error: ${data.error || 'Failed to defer recommendation'}`);
+        toast.error(`Error: ${data.error || 'Failed to defer recommendation'}`);
       }
     } catch (error) {
       console.error('Defer error:', error);
-      alert('Failed to defer recommendation');
+      toast.error('Failed to defer recommendation.');
     }
+  };
+
+  const handleDeferCancel = () => {
+    setDeferringId(null);
+    setDeferReason('');
   };
 
   const handleModalSubmit = async (actionItem: any) => {
@@ -149,19 +167,76 @@ export default function PortfolioDashboard({ businessUnits, recommendations }: P
       const data = await response.json();
 
       if (data.success) {
-        alert('✓ Recommendation accepted and action item created!');
-        window.location.reload(); // Reload to show updated status
+        toast.success('Recommendation accepted and action item created!');
+        window.location.reload();
       } else {
-        alert(`Error: ${data.error || 'Failed to accept recommendation'}`);
+        toast.error(`Error: ${data.error || 'Failed to accept recommendation'}`);
       }
     } catch (error) {
       console.error('Accept error:', error);
-      alert('Failed to accept recommendation');
+      toast.error('Failed to accept recommendation.');
     }
   };
 
   return (
     <div style={{ padding: 'var(--space-lg)' }}>
+      {/* Defer Reason Inline Dialog */}
+      {deferringId && (
+        <div
+          style={{
+            position: 'fixed',
+            inset: 0,
+            background: 'rgba(0,0,0,0.5)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 1000,
+            padding: 'var(--space-lg)'
+          }}
+        >
+          <div
+            style={{
+              background: '#FFFFFF',
+              borderRadius: 'var(--radius-lg)',
+              padding: 'var(--space-xl)',
+              maxWidth: '480px',
+              width: '100%',
+              boxShadow: 'var(--shadow-xl)'
+            }}
+          >
+            <h3 className="dm-h4" style={{ marginBottom: 'var(--space-md)' }}>
+              Defer Recommendation
+            </h3>
+            <p className="dm-body-sm" style={{ color: 'var(--muted)', marginBottom: 'var(--space-md)' }}>
+              Please provide a reason for deferring this recommendation:
+            </p>
+            <textarea
+              className="dm-form-textarea"
+              value={deferReason}
+              onChange={(e) => setDeferReason(e.target.value)}
+              placeholder="Enter reason..."
+              rows={3}
+              style={{ marginBottom: 'var(--space-md)' }}
+            />
+            <div className="dm-flex dm-gap-sm dm-justify-end">
+              <button
+                className="dm-btn dm-btn-tertiary dm-btn-md"
+                onClick={handleDeferCancel}
+              >
+                Cancel
+              </button>
+              <button
+                className="dm-btn dm-btn-primary dm-btn-md"
+                onClick={handleDeferSubmit}
+                disabled={!deferReason.trim()}
+              >
+                Confirm Defer
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className="dm-grid-3col">
         {/* Left Sidebar - BU Overview */}
         <div>
@@ -285,7 +360,7 @@ export default function PortfolioDashboard({ businessUnits, recommendations }: P
                   recommendation={rec}
                   onAccept={handleAccept}
                   onReview={handleReview}
-                  onDefer={handleDefer}
+                  onDefer={handleDeferOpen}
                 />
               ))}
             </div>
