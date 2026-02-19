@@ -18,8 +18,6 @@ import { CompetitiveTab } from './_components/competitive-tab'
 import { OrganizationTab } from './_components/organization-tab'
 import { IntelligenceTab } from './_components/intelligence-tab'
 import { ActionItemsTab } from './_components/action-items-tab'
-import { Badge } from '@/components/ui/badge'
-import { HealthIndicator } from '@/components/ui/health-indicator'
 import { RefreshButton } from '@/components/ui/refresh-button'
 
 interface AccountPlanPageProps {
@@ -105,59 +103,88 @@ export default async function AccountPlanPage({ params, searchParams }: AccountP
       </div>
 
       {/* Hero Header */}
-      <div className="bg-gradient-to-br from-secondary to-[#1a2332] text-paper px-8 pt-12 pb-10">
-        <div className="max-w-[1400px] mx-auto">
+      <div className="relative overflow-hidden bg-gradient-to-br from-secondary to-[#1a2332] text-paper px-8 pt-12 pb-10">
+        {/* W1-P1-001: Decorative SVG grid texture overlay */}
+        <div
+          className="absolute top-0 right-0 w-[60%] h-full pointer-events-none opacity-30"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='1' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E")`,
+            backgroundSize: '40px 40px',
+          }}
+        />
+        <div className="max-w-[1400px] mx-auto relative">
           <div className="flex justify-between items-start mb-6">
             <div className="flex-1">
               <h1 className="font-display text-4xl font-light text-paper mb-2">
                 {customer.customer_name}
               </h1>
-              <div className="flex items-center gap-3 text-paper/80 text-lg">
-                <span>Strategic Account Plan</span>
-                <span>|</span>
-                <Badge variant="default">{customer.bu} Business Unit</Badge>
-                <span>|</span>
-                <HealthIndicator score={customer.healthScore} />
-                <span>|</span>
-                <span>Q1 2026</span>
-              </div>
+              {/* W1-P1-003: Plain text subtitle — no Badge or HealthIndicator */}
+              <p className="text-[var(--paper)]/85 text-base mt-1">
+                {customer.bu} Business Unit | Skyvera | Q1 2026
+              </p>
             </div>
             <RefreshButton label="Refresh Data" />
           </div>
 
-          {/* Stat Cards */}
+          {/* W1-P1-002: Stat Cards — Total ARR, Health Score, Business Unit, Account Status */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-6">
-            <div className="bg-white/10 p-5 rounded border border-white/10">
-              <div className="text-xs uppercase tracking-wider text-paper/70 mb-2">
-                Total Revenue
+            <div
+              className="bg-white/10 p-5 rounded border border-white/10"
+              style={{ backdropFilter: 'blur(10px)' }}
+            >
+              <div className="text-xs uppercase tracking-wider text-[var(--paper)]/70 mb-2">
+                Total ARR
               </div>
-              <div className="text-2xl font-display font-semibold text-paper">
-                ${totalRevenue.toLocaleString()}
+              <div className="text-[2rem] font-display font-semibold text-paper">
+                {arr >= 1000000
+                  ? `$${(arr / 1000000).toFixed(1)}M`
+                  : `$${(arr / 1000).toFixed(0)}K`}
               </div>
+              <p className="text-xs text-[var(--paper)]/60 mt-1">
+                Annual Recurring Revenue
+              </p>
             </div>
-            <div className="bg-white/10 p-5 rounded border border-white/10">
-              <div className="text-xs uppercase tracking-wider text-paper/70 mb-2">
-                Recurring Revenue
-              </div>
-              <div className="text-2xl font-display font-semibold text-paper">
-                ${(customer.rr || 0).toLocaleString()}
-              </div>
-            </div>
-            <div className="bg-white/10 p-5 rounded border border-white/10">
-              <div className="text-xs uppercase tracking-wider text-paper/70 mb-2">
-                Non-Recurring Revenue
-              </div>
-              <div className="text-2xl font-display font-semibold text-paper">
-                ${(customer.nrr || 0).toLocaleString()}
-              </div>
-            </div>
-            <div className="bg-white/10 p-5 rounded border border-white/10">
-              <div className="text-xs uppercase tracking-wider text-paper/70 mb-2">
+            <div
+              className="bg-white/10 p-5 rounded border border-white/10"
+              style={{ backdropFilter: 'blur(10px)' }}
+            >
+              <div className="text-xs uppercase tracking-wider text-[var(--paper)]/70 mb-2">
                 Health Score
               </div>
-              <div className="text-2xl font-display font-semibold text-paper">
-                {customer.healthScore}%
+              <div className="text-[2rem] font-display font-semibold text-paper capitalize">
+                {customer.healthScore}
               </div>
+              <p className="text-xs text-[var(--paper)]/60 mt-1">
+                Account health status
+              </p>
+            </div>
+            <div
+              className="bg-white/10 p-5 rounded border border-white/10"
+              style={{ backdropFilter: 'blur(10px)' }}
+            >
+              <div className="text-xs uppercase tracking-wider text-[var(--paper)]/70 mb-2">
+                Business Unit
+              </div>
+              <div className="text-[2rem] font-display font-semibold text-paper">
+                {customer.bu}
+              </div>
+              <p className="text-xs text-[var(--paper)]/60 mt-1">
+                Skyvera Platform
+              </p>
+            </div>
+            <div
+              className="bg-white/10 p-5 rounded border border-white/10"
+              style={{ backdropFilter: 'blur(10px)' }}
+            >
+              <div className="text-xs uppercase tracking-wider text-[var(--paper)]/70 mb-2">
+                Account Status
+              </div>
+              <div className="text-[2rem] font-display font-semibold text-paper">
+                Active
+              </div>
+              <p className="text-xs text-[var(--paper)]/60 mt-1">
+                Q1 2026
+              </p>
             </div>
           </div>
         </div>
@@ -213,10 +240,29 @@ export default async function AccountPlanPage({ params, searchParams }: AccountP
 
         {activeTab === 'action-items' && (
           <Suspense fallback={<TabSkeleton />}>
-            <ActionItemsTab initialActions={accountData.actions} />
+            <ActionItemsTab
+              initialActions={accountData.actions}
+              stakeholders={accountData.stakeholders}
+            />
           </Suspense>
         )}
       </div>
+
+      {/* W1-P3-004: Page footer */}
+      <footer className="bg-[var(--secondary)] text-[var(--paper)] text-center py-8 mt-16">
+        <p className="text-sm opacity-80">
+          {customer.customer_name} Strategic Account Plan | {customer.bu} Business Unit | Skyvera
+        </p>
+        <p className="text-xs opacity-60 mt-1">
+          Generated{' '}
+          {new Date().toLocaleDateString('en-US', {
+            month: 'long',
+            day: 'numeric',
+            year: 'numeric',
+          })}{' '}
+          | Confidential — Internal Use Only
+        </p>
+      </footer>
     </div>
   )
 }
