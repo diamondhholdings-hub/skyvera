@@ -3,7 +3,7 @@
  * Server Component - displays opportunities, risks, recommendations, and news articles
  */
 
-import { Lightbulb, AlertTriangle, Target } from 'lucide-react'
+import { AlertTriangle } from 'lucide-react'
 import type { IntelligenceReport } from '@/lib/types/account-plan'
 import type { NewsArticle } from '@/lib/types/news'
 import { formatDistanceToNow } from 'date-fns'
@@ -70,9 +70,9 @@ export function IntelligenceTab({ intelligenceReport, news, customerName }: Inte
             ))}
           </div>
         ) : (
-          <div className="bg-slate-50 border border-slate-200 rounded-lg p-6 text-center">
-            <p className="text-slate-600">No recent news available for {customerName}</p>
-            <p className="text-sm text-slate-500 mt-1">
+          <div className="bg-[var(--highlight)] border border-[var(--border)] rounded-lg p-6 text-center">
+            <p className="text-[var(--muted)]">No recent news available for {customerName}</p>
+            <p className="text-sm text-[var(--muted)] mt-1">
               News articles will appear here as they become available
             </p>
           </div>
