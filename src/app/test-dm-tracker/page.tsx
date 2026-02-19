@@ -1,18 +1,24 @@
 /**
  * Test page for DM Tracker component
  * Standalone page to test the DM% tracking system
+ * Gated behind NODE_ENV=development - redirects in production.
  */
 
 import { DMTracker } from '../dashboard/components/dm-tracker'
 import { Suspense } from 'react'
+import { redirect } from 'next/navigation'
 
 export default function TestDMTrackerPage() {
+  if (process.env.NODE_ENV !== 'development') {
+    redirect('/dm-strategy')
+  }
+
   return (
     <div
       style={{
         fontFamily:
           '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
-        background: 'linear-gradient(135deg, #1e3c72 0%, #2a5298 100%)',
+        background: 'linear-gradient(135deg, var(--secondary) 0%, #1a2332 100%)',
         minHeight: '100vh',
         padding: '20px',
         lineHeight: 1.6,
@@ -31,7 +37,7 @@ export default function TestDMTrackerPage() {
         {/* Header */}
         <header
           style={{
-            background: 'linear-gradient(135deg, #1e3c72 0%, #2a5298 100%)',
+            background: 'linear-gradient(135deg, var(--secondary) 0%, #1a2332 100%)',
             color: 'white',
             padding: '40px',
             textAlign: 'center',
@@ -53,7 +59,7 @@ export default function TestDMTrackerPage() {
               marginBottom: '10px',
             }}
           >
-            Trailing Twelve Months DM% Tracking & Forecasting System
+            Trailing Twelve Months DM% Tracking &amp; Forecasting System
           </div>
         </header>
 
@@ -65,7 +71,7 @@ export default function TestDMTrackerPage() {
                 style={{
                   padding: '40px',
                   textAlign: 'center',
-                  color: '#64748b',
+                  color: 'var(--muted)',
                 }}
               >
                 Loading DM% data...
