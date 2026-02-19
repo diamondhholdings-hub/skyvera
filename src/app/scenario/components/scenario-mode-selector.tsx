@@ -29,7 +29,7 @@ export default function ScenarioModeSelector({ baseline }: ScenarioModeSelectorP
             onClick={() => setMode('conversational')}
             className={`flex items-center space-x-2 px-6 py-3 rounded-md font-semibold transition-all ${
               mode === 'conversational'
-                ? 'bg-gradient-to-r from-[var(--accent)] to-[var(--secondary)] text-white shadow-md'
+                ? 'bg-gradient-to-br from-[var(--secondary)] to-[#1a2332] text-white shadow-md'
                 : 'text-[var(--muted)] hover:text-[var(--ink)] hover:bg-[var(--highlight)]'
             }`}
           >
@@ -43,7 +43,7 @@ export default function ScenarioModeSelector({ baseline }: ScenarioModeSelectorP
             onClick={() => setMode('form')}
             className={`flex items-center space-x-2 px-6 py-3 rounded-md font-semibold transition-all ${
               mode === 'form'
-                ? 'bg-gradient-to-r from-[var(--accent)] to-[var(--secondary)] text-white shadow-md'
+                ? 'bg-gradient-to-br from-[var(--secondary)] to-[#1a2332] text-white shadow-md'
                 : 'text-[var(--muted)] hover:text-[var(--ink)] hover:bg-[var(--highlight)]'
             }`}
           >

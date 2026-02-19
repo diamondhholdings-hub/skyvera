@@ -3,6 +3,7 @@
 /**
  * Conversational Scenario Interface
  * AI-powered chat interface for what-if scenario modeling
+ * Uses CSS design tokens — no generic Tailwind color classes
  */
 
 import { useState, useRef, useEffect } from 'react'
@@ -201,24 +202,24 @@ export default function ConversationalScenario({ baseline }: ConversationalScena
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-6 border border-blue-200">
+      <div className="bg-gradient-to-r from-[var(--secondary)]/5 to-[var(--secondary)]/10 rounded-lg p-6 border border-[var(--secondary)]/20">
         <div className="flex items-start justify-between">
           <div>
             <div className="flex items-center space-x-2">
-              <Sparkles className="w-6 h-6 text-purple-600" />
-              <h2 className="text-2xl font-display font-semibold text-slate-900">
+              <Sparkles className="w-6 h-6 text-[var(--accent)]" />
+              <h2 className="font-display text-2xl font-semibold text-[var(--ink)]">
                 Conversational Scenario Planning
               </h2>
             </div>
-            <p className="mt-2 text-slate-600">
-              Describe what you want to explore in natural language. I'll ask clarifying questions and help you
+            <p className="mt-2 text-[var(--muted)]">
+              Describe what you want to explore in natural language. I&apos;ll ask clarifying questions and help you
               refine your scenario.
             </p>
           </div>
           {conversationId && (
             <button
               onClick={handleReset}
-              className="flex items-center space-x-2 px-4 py-2 bg-white border border-slate-300 rounded hover:bg-slate-50 transition-colors"
+              className="flex items-center space-x-2 px-4 py-2 bg-white border border-[var(--border)] rounded hover:bg-[var(--highlight)] transition-colors"
             >
               <RotateCcw className="w-4 h-4" />
               <span>New Scenario</span>
@@ -229,8 +230,8 @@ export default function ConversationalScenario({ baseline }: ConversationalScena
 
       {/* Example prompts (shown when no conversation) */}
       {!conversationId && (
-        <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
-          <h3 className="text-sm font-semibold text-slate-700 mb-3">Try asking:</h3>
+        <div className="bg-white rounded-lg shadow-sm border border-[var(--border)] p-6">
+          <h3 className="text-sm font-semibold text-[var(--ink)] mb-3">Try asking:</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             {[
               'What if we raise prices by 15% but lose 10% of customers?',
@@ -241,9 +242,9 @@ export default function ConversationalScenario({ baseline }: ConversationalScena
               <button
                 key={i}
                 onClick={() => setInput(example)}
-                className="text-left p-3 bg-slate-50 rounded border border-slate-200 hover:bg-slate-100 hover:border-blue-300 transition-colors text-sm text-slate-700"
+                className="text-left p-3 bg-[var(--highlight)] rounded border border-[var(--border)] hover:bg-[var(--highlight)] hover:border-[var(--accent)]/50 transition-colors text-sm text-[var(--ink)]"
               >
-                "{example}"
+                &quot;{example}&quot;
               </button>
             ))}
           </div>
@@ -251,11 +252,11 @@ export default function ConversationalScenario({ baseline }: ConversationalScena
       )}
 
       {/* Chat Interface */}
-      <div className="bg-white rounded-lg shadow-sm border border-slate-200 flex flex-col" style={{ height: '600px' }}>
+      <div className="bg-white rounded-lg shadow-sm border border-[var(--border)] flex flex-col" style={{ height: '600px' }}>
         {/* Messages */}
         <div className="flex-1 overflow-y-auto p-6 space-y-4">
           {messages.length === 0 && !conversationId ? (
-            <div className="flex items-center justify-center h-full text-slate-400">
+            <div className="flex items-center justify-center h-full text-[var(--muted)]/60">
               <div className="text-center">
                 <Sparkles className="w-12 h-12 mx-auto mb-3 opacity-50" />
                 <p>Start by describing your scenario below</p>
@@ -271,12 +272,12 @@ export default function ConversationalScenario({ baseline }: ConversationalScena
                   <div
                     className={`max-w-[80%] rounded-lg px-4 py-3 ${
                       message.role === 'user'
-                        ? 'bg-blue-600 text-white'
-                        : 'bg-slate-100 text-slate-900 border border-slate-200'
+                        ? 'bg-[var(--secondary)] text-[var(--paper)]'
+                        : 'bg-[var(--highlight)] text-[var(--ink)] border border-[var(--border)]'
                     }`}
                   >
                     {message.role === 'assistant' && (
-                      <div className="flex items-center space-x-2 mb-2 text-sm font-medium text-slate-600">
+                      <div className="flex items-center space-x-2 mb-2 text-sm font-medium text-[var(--muted)]">
                         <Sparkles className="w-4 h-4" />
                         <span>AI Advisor</span>
                       </div>
@@ -292,14 +293,14 @@ export default function ConversationalScenario({ baseline }: ConversationalScena
 
         {/* Action Buttons (when applicable) */}
         {currentResponse && (
-          <div className="border-t border-slate-200 px-6 py-3 bg-slate-50">
+          <div className="border-t border-[var(--border)] px-6 py-3 bg-[var(--highlight)]">
             <div className="flex items-center space-x-3">
               {currentResponse.type === 'analysis' && versions.length > 0 && (
                 <>
                   <button
                     onClick={handleRefine}
                     disabled={loading}
-                    className="flex items-center space-x-2 px-3 py-2 bg-white border border-slate-300 rounded hover:bg-slate-50 disabled:opacity-50 text-sm"
+                    className="flex items-center space-x-2 px-3 py-2 bg-white border border-[var(--border)] rounded hover:bg-[var(--highlight)] disabled:opacity-50 text-sm"
                   >
                     <TrendingUp className="w-4 h-4" />
                     <span>Refine Scenario</span>
@@ -308,7 +309,7 @@ export default function ConversationalScenario({ baseline }: ConversationalScena
                     <button
                       onClick={handleCompare}
                       disabled={loading}
-                      className="flex items-center space-x-2 px-3 py-2 bg-white border border-slate-300 rounded hover:bg-slate-50 disabled:opacity-50 text-sm"
+                      className="flex items-center space-x-2 px-3 py-2 bg-white border border-[var(--border)] rounded hover:bg-[var(--highlight)] disabled:opacity-50 text-sm"
                     >
                       <GitCompare className="w-4 h-4" />
                       <span>Compare Versions ({versions.length})</span>
@@ -317,7 +318,7 @@ export default function ConversationalScenario({ baseline }: ConversationalScena
                 </>
               )}
               {currentResponse.suggestedActions && currentResponse.suggestedActions.length > 0 && (
-                <span className="text-xs text-slate-500">
+                <span className="text-xs text-[var(--muted)]">
                   Suggested: {currentResponse.suggestedActions.join(' • ')}
                 </span>
               )}
@@ -326,7 +327,7 @@ export default function ConversationalScenario({ baseline }: ConversationalScena
         )}
 
         {/* Input Area */}
-        <div className="border-t border-slate-200 p-4">
+        <div className="border-t border-[var(--border)] p-4">
           <div className="flex items-end space-x-3">
             <input
               ref={inputRef}
@@ -340,12 +341,12 @@ export default function ConversationalScenario({ baseline }: ConversationalScena
                   : 'Describe your scenario (e.g., "What if we raise prices 10%?")'
               }
               disabled={loading}
-              className="flex-1 px-4 py-3 border-2 border-slate-300 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 disabled:opacity-50 disabled:bg-slate-50"
+              className="flex-1 px-4 py-3 border-2 border-[var(--border)] rounded-lg focus:outline-none focus:border-[var(--accent)] focus:ring-2 focus:ring-[var(--accent)]/20 disabled:opacity-50 disabled:bg-[var(--highlight)]"
             />
             <button
               onClick={conversationId ? handleSendMessage : handleStart}
               disabled={loading || !input.trim()}
-              className="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center space-x-2"
+              className="px-6 py-3 bg-[var(--secondary)] text-[var(--paper)] font-semibold rounded-lg hover:bg-[var(--secondary)]/90 focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center space-x-2"
             >
               {loading ? (
                 <>
@@ -375,24 +376,24 @@ export default function ConversationalScenario({ baseline }: ConversationalScena
 
       {/* Version History */}
       {versions.length > 0 && (
-        <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
-          <h3 className="text-lg font-semibold text-slate-900 mb-4">Scenario Versions</h3>
+        <div className="bg-white rounded-lg shadow-sm border border-[var(--border)] p-6">
+          <h3 className="font-display text-lg font-semibold text-[var(--ink)] mb-4">Scenario Versions</h3>
           <div className="space-y-3">
             {versions.map((version) => (
               <div
                 key={version.versionNumber}
-                className="p-4 bg-slate-50 rounded border border-slate-200 hover:border-blue-300 transition-colors"
+                className="p-4 bg-[var(--highlight)] rounded border border-[var(--border)] hover:border-[var(--accent)]/50 transition-colors"
               >
                 <div className="flex items-center justify-between">
                   <div>
-                    <span className="font-semibold text-slate-900">
+                    <span className="font-semibold text-[var(--ink)]">
                       {version.label || `Version ${version.versionNumber}`}
                     </span>
                     {version.impactSummary && (
-                      <p className="text-sm text-slate-600 mt-1">{version.impactSummary}</p>
+                      <p className="text-sm text-[var(--muted)] mt-1">{version.impactSummary}</p>
                     )}
                   </div>
-                  <span className="text-xs text-slate-500">
+                  <span className="text-xs text-[var(--muted)]">
                     {new Date(version.createdAt).toLocaleString()}
                   </span>
                 </div>
