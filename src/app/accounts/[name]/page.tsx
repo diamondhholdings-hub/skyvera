@@ -43,8 +43,8 @@ export default async function AccountPlanPage({ params, searchParams }: AccountP
   const { tab } = await searchParams
   const activeTab = tab || 'overview'
 
-  // Decode customer name from URL
-  const customerName = decodeURIComponent(name)
+  // Decode customer name from URL — normalize whitespace after decode
+  const customerName = decodeURIComponent(name).replace(/\+/g, ' ')
 
   // Fetch account plan data
   const accountDataResult = await getAccountPlanData(customerName)
@@ -77,9 +77,10 @@ export default async function AccountPlanPage({ params, searchParams }: AccountP
     )
   }
 
-  // Find this specific customer
+  // Find this specific customer — normalize both sides: decode + lowercase + trim
+  const normalizedName = decodeURIComponent(customerName).toLowerCase().trim()
   const customer = customersResult.value.find(
-    (c) => c.customer_name.toLowerCase() === customerName.toLowerCase()
+    (c) => c.customer_name.toLowerCase().trim() === normalizedName
   )
 
   if (!customer) {
