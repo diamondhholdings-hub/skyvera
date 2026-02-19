@@ -13,7 +13,7 @@ interface HealthIndicatorProps {
 
 const healthConfig = {
   green: {
-    color: 'bg-green-500',
+    color: 'bg-[var(--success)]',
     icon: '✓',
     text: 'Healthy',
     ariaLabel: 'Account health: Good',
