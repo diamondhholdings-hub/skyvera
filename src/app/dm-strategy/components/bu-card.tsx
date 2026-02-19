@@ -22,7 +22,7 @@ export default function BUCard({ metrics, isActive = false, onClick }: BUCardPro
   const offset = circumference - (percentage / 100) * circumference;
 
   const trendIcon = metrics.trend === 'up' ? '↑' : metrics.trend === 'down' ? '↓' : '→';
-  const trendColor = metrics.trend === 'up' ? 'var(--success)' : metrics.trend === 'down' ? 'var(--critical)' : 'var(--text-light)';
+  const trendColor = metrics.trend === 'up' ? 'var(--success)' : metrics.trend === 'down' ? 'var(--critical)' : 'var(--muted)';
 
   const formatCurrency = (value: number): string => {
     if (value >= 1000000) {
@@ -40,7 +40,7 @@ export default function BUCard({ metrics, isActive = false, onClick }: BUCardPro
       style={{
         borderLeft: `4px solid ${metrics.color}`,
         cursor: onClick ? 'pointer' : 'default',
-        background: isActive ? 'rgba(0, 184, 212, 0.05)' : 'var(--white)',
+        background: isActive ? 'rgba(0, 184, 212, 0.05)' : '#FFFFFF',
         transform: isActive ? 'translateX(4px)' : 'none',
         transition: 'all 0.2s ease'
       }}
@@ -56,7 +56,7 @@ export default function BUCard({ metrics, isActive = false, onClick }: BUCardPro
             className="dm-badge"
             style={{
               background: 'var(--critical)',
-              color: 'var(--white)',
+              color: '#FFFFFF',
               fontWeight: 700,
               minWidth: '28px',
               height: '28px',
@@ -73,7 +73,7 @@ export default function BUCard({ metrics, isActive = false, onClick }: BUCardPro
 
       {/* DM% Three Periods */}
       <div style={{
-        background: 'var(--background)',
+        background: 'var(--paper)',
         borderRadius: 'var(--radius-md)',
         padding: 'var(--space-md)',
         marginBottom: 'var(--space-lg)'
@@ -92,7 +92,7 @@ export default function BUCard({ metrics, isActive = false, onClick }: BUCardPro
           }}>
             <span style={{
               fontSize: '0.75rem',
-              color: 'var(--text-light)',
+              color: 'var(--muted)',
               fontWeight: 600
             }}>
               This Month (Jan)
@@ -116,7 +116,7 @@ export default function BUCard({ metrics, isActive = false, onClick }: BUCardPro
           }}>
             <span style={{
               fontSize: '0.75rem',
-              color: 'var(--text-light)',
+              color: 'var(--muted)',
               fontWeight: 600
             }}>
               This Quarter (Q1)
@@ -160,7 +160,7 @@ export default function BUCard({ metrics, isActive = false, onClick }: BUCardPro
           <div style={{
             textAlign: 'center',
             fontSize: '0.7rem',
-            color: 'var(--text-light)',
+            color: 'var(--muted)',
             marginTop: 'var(--space-xs)'
           }}>
             Target: {metrics.targetDM.toFixed(1)}%

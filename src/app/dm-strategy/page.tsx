@@ -18,21 +18,21 @@ export default async function DMStrategyPage() {
   if (!result.success) {
     return (
       <div className="min-h-screen bg-[var(--paper)] flex items-center justify-center">
-        <div className="bg-white rounded-lg shadow-lg border border-red-200 p-8 max-w-2xl">
-          <h2 className="text-2xl font-semibold text-red-600 mb-4">
-            ⚠️ Unable to Load DM Strategy Data
+        <div className="bg-white rounded-lg shadow-lg border border-[var(--critical)]/30 p-8 max-w-2xl">
+          <h2 className="text-2xl font-semibold text-[var(--critical)] mb-4">
+            Unable to Load DM Strategy Data
           </h2>
-          <p className="text-gray-700 mb-4">
+          <p className="text-[var(--ink)] mb-4">
             {result.error.message}
           </p>
-          <p className="text-sm text-gray-600 mb-6">
-            This usually means the DM tracker data hasn't been generated yet. Run the Excel
+          <p className="text-sm text-[var(--muted)] mb-6">
+            This usually means the DM tracker data hasn&apos;t been generated yet. Run the Excel
             extraction script to populate the database with DM% metrics.
           </p>
           <div className="flex gap-4">
             <Link
               href="/dm-strategy/demo"
-              className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+              className="px-4 py-2 bg-[var(--accent)] hover:bg-[var(--accent)]/90 text-white rounded"
             >
               View Demo Page
             </Link>
@@ -59,12 +59,12 @@ export default async function DMStrategyPage() {
       <div className="max-w-7xl mx-auto px-6 py-4">
         <Link
           href="/dm-strategy/trends"
-          className="block bg-gradient-to-r from-blue-600 to-cyan-500 text-white p-4 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
+          className="block bg-gradient-to-r from-[var(--secondary)] to-[#1a2332] text-white p-4 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
         >
           <div className="flex items-center justify-between">
             <div>
               <h3 className="text-lg font-semibold mb-1">
-                📊 View 12-Month DM% Trend Charts
+                View 12-Month DM% Trend Charts
               </h3>
               <p className="text-sm opacity-90">
                 Visualize retention trends with interactive charts for each business unit
@@ -85,8 +85,8 @@ export default async function DMStrategyPage() {
 
       {/* Data Source Indicator */}
       <div className="max-w-7xl mx-auto px-6 pb-8">
-        <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-          <p className="text-sm text-green-800">
+        <div className="bg-[var(--success)]/5 border border-[var(--success)]/30 rounded-lg p-4">
+          <p className="text-sm text-[var(--ink)]">
             ✓ <strong>Live Data:</strong> Connected to DM tracker data ({businessUnits.length} business units, {recommendations.length} recommendations)
           </p>
         </div>

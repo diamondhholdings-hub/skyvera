@@ -23,11 +23,10 @@ export default function DMStrategyHero({ stats }: DMStrategyHeroProps) {
     <div
       className="dm-hero"
       style={{
-        background: 'linear-gradient(135deg, var(--primary-blue) 0%, #004d7a 100%)',
-        color: 'var(--white)',
+        background: 'linear-gradient(135deg, var(--secondary) 0%, #1a2332 100%)',
+        color: '#FFFFFF',
         padding: 'var(--space-2xl) var(--space-lg)',
         textAlign: 'center',
-        borderRadius: 'var(--radius-lg)',
         marginBottom: 'var(--space-lg)'
       }}
     >
@@ -38,7 +37,7 @@ export default function DMStrategyHero({ stats }: DMStrategyHeroProps) {
           fontSize: '2.5rem',
           fontWeight: 700,
           marginBottom: 'var(--space-md)',
-          color: 'var(--white)'
+          color: '#FFFFFF'
         }}
       >
         DM% Strategy & Revenue Retention
@@ -87,7 +86,7 @@ export default function DMStrategyHero({ stats }: DMStrategyHeroProps) {
               fontSize: '1.5rem',
               fontWeight: 700,
               marginBottom: 'var(--space-xs)',
-              color: 'var(--white)'
+              color: '#FFFFFF'
             }}
           >
             {stats.monthlyDM.toFixed(1)}%
@@ -120,7 +119,7 @@ export default function DMStrategyHero({ stats }: DMStrategyHeroProps) {
               fontSize: '1.5rem',
               fontWeight: 700,
               marginBottom: 'var(--space-xs)',
-              color: 'var(--white)'
+              color: '#FFFFFF'
             }}
           >
             {stats.quarterlyDM.toFixed(1)}%
@@ -155,7 +154,7 @@ export default function DMStrategyHero({ stats }: DMStrategyHeroProps) {
               top: 'var(--space-xs)',
               right: 'var(--space-xs)',
               background: 'rgba(255, 255, 255, 0.3)',
-              color: 'var(--white)',
+              color: '#FFFFFF',
               padding: '4px 8px',
               borderRadius: 'var(--radius-sm)',
               fontSize: '0.625rem',
@@ -172,7 +171,7 @@ export default function DMStrategyHero({ stats }: DMStrategyHeroProps) {
               fontSize: '2.25rem',
               fontWeight: 700,
               marginBottom: 'var(--space-xs)',
-              color: 'var(--white)'
+              color: '#FFFFFF'
             }}
           >
             {stats.ttmDM.toFixed(1)}%
@@ -193,11 +192,11 @@ export default function DMStrategyHero({ stats }: DMStrategyHeroProps) {
         <div
           className="dm-hero-stat"
           style={{
-            background: 'linear-gradient(135deg, rgba(0, 184, 212, 0.3) 0%, rgba(0, 184, 212, 0.15) 100%)',
+            background: 'linear-gradient(135deg, rgba(200, 75, 49, 0.3) 0%, rgba(200, 75, 49, 0.15) 100%)',
             backdropFilter: 'blur(10px)',
             padding: 'var(--space-lg)',
             borderRadius: 'var(--radius-md)',
-            border: '2px solid var(--accent-cyan)',
+            border: '2px solid var(--accent)',
             position: 'relative',
             overflow: 'hidden'
           }}
@@ -207,8 +206,8 @@ export default function DMStrategyHero({ stats }: DMStrategyHeroProps) {
               position: 'absolute',
               top: 'var(--space-xs)',
               right: 'var(--space-xs)',
-              background: 'var(--accent-cyan)',
-              color: 'var(--white)',
+              background: 'var(--accent)',
+              color: '#FFFFFF',
               padding: '4px 8px',
               borderRadius: 'var(--radius-sm)',
               fontSize: '0.625rem',
@@ -225,7 +224,7 @@ export default function DMStrategyHero({ stats }: DMStrategyHeroProps) {
               fontSize: '2.25rem',
               fontWeight: 700,
               marginBottom: 'var(--space-xs)',
-              color: 'var(--accent-cyan)'
+              color: 'var(--accent)'
             }}
           >
             {formatCurrency(stats.potentialARR)}
@@ -259,7 +258,7 @@ export default function DMStrategyHero({ stats }: DMStrategyHeroProps) {
               fontSize: '2rem',
               fontWeight: 700,
               marginBottom: 'var(--space-xs)',
-              color: 'var(--white)'
+              color: '#FFFFFF'
             }}
           >
             {stats.activeRecommendations}
@@ -292,7 +291,7 @@ export default function DMStrategyHero({ stats }: DMStrategyHeroProps) {
               fontSize: '2rem',
               fontWeight: 700,
               marginBottom: 'var(--space-xs)',
-              color: 'var(--white)'
+              color: '#FFFFFF'
             }}
           >
             {stats.totalAccounts}

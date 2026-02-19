@@ -11,33 +11,44 @@ interface RecommendationCardProps {
   onDefer?: (id: string) => void;
 }
 
+const DESIGN_TOKENS = {
+  success: '#4caf50',
+  critical: '#e53935',
+  warning: '#f59e0b',
+  secondary: '#2d4263',
+  accent: '#c84b31',
+  muted: '#8b8b8b',
+  border: '#e8e6e1',
+  ink: '#1a1a1a',
+}
+
 const priorityConfig = {
   critical: {
-    color: '#E74C3C',
+    color: DESIGN_TOKENS.critical,
     label: 'Critical',
     icon: '🔴'
   },
   high: {
-    color: '#F39C12',
+    color: DESIGN_TOKENS.warning,
     label: 'High',
     icon: '🟠'
   },
   medium: {
-    color: '#27AE60',
+    color: DESIGN_TOKENS.success,
     label: 'Medium',
     icon: '🟢'
   },
   low: {
-    color: '#95A5A6',
+    color: DESIGN_TOKENS.muted,
     label: 'Low',
     icon: '⚪'
   }
 };
 
 const buConfig = {
-  Cloudsense: '#0066A1',
-  Kandy: '#00B8D4',
-  STL: '#27AE60'
+  Cloudsense: DESIGN_TOKENS.secondary,
+  Kandy: DESIGN_TOKENS.accent,
+  STL: DESIGN_TOKENS.success
 };
 
 export default function RecommendationCard({
@@ -107,7 +118,7 @@ export default function RecommendationCard({
       </h3>
 
       {/* Description */}
-      <p className="dm-body-sm" style={{ color: 'var(--text-light)', marginBottom: 'var(--space-lg)' }}>
+      <p className="dm-body-sm" style={{ color: 'var(--muted)', marginBottom: 'var(--space-lg)' }}>
         {recommendation.description}
       </p>
 
@@ -203,11 +214,11 @@ export default function RecommendationCard({
             top: 'var(--space-md)',
             right: 'var(--space-md)',
             padding: '4px 8px',
-            background: 'var(--background)',
+            background: 'var(--paper)',
             borderRadius: 'var(--radius-sm)',
             fontSize: '0.75rem',
             fontWeight: 600,
-            color: 'var(--text-light)',
+            color: 'var(--muted)',
             textTransform: 'uppercase'
           }}
         >

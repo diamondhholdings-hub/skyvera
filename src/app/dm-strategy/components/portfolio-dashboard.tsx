@@ -253,12 +253,12 @@ export default function PortfolioDashboard({ businessUnits, recommendations }: P
                 }}
                 style={{
                   padding: 'var(--space-sm) var(--space-md)',
-                  background: 'var(--background)',
+                  background: 'var(--paper)',
                   border: '1px solid var(--border)',
                   borderRadius: 'var(--radius-sm)',
                   fontSize: '0.875rem',
                   cursor: 'pointer',
-                  color: 'var(--text-light)'
+                  color: 'var(--muted)'
                 }}
               >
                 ✕ Clear All Filters
@@ -272,7 +272,7 @@ export default function PortfolioDashboard({ businessUnits, recommendations }: P
               style={{
                 textAlign: 'center',
                 padding: 'var(--space-xl)',
-                color: 'var(--text-light)'
+                color: 'var(--muted)'
               }}
             >
               <p className="dm-body">No recommendations match your filters.</p>

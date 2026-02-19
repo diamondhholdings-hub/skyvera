@@ -65,7 +65,7 @@ export default function AcceptRecommendationModal({
       <div
         className="dm-modal"
         style={{
-          background: 'var(--white)',
+          background: '#FFFFFF',
           borderRadius: 'var(--radius-lg)',
           boxShadow: 'var(--shadow-xl)',
           maxWidth: '600px',
@@ -87,7 +87,7 @@ export default function AcceptRecommendationModal({
           <h2 className="dm-h3" style={{ margin: 0, marginBottom: 'var(--space-xs)' }}>
             ✓ Create Action Item
           </h2>
-          <p className="dm-body-sm" style={{ color: 'var(--text-light)', margin: 0 }}>
+          <p className="dm-body-sm" style={{ color: 'var(--muted)', margin: 0 }}>
             {recommendation.title}
           </p>
         </div>
@@ -105,7 +105,7 @@ export default function AcceptRecommendationModal({
             {/* Recommendation Summary */}
             <div
               style={{
-                background: 'var(--background)',
+                background: 'var(--paper)',
                 padding: 'var(--space-md)',
                 borderRadius: 'var(--radius-sm)',
                 marginBottom: 'var(--space-lg)'

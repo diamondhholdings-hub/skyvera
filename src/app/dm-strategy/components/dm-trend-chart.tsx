@@ -14,6 +14,17 @@ import {
 } from 'recharts';
 import type { MonthlyDMData } from '../types';
 
+const DESIGN_TOKENS = {
+  success: '#4caf50',
+  critical: '#e53935',
+  warning: '#f59e0b',
+  secondary: '#2d4263',
+  accent: '#c84b31',
+  muted: '#8b8b8b',
+  border: '#e8e6e1',
+  ink: '#1a1a1a',
+}
+
 interface DMTrendChartProps {
   data: MonthlyDMData[];
   title: string;
@@ -37,7 +48,7 @@ export default function DMTrendChart({
   return (
     <div
       style={{
-        background: 'var(--white)',
+        background: '#FFFFFF',
         borderRadius: 'var(--radius-lg)',
         padding: 'var(--space-lg)',
         boxShadow: '0 2px 8px rgba(0, 0, 0, 0.08)',
@@ -64,34 +75,34 @@ export default function DMTrendChart({
           data={data}
           margin={{ top: 10, right: 30, left: 10, bottom: 10 }}
         >
-          <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" />
+          <CartesianGrid strokeDasharray="3 3" stroke={DESIGN_TOKENS.border} />
 
           <XAxis
             dataKey="month"
-            tick={{ fontSize: 12, fill: '#6B7280' }}
-            tickLine={{ stroke: '#E5E7EB' }}
-            axisLine={{ stroke: '#E5E7EB' }}
+            tick={{ fontSize: 12, fill: DESIGN_TOKENS.muted }}
+            tickLine={{ stroke: DESIGN_TOKENS.border }}
+            axisLine={{ stroke: DESIGN_TOKENS.border }}
           />
 
           <YAxis
             domain={[minDM, maxDM]}
-            tick={{ fontSize: 12, fill: '#6B7280' }}
-            tickLine={{ stroke: '#E5E7EB' }}
-            axisLine={{ stroke: '#E5E7EB' }}
+            tick={{ fontSize: 12, fill: DESIGN_TOKENS.muted }}
+            tickLine={{ stroke: DESIGN_TOKENS.border }}
+            axisLine={{ stroke: DESIGN_TOKENS.border }}
             tickFormatter={(value) => `${value.toFixed(1)}%`}
           />
 
           <Tooltip
             contentStyle={{
               background: 'white',
-              border: '1px solid #E5E7EB',
+              border: `1px solid ${DESIGN_TOKENS.border}`,
               borderRadius: '8px',
               padding: '12px',
             }}
             labelStyle={{
               fontWeight: 600,
               marginBottom: '8px',
-              color: '#111827',
+              color: DESIGN_TOKENS.ink,
             }}
             formatter={(value: number | undefined) =>
               value !== undefined ? [`${value.toFixed(1)}%`, 'DM%'] : ['N/A', 'DM%']
@@ -108,13 +119,13 @@ export default function DMTrendChart({
           {showTarget && (
             <ReferenceLine
               y={targetDM}
-              stroke="#10B981"
+              stroke={DESIGN_TOKENS.success}
               strokeDasharray="5 5"
               strokeWidth={2}
               label={{
                 value: `Target: ${targetDM}%`,
                 position: 'right',
-                fill: '#10B981',
+                fill: DESIGN_TOKENS.success,
                 fontSize: 12,
                 fontWeight: 600,
               }}
@@ -151,14 +162,14 @@ export default function DMTrendChart({
           gap: 'var(--space-md)',
           marginTop: 'var(--space-lg)',
           paddingTop: 'var(--space-md)',
-          borderTop: '1px solid var(--border)',
+          borderTop: `1px solid ${DESIGN_TOKENS.border}`,
         }}
       >
         <div>
           <div
             style={{
               fontSize: '0.75rem',
-              color: 'var(--text-light)',
+              color: DESIGN_TOKENS.muted,
               marginBottom: '4px',
             }}
           >
@@ -168,7 +179,7 @@ export default function DMTrendChart({
             style={{
               fontSize: '1.25rem',
               fontWeight: 700,
-              color: data[data.length - 1].dmPercent >= targetDM ? '#10B981' : '#EF4444',
+              color: data[data.length - 1].dmPercent >= targetDM ? DESIGN_TOKENS.success : DESIGN_TOKENS.critical,
             }}
           >
             {data[data.length - 1].dmPercent.toFixed(1)}%
@@ -179,7 +190,7 @@ export default function DMTrendChart({
           <div
             style={{
               fontSize: '0.75rem',
-              color: 'var(--text-light)',
+              color: DESIGN_TOKENS.muted,
               marginBottom: '4px',
             }}
           >
@@ -200,7 +211,7 @@ export default function DMTrendChart({
           <div
             style={{
               fontSize: '0.75rem',
-              color: 'var(--text-light)',
+              color: DESIGN_TOKENS.muted,
               marginBottom: '4px',
             }}
           >
@@ -210,7 +221,7 @@ export default function DMTrendChart({
             style={{
               fontSize: '1.25rem',
               fontWeight: 700,
-              color: '#10B981',
+              color: DESIGN_TOKENS.success,
             }}
           >
             {Math.max(...dmValues).toFixed(1)}%
@@ -221,7 +232,7 @@ export default function DMTrendChart({
           <div
             style={{
               fontSize: '0.75rem',
-              color: 'var(--text-light)',
+              color: DESIGN_TOKENS.muted,
               marginBottom: '4px',
             }}
           >
@@ -231,7 +242,7 @@ export default function DMTrendChart({
             style={{
               fontSize: '1.25rem',
               fontWeight: 700,
-              color: '#EF4444',
+              color: DESIGN_TOKENS.critical,
             }}
           >
             {Math.min(...dmValues).toFixed(1)}%
