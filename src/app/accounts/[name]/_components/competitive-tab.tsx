@@ -24,18 +24,25 @@ export function CompetitiveTab({ competitors }: CompetitiveTabProps) {
 
   if (competitors.length === 0) {
     return (
-      <div className="bg-slate-50 border border-slate-200 rounded-lg p-12 text-center">
-        <div className="text-5xl mb-3">🔍</div>
-        <p className="text-lg font-medium text-slate-600 mb-1">No competitive intelligence available</p>
-        <p className="text-sm text-slate-500">
-          Competitive analysis will appear here as data is gathered
-        </p>
+      <div className="space-y-6">
+        {/* W1-P1-008: Competitive advantages section — shown even when no competitors */}
+        <CompetitiveAdvantages />
+        <div className="bg-[var(--highlight)] border border-[var(--border)] rounded-lg p-12 text-center">
+          <div className="text-5xl mb-3">🔍</div>
+          <p className="text-lg font-medium text-[var(--muted)] mb-1">No competitive intelligence available</p>
+          <p className="text-sm text-[var(--muted)]">
+            Competitive analysis will appear here as data is gathered
+          </p>
+        </div>
       </div>
     )
   }
 
   return (
     <div className="space-y-6">
+      {/* W1-P1-008: Competitive advantages section */}
+      <CompetitiveAdvantages />
+
       {/* Two-column grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Our Competitors */}
@@ -44,7 +51,7 @@ export function CompetitiveTab({ competitors }: CompetitiveTabProps) {
             <h2 className="font-display text-xl font-semibold text-secondary">Competing for This Account</h2>
             <Badge variant="danger">{ourCompetitors.length}</Badge>
           </div>
-          <p className="text-sm text-slate-600 mb-4">
+          <p className="text-sm text-[var(--muted)] mb-4">
             Companies competing with Skyvera to win or retain this customer
           </p>
 
@@ -55,9 +62,9 @@ export function CompetitiveTab({ competitors }: CompetitiveTabProps) {
               ))}
             </div>
           ) : (
-            <div className="bg-green-50 border border-green-200 rounded-lg p-6 text-center">
+            <div className="bg-[var(--highlight)] border border-[var(--border)] rounded-lg p-6 text-center">
               <div className="text-3xl mb-2">✓</div>
-              <p className="text-sm text-green-700 font-medium">No direct competitors identified</p>
+              <p className="text-sm text-[var(--muted)] font-medium">No direct competitors identified</p>
             </div>
           )}
         </div>
@@ -68,7 +75,7 @@ export function CompetitiveTab({ competitors }: CompetitiveTabProps) {
             <h2 className="font-display text-xl font-semibold text-secondary">Customer's Market Competitors</h2>
             <Badge variant="default">{customerCompetitors.length}</Badge>
           </div>
-          <p className="text-sm text-slate-600 mb-4">
+          <p className="text-sm text-[var(--muted)] mb-4">
             The customer's industry rivals and competitive landscape
           </p>
 
@@ -79,8 +86,8 @@ export function CompetitiveTab({ competitors }: CompetitiveTabProps) {
               ))}
             </div>
           ) : (
-            <div className="bg-slate-50 border border-slate-200 rounded-lg p-6 text-center">
-              <p className="text-sm text-slate-600">No customer competitor data available</p>
+            <div className="bg-[var(--highlight)] border border-[var(--border)] rounded-lg p-6 text-center">
+              <p className="text-sm text-[var(--muted)]">No customer competitor data available</p>
             </div>
           )}
         </div>
@@ -90,16 +97,16 @@ export function CompetitiveTab({ competitors }: CompetitiveTabProps) {
       <Card title="Competitive Summary">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="text-center">
-            <p className="text-3xl font-bold text-slate-900">{competitors.length}</p>
-            <p className="text-sm text-slate-600 mt-1">Total Competitors Tracked</p>
+            <p className="text-3xl font-bold text-[var(--ink)]">{competitors.length}</p>
+            <p className="text-sm text-[var(--muted)] mt-1">Total Competitors Tracked</p>
           </div>
           <div className="text-center">
-            <p className="text-3xl font-bold text-red-600">{ourCompetitors.length}</p>
-            <p className="text-sm text-slate-600 mt-1">Competing with Skyvera</p>
+            <p className="text-3xl font-bold text-[var(--critical)]">{ourCompetitors.length}</p>
+            <p className="text-sm text-[var(--muted)] mt-1">Competing with Skyvera</p>
           </div>
           <div className="text-center">
-            <p className="text-3xl font-bold text-blue-600">{customerCompetitors.length}</p>
-            <p className="text-sm text-slate-600 mt-1">Customer's Market Rivals</p>
+            <p className="text-3xl font-bold text-[var(--secondary)]">{customerCompetitors.length}</p>
+            <p className="text-sm text-[var(--muted)] mt-1">Customer's Market Rivals</p>
           </div>
         </div>
       </Card>
@@ -170,6 +177,38 @@ function CompetitorCard({ competitor }: { competitor: Competitor }) {
       {/* Footer */}
       <div className="text-xs text-muted border-t border-[var(--border)] pt-2">
         Last updated: {lastUpdated}
+      </div>
+    </div>
+  )
+}
+
+/**
+ * W1-P1-008: Competitive Advantages section — 6 metric boxes matching Telstra reference
+ */
+function CompetitiveAdvantages() {
+  const advantages = [
+    { label: 'Telco Expertise', value: '15+ years', desc: 'Deep domain knowledge' },
+    { label: 'Integration Speed', value: '3x faster', desc: 'vs. market average' },
+    { label: 'Support SLA', value: '99.9%', desc: 'Uptime guarantee' },
+    { label: 'Customer Retention', value: '94%', desc: 'Annual renewal rate' },
+    { label: 'ROI Delivered', value: '340%', desc: '3-year average' },
+    { label: 'Implementation', value: '8 weeks', desc: 'Average go-live' },
+  ]
+
+  return (
+    <div className="mb-8">
+      <h3 className="font-display text-xl text-[var(--secondary)] mb-4">Our Competitive Advantages</h3>
+      <div className="grid grid-cols-3 gap-4">
+        {advantages.map((item) => (
+          <div
+            key={item.label}
+            className="bg-[var(--highlight)] border-l-4 border-[var(--accent)] p-5 rounded-r-lg"
+          >
+            <div className="text-2xl font-display font-semibold text-[var(--secondary)]">{item.value}</div>
+            <div className="text-sm font-semibold text-[var(--ink)] mt-1">{item.label}</div>
+            <div className="text-xs text-[var(--muted)] mt-0.5">{item.desc}</div>
+          </div>
+        ))}
       </div>
     </div>
   )
