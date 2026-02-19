@@ -40,9 +40,9 @@ export default async function AccountsPage() {
   if (!customersResult.success) {
     return (
       <div className="p-6">
-        <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-          <h2 className="text-lg font-semibold text-red-800">Unable to load customer data</h2>
-          <p className="text-sm text-red-600 mt-2">
+        <div className="bg-[var(--critical)]/5 border border-[var(--critical)]/30 rounded-lg p-4">
+          <h2 className="text-lg font-semibold text-[var(--critical)]">Unable to load customer data</h2>
+          <p className="text-sm text-[var(--critical)] mt-2">
             {customersResult.error.message}
           </p>
         </div>
@@ -53,9 +53,9 @@ export default async function AccountsPage() {
   if (!statsResult.success) {
     return (
       <div className="p-6">
-        <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-          <h2 className="text-lg font-semibold text-red-800">Unable to load statistics</h2>
-          <p className="text-sm text-red-600 mt-2">
+        <div className="bg-[var(--critical)]/5 border border-[var(--critical)]/30 rounded-lg p-4">
+          <h2 className="text-lg font-semibold text-[var(--critical)]">Unable to load statistics</h2>
+          <p className="text-sm text-[var(--critical)] mt-2">
             {statsResult.error.message}
           </p>
         </div>
@@ -65,6 +65,8 @@ export default async function AccountsPage() {
 
   const customers = customersResult.value
   const stats = statsResult.value
+  // Compute total revenue from all customer totals
+  const totalRevenue = customers.reduce((sum, c) => sum + (c.total || 0), 0)
   const lastUpdated = new Date()
 
   return (
@@ -82,7 +84,7 @@ export default async function AccountsPage() {
         </p>
 
         {/* Stats Summary inside header */}
-        <AccountStats stats={stats} />
+        <AccountStats stats={stats} totalRevenue={totalRevenue} />
       </div>
 
       {/* Content Container */}

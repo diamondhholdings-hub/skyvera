@@ -67,11 +67,11 @@ export function AccountFilters({
                 className={`px-3 py-1.5 rounded text-sm font-medium transition-colors border button-press ${
                   isActive
                     ? health === 'Healthy'
-                      ? 'bg-green-600 text-white border-green-600'
+                      ? 'bg-[var(--success)] text-white border-[var(--success)]'
                       : health === 'At Risk'
-                        ? 'bg-yellow-600 text-white border-yellow-600'
+                        ? 'bg-[var(--warning)] text-white border-[var(--warning)]'
                         : health === 'Critical'
-                          ? 'bg-red-600 text-white border-red-600'
+                          ? 'bg-[var(--critical)] text-white border-[var(--critical)]'
                           : 'bg-accent text-white border-accent'
                     : 'bg-highlight text-ink border-[var(--border)] hover:border-accent'
                 }`}

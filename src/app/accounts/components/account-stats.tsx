@@ -14,11 +14,16 @@ interface AccountStatsProps {
       red: number
     }
   }
+  totalRevenue: number
 }
 
-export function AccountStats({ stats }: AccountStatsProps) {
-  // Calculate total revenue for display (could be passed in later)
-  const totalRevenue = '$12.6M'
+function formatRevenue(value: number): string {
+  if (value >= 1_000_000) return `$${(value / 1_000_000).toFixed(1)}M`
+  if (value >= 1_000) return `$${(value / 1_000).toFixed(0)}K`
+  return `$${value}`
+}
+
+export function AccountStats({ stats, totalRevenue }: AccountStatsProps) {
   const healthyAccounts = stats.byHealth.green
   const atRiskAccounts = stats.byHealth.yellow + stats.byHealth.red
 
@@ -33,7 +38,7 @@ export function AccountStats({ stats }: AccountStatsProps) {
       {/* Total Revenue */}
       <div className="bg-white/10 p-6 rounded text-center">
         <p className="text-xs uppercase tracking-wider text-paper/70 mb-2">Total Revenue</p>
-        <p className="text-2xl font-display font-bold text-paper">{totalRevenue}</p>
+        <p className="text-2xl font-display font-bold text-paper">{formatRevenue(totalRevenue)}</p>
       </div>
 
       {/* Healthy Accounts */}

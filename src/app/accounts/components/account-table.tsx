@@ -61,7 +61,7 @@ export function AccountTable({ customers }: AccountTableProps) {
         cell: (info) => (
           <Link
             href={`/accounts/${encodeURIComponent(info.getValue() as string)}`}
-            className="font-semibold text-blue-600 hover:text-blue-800 hover:underline"
+            className="font-semibold text-[var(--accent)] hover:text-[var(--accent)]/80 hover:underline"
           >
             {info.getValue() as string}
           </Link>
