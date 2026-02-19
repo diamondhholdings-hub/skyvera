@@ -1,8 +1,9 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import DMTrendChart from '../components/dm-trend-chart';
-import type { BusinessUnitMetrics, MonthlyDMData } from '../types';
+import type { MonthlyDMData } from '../types';
 import { sampleBusinessUnits } from '../demo/demo-data';
 import '../styles.css';
 
@@ -43,7 +44,7 @@ export default function DMTrendsPage() {
   }
 
   return (
-    <div style={{ minHeight: '100vh', background: '#FAFAFA', padding: 'var(--space-xl)' }}>
+    <div style={{ minHeight: '100vh', background: 'var(--paper)', padding: 'var(--space-xl)' }}>
       <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
         {/* Page Header */}
         <div style={{ marginBottom: 'var(--space-2xl)' }}>
@@ -51,7 +52,7 @@ export default function DMTrendsPage() {
             style={{
               fontSize: '2.5rem',
               fontWeight: 700,
-              color: '#0066A1',
+              color: 'var(--secondary)',
               marginBottom: 'var(--space-sm)',
             }}
           >
@@ -60,35 +61,43 @@ export default function DMTrendsPage() {
           <p
             style={{
               fontSize: '1.125rem',
-              color: 'var(--text-light)',
+              color: 'var(--muted)',
               marginBottom: 'var(--space-md)',
             }}
           >
             12-month trailing analysis showing revenue retention patterns across all business units
           </p>
 
+          {/* Demo Data Notice Banner */}
+          <div className="mb-6 px-4 py-3 bg-[var(--warning)]/10 border border-[var(--warning)]/30 rounded-lg flex items-start gap-3" style={{ marginBottom: 'var(--space-lg)' }}>
+            <span style={{ color: 'var(--warning)', fontSize: '1.125rem', flexShrink: 0 }}>&#9888;</span>
+            <p style={{ fontSize: '0.875rem', color: 'var(--ink)', margin: 0 }}>
+              <strong>Sample Data:</strong> This page currently displays demonstration data. Live data integration is in progress.
+            </p>
+          </div>
+
           {/* Navigation Breadcrumb */}
-          <div style={{ fontSize: '0.875rem', color: 'var(--text-light)' }}>
-            <a href="/dm-strategy" style={{ color: '#0066A1', textDecoration: 'none' }}>
+          <div style={{ fontSize: '0.875rem', color: 'var(--muted)' }}>
+            <Link href="/dm-strategy" style={{ color: 'var(--secondary)', textDecoration: 'none' }}>
               DM Strategy
-            </a>
+            </Link>
             {' / '}
-            <a href="/dm-strategy/demo" style={{ color: '#0066A1', textDecoration: 'none' }}>
+            <Link href="/dm-strategy/demo" style={{ color: 'var(--secondary)', textDecoration: 'none' }}>
               Demo
-            </a>
+            </Link>
             {' / '}
-            <span style={{ color: '#111827', fontWeight: 600 }}>Trends</span>
+            <span style={{ color: 'var(--ink)', fontWeight: 600 }}>Trends</span>
           </div>
         </div>
 
         {/* Portfolio-Wide Chart (Prominent) */}
         <div
           style={{
-            background: 'linear-gradient(135deg, #0066A1 0%, #004d7a 100%)',
+            background: 'linear-gradient(135deg, var(--secondary) 0%, #1a2332 100%)',
             borderRadius: 'var(--radius-lg)',
             padding: 'var(--space-xl)',
             marginBottom: 'var(--space-2xl)',
-            boxShadow: '0 4px 16px rgba(0, 102, 161, 0.2)',
+            boxShadow: '0 4px 16px rgba(45, 66, 99, 0.2)',
           }}
         >
           <div
@@ -100,8 +109,8 @@ export default function DMTrendsPage() {
           >
             <DMTrendChart
               data={portfolioHistory}
-              title="🏢 Portfolio-Wide DM% Trend (All Business Units)"
-              color="#0066A1"
+              title="Portfolio-Wide DM% Trend (All Business Units)"
+              color="var(--secondary)"
               targetDM={95.0}
               showTarget={true}
             />
@@ -142,7 +151,7 @@ export default function DMTrendsPage() {
             style={{
               fontSize: '1.5rem',
               fontWeight: 700,
-              color: '#111827',
+              color: 'var(--ink)',
               marginBottom: 'var(--space-lg)',
             }}
           >
@@ -159,14 +168,14 @@ export default function DMTrendsPage() {
             <div
               style={{
                 padding: 'var(--space-md)',
-                borderLeft: '4px solid #0066A1',
-                background: '#F0F9FF',
+                borderLeft: '4px solid var(--secondary)',
+                background: 'var(--highlight)',
               }}
             >
               <h3 style={{ fontSize: '1.125rem', fontWeight: 700, marginBottom: '8px' }}>
-                📉 Cloudsense: Declining Trend (95.2% → 93.2%)
+                Cloudsense: Declining Trend (95.2% to 93.2%)
               </h3>
-              <p style={{ color: 'var(--text)', lineHeight: 1.6 }}>
+              <p style={{ color: 'var(--ink)', lineHeight: 1.6 }}>
                 Revenue retention has declined 2 percentage points over 12 months, falling below the
                 95% target. January 2026 (93.2%) was the worst month in a year. Recommend urgent
                 investigation into churn drivers and implementation of retention recommendations.
@@ -177,14 +186,14 @@ export default function DMTrendsPage() {
             <div
               style={{
                 padding: 'var(--space-md)',
-                borderLeft: '4px solid #00B8D4',
-                background: '#F0FDFF',
+                borderLeft: '4px solid var(--accent)',
+                background: 'var(--highlight)',
               }}
             >
               <h3 style={{ fontSize: '1.125rem', fontWeight: 700, marginBottom: '8px' }}>
-                📈 Kandy: Strong Improvement (96.5% → 98.5%)
+                Kandy: Strong Improvement (96.5% to 98.5%)
               </h3>
-              <p style={{ color: 'var(--text)', lineHeight: 1.6 }}>
+              <p style={{ color: 'var(--ink)', lineHeight: 1.6 }}>
                 Consistently exceeding 95% target with steady improvement over 12 months (+2pp).
                 January 2026 (98.5%) near peak performance. Document success factors for replication
                 across other business units.
@@ -195,14 +204,14 @@ export default function DMTrendsPage() {
             <div
               style={{
                 padding: 'var(--space-md)',
-                borderLeft: '4px solid #27AE60',
-                background: '#F0FDF4',
+                borderLeft: '4px solid var(--success)',
+                background: 'var(--highlight)',
               }}
             >
               <h3 style={{ fontSize: '1.125rem', fontWeight: 700, marginBottom: '8px' }}>
-                ⚠️ STL: Persistently Below Target (92-93% range)
+                STL: Persistently Below Target (92-93% range)
               </h3>
-              <p style={{ color: 'var(--text)', lineHeight: 1.6 }}>
+              <p style={{ color: 'var(--ink)', lineHeight: 1.6 }}>
                 Consistently 2-3 percentage points below 95% target throughout the year. Flat trend
                 indicates systemic retention challenges rather than temporary issues. Requires
                 strategic intervention and dedicated retention program.
