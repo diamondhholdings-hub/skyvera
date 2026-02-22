@@ -106,7 +106,7 @@ export function ActionItemsTab({ initialActions, stakeholders = [] }: ActionItem
     <div className="space-y-6">
       {/* Empty state */}
       {actions.length === 0 && (
-        <div className="text-center py-12 bg-[var(--highlight)] rounded-lg border border-[var(--border)]">
+        <div className="text-center py-12 bg-[var(--highlight)] rounded-none border border-[var(--border)]">
           <p className="text-[var(--muted)] mb-2">No action items yet</p>
           <p className="text-sm text-[var(--muted)]">Create your first action using the form below</p>
         </div>
@@ -141,7 +141,7 @@ export function ActionItemsTab({ initialActions, stakeholders = [] }: ActionItem
 
       {/* Summary bar */}
       {actions.length > 0 && (
-        <div className="bg-highlight/30 rounded-lg p-4 flex flex-wrap gap-4 text-sm border border-[var(--border)]">
+        <div className="bg-highlight/30 rounded-none p-4 flex flex-wrap gap-4 text-sm border border-[var(--border)]">
           <div className="flex items-center gap-2">
             <span className="font-medium text-muted">Total:</span>
             <span className="text-ink font-semibold">{totalCount} items</span>

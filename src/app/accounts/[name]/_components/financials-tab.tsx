@@ -49,7 +49,7 @@ export function FinancialsTab({ customer }: FinancialsTabProps) {
         ].map(({ label, value, sub }) => (
           <div
             key={label}
-            className="bg-[var(--highlight)] rounded-lg p-6"
+            className="bg-[var(--highlight)] rounded-none p-6"
             style={{ borderLeft: '3px solid var(--accent)' }}
           >
             <div className="text-xs text-[var(--muted)] uppercase tracking-widest mb-1">{label}</div>
@@ -64,7 +64,7 @@ export function FinancialsTab({ customer }: FinancialsTabProps) {
         <h2 className="font-display text-2xl font-semibold text-[var(--secondary)] mb-4 pb-2 border-b-[2px] border-[var(--border)]">
           Subscription Details
         </h2>
-        <div className="bg-white rounded-xl border border-[var(--border)] overflow-hidden">
+        <div className="bg-white rounded-none border border-[var(--border)] overflow-hidden">
           <table className="w-full border-collapse text-sm">
             <thead>
               <tr className="bg-[var(--secondary)] text-white">
@@ -134,9 +134,9 @@ export function FinancialsTab({ customer }: FinancialsTabProps) {
         <h2 className="font-display text-2xl font-semibold text-[var(--secondary)] mb-4 pb-2 border-b-[2px] border-[var(--border)]">
           Revenue Breakdown
         </h2>
-        <div className="bg-white rounded-xl border border-[var(--border)] p-6">
+        <div className="bg-white rounded-none border border-[var(--border)] p-6">
           {/* Stacked bar */}
-          <div className="flex h-8 rounded-lg overflow-hidden border border-[var(--border)] mb-6">
+          <div className="flex h-8 rounded-none overflow-hidden border border-[var(--border)] mb-6">
             {rrPercent > 0 && (
               <div
                 className="flex items-center justify-center text-white text-xs font-medium"
@@ -184,7 +184,7 @@ export function FinancialsTab({ customer }: FinancialsTabProps) {
         <h2 className="font-display text-2xl font-semibold text-[var(--secondary)] mb-4 pb-2 border-b-[2px] border-[var(--border)]">
           Account Summary
         </h2>
-        <div className="bg-white rounded-xl border border-[var(--border)] p-6">
+        <div className="bg-white rounded-none border border-[var(--border)] p-6">
           <div className="flex items-start gap-4">
             <div
               className="rounded-full p-3 flex-shrink-0"

@@ -39,7 +39,7 @@ export function CompetitiveTab({ competitors }: CompetitiveTabProps) {
           {STATIC_ADVANTAGES.map((adv, i) => (
             <div
               key={i}
-              className="bg-white rounded-xl border border-[var(--border)] p-5 hover:-translate-y-0.5 hover:shadow-md transition-all relative overflow-hidden group"
+              className="bg-white rounded-none border border-[var(--border)] p-5 hover:-translate-y-0.5 hover:shadow-md transition-all relative overflow-hidden group"
             >
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[var(--accent)] to-[var(--secondary)] opacity-0 group-hover:opacity-100 transition-opacity" />
               <div className="flex items-start gap-3">
@@ -60,7 +60,7 @@ export function CompetitiveTab({ competitors }: CompetitiveTabProps) {
           <h2 className="font-display text-2xl font-semibold text-[var(--secondary)] mb-4 pb-2 border-b-[2px] border-[var(--border)]">
             Competitive Landscape
           </h2>
-          <div className="bg-white rounded-xl border border-[var(--border)] overflow-hidden">
+          <div className="bg-white rounded-none border border-[var(--border)] overflow-hidden">
             <table className="w-full border-collapse text-sm">
               <thead>
                 <tr className="bg-[var(--secondary)] text-white">
@@ -109,7 +109,7 @@ export function CompetitiveTab({ competitors }: CompetitiveTabProps) {
 
       {/* Empty state for competitors */}
       {competitors.length === 0 && (
-        <div className="bg-[var(--highlight)] border border-[var(--border)] rounded-lg p-12 text-center">
+        <div className="bg-[var(--highlight)] border border-[var(--border)] rounded-none p-12 text-center">
           <p className="text-lg font-medium text-[var(--muted)] mb-1">No competitive intelligence available</p>
           <p className="text-sm text-[var(--muted)]">
             Competitive analysis will appear here as data is gathered.

@@ -29,22 +29,48 @@ function TabNavigationContent({ accountName }: TabNavigationProps) {
   const activeTab = searchParams.get('tab') || 'overview'
 
   return (
-    <nav className="bg-white border-b border-[var(--border)] sticky top-0 z-50 shadow-sm">
-      <div className="flex overflow-x-auto scrollbar-hide">
+    <nav
+      style={{
+        background: 'white',
+        borderBottom: '2px solid var(--border)',
+        boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
+        position: 'sticky',
+        top: 0,
+        zIndex: 100,
+      }}
+    >
+      <div style={{ display: 'flex', overflowX: 'auto', maxWidth: '1400px', margin: '0 auto', padding: '0 2rem' }}>
         {TABS.map(({ id, label }) => {
           const isActive = activeTab === id
           return (
             <button
               key={id}
               onClick={() => router.push(`/accounts/${accountName}?tab=${id}`, { scroll: false })}
-              className={`
-                flex-shrink-0 px-6 py-4 text-sm font-semibold whitespace-nowrap
-                border-b-[3px] transition-all
-                ${isActive
-                  ? 'border-b-[var(--accent)] text-[var(--accent)] bg-[var(--highlight)]'
-                  : 'border-b-transparent text-[var(--muted)] hover:text-[var(--ink)] hover:bg-[var(--highlight)]/50'
+              style={{
+                flexShrink: 0,
+                padding: '1.25rem 2rem',
+                fontSize: '0.875rem',
+                fontWeight: 500,
+                whiteSpace: 'nowrap',
+                cursor: 'pointer',
+                border: 'none',
+                borderBottom: isActive ? '3px solid var(--accent)' : '3px solid transparent',
+                color: isActive ? 'var(--accent)' : 'var(--muted)',
+                background: isActive ? 'var(--paper)' : 'transparent',
+                transition: 'all 0.2s ease',
+              }}
+              onMouseEnter={e => {
+                if (!isActive) {
+                  (e.target as HTMLElement).style.color = 'var(--secondary)'
+                  ;(e.target as HTMLElement).style.background = 'var(--highlight)'
                 }
-              `}
+              }}
+              onMouseLeave={e => {
+                if (!isActive) {
+                  (e.target as HTMLElement).style.color = 'var(--muted)'
+                  ;(e.target as HTMLElement).style.background = 'transparent'
+                }
+              }}
             >
               {label}
             </button>
@@ -59,8 +85,8 @@ export function TabNavigation({ accountName }: TabNavigationProps) {
   return (
     <Suspense
       fallback={
-        <div className="bg-white border-b border-[var(--border)] sticky top-0 z-50 shadow-sm">
-          <div className="h-14 animate-pulse bg-[var(--highlight)]/50" />
+        <div style={{ background: 'white', borderBottom: '2px solid var(--border)', boxShadow: '0 2px 8px rgba(0,0,0,0.05)', position: 'sticky', top: 0, zIndex: 100 }}>
+          <div style={{ height: '3.75rem', background: 'var(--highlight)', opacity: 0.4 }} />
         </div>
       }
     >

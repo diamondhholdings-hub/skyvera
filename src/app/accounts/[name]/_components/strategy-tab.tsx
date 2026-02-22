@@ -20,7 +20,7 @@ export function StrategyTab({ painPoints, opportunities }: StrategyTabProps) {
           <h2 className="font-display text-2xl font-semibold text-[var(--secondary)] mb-4 pb-2 border-b-[2px] border-[var(--border)]">
             Pain Points
           </h2>
-          <div className="bg-white rounded-xl border border-[var(--border)] overflow-hidden">
+          <div className="bg-white rounded-none border border-[var(--border)] overflow-hidden">
             <table className="w-full border-collapse text-sm">
               <thead>
                 <tr className="bg-[var(--secondary)] text-white">
@@ -78,7 +78,7 @@ export function StrategyTab({ painPoints, opportunities }: StrategyTabProps) {
           <h2 className="font-display text-2xl font-semibold text-[var(--secondary)] mb-4 pb-2 border-b-[2px] border-[var(--border)]">
             Growth Opportunities
           </h2>
-          <div className="bg-white rounded-xl border border-[var(--border)] overflow-hidden">
+          <div className="bg-white rounded-none border border-[var(--border)] overflow-hidden">
             <table className="w-full border-collapse text-sm">
               <thead>
                 <tr className="bg-[var(--secondary)] text-white">
@@ -126,7 +126,7 @@ export function StrategyTab({ painPoints, opportunities }: StrategyTabProps) {
 
       {/* Empty state */}
       {painPoints.length === 0 && opportunities.length === 0 && (
-        <div className="bg-[var(--highlight)] border border-[var(--border)] rounded-lg p-12 text-center">
+        <div className="bg-[var(--highlight)] border border-[var(--border)] rounded-none p-12 text-center">
           <p className="text-lg font-medium text-[var(--muted)] mb-1">No strategy data available</p>
           <p className="text-sm text-[var(--muted)]">
             Pain points and opportunities will appear here as they are identified.

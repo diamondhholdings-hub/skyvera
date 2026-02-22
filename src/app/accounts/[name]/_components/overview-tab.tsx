@@ -39,7 +39,7 @@ export function OverviewTab({
       {/* Alert Banner */}
       {hasAlert && (
         <div
-          className="text-white rounded-lg p-5 shadow-lg"
+          className="text-white rounded-none p-5 shadow-lg"
           style={{
             background: 'linear-gradient(135deg, var(--critical), #d4594a)',
             borderLeft: '5px solid rgba(255,255,255,0.3)',
@@ -70,7 +70,7 @@ export function OverviewTab({
             topPainPoints.map((pp, i) => (
               <div
                 key={pp.id}
-                className="bg-[var(--highlight)] rounded-lg p-6"
+                className="bg-[var(--highlight)] rounded-none p-6"
                 style={{ borderLeft: '3px solid var(--accent)' }}
               >
                 <div className="font-display text-3xl font-bold text-[var(--secondary)] mb-1">
@@ -98,7 +98,7 @@ export function OverviewTab({
             ].map(({ label, title }, i) => (
               <div
                 key={i}
-                className="bg-[var(--highlight)] rounded-lg p-6"
+                className="bg-[var(--highlight)] rounded-none p-6"
                 style={{ borderLeft: '3px solid var(--accent)' }}
               >
                 <div className="font-display text-3xl font-bold text-[var(--secondary)] mb-1">
@@ -117,7 +117,7 @@ export function OverviewTab({
       {/* 2-Column: Account Status + KPIs */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1.5rem' }}>
         {/* Account Status */}
-        <div className="bg-white rounded-xl border border-[var(--border)] p-6">
+        <div className="bg-white rounded-none border border-[var(--border)] p-6">
           <h3 className="font-display text-xl font-semibold text-[var(--secondary)] mb-4">
             Account Status
           </h3>
@@ -152,7 +152,7 @@ export function OverviewTab({
         </div>
 
         {/* Revenue KPIs */}
-        <div className="bg-white rounded-xl border border-[var(--border)] p-6">
+        <div className="bg-white rounded-none border border-[var(--border)] p-6">
           <h3 className="font-display text-xl font-semibold text-[var(--secondary)] mb-4">
             Revenue Overview
           </h3>
@@ -186,7 +186,7 @@ export function OverviewTab({
             ].map(({ label, value, icon }) => (
               <div
                 key={label}
-                className="bg-[var(--highlight)] rounded-lg p-4"
+                className="bg-[var(--highlight)] rounded-none p-4"
                 style={{ borderLeft: '3px solid var(--accent)' }}
               >
                 <div className="flex items-center gap-1.5 mb-1">
@@ -210,7 +210,7 @@ export function OverviewTab({
           <h2 className="font-display text-2xl font-semibold text-[var(--secondary)] mb-4 pb-2 border-b-[2px] border-[var(--border)]">
             Risk Register
           </h2>
-          <div className="bg-white rounded-xl border border-[var(--border)] overflow-hidden">
+          <div className="bg-white rounded-none border border-[var(--border)] overflow-hidden">
             <table className="w-full border-collapse text-sm">
               <thead>
                 <tr className="bg-[var(--secondary)] text-white">
@@ -260,7 +260,7 @@ export function OverviewTab({
           <h2 className="font-display text-2xl font-semibold text-[var(--secondary)] mb-4 pb-2 border-b-[2px] border-[var(--border)]">
             Expansion Opportunities
           </h2>
-          <div className="bg-white rounded-xl border border-[var(--border)] overflow-hidden">
+          <div className="bg-white rounded-none border border-[var(--border)] overflow-hidden">
             <table className="w-full border-collapse text-sm">
               <thead>
                 <tr className="bg-[var(--secondary)] text-white">
@@ -296,7 +296,7 @@ export function OverviewTab({
 
       {/* Health Factors */}
       {customer.healthFactors.length > 0 && (
-        <div className="bg-white rounded-xl border border-[var(--border)] p-6">
+        <div className="bg-white rounded-none border border-[var(--border)] p-6">
           <h3 className="font-display text-xl font-semibold text-[var(--secondary)] mb-4">
             Health Factors
           </h3>
