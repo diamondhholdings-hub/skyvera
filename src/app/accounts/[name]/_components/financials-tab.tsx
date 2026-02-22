@@ -24,7 +24,7 @@ export function FinancialsTab({ customer }: FinancialsTabProps) {
   return (
     <div className="space-y-8">
       {/* ARR Metric Row */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1rem' }}>
         {[
           {
             label: 'ARR',
@@ -156,7 +156,7 @@ export function FinancialsTab({ customer }: FinancialsTabProps) {
           </div>
 
           {/* Legend */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1rem' }}>
             <div className="flex items-center gap-3">
               <div className="w-4 h-4 rounded flex-shrink-0" style={{ background: 'var(--accent)' }} />
               <div>

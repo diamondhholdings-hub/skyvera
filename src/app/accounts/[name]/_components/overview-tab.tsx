@@ -65,7 +65,7 @@ export function OverviewTab({
         <h2 className="font-display text-2xl font-semibold text-[var(--secondary)] mb-4 pb-2 border-b-[2px] border-[var(--border)]">
           90-Day Priorities
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem' }}>
           {topPainPoints.length > 0 ? (
             topPainPoints.map((pp, i) => (
               <div
@@ -115,7 +115,7 @@ export function OverviewTab({
       </div>
 
       {/* 2-Column: Account Status + KPIs */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1.5rem' }}>
         {/* Account Status */}
         <div className="bg-white rounded-xl border border-[var(--border)] p-6">
           <h3 className="font-display text-xl font-semibold text-[var(--secondary)] mb-4">
@@ -156,7 +156,7 @@ export function OverviewTab({
           <h3 className="font-display text-xl font-semibold text-[var(--secondary)] mb-4">
             Revenue Overview
           </h3>
-          <div className="grid grid-cols-2 gap-3">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '0.75rem' }}>
             {[
               {
                 label: 'ARR',
