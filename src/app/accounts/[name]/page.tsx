@@ -19,6 +19,7 @@ import { OrganizationTab } from './_components/organization-tab'
 import { IntelligenceTab } from './_components/intelligence-tab'
 import { ActionItemsTab } from './_components/action-items-tab'
 import { RefreshButton } from '@/components/ui/refresh-button'
+import { SalesforceSyncButton } from '@/components/ui/salesforce-sync-button'
 
 interface AccountPlanPageProps {
   params: Promise<{ name: string }>
@@ -135,7 +136,10 @@ export default async function AccountPlanPage({ params, searchParams }: AccountP
                 {customer.bu} Business Unit | Skyvera | Q1 2026
               </p>
             </div>
-            <RefreshButton label="Refresh Data" />
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', alignItems: 'flex-end' }}>
+              <RefreshButton label="Refresh Data" />
+              <SalesforceSyncButton accountName={customerName} />
+            </div>
           </div>
 
           {/* Glass stat cards — Telstra: rgba(255,255,255,0.08), blur(10px), 4px radius */}
