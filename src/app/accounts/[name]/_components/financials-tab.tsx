@@ -49,8 +49,7 @@ export function FinancialsTab({ customer }: FinancialsTabProps) {
         ].map(({ label, value, sub }) => (
           <div
             key={label}
-            className="bg-[var(--highlight)] rounded-none p-6"
-            style={{ borderLeft: '3px solid var(--accent)' }}
+            style={{ background: 'white', border: '1px solid var(--border)', borderLeft: '3px solid var(--accent)', padding: '1.5rem', boxShadow: '0 1px 3px rgba(0,0,0,0.04)' }}
           >
             <div className="text-xs text-[var(--muted)] uppercase tracking-widest mb-1">{label}</div>
             <div className="font-display text-3xl font-bold text-[var(--secondary)] mb-1">{value}</div>
@@ -61,7 +60,7 @@ export function FinancialsTab({ customer }: FinancialsTabProps) {
 
       {/* Subscription Data Table */}
       <div>
-        <h2 className="font-display text-2xl font-semibold text-[var(--secondary)] mb-4 pb-2 border-b-[2px] border-[var(--border)]">
+        <h2 className="font-display text-2xl font-semibold mb-4 pb-2 border-b-[2px] border-[var(--border)]" style={{ color: 'var(--secondary)' }}>
           Subscription Details
         </h2>
         <div style={{ background: "white", border: "1px solid var(--border)", boxShadow: "0 1px 3px rgba(0,0,0,0.04)", overflow: "hidden" }}>
@@ -131,7 +130,7 @@ export function FinancialsTab({ customer }: FinancialsTabProps) {
 
       {/* Revenue Breakdown */}
       <div>
-        <h2 className="font-display text-2xl font-semibold text-[var(--secondary)] mb-4 pb-2 border-b-[2px] border-[var(--border)]">
+        <h2 className="font-display text-2xl font-semibold mb-4 pb-2 border-b-[2px] border-[var(--border)]" style={{ color: 'var(--secondary)' }}>
           Revenue Breakdown
         </h2>
         <div style={{ background: "white", border: "1px solid var(--border)", boxShadow: "0 1px 3px rgba(0,0,0,0.04)", padding: "2rem" }}>
@@ -181,7 +180,7 @@ export function FinancialsTab({ customer }: FinancialsTabProps) {
 
       {/* Account Summary */}
       <div>
-        <h2 className="font-display text-2xl font-semibold text-[var(--secondary)] mb-4 pb-2 border-b-[2px] border-[var(--border)]">
+        <h2 className="font-display text-2xl font-semibold mb-4 pb-2 border-b-[2px] border-[var(--border)]" style={{ color: 'var(--secondary)' }}>
           Account Summary
         </h2>
         <div style={{ background: "white", border: "1px solid var(--border)", boxShadow: "0 1px 3px rgba(0,0,0,0.04)", padding: "2rem" }}>
