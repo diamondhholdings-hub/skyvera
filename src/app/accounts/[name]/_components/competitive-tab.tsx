@@ -45,7 +45,7 @@ export function CompetitiveTab({ competitors }: CompetitiveTabProps) {
               <div className="flex items-start gap-3">
                 <CheckCircle size={18} className="text-[var(--success)] flex-shrink-0 mt-0.5" />
                 <div>
-                  <div className="font-semibold mb-1" style={{ color: 'var(--secondary)' }}>{adv.title}</div>
+                  <div className="font-semibold mb-1" style={{ color: '#2d4263' }}>{adv.title}</div>
                   <div className="text-sm text-[var(--muted)]">{adv.description}</div>
                 </div>
               </div>
