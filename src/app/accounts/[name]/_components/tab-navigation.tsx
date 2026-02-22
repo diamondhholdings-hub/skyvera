@@ -3,8 +3,7 @@
 /**
  * TabNavigation - URL-based tab navigation for account plan pages
  * Client Component - uses useSearchParams and useRouter
- * Desktop: Horizontal tab bar with active state
- * Mobile: Dropdown select for space efficiency
+ * Telstra-style: sticky horizontal tab bar with accent bottom border
  */
 
 import { useSearchParams, useRouter } from 'next/navigation'
@@ -14,73 +13,45 @@ interface TabNavigationProps {
   accountName: string // URL-encoded customer name
 }
 
-const tabs = [
+const TABS = [
   { id: 'overview', label: '📊 Overview' },
-  { id: 'organization', label: '🏢 Organization' },
-  { id: 'strategy', label: '💡 Pain Points' },
+  { id: 'financials', label: '💰 Financials' },
+  { id: 'strategy', label: '🎯 Strategy' },
   { id: 'competitive', label: '⚔️ Competitive' },
-  { id: 'action-items', label: '📋 Action Plan' },
-  { id: 'financials', label: '💰 Financial' },
-  { id: 'intelligence', label: '🔍 Intelligence' },
-] as const
+  { id: 'organization', label: '🏢 Organization' },
+  { id: 'intelligence', label: '🧠 Intelligence' },
+  { id: 'action-items', label: '✅ Action Items' },
+]
 
 function TabNavigationContent({ accountName }: TabNavigationProps) {
-  const searchParams = useSearchParams()
   const router = useRouter()
+  const searchParams = useSearchParams()
   const activeTab = searchParams.get('tab') || 'overview'
 
-  const handleTabChange = (tabId: string) => {
-    router.push(`/accounts/${accountName}?tab=${tabId}`, { scroll: false })
-  }
-
   return (
-    <>
-      {/* Desktop: Horizontal tab bar */}
-      <div
-        className="hidden md:block sticky top-0 z-50 bg-white border-b-2 border-[var(--border)]"
-        style={{ boxShadow: '0 2px 8px rgba(0,0,0,0.05)' }}
-      >
-        <nav className="max-w-[1400px] mx-auto px-8 flex overflow-x-auto" aria-label="Account tabs">
-          {tabs.map((tab) => (
+    <nav className="bg-white border-b border-[var(--border)] sticky top-0 z-50 shadow-sm">
+      <div className="flex overflow-x-auto scrollbar-hide">
+        {TABS.map(({ id, label }) => {
+          const isActive = activeTab === id
+          return (
             <button
-              key={tab.id}
-              onClick={() => handleTabChange(tab.id)}
-              className={`py-5 px-6 border-b-3 border-transparent font-medium text-muted whitespace-nowrap transition-all duration-300 ${
-                activeTab === tab.id
-                  ? 'text-accent bg-[var(--paper)]'
-                  : 'hover:text-secondary hover:bg-highlight'
-              }`}
-              style={{
-                borderBottomWidth: '3px',
-                borderBottomColor: activeTab === tab.id ? 'var(--accent)' : 'transparent',
-              }}
-              aria-current={activeTab === tab.id ? 'page' : undefined}
+              key={id}
+              onClick={() => router.push(`/accounts/${accountName}?tab=${id}`, { scroll: false })}
+              className={`
+                flex-shrink-0 px-6 py-4 text-sm font-semibold whitespace-nowrap
+                border-b-[3px] transition-all
+                ${isActive
+                  ? 'border-b-[var(--accent)] text-[var(--accent)] bg-[var(--highlight)]'
+                  : 'border-b-transparent text-[var(--muted)] hover:text-[var(--ink)] hover:bg-[var(--highlight)]/50'
+                }
+              `}
             >
-              {tab.label}
+              {label}
             </button>
-          ))}
-        </nav>
+          )
+        })}
       </div>
-
-      {/* Mobile: Dropdown select */}
-      <div className="md:hidden mb-6 px-8">
-        <label htmlFor="tab-select" className="sr-only">
-          Select tab
-        </label>
-        <select
-          id="tab-select"
-          value={activeTab}
-          onChange={(e) => handleTabChange(e.target.value)}
-          className="w-full px-4 py-2 border-2 border-[var(--border)] rounded-lg bg-white focus:border-accent focus:ring-accent"
-        >
-          {tabs.map((tab) => (
-            <option key={tab.id} value={tab.id}>
-              {tab.label}
-            </option>
-          ))}
-        </select>
-      </div>
-    </>
+    </nav>
   )
 }
 
@@ -88,11 +59,8 @@ export function TabNavigation({ accountName }: TabNavigationProps) {
   return (
     <Suspense
       fallback={
-        <div
-          className="sticky top-0 z-50 bg-white border-b-2 border-[var(--border)]"
-          style={{ boxShadow: '0 2px 8px rgba(0,0,0,0.05)' }}
-        >
-          <div className="h-16 animate-pulse bg-highlight/50"></div>
+        <div className="bg-white border-b border-[var(--border)] sticky top-0 z-50 shadow-sm">
+          <div className="h-14 animate-pulse bg-[var(--highlight)]/50" />
         </div>
       }
     >
