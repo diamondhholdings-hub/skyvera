@@ -10,6 +10,7 @@
     "postinstall": "prisma generate",
     "prisma:generate": "prisma generate",
     "prisma:push": "prisma db push",
+    "refresh-data": "python3 scripts/parse_excel_to_json.py --type all 2>/dev/null > src/data/skyvera-snapshot.json && echo 'Snapshot updated: src/data/skyvera-snapshot.json'",
     "generate-demo-data": "npx tsx scripts/generate-demo-data.ts",
     "warmup": "npx tsx scripts/warmup-cache.ts",
     "test:e2e": "npx playwright test",

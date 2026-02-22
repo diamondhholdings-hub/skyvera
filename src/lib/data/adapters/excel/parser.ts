@@ -1,11 +1,13 @@
 /**
- * ExcelAdapter - parses Skyvera budget file via Python bridge
- * Loads data once at connect(), serves from memory, validates all records
+ * ExcelAdapter - loads Skyvera budget data from pre-built JSON snapshot
+ * Snapshot generated locally via: npm run refresh-data
+ * Falls back to Python bridge if snapshot is unavailable
  */
 
 import { execFile } from 'child_process'
 import { promisify } from 'util'
 import { join } from 'path'
+import { readFileSync } from 'fs'
 import type { DataAdapter, AdapterQuery, DataResult } from '../base'
 import { ok, err, type Result } from '@/lib/types/result'
 import { CustomerSchema, type Customer } from '@/lib/types/customer'
@@ -58,27 +60,31 @@ export class ExcelAdapter implements DataAdapter {
   }
 
   /**
-   * Connect: Parse Excel file via Python, validate, and store in memory
+   * Connect: Load data from JSON snapshot (Vercel-compatible).
+   * Falls back to Python bridge if snapshot is missing (local dev only).
    */
   async connect(): Promise<Result<void, Error>> {
     try {
-      console.log('[ExcelAdapter] Connecting - parsing Excel file via Python...')
       const startTime = Date.now()
+      let parsed: ParsedData
 
-      // Run Python parser
-      const { stdout, stderr } = await execFileAsync('python3', [
-        this.scriptPath,
-        '--type',
-        'all',
-      ])
-
-      // Log Python stderr (progress messages)
-      if (stderr) {
-        console.log('[ExcelAdapter] Python parser output:', stderr.trim())
+      // Try JSON snapshot first (works on Vercel and locally)
+      const snapshotPath = join(this.projectRoot, 'src', 'data', 'skyvera-snapshot.json')
+      try {
+        const raw = readFileSync(snapshotPath, 'utf-8')
+        parsed = JSON.parse(raw)
+        console.log('[ExcelAdapter] Connecting - loading from JSON snapshot...')
+      } catch {
+        // Fallback: Python bridge (local dev only — not available on Vercel)
+        console.log('[ExcelAdapter] Snapshot not found, falling back to Python parser...')
+        const { stdout, stderr } = await execFileAsync('python3', [
+          this.scriptPath,
+          '--type',
+          'all',
+        ])
+        if (stderr) console.log('[ExcelAdapter] Python parser output:', stderr.trim())
+        parsed = JSON.parse(stdout)
       }
-
-      // Parse JSON output
-      const parsed: ParsedData = JSON.parse(stdout)
 
       // Validate and store customer data
       let totalValidated = 0
