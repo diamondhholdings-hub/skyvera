@@ -1,12 +1,11 @@
 /**
- * IntelligenceTab - Display AI-generated intelligence insights and news timeline
- * Server Component - displays opportunities, risks, recommendations, and news articles
+ * IntelligenceTab - Telstra-style expandable intelligence sections and news cards
+ * Server Component — no useState; uses native <details>/<summary> for expandable
  */
 
-import { AlertTriangle } from 'lucide-react'
 import type { IntelligenceReport } from '@/lib/types/account-plan'
 import type { NewsArticle } from '@/lib/types/news'
-import { formatDistanceToNow } from 'date-fns'
+import { ExternalLink, Radio } from 'lucide-react'
 
 interface IntelligenceTabProps {
   intelligenceReport: { raw: string; structured?: IntelligenceReport } | null
@@ -18,120 +17,163 @@ export function IntelligenceTab({ intelligenceReport, news, customerName }: Inte
   const hasIntelligence = intelligenceReport && intelligenceReport.raw
   const hasNews = news && news.articles.length > 0
 
-  return (
-    <div className="space-y-8">
-      {/* Intelligence Report Section */}
-      <div>
-        <h2 className="font-display text-xl font-semibold text-secondary mb-4">Strategic Intelligence</h2>
-
-        {hasIntelligence ? (
-          <div className="space-y-6">
-            {/* Display raw markdown for now - structured parsing in future iteration */}
-            <div className="bg-highlight/50 p-6 rounded border-l-3 border-accent shadow-sm">
-              <div className="prose prose-sm max-w-none">
-                <div className="whitespace-pre-wrap text-sm text-ink leading-relaxed">
-                  {intelligenceReport.raw.slice(0, 2000)}
-                  {intelligenceReport.raw.length > 2000 && (
-                    <span className="text-accent"> ... (read full report for more)</span>
-                  )}
-                </div>
-              </div>
-              {intelligenceReport.raw.length > 2000 && (
-                <p className="text-xs text-muted mt-4 pt-4 border-t border-[var(--border)]">
-                  Full intelligence report available - parsed from account analysis
-                </p>
-              )}
-            </div>
-          </div>
-        ) : (
-          <div className="bg-warning/10 border-2 border-warning rounded-lg p-6">
-            <div className="flex items-start gap-3">
-              <AlertTriangle className="w-5 h-5 text-[#e65100] flex-shrink-0 mt-0.5" />
-              <div>
-                <h3 className="font-semibold text-[#e65100] mb-1">No Intelligence Report Available</h3>
-                <p className="text-sm text-[#e65100]">
-                  Intelligence data for <strong>{customerName}</strong> has not been generated yet.
-                  Check back later for AI-powered insights.
-                </p>
-              </div>
-            </div>
-          </div>
-        )}
+  if (!hasIntelligence && !hasNews) {
+    return (
+      <div className="py-16 text-center text-[var(--muted)]">
+        <Radio size={40} className="mx-auto mb-4 opacity-30" />
+        <div className="font-display text-2xl mb-2">No intelligence available</div>
+        <div className="text-sm">
+          Generate an account plan to populate intelligence data for{' '}
+          <strong>{customerName}</strong>.
+        </div>
       </div>
+    )
+  }
 
-      {/* News Timeline Section */}
-      <div>
-        <h2 className="font-display text-xl font-semibold text-secondary mb-4">Recent News & Intelligence</h2>
+  // Parse raw markdown into sections for expandable display
+  // Sections are delimited by ## headings
+  const sections: { title: string; content: string }[] = []
 
-        {hasNews ? (
-          <div className="space-y-3">
-            {news.articles.map((article, index) => (
-              <NewsArticleCard key={index} article={article} />
-            ))}
-          </div>
-        ) : (
-          <div className="bg-[var(--highlight)] border border-[var(--border)] rounded-lg p-6 text-center">
-            <p className="text-[var(--muted)]">No recent news available for {customerName}</p>
-            <p className="text-sm text-[var(--muted)] mt-1">
-              News articles will appear here as they become available
-            </p>
-          </div>
-        )}
-      </div>
-    </div>
-  )
-}
+  if (hasIntelligence && intelligenceReport.raw) {
+    const raw = intelligenceReport.raw
+    const lines = raw.split('\n')
+    let currentTitle = 'Overview'
+    let currentLines: string[] = []
 
-/**
- * NewsArticleCard - Individual news article display
- */
-interface NewsArticleCardProps {
-  article: NewsArticle
-}
+    for (const line of lines) {
+      if (line.startsWith('## ')) {
+        if (currentLines.some((l) => l.trim())) {
+          sections.push({
+            title: currentTitle,
+            content: currentLines.join('\n').trim(),
+          })
+        }
+        currentTitle = line.replace(/^##\s+/, '').trim()
+        currentLines = []
+      } else if (line.startsWith('# ')) {
+        // Skip H1 title lines (account name)
+        currentTitle = line.replace(/^#\s+/, '').trim()
+      } else {
+        currentLines.push(line)
+      }
+    }
 
-function NewsArticleCard({ article }: NewsArticleCardProps) {
-  // Strip HTML tags from summary (some news data contains <a> tags)
-  const cleanSummary = article.summary.replace(/<[^>]*>/g, '').slice(0, 200)
+    // Push last section
+    if (currentLines.some((l) => l.trim())) {
+      sections.push({
+        title: currentTitle,
+        content: currentLines.join('\n').trim(),
+      })
+    }
 
-  // Calculate relative time
-  let relativeTime = 'recently'
-  try {
-    relativeTime = formatDistanceToNow(new Date(article.publishedAt), { addSuffix: true })
-  } catch (e) {
-    // Invalid date, use fallback
+    // If no sections found (no ## headings), show the whole text as one section
+    if (sections.length === 0 && raw.trim()) {
+      sections.push({
+        title: 'Intelligence Report',
+        content: raw.trim(),
+      })
+    }
   }
 
   return (
-    <div className="bg-white p-4 rounded border border-[var(--border)] hover:border-accent/30 transition-colors shadow-sm">
-      {/* Title */}
-      <a
-        href={article.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-accent hover:underline font-medium text-sm block mb-2"
-      >
-        {article.title}
-      </a>
+    <div className="space-y-8">
+      {/* Expandable Sections */}
+      {sections.length > 0 && (
+        <div>
+          <h2 className="font-display text-2xl font-semibold text-[var(--secondary)] mb-4 pb-2 border-b-[2px] border-[var(--border)]">
+            Intelligence Report
+          </h2>
+          <div className="space-y-3">
+            {sections.map(({ title, content }, index) => (
+              <details
+                key={title}
+                className="bg-white rounded-xl border border-[var(--border)] overflow-hidden group"
+                open={index === 0}
+              >
+                <summary className="flex items-center justify-between p-5 cursor-pointer hover:bg-[var(--highlight)] transition-colors list-none">
+                  <span className="font-semibold text-[var(--secondary)]">{title}</span>
+                  <svg
+                    className="w-4 h-4 text-[var(--muted)] transition-transform group-open:rotate-180"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <div className="px-5 pb-5 text-sm text-[var(--ink)] leading-relaxed border-t border-[var(--border)] pt-4 whitespace-pre-wrap">
+                  {content}
+                </div>
+              </details>
+            ))}
+          </div>
+        </div>
+      )}
 
-      {/* Source and date */}
-      <div className="flex items-center gap-2 text-xs text-muted mb-2">
-        <span>{article.source}</span>
-        <span>•</span>
-        <span>{relativeTime}</span>
-        {article.relevanceScore && article.relevanceScore > 0.8 && (
-          <>
-            <span>•</span>
-            <span className="text-accent font-medium">High relevance</span>
-          </>
-        )}
-      </div>
-
-      {/* Summary */}
-      {cleanSummary && (
-        <p className="text-sm text-ink leading-relaxed">
-          {cleanSummary}
-          {article.summary.length > 200 && '...'}
-        </p>
+      {/* News & Signals */}
+      {hasNews && (
+        <div>
+          <h2 className="font-display text-2xl font-semibold text-[var(--secondary)] mb-4 pb-2 border-b-[2px] border-[var(--border)]">
+            Recent News & Signals
+          </h2>
+          <div className="space-y-4">
+            {news!.articles.map((article, i) => (
+              <div
+                key={i}
+                className="bg-white rounded-xl border border-[var(--border)] p-5 hover:-translate-y-0.5 hover:shadow-md transition-all relative overflow-hidden group"
+              >
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[var(--accent)] to-[var(--secondary)] opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex-1">
+                    <div className="font-semibold text-[var(--secondary)] mb-1 leading-snug">
+                      {article.title}
+                    </div>
+                    <div className="text-sm text-[var(--muted)] leading-relaxed mb-3">
+                      {article.summary.replace(/<[^>]*>/g, '').slice(0, 200)}
+                      {article.summary.length > 200 && '...'}
+                    </div>
+                    <div className="flex items-center gap-3 text-xs text-[var(--muted)]">
+                      {article.publishedAt && (
+                        <span>
+                          {new Date(article.publishedAt).toLocaleDateString('en-US', {
+                            month: 'short',
+                            day: 'numeric',
+                            year: 'numeric',
+                          })}
+                        </span>
+                      )}
+                      {article.source && (
+                        <>
+                          <span>·</span>
+                          <span>{article.source}</span>
+                        </>
+                      )}
+                      {article.relevanceScore && article.relevanceScore > 0.7 && (
+                        <>
+                          <span>·</span>
+                          <span className="inline-block px-2 py-0.5 rounded-sm text-xs font-semibold uppercase tracking-wide text-white bg-[var(--accent)]">
+                            {article.relevanceScore > 0.85 ? 'high' : 'medium'}
+                          </span>
+                        </>
+                      )}
+                    </div>
+                  </div>
+                  {article.url && (
+                    <a
+                      href={article.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-shrink-0 text-[var(--muted)] hover:text-[var(--accent)] transition-colors"
+                    >
+                      <ExternalLink size={16} />
+                    </a>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       )}
     </div>
   )
