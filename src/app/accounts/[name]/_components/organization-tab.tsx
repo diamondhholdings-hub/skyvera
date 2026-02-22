@@ -1,180 +1,198 @@
 'use client'
 
 /**
- * OrganizationTab - Display stakeholder org chart with hierarchy
- * Uses indented list view with connector lines for simplicity
- * Inline editing enabled via StakeholderCard
+ * OrganizationTab - 4-quadrant decision matrix with stakeholder cards
+ * Client Component — uses useState for expand/collapse
  */
 
-import { useState, useMemo } from 'react'
+import { useState } from 'react'
 import type { Stakeholder } from '@/lib/types/account-plan'
-import { StakeholderCard } from './stakeholder-card'
+import { ChevronDown, ChevronUp } from 'lucide-react'
 
 interface OrganizationTabProps {
   stakeholders: Stakeholder[]
 }
 
 export function OrganizationTab({ stakeholders }: OrganizationTabProps) {
-  const [localStakeholders, setLocalStakeholders] = useState<Stakeholder[]>(stakeholders)
+  const [expanded, setExpanded] = useState<string[]>([])
 
-  // Build org hierarchy
-  const { roots, childrenMap } = useMemo(() => {
-    const childrenMap = new Map<string | null, Stakeholder[]>()
-    const roots: Stakeholder[] = []
+  const toggle = (id: string) =>
+    setExpanded((prev) => (prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]))
 
-    // Group stakeholders by reportsTo
-    localStakeholders.forEach((stakeholder) => {
-      const parentId = stakeholder.reportsTo || null
-      if (!childrenMap.has(parentId)) {
-        childrenMap.set(parentId, [])
-      }
-      childrenMap.get(parentId)!.push(stakeholder)
-    })
+  // Classify into 4 quadrants using role field (StakeholderRole enum)
+  // Champions: champion role (explicitly positive + high influence)
+  const champions = stakeholders.filter((s) => s.role === 'champion')
 
-    // Find roots (no reportsTo or reportsTo not found)
-    const allIds = new Set(localStakeholders.map((s) => s.id))
-    localStakeholders.forEach((stakeholder) => {
-      if (!stakeholder.reportsTo || !allIds.has(stakeholder.reportsTo)) {
-        roots.push(stakeholder)
-      }
-    })
+  // Blockers: blocker role (negative + high influence)
+  const blockers = stakeholders.filter((s) => s.role === 'blocker')
 
-    return { roots, childrenMap }
-  }, [localStakeholders])
+  // Decision makers & influencers: high influence stakeholders
+  const supporters = stakeholders.filter(
+    (s) => s.role === 'decision-maker' || s.role === 'influencer'
+  )
 
-  const handleStakeholderUpdate = (updated: Stakeholder) => {
-    setLocalStakeholders((prev) =>
-      prev.map((s) => (s.id === updated.id ? updated : s))
-    )
-  }
+  // Users: lower influence, neutral/operational
+  const users = stakeholders.filter((s) => s.role === 'user')
 
-  // Calculate summary stats
-  const roleCounts = useMemo(() => {
-    const counts: Record<string, number> = {}
-    localStakeholders.forEach((s) => {
-      const role = s.role
-      counts[role] = (counts[role] || 0) + 1
-    })
-    return counts
-  }, [localStakeholders])
-
-  const relationshipCounts = useMemo(() => {
-    const counts: Record<string, number> = {}
-    localStakeholders.forEach((s) => {
-      const strength = s.relationshipStrength
-      counts[strength] = (counts[strength] || 0) + 1
-    })
-    return counts
-  }, [localStakeholders])
-
-  const roleLabels: Record<string, string> = {
-    'decision-maker': 'Decision Maker',
-    'influencer': 'Influencer',
-    'champion': 'Champion',
-    'user': 'User',
-    'blocker': 'Blocker',
-  }
-
-  // Recursive tree rendering with indentation
-  const renderStakeholderTree = (stakeholder: Stakeholder, level: number = 0) => {
-    const children = childrenMap.get(stakeholder.id) || []
+  const StakeholderCard = ({ stakeholder }: { stakeholder: Stakeholder }) => {
+    const isOpen = expanded.includes(stakeholder.id)
+    const isExecutive =
+      stakeholder.title?.toLowerCase().includes('ceo') ||
+      stakeholder.title?.toLowerCase().includes('cto') ||
+      stakeholder.title?.toLowerCase().includes('coo') ||
+      stakeholder.title?.toLowerCase().includes('vp') ||
+      stakeholder.title?.toLowerCase().includes('chief') ||
+      stakeholder.role === 'decision-maker'
 
     return (
-      <div key={stakeholder.id} className="relative">
-        {/* Current stakeholder */}
-        <div
-          className="flex items-start gap-4 mb-4"
-          style={{ paddingLeft: `${level * 48}px` }}
-        >
-          {/* Connector line for non-root nodes */}
-          {level > 0 && (
-            <div className="absolute left-0 top-0 bottom-0 border-l-2 border-[var(--border)]" style={{ left: `${(level - 1) * 48 + 16}px` }}>
-              <div className="absolute top-8 w-8 border-t-2 border-[var(--border)]" />
-            </div>
+      <div
+        className="bg-white rounded-lg border border-[var(--border)] p-3 mb-2 cursor-pointer hover:shadow-sm transition-all"
+        style={isExecutive ? { borderLeft: '3px solid var(--accent)' } : {}}
+        onClick={() => toggle(stakeholder.id)}
+      >
+        <div className="flex items-center justify-between">
+          <div>
+            <div className="font-semibold text-[var(--secondary)] text-sm">{stakeholder.name}</div>
+            <div className="text-xs text-[var(--muted)]">{stakeholder.title}</div>
+          </div>
+          {isOpen ? (
+            <ChevronUp size={14} className="text-[var(--muted)]" />
+          ) : (
+            <ChevronDown size={14} className="text-[var(--muted)]" />
           )}
-
-          <StakeholderCard
-            stakeholder={stakeholder}
-            onUpdate={handleStakeholderUpdate}
-          />
         </div>
-
-        {/* Render children recursively */}
-        {children.map((child) => renderStakeholderTree(child, level + 1))}
+        {isOpen && stakeholder.notes && (
+          <div className="mt-2 pt-2 border-t border-[var(--border)] text-xs text-[var(--muted)] leading-relaxed">
+            {stakeholder.notes}
+          </div>
+        )}
+        {isOpen && stakeholder.email && (
+          <div className="mt-1 text-xs text-[var(--muted)]">{stakeholder.email}</div>
+        )}
       </div>
     )
   }
 
-  if (localStakeholders.length === 0) {
+  const Quadrant = ({
+    title,
+    items,
+    accent,
+    description,
+  }: {
+    title: string
+    items: Stakeholder[]
+    accent: string
+    description: string
+  }) => (
+    <div
+      className="bg-white rounded-xl border border-[var(--border)] p-5"
+      style={{ borderTop: `3px solid ${accent}` }}
+    >
+      <div className="font-display text-lg font-semibold text-[var(--secondary)] mb-1">{title}</div>
+      <div className="text-xs text-[var(--muted)] mb-4">{description}</div>
+      {items.length > 0 ? (
+        items.map((s) => <StakeholderCard key={s.id} stakeholder={s} />)
+      ) : (
+        <div className="text-xs text-[var(--muted)] italic py-2">None identified</div>
+      )}
+    </div>
+  )
+
+  if (stakeholders.length === 0) {
     return (
-      <div className="text-center py-12">
-        <p className="text-lg font-medium text-[var(--secondary)] mb-2">No stakeholders mapped yet</p>
-        <p className="text-sm text-[var(--muted)]">
-          Add stakeholder data to visualize the organization structure
-        </p>
+      <div className="py-16 text-center text-[var(--muted)]">
+        <div className="font-display text-2xl mb-2">No stakeholders mapped</div>
+        <div className="text-sm">Add stakeholder data to visualize the organization structure.</div>
       </div>
     )
   }
 
   return (
     <div className="space-y-8">
-      {/* Org chart */}
-      <div className="bg-highlight/30 p-6 rounded-lg border border-[var(--border)]">
-        <h2 className="font-display text-xl font-semibold text-secondary mb-6">Organization Structure</h2>
+      {/* Decision Matrix — 4 quadrant */}
+      <div>
+        <h2 className="font-display text-2xl font-semibold text-[var(--secondary)] mb-2 pb-2 border-b-[2px] border-[var(--border)]">
+          Stakeholder Decision Matrix
+        </h2>
+        <p className="text-sm text-[var(--muted)] mb-6">
+          Classify stakeholders by role and influence to prioritize engagement strategy.
+        </p>
 
-        <div className="space-y-6">
-          {roots.map((root) => renderStakeholderTree(root))}
+        <div className="grid grid-cols-2 gap-4">
+          <Quadrant
+            title="Champions"
+            items={champions}
+            accent="var(--success)"
+            description="Positive advocate · High influence"
+          />
+          <Quadrant
+            title="Blockers"
+            items={blockers}
+            accent="var(--critical)"
+            description="Risk to deal · High influence"
+          />
+          <Quadrant
+            title="Decision Makers & Influencers"
+            items={supporters}
+            accent="var(--accent)"
+            description="Key decision authority · Must engage"
+          />
+          <Quadrant
+            title="Users"
+            items={users}
+            accent="var(--warning)"
+            description="Operational · Lower strategic influence"
+          />
         </div>
       </div>
 
-      {/* Summary stats */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {/* Role breakdown */}
-        <div className="bg-[var(--paper)] p-6 rounded-lg border border-[var(--border)] shadow-sm">
-          <h3 className="font-display text-lg font-semibold text-secondary mb-4">Roles</h3>
-          <div className="space-y-2">
-            <div className="flex items-center justify-between text-sm">
-              <span className="text-[var(--muted)]">Total Stakeholders</span>
-              <span className="font-semibold text-ink">{localStakeholders.length}</span>
-            </div>
-            {Object.entries(roleCounts).map(([role, count]) => (
-              <div key={role} className="flex items-center justify-between text-sm">
-                <span className="text-[var(--muted)] capitalize">
-                  {roleLabels[role] || role}
-                  {count > 1 ? 's' : ''}
-                </span>
-                <span className="font-medium text-ink">{count}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Relationship health */}
-        <div className="bg-[var(--paper)] p-6 rounded-lg border border-[var(--border)] shadow-sm">
-          <h3 className="font-display text-lg font-semibold text-secondary mb-4">Relationship Health</h3>
-          <div className="space-y-2">
-            {Object.entries(relationshipCounts).map(([strength, count]) => (
-              <div key={strength} className="flex items-center justify-between text-sm">
-                <div className="flex items-center gap-2">
-                  <div
-                    className="w-3 h-3 rounded-full"
-                    style={{
-                      backgroundColor:
-                        strength === 'strong'
-                          ? 'var(--success)'
-                          : strength === 'moderate'
-                          ? 'var(--warning)'
-                          : strength === 'weak'
-                          ? 'var(--critical)'
-                          : 'var(--muted)',
-                    }}
-                  />
-                  <span className="text-[var(--muted)] capitalize">{strength}</span>
-                </div>
-                <span className="font-medium text-ink">{count}</span>
-              </div>
-            ))}
-          </div>
+      {/* Full Stakeholder Table */}
+      <div>
+        <h2 className="font-display text-2xl font-semibold text-[var(--secondary)] mb-4 pb-2 border-b-[2px] border-[var(--border)]">
+          All Stakeholders
+        </h2>
+        <div className="bg-white rounded-xl border border-[var(--border)] overflow-hidden">
+          <table className="w-full border-collapse text-sm">
+            <thead>
+              <tr className="bg-[var(--secondary)] text-white">
+                <th className="p-4 text-left text-xs uppercase tracking-widest font-semibold">Name</th>
+                <th className="p-4 text-left text-xs uppercase tracking-widest font-semibold">Title</th>
+                <th className="p-4 text-left text-xs uppercase tracking-widest font-semibold">Role</th>
+                <th className="p-4 text-left text-xs uppercase tracking-widest font-semibold">Relationship</th>
+              </tr>
+            </thead>
+            <tbody>
+              {stakeholders.map((s, i) => (
+                <tr
+                  key={i}
+                  className="border-b border-[var(--border)] hover:bg-[var(--highlight)] transition-colors"
+                >
+                  <td className="p-4 font-medium text-[var(--secondary)]">{s.name}</td>
+                  <td className="p-4 text-[var(--muted)]">{s.title || '—'}</td>
+                  <td className="p-4">
+                    <span className="inline-block px-3 py-1 rounded-sm text-xs font-semibold uppercase tracking-wide bg-[var(--highlight)] text-[var(--secondary)]">
+                      {s.role || '—'}
+                    </span>
+                  </td>
+                  <td className="p-4">
+                    <span
+                      className={`inline-block px-3 py-1 rounded-sm text-xs font-semibold uppercase tracking-wide text-white ${
+                        s.relationshipStrength === 'strong'
+                          ? 'bg-[var(--success)]'
+                          : s.relationshipStrength === 'moderate'
+                          ? 'bg-[var(--warning)]'
+                          : s.relationshipStrength === 'weak'
+                          ? 'bg-[var(--critical)]'
+                          : 'bg-[var(--muted)]'
+                      }`}
+                    >
+                      {s.relationshipStrength || 'unknown'}
+                    </span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
