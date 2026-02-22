@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "asianet-satellite-communications-ltd-a-001",
+    "title": "Schedule QBR with CTO and stakeholders",
+    "description": "Conduct quarterly business review to discuss STL platform usage, optimization opportunities, and roadmap alignment for the $423K ARR account.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-02-15",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "asianet-satellite-communications-ltd-a-002",
+    "title": "Prepare renewal proposal with expanded services",
+    "description": "Develop renewal proposal including custom development modules and professional services expansion to drive upsell opportunities ahead of contract renewal.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-31",
+    "createdAt": "2026-01-25"
+  },
+  {
+    "id": "asianet-satellite-communications-ltd-a-003",
+    "title": "Conduct technical training session for operations team",
+    "description": "Organize hands-on training for Asianet's operations team on STL platform advanced features to improve adoption and reduce support tickets.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-04-20",
+    "createdAt": "2026-02-01"
+  },
+  {
+    "id": "asianet-satellite-communications-ltd-a-004",
+    "title": "Review and optimize custom development roadmap",
+    "description": "Evaluate current custom development projects with technical lead to identify scope refinements and additional capability requests for Q2-Q3 planning.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success Manager",
+    "dueDate": "2026-05-15",
+    "createdAt": "2026-02-05"
+  }
+]

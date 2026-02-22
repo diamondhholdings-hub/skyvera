@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "hawaiian-telcom-communications-inc-a-001",
+    "title": "Complete CloudSense CPQ optimization audit",
+    "description": "Reviewed current quote-to-cash workflow and identified three efficiency improvements for reducing sales cycle time by 20%.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-01-15",
+    "createdAt": "2026-01-08"
+  },
+  {
+    "id": "hawaiian-telcom-communications-inc-a-002",
+    "title": "Implement custom CPQ pricing rules for enterprise packages",
+    "description": "Currently configuring tiered discount structures in CloudSense to support Hawaiian Telcom's complex enterprise bundle offerings.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-01-22"
+  },
+  {
+    "id": "hawaiian-telcom-communications-inc-a-003",
+    "title": "Schedule Q2 business review and renewal planning",
+    "description": "Coordinate with VP of Procurement to review ARR performance, feature adoption, and align on renewal terms before expiration.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-15",
+    "createdAt": "2026-02-01"
+  },
+  {
+    "id": "hawaiian-telcom-communications-inc-a-004",
+    "title": "Provide CloudSense advanced reporting training",
+    "description": "Deliver hands-on session to Hawaiian Telcom's finance team on CPQ analytics dashboards and revenue recognition reports.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success",
+    "dueDate": "2026-05-30",
+    "createdAt": "2026-01-28"
+  }
+]

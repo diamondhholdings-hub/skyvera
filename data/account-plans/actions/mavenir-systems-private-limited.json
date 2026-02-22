@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "mavenir-systems-private-limited-a-001",
+    "title": "Schedule QBR with CTO and Technical Leadership",
+    "description": "Conduct quarterly business review to assess STL software delivery performance and discuss optimization opportunities for their custom development engagements.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-01-30",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "mavenir-systems-private-limited-a-002",
+    "title": "Prepare renewal proposal and pricing review",
+    "description": "Develop renewal proposal for STL services contract with updated scope and pricing aligned to their $86,020 ARR commitment.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "mavenir-systems-private-limited-a-003",
+    "title": "Identify expansion opportunities in AI-driven telecom solutions",
+    "description": "Conduct discovery call with Mavenir to explore upsell opportunities for advanced analytics and automation within their STL software framework.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-03-31",
+    "createdAt": "2026-01-18"
+  },
+  {
+    "id": "mavenir-systems-private-limited-a-004",
+    "title": "Document case study on successful STL implementation",
+    "description": "Collaborate with Mavenir to develop a case study highlighting measurable outcomes and ROI from their telecom software professional services engagement.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success",
+    "dueDate": "2026-05-15",
+    "createdAt": "2026-02-01"
+  }
+]

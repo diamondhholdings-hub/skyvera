@@ -1,0 +1,42 @@
+[
+  {
+    "id": "telstra-ges-a-a-001",
+    "title": "Complete CloudSense CPQ platform training for Telstra procurement team",
+    "description": "Conduct hands-on training session to ensure Telstra's team is proficient with CloudSense CPQ's quote configuration and pricing workflows.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-01-30",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "telstra-ges-a-a-002",
+    "title": "Develop custom CPQ pricing rules for Telstra's bundled service offerings",
+    "description": "Configure CloudSense CPQ to automate discount tiers and bundle pricing for Telstra's enterprise telecom packages.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Technical Account Manager",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "telstra-ges-a-a-003",
+    "title": "Schedule quarterly business review to discuss platform ROI and optimization opportunities",
+    "description": "Plan QBR meeting with Telstra stakeholders to review CPQ utilization metrics and identify expansion use cases within their sales organization.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-31",
+    "createdAt": "2026-01-18"
+  },
+  {
+    "id": "telstra-ges-a-a-004",
+    "title": "Document and deploy CloudSense CPQ integration with Telstra's ERP system",
+    "description": "Establish seamless data flow between CloudSense CPQ and Telstra's backend ERP to streamline order-to-cash processes.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Solutions Architect",
+    "dueDate": "2026-04-15",
+    "createdAt": "2026-02-05"
+  }
+]

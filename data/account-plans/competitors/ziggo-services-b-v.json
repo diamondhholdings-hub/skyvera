@@ -1,0 +1,36 @@
+[
+  {
+    "id": "ziggo-services-b-v-c-001",
+    "name": "Amdocs",
+    "type": "our-competitor",
+    "description": "Enterprise BSS/OSS platform offering comprehensive billing, customer care, and revenue management solutions for telecom operators.",
+    "strengths": [
+      "Established market presence with 300+ telecom customers globally",
+      "Deep integration capabilities with legacy telecom systems and ERP platforms",
+      "Comprehensive end-to-end BSS suite covering billing, customer management, and analytics"
+    ],
+    "weaknesses": [
+      "Heavy on-premise deployment model lacks Salesforce-native cloud agility that Skyvera provides",
+      "Complex implementation timelines (12-24 months) compared to Skyvera's rapid Salesforce deployment",
+      "High total cost of ownership with significant customization costs versus Skyvera's low-code configuration"
+    ],
+    "lastUpdated": "2026-02-01"
+  },
+  {
+    "id": "ziggo-services-b-v-c-002",
+    "name": "NetCracker",
+    "type": "our-competitor",
+    "description": "Nokia-owned digital transformation platform providing BSS, OSS, and enterprise software solutions for communications service providers.",
+    "strengths": [
+      "Integrated OSS/BSS stack with network management capabilities for full service lifecycle",
+      "Strong positioning in 5G and IoT billing scenarios with advanced usage-based rating",
+      "Established relationships with major European telecom operators"
+    ],
+    "weaknesses": [
+      "Not Salesforce-native; requires separate integration layers increasing complexity and cost",
+      "Legacy architecture makes CPQ configuration slower than Skyvera's native Salesforce approach",
+      "Steeper learning curve and higher dependency on specialized NetCracker consultants versus Skyvera's Salesforce ecosystem expertise"
+    ],
+    "lastUpdated": "2026-02-01"
+  }
+]

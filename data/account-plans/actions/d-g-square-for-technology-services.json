@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "d-g-square-for-technology-services-a-001",
+    "title": "Complete Q1 QBR with D G Square leadership",
+    "description": "Quarterly business review to discuss NewNet Communications platform utilization, SS7/LTE/IMS performance metrics, and 2026 growth initiatives.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-15",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "d-g-square-for-technology-services-a-002",
+    "title": "Evaluate next-gen signaling software upgrade path",
+    "description": "Solutions Engineer to assess D G Square's current signaling infrastructure and prepare technical roadmap for next-generation platform migration.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-04-30",
+    "createdAt": "2026-02-05"
+  },
+  {
+    "id": "d-g-square-for-technology-services-a-003",
+    "title": "Prepare annual renewal proposal for $209,062 ARR contract",
+    "description": "Develop renewal documentation including pricing terms, performance SLAs, and any upsell opportunities for IMS and next-gen signaling modules.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-05-15",
+    "createdAt": "2026-01-25"
+  },
+  {
+    "id": "d-g-square-for-technology-services-a-004",
+    "title": "Schedule technical training on SS7 optimization best practices",
+    "description": "Coordinate with Customer Success to deliver training session to D G Square's operations team on advanced SS7 configuration and network performance tuning.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success",
+    "dueDate": "2026-06-10",
+    "createdAt": "2026-02-10"
+  }
+]

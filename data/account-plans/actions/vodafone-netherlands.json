@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "vodafone-netherlands-a-001",
+    "title": "Complete CloudSense CPQ optimization audit",
+    "description": "Review current CPQ configuration, quote-to-cash cycle metrics, and identify opportunities to reduce order processing time by 20%.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-01-30",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "vodafone-netherlands-a-002",
+    "title": "Conduct Q1 business review with Vodafone procurement and operations leadership",
+    "description": "Schedule executive QBR to discuss CPQ ROI, pricing strategy optimization, and roadmap alignment for H2 2026 initiatives.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-01-10"
+  },
+  {
+    "id": "vodafone-netherlands-a-003",
+    "title": "Prepare renewal proposal with expanded CPQ module pricing",
+    "description": "Develop comprehensive renewal proposal for March 2026 including advanced pricing rules and bundling configuration modules to drive upsell opportunity.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-15",
+    "createdAt": "2026-02-01"
+  },
+  {
+    "id": "vodafone-netherlands-a-004",
+    "title": "Schedule post-implementation training on new CPQ reporting dashboards",
+    "description": "Coordinate with Customer Success to deliver training to Vodafone's revenue operations team on advanced analytics and reporting capabilities.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success Manager",
+    "dueDate": "2026-04-30",
+    "createdAt": "2026-02-05"
+  }
+]

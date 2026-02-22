@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "mtn-sudan-company-limited-a-001",
+    "title": "Complete initial discovery call with MTN Sudan technical leadership",
+    "description": "Schedule and conduct discovery meeting to understand current STL engagement scope, pain points, and identify expansion opportunities for custom development services.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-01-30",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "mtn-sudan-company-limited-a-002",
+    "title": "Develop business case for STL services expansion",
+    "description": "Prepare ROI analysis and proposal for expanding from current STL engagement to include additional custom development modules for MTN Sudan's network optimization platform.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "mtn-sudan-company-limited-a-003",
+    "title": "Schedule quarterly business review with MTN Sudan stakeholders",
+    "description": "Coordinate QBR meeting with MTN Sudan's finance, operations, and IT teams to review STL service utilization and discuss strategic roadmap for 2026.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-31",
+    "createdAt": "2026-01-22"
+  },
+  {
+    "id": "mtn-sudan-company-limited-a-004",
+    "title": "Identify and qualify additional STL service opportunities",
+    "description": "Conduct stakeholder mapping and needs assessment to uncover adjacent software development and professional services opportunities within MTN Sudan's technology roadmap.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success Manager",
+    "dueDate": "2026-04-15",
+    "createdAt": "2026-01-18"
+  }
+]

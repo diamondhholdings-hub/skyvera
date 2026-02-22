@@ -1,0 +1,42 @@
+[
+  {
+    "id": "unidad-editorial-s-a-a-001",
+    "title": "Complete CloudSense CPQ optimization review",
+    "description": "Analyzed current quote-to-cash process and identified 3 configuration improvements to reduce quote cycle time by 25%.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-01-31",
+    "createdAt": "2026-01-10"
+  },
+  {
+    "id": "unidad-editorial-s-a-a-002",
+    "title": "Implement dynamic pricing rules in CloudSense CPQ",
+    "description": "Currently configuring volume-based and contract-term pricing rules to align with Unidad Editorial's new segmented product portfolio.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "unidad-editorial-s-a-a-003",
+    "title": "Schedule Q2 business review and renewal planning",
+    "description": "Plan strategic QBR with Unidad Editorial stakeholders to discuss 2026 roadmap, feature adoption, and renewal discussions ahead of June ARR cycle.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-15",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "unidad-editorial-s-a-a-004",
+    "title": "Develop customer success metrics dashboard",
+    "description": "Build custom Salesforce dashboard tracking CPQ adoption metrics, quote accuracy, and time-to-revenue to demonstrate ROI for Unidad Editorial.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success Manager",
+    "dueDate": "2026-05-30",
+    "createdAt": "2026-02-01"
+  }
+]

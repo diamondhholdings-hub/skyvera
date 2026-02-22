@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "ericsson-thailand-ltd-a-001",
+    "title": "Complete STL platform migration to v3.2",
+    "description": "Finalize the upgrade of Ericsson Thailand's STL custom development environment to the latest platform version with enhanced telecom APIs.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-01-31",
+    "createdAt": "2026-01-05"
+  },
+  {
+    "id": "ericsson-thailand-ltd-a-002",
+    "title": "Schedule Q2 QBR with engineering leadership",
+    "description": "Coordinate quarterly business review with Ericsson Thailand's CTO and procurement to discuss Q2 roadmap alignment and renewal strategy for $152K ARR contract.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-15",
+    "createdAt": "2026-02-01"
+  },
+  {
+    "id": "ericsson-thailand-ltd-a-003",
+    "title": "Develop renewal proposal with expanded STL services",
+    "description": "Prepare a tiered renewal proposal highlighting additional professional services modules and custom development capacity for Ericsson Thailand's growing telecom infrastructure needs.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-30",
+    "createdAt": "2026-02-01"
+  },
+  {
+    "id": "ericsson-thailand-ltd-a-004",
+    "title": "Conduct health check on current STL implementation",
+    "description": "Execute a technical assessment of Ericsson Thailand's current STL usage patterns, user adoption metrics, and identify optimization opportunities for cost efficiency.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success Manager",
+    "dueDate": "2026-05-15",
+    "createdAt": "2026-02-01"
+  }
+]

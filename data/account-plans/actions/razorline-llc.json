@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "razorline-llc-a-001",
+    "title": "Schedule QBR with RAZORLINE leadership",
+    "description": "Conduct quarterly business review to assess Kandy UCaaS platform usage, SIP trunk utilization, and identify upsell opportunities for messaging and WebRTC capabilities.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-15",
+    "createdAt": "2026-01-10"
+  },
+  {
+    "id": "razorline-llc-a-002",
+    "title": "Complete renewal proposal for ARR $330,189",
+    "description": "Prepare and finalize renewal proposal including current contract terms, pricing adjustments, and value-added services to present before Q2 renewal date.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-30",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "razorline-llc-a-003",
+    "title": "Audit SIP trunk configuration and optimization",
+    "description": "Review current SIP trunk setup with Solutions Engineer to identify performance improvements and cost optimization opportunities within their existing deployment.",
+    "status": "done",
+    "priority": "medium",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-01-08"
+  },
+  {
+    "id": "razorline-llc-a-004",
+    "title": "Develop WebRTC and messaging expansion proposal",
+    "description": "Create business case and technical roadmap for expanding RAZORLINE's use of WebRTC capabilities and CPaaS messaging services to drive incremental ARR growth.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-05-15",
+    "createdAt": "2026-01-20"
+  }
+]

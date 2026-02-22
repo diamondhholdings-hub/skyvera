@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "accenture-singapore-a-001",
+    "title": "Complete CloudSense CPQ implementation discovery workshop",
+    "description": "Conduct initial discovery session with Accenture Singapore stakeholders to identify BSS/CPQ requirements and integration points with their telecom operations.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-02-15",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "accenture-singapore-a-002",
+    "title": "Develop CloudSense CPQ configuration roadmap",
+    "description": "Create detailed implementation roadmap for CloudSense CPQ customization aligned with Accenture Singapore's telecom service catalog and quoting workflows.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-10",
+    "createdAt": "2026-01-25"
+  },
+  {
+    "id": "accenture-singapore-a-003",
+    "title": "Schedule executive business review with Accenture leadership",
+    "description": "Book QBR with Accenture Singapore CTO and procurement stakeholders to review CloudSense CPQ value proposition and address competitive positioning.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-20",
+    "createdAt": "2026-02-01"
+  },
+  {
+    "id": "accenture-singapore-a-004",
+    "title": "Prepare ROI analysis and pricing proposal for CPQ expansion",
+    "description": "Develop business case demonstrating cost savings and revenue acceleration potential through CloudSense CPQ deployment across Accenture's telecom consulting practice.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success",
+    "dueDate": "2026-05-15",
+    "createdAt": "2026-02-03"
+  }
+]

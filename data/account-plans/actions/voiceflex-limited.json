@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "voiceflex-limited-a-001",
+    "title": "Schedule QBR with CTO and procurement stakeholders",
+    "description": "Quarterly business review to discuss Kandy UCaaS platform utilization, SIP trunking performance metrics, and renewal strategy for $187,890 ARR account.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-15",
+    "createdAt": "2026-01-28"
+  },
+  {
+    "id": "voiceflex-limited-a-002",
+    "title": "Complete technical health audit of WebRTC and messaging implementation",
+    "description": "Solutions Engineer to validate current Kandy deployment performance, identify optimization opportunities, and document findings for Q1 QBR presentation.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-02-01"
+  },
+  {
+    "id": "voiceflex-limited-a-003",
+    "title": "Prepare renewal proposal with platform expansion recommendations",
+    "description": "Develop proposal highlighting advanced CPaaS capabilities and additional SIP trunking tier options to drive ARR growth and customer success metrics.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-30",
+    "createdAt": "2026-01-30"
+  },
+  {
+    "id": "voiceflex-limited-a-004",
+    "title": "Deliver Kandy UCaaS best practices training to end-user team",
+    "description": "Customer Success to conduct on-site or virtual training session covering messaging, WebRTC integrations, and SIP trunk management to maximize platform adoption.",
+    "status": "done",
+    "priority": "medium",
+    "owner": "Customer Success Manager",
+    "dueDate": "2026-02-15",
+    "createdAt": "2026-01-25"
+  }
+]

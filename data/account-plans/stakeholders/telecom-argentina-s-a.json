@@ -1,0 +1,62 @@
+[
+  {
+    "id": "telecom-argentina-s-a-s-001",
+    "name": "Carlos Alberto Mendez",
+    "title": "VP of Network Infrastructure & Core Systems",
+    "role": "decision-maker",
+    "relationshipStrength": "strong",
+    "email": "carlos.mendez@telecom-argentina.com.ar",
+    "notes": "Oversees SS7 and IMS network modernization initiatives. Prioritizes reducing legacy circuit dependencies and improving roaming partner interoperability across LATAM region.",
+    "interests": [
+      "Network modernization",
+      "Cost reduction",
+      "Roaming partnerships"
+    ],
+    "lastInteraction": "2025-11-15"
+  },
+  {
+    "id": "telecom-argentina-s-a-s-002",
+    "name": "Maria Fernanda Lopez",
+    "title": "Director of Signaling & Telecom Standards",
+    "role": "champion",
+    "relationshipStrength": "strong",
+    "email": "maria.lopez@telecom-argentina.com.ar",
+    "notes": "Technical champion driving LTE and next-gen signaling adoption. Actively evaluates Diameter and SIP implementations to enhance SMS interworking and eliminate legacy protocol dependencies.",
+    "interests": [
+      "LTE signaling optimization",
+      "SMS interworking",
+      "Protocol modernization"
+    ],
+    "lastInteraction": "2025-10-22"
+  },
+  {
+    "id": "telecom-argentina-s-a-s-003",
+    "name": "Jorge Ramirez",
+    "title": "Senior Manager, Network Operations Center",
+    "role": "user",
+    "relationshipStrength": "moderate",
+    "email": "jorge.ramirez@telecom-argentina.com.ar",
+    "notes": "Manages day-to-day NOC operations and carrier interconnection. Concerned with reliability, monitoring capabilities, and ease of migration from existing SS7 infrastructure.",
+    "interests": [
+      "Operational stability",
+      "Network monitoring",
+      "Vendor support"
+    ],
+    "lastInteraction": "2025-09-18"
+  },
+  {
+    "id": "telecom-argentina-s-a-s-004",
+    "name": "Patricia Gonzalez",
+    "title": "Head of Regulatory & Compliance",
+    "role": "influencer",
+    "relationshipStrength": "moderate",
+    "email": "patricia.gonzalez@telecom-argentina.com.ar",
+    "notes": "Ensures solutions comply with ENACOM regulations and Argentine telecom standards. Influenced by vendor's compliance certifications and interoperability with regional carrier networks.",
+    "interests": [
+      "Regulatory compliance",
+      "Interoperability standards",
+      "Data security"
+    ],
+    "lastInteraction": "2025-08-30"
+  }
+]

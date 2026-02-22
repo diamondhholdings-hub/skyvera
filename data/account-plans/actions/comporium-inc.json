@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "comporium-inc-a-001",
+    "title": "Schedule QBR with CTO and Finance Director",
+    "description": "Conduct quarterly business review to discuss Kandy UCaaS platform usage metrics, cost optimization opportunities, and roadmap alignment for 2026.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-02-15",
+    "createdAt": "2026-01-10"
+  },
+  {
+    "id": "comporium-inc-a-002",
+    "title": "Prepare renewal proposal with SIP trunking expansion",
+    "description": "Draft renewal proposal including upgrade recommendations for SIP trunking capacity and advanced messaging features to support their growing communication needs.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-30",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "comporium-inc-a-003",
+    "title": "Conduct WebRTC optimization workshop",
+    "description": "Schedule technical workshop with their development team to optimize WebRTC implementation and explore advanced CPaaS features for their customer-facing applications.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-04-15",
+    "createdAt": "2026-01-22"
+  },
+  {
+    "id": "comporium-inc-a-004",
+    "title": "Identify and engage executive sponsor for contract renewal",
+    "description": "Build relationship with VP of Operations to secure executive alignment and commitment for annual contract renewal and potential multi-year agreement discussion.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-05-01",
+    "createdAt": "2026-02-01"
+  }
+]

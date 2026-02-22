@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "rakuten-marketing-a-001",
+    "title": "Complete CloudSense CPQ platform training for procurement team",
+    "description": "Rakuten Marketing's procurement team needs hands-on training on advanced CPQ features to optimize their quote-to-cash cycle and reduce manual touchpoints.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-01-30",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "rakuten-marketing-a-002",
+    "title": "Configure custom pricing rules for enterprise telecom bundles",
+    "description": "Build out dynamic pricing configurations within CloudSense CPQ to support Rakuten Marketing's complex telecom service bundles and volume discounts.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "rakuten-marketing-a-003",
+    "title": "Schedule Q2 business review and renewal discussion",
+    "description": "Conduct quarterly business review with Rakuten Marketing stakeholders to review platform ROI, discuss expansion opportunities, and prepare renewal proposal for $281K+ ARR contract.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-15",
+    "createdAt": "2026-02-05"
+  },
+  {
+    "id": "rakuten-marketing-a-004",
+    "title": "Evaluate integration between CloudSense CPQ and existing CRM system",
+    "description": "Assess feasibility and requirements for deeper CRM integration to streamline quote handoff and improve visibility into sales pipeline for Rakuten Marketing.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-05-30",
+    "createdAt": "2026-02-10"
+  }
+]

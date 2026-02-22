@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "masergy-a-001",
+    "title": "Complete CloudSense CPQ implementation review",
+    "description": "Document current CloudSense CPQ configuration, customizations, and identify optimization opportunities for Masergy's telecom quote workflows.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-01-31",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "masergy-a-002",
+    "title": "Establish baseline metrics and success criteria",
+    "description": "Work with Masergy stakeholders to define KPIs for CPQ adoption, quote cycle time reduction, and pricing accuracy improvements.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-02-01"
+  },
+  {
+    "id": "masergy-a-003",
+    "title": "Schedule quarterly business review with procurement team",
+    "description": "Set up QBR meeting to discuss CloudSense CPQ ROI, expand usage across additional product lines, and explore upsell opportunities.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-15",
+    "createdAt": "2026-02-01"
+  },
+  {
+    "id": "masergy-a-004",
+    "title": "Develop CPQ training plan for new sales team members",
+    "description": "Create onboarding materials and schedule training sessions to ensure consistent CloudSense platform adoption across Masergy's sales organization.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success",
+    "dueDate": "2026-05-30",
+    "createdAt": "2026-01-20"
+  }
+]

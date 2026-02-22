@@ -1,0 +1,42 @@
+[
+  {
+    "id": "liberty-global-services-b-v-nl-a-001",
+    "title": "Complete CloudSense CPQ optimization review",
+    "description": "Finalized assessment of quote-to-cash workflow efficiency and identified 3 configuration improvements to reduce quote generation time by 40%.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-01-30",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "liberty-global-services-b-v-nl-a-002",
+    "title": "Conduct quarterly business review with procurement stakeholders",
+    "description": "Schedule and prepare QBR presentation covering CPQ usage metrics, cost optimization opportunities, and renewal roadmap for Liberty Global's three subsidiary regions.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "liberty-global-services-b-v-nl-a-003",
+    "title": "Prepare renewal proposal with 12-month pricing guarantee",
+    "description": "Develop customized renewal package leveraging 3-year commitment discount and bundled professional services to address expansion into Netherlands market operations.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-31",
+    "createdAt": "2026-01-22"
+  },
+  {
+    "id": "liberty-global-services-b-v-nl-a-004",
+    "title": "Schedule advanced CPQ training for new pricing team members",
+    "description": "Coordinate hands-on training session covering advanced quote customization, multi-currency pricing rules, and regulatory compliance features for recently hired telco pricing analysts.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success",
+    "dueDate": "2026-04-15",
+    "createdAt": "2026-02-01"
+  }
+]

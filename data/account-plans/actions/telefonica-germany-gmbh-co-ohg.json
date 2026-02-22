@@ -1,0 +1,42 @@
+[
+  {
+    "id": "telefonica-germany-gmbh-co-ohg-a-001",
+    "title": "Complete CloudSense CPQ optimization review",
+    "description": "Conducted comprehensive audit of Telefonica Germany's CPQ configuration to identify efficiency gains and cost optimization opportunities across their quote-to-cash process.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-01-15",
+    "createdAt": "2026-01-05"
+  },
+  {
+    "id": "telefonica-germany-gmbh-co-ohg-a-002",
+    "title": "Schedule executive QBR with VP of Operations",
+    "description": "Prepare and execute quarterly business review to align on 2026 expansion plans, CloudSense CPQ roadmap enhancements, and ARR growth targets for the $1.84M account.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-01-10"
+  },
+  {
+    "id": "telefonica-germany-gmbh-co-ohg-a-003",
+    "title": "Develop renewal proposal with enhanced CPQ features",
+    "description": "Build renewal package including advanced bundling capabilities, AI-driven pricing recommendations, and custom reporting dashboards to drive net revenue expansion.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-30",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "telefonica-germany-gmbh-co-ohg-a-004",
+    "title": "Conduct user adoption training for new team members",
+    "description": "Schedule and deliver CloudSense CPQ training sessions for Telefonica Germany's recently expanded procurement and sales operations team to ensure platform proficiency.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success",
+    "dueDate": "2026-04-15",
+    "createdAt": "2026-02-01"
+  }
+]

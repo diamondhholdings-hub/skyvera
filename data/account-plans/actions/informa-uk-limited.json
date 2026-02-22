@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "informa-uk-limited-a-001",
+    "title": "Complete CloudSense CPQ optimization review",
+    "description": "Finalized comprehensive audit of Informa's CPQ configuration to identify unused features and streamline their quote-to-cash process.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-01-15",
+    "createdAt": "2026-01-08"
+  },
+  {
+    "id": "informa-uk-limited-a-002",
+    "title": "Implement advanced pricing rules for enterprise tier customers",
+    "description": "Currently configuring dynamic pricing logic in CloudSense CPQ to support Informa's complex multi-tier discount structure for their UK enterprise accounts.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "informa-uk-limited-a-003",
+    "title": "Schedule quarterly business review with procurement and finance stakeholders",
+    "description": "Secure meeting with Informa's procurement and finance teams to review ROI metrics and renewal strategy for the $1.65M contract.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-15",
+    "createdAt": "2026-01-10"
+  },
+  {
+    "id": "informa-uk-limited-a-004",
+    "title": "Develop custom CPQ training program for Informa sales team",
+    "description": "Create tailored CloudSense CPQ training materials to improve quote accuracy and reduce sales cycle time for Informa's regional teams.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success Manager",
+    "dueDate": "2026-04-30",
+    "createdAt": "2026-02-05"
+  }
+]

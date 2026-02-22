@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "coresite-a-001",
+    "title": "Complete CloudSense CPQ optimization review",
+    "description": "Finalized assessment of CoreSite's current CPQ configuration and identified 3 efficiency improvements for quote generation workflows.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-02-15",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "coresite-a-002",
+    "title": "Schedule renewal QBR with VP of Finance",
+    "description": "Prepare and conduct quarterly business review to discuss 2026 expansion opportunities and validate ROI on CloudSense CPQ investment.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-30",
+    "createdAt": "2026-01-22"
+  },
+  {
+    "id": "coresite-a-003",
+    "title": "Develop service bundling proposal for fiber packages",
+    "description": "Create custom CloudSense CPQ configuration to enable dynamic bundling of fiber connectivity and managed services offerings.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-15",
+    "createdAt": "2026-02-01"
+  },
+  {
+    "id": "coresite-a-004",
+    "title": "Train sales operations team on new CPQ reporting dashboard",
+    "description": "Conduct hands-on training session for CoreSite sales ops to leverage CloudSense reporting analytics for pipeline visibility.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success",
+    "dueDate": "2026-05-10",
+    "createdAt": "2026-02-03"
+  }
+]

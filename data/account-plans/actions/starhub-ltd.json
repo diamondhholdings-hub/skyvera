@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "starhub-ltd-a-001",
+    "title": "Complete Q1 Business Review with StarHub Leadership",
+    "description": "Conduct comprehensive QBR covering CloudSense CPQ utilization, ROI metrics, and strategic roadmap alignment for the upcoming fiscal year.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-15",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "starhub-ltd-a-002",
+    "title": "Implement Advanced CPQ Automation for Bundle Pricing",
+    "description": "Deploy custom pricing rules and automation workflows in CloudSense CPQ to streamline StarHub's complex telecom bundle configurations and reduce quote cycle time.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-04-30",
+    "createdAt": "2026-02-05"
+  },
+  {
+    "id": "starhub-ltd-a-003",
+    "title": "Prepare Renewal Proposal and Value Assessment",
+    "description": "Develop comprehensive renewal proposal highlighting cost savings achieved through CPQ optimization and propose expansion modules for billing and revenue assurance.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-05-20",
+    "createdAt": "2026-01-28"
+  },
+  {
+    "id": "starhub-ltd-a-004",
+    "title": "Schedule Executive Sponsor Training on CPQ Best Practices",
+    "description": "Organize advanced training session for StarHub's procurement and sales leadership on CloudSense CPQ best practices and industry-specific use cases.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success",
+    "dueDate": "2026-06-10",
+    "createdAt": "2026-02-01"
+  }
+]

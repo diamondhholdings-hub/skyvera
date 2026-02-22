@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "a1-telekom-austria-ag-a-001",
+    "title": "Complete CloudSense CPQ optimization audit",
+    "description": "Reviewed current quote-to-cash process and identified three workflow improvements to reduce sales cycle time by 15%.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-01-31",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "a1-telekom-austria-ag-a-002",
+    "title": "Implement advanced pricing rules in CloudSense CPQ",
+    "description": "Currently configuring dynamic bundling and promotional discounting rules to align with A1's multi-product telecom service offerings.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Customer Success Manager",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "a1-telekom-austria-ag-a-003",
+    "title": "Schedule QBR and ARR expansion roadmap",
+    "description": "Plan quarterly business review with A1 Telekom Austria stakeholders to review $2.2M ARR performance and identify upsell opportunities in enterprise mobility solutions.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-15",
+    "createdAt": "2026-01-18"
+  },
+  {
+    "id": "a1-telekom-austria-ag-a-004",
+    "title": "Prepare CloudSense CPQ Salesforce integration health check",
+    "description": "Document API performance metrics, custom field mappings, and data sync health between CloudSense and their Salesforce environment ahead of Q2 renewal discussions.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-04-30",
+    "createdAt": "2026-02-05"
+  }
+]

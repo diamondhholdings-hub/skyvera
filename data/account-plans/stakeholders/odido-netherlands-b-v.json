@@ -1,0 +1,62 @@
+[
+  {
+    "id": "odido-netherlands-b-v-s-001",
+    "name": "Dirk van den Berg",
+    "title": "VP Network Operations & Infrastructure",
+    "role": "decision-maker",
+    "relationshipStrength": "strong",
+    "email": "dirk.vandenberg@odido.nl",
+    "notes": "Oversees core network architecture and signaling infrastructure modernization. Prioritizes SS7/Diameter optimization to reduce intercarrier roaming fraud and improve 4G/5G signaling capacity for the Dutch market.",
+    "interests": [
+      "Network infrastructure modernization",
+      "Signaling security and fraud prevention",
+      "Cost reduction through software optimization"
+    ],
+    "lastInteraction": "2025-11-14"
+  },
+  {
+    "id": "odido-netherlands-b-v-s-002",
+    "name": "Marieke Jansen",
+    "title": "Director, Telecom Services & Roaming",
+    "role": "champion",
+    "relationshipStrength": "strong",
+    "email": "marieke.jansen@odido.nl",
+    "notes": "Manages international roaming agreements and SMS interworking with 120+ carriers across Europe. Advocates for IMS convergence to streamline voice, SMS, and data signaling across NewNet Communications platforms.",
+    "interests": [
+      "International roaming revenue optimization",
+      "SMS interworking efficiency",
+      "IMS core network convergence"
+    ],
+    "lastInteraction": "2025-09-22"
+  },
+  {
+    "id": "odido-netherlands-b-v-s-003",
+    "name": "Pieter Mertens",
+    "title": "Senior Manager, Signaling Systems & Standards",
+    "role": "influencer",
+    "relationshipStrength": "moderate",
+    "email": "pieter.mertens@odido.nl",
+    "notes": "Responsible for 3GPP standards compliance and next-gen signaling architecture roadmap. Evaluates LTE/5G signaling protocol updates and seeks vendor solutions that support Diameter/SIP scalability without legacy SS7 dependencies.",
+    "interests": [
+      "5G signaling architecture",
+      "3GPP standards compliance",
+      "Legacy system deprecation planning"
+    ],
+    "lastInteraction": "2025-10-03"
+  },
+  {
+    "id": "odido-netherlands-b-v-s-004",
+    "name": "Anke Klomp",
+    "title": "Head of Network Security & Compliance",
+    "role": "blocker",
+    "relationshipStrength": "weak",
+    "email": "anke.klomp@odido.nl",
+    "notes": "Focuses on GDPR compliance, signaling security, and threat mitigation for telecom infrastructure. Requires robust security certifications and audit trails for any signaling software changes, which may slow NewNet adoption if security requirements are not clearly demonstrated.",
+    "interests": [
+      "Network security and fraud detection",
+      "GDPR and data protection",
+      "Vendor security audit compliance"
+    ],
+    "lastInteraction": "2025-08-19"
+  }
+]

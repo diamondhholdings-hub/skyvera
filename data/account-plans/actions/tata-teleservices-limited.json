@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "tata-teleservices-limited-a-001",
+    "title": "Complete STL software integration performance audit",
+    "description": "Finished comprehensive review of STL custom development modules deployed in Tata's network infrastructure to identify optimization opportunities.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-01-30",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "tata-teleservices-limited-a-002",
+    "title": "Negotiate renewal terms and expand STL services scope",
+    "description": "In-progress discussions with procurement to secure contract extension for existing STL professional services and add custom development modules for next-gen 5G infrastructure.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-15",
+    "createdAt": "2026-02-01"
+  },
+  {
+    "id": "tata-teleservices-limited-a-003",
+    "title": "Schedule quarterly business review with VP of Network Operations",
+    "description": "Coordinate QBR meeting to present STL ROI metrics, review service performance against SLAs, and discuss roadmap alignment with Tata's telecom modernization initiatives.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-20",
+    "createdAt": "2026-01-28"
+  },
+  {
+    "id": "tata-teleservices-limited-a-004",
+    "title": "Prepare case study showcasing STL implementation success metrics",
+    "description": "Document and compile TCO savings, deployment timeline, and operational efficiency gains from current STL engagement to support reference-ability and upsell opportunities.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success",
+    "dueDate": "2026-05-10",
+    "createdAt": "2026-02-05"
+  }
+]

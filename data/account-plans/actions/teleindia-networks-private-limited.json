@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "teleindia-networks-private-limited-a-001",
+    "title": "Schedule QBR with CTO and Finance Director",
+    "description": "Conduct quarterly business review to assess STL software implementation ROI and discuss expansion opportunities for custom development services.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-02-15",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "teleindia-networks-private-limited-a-002",
+    "title": "Prepare renewal proposal with upsell components",
+    "description": "Develop comprehensive renewal proposal for $465,401 ARR contract including recommended add-on modules and professional services expansion.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-30",
+    "createdAt": "2026-01-25"
+  },
+  {
+    "id": "teleindia-networks-private-limited-a-003",
+    "title": "Conduct technical health check with engineering team",
+    "description": "Assess current STL implementation performance and identify optimization opportunities with Teleindia's technical stakeholders.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-04-10",
+    "createdAt": "2026-02-01"
+  },
+  {
+    "id": "teleindia-networks-private-limited-a-004",
+    "title": "Evaluate custom development project requirements for H2 2026",
+    "description": "Gather requirements from Teleindia for potential custom development initiatives to forecast revenue and resource allocation for the second half of 2026.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success Manager",
+    "dueDate": "2026-05-20",
+    "createdAt": "2026-02-05"
+  }
+]

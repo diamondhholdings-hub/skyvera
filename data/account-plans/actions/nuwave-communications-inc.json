@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "nuwave-communications-inc-a-001",
+    "title": "Complete Q1 2026 QBR with NUWAVE leadership",
+    "description": "Schedule and conduct quarterly business review to discuss platform usage metrics, ROI on Kandy UCaaS deployment, and identify expansion opportunities across their communication channels.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-15",
+    "createdAt": "2026-01-10"
+  },
+  {
+    "id": "nuwave-communications-inc-a-002",
+    "title": "Evaluate SIP trunking optimization and cost reduction",
+    "description": "Work with Solutions Engineer to analyze NUWAVE's current SIP trunk utilization and propose cost-saving configurations without impacting call quality or reliability.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-04-30",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "nuwave-communications-inc-a-003",
+    "title": "Prepare renewal proposal for ARR expansion",
+    "description": "Develop comprehensive renewal proposal incorporating messaging API upgrades, WebRTC enhancements, and additional concurrent user licenses to support their projected growth.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-05-15",
+    "createdAt": "2026-02-01"
+  },
+  {
+    "id": "nuwave-communications-inc-a-004",
+    "title": "Schedule technical deep-dive on CPaaS integration roadmap",
+    "description": "Coordinate with NUWAVE's development team to review their CPaaS integration plans and align Kandy platform updates with their product roadmap for the next 12 months.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-04-20",
+    "createdAt": "2026-01-20"
+  }
+]

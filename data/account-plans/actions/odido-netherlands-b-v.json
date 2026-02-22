@@ -1,0 +1,42 @@
+[
+  {
+    "id": "odido-netherlands-b-v-a-001",
+    "title": "Complete SS7 infrastructure audit and optimization report",
+    "description": "Delivered comprehensive assessment of Odido's SS7 signaling network performance and identified upgrade pathways for legacy system modernization.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-01-15",
+    "createdAt": "2026-01-08"
+  },
+  {
+    "id": "odido-netherlands-b-v-a-002",
+    "title": "Implement IMS migration roadmap and training program",
+    "description": "Currently executing phased IMS deployment across Odido's network with technical team enablement and change management support in progress.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-30",
+    "createdAt": "2026-01-10"
+  },
+  {
+    "id": "odido-netherlands-b-v-a-003",
+    "title": "Schedule annual QBR with Odido executive leadership",
+    "description": "Plan and conduct quarterly business review to discuss network performance metrics, next-gen signaling adoption progress, and expansion opportunities for 2026.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-15",
+    "createdAt": "2026-01-12"
+  },
+  {
+    "id": "odido-netherlands-b-v-a-004",
+    "title": "Prepare renewal proposal and pricing analysis",
+    "description": "Develop comprehensive renewal proposal for Odido's NewNet Communications suite including LTE expansion modules and next-gen signaling platform enhancements.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Account Manager",
+    "dueDate": "2026-05-31",
+    "createdAt": "2026-02-01"
+  }
+]

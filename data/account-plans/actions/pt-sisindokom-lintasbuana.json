@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "pt-sisindokom-lintasbuana-a-001",
+    "title": "Complete STL custom development project handoff",
+    "description": "Finalize knowledge transfer documentation and conduct final deployment validation for the completed telecom software customization module.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-01-30",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "pt-sisindokom-lintasbuana-a-002",
+    "title": "Negotiate annual support and maintenance agreement renewal",
+    "description": "Prepare and present STL software support renewal proposal with performance metrics from the past year to secure continued partnership through 2027.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "pt-sisindokom-lintasbuana-a-003",
+    "title": "Schedule quarterly business review with executive stakeholders",
+    "description": "Coordinate QBR meeting with PT. Sisindokom's CTO and procurement lead to review usage metrics, discuss expansion opportunities, and align on strategic technology roadmap.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-15",
+    "createdAt": "2026-01-22"
+  },
+  {
+    "id": "pt-sisindokom-lintasbuana-a-004",
+    "title": "Evaluate upgrade path for additional STL modules",
+    "description": "Conduct needs assessment to identify cross-sell opportunities for complementary telecom software modules that address emerging network capacity requirements.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-04-30",
+    "createdAt": "2026-02-05"
+  }
+]

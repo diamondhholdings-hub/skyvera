@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "city-of-los-angeles-a-001",
+    "title": "Complete Kandy UCaaS platform onboarding and training",
+    "description": "Ensure City of Los Angeles IT team is fully trained on Kandy's WebRTC, SIP trunking, and messaging capabilities for seamless municipal communications deployment.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Customer Success Manager",
+    "dueDate": "2026-02-15",
+    "createdAt": "2026-01-10"
+  },
+  {
+    "id": "city-of-los-angeles-a-002",
+    "title": "Develop CPaaS integration roadmap with city departments",
+    "description": "Work with City of Los Angeles to map Kandy messaging and communication APIs to internal departmental workflows and identify quick-win integration opportunities.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-03-30",
+    "createdAt": "2026-01-08"
+  },
+  {
+    "id": "city-of-los-angeles-a-003",
+    "title": "Schedule quarterly business review and usage optimization session",
+    "description": "Align with City of Los Angeles stakeholders to review platform adoption metrics, identify optimization opportunities, and discuss expansion to additional city departments.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-15",
+    "createdAt": "2026-01-12"
+  },
+  {
+    "id": "city-of-los-angeles-a-004",
+    "title": "Prepare SIP trunking performance and cost analysis report",
+    "description": "Generate detailed analytics on SIP trunking utilization, cost savings versus legacy systems, and recommendations for scaling across City of Los Angeles municipal offices.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Account Manager",
+    "dueDate": "2026-05-01",
+    "createdAt": "2026-01-15"
+  }
+]

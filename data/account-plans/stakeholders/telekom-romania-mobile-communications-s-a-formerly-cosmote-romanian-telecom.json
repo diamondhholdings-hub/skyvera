@@ -1,0 +1,62 @@
+[
+  {
+    "id": "telekom-romania-mobile-communications-s-a-formerly-cosmote-romanian-telecom-s-001",
+    "name": "Andrei Popescu",
+    "title": "VP of Network Operations & Infrastructure",
+    "role": "decision-maker",
+    "relationshipStrength": "strong",
+    "email": "andrei.popescu@telekom.ro",
+    "notes": "Oversees all SS7 and Diameter signaling infrastructure for Romania and Balkans region. Prioritizes reducing roaming fraud and improving SMS interworking reliability across operators.",
+    "interests": [
+      "SS7/Diameter optimization",
+      "Network security & fraud prevention",
+      "Cost reduction through signaling efficiency"
+    ],
+    "lastInteraction": "2025-11-15"
+  },
+  {
+    "id": "telekom-romania-mobile-communications-s-a-formerly-cosmote-romanian-telecom-s-002",
+    "name": "Elena Cristescu",
+    "title": "Director of Core Network Engineering",
+    "role": "champion",
+    "relationshipStrength": "strong",
+    "email": "elena.cristescu@telekom.ro",
+    "notes": "Leads the technical evaluation and deployment of next-gen signaling solutions including IMS and SIP core network upgrades. Advocates strongly for modernizing legacy SS7 systems to reduce operational overhead.",
+    "interests": [
+      "IMS/SIP migration",
+      "NextGen signaling platforms",
+      "Network automation & orchestration"
+    ],
+    "lastInteraction": "2025-10-22"
+  },
+  {
+    "id": "telekom-romania-mobile-communications-s-a-formerly-cosmote-romanian-telecom-s-003",
+    "name": "Mihai Georgescu",
+    "title": "Senior Manager, Roaming & Interconnect",
+    "role": "influencer",
+    "relationshipStrength": "moderate",
+    "email": "mihai.georgescu@telekom.ro",
+    "notes": "Manages international roaming agreements and interconnection with 400+ operators across EU and MENA regions. Focused on reducing signaling costs and improving LTE roaming quality metrics.",
+    "interests": [
+      "Roaming cost optimization",
+      "International signaling protocols",
+      "LTE/5G interconnection"
+    ],
+    "lastInteraction": "2025-09-08"
+  },
+  {
+    "id": "telekom-romania-mobile-communications-s-a-formerly-cosmote-romanian-telecom-s-004",
+    "name": "Bogdan Ionescu",
+    "title": "Head of IT Operations",
+    "role": "blocker",
+    "relationshipStrength": "weak",
+    "email": "bogdan.ionescu@telekom.ro",
+    "notes": "Controls budget allocation for infrastructure projects and vendor selection. Concerned with implementation timelines, system stability during transitions, and minimizing disruption to existing SMS/voice services.",
+    "interests": [
+      "Project cost control",
+      "Operational stability",
+      "Vendor reliability & SLAs"
+    ],
+    "lastInteraction": "2026-01-10"
+  }
+]

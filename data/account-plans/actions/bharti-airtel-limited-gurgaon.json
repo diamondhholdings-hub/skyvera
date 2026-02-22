@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "bharti-airtel-limited-gurgaon-a-001",
+    "title": "Complete STL custom development project delivery",
+    "description": "Final acceptance and sign-off on telecom software customization module completed by STL professional services team.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-01-15",
+    "createdAt": "2026-01-08"
+  },
+  {
+    "id": "bharti-airtel-limited-gurgaon-a-002",
+    "title": "Negotiate renewal terms with procurement",
+    "description": "Engage Bharti Airtel procurement team to finalize renewal pricing and contract terms for STL software support and maintenance services.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "bharti-airtel-limited-gurgaon-a-003",
+    "title": "Schedule quarterly business review with stakeholders",
+    "description": "Organize QBR meeting with Bharti Airtel Gurgaon leadership to review STL software utilization, support metrics, and strategic roadmap alignment.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-03-15",
+    "createdAt": "2026-01-25"
+  },
+  {
+    "id": "bharti-airtel-limited-gurgaon-a-004",
+    "title": "Identify cross-sell opportunities for additional STL services",
+    "description": "Conduct discovery meeting to assess Bharti Airtel's additional telecom software needs and propose new STL professional services offerings.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success",
+    "dueDate": "2026-04-30",
+    "createdAt": "2026-02-10"
+  }
+]

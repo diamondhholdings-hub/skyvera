@@ -1,0 +1,36 @@
+[
+  {
+    "id": "mobile-interim-company-1-s-a-l-mic1-c-001",
+    "name": "Mavenir",
+    "type": "our-competitor",
+    "description": "Mavenir provides comprehensive signaling and IMS software solutions for carriers with strong cloud-native architecture and global carrier relationships.",
+    "strengths": [
+      "Extensive enterprise customer base with established carrier relationships across Europe and Asia",
+      "Advanced cloud-native and containerized deployment options for next-gen networks",
+      "Integrated portfolio combining signaling, IMS, and network slicing capabilities"
+    ],
+    "weaknesses": [
+      "Higher implementation costs and longer deployment timelines compared to Skyvera's faster provisioning",
+      "Less agile in rapid feature updates and smaller carrier-specific customizations",
+      "Heavier infrastructure requirements that can increase operational overhead for mid-size carriers"
+    ],
+    "lastUpdated": "2026-02-01"
+  },
+  {
+    "id": "mobile-interim-company-1-s-a-l-mic1-c-002",
+    "name": "Neustar",
+    "type": "both",
+    "description": "Neustar offers SS7 network security, signaling intelligence, and telecom software solutions that compete with Skyvera while also serving as a customer-tier competitor for MIC1's carrier operations.",
+    "strengths": [
+      "Deep expertise in SS7 security and fraud detection with proven track record in signal intelligence",
+      "Established relationships with major carriers for network monitoring and signaling compliance",
+      "Integrated security solutions that address carrier vulnerabilities in legacy and LTE networks"
+    ],
+    "weaknesses": [
+      "Legacy-focused product architecture that lacks Skyvera's modern IMS and next-gen signaling optimization",
+      "Limited scalability for high-volume transaction processing in 5G and IMS environments",
+      "Slower innovation cycle in emerging signaling protocols compared to Skyvera's agile development approach"
+    ],
+    "lastUpdated": "2026-02-01"
+  }
+]

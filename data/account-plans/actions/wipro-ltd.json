@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "wipro-ltd-a-001",
+    "title": "Complete Q1 2026 Business Review with Wipro STL leadership",
+    "description": "Conduct quarterly business review to assess STL utilization, identify expansion opportunities, and review upcoming telecom software development roadmap.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-15",
+    "createdAt": "2026-01-10"
+  },
+  {
+    "id": "wipro-ltd-a-002",
+    "title": "Prepare renewal proposal for Wipro Ltd. annual contract",
+    "description": "Develop comprehensive renewal proposal for $97,500 ARR contract including pricing, STL service enhancements, and customer success metrics.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-30",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "wipro-ltd-a-003",
+    "title": "Identify cross-sell opportunity for advanced telecom platform features",
+    "description": "Meet with Wipro's telecom division to assess demand for next-generation software features and custom development expansion.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-05-15",
+    "createdAt": "2026-02-01"
+  },
+  {
+    "id": "wipro-ltd-a-004",
+    "title": "Schedule STL roadmap alignment session with Wipro technical stakeholders",
+    "description": "Collaborate with Wipro's technical team to align on STL product roadmap priorities and custom development project timelines for H2 2026.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success Manager",
+    "dueDate": "2026-06-10",
+    "createdAt": "2026-02-05"
+  }
+]

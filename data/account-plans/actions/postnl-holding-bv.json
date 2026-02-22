@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "postnl-holding-bv-a-001",
+    "title": "Complete CloudSense CPQ optimization review",
+    "description": "Finalized assessment of PostNL's current CPQ configuration and identified 3 quick-win improvements to reduce quote generation time by 25%.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-01-31",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "postnl-holding-bv-a-002",
+    "title": "Implement new telecom pricing rules in CloudSense",
+    "description": "Currently rolling out updated bundle pricing logic for PostNL's enterprise wireless offerings to reflect Q2 2026 market adjustments.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-02-05"
+  },
+  {
+    "id": "postnl-holding-bv-a-003",
+    "title": "Schedule annual QBR with PostNL leadership",
+    "description": "Prepare comprehensive business review covering CPQ ROI metrics, usage analytics, and roadmap alignment for PostNL's $2.3M ARR account.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-31",
+    "createdAt": "2026-02-10"
+  },
+  {
+    "id": "postnl-holding-bv-a-004",
+    "title": "Develop renewal proposal for June 2026 contract",
+    "description": "Create proposal outlining expanded CloudSense CPQ modules and premium support tier aligned with PostNL's growth trajectory in telecom services.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success Manager",
+    "dueDate": "2026-05-15",
+    "createdAt": "2026-02-03"
+  }
+]

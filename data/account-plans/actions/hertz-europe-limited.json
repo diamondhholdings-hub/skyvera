@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "hertz-europe-limited-a-001",
+    "title": "Complete Q1 2026 QBR with HERTZ EUROPE LIMITED leadership",
+    "description": "Conduct quarterly business review to assess Kandy UCaaS utilization, review KPIs, and identify expansion opportunities across their European operations.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-15",
+    "createdAt": "2026-01-10"
+  },
+  {
+    "id": "hertz-europe-limited-a-002",
+    "title": "Prepare renewal proposal for ARR $186,140 contract renewal",
+    "description": "Draft comprehensive renewal proposal incorporating new WebRTC capabilities and SIP trunking optimization recommendations for their 2026 renewal cycle.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-30",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "hertz-europe-limited-a-003",
+    "title": "Schedule technical review of messaging platform optimization",
+    "description": "Coordinate with Solutions Engineer to review current messaging usage patterns and recommend optimization strategies to improve performance and reduce latency.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-05-20",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "hertz-europe-limited-a-004",
+    "title": "Develop expansion business case for additional SIP trunking capacity",
+    "description": "Create ROI analysis and pricing proposal for expanding SIP trunking services to support HERTZ EUROPE LIMITED's anticipated growth in European locations.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Account Manager",
+    "dueDate": "2026-06-10",
+    "createdAt": "2026-02-01"
+  }
+]

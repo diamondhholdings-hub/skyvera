@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "syniverse-technologies-asia-pacific-ltd-a-001",
+    "title": "Schedule QBR with APAC Regional Director",
+    "description": "Conduct quarterly business review to discuss NewNet signaling platform adoption across carrier customers and identify expansion opportunities in the region.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-15",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "syniverse-technologies-asia-pacific-ltd-a-002",
+    "title": "Prepare renewal proposal with upsell for IMS migration support",
+    "description": "Develop comprehensive renewal proposal highlighting IMS and next-gen signaling upgrades to support their carrier customer base modernization.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "syniverse-technologies-asia-pacific-ltd-a-003",
+    "title": "Conduct technical review of SS7 and LTE integration points",
+    "description": "Perform deep-dive technical assessment with their engineering team to optimize NewNet Communications platform performance and identify integration gaps.",
+    "status": "done",
+    "priority": "medium",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-01-31",
+    "createdAt": "2026-01-10"
+  },
+  {
+    "id": "syniverse-technologies-asia-pacific-ltd-a-004",
+    "title": "Develop carrier customer reference case study",
+    "description": "Create success story highlighting how Syniverse leverages NewNet signaling software to deliver value to their telecom carrier clients in APAC.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success",
+    "dueDate": "2026-04-30",
+    "createdAt": "2026-02-05"
+  }
+]

@@ -1,0 +1,42 @@
+[
+  {
+    "id": "mobile-interim-company-1-s-a-l-mic1-a-001",
+    "title": "Schedule QBR with CTO and Network Operations Leadership",
+    "description": "Conduct quarterly business review to discuss SS7 optimization, LTE performance metrics, and roadmap alignment for next-gen signaling platform expansion.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-15",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "mobile-interim-company-1-s-a-l-mic1-a-002",
+    "title": "Prepare IMS and next-gen signaling platform renewal proposal",
+    "description": "Update pricing and feature roadmap for MIC1's contract renewal scheduled for Q3 2026 to reflect new IMS capabilities and competitive positioning.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-04-30",
+    "createdAt": "2026-02-03"
+  },
+  {
+    "id": "mobile-interim-company-1-s-a-l-mic1-a-003",
+    "title": "Complete SS7 gateway performance audit and optimization report",
+    "description": "Finalize technical assessment of current SS7 infrastructure deployment across MIC1's carrier network and document recommended optimizations.",
+    "status": "done",
+    "priority": "medium",
+    "owner": "Customer Success",
+    "dueDate": "2026-02-14",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "mobile-interim-company-1-s-a-l-mic1-a-004",
+    "title": "Identify and propose upsell opportunity for LTE signaling enhancement module",
+    "description": "Evaluate MIC1's current LTE traffic patterns to determine fit for advanced signaling enhancement module that could increase ARR by 12-15%.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Account Manager",
+    "dueDate": "2026-05-20",
+    "createdAt": "2026-02-01"
+  }
+]

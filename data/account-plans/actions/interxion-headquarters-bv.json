@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "interxion-headquarters-bv-a-001",
+    "title": "Complete Q1 2026 CloudSense CPQ platform health check",
+    "description": "Audit current CPQ configuration, quote accuracy, and Salesforce integration performance to identify optimization opportunities.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-03-15",
+    "createdAt": "2026-01-10"
+  },
+  {
+    "id": "interxion-headquarters-bv-a-002",
+    "title": "Schedule Quarterly Business Review with procurement and network operations leadership",
+    "description": "Coordinate QBR meeting to review ARR growth, CPQ adoption metrics, and strategic roadmap alignment with Interxion's 2026 telecom initiatives.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-30",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "interxion-headquarters-bv-a-003",
+    "title": "Prepare renewal proposal with expanded CloudSense CPQ modules",
+    "description": "Develop proposal for Q2 2026 renewal including advanced pricing automation and multi-currency quoting capabilities to support Interxion's European expansion.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-05-15",
+    "createdAt": "2026-02-01"
+  },
+  {
+    "id": "interxion-headquarters-bv-a-004",
+    "title": "Conduct user training session on CPQ advanced quote templates",
+    "description": "Deliver hands-on training to Interxion's sales and operations teams on creating custom quote templates and discount rules within CloudSense.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success",
+    "dueDate": "2026-03-30",
+    "createdAt": "2026-02-05"
+  }
+]

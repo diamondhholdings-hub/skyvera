@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "thryv-australia-pty-ltd-a-001",
+    "title": "Complete CloudSense CPQ optimization review",
+    "description": "Analyzed current quote-to-cash process and identified 3 configuration improvements to reduce cycle time by 15%.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-01-30",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "thryv-australia-pty-ltd-a-002",
+    "title": "Implement custom pricing rules for enterprise bundles",
+    "description": "Currently configuring advanced Salesforce CPQ rules to automate tiered pricing for Thryv's carrier bundles and reduce manual quote adjustments.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "thryv-australia-pty-ltd-a-003",
+    "title": "Schedule annual renewal planning QBR",
+    "description": "Proactively engage Thryv's procurement and operations teams to discuss 2026 service expansion opportunities and CloudSense feature adoption roadmap.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-15",
+    "createdAt": "2026-01-18"
+  },
+  {
+    "id": "thryv-australia-pty-ltd-a-004",
+    "title": "Develop ROI case study for BSS/CPQ consolidation",
+    "description": "Document Thryv's cost savings and operational efficiency gains from consolidating legacy billing systems onto CloudSense for use in competitive renewals and expansion sales.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success",
+    "dueDate": "2026-04-30",
+    "createdAt": "2026-01-22"
+  }
+]

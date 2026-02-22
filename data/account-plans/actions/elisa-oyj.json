@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "elisa-oyj-a-001",
+    "title": "Schedule QBR with Elisa Oyj leadership",
+    "description": "Conduct quarterly business review to discuss CPQ adoption metrics, quote cycle time improvements, and expansion opportunities across their telecom product lines.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-15",
+    "createdAt": "2026-01-10"
+  },
+  {
+    "id": "elisa-oyj-a-002",
+    "title": "Prepare renewal proposal for subscription renewal",
+    "description": "Develop renewal proposal highlighting CloudSense CPQ ROI metrics, additional module recommendations, and pricing options for their $3.6M ARR contract.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-04-01",
+    "createdAt": "2026-01-12"
+  },
+  {
+    "id": "elisa-oyj-a-003",
+    "title": "Conduct advanced CPQ configuration training",
+    "description": "Deliver hands-on training to Elisa Oyj's telecom operations team on advanced pricing rules, bundling strategies, and compliance configurations within CloudSense.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success",
+    "dueDate": "2026-05-20",
+    "createdAt": "2026-01-08"
+  },
+  {
+    "id": "elisa-oyj-a-004",
+    "title": "Complete post-implementation health check assessment",
+    "description": "Finalize comprehensive review of CloudSense CPQ system performance, user adoption rates, and identify optimization opportunities for improved quote accuracy and sales velocity.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-01-05"
+  }
+]

@@ -1,0 +1,53 @@
+{
+  "painPoints": [
+    {
+      "id": "PP-001",
+      "title": "Complex Product Catalog Management Across Multiple Service Offerings",
+      "description": "Telefonica Germany struggles with maintaining and synchronizing product hierarchies across wireline, wireless, and cloud services within CloudSense CPQ. Manual catalog updates cause delays in launching new service bundles and promotional offers, impacting time-to-market by 2-3 weeks per release cycle.",
+      "status": "active",
+      "severity": "high",
+      "identifiedDate": "2024-01-15",
+      "owner": "Product Operations Manager"
+    },
+    {
+      "id": "PP-002",
+      "title": "Quote-to-Cash Cycle Inefficiencies and Order Fulfillment Delays",
+      "description": "Disconnects between CloudSense CPQ quoting and downstream Salesforce order management systems cause billing accuracy issues and customer billing disputes. Average order-to-provisioning cycle time is 8-12 days, with manual interventions required in 35% of enterprise orders.",
+      "status": "active",
+      "severity": "high",
+      "identifiedDate": "2024-02-08",
+      "owner": "Billing Operations Lead"
+    },
+    {
+      "id": "PP-003",
+      "title": "Limited Real-Time Pricing Intelligence and Dynamic Discount Governance",
+      "description": "CloudSense CPQ pricing rules lack real-time market data integration and competitor intelligence. Sales teams apply discounts manually outside the system, creating revenue leakage of approximately 3-5% annually and inconsistent pricing strategy enforcement across regions.",
+      "status": "active",
+      "severity": "medium",
+      "identifiedDate": "2024-03-01",
+      "owner": "Revenue Management Director"
+    }
+  ],
+  "opportunities": [
+    {
+      "id": "OPP-001",
+      "title": "Expand CloudSense CPQ to Multi-Tenant B2B2C Partner Ecosystem",
+      "description": "Leverage CloudSense CPQ to enable managed B2B2C partner quoting and order management for Telefonica's reseller and wholesale partners. This includes self-service portal capabilities, partner-specific pricing tiers, and automated order validation. Estimated to unlock 15-20 new reseller partnerships within 18 months.",
+      "status": "exploring",
+      "estimatedValue": 850000,
+      "probability": 72,
+      "identifiedDate": "2024-02-20",
+      "owner": "Channel Strategy Manager"
+    },
+    {
+      "id": "OPP-002",
+      "title": "Implement AI-Driven Predictive Pricing and Cross-Sell Recommendations within CloudSense CPQ",
+      "description": "Enhance CloudSense CPQ with machine learning models to provide intelligent cross-sell and upsell recommendations during quote generation, and dynamic pricing based on customer lifetime value, seasonal demand, and competitive positioning. Expected to increase average contract value by 12-18% and win rates by 8-10%.",
+      "status": "proposed",
+      "estimatedValue": 620000,
+      "probability": 65,
+      "identifiedDate": "2024-03-10",
+      "owner": "AI/Analytics Product Manager"
+    }
+  ]
+}

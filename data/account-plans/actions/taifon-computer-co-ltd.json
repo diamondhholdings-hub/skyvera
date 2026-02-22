@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "taifon-computer-co-ltd-a-001",
+    "title": "Schedule QBR with CTO and Network Operations Director",
+    "description": "Conduct quarterly business review to discuss SS7 and IMS optimization opportunities and align on 2026 roadmap priorities for their carrier deployments.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-02-15",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "taifon-computer-co-ltd-a-002",
+    "title": "Prepare LTE signaling capacity expansion proposal",
+    "description": "Develop technical and commercial proposal for expanding their LTE signaling infrastructure to support projected Q3 2026 subscriber growth.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-03-31",
+    "createdAt": "2026-01-25"
+  },
+  {
+    "id": "taifon-computer-co-ltd-a-003",
+    "title": "Review NewNet next-gen signaling feature adoption",
+    "description": "Assess current utilization of advanced IMS and next-gen signaling capabilities to identify upsell opportunities and ensure maximum platform value realization.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success Manager",
+    "dueDate": "2026-04-15",
+    "createdAt": "2026-02-01"
+  },
+  {
+    "id": "taifon-computer-co-ltd-a-004",
+    "title": "Prepare renewal proposal with performance metrics",
+    "description": "Compile annual usage analytics, ROI summary, and service performance data to support contract renewal discussions ahead of Q3 renewal window.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-05-30",
+    "createdAt": "2026-01-22"
+  }
+]

@@ -1,0 +1,36 @@
+[
+  {
+    "id": "unidad-editorial-s-a-c-001",
+    "name": "Amdocs",
+    "type": "our-competitor",
+    "description": "Amdocs offers a comprehensive BSS/OSS suite with CPQ capabilities, competing directly with Skyvera's Salesforce-native CloudSense platform for telecom operators.",
+    "strengths": [
+      "Deeply integrated OSS/BSS ecosystem with decades of telecom industry experience",
+      "Strong global presence with established relationships among major carriers",
+      "Advanced billing and revenue management capabilities beyond CPQ"
+    ],
+    "weaknesses": [
+      "Heavy on-premise deployment model with slower cloud migration compared to Skyvera's Salesforce-native architecture",
+      "Complex implementation requiring extensive customization versus Skyvera's rapid deployment",
+      "Higher total cost of ownership and licensing fees for mid-market telecom operators"
+    ],
+    "lastUpdated": "2026-02-01"
+  },
+  {
+    "id": "unidad-editorial-s-a-c-002",
+    "name": "Oracle Communications",
+    "type": "our-competitor",
+    "description": "Oracle Communications delivers a unified CPQ and billing platform targeting telecom service providers, directly competing with Skyvera's CloudSense solution.",
+    "strengths": [
+      "Enterprise-grade infrastructure with robust database and analytics capabilities",
+      "Bundled solutions with Oracle's broader cloud ecosystem reducing integration complexity",
+      "Extensive compliance certifications for regulated telecom markets"
+    ],
+    "weaknesses": [
+      "Requires Oracle Cloud infrastructure rather than operating natively on Salesforce",
+      "Steeper learning curve and longer implementation timeline versus Skyvera's user-friendly design",
+      "Less agile for rapid service bundle creation, limiting time-to-market for new telecom offerings"
+    ],
+    "lastUpdated": "2026-02-01"
+  }
+]

@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "juxto-ontario-a-001",
+    "title": "Schedule QBR with CTO and Operations Director",
+    "description": "Review Kandy UCaaS platform utilization, messaging volume trends, and identify expansion opportunities across their Ontario operations.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-02-15",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "juxto-ontario-a-002",
+    "title": "Prepare renewal proposal with CPaaS add-on pricing",
+    "description": "Build comprehensive renewal package including SIP trunking optimization and advanced messaging APIs to support Juxto's growth trajectory.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-10",
+    "createdAt": "2026-01-25"
+  },
+  {
+    "id": "juxto-ontario-a-003",
+    "title": "Conduct WebRTC capabilities assessment and training session",
+    "description": "Evaluate current WebRTC implementation and deliver technical training to Juxto's development team on advanced features to maximize platform value.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-04-05",
+    "createdAt": "2026-01-22"
+  },
+  {
+    "id": "juxto-ontario-a-004",
+    "title": "Identify and scope upsell opportunities for messaging services",
+    "description": "Analyze current messaging usage patterns and propose SMS/MMS enhancements to capture additional revenue from their expanding communication needs.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success Manager",
+    "dueDate": "2026-05-20",
+    "createdAt": "2026-02-01"
+  }
+]

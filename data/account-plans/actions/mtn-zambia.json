@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "mtn-zambia-a-001",
+    "title": "Schedule QBR with MTN Zambia CTO and Finance Lead",
+    "description": "Conduct quarterly business review to assess STL software utilization, discuss custom development roadmap, and align on 2026 expansion plans for telecom infrastructure projects.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-02-15",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "mtn-zambia-a-002",
+    "title": "Prepare renewal proposal and ROI analysis for $390K ARR contract",
+    "description": "Develop comprehensive renewal proposal showcasing 18-month STL engagement outcomes and quantified ROI from custom development modules deployed across MTN Zambia's network operations.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-03-30",
+    "createdAt": "2026-01-25"
+  },
+  {
+    "id": "mtn-zambia-a-003",
+    "title": "Identify upsell opportunity for advanced analytics module",
+    "description": "Research and scope potential add-on engagement for STL's advanced telecom analytics platform to support MTN Zambia's customer intelligence and network optimization initiatives.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-15",
+    "createdAt": "2026-02-01"
+  },
+  {
+    "id": "mtn-zambia-a-004",
+    "title": "Schedule technical training session for MTN ops team on STL platform updates",
+    "description": "Coordinate hands-on training with Customer Success to ensure MTN Zambia's operations team is fully equipped to leverage latest STL software enhancements and custom modules.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success",
+    "dueDate": "2026-05-20",
+    "createdAt": "2026-02-05"
+  }
+]

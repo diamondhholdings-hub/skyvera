@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "commverge-solutions-philippines-inc-a-001",
+    "title": "Complete STL software audit and optimization report",
+    "description": "Delivered comprehensive analysis of Commverge's current STL implementation across telecom operations with recommendations for efficiency improvements.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-01-15",
+    "createdAt": "2026-01-05"
+  },
+  {
+    "id": "commverge-solutions-philippines-inc-a-002",
+    "title": "Scope custom development project for telecom API integration",
+    "description": "Currently working with Commverge's engineering team to define requirements and timeline for STL-based API customization to connect legacy telecom systems.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-01-10"
+  },
+  {
+    "id": "commverge-solutions-philippines-inc-a-003",
+    "title": "Schedule Q1 business review and renewal discussion",
+    "description": "Plan quarterly business review meeting with Commverge stakeholders to discuss ARR expansion opportunities and prepare renewal proposal for March 2026.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-15",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "commverge-solutions-philippines-inc-a-004",
+    "title": "Develop training plan for STL professional services team",
+    "description": "Create hands-on training curriculum for Commverge's internal team on advanced STL custom development capabilities to increase adoption and engagement.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success",
+    "dueDate": "2026-04-30",
+    "createdAt": "2026-02-01"
+  }
+]

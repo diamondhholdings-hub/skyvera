@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "centrica-services-ltd-a-001",
+    "title": "Complete CloudSense CPQ optimization review",
+    "description": "Finalized assessment of Centrica's quote-to-cash process improvements and identified 3 efficiency gains worth $180K annually in operational savings.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-02-15",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "centrica-services-ltd-a-002",
+    "title": "Migrate legacy pricing rules to CloudSense CPQ",
+    "description": "Currently working with Centrica's technical team to transition 47 legacy telecom pricing models into the native CloudSense rules engine by end of Q1.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Customer Success Manager",
+    "dueDate": "2026-03-31",
+    "createdAt": "2026-01-25"
+  },
+  {
+    "id": "centrica-services-ltd-a-003",
+    "title": "Schedule H1 2026 QBR with VP of Sales & Operations",
+    "description": "Prepare comprehensive business review covering CPQ adoption metrics, renewal roadmap, and upsell opportunities for enterprise telecom services.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-15",
+    "createdAt": "2026-01-22"
+  },
+  {
+    "id": "centrica-services-ltd-a-004",
+    "title": "Develop renewal proposal for June 2026 contract refresh",
+    "description": "Build tiered service package proposal including expanded CloudSense modules and professional services to support Centrica's Q3 market expansion plans.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Account Manager",
+    "dueDate": "2026-05-30",
+    "createdAt": "2026-02-01"
+  }
+]

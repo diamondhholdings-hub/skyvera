@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "foxtel-management-pty-limited-a-001",
+    "title": "Complete CloudSense CPQ optimization review",
+    "description": "Completed comprehensive audit of Foxtel's CPQ configuration to identify performance improvements and cost reduction opportunities across their telecom billing workflows.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-01-31",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "foxtel-management-pty-limited-a-002",
+    "title": "Implement advanced pricing rules for enterprise packages",
+    "description": "Currently developing custom pricing logic within CloudSense CPQ to support Foxtel's new tiered enterprise service bundles launching in Q2.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-03-15",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "foxtel-management-pty-limited-a-003",
+    "title": "Schedule quarterly business review with procurement and operations stakeholders",
+    "description": "Arrange executive QBR to review platform ROI, discuss expansion of CloudSense usage across additional business units, and address any outstanding support tickets.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-30",
+    "createdAt": "2026-02-01"
+  },
+  {
+    "id": "foxtel-management-pty-limited-a-004",
+    "title": "Prepare renewal proposal for ARR contract extension",
+    "description": "Develop comprehensive renewal proposal with success metrics, feature enhancements, and pricing refresh for Foxtel's $2.56M annual contract.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Account Manager",
+    "dueDate": "2026-05-15",
+    "createdAt": "2026-02-05"
+  }
+]

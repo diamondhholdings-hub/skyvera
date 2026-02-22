@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "dpg-media-bv-a-001",
+    "title": "Complete CloudSense CPQ usage audit and optimization review",
+    "description": "Analyzed current CPQ configuration utilization across DPG Media's quote-to-cash process to identify optimization opportunities and cost savings.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-02-15",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "dpg-media-bv-a-002",
+    "title": "Schedule Q1 business review with procurement and finance stakeholders",
+    "description": "Organizing quarterly strategic review to align on CPQ performance metrics, upcoming telecom service offerings, and expansion roadmap for DPG Media's 1.4M ARR account.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-01-18"
+  },
+  {
+    "id": "dpg-media-bv-a-003",
+    "title": "Prepare renewal proposal with 15% feature expansion package",
+    "description": "Develop comprehensive renewal proposal including advanced CPQ workflows, multi-currency pricing enhancements, and bundled telecom service modeling capabilities.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-31",
+    "createdAt": "2026-01-22"
+  },
+  {
+    "id": "dpg-media-bv-a-004",
+    "title": "Conduct CloudSense CPQ training for newly onboarded sales team members",
+    "description": "Deliver hands-on training session to DPG Media's expanded sales operations team on CPQ best practices and telecom-specific quoting workflows.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success",
+    "dueDate": "2026-04-15",
+    "createdAt": "2026-01-25"
+  }
+]

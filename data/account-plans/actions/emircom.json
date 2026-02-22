@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "emircom-a-001",
+    "title": "Complete annual platform security audit for Kandy UCaaS infrastructure",
+    "description": "Conduct comprehensive security assessment of EMIRCOM's Kandy deployment covering WebRTC, SIP trunking, and messaging components to ensure compliance with telecom regulations.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-02-15",
+    "createdAt": "2026-01-10"
+  },
+  {
+    "id": "emircom-a-002",
+    "title": "Schedule quarterly business review with EMIRCOM executive stakeholders",
+    "description": "Organize QBR meeting with CTO and VP of Operations to review platform performance, usage metrics, and roadmap alignment for the $38M+ account.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-20",
+    "createdAt": "2026-01-12"
+  },
+  {
+    "id": "emircom-a-003",
+    "title": "Prepare renewal proposal with expanded CPaaS messaging capabilities",
+    "description": "Develop tailored renewal proposal highlighting new WebRTC enhancements and advanced SIP trunking features to support EMIRCOM's growth strategy.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-30",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "emircom-a-004",
+    "title": "Conduct customer success training on new Kandy API integrations",
+    "description": "Deliver technical training session for EMIRCOM's development team on latest Kandy APIs and webhook implementations to maximize platform utilization.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success",
+    "dueDate": "2026-05-10",
+    "createdAt": "2026-01-20"
+  }
+]

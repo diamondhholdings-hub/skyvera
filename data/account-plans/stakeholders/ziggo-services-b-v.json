@@ -1,0 +1,62 @@
+[
+  {
+    "id": "ziggo-services-b-v-s-001",
+    "name": "Marcel van der Meer",
+    "title": "VP of Product & Services",
+    "role": "decision-maker",
+    "relationshipStrength": "strong",
+    "email": "marcel.vandermeer@ziggo.nl",
+    "notes": "Drives product roadmap and service catalog strategy. Prioritizes CloudSense CPQ implementation for streamlining bundle configuration and reducing quote-to-cash cycle time across Ziggo's broadband, TV, and mobile offerings.",
+    "interests": [
+      "product-bundling",
+      "quote-automation",
+      "margin-optimization"
+    ],
+    "lastInteraction": "2025-11-15"
+  },
+  {
+    "id": "ziggo-services-b-v-s-002",
+    "name": "Inge Jansen",
+    "title": "Director of Revenue Operations",
+    "role": "champion",
+    "relationshipStrength": "strong",
+    "email": "inge.jansen@ziggo.nl",
+    "notes": "Sponsoring CloudSense CPQ adoption to unify order management and billing workflows. Focused on eliminating manual quote processes and improving revenue recognition accuracy across Salesforce ecosystem.",
+    "interests": [
+      "revenue-recognition",
+      "order-management",
+      "process-automation"
+    ],
+    "lastInteraction": "2025-12-02"
+  },
+  {
+    "id": "ziggo-services-b-v-s-003",
+    "name": "Thomas Berkelmans",
+    "title": "Senior Manager, Billing & Finance Systems",
+    "role": "influencer",
+    "relationshipStrength": "moderate",
+    "email": "thomas.berkelmans@ziggo.nl",
+    "notes": "Concerned with billing system integration and recurring revenue handling within CPQ. Advocates for seamless syncing between Salesforce CPQ and Ziggo's backend billing platforms to ensure accurate subscription management.",
+    "interests": [
+      "billing-integration",
+      "recurring-revenue",
+      "system-architecture"
+    ],
+    "lastInteraction": "2025-10-28"
+  },
+  {
+    "id": "ziggo-services-b-v-s-004",
+    "name": "Femke de Wit",
+    "title": "Head of Sales Enablement",
+    "role": "user",
+    "relationshipStrength": "moderate",
+    "email": "femke.dewit@ziggo.nl",
+    "notes": "Responsible for equipping sales teams with CPQ tools and training. Prioritizes intuitive quote generation, mobile accessibility, and rapid product configuration to accelerate deal cycles for enterprise and SMB customers.",
+    "interests": [
+      "sales-productivity",
+      "training-enablement",
+      "mobile-support"
+    ],
+    "lastInteraction": "2025-09-19"
+  }
+]

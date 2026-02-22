@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "bell-tsii-ltd-merkezi-ingiltere-istanbul-merkez-subesi-a-001",
+    "title": "Complete IMS infrastructure audit and optimization review",
+    "description": "Conducted comprehensive assessment of Bell TSII's IMS signaling performance and identified three optimization opportunities for next-gen network scalability.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-01-15",
+    "createdAt": "2026-01-10"
+  },
+  {
+    "id": "bell-tsii-ltd-merkezi-ingiltere-istanbul-merkez-subesi-a-002",
+    "title": "Schedule quarterly business review with Bell TSII leadership",
+    "description": "Organize QBR meeting with CTO and VP of Network Operations to review $200K ARR account performance, SS7/LTE utilization metrics, and roadmap for IMS expansion.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-02-20",
+    "createdAt": "2026-01-25"
+  },
+  {
+    "id": "bell-tsii-ltd-merkezi-ingiltere-istanbul-merkez-subesi-a-003",
+    "title": "Prepare renewal and upsell proposal for next-gen signaling upgrade",
+    "description": "Develop comprehensive proposal for Bell TSII to upgrade to latest next-gen signaling software with enhanced LTE support and additional licensing for Istanbul Merkez operations.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-15",
+    "createdAt": "2026-02-01"
+  },
+  {
+    "id": "bell-tsii-ltd-merkezi-ingiltere-istanbul-merkez-subesi-a-004",
+    "title": "Conduct technical training session on NewNet SS7 advanced features",
+    "description": "Deliver hands-on training to Bell TSII network engineering team covering advanced SS7 troubleshooting, performance tuning, and best practices for carrier-grade reliability.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success",
+    "dueDate": "2026-05-30",
+    "createdAt": "2026-02-05"
+  }
+]

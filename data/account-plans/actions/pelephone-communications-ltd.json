@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "pelephone-communications-ltd-a-001",
+    "title": "Complete SS7 security audit and compliance review",
+    "description": "Finalize the comprehensive security audit of Pelephone's SS7 signaling infrastructure to ensure continued compliance with telecom regulatory requirements.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-01-15",
+    "createdAt": "2026-01-05"
+  },
+  {
+    "id": "pelephone-communications-ltd-a-002",
+    "title": "Implement IMS network optimization upgrades",
+    "description": "Deploy recommended IMS performance enhancements and next-gen signaling improvements across Pelephone's production environment.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Customer Success Manager",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-01-10"
+  },
+  {
+    "id": "pelephone-communications-ltd-a-003",
+    "title": "Schedule Q1 business review with executive stakeholders",
+    "description": "Arrange quarterly business review meeting with Pelephone's VP of Network Operations and procurement team to review platform utilization and discuss renewal terms.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-15",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "pelephone-communications-ltd-a-004",
+    "title": "Prepare LTE signaling capacity expansion proposal",
+    "description": "Develop detailed proposal for scaling LTE signaling capacity to support Pelephone's anticipated 35% traffic growth in H2 2026.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-04-30",
+    "createdAt": "2026-02-01"
+  }
+]

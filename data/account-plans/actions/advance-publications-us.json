@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "advance-publications-us-a-001",
+    "title": "Complete CloudSense CPQ optimization review",
+    "description": "Analyzed current quote-to-cash efficiency and identified 3 process improvements to reduce quote cycle time by 25%.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-02-15",
+    "createdAt": "2026-01-10"
+  },
+  {
+    "id": "advance-publications-us-a-002",
+    "title": "Implement advanced pricing rules in CloudSense",
+    "description": "Currently configuring dynamic bundle pricing and volume discounts to align with Advance Publications' multi-tier service offerings.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Technical Account Manager",
+    "dueDate": "2026-03-30",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "advance-publications-us-a-003",
+    "title": "Schedule quarterly business review and renewal planning",
+    "description": "Prepare comprehensive renewal proposal for $2.6M+ ARR contract and discuss expansion opportunities in broadband services.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-15",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "advance-publications-us-a-004",
+    "title": "Deploy CPQ training program for Advance Publications procurement team",
+    "description": "Develop and deliver hands-on training sessions to ensure stakeholders can effectively manage quote generation and order fulfillment workflows.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success Manager",
+    "dueDate": "2026-05-10",
+    "createdAt": "2026-01-25"
+  }
+]

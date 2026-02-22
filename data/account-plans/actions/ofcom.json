@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "ofcom-a-001",
+    "title": "Complete CloudSense CPQ optimization review",
+    "description": "Finalized assessment of Ofcom's current CPQ configuration and identified 3 process improvements to reduce quote-to-close cycle time by 15%.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-02-15",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "ofcom-a-002",
+    "title": "Migrate legacy pricing rules to CloudSense platform",
+    "description": "Currently executing data migration of 47 legacy pricing templates into CloudSense to enable automated quote generation for Ofcom's enterprise customer segment.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Customer Success Manager",
+    "dueDate": "2026-03-31",
+    "createdAt": "2026-01-18"
+  },
+  {
+    "id": "ofcom-a-003",
+    "title": "Schedule mid-year business review with procurement and finance leads",
+    "description": "Coordinate QBR meeting to review ARR growth trajectory, discuss Q3-Q4 renewal strategy, and present ROI metrics from CloudSense implementation.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-30",
+    "createdAt": "2026-01-22"
+  },
+  {
+    "id": "ofcom-a-004",
+    "title": "Prepare advanced CPQ training for Ofcom's BSS team",
+    "description": "Develop and deliver hands-on training sessions covering CloudSense CPQ advanced features including dynamic bundling and multi-currency quoting for Ofcom's 8 internal users.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-05-15",
+    "createdAt": "2026-02-01"
+  }
+]

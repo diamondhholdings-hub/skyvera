@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "agt-a-001",
+    "title": "Schedule QBR with AGT stakeholders",
+    "description": "Conduct quarterly business review to assess Kandy UCaaS utilization across their SIP trunking and messaging deployments and identify expansion opportunities.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-01-30",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "agt-a-002",
+    "title": "Prepare renewal proposal with WebRTC feature highlights",
+    "description": "Develop renewal proposal emphasizing advanced WebRTC capabilities and messaging scalability to justify upsell before AGT's contract renewal in Q2.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-03-15",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "agt-a-003",
+    "title": "Conduct technical deep-dive on CPaaS API optimization",
+    "description": "Review AGT's current CPaaS API usage patterns and performance metrics to identify optimization opportunities and potential cost savings.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success Manager",
+    "dueDate": "2026-04-10",
+    "createdAt": "2026-01-18"
+  },
+  {
+    "id": "agt-a-004",
+    "title": "Initiate cross-sell discussion for international messaging expansion",
+    "description": "Reach out to AGT decision-makers to explore expanding their current messaging footprint to international markets through Kandy's global SIP infrastructure.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Account Manager",
+    "dueDate": "2026-05-20",
+    "createdAt": "2026-02-01"
+  }
+]

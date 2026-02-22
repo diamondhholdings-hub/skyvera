@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "mastercard-worldwide-a-001",
+    "title": "Complete CloudSense CPQ optimization review",
+    "description": "Finalized assessment of MasterCard's current quote-to-cash process and identified 3 workflow improvements within CloudSense CPQ to reduce cycle time by 15%.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-02-15",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "mastercard-worldwide-a-002",
+    "title": "Configure custom pricing rules in CloudSense CPQ",
+    "description": "Currently implementing tiered enterprise pricing logic and volume discount matrices specific to MasterCard's service bundles within the CloudSense platform.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Technical Account Manager",
+    "dueDate": "2026-03-30",
+    "createdAt": "2026-01-25"
+  },
+  {
+    "id": "mastercard-worldwide-a-003",
+    "title": "Schedule renewal QBR and ARR expansion discussion",
+    "description": "Plan quarterly business review with MasterCard's procurement and network ops leadership to review $1.29M ARR value delivery and identify upsell opportunities for new telecom services.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-15",
+    "createdAt": "2026-02-01"
+  },
+  {
+    "id": "mastercard-worldwide-a-004",
+    "title": "Develop CloudSense CPQ training documentation",
+    "description": "Create role-based training guides and video tutorials for MasterCard's internal quote management team to maximize adoption of new CPQ features.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success Manager",
+    "dueDate": "2026-05-30",
+    "createdAt": "2026-02-03"
+  }
+]

@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "newsday-a-001",
+    "title": "Schedule QBR with Newsday Leadership",
+    "description": "Conduct quarterly business review to align on 2026 CPQ optimization goals and identify expansion opportunities within their quote-to-cash process.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-02-15",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "newsday-a-002",
+    "title": "Prepare CloudSense CPQ Advanced Features Training",
+    "description": "Develop customized training session on advanced quote configurations and pricing rule optimization to maximize their BSS platform ROI.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-03-10",
+    "createdAt": "2026-01-22"
+  },
+  {
+    "id": "newsday-a-003",
+    "title": "Audit Current Quote Win Rates and Cycle Times",
+    "description": "Analyze Newsday's CPQ performance metrics to identify bottlenecks and opportunities for reducing quote-to-close time.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success Manager",
+    "dueDate": "2026-04-05",
+    "createdAt": "2026-01-23"
+  },
+  {
+    "id": "newsday-a-004",
+    "title": "Develop Renewal Proposal for June Contract Extension",
+    "description": "Create comprehensive renewal proposal highlighting CPQ usage metrics, expansion features, and multi-year discount opportunities ahead of their Q2 renewal window.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-05-20",
+    "createdAt": "2026-01-21"
+  }
+]

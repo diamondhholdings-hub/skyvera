@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "ribbon-communications-operating-company-inc-a-001",
+    "title": "Schedule QBR with VP of Product to discuss Kandy UCaaS roadmap alignment",
+    "description": "Conduct quarterly business review to understand their CPaaS and WebRTC platform priorities and identify expansion opportunities within their customer base.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-01-30",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "ribbon-communications-operating-company-inc-a-002",
+    "title": "Prepare SIP trunking integration proposal for enterprise segment",
+    "description": "Develop a technical and commercial proposal targeting enterprise customers who require high-reliability SIP trunking through Ribbon's Kandy platform.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "ribbon-communications-operating-company-inc-a-003",
+    "title": "Conduct messaging and CPaaS feature adoption audit",
+    "description": "Review current utilization of messaging and CPaaS capabilities within Kandy to identify underutilized features and upsell opportunities.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success Manager",
+    "dueDate": "2026-03-15",
+    "createdAt": "2026-01-22"
+  },
+  {
+    "id": "ribbon-communications-operating-company-inc-a-004",
+    "title": "Explore WebRTC innovation partnership for 2026 product releases",
+    "description": "Initiate strategic discussion with Ribbon's product leadership to position our services as a preferred partner for their upcoming WebRTC-based platform enhancements.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-30",
+    "createdAt": "2026-02-05"
+  }
+]

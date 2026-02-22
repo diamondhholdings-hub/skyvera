@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "wholesale-carrier-services-inc-a-001",
+    "title": "Complete SIP Trunking Performance Audit",
+    "description": "Analyzed call quality metrics and identified optimization opportunities across their SIP trunking infrastructure to support their wholesale carrier operations.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-01-28",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "wholesale-carrier-services-inc-a-002",
+    "title": "Implement WebRTC Integration for Customer Portal",
+    "description": "Currently configuring embedded WebRTC capabilities into their customer-facing portal to enable direct communication features for their wholesale partners.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-03-15",
+    "createdAt": "2026-02-01"
+  },
+  {
+    "id": "wholesale-carrier-services-inc-a-003",
+    "title": "Schedule Q2 Business Review with VP of Operations",
+    "description": "Prepare comprehensive QBR covering messaging platform utilization, UCaaS adoption rates, and expansion opportunities for their wholesale carrier customer base.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-05-01",
+    "createdAt": "2026-02-10"
+  },
+  {
+    "id": "wholesale-carrier-services-inc-a-004",
+    "title": "Develop CPaaS White-Label Expansion Proposal",
+    "description": "Create proposal for white-labeling Kandy's CPaaS capabilities to enable their carriers to offer unified communications services to their end customers.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-30",
+    "createdAt": "2026-01-20"
+  }
+]

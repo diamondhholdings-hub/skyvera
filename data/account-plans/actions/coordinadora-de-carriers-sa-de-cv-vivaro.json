@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "coordinadora-de-carriers-sa-de-cv-vivaro-a-001",
+    "title": "Schedule QBR with CTO and Operations Director",
+    "description": "Conduct quarterly business review to discuss Kandy UCaaS platform utilization, SIP trunking performance metrics, and identify expansion opportunities for messaging and WebRTC capabilities.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-15",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "coordinadora-de-carriers-sa-de-cv-vivaro-a-002",
+    "title": "Complete renewal proposal with volume discount analysis",
+    "description": "Prepare and submit renewal proposal for $141,577 ARR contract with tiered pricing for increased CPaaS and SIP trunking usage based on current consumption patterns.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "coordinadora-de-carriers-sa-de-cv-vivaro-a-003",
+    "title": "Execute health check and API integration audit",
+    "description": "Conduct technical review of WebRTC implementation and SIP trunk configuration to ensure optimal performance and identify any integration gaps or improvement opportunities.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-04-10",
+    "createdAt": "2026-02-01"
+  },
+  {
+    "id": "coordinadora-de-carriers-sa-de-cv-vivaro-a-004",
+    "title": "Verify renewal documentation and billing alignment",
+    "description": "Confirmed all contract terms, service entitlements, and billing records are accurate and aligned with current usage across Kandy UCaaS platform services.",
+    "status": "done",
+    "priority": "medium",
+    "owner": "Customer Success",
+    "dueDate": "2026-01-31",
+    "createdAt": "2026-01-10"
+  }
+]

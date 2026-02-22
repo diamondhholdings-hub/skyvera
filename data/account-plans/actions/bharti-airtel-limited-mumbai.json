@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "bharti-airtel-limited-mumbai-a-001",
+    "title": "Complete STL Integration Assessment",
+    "description": "Finalized technical review of current STL telecom software deployment and identified optimization opportunities across their custom development modules.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-01-15",
+    "createdAt": "2026-01-08"
+  },
+  {
+    "id": "bharti-airtel-limited-mumbai-a-002",
+    "title": "Negotiate STL License Renewal Terms",
+    "description": "Currently in discussions with Bharti Airtel procurement to finalize renewal pricing and expand coverage for additional telecom software modules ahead of Q2 expiration.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-31",
+    "createdAt": "2026-01-10"
+  },
+  {
+    "id": "bharti-airtel-limited-mumbai-a-003",
+    "title": "Schedule Executive QBR with CTO",
+    "description": "Arrange quarterly business review with Bharti Airtel's CTO to present STL performance metrics, roadmap alignment, and discuss expansion opportunities within their telecom operations.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-15",
+    "createdAt": "2026-01-12"
+  },
+  {
+    "id": "bharti-airtel-limited-mumbai-a-004",
+    "title": "Prepare Custom Development Roadmap",
+    "description": "Develop 12-month roadmap for STL custom development initiatives aligned with Bharti Airtel's digital transformation priorities in network automation and billing systems.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-05-30",
+    "createdAt": "2026-02-01"
+  }
+]

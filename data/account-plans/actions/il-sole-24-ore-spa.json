@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "il-sole-24-ore-spa-a-001",
+    "title": "Complete CloudSense CPQ optimization review",
+    "description": "Finalize assessment of current quote-to-cash workflow and identify 3-5 process improvements to reduce quote turnaround time by 25%.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-02-15",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "il-sole-24-ore-spa-a-002",
+    "title": "Implement CloudSense CPQ custom pricing rules for telecom bundles",
+    "description": "Configure dynamic bundling logic in CPQ to support Il Sole 24 ORE's new converged service packages and improve quote accuracy for complex orders.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-03-30",
+    "createdAt": "2026-02-01"
+  },
+  {
+    "id": "il-sole-24-ore-spa-a-003",
+    "title": "Schedule Q2 business review with procurement and finance teams",
+    "description": "Conduct quarterly business review to present ROI metrics from CloudSense CPQ implementation and align on expansion opportunities within the $424K ARR account.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-20",
+    "createdAt": "2026-02-05"
+  },
+  {
+    "id": "il-sole-24-ore-spa-a-004",
+    "title": "Develop renewal proposal and upsell roadmap",
+    "description": "Prepare comprehensive renewal proposal with advanced CPQ features (approval workflows, revenue recognition automation) to support 15-20% expansion before contract anniversary.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Account Manager",
+    "dueDate": "2026-05-15",
+    "createdAt": "2026-02-10"
+  }
+]

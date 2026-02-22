@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "pioneer-telephone-cooperative-ok-a-001",
+    "title": "Complete annual security audit for Kandy UCaaS infrastructure",
+    "description": "Conduct comprehensive security assessment of their WebRTC and SIP trunking configurations to ensure compliance with telecom regulatory requirements.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-01-30",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "pioneer-telephone-cooperative-ok-a-002",
+    "title": "Schedule QBR with executive stakeholders",
+    "description": "Prepare and conduct quarterly business review with Pioneer's leadership team to review platform usage metrics, ROI, and roadmap alignment for the $1.2M+ ARR account.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "pioneer-telephone-cooperative-ok-a-003",
+    "title": "Evaluate messaging expansion opportunity",
+    "description": "Assess Pioneer's current messaging utilization and propose enhanced CPaaS messaging capabilities to drive additional revenue growth.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-31",
+    "createdAt": "2026-01-22"
+  },
+  {
+    "id": "pioneer-telephone-cooperative-ok-a-004",
+    "title": "Prepare renewal proposal with upsell recommendations",
+    "description": "Develop comprehensive renewal proposal highlighting SIP trunking optimization opportunities and advanced WebRTC features to improve contract retention and increase annual value.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-05-15",
+    "createdAt": "2026-02-05"
+  }
+]

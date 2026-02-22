@@ -1,0 +1,62 @@
+[
+  {
+    "id": "mobile-interim-company-1-s-a-l-mic1-s-001",
+    "name": "Pierre Habib",
+    "title": "Chief Technology Officer",
+    "role": "decision-maker",
+    "relationshipStrength": "strong",
+    "email": "pierre.habib@mic1.com.lb",
+    "notes": "Oversees core network infrastructure modernization and SS7/Diameter migration strategy. Prioritizes carrier-grade reliability and cost optimization for international roaming operations.",
+    "interests": [
+      "Network core modernization",
+      "IMS and VoLTE rollout",
+      "Roaming cost reduction"
+    ],
+    "lastInteraction": "2025-11-15"
+  },
+  {
+    "id": "mobile-interim-company-1-s-a-l-mic1-s-002",
+    "name": "Fatima Al-Rashid",
+    "title": "VP of Network Operations",
+    "role": "champion",
+    "relationshipStrength": "strong",
+    "email": "fatima.rashid@mic1.com.lb",
+    "notes": "Daily operator of NewNet signaling platform; advocates for SMS interworking improvements and Diameter protocol enhancements. Key influencer on vendor selection and feature prioritization.",
+    "interests": [
+      "SMS interworking optimization",
+      "Network uptime and reliability",
+      "Operational efficiency"
+    ],
+    "lastInteraction": "2025-12-02"
+  },
+  {
+    "id": "mobile-interim-company-1-s-a-l-mic1-s-003",
+    "name": "George Khalil",
+    "title": "Director of Strategic Partnerships",
+    "role": "influencer",
+    "relationshipStrength": "moderate",
+    "email": "george.khalil@mic1.com.lb",
+    "notes": "Manages roaming agreements and interconnection with regional carriers; concerned with next-gen signaling standards compliance and inter-carrier SIP/Diameter gateway capabilities.",
+    "interests": [
+      "Regional roaming partnerships",
+      "Standards compliance",
+      "Revenue assurance"
+    ],
+    "lastInteraction": "2025-10-28"
+  },
+  {
+    "id": "mobile-interim-company-1-s-a-l-mic1-s-004",
+    "name": "Raoul Gemayel",
+    "title": "Senior Network Engineer",
+    "role": "user",
+    "relationshipStrength": "moderate",
+    "email": "raoul.gemayel@mic1.com.lb",
+    "notes": "Implements and troubleshoots SS7 and LTE signaling protocols daily. Seeks better diagnostics tools and stability updates for call routing and authentication workflows.",
+    "interests": [
+      "Technical stability",
+      "Troubleshooting tools",
+      "Protocol standardization"
+    ],
+    "lastInteraction": "2025-11-22"
+  }
+]

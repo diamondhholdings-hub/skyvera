@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "bharti-airtel-limited-chennai-a-001",
+    "title": "Complete STL platform migration assessment",
+    "description": "Finalized technical evaluation of Bharti Airtel's current STL implementation and identified optimization opportunities for their Chennai operations.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-02-15",
+    "createdAt": "2026-01-10"
+  },
+  {
+    "id": "bharti-airtel-limited-chennai-a-002",
+    "title": "Develop custom telecom workflow automation solution",
+    "description": "Building tailored STL integration for Bharti Airtel's customer provisioning and billing workflows to streamline operations and reduce manual touchpoints.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Professional Services Manager",
+    "dueDate": "2026-04-30",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "bharti-airtel-limited-chennai-a-003",
+    "title": "Schedule Q2 business review with VP of Operations",
+    "description": "Plan quarterly strategic review meeting to discuss STL platform performance, upcoming feature releases, and expansion opportunities for ARR growth.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-05-20",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "bharti-airtel-limited-chennai-a-004",
+    "title": "Prepare renewal proposal and pricing roadmap",
+    "description": "Create comprehensive renewal documentation with year-over-year value metrics, proposed service enhancements, and tiered pricing options for Bharti Airtel's next contract cycle.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-31",
+    "createdAt": "2026-01-25"
+  }
+]

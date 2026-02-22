@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "tata-communications-america-inc-a-001",
+    "title": "Complete CloudSense CPQ optimization review",
+    "description": "Finalized assessment of current CPQ configuration and identified 3 opportunities to reduce quote-to-close cycle time by 15%.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-01-30",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "tata-communications-america-inc-a-002",
+    "title": "Implement automated pricing rules for enterprise packages",
+    "description": "Currently configuring dynamic pricing logic in CloudSense to auto-generate quotes for TATA's top 5 telecom service bundles.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Implementation Specialist",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "tata-communications-america-inc-a-003",
+    "title": "Schedule mid-year business review with procurement and operations leads",
+    "description": "Align on ARR expansion strategy and discuss integration opportunities with TATA's broader network infrastructure investments.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-15",
+    "createdAt": "2026-01-25"
+  },
+  {
+    "id": "tata-communications-america-inc-a-004",
+    "title": "Develop ROI case study demonstrating CPQ time savings",
+    "description": "Create quantifiable metrics showing how CloudSense adoption has reduced sales cycles and improved quote accuracy for TATA's account team.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success Manager",
+    "dueDate": "2026-05-30",
+    "createdAt": "2026-01-18"
+  }
+]

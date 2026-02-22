@@ -1,0 +1,42 @@
+[
+  {
+    "id": "at-t-services-inc-a-001",
+    "title": "Complete Q1 2026 QBR with AT&T Services leadership",
+    "description": "Schedule and conduct quarterly business review to discuss Kandy platform utilization metrics, feature adoption, and renewal roadmap for their $10M+ annual contract.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-31",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "at-t-services-inc-a-002",
+    "title": "Prepare renewal proposal for AT&T Services",
+    "description": "Develop comprehensive renewal proposal highlighting WebRTC and SIP trunking ROI, new messaging capabilities, and pricing for contract extension starting Q4 2026.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-04-15",
+    "createdAt": "2026-02-01"
+  },
+  {
+    "id": "at-t-services-inc-a-003",
+    "title": "Conduct CPaaS feature adoption workshop",
+    "description": "Organize technical workshop with AT&T Services operations team to optimize their use of advanced Kandy CPaaS features and identify expansion opportunities.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success Manager",
+    "dueDate": "2026-05-30",
+    "createdAt": "2026-02-10"
+  },
+  {
+    "id": "at-t-services-inc-a-004",
+    "title": "Execute expansion upsell analysis",
+    "description": "Analyze AT&T Services' current usage patterns across SIP trunking and messaging to identify upsell opportunities and prepare expansion proposal for H2 2026.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Account Manager",
+    "dueDate": "2026-05-15",
+    "createdAt": "2026-01-22"
+  }
+]

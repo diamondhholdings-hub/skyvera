@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "nbn-co-ltd-a-001",
+    "title": "Complete CloudSense CPQ optimization audit",
+    "description": "Reviewed current quote-to-cash workflow and identified 3 efficiency improvements for CPQ configuration that reduced quote cycle time by 22%.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-01-31",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "nbn-co-ltd-a-002",
+    "title": "Implement custom pricing rules for enterprise bundles",
+    "description": "Configure new discount matrices and dynamic pricing rules in CloudSense CPQ to support NBN Co's B2B enterprise package offerings.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-01-22"
+  },
+  {
+    "id": "nbn-co-ltd-a-003",
+    "title": "Schedule Q2 business review and renewal planning",
+    "description": "Align with NBN Co leadership on 2026 expansion roadmap, usage metrics, and prepare renewal proposal for $1.2M ARR contract.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-15",
+    "createdAt": "2026-01-28"
+  },
+  {
+    "id": "nbn-co-ltd-a-004",
+    "title": "Train billing operations team on CPQ advanced features",
+    "description": "Deliver hands-on training session for NBN Co's operations team on CloudSense CPQ reporting, approval workflows, and integration with back-office systems.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success",
+    "dueDate": "2026-05-30",
+    "createdAt": "2026-02-05"
+  }
+]

@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "somtel-gsm-fzco-a-001",
+    "title": "Schedule QBR with CTO and Network Operations Director",
+    "description": "Conduct quarterly business review to discuss IMS migration roadmap, SS7 optimization opportunities, and 2026 capacity planning aligned with Somtel's LTE expansion.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-15",
+    "createdAt": "2026-02-01"
+  },
+  {
+    "id": "somtel-gsm-fzco-a-002",
+    "title": "Prepare renewal proposal with 5G signaling add-on",
+    "description": "Develop renewal agreement incorporating next-gen signaling capabilities and tiered pricing to support Somtel's 5G deployment, due before Q2 contract anniversary.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-30",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "somtel-gsm-fzco-a-003",
+    "title": "Deliver SS7 network health assessment report",
+    "description": "Complete comprehensive audit of Somtel's current SS7 infrastructure performance and provide recommendations for signaling optimization to reduce latency.",
+    "status": "done",
+    "priority": "medium",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "somtel-gsm-fzco-a-004",
+    "title": "Identify IMS interoperability testing opportunities",
+    "description": "Collaborate with Somtel engineering team to map IMS integration touchpoints and schedule lab validation sessions for NewNet's next-gen signaling stack compatibility.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success Manager",
+    "dueDate": "2026-05-15",
+    "createdAt": "2026-02-05"
+  }
+]

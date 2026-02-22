@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "vodafone-egypt-a-001",
+    "title": "Conduct initial discovery call with Vodafone Egypt network operations",
+    "description": "Schedule and complete first technical discovery meeting to understand current SS7 and IMS infrastructure gaps and identify optimization opportunities.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-01-30",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "vodafone-egypt-a-002",
+    "title": "Prepare LTE signaling optimization proposal for Vodafone Egypt",
+    "description": "Develop technical proposal outlining NewNet's LTE and next-gen signaling capabilities to address Vodafone Egypt's network capacity and reliability requirements.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "vodafone-egypt-a-003",
+    "title": "Schedule proof-of-concept pilot for IMS signaling platform",
+    "description": "Coordinate with Vodafone Egypt technical team to define scope, timeline, and success metrics for a 90-day IMS optimization pilot project.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Customer Success Manager",
+    "dueDate": "2026-03-31",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "vodafone-egypt-a-004",
+    "title": "Identify executive sponsor and plan quarterly business review",
+    "description": "Secure commitment from Vodafone Egypt's VP of Network Operations and establish recurring QBR cadence to align on strategic signaling infrastructure goals.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-15",
+    "createdAt": "2026-01-22"
+  }
+]

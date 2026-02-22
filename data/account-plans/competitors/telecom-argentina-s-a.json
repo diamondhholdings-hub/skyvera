@@ -1,0 +1,36 @@
+[
+  {
+    "id": "telecom-argentina-s-a-c-001",
+    "name": "Mavenir",
+    "type": "our-competitor",
+    "description": "Cloud-native telecom software vendor offering comprehensive SS7, LTE, IMS, and signaling solutions with strong carrier relationships globally.",
+    "strengths": [
+      "Extensive enterprise carrier deployments across Latin America with proven track record",
+      "Integrated end-to-end signaling platform covering legacy and 5G networks",
+      "Strong R&D investment in next-generation signaling protocols and network slicing"
+    ],
+    "weaknesses": [
+      "Higher implementation costs and longer deployment timelines compared to Skyvera's modular approach",
+      "Legacy product architecture creates vendor lock-in and limits flexibility",
+      "Slower time-to-market for emerging signaling standards and competitive pricing pressure"
+    ],
+    "lastUpdated": "2026-02-01"
+  },
+  {
+    "id": "telecom-argentina-s-a-c-002",
+    "name": "Neustar",
+    "type": "our-competitor",
+    "description": "Network intelligence and telecom software provider specializing in SS7 signaling, LTE roaming, and IMS with focus on carrier security and routing.",
+    "strengths": [
+      "Market-leading expertise in SS7 security and fraud prevention solutions",
+      "Global roaming and interoperability database with established carrier partnerships",
+      "Advanced analytics and real-time signaling intelligence capabilities"
+    ],
+    "weaknesses": [
+      "Less competitive on next-generation signaling protocols like 5GC and IMS evolution",
+      "Higher per-transaction licensing models versus Skyvera's flexible subscription approach",
+      "Smaller innovation pace in cloud-native and containerized deployment architectures"
+    ],
+    "lastUpdated": "2026-02-01"
+  }
+]

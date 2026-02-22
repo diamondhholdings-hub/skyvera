@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "one-albania-a-001",
+    "title": "Complete Q1 2026 Business Review with One Albania leadership",
+    "description": "Conduct quarterly business review covering STL platform utilization, custom development roadmap, and identify upsell opportunities for their $6.5M ARR account.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-15",
+    "createdAt": "2026-01-10"
+  },
+  {
+    "id": "one-albania-a-002",
+    "title": "Prepare renewal proposal for One Albania annual contract renewal",
+    "description": "Develop renewal proposal including STL platform enhancements, professional services hours, and negotiated pricing for the upcoming contract cycle in Q2 2026.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-30",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "one-albania-a-003",
+    "title": "Assess custom development backlog and resource allocation",
+    "description": "Review One Albania's pending custom development requests with Solutions Engineer to ensure project timelines are met and identify potential scope adjustments.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "one-albania-a-004",
+    "title": "Schedule executive sponsor check-in regarding telecom industry roadmap",
+    "description": "Organize strategic alignment meeting between One Albania's executive team and STL product leadership to discuss upcoming telecom software innovations and expansion opportunities.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success",
+    "dueDate": "2026-05-15",
+    "createdAt": "2026-02-01"
+  }
+]

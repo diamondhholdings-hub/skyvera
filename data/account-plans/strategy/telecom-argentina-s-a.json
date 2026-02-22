@@ -1,0 +1,53 @@
+{
+  "painPoints": [
+    {
+      "id": "PP001",
+      "title": "SS7 Network Obsolescence and Fraud Vulnerability",
+      "description": "Telecom Argentina's legacy SS7 infrastructure is increasingly vulnerable to IMSI catchers and international roaming fraud. Current NewNet SS7 deployment lacks advanced anomaly detection and real-time threat mitigation, exposing the carrier to revenue leakage estimated at 2-3% of roaming traffic and regulatory compliance risks in key partner markets.",
+      "status": "active",
+      "severity": "high",
+      "identifiedDate": "2024-01-15",
+      "owner": "Chief Network Officer"
+    },
+    {
+      "id": "PP002",
+      "title": "IMS Core Network Interoperability and SMS Interworking Gaps",
+      "description": "Legacy SMS interworking between IMS-native subscribers and circuit-switched networks creates message delivery failures and poor USSD experience. NewNet IMS implementation lacks seamless SIP-I integration with Argentina's domestic network partners, causing 4-6% SMS failure rates and subscriber complaints in rural deployments.",
+      "status": "active",
+      "severity": "high",
+      "identifiedDate": "2023-11-22",
+      "owner": "VP Network Operations"
+    },
+    {
+      "id": "PP003",
+      "title": "LTE Signaling Capacity Planning and Diameter Bottlenecks",
+      "description": "Rapid LTE subscriber growth (18% YoY) is straining current Diameter signaling infrastructure. NewNet's next-gen signaling software lacks predictive scaling capabilities, resulting in periodic HSS/AAA timeouts during peak hours and degraded mobile data authentication performance affecting 2-3% of sessions.",
+      "status": "active",
+      "severity": "medium",
+      "identifiedDate": "2024-02-10",
+      "owner": "Director of Mobile Services"
+    }
+  ],
+  "opportunities": [
+    {
+      "id": "OPP001",
+      "title": "5G Core Network Signaling Modernization with Next-Gen Software Suite",
+      "description": "Expand NewNet Communications next-gen signaling software to support 5G NSA/SA deployments and migrate from Diameter to 3GPP Service Based Architecture (SBA). Includes NFV-ready Signaling Function (SIF) modules, SIP-T/QSIG advanced call routing, and cloud-native Gx/Gy policy control. This positions Telecom Argentina to launch commercial 5G services by Q4 2025 with vendor-agnostic network architecture.",
+      "status": "exploring",
+      "estimatedValue": 1200000,
+      "probability": 72,
+      "identifiedDate": "2024-02-28",
+      "owner": "VP Strategic Technology"
+    },
+    {
+      "id": "OPP002",
+      "title": "Regional Roaming Hub and Enhanced SS7/SIP-I Gateway Services",
+      "description": "Leverage NewNet SS7 and advanced signaling capabilities to establish Argentina as a regional roaming hub for LATAM carriers. Deploy dedicated SIP-I interworking gateway, advanced fraud detection, and revenue assurance modules. Monetize through termination fees and B2B roaming intelligence services to 8-12 regional partners, projected to generate $450K-650K incremental ARR within 18 months.",
+      "status": "proposed",
+      "estimatedValue": 550000,
+      "probability": 58,
+      "identifiedDate": "2024-03-05",
+      "owner": "VP Business Development"
+    }
+  ]
+}

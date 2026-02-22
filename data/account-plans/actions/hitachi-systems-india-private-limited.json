@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "hitachi-systems-india-private-limited-a-001",
+    "title": "Schedule QBR with CTO and procurement team",
+    "description": "Conduct quarterly business review to discuss current STL engagement performance, identify expansion opportunities within their telecom software stack, and align on 2026 roadmap priorities.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-15",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "hitachi-systems-india-private-limited-a-002",
+    "title": "Prepare renewal proposal with upsell for custom development services",
+    "description": "Develop comprehensive renewal proposal highlighting current value delivered, proposed expansion of custom development capacity, and projected cost savings to present at upcoming renewal discussion.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "hitachi-systems-india-private-limited-a-003",
+    "title": "Complete technical health audit of STL implementation",
+    "description": "Audit current deployment performance, system utilization metrics, and identify technical debt or optimization opportunities to strengthen account health before renewal.",
+    "status": "done",
+    "priority": "medium",
+    "owner": "Customer Success",
+    "dueDate": "2026-02-10",
+    "createdAt": "2026-01-10"
+  },
+  {
+    "id": "hitachi-systems-india-private-limited-a-004",
+    "title": "Identify and engage stakeholders for expansion into IoT telecom solutions",
+    "description": "Map additional decision-makers across HITACHI's telecom division to explore potential expansion into IoT-enabled network solutions leveraging STL's professional services capabilities.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-30",
+    "createdAt": "2026-01-25"
+  }
+]

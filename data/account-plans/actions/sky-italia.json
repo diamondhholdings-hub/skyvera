@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "sky-italia-a-001",
+    "title": "Complete CloudSense CPQ optimization audit",
+    "description": "Reviewed Sky Italia's current CPQ configuration and identified 3 process improvements to reduce quote turnaround time by 25%.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-01-31",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "sky-italia-a-002",
+    "title": "Schedule Q1 QBR with Sky Italia leadership",
+    "description": "Conduct quarterly business review to present platform ROI metrics and discuss renewal strategy for $605K ARR account.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "sky-italia-a-003",
+    "title": "Prepare renewal proposal with expanded BSS modules",
+    "description": "Develop proposal for Sky Italia to add advanced billing and service management modules to their existing CloudSense CPQ platform.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-31",
+    "createdAt": "2026-01-22"
+  },
+  {
+    "id": "sky-italia-a-004",
+    "title": "Conduct user training on CPQ workflow enhancements",
+    "description": "Deliver training sessions to Sky Italia's sales and provisioning teams on new CPQ features and best practices for Q2 rollout.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success",
+    "dueDate": "2026-05-15",
+    "createdAt": "2026-02-05"
+  }
+]

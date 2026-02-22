@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "sierra-wireless-america-a-001",
+    "title": "Complete IMS integration technical review",
+    "description": "Documented assessment of NewNet Communications IMS implementation with Sierra Wireless platform compatibility findings and optimization recommendations.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-01-30",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "sierra-wireless-america-a-002",
+    "title": "Schedule QBR with Sierra Wireless leadership",
+    "description": "Quarterly business review to discuss ARR growth opportunities, next-gen signaling roadmap alignment, and carrier customer expansion strategy.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "sierra-wireless-america-a-003",
+    "title": "Prepare SS7 and LTE performance benchmarking proposal",
+    "description": "Develop comparative analysis proposal for Sierra Wireless to validate NewNet Communications platform performance gains against competitor solutions.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-31",
+    "createdAt": "2026-02-01"
+  },
+  {
+    "id": "sierra-wireless-america-a-004",
+    "title": "Identify and qualify net-new carrier pilot opportunities",
+    "description": "Research and outreach to 3-5 telecom carriers currently evaluating next-gen signaling solutions to position Sierra Wireless for partnership expansion.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success",
+    "dueDate": "2026-04-30",
+    "createdAt": "2026-02-05"
+  }
+]

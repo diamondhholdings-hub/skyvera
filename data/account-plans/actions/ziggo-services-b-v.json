@@ -1,0 +1,42 @@
+[
+  {
+    "id": "ziggo-services-b-v-a-001",
+    "title": "Complete CloudSense CPQ platform assessment and configuration audit",
+    "description": "Document current CPQ setup, identify optimization opportunities, and validate Salesforce integration performance for Ziggo's telecom product catalog.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-01-30",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "ziggo-services-b-v-a-002",
+    "title": "Develop comprehensive BSS/CPQ value proposition and ROI case study",
+    "description": "Create quantified business case showing quote-to-cash acceleration and revenue impact potential for Ziggo's enterprise services division.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "ziggo-services-b-v-a-003",
+    "title": "Schedule executive stakeholder discovery call with procurement and revenue operations",
+    "description": "Align with key decision-makers to understand current quote cycle pain points and secure budget allocation for platform expansion.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-15",
+    "createdAt": "2026-01-22"
+  },
+  {
+    "id": "ziggo-services-b-v-a-004",
+    "title": "Propose CloudSense advanced configuration workshop for product and pricing teams",
+    "description": "Offer hands-on training session to unlock advanced quoting rules, dynamic pricing, and custom workflows within the CPQ platform.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success",
+    "dueDate": "2026-04-30",
+    "createdAt": "2026-01-18"
+  }
+]

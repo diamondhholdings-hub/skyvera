@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "telenet-bv-a-001",
+    "title": "Schedule QBR with Telenet procurement and technical leadership",
+    "description": "Conduct quarterly business review to discuss CloudSense CPQ utilization metrics, renewal timeline, and expansion opportunities for additional BSS modules.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-01-30",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "telenet-bv-a-002",
+    "title": "Prepare renewal proposal and pricing for CloudSense CPQ contract extension",
+    "description": "Develop renewal quote reflecting current usage, volume discounts, and bundled offerings for the $1.2M+ ARR account with contract expiration in Q3 2026.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-15",
+    "createdAt": "2026-02-01"
+  },
+  {
+    "id": "telenet-bv-a-003",
+    "title": "Conduct product roadmap training on CloudSense CPQ advanced quoting rules",
+    "description": "Schedule hands-on training session with Telenet's CPQ power users to maximize configuration capabilities and reduce quote turnaround time.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-04-10",
+    "createdAt": "2026-02-05"
+  },
+  {
+    "id": "telenet-bv-a-004",
+    "title": "Evaluate upsell potential for CloudSense BSS add-on modules",
+    "description": "Analyze Telenet's current telecom service offerings and billing complexity to identify opportunities for BSS billing or order management module expansion.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success Manager",
+    "dueDate": "2026-05-20",
+    "createdAt": "2026-01-20"
+  }
+]

@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "yadkin-valley-tel-membership-corp-a-001",
+    "title": "Complete annual Kandy platform security audit",
+    "description": "Conduct comprehensive security assessment of their Kandy UCaaS deployment including SIP trunking and WebRTC implementations to ensure compliance with telecom industry standards.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-02-15",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "yadkin-valley-tel-membership-corp-a-002",
+    "title": "Develop renewal proposal with messaging expansion",
+    "description": "Prepare detailed renewal proposal for March 2026 that includes expansion of Kandy messaging capabilities and advanced SIP trunking features to support their growth.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-01",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "yadkin-valley-tel-membership-corp-a-003",
+    "title": "Schedule quarterly business review with executive stakeholders",
+    "description": "Arrange QBR meeting with CTO and VP of Operations to review platform performance, usage metrics, and identify opportunities for WebRTC and CPaaS optimization.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-15",
+    "createdAt": "2026-02-01"
+  },
+  {
+    "id": "yadkin-valley-tel-membership-corp-a-004",
+    "title": "Conduct Kandy training for new helpdesk staff",
+    "description": "Deliver platform training session covering Kandy UCaaS features, troubleshooting procedures, and support best practices for their recently hired technical support team members.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success",
+    "dueDate": "2026-05-30",
+    "createdAt": "2026-01-25"
+  }
+]

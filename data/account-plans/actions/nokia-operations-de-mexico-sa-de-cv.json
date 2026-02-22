@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "nokia-operations-de-mexico-sa-de-cv-a-001",
+    "title": "Schedule QBR with VP of Network Operations",
+    "description": "Conduct quarterly business review to discuss IMS and LTE optimization opportunities and renewal strategy for the $378K ARR account.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-02-15",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "nokia-operations-de-mexico-sa-de-cv-a-002",
+    "title": "Evaluate next-gen signaling software upgrade requirements",
+    "description": "Work with Solutions Engineer to assess customer's SS7 modernization roadmap and identify opportunities for NewNet Communications platform expansion.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-03-31",
+    "createdAt": "2026-01-25"
+  },
+  {
+    "id": "nokia-operations-de-mexico-sa-de-cv-a-003",
+    "title": "Prepare annual renewal proposal and pricing review",
+    "description": "Develop comprehensive renewal proposal with multi-year discount structure and feature roadmap aligned with carrier network expansion plans.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-30",
+    "createdAt": "2026-02-01"
+  },
+  {
+    "id": "nokia-operations-de-mexico-sa-de-cv-a-004",
+    "title": "Schedule technical training session on IMS best practices",
+    "description": "Coordinate with Customer Success to deliver hands-on training for operations team on IMS deployment optimization and troubleshooting.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success",
+    "dueDate": "2026-05-15",
+    "createdAt": "2026-02-03"
+  }
+]

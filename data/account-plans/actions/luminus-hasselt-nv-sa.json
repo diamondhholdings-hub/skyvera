@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "luminus-hasselt-nv-sa-a-001",
+    "title": "Complete CloudSense CPQ optimization review",
+    "description": "Finalize assessment of current CPQ configuration and identify cost-saving opportunities across billing workflows.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-01-30",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "luminus-hasselt-nv-sa-a-002",
+    "title": "Conduct Q1 Business Review with Finance stakeholders",
+    "description": "Meet with CFO and procurement team to review ARR performance and discuss expansion opportunities within CPQ module licensing.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "luminus-hasselt-nv-sa-a-003",
+    "title": "Prepare renewal proposal with advanced feature upsell",
+    "description": "Develop comprehensive renewal proposal for Q2 2026 contract renewal including CloudSense advanced analytics and multi-currency pricing modules.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-31",
+    "createdAt": "2026-02-01"
+  },
+  {
+    "id": "luminus-hasselt-nv-sa-a-004",
+    "title": "Schedule executive training session on CPQ best practices",
+    "description": "Coordinate hands-on training with Luminus operations team to maximize platform adoption and reduce manual quote processing time.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success",
+    "dueDate": "2026-04-30",
+    "createdAt": "2026-01-25"
+  }
+]

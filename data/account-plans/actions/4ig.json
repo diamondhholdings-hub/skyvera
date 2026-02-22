@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "4ig-a-001",
+    "title": "Complete discovery call with 4iG technical leadership",
+    "description": "Initial meeting to understand 4iG's current telecom software stack, pain points, and STL engagement scope for custom development needs.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-01-15",
+    "createdAt": "2026-01-08"
+  },
+  {
+    "id": "4ig-a-002",
+    "title": "Develop STL engagement roadmap and proposal",
+    "description": "Create a phased delivery plan outlining professional services and custom development scope to support 4iG's telecom software initiatives.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "4ig-a-003",
+    "title": "Schedule executive business review with 4iG stakeholders",
+    "description": "Arrange QBR meeting with 4iG decision-makers to present STL value proposition, engagement roadmap, and establish annual partnership goals.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-15",
+    "createdAt": "2026-02-05"
+  },
+  {
+    "id": "4ig-a-004",
+    "title": "Prepare custom development statement of work",
+    "description": "Draft detailed SOW for STL professional services engagement including deliverables, timeline, resource allocation, and pricing for 4iG approval.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success",
+    "dueDate": "2026-05-30",
+    "createdAt": "2026-02-10"
+  }
+]

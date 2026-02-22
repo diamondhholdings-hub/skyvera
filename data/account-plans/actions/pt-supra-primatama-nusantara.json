@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "pt-supra-primatama-nusantara-a-001",
+    "title": "Schedule QBR with CTO and VP of Operations",
+    "description": "Conduct quarterly business review to assess custom development project milestones and identify upsell opportunities for additional STL professional services.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-01-30",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "pt-supra-primatama-nusantara-a-002",
+    "title": "Prepare renewal proposal and pricing for 2026 contract extension",
+    "description": "Develop comprehensive renewal proposal including current usage metrics, performance improvements, and pricing structure for the $1.098M annual contract renewing in Q2 2026.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-15",
+    "createdAt": "2026-02-01"
+  },
+  {
+    "id": "pt-supra-primatama-nusantara-a-003",
+    "title": "Conduct technical health check on STL custom development modules",
+    "description": "Execute comprehensive technical review of all deployed custom development solutions to ensure performance optimization and identify gaps for additional consulting services.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-04-10",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "pt-supra-primatama-nusantara-a-004",
+    "title": "Present advanced telecom software modernization roadmap",
+    "description": "Schedule executive presentation to introduce next-generation STL solutions aligned with PT. Supra Primatama's digital transformation strategy and network evolution goals.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success Manager",
+    "dueDate": "2026-05-20",
+    "createdAt": "2026-02-05"
+  }
+]

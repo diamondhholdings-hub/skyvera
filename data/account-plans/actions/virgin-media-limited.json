@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "virgin-media-limited-a-001",
+    "title": "Complete CloudSense CPQ v2.1 upgrade and training",
+    "description": "Migrate Virgin Media Limited to the latest CloudSense CPQ version with enhanced Salesforce integration capabilities and conduct technical training for their quoting team.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-02-15",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "virgin-media-limited-a-002",
+    "title": "Implement advanced pricing rules in CPQ for 5G bundle offerings",
+    "description": "Configure dynamic pricing logic within CloudSense CPQ to support Virgin Media's new 5G enterprise bundle discounting strategy across multiple customer segments.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-31",
+    "createdAt": "2026-01-22"
+  },
+  {
+    "id": "virgin-media-limited-a-003",
+    "title": "Schedule Q2 business review and renewal planning meeting",
+    "description": "Conduct quarterly business review with Virgin Media Limited stakeholders to discuss CPQ adoption metrics, renewal terms, and expansion opportunities before their April contract review.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-10",
+    "createdAt": "2026-02-05"
+  },
+  {
+    "id": "virgin-media-limited-a-004",
+    "title": "Develop custom CPQ reporting dashboard for executive visibility",
+    "description": "Create a Salesforce dashboard within CloudSense CPQ to provide Virgin Media's executive team with real-time quoting velocity, win rates, and revenue pipeline insights.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-05-20",
+    "createdAt": "2026-02-01"
+  }
+]

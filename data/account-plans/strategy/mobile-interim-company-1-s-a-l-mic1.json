@@ -1,0 +1,53 @@
+{
+  "painPoints": [
+    {
+      "id": "PP001",
+      "title": "SS7 Network Congestion During Peak Roaming Events",
+      "description": "MIC1 experiences bottlenecks in SS7 signaling capacity during international roaming peaks, causing call setup delays and SMS interworking failures. Current NewNet Communications SS7 stack lacks intelligent congestion management for multi-carrier roaming scenarios.",
+      "status": "active",
+      "severity": "high",
+      "identifiedDate": "2024-01-15T10:30:00Z",
+      "owner": "Network Operations Director"
+    },
+    {
+      "id": "PP002",
+      "title": "Diameter Protocol Fragmentation Across IMS Domains",
+      "description": "MIC1's IMS infrastructure spans multiple geographic regions with inconsistent Diameter routing policies, causing failed authentication and session establishment. NewNet Communications implementation lacks centralized Diameter policy management across federated IMS domains.",
+      "status": "active",
+      "severity": "high",
+      "identifiedDate": "2024-02-02T14:45:00Z",
+      "owner": "IMS Architecture Lead"
+    },
+    {
+      "id": "PP003",
+      "title": "Legacy SIP Interworking with Next-Gen Signaling Overhead",
+      "description": "MIC1 maintains bridging between legacy SIP and next-gen signaling protocols, creating latency and message translation errors. NewNet Communications SIP-to-next-gen conversion lacks real-time protocol optimization.",
+      "status": "active",
+      "severity": "medium",
+      "identifiedDate": "2024-01-28T09:20:00Z",
+      "owner": "Signaling Platform Manager"
+    }
+  ],
+  "opportunities": [
+    {
+      "id": "OPP001",
+      "title": "Expansion to Advanced SMS Interworking and A2P Gateway",
+      "description": "Implement NewNet Communications enhanced SMS interworking capabilities to enable A2P (Application-to-Person) messaging services. MIC1 can monetize this through enterprise SMS API offerings and increase ARR through tier-based SMS routing tiers.",
+      "status": "exploring",
+      "estimatedValue": 425000,
+      "probability": 72,
+      "identifiedDate": "2024-02-10T11:15:00Z",
+      "owner": "Revenue Growth Manager"
+    },
+    {
+      "id": "OPP002",
+      "title": "Next-Gen Signaling Software Upgrade for 5G Network Slicing",
+      "description": "Upgrade NewNet Communications platform to support 5G SBA (Service-Based Architecture) signaling and network slicing capabilities. This enables MIC1 to offer premium enterprise connectivity services with SLA guarantees, targeting 35-40% ARR uplift over 18 months.",
+      "status": "proposed",
+      "estimatedValue": 525000,
+      "probability": 68,
+      "identifiedDate": "2024-02-08T16:40:00Z",
+      "owner": "Product Strategy Director"
+    }
+  ]
+}

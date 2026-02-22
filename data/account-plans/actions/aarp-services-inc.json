@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "aarp-services-inc-a-001",
+    "title": "Complete CloudSense CPQ optimization review",
+    "description": "Finalized analysis of AARP's current quote-to-cash workflow within CloudSense to identify efficiency gaps and cost savings opportunities.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-01-31",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "aarp-services-inc-a-002",
+    "title": "Schedule QBR with procurement and finance stakeholders",
+    "description": "Quarterly business review currently in progress to align on telecom service performance, billing accuracy, and CloudSense CPQ configuration enhancements for Q2 renewal.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-02-14",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "aarp-services-inc-a-003",
+    "title": "Prepare renewal proposal with pricing optimization",
+    "description": "Develop comprehensive renewal proposal leveraging CloudSense CPQ to model tiered pricing scenarios and demonstrate ROI of platform capabilities for AARP's multi-location telecom footprint.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-15",
+    "createdAt": "2026-01-22"
+  },
+  {
+    "id": "aarp-services-inc-a-004",
+    "title": "Conduct CloudSense advanced features training session",
+    "description": "Deliver hands-on training to AARP's telecom operations team on advanced CPQ configuration, custom quote templates, and automation rules to maximize platform adoption.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success",
+    "dueDate": "2026-04-30",
+    "createdAt": "2026-02-03"
+  }
+]

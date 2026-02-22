@@ -1,0 +1,53 @@
+{
+  "painPoints": [
+    {
+      "id": "PP001",
+      "title": "Complex Telecom Catalog Management in Salesforce",
+      "description": "BeeDIGITAL AI customers struggle with managing multi-layered telecom product hierarchies (bundles, services, add-ons) within Salesforce native objects. Dynamic pricing rules for different customer segments (residential, enterprise, wholesale) create configuration bottlenecks, leading to quote turnaround times exceeding 5 business days.",
+      "status": "active",
+      "severity": "high",
+      "identifiedDate": "2024-01-15",
+      "owner": "VP Sales Engineering"
+    },
+    {
+      "id": "PP002",
+      "title": "Order-to-Cash Cycle Delays and Revenue Recognition Issues",
+      "description": "Integration gaps between CloudSense CPQ and downstream billing systems (BSS) cause order fulfillment delays and manual reconciliation efforts. Telecom service activation orders (voice, data, broadband) experience 3-5 day delays, impacting revenue recognition accuracy and customer provisioning timelines.",
+      "status": "active",
+      "severity": "high",
+      "identifiedDate": "2024-02-22",
+      "owner": "Director of Customer Success"
+    },
+    {
+      "id": "PP003",
+      "title": "Limited Real-Time Usage-Based Pricing and Overage Calculation",
+      "description": "CloudSense CPQ lacks native capabilities for real-time consumption-based billing common in telecom (overage charges, roaming fees, premium service tiers). Manual calculation and quote adjustment processes create errors in 8-12% of complex telecom quotes with usage-based components.",
+      "status": "active",
+      "severity": "medium",
+      "identifiedDate": "2024-03-10",
+      "owner": "Senior Solution Architect"
+    }
+  ],
+  "opportunities": [
+    {
+      "id": "OPP001",
+      "title": "Expand CloudSense CPQ to Multi-Tenancy for Wholesale/Reseller Channel",
+      "description": "Develop multi-tenant capabilities within CloudSense CPQ to enable telecom wholesalers and resellers to configure and quote services with their own branding, product hierarchies, and margin structures. Target mid-market telecom distributors and MVNOs currently using legacy CPQ solutions. Estimated addressable market includes 200+ European telecom resellers.",
+      "status": "exploring",
+      "estimatedValue": 890000,
+      "probability": 72,
+      "identifiedDate": "2024-02-18",
+      "owner": "Head of Product Management"
+    },
+    {
+      "id": "OPP002",
+      "title": "Launch AI-Powered Dynamic Pricing Engine for Telecom Bundles",
+      "description": "Integrate machine learning models into CloudSense CPQ to recommend optimal pricing for service bundles based on customer segment, competitive landscape, inventory levels, and demand signals. Target enterprise telecom operators managing 500+ SKUs with margin pressure. Anticipated upsell potential of $45-65K per customer annually with 35-40 additional deals in pipeline.",
+      "status": "proposed",
+      "estimatedValue": 1250000,
+      "probability": 58,
+      "identifiedDate": "2024-03-05",
+      "owner": "Chief Revenue Officer"
+    }
+  ]
+}

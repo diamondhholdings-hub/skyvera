@@ -1,0 +1,53 @@
+{
+  "painPoints": [
+    {
+      "id": "PP001",
+      "title": "Complex Telecom Product Catalog Management in Salesforce",
+      "description": "Ziggo Services struggles with managing multi-layered telecom product bundles (connectivity, TV, voice, security services) within Salesforce native objects. Current implementation lacks efficient handling of hierarchical product relationships, service dependencies, and conditional pricing rules needed for their B2B2C residential and business offerings.",
+      "status": "active",
+      "severity": "high",
+      "identifiedDate": "2024-01-15",
+      "owner": "Sarah Van Der Berg"
+    },
+    {
+      "id": "PP002",
+      "title": "Order-to-Cash Cycle Delays Due to Manual Quote Approval Workflows",
+      "description": "Lack of automated approval routing and dynamic discount governance in CloudSense CPQ is causing 5-7 day delays in the quote-to-order handoff for large B2B accounts. Manual intervention required for tiered pricing decisions, contract terms, and promotional bundling is creating bottlenecks in the sales-to-fulfillment process.",
+      "status": "active",
+      "severity": "high",
+      "identifiedDate": "2024-02-03",
+      "owner": "Mark Hendrickson"
+    },
+    {
+      "id": "PP003",
+      "title": "Billing System Integration Gaps Between CPQ and Revenue Recognition",
+      "description": "CloudSense CPQ generated orders are not seamlessly feeding into Ziggo's billing and revenue recognition systems. Recurring subscription pricing, usage-based charges, and contract amendments require manual data entry and reconciliation, increasing billing errors and revenue leakage.",
+      "status": "active",
+      "severity": "medium",
+      "identifiedDate": "2024-01-22",
+      "owner": "Lisa Martens"
+    }
+  ],
+  "opportunities": [
+    {
+      "id": "OPP001",
+      "title": "Expand CloudSense CPQ to Self-Service B2B Customer Portal",
+      "description": "Deploy CloudSense CPQ-powered self-service quote configuration portal for Ziggo's SMB and mid-market B2B customers. Enable real-time connectivity service bundling, pricing transparency, and instant quote generation. Estimated to reduce sales cycle by 40% and unlock new direct-to-customer revenue channels for managed services and SD-WAN solutions.",
+      "status": "proposed",
+      "estimatedValue": 850000,
+      "probability": 72,
+      "identifiedDate": "2024-02-18",
+      "owner": "Jan Wouters"
+    },
+    {
+      "id": "OPP002",
+      "title": "Implement Dynamic Pricing Engine with AI-Driven Discount Optimization",
+      "description": "Integrate AI-powered pricing recommendation engine into CloudSense CPQ to dynamically adjust discounts, contract terms, and bundling based on customer segment, order history, churn risk, and market conditions. Expected to improve gross margins by 3-5% while accelerating quote approval cycles and enabling data-driven sales strategies for Ziggo's portfolio of connectivity, hosting, and UCaaS services.",
+      "status": "exploring",
+      "estimatedValue": 1200000,
+      "probability": 58,
+      "identifiedDate": "2024-02-25",
+      "owner": "Petra Zijlstra"
+    }
+  ]
+}

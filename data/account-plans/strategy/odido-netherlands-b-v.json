@@ -1,0 +1,53 @@
+{
+  "painPoints": [
+    {
+      "id": "PP001",
+      "title": "SS7 Network Vulnerability & Legacy Protocol Security",
+      "description": "Odido's existing SS7 infrastructure faces increasing security threats from telecom fraud and unauthorized access. Current NewNet Communications SS7 implementation lacks advanced threat detection and real-time anomaly detection capabilities for signaling attacks, requiring manual intervention and reactive remediation.",
+      "status": "active",
+      "severity": "high",
+      "identifiedDate": "2024-01-15",
+      "owner": "Network Security Director"
+    },
+    {
+      "id": "PP002",
+      "title": "IMS Network Interoperability & Roaming Complexity",
+      "description": "Odido experiences integration challenges between legacy IMS core and third-party carrier roaming partners. NewNet Communications IMS signaling software struggles with non-standard Diameter implementations from international partners, causing call failures and revenue leakage in roaming scenarios.",
+      "status": "active",
+      "severity": "high",
+      "identifiedDate": "2024-02-03",
+      "owner": "Roaming & International Services Manager"
+    },
+    {
+      "id": "PP003",
+      "title": "SMS Interworking & A2P Gateway Bottlenecks",
+      "description": "Current NewNet Communications signaling stack has limited SMS A2P (Application-to-Person) throughput for commercial messaging partners. Bottlenecks in SIP/SMPP interworking create message delivery delays and partner SLA violations during peak traffic periods.",
+      "status": "active",
+      "severity": "medium",
+      "identifiedDate": "2024-01-28",
+      "owner": "Messaging Services Lead"
+    }
+  ],
+  "opportunities": [
+    {
+      "id": "OPP001",
+      "title": "Upgrade to NewNet 5G Signaling & Diameter Enhancement",
+      "description": "Expand NewNet Communications next-gen signaling software to support advanced 5G control plane protocols (3GPP TS 29.xxx), including enhanced Diameter routing and policy enforcement. Enable Odido to monetize premium 5G services (network slicing, edge computing) across enterprise and mobile customer segments.",
+      "status": "exploring",
+      "estimatedValue": 185000,
+      "probability": 72,
+      "identifiedDate": "2024-02-15",
+      "owner": "Product Strategy Manager"
+    },
+    {
+      "id": "OPP002",
+      "title": "NewNet RCS & Rich Communications Platform Implementation",
+      "description": "Deploy NewNet Communications IMS/SIP-based RCS (Rich Communications Services) platform to replace aging SMS for Odido's B2B messaging and consumer communications. Unlock new revenue streams via enterprise messaging APIs, brand messaging, and verified SMS compliance. Includes upgrade from current SS7/LTE baseline.",
+      "status": "proposed",
+      "estimatedValue": 245000,
+      "probability": 58,
+      "identifiedDate": "2024-02-20",
+      "owner": "Revenue Growth Director"
+    }
+  ]
+}

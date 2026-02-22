@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "telstra-international-limited-a-001",
+    "title": "Complete CloudSense CPQ configuration audit",
+    "description": "Reviewed current quote templates, pricing rules, and discount matrices to ensure alignment with Telstra's Q1 2026 product catalog updates.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-01-31",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "telstra-international-limited-a-002",
+    "title": "Optimize CloudSense CPQ performance for high-volume quoting",
+    "description": "Currently implementing custom Apex triggers and batch jobs to reduce quote generation time from 45 seconds to under 10 seconds for complex international telecom bundles.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "telstra-international-limited-a-003",
+    "title": "Schedule mid-year business review and CPQ roadmap discussion",
+    "description": "Prepare QBR deck covering usage metrics, ROI analysis, and planned enhancements to CloudSense CPQ features for H2 2026.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-30",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "telstra-international-limited-a-004",
+    "title": "Develop renewal proposal for ARR expansion",
+    "description": "Create proposal to upgrade Telstra International Limited to premium CloudSense CPQ tier with advanced analytics and AI-driven pricing recommendations for Q3 2026 contract renewal.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Account Manager",
+    "dueDate": "2026-05-15",
+    "createdAt": "2026-01-22"
+  }
+]

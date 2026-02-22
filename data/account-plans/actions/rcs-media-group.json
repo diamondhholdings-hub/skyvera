@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "rcs-media-group-a-001",
+    "title": "Complete CloudSense CPQ upgrade to latest version",
+    "description": "RCS Media Group's CloudSense instance requires upgrade to access new Salesforce-native billing automation features that will reduce quote turnaround time by 40%.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-01-30",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "rcs-media-group-a-002",
+    "title": "Schedule quarterly business review (QBR) with procurement and finance stakeholders",
+    "description": "Conduct QBR to review RCS Media Group's $604k ARR expansion roadmap and identify upsell opportunities within their wireless and broadband service bundles.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "rcs-media-group-a-003",
+    "title": "Prepare renewal proposal with tiered pricing model",
+    "description": "Develop customized renewal proposal leveraging CloudSense CPQ's dynamic pricing engine to present volume-based discounts for their anticipated 25% usage growth.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-31",
+    "createdAt": "2026-02-01"
+  },
+  {
+    "id": "rcs-media-group-a-004",
+    "title": "Conduct CPQ best practices workshop for RCS Media Group billing team",
+    "description": "Train RCS Media Group's 8-person billing operations team on advanced CloudSense CPQ configuration techniques to optimize their quote-to-cash cycle.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success",
+    "dueDate": "2026-04-30",
+    "createdAt": "2026-02-05"
+  }
+]

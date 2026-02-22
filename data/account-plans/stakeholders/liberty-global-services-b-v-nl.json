@@ -1,0 +1,62 @@
+[
+  {
+    "id": "liberty-global-services-b-v-nl-s-001",
+    "name": "Jorn van der Berg",
+    "title": "VP of Digital Transformation & BSS Operations",
+    "role": "decision-maker",
+    "relationshipStrength": "strong",
+    "email": "jorn.vandenberg@libertyglobal.nl",
+    "notes": "Driving the adoption of CloudSense CPQ to streamline telecom service provisioning and reduce billing cycles. Prioritizes seamless Salesforce integration for order-to-cash automation and improved revenue recognition.",
+    "interests": [
+      "BSS/OSS modernization",
+      "Order management automation",
+      "Revenue assurance & billing accuracy"
+    ],
+    "lastInteraction": "2025-11-14"
+  },
+  {
+    "id": "liberty-global-services-b-v-nl-s-002",
+    "name": "Petra Mertens",
+    "title": "Director of Product Management",
+    "role": "champion",
+    "relationshipStrength": "strong",
+    "email": "petra.mertens@libertyglobal.nl",
+    "notes": "Leading the product catalog expansion strategy and CPQ configuration for complex telecom bundles (broadband, TV, voice). Owns the business case for reducing quote-to-order cycle time by 40%.",
+    "interests": [
+      "Product catalog management",
+      "Quote configuration & pricing rules",
+      "Time-to-market acceleration"
+    ],
+    "lastInteraction": "2025-10-28"
+  },
+  {
+    "id": "liberty-global-services-b-v-nl-s-003",
+    "name": "Michel de Graaf",
+    "title": "Senior Finance Manager - Telecom Billing",
+    "role": "influencer",
+    "relationshipStrength": "moderate",
+    "email": "michel.degraaf@libertyglobal.nl",
+    "notes": "Responsible for billing compliance and revenue recognition accuracy. Concerned with CPQ data governance and ensuring pricing rules align with regulatory requirements in EMEA markets.",
+    "interests": [
+      "Regulatory compliance & data governance",
+      "Billing accuracy & audit trails",
+      "Cost of operations reduction"
+    ],
+    "lastInteraction": "2025-09-11"
+  },
+  {
+    "id": "liberty-global-services-b-v-nl-s-004",
+    "name": "Annick Lefevre",
+    "title": "Sales Operations Manager",
+    "role": "user",
+    "relationshipStrength": "moderate",
+    "email": "annick.lefevre@libertyglobal.nl",
+    "notes": "Daily user of CloudSense CPQ for generating quotes and managing sales orders. Advocates for improved UI/UX and real-time visibility into inventory and service availability.",
+    "interests": [
+      "User adoption & training",
+      "Quote generation efficiency",
+      "Inventory visibility & order tracking"
+    ],
+    "lastInteraction": "2025-12-02"
+  }
+]

@@ -1,0 +1,53 @@
+[
+  {
+    "id": "STK001",
+    "name": "Jennifer Martinez",
+    "title": "VP of Infrastructure & Operations",
+    "role": "decision-maker",
+    "relationshipStrength": "strong",
+    "email": "jennifer.martinez@clientcorp.com",
+    "notes": "Primary budget owner for cloud infrastructure. Evaluates vendors quarterly. Prioritizes cost optimization and uptime SLAs.",
+    "interests": [
+      "Total cost of ownership",
+      "Service level agreements",
+      "Disaster recovery capabilities",
+      "Multi-cloud strategy",
+      "Infrastructure scalability"
+    ],
+    "lastInteraction": "2024-01-18T14:30:00Z"
+  },
+  {
+    "id": "STK002",
+    "name": "David Chen",
+    "title": "Systems Administrator",
+    "role": "user",
+    "relationshipStrength": "moderate",
+    "email": "d.chen@clientcorp.com",
+    "notes": "Day-to-day platform user. Manages deployments and monitoring. Provides feedback on usability and technical support quality.",
+    "interests": [
+      "API documentation",
+      "Control panel ease of use",
+      "Technical support responsiveness",
+      "Automation capabilities",
+      "Security features"
+    ],
+    "lastInteraction": "2024-01-22T09:15:00Z"
+  },
+  {
+    "id": "STK003",
+    "name": "Rachel Thompson",
+    "title": "Chief Technology Officer",
+    "role": "champion",
+    "relationshipStrength": "strong",
+    "email": "r.thompson@clientcorp.com",
+    "notes": "Strategic technology leader. Advocates for Ntirety's managed services approach internally. Influences long-term technology roadmap decisions.",
+    "interests": [
+      "Innovation and roadmap",
+      "Security compliance (SOC 2, ISO 27001)",
+      "Strategic partnership potential",
+      "AI/ML capabilities",
+      "Sustainability initiatives"
+    ],
+    "lastInteraction": "2024-01-20T11:45:00Z"
+  }
+]

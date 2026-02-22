@@ -1,0 +1,53 @@
+{
+  "painPoints": [
+    {
+      "id": "PP-001",
+      "title": "Legacy SS7 Network Congestion During Peak Traffic",
+      "description": "Telekom Romania's existing SS7 infrastructure experiences bottlenecks during peak mobile traffic periods, causing increased call setup latency and SMS delivery delays. Current signaling software lacks real-time congestion management capabilities, impacting roaming partner interconnection quality and SLA compliance.",
+      "status": "active",
+      "severity": "high",
+      "identifiedDate": "2024-01-15",
+      "owner": "Network Operations Director"
+    },
+    {
+      "id": "PP-002",
+      "title": "Interoperability Challenges in International Roaming SMS Interworking",
+      "description": "NewNet Communications' current SS7 and Diameter implementations struggle with complex SMS routing across multiple international roaming partners, resulting in failed message delivery and revenue leakage. Manual intervention required for protocol translation between legacy GSM MAP and modern SIP-based carriers.",
+      "status": "active",
+      "severity": "high",
+      "identifiedDate": "2024-02-03",
+      "owner": "Roaming & International Services Manager"
+    },
+    {
+      "id": "PP-003",
+      "title": "IMS Migration Complexity and Signaling Protocol Gaps",
+      "description": "Migration from circuit-switched to IMS-based architecture is hindered by incomplete Diameter signaling support in current NewNet software stack. Gaps in Policy and Charging Rules Function (PCRF) integration and SIP session control are delaying voice and video service modernization.",
+      "status": "active",
+      "severity": "medium",
+      "identifiedDate": "2024-01-22",
+      "owner": "Technology & Innovation VP"
+    }
+  ],
+  "opportunities": [
+    {
+      "id": "OPP-001",
+      "title": "Advanced Diameter Signaling Platform for 5G Core Network",
+      "description": "Expand NewNet Communications' Diameter signaling software to provide comprehensive 5G NSA/SA core network support with enhanced PCRF, HSS, and OCS integration. This positions Telekom Romania to accelerate 5G deployment while optimizing signaling traffic management across 4G/5G convergence.",
+      "status": "exploring",
+      "estimatedValue": 287500,
+      "probability": 75,
+      "identifiedDate": "2024-02-10",
+      "owner": "Strategic Partnerships Manager"
+    },
+    {
+      "id": "OPP-002",
+      "title": "AI-Driven Signaling Analytics and Fraud Detection Module",
+      "description": "Develop next-generation signaling analytics capabilities within NewNet Communications to detect SS7/Diameter/SIP-based fraud patterns and optimize routing intelligence. Enable Telekom Romania to offer managed signaling services to smaller Balkan regional carriers, creating new B2B2C revenue stream.",
+      "status": "proposed",
+      "estimatedValue": 425000,
+      "probability": 62,
+      "identifiedDate": "2024-02-08",
+      "owner": "Product Development Lead"
+    }
+  ]
+}

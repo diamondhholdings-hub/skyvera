@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "sterlite-technologies-ltd-a-001",
+    "title": "Complete STL platform migration assessment",
+    "description": "Finished technical evaluation of Sterlite's current STL deployment to identify optimization opportunities for their $450K annual contract.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-01-15",
+    "createdAt": "2026-01-08"
+  },
+  {
+    "id": "sterlite-technologies-ltd-a-002",
+    "title": "Develop custom telecom integration roadmap",
+    "description": "Working with Sterlite's technical team to design a phased approach for integrating STL with their legacy telecom infrastructure over the next 6 months.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-01-10"
+  },
+  {
+    "id": "sterlite-technologies-ltd-a-003",
+    "title": "Schedule executive QBR with Sterlite leadership",
+    "description": "Arrange quarterly business review meeting with CTO and VP of Operations to review STL performance metrics and align on 2026 expansion plans.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-15",
+    "createdAt": "2026-01-12"
+  },
+  {
+    "id": "sterlite-technologies-ltd-a-004",
+    "title": "Prepare renewal proposal with upsell opportunities",
+    "description": "Create comprehensive renewal proposal for Sterlite's ARR refresh that includes pricing for additional STL professional services modules and enhanced support tier.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-30",
+    "createdAt": "2026-02-01"
+  }
+]

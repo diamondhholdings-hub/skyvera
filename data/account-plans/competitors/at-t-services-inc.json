@@ -1,0 +1,36 @@
+[
+  {
+    "id": "at-t-services-inc-c-001",
+    "name": "Twilio",
+    "type": "our-competitor",
+    "description": "Twilio offers a comprehensive CPaaS platform with WebRTC, SIP trunking, and messaging capabilities that directly competes with Skyvera's Kandy UCaaS for enterprise communications.",
+    "strengths": [
+      "Extensive global infrastructure with carrier-grade reliability and 99.95% uptime SLA",
+      "Largest developer ecosystem with robust APIs, SDKs, and third-party integrations",
+      "Strong brand recognition and market leadership in CPaaS space with Fortune 500 customer base"
+    ],
+    "weaknesses": [
+      "Higher per-minute and per-message pricing compared to Skyvera's bundled UCaaS model",
+      "Steeper learning curve and more developer-focused approach versus Skyvera's business user-centric interface",
+      "Less integrated unified communications suite; requires additional third-party tools for full UCaaS feature parity"
+    ],
+    "lastUpdated": "2026-02-01"
+  },
+  {
+    "id": "at-t-services-inc-c-002",
+    "name": "RingCentral",
+    "type": "both",
+    "description": "RingCentral provides an integrated UCaaS platform with WebRTC, SIP trunking, and messaging that competes with Skyvera while also positioning as an alternative to AT&T's legacy communications services.",
+    "strengths": [
+      "Full-featured unified communications suite with integrated voice, video, messaging, and collaboration tools",
+      "Strong market position with deep enterprise integrations including Microsoft Teams, Salesforce, and Slack",
+      "Aggressive pricing for mid-market and enterprise segments with flexible consumption models"
+    ],
+    "weaknesses": [
+      "Limited customization and white-label capabilities compared to Skyvera's platform-as-a-service flexibility",
+      "Higher complexity in implementation and onboarding relative to Skyvera's streamlined deployment",
+      "Customer support response times and technical expertise gaps in specialized SIP trunking scenarios versus Skyvera"
+    ],
+    "lastUpdated": "2026-02-01"
+  }
+]

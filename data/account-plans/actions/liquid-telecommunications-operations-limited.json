@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "liquid-telecommunications-operations-limited-a-001",
+    "title": "Complete CloudSense CPQ implementation assessment",
+    "description": "Evaluate current CPQ configuration and identify optimization opportunities for telecom service bundles.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-01-31",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "liquid-telecommunications-operations-limited-a-002",
+    "title": "Conduct discovery call on BSS/CPQ usage metrics",
+    "description": "Schedule and execute discovery session to understand quote generation volume, pricing complexity, and current pain points with CloudSense.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "liquid-telecommunications-operations-limited-a-003",
+    "title": "Develop expansion proposal for CPQ advanced modules",
+    "description": "Create business case for upgrading to advanced pricing and quoting modules to support revenue growth initiatives.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-15",
+    "createdAt": "2026-02-05"
+  },
+  {
+    "id": "liquid-telecommunications-operations-limited-a-004",
+    "title": "Schedule executive QBR on CloudSense ROI and roadmap",
+    "description": "Prepare quarterly business review with stakeholders to discuss implementation value, usage analytics, and planned platform enhancements.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success Manager",
+    "dueDate": "2026-05-30",
+    "createdAt": "2026-02-01"
+  }
+]

@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "los-angeles-public-library-a-001",
+    "title": "Complete Kandy UCaaS implementation and go-live",
+    "description": "Finalize deployment of Kandy unified communications platform across all LA Public Library branch locations with full SIP trunking and WebRTC integration.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-01-31",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "los-angeles-public-library-a-002",
+    "title": "Conduct user adoption training program",
+    "description": "Deliver comprehensive training sessions to LA Public Library staff on Kandy messaging, video conferencing, and SIP trunking features to drive platform utilization.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Customer Success Manager",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "los-angeles-public-library-a-003",
+    "title": "Schedule quarterly business review with library IT leadership",
+    "description": "Establish QBR meeting with LA Public Library CTO and IT director to review Kandy platform performance, usage metrics, and identify expansion opportunities.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-15",
+    "createdAt": "2026-01-25"
+  },
+  {
+    "id": "los-angeles-public-library-a-004",
+    "title": "Develop library-specific CPaaS use cases and ROI analysis",
+    "description": "Create customized business case demonstrating Kandy messaging and WebRTC value for patron communications and inter-branch collaboration at LA Public Library.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-04-30",
+    "createdAt": "2026-02-01"
+  }
+]

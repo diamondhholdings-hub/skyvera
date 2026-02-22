@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "vr3cloud-international-llc-a-001",
+    "title": "Conduct initial discovery call to understand current UCaaS usage and pain points",
+    "description": "Schedule and complete first technical discovery call with VR3CLOUD to assess their Kandy platform utilization, messaging volumes, and SIP trunking requirements.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-02-15",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "vr3cloud-international-llc-a-002",
+    "title": "Prepare business case for platform expansion to WebRTC capabilities",
+    "description": "Develop ROI analysis and feature comparison document outlining how expanded WebRTC capabilities can improve their customer engagement and reduce infrastructure costs.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-03-10",
+    "createdAt": "2026-01-25"
+  },
+  {
+    "id": "vr3cloud-international-llc-a-003",
+    "title": "Identify upsell opportunities in CPaaS and messaging services",
+    "description": "Analyze current account usage patterns and competitive landscape to develop targeted upsell strategy for high-margin messaging and CPaaS add-ons.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-20",
+    "createdAt": "2026-02-05"
+  },
+  {
+    "id": "vr3cloud-international-llc-a-004",
+    "title": "Schedule executive business review and renewal planning session",
+    "description": "Organize QBR meeting with key stakeholders to review platform performance, discuss roadmap alignment, and establish renewal strategy before contract anniversary.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Customer Success",
+    "dueDate": "2026-05-30",
+    "createdAt": "2026-01-28"
+  }
+]

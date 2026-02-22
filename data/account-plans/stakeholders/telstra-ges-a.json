@@ -1,0 +1,62 @@
+[
+  {
+    "id": "telstra-ges-a-s-001",
+    "name": "Michael Chen",
+    "title": "VP of Business Operations",
+    "role": "decision-maker",
+    "relationshipStrength": "strong",
+    "email": "michael.chen@telstra.com.au",
+    "notes": "Drives digital transformation initiatives and owns the CPQ platform ROI. Prioritizes streamlined quote-to-cash processes and integration with existing Salesforce infrastructure to reduce billing cycle times.",
+    "interests": [
+      "quote-to-cash automation",
+      "Salesforce integration",
+      "revenue acceleration"
+    ],
+    "lastInteraction": "2025-11-15"
+  },
+  {
+    "id": "telstra-ges-a-s-002",
+    "name": "Sarah Mitchell",
+    "title": "Director of Product Catalog Management",
+    "role": "champion",
+    "relationshipStrength": "strong",
+    "email": "sarah.mitchell@telstra.com.au",
+    "notes": "Manages complex product portfolio and bundle configurations across fixed, mobile, and managed services. Seeks CloudSense CPQ to simplify catalog management and enable rapid product launches with accurate pricing and compliance.",
+    "interests": [
+      "product bundling",
+      "catalog complexity",
+      "pricing agility"
+    ],
+    "lastInteraction": "2025-10-22"
+  },
+  {
+    "id": "telstra-ges-a-s-003",
+    "name": "David Thompson",
+    "title": "Senior Manager, Enterprise Billing Systems",
+    "role": "influencer",
+    "relationshipStrength": "moderate",
+    "email": "david.thompson@telstra.com.au",
+    "notes": "Oversees billing accuracy and order-to-billing workflows. Concerned with seamless handoff from CPQ to billing systems and data integrity in order management, particularly for complex B2B telecommunications contracts.",
+    "interests": [
+      "order management",
+      "billing accuracy",
+      "system integration"
+    ],
+    "lastInteraction": "2025-09-08"
+  },
+  {
+    "id": "telstra-ges-a-s-004",
+    "name": "Jennifer Lee",
+    "title": "Sales Operations Manager",
+    "role": "user",
+    "relationshipStrength": "moderate",
+    "email": "jennifer.lee@telstra.com.au",
+    "notes": "Daily user of quoting tools supporting enterprise sales teams. Values ease-of-use, fast quote generation, and ability to handle recurring service configurations common in telecom contracts.",
+    "interests": [
+      "quote velocity",
+      "user adoption",
+      "sales enablement"
+    ],
+    "lastInteraction": "2025-12-01"
+  }
+]

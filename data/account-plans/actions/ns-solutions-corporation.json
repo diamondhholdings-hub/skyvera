@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "ns-solutions-corporation-a-001",
+    "title": "Schedule QBR with VP of Network Operations",
+    "description": "Conduct quarterly business review to discuss SS7 and IMS optimization opportunities and align on 2026 roadmap priorities.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-01-30",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "ns-solutions-corporation-a-002",
+    "title": "Prepare LTE signaling capacity expansion proposal",
+    "description": "Develop technical and commercial proposal for NewNet Communications LTE module expansion to support their growing carrier customer base.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-02-01"
+  },
+  {
+    "id": "ns-solutions-corporation-a-003",
+    "title": "Conduct next-gen signaling software training session",
+    "description": "Execute hands-on training for NS Solutions' technical team on latest next-gen signaling software features and best practices.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success",
+    "dueDate": "2026-03-31",
+    "createdAt": "2026-02-05"
+  },
+  {
+    "id": "ns-solutions-corporation-a-004",
+    "title": "Initiate annual renewal negotiation and contract review",
+    "description": "Begin formal renewal discussions for $9.8M ARR account and review contract terms for Q2 2026 renewal cycle.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-30",
+    "createdAt": "2026-01-20"
+  }
+]

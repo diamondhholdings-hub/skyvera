@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "empire-telephone-corporation-a-001",
+    "title": "Schedule QBR with VP of Operations",
+    "description": "Conduct quarterly business review to discuss Kandy UCaaS adoption metrics, SIP trunk performance, and renewal strategy for their $67.7K ARR contract.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-15",
+    "createdAt": "2026-02-01"
+  },
+  {
+    "id": "empire-telephone-corporation-a-002",
+    "title": "Complete WebRTC integration assessment",
+    "description": "Evaluate current WebRTC deployment across their CPaaS platform and identify optimization opportunities for messaging and call quality improvements.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-02-01"
+  },
+  {
+    "id": "empire-telephone-corporation-a-003",
+    "title": "Prepare renewal proposal with expansion modules",
+    "description": "Develop comprehensive renewal proposal for Q3 2026 including advanced messaging features and expanded SIP trunk capacity to drive upsell.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-30",
+    "createdAt": "2026-02-03"
+  },
+  {
+    "id": "empire-telephone-corporation-a-004",
+    "title": "Training session on Kandy admin portal updates",
+    "description": "Schedule hands-on training for their IT team on new admin portal features and best practices for managing unified communications infrastructure.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success",
+    "dueDate": "2026-05-15",
+    "createdAt": "2026-02-02"
+  }
+]

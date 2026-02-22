@@ -1,0 +1,53 @@
+{
+  "painPoints": [
+    {
+      "id": "PP001",
+      "title": "Complex Product Catalog Management Across Multiple Service Bundles",
+      "description": "Liberty Global's multi-brand telecom portfolio (Virgin Media, UPC, etc.) requires managing thousands of SKUs and bundled offerings. Current CloudSense CPQ implementation struggles with real-time catalog synchronization across regional markets, leading to quote delays and pricing inconsistencies in complex bundle configurations.",
+      "status": "active",
+      "severity": "high",
+      "identifiedDate": "2024-01-15",
+      "owner": "Head of BSS Operations"
+    },
+    {
+      "id": "PP002",
+      "title": "Order-to-Cash Cycle Delays and Manual Fulfillment Handoffs",
+      "description": "Disconnected order management processes between CloudSense CPQ and downstream fulfillment systems (network provisioning, billing). Manual data entry and validation between quote approval and order activation creates 3-5 day delays and error rates impacting customer experience.",
+      "status": "active",
+      "severity": "high",
+      "identifiedDate": "2024-02-03",
+      "owner": "VP Operations"
+    },
+    {
+      "id": "PP003",
+      "title": "Dynamic Pricing and Promotional Offer Execution Limitations",
+      "description": "Current CloudSense CPQ configuration lacks real-time margin protection and promotional discount rules for complex telecom packages (voice, data, video, mobile combos). Regional regulatory compliance requirements and competitor-driven promotional agility are constrained by static pricing logic.",
+      "status": "active",
+      "severity": "medium",
+      "identifiedDate": "2024-01-28",
+      "owner": "Senior Pricing Manager"
+    }
+  ],
+  "opportunities": [
+    {
+      "id": "OPP001",
+      "title": "Expand CloudSense CPQ to Network Services and IoT/5G Monetization",
+      "description": "Extend current CloudSense CPQ capabilities to configure and quote emerging network services (SD-WAN, managed security, IoT connectivity, 5G enterprise solutions). This positions Liberty Global to capture higher-margin B2B2X offerings and address growing enterprise customer demand for converged communications solutions.",
+      "status": "exploring",
+      "estimatedValue": 240000,
+      "probability": 72,
+      "identifiedDate": "2024-02-15",
+      "owner": "Head of Product Strategy"
+    },
+    {
+      "id": "OPP002",
+      "title": "Implement AI-Driven Intelligent Quoting and Upsell Recommendations",
+      "description": "Integrate machine learning models into CloudSense CPQ to auto-recommend complementary services, optimize bundling based on customer lifetime value, and predict quote acceptance rates. This drives improved quote conversion, reduces sales cycle time, and increases average contract value across Liberty Global's sales teams.",
+      "status": "proposed",
+      "estimatedValue": 185000,
+      "probability": 58,
+      "identifiedDate": "2024-02-20",
+      "owner": "CTO - Digital Transformation"
+    }
+  ]
+}

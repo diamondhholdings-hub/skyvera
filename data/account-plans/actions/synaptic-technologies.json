@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "synaptic-technologies-a-001",
+    "title": "Complete annual security audit and compliance review",
+    "description": "Verified that Synaptic Technologies' STL custom development environment meets SOC 2 Type II standards and telecom regulatory requirements for 2026.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-01-31",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "synaptic-technologies-a-002",
+    "title": "Schedule Q1 QBR with VP of Engineering",
+    "description": "Quarterly business review to assess STL platform usage, discuss upcoming telecom software roadmap needs, and identify expansion opportunities within their development team.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "synaptic-technologies-a-003",
+    "title": "Prepare renewal proposal and pricing optimization",
+    "description": "Develop renewal proposal for Synaptic Technologies' $297,554 ARR contract with tiered pricing for additional STL professional services hours and enhanced custom development support.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-03-31",
+    "createdAt": "2026-01-18"
+  },
+  {
+    "id": "synaptic-technologies-a-004",
+    "title": "Conduct usage analytics review and optimization consultation",
+    "description": "Analyze STL platform usage metrics to identify underutilized features and recommend optimization strategies to improve ROI on their telecom software investment.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success",
+    "dueDate": "2026-05-15",
+    "createdAt": "2026-02-01"
+  }
+]

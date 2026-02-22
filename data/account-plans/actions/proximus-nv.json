@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "proximus-nv-a-001",
+    "title": "Schedule QBR with Proximus leadership",
+    "description": "Conduct quarterly business review to discuss CloudSense CPQ utilization metrics and identify upsell opportunities for BSS platform expansion.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-15",
+    "createdAt": "2026-01-22"
+  },
+  {
+    "id": "proximus-nv-a-002",
+    "title": "Prepare renewal proposal with enhanced CPQ features",
+    "description": "Develop comprehensive renewal proposal highlighting new CloudSense CPQ capabilities and demonstrating ROI based on 18 months of implementation data.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "proximus-nv-a-003",
+    "title": "Conduct CloudSense advanced training for operations team",
+    "description": "Execute hands-on training session to optimize Proximus quote-to-cash workflows and reduce manual configuration errors in their CPQ process.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success Manager",
+    "dueDate": "2026-04-10",
+    "createdAt": "2026-01-25"
+  },
+  {
+    "id": "proximus-nv-a-004",
+    "title": "Validate API integration and data quality improvements",
+    "description": "Completed technical audit of Proximus CloudSense CPQ integration endpoints and confirmed 99.2% data accuracy in billing configurations.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Technical Account Manager",
+    "dueDate": "2026-02-15",
+    "createdAt": "2026-01-18"
+  }
+]

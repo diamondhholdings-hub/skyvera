@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "hcl-australia-services-pty-ltd-a-001",
+    "title": "Complete CloudSense CPQ platform assessment and gap analysis",
+    "description": "Document current CPQ workflows, identify optimization opportunities, and prepare findings for stakeholder review to establish baseline for engagement.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-02-15",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "hcl-australia-services-pty-ltd-a-002",
+    "title": "Configure custom product catalog and pricing rules in CloudSense",
+    "description": "Set up HCL Australia's specific telecom service bundles, discount structures, and compliance requirements within the CloudSense platform to enable quote generation.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Implementation Specialist",
+    "dueDate": "2026-03-30",
+    "createdAt": "2026-01-22"
+  },
+  {
+    "id": "hcl-australia-services-pty-ltd-a-003",
+    "title": "Schedule executive QBR and present value realization roadmap",
+    "description": "Conduct quarterly business review with HCL Australia leadership to discuss CPQ adoption metrics, revenue acceleration potential, and 2026 growth initiatives.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-20",
+    "createdAt": "2026-01-25"
+  },
+  {
+    "id": "hcl-australia-services-pty-ltd-a-004",
+    "title": "Develop customer success plan and training schedule",
+    "description": "Create onboarding and enablement strategy for HCL Australia's sales and operations teams to maximize CloudSense CPQ adoption and product familiarity.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success Manager",
+    "dueDate": "2026-05-10",
+    "createdAt": "2026-02-05"
+  }
+]

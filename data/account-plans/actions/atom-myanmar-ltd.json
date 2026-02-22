@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "atom-myanmar-ltd-a-001",
+    "title": "Schedule QBR with CTO and Finance Director",
+    "description": "Conduct quarterly business review to align on STL professional services roadmap and discuss expansion opportunities for custom development initiatives.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-02-15",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "atom-myanmar-ltd-a-002",
+    "title": "Prepare renewal proposal for STL software license",
+    "description": "Draft annual renewal proposal including 10% volume discount based on increased custom development consumption and extension of professional services support tier.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-31",
+    "createdAt": "2026-01-25"
+  },
+  {
+    "id": "atom-myanmar-ltd-a-003",
+    "title": "Conduct technical health check on STL implementation",
+    "description": "Schedule audit with Solutions Engineer to review current software deployment, identify optimization gaps, and assess readiness for planned Q3 infrastructure upgrade.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-04-30",
+    "createdAt": "2026-02-01"
+  },
+  {
+    "id": "atom-myanmar-ltd-a-004",
+    "title": "Develop executive summary on STL ROI and cost savings",
+    "description": "Prepare business case analysis demonstrating measurable value delivered through professional services and custom development, targeting CFO stakeholder engagement.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success Manager",
+    "dueDate": "2026-05-15",
+    "createdAt": "2026-02-05"
+  }
+]

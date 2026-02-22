@@ -1,0 +1,53 @@
+{
+  "painPoints": [
+    {
+      "id": "PP001",
+      "title": "Complex Product Catalog Management in Multi-Service Environment",
+      "description": "Telstra's diverse service portfolio (wireline, wireless, cloud, managed services) creates challenges in maintaining accurate, real-time product hierarchies and bundling rules within CloudSense CPQ. Manual catalog updates across service lines lead to quote inconsistencies and delayed time-to-market for new offerings.",
+      "status": "active",
+      "severity": "high",
+      "identifiedDate": "2024-01-15",
+      "owner": "VP Product Management"
+    },
+    {
+      "id": "PP002",
+      "title": "Billing System Integration and Revenue Recognition Gaps",
+      "description": "CloudSense CPQ generates quotes but lacks seamless integration with Telstra's legacy billing systems (Amdocs, Openpay) and downstream revenue recognition processes. Manual handoffs between quote generation and billing create reconciliation issues and delayed invoice generation for complex enterprise deals.",
+      "status": "active",
+      "severity": "high",
+      "identifiedDate": "2024-01-20",
+      "owner": "Chief Billing Officer"
+    },
+    {
+      "id": "PP003",
+      "title": "Order Management and Fulfillment Visibility",
+      "description": "Limited visibility between CloudSense CPQ-generated orders and fulfillment execution. Sales teams lack real-time tracking of order status, provisioning timelines, and service activation, impacting customer expectations and SLA compliance for enterprise accounts.",
+      "status": "active",
+      "severity": "medium",
+      "identifiedDate": "2024-02-01",
+      "owner": "Head of Order Management"
+    }
+  ],
+  "opportunities": [
+    {
+      "id": "OPP001",
+      "title": "Expand CloudSense CPQ to Enterprise Segment with Advanced Pricing Engine",
+      "description": "Develop enhanced pricing capabilities including dynamic volume discounts, long-term contract modeling, and usage-based pricing for Telstra's enterprise and wholesale segments. This expansion would enable CloudSense CPQ to handle complex enterprise deals currently requiring manual configuration, increasing deal velocity and pricing accuracy.",
+      "status": "exploring",
+      "estimatedValue": 2500000,
+      "probability": 75,
+      "identifiedDate": "2024-02-10",
+      "owner": "Senior Account Executive"
+    },
+    {
+      "id": "OPP002",
+      "title": "Implement Native Billing and Revenue Recognition Module for CloudSense",
+      "description": "Build integrated billing and revenue recognition capabilities within CloudSense CPQ to eliminate manual handoffs to legacy billing systems. This would enable end-to-end quote-to-cash automation, reduce reconciliation errors, and accelerate revenue realization for Telstra's B2B sales organization.",
+      "status": "proposed",
+      "estimatedValue": 1800000,
+      "probability": 65,
+      "identifiedDate": "2024-01-25",
+      "owner": "VP Sales Operations"
+    }
+  ]
+}

@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "hcl-technologies-uk-limited-a-001",
+    "title": "Complete IMS to 5G signaling migration assessment",
+    "description": "Evaluate HCL's current IMS infrastructure and develop a phased migration roadmap to next-gen 5G signaling protocols to support their carrier clients.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-01-31",
+    "createdAt": "2026-01-10"
+  },
+  {
+    "id": "hcl-technologies-uk-limited-a-002",
+    "title": "Schedule quarterly business review with procurement and CTO",
+    "description": "Conduct QBR to review NewNet platform utilization, discuss upcoming SS7 and LTE optimization initiatives, and align on 2026 growth objectives.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "hcl-technologies-uk-limited-a-003",
+    "title": "Prepare renewal proposal with multi-year discount incentive",
+    "description": "Develop a competitive renewal proposal leveraging HCL's $8.3M annual spend and proposing a 3-year commitment with enhanced support tier for signaling software modules.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-31",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "hcl-technologies-uk-limited-a-004",
+    "title": "Execute technical deep-dive on advanced IMS features",
+    "description": "Conduct hands-on training session with HCL's engineering team on advanced IMS routing, redundancy, and failover capabilities to maximize platform ROI.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success",
+    "dueDate": "2026-04-30",
+    "createdAt": "2026-02-05"
+  }
+]

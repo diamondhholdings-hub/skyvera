@@ -1,0 +1,42 @@
+[
+  {
+    "id": "telekom-romania-mobile-communications-s-a-formerly-cosmote-romanian-telecom-a-001",
+    "title": "Schedule QBR with CTO and Network Operations Director",
+    "description": "Conduct quarterly business review to discuss SS7 and IMS optimization opportunities aligned with their 5G rollout strategy.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-01-30",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "telekom-romania-mobile-communications-s-a-formerly-cosmote-romanian-telecom-a-002",
+    "title": "Prepare renewal proposal with next-gen signaling upgrade",
+    "description": "Draft comprehensive renewal proposal including advanced IMS features and next-generation signaling enhancements to support their LTE expansion.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "telekom-romania-mobile-communications-s-a-formerly-cosmote-romanian-telecom-a-003",
+    "title": "Conduct technical health check on SS7 infrastructure",
+    "description": "Schedule comprehensive audit of their current SS7 signaling network performance and identify optimization opportunities to reduce latency.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success",
+    "dueDate": "2026-03-15",
+    "createdAt": "2026-01-18"
+  },
+  {
+    "id": "telekom-romania-mobile-communications-s-a-formerly-cosmote-romanian-telecom-a-004",
+    "title": "Develop executive business case for next-gen signaling investment",
+    "description": "Create ROI analysis and business justification document for upgrading to next-generation signaling platform to improve network efficiency and revenue.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-30",
+    "createdAt": "2026-02-01"
+  }
+]

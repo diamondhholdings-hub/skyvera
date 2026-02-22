@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "vodafone-gmbh-a-001",
+    "title": "Schedule QBR with CTO and Network Operations Leadership",
+    "description": "Conduct quarterly business review to discuss IMS migration progress, SS7 optimization opportunities, and next-gen signaling roadmap alignment with Vodafone's 5G expansion plans.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-02-15",
+    "createdAt": "2026-01-10"
+  },
+  {
+    "id": "vodafone-gmbh-a-002",
+    "title": "Prepare renewal proposal with enhanced LTE signaling features",
+    "description": "Develop comprehensive renewal proposal incorporating advanced LTE signaling capabilities and cost optimization recommendations to secure contract extension before June 2026 renewal date.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-30",
+    "createdAt": "2026-01-12"
+  },
+  {
+    "id": "vodafone-gmbh-a-003",
+    "title": "Evaluate next-gen signaling compliance requirements",
+    "description": "Assess Vodafone's compliance needs for emerging telecom standards and document how NewNet Communications software supports regulatory requirements in EMEA markets.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-04-15",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "vodafone-gmbh-a-004",
+    "title": "Plan technical training session for network operations team",
+    "description": "Organize hands-on training workshop for Vodafone's network operations staff on advanced SS7 and IMS signaling troubleshooting and optimization best practices.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success",
+    "dueDate": "2026-05-20",
+    "createdAt": "2026-01-18"
+  }
+]

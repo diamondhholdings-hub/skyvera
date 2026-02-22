@@ -1,0 +1,62 @@
+[
+  {
+    "id": "at-t-services-inc-s-001",
+    "name": "David Chen",
+    "title": "VP of Network Operations & Infrastructure",
+    "role": "decision-maker",
+    "relationshipStrength": "strong",
+    "email": "david.chen@att-services.com",
+    "notes": "Oversees all SIP trunking deployments and network reliability. Critical stakeholder for evaluating WebRTC performance, redundancy, and integration with existing telecom infrastructure.",
+    "interests": [
+      "Network latency optimization",
+      "SIP trunk scalability",
+      "Disaster recovery protocols"
+    ],
+    "lastInteraction": "2025-11-14"
+  },
+  {
+    "id": "at-t-services-inc-s-002",
+    "name": "Michelle Rodriguez",
+    "title": "Director of Communications Technology",
+    "role": "champion",
+    "relationshipStrength": "strong",
+    "email": "michelle.rodriguez@att-services.com",
+    "notes": "Leads unified communications strategy and Kandy platform expansion. Passionate about modernizing legacy systems and improving employee collaboration through CPaaS solutions.",
+    "interests": [
+      "UCaaS platform adoption",
+      "Employee experience enhancement",
+      "Cloud migration ROI"
+    ],
+    "lastInteraction": "2025-12-03"
+  },
+  {
+    "id": "at-t-services-inc-s-003",
+    "name": "James Whitmore",
+    "title": "Chief Information Security Officer",
+    "role": "blocker",
+    "relationshipStrength": "moderate",
+    "email": "james.whitmore@att-services.com",
+    "notes": "Concerned with WebRTC security implications, encryption standards, and compliance with telecom regulations. Requires detailed security audits before approving any new messaging or SIP implementations.",
+    "interests": [
+      "Data encryption standards",
+      "Regulatory compliance",
+      "Security incident prevention"
+    ],
+    "lastInteraction": "2025-10-28"
+  },
+  {
+    "id": "at-t-services-inc-s-004",
+    "name": "Patricia Nguyen",
+    "title": "Senior Manager, Customer Success & Operations",
+    "role": "influencer",
+    "relationshipStrength": "moderate",
+    "email": "patricia.nguyen@att-services.com",
+    "notes": "Manages day-to-day utilization of Kandy platform and feedback from end users. Prioritizes ease of integration with existing workflows and reduced support overhead from CPaaS transitions.",
+    "interests": [
+      "Platform usability",
+      "Customer support efficiency",
+      "Integration with legacy systems"
+    ],
+    "lastInteraction": "2025-11-29"
+  }
+]

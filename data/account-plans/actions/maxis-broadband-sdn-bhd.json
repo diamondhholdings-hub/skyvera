@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "maxis-broadband-sdn-bhd-a-001",
+    "title": "Complete Q1 2026 Business Review with Maxis leadership",
+    "description": "Present CloudSense CPQ utilization metrics, quote-to-cash acceleration gains, and discuss expansion opportunities for 2026.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-15",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "maxis-broadband-sdn-bhd-a-002",
+    "title": "Implement advanced pricing rules in CloudSense CPQ for bundled broadband offerings",
+    "description": "Configure dynamic pricing logic to support Maxis' new tiered broadband packages and margin optimization strategies.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-04-30",
+    "createdAt": "2026-01-25"
+  },
+  {
+    "id": "maxis-broadband-sdn-bhd-a-003",
+    "title": "Schedule CloudSense CPQ advanced training for Maxis sales operations team",
+    "description": "Deliver hands-on training on quote customization, workflow automation, and reporting capabilities to maximize platform adoption.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success Manager",
+    "dueDate": "2026-05-15",
+    "createdAt": "2026-02-01"
+  },
+  {
+    "id": "maxis-broadband-sdn-bhd-a-004",
+    "title": "Prepare annual contract renewal and upsell proposal for Maxis Broadband",
+    "description": "Develop renewal terms with recommended add-ons such as enhanced analytics module and additional user licenses based on usage growth.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-06-01",
+    "createdAt": "2026-02-05"
+  }
+]

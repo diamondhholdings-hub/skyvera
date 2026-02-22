@@ -1,0 +1,62 @@
+[
+  {
+    "id": "evolutio-cloud-enabler-s-a-s-001",
+    "name": "Carlos Alberto Mendoza Rodríguez",
+    "title": "Chief Technology Officer",
+    "role": "decision-maker",
+    "relationshipStrength": "strong",
+    "email": "carlos.mendoza@evolutio.com.br",
+    "notes": "Leads infrastructure modernization initiatives and evaluates UCaaS platforms for regional expansion. Prioritizes WebRTC integration, SIP trunking reliability, and cloud scalability to support growing customer base across Latin America.",
+    "interests": [
+      "Cloud infrastructure cost optimization",
+      "API-first communication architecture",
+      "Multi-region failover and redundancy"
+    ],
+    "lastInteraction": "2025-11-15"
+  },
+  {
+    "id": "evolutio-cloud-enabler-s-a-s-002",
+    "name": "Fernanda Silva Gomes",
+    "title": "Vice President of Sales & Enterprise Accounts",
+    "role": "champion",
+    "relationshipStrength": "strong",
+    "email": "fernanda.silva@evolutio.com.br",
+    "notes": "Owns revenue growth strategy and customer retention for key telecom accounts. Champions CPaaS capabilities to differentiate Evolutio's service offerings and unlock new revenue streams through messaging and voice API bundles.",
+    "interests": [
+      "Customer acquisition and upsell opportunities",
+      "Competitive differentiation in Brazilian market",
+      "Revenue per user expansion"
+    ],
+    "lastInteraction": "2025-12-03"
+  },
+  {
+    "id": "evolutio-cloud-enabler-s-a-s-003",
+    "name": "Ricardo Henrique Pereira",
+    "title": "Director of Product Development",
+    "role": "influencer",
+    "relationshipStrength": "moderate",
+    "email": "ricardo.pereira@evolutio.com.br",
+    "notes": "Evaluates technical platforms for product roadmap alignment and customer experience improvements. Interested in Kandy's WebRTC and SIP trunking capabilities to enhance real-time communication features and reduce infrastructure maintenance burden.",
+    "interests": [
+      "Feature parity with global UCaaS competitors",
+      "Developer experience and SDKs",
+      "Real-time communication reliability metrics"
+    ],
+    "lastInteraction": "2025-10-22"
+  },
+  {
+    "id": "evolutio-cloud-enabler-s-a-s-004",
+    "name": "Mariana Costa Alves",
+    "title": "Finance Director",
+    "role": "blocker",
+    "relationshipStrength": "weak",
+    "email": "mariana.costa@evolutio.com.br",
+    "notes": "Controls capital expenditure and operational spending budgets. Focused on TCO reduction and ROI validation for cloud platforms; requires detailed cost modeling and comparison against current infrastructure investments.",
+    "interests": [
+      "Total cost of ownership analysis",
+      "Licensing model flexibility",
+      "Contract negotiation and payment terms"
+    ],
+    "lastInteraction": "2025-09-08"
+  }
+]

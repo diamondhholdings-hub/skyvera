@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "cross-telephone-company-llc-ok-a-001",
+    "title": "Complete Q1 2026 QBR with Cross Telephone leadership",
+    "description": "Conduct quarterly business review with CTO and Finance Director to review UCaaS utilization, discuss expansion opportunities for WebRTC integrations, and present renewal terms for $138,624 ARR account.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-15",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "cross-telephone-company-llc-ok-a-002",
+    "title": "Evaluate SIP trunking optimization for peak call volume periods",
+    "description": "Work with Solutions Engineer to audit current SIP trunk configuration and recommend capacity upgrades to handle Cross Telephone's growing enterprise customer base.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-04-10",
+    "createdAt": "2026-01-25"
+  },
+  {
+    "id": "cross-telephone-company-llc-ok-a-003",
+    "title": "Prepare renewal proposal with messaging platform upsell",
+    "description": "Develop comprehensive renewal proposal for 2026 that includes additional messaging APIs and enhanced CPaaS capabilities to unlock new revenue streams.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-05-01",
+    "createdAt": "2026-02-05"
+  },
+  {
+    "id": "cross-telephone-company-llc-ok-a-004",
+    "title": "Schedule executive briefing on Kandy platform roadmap",
+    "description": "Arrange strategic planning session with Cross Telephone's VP of Operations to present upcoming Kandy UCaaS enhancements and discuss long-term partnership expansion.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success Manager",
+    "dueDate": "2026-05-20",
+    "createdAt": "2026-02-10"
+  }
+]

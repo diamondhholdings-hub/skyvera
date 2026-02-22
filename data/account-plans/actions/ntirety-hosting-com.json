@@ -1,0 +1,42 @@
+[
+  {
+    "id": "NTRTY-001",
+    "title": "Complete Q1 Infrastructure Audit",
+    "description": "Conduct comprehensive audit of Hosting.com's current server infrastructure and identify optimization opportunities",
+    "status": "done",
+    "priority": "high",
+    "owner": "Sarah Chen",
+    "dueDate": "2026-02-15",
+    "createdAt": "2026-01-08"
+  },
+  {
+    "id": "NTRTY-002",
+    "title": "Implement DDoS Protection Upgrade",
+    "description": "Deploy enhanced DDoS mitigation across all edge nodes and configure failover protocols",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Marcus Rodriguez",
+    "dueDate": "2026-03-31",
+    "createdAt": "2026-01-12"
+  },
+  {
+    "id": "NTRTY-003",
+    "title": "Migrate Legacy Accounts to New Platform",
+    "description": "Plan and execute migration of 150+ legacy hosting accounts to modernized infrastructure platform",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Jennifer Walsh",
+    "dueDate": "2026-05-30",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "NTRTY-004",
+    "title": "Establish Monthly Performance Review Cadence",
+    "description": "Set up recurring monthly meetings with stakeholders to review KPIs, uptime metrics, and service improvements",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "David Kim",
+    "dueDate": "2026-04-15",
+    "createdAt": "2026-02-03"
+  }
+]

@@ -1,0 +1,36 @@
+[
+  {
+    "id": "telstra-ges-a-c-001",
+    "name": "Amdocs",
+    "type": "our-competitor",
+    "description": "Enterprise BSS/OSS platform with deep telecom industry integration competing directly with Skyvera's CloudSense CPQ for Salesforce-native deployments.",
+    "strengths": [
+      "Comprehensive end-to-end BSS ecosystem with billing, customer care, and revenue management",
+      "Established relationships with major telcos including Telstra across multiple product lines",
+      "Extensive customization capabilities and professional services delivery"
+    ],
+    "weaknesses": [
+      "Heavy on-premise legacy architecture requiring significant cloud migration investment vs Skyvera's native Salesforce design",
+      "Slower CPQ-specific innovation and slower quote-to-cash cycles compared to Salesforce-native solutions",
+      "Higher total cost of ownership and implementation complexity for mid-market telcos"
+    ],
+    "lastUpdated": "2026-02-01"
+  },
+  {
+    "id": "telstra-ges-a-c-002",
+    "name": "NetCracker",
+    "type": "both",
+    "description": "Nokia-owned BSS platform with CPQ capabilities targeting telecom operators, competing with Skyvera while also competing with Telstra in adjacent telecom network software markets.",
+    "strengths": [
+      "Strong Nokia integration for telecom network operations and service fulfillment alignment",
+      "Modern cloud-native architecture with microservices and API-first design",
+      "Deep industry expertise in complex telecom product packaging and pricing models"
+    ],
+    "weaknesses": [
+      "Limited native Salesforce integration and CRM interoperability compared to Skyvera's Salesforce-native approach",
+      "Smaller installed base in Salesforce-centric enterprise environments",
+      "Higher complexity in deployment and longer time-to-value for CPQ-focused implementations"
+    ],
+    "lastUpdated": "2026-02-01"
+  }
+]

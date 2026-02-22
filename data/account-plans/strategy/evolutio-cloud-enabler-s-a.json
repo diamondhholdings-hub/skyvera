@@ -1,0 +1,53 @@
+{
+  "painPoints": [
+    {
+      "id": "PP001",
+      "title": "SIP Trunking Reliability & Failover Complexity",
+      "description": "EVOLUTIO experiences intermittent SIP trunk connectivity issues during peak call volumes, causing dropped calls and service degradation. Current failover mechanisms lack intelligent routing, requiring manual intervention and impacting customer SLA compliance.",
+      "status": "active",
+      "severity": "high",
+      "identifiedDate": "2024-01-15",
+      "owner": "Technical Operations Manager"
+    },
+    {
+      "id": "PP002",
+      "title": "WebRTC Integration Gaps in Legacy Systems",
+      "description": "EVOLUTIO's enterprise customers require seamless WebRTC embedding into existing CRM and contact center platforms, but current Kandy implementation lacks native connectors, forcing costly custom development and extended deployment cycles.",
+      "status": "active",
+      "severity": "high",
+      "identifiedDate": "2024-02-03",
+      "owner": "Solutions Architect"
+    },
+    {
+      "id": "PP003",
+      "title": "Multi-Channel Messaging Compliance & Routing",
+      "description": "Managing SMS, RCS, and messaging compliance across multiple jurisdictions strains resources. Lack of centralized message routing and compliance automation increases operational costs and regulatory risk.",
+      "status": "active",
+      "severity": "medium",
+      "identifiedDate": "2024-01-28",
+      "owner": "Compliance Officer"
+    }
+  ],
+  "opportunities": [
+    {
+      "id": "OPP001",
+      "title": "Contact Center as a Service (CCaaS) Expansion",
+      "description": "Leverage Kandy UCaaS platform to deliver managed contact center services to mid-market enterprises in the telecom and financial sectors. Includes IVR, call recording, workforce management, and analytics. Target 15-20 new enterprise customers within 18 months.",
+      "status": "exploring",
+      "estimatedValue": 450000,
+      "probability": 72,
+      "identifiedDate": "2024-02-10",
+      "owner": "Product Manager"
+    },
+    {
+      "id": "OPP002",
+      "title": "CPaaS Monetization via White-Label API Platform",
+      "description": "Develop a white-label CPaaS developer portal enabling telecom partners and ISVs to build on Kandy's WebRTC, SIP, and messaging capabilities. Revenue model: per-API-call transaction fees plus platform licensing. Projected 250% ARR uplift within 24 months.",
+      "status": "proposed",
+      "estimatedValue": 208000,
+      "probability": 65,
+      "identifiedDate": "2024-02-05",
+      "owner": "Business Development Director"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+[
+  {
+    "id": "telecom-argentina-s-a-a-001",
+    "title": "Schedule QBR with CTO and Network Operations Director",
+    "description": "Conduct quarterly business review to discuss SS7 optimization, LTE performance metrics, and roadmap alignment for IMS modernization across their carrier infrastructure.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-02-15",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "telecom-argentina-s-a-a-002",
+    "title": "Prepare renewal proposal with next-gen signaling expansion",
+    "description": "Draft contract renewal documentation including upsell recommendations for advanced next-gen signaling capabilities and expanded IMS licensing to support their 5G rollout timeline.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-30",
+    "createdAt": "2026-01-25"
+  },
+  {
+    "id": "telecom-argentina-s-a-a-003",
+    "title": "Conduct SS7 security audit and compliance workshop",
+    "description": "Schedule technical workshop with their security and compliance teams to review SS7 security posture, regulatory requirements, and recommend hardening measures for their signaling network.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-04-15",
+    "createdAt": "2026-02-01"
+  },
+  {
+    "id": "telecom-argentina-s-a-a-004",
+    "title": "Develop LTE optimization roadmap for Q2-Q3 2026",
+    "description": "Collaborate with their network engineering team to create a detailed LTE performance optimization plan addressing capacity constraints and latency improvements in high-traffic regions.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success",
+    "dueDate": "2026-05-20",
+    "createdAt": "2026-02-05"
+  }
+]

@@ -1,0 +1,36 @@
+[
+  {
+    "id": "evolutio-cloud-enabler-s-a-c-001",
+    "name": "Twilio",
+    "type": "our-competitor",
+    "description": "Global CPaaS leader offering programmable voice, messaging, and video APIs with extensive developer ecosystem and enterprise scale.",
+    "strengths": [
+      "Market-leading developer platform with largest ecosystem of third-party integrations",
+      "Superior global infrastructure with presence in 180+ countries and redundancy",
+      "Strong brand recognition and extensive enterprise customer base"
+    ],
+    "weaknesses": [
+      "Higher per-minute and per-message costs compared to Skyvera's transparent pricing model",
+      "Complex billing structure can result in bill shock for high-volume UCaaS deployments",
+      "Requires more technical expertise to configure compared to Skyvera's managed platform"
+    ],
+    "lastUpdated": "2026-02-01"
+  },
+  {
+    "id": "evolutio-cloud-enableer-s-a-c-002",
+    "name": "RingCentral",
+    "type": "both",
+    "description": "Comprehensive UCaaS platform competing directly with Skyvera while serving as a customer alternative to EVOLUTIO CLOUD ENABLER's telecommunications services.",
+    "strengths": [
+      "All-in-one unified communications suite reducing need for multiple vendors",
+      "Strong enterprise relationships and Fortune 500 customer base",
+      "Integrated team messaging, video conferencing, and contact center capabilities"
+    ],
+    "weaknesses": [
+      "Less flexible for custom API-driven implementations compared to Skyvera's CPaaS foundation",
+      "Higher per-seat licensing model less cost-effective for high-volume telecommunications providers",
+      "Slower innovation in emerging WebRTC and low-latency communication features versus Skyvera"
+    ],
+    "lastUpdated": "2026-02-01"
+  }
+]

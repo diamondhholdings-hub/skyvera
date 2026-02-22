@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "abbott-laboratories-a-001",
+    "title": "Complete CloudSense CPQ optimization review",
+    "description": "Finalized assessment of Abbott's current quote-to-cash workflow efficiency and identified three process improvements within CloudSense that could reduce quote cycle time by 15%.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-01-30",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "abbott-laboratories-a-002",
+    "title": "Schedule quarterly business review with procurement stakeholders",
+    "description": "Coordinate QBR meeting with Abbott's sourcing and telecom procurement teams to discuss 2026 roadmap, usage trends, and expansion opportunities across their global operations.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "abbott-laboratories-a-003",
+    "title": "Prepare renewal and upsell proposal for April renewal",
+    "description": "Develop comprehensive renewal proposal including CloudSense CPQ feature enhancements, seat expansion for 12 additional users, and advanced reporting module to support their growing quote volume.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-15",
+    "createdAt": "2026-01-25"
+  },
+  {
+    "id": "abbott-laboratories-a-004",
+    "title": "Conduct CloudSense advanced configuration training for new team members",
+    "description": "Deliver hands-on training session for Abbott's five recently hired procurement analysts on CloudSense CPQ's advanced bundling, discount rules, and approval workflows.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success",
+    "dueDate": "2026-04-10",
+    "createdAt": "2026-02-05"
+  }
+]

@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "coeo-solutions-llc-a-001",
+    "title": "Schedule QBR with CTO and business stakeholders",
+    "description": "Conduct quarterly business review to assess Kandy UCaaS utilization, discuss expansion opportunities across SIP trunking and messaging services, and align on 2026 growth initiatives.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-01-30",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "coeo-solutions-llc-a-002",
+    "title": "Prepare renewal proposal with pricing refresh",
+    "description": "Develop annual renewal proposal for $90,205 ARR contract including value-added features, potential tier upgrade options, and early renewal incentives.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-02-14",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "coeo-solutions-llc-a-003",
+    "title": "Conduct WebRTC integration capabilities workshop",
+    "description": "Schedule technical workshop with solutions engineer to explore advanced WebRTC capabilities and custom messaging workflows that could drive expansion revenue.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-03-15",
+    "createdAt": "2026-01-22"
+  },
+  {
+    "id": "coeo-solutions-llc-a-004",
+    "title": "Develop customer health scorecard and win-back strategy",
+    "description": "Create comprehensive health assessment tracking platform adoption, support ticket trends, and NPS metrics to identify expansion opportunities and mitigate churn risk.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success Manager",
+    "dueDate": "2026-04-10",
+    "createdAt": "2026-01-18"
+  }
+]

@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "vodafone-egypt-telecommunications-sa-a-001",
+    "title": "Complete SS7 Security Audit and Compliance Report",
+    "description": "Finalize the comprehensive security audit of Vodafone Egypt's SS7 signaling infrastructure to ensure compliance with regulatory requirements and identify optimization opportunities.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-01-15",
+    "createdAt": "2026-01-10"
+  },
+  {
+    "id": "vodafone-egypt-telecommunications-sa-a-002",
+    "title": "Implement IMS Network Upgrade Phase 2",
+    "description": "Execute the second phase of IMS platform upgrades to enhance call routing efficiency and support increased 5G subscriber traffic for Vodafone Egypt.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-30",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "vodafone-egypt-telecommunications-sa-a-003",
+    "title": "Schedule Quarterly Business Review with Executive Stakeholders",
+    "description": "Arrange a QBR meeting with Vodafone Egypt's VP of Network Operations to review platform performance, discuss renewal terms, and align on next-gen signaling roadmap.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-15",
+    "createdAt": "2026-02-01"
+  },
+  {
+    "id": "vodafone-egypt-telecommunications-sa-a-004",
+    "title": "Prepare Annual Renewal Proposal and Pricing Quote",
+    "description": "Develop comprehensive renewal proposal for Vodafone Egypt's $704K ARR contract including next-gen signaling enhancements and customized pricing for 2026-2027 term.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Account Manager",
+    "dueDate": "2026-05-30",
+    "createdAt": "2026-02-05"
+  }
+]

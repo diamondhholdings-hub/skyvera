@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "elpedison-sa-a-001",
+    "title": "Complete CloudSense CPQ optimization review",
+    "description": "Finalized assessment of ELPEDISON's current quote-to-cash workflow and identified 3 efficiency improvements within the CPQ platform.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-01-30",
+    "createdAt": "2026-01-10"
+  },
+  {
+    "id": "elpedison-sa-a-002",
+    "title": "Implement pricing rule updates in CloudSense",
+    "description": "Rolling out updated telecom service pricing rules and discount thresholds across ELPEDISON's CPQ instance to align with new market conditions.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Technical Account Manager",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "elpedison-sa-a-003",
+    "title": "Schedule Q2 QBR with ELPEDISON procurement leadership",
+    "description": "Prepare and conduct quarterly business review to discuss renewal roadmap, CloudSense utilization metrics, and expansion opportunities for the $618,978 ARR account.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-15",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "elpedison-sa-a-004",
+    "title": "Develop CPQ integration roadmap with billing systems",
+    "description": "Collaborate with ELPEDISON's technical team to design a phased integration plan connecting CloudSense CPQ outputs to their existing telecom billing infrastructure.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Solutions Architect",
+    "dueDate": "2026-05-31",
+    "createdAt": "2026-02-01"
+  }
+]

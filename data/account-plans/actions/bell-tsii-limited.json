@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "bell-tsii-limited-a-001",
+    "title": "Schedule QBR with CTO and Network Operations",
+    "description": "Conduct quarterly business review to discuss IMS and next-gen signaling optimization opportunities aligned with their network modernization roadmap.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-15",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "bell-tsii-limited-a-002",
+    "title": "Prepare renewal proposal and expansion terms",
+    "description": "Develop comprehensive renewal proposal including LTE and SS7 license expansion to capture anticipated ARR growth of 15-20% for FY2027.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-30",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "bell-tsii-limited-a-003",
+    "title": "Conduct health check on NewNet Communications platform",
+    "description": "Perform technical health assessment of their SS7 and IMS signaling infrastructure to identify optimization opportunities and support ticket trends.",
+    "status": "done",
+    "priority": "medium",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-02-10",
+    "createdAt": "2026-01-10"
+  },
+  {
+    "id": "bell-tsii-limited-a-004",
+    "title": "Identify cross-sell opportunities in network slicing",
+    "description": "Research Bell-TSII's 5G network slicing roadmap and propose NewNet Communications advanced signaling modules as complementary solutions.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-05-20",
+    "createdAt": "2026-02-05"
+  }
+]

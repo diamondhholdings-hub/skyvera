@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "nokia-solutions-and-networks-oy-a-001",
+    "title": "Complete SS7 to IMS migration assessment",
+    "description": "Document Nokia's current SS7 infrastructure dependencies and create a phased IMS migration roadmap to identify upsell opportunities for next-gen signaling modules.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "nokia-solutions-and-networks-oy-a-002",
+    "title": "Prepare Q2 business review with Nokia leadership",
+    "description": "Schedule and prepare executive QBR presentation covering NewNet platform utilization, LTE optimization metrics, and next-generation signaling roadmap alignment with Nokia's 5G strategy.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-15",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "nokia-solutions-and-networks-oy-a-003",
+    "title": "Develop renewal proposal with advanced IMS features",
+    "description": "Create comprehensive renewal proposal for Q3 2026 contract including pricing for advanced IMS capabilities and next-gen signaling software enhancements to support Nokia's carrier network modernization.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-05-30",
+    "createdAt": "2026-01-10"
+  },
+  {
+    "id": "nokia-solutions-and-networks-oy-a-004",
+    "title": "Conduct LTE and signaling platform health check",
+    "description": "Execute technical health assessment of NewNet Communications LTE and SS7/IMS signaling deployments to identify optimization opportunities and support costs.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success Manager",
+    "dueDate": "2026-03-31",
+    "createdAt": "2026-02-01"
+  }
+]

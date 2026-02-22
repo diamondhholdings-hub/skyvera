@@ -1,0 +1,48 @@
+[
+  {
+    "id": "competitor_001",
+    "name": "Salesforce CPQ",
+    "type": "our-competitor",
+    "description": "Enterprise-grade Configure, Price, Quote solution built natively on the Salesforce platform, offering advanced quoting, pricing automation, and seamless CRM integration.",
+    "strengths": [
+      "Native Salesforce integration with deep ecosystem connectivity",
+      "Advanced AI-powered recommendation engine",
+      "Extensive customization capabilities",
+      "Strong market presence with large customer base",
+      "Comprehensive analytics and reporting dashboards",
+      "Multi-currency and multi-language support"
+    ],
+    "weaknesses": [
+      "High implementation and licensing costs",
+      "Steep learning curve for non-technical users",
+      "Requires Salesforce infrastructure dependency",
+      "Complex setup process can extend time-to-value",
+      "Limited flexibility for non-Salesforce environments",
+      "Pricing can be prohibitive for mid-market companies"
+    ],
+    "lastUpdated": "2024-01-15"
+  },
+  {
+    "id": "competitor_002",
+    "name": "Oracle Configure Price Quote (CPQ)",
+    "type": "our-competitor",
+    "description": "Enterprise CPQ solution within Oracle's cloud portfolio, designed for large organizations requiring sophisticated quoting, pricing rules, and complex deal management capabilities.",
+    "strengths": [
+      "Robust pricing and discount management engine",
+      "Advanced deal analytics and pipeline visibility",
+      "Strong integration with Oracle ERP systems",
+      "Scalable for enterprise-level deployments",
+      "Comprehensive audit trails and compliance features",
+      "High-performance handling of complex product catalogs"
+    ],
+    "weaknesses": [
+      "High total cost of ownership with enterprise licensing",
+      "Requires significant implementation expertise",
+      "Less intuitive user interface compared to modern solutions",
+      "Limited pre-built connectors outside Oracle ecosystem",
+      "Slower innovation cycle",
+      "Better suited for large enterprises than mid-market"
+    ],
+    "lastUpdated": "2024-01-15"
+  }
+]

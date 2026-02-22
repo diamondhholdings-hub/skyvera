@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "star-hub-a-001",
+    "title": "Complete CloudSense CPQ implementation kickoff",
+    "description": "Finalize technical requirements gathering and establish implementation timeline with Star Hub's infrastructure team.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-02-15",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "star-hub-a-002",
+    "title": "Configure Salesforce CPQ pricing rules for telecom bundles",
+    "description": "Customize CloudSense pricing templates to match Star Hub's bundled service offerings and wholesale discount structures.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-03-10",
+    "createdAt": "2026-01-25"
+  },
+  {
+    "id": "star-hub-a-003",
+    "title": "Schedule QBR and renewal expansion discussion",
+    "description": "Conduct quarterly business review with Star Hub stakeholders to identify upsell opportunities in CPQ automation and advanced features.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-05",
+    "createdAt": "2026-02-01"
+  },
+  {
+    "id": "star-hub-a-004",
+    "title": "Prepare post-implementation training materials for Star Hub team",
+    "description": "Develop user guides and video tutorials for CloudSense CPQ configuration, quoting, and order management workflows specific to Star Hub's use cases.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success",
+    "dueDate": "2026-04-20",
+    "createdAt": "2026-02-03"
+  }
+]

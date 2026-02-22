@@ -1,0 +1,36 @@
+[
+  {
+    "id": "beedigital-ai-s-a-u-c-001",
+    "name": "Amdocs",
+    "type": "both",
+    "description": "Enterprise BSS/OSS platform with integrated CPQ capabilities serving global telecom operators and competing with BeeDIGITAL AI's customer base.",
+    "strengths": [
+      "Extensive telecom industry experience with 500+ global customers",
+      "Comprehensive end-to-end BSS ecosystem beyond CPQ functionality",
+      "Strong professional services and implementation track record"
+    ],
+    "weaknesses": [
+      "Heavy, complex deployment requiring 12-18 months vs Skyvera's Salesforce-native agility",
+      "Significantly higher total cost of ownership and licensing fees",
+      "Limited native Salesforce integration forcing custom middleware development"
+    ],
+    "lastUpdated": "2026-02-01"
+  },
+  {
+    "id": "beedigital-ai-s-a-u-c-002",
+    "name": "Oracle Communications",
+    "type": "our-competitor",
+    "description": "Cloud-based BSS platform with integrated configure-price-quote functionality targeting mid-to-large telecom providers.",
+    "strengths": [
+      "Deep Oracle ecosystem integration and database optimization",
+      "Mature product with established reference customers in EMEA region",
+      "Strong backend billing and revenue management capabilities"
+    ],
+    "weaknesses": [
+      "Non-native Salesforce architecture requiring complex API integrations",
+      "Slower product iteration cycles compared to cloud-native Skyvera updates",
+      "Higher implementation costs and longer time-to-value for mid-market telcos"
+    ],
+    "lastUpdated": "2026-02-01"
+  }
+]

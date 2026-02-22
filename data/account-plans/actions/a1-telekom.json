@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "a1-telekom-a-001",
+    "title": "Complete CloudSense CPQ platform assessment and fit analysis",
+    "description": "Document current BSS/CPQ capabilities, identify gaps, and validate CloudSense alignment with A1 Telekom's quoting and configuration workflows.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-01-30",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "a1-telekom-a-002",
+    "title": "Schedule discovery call with procurement and billing stakeholders",
+    "description": "Engage key decision-makers from procurement, billing, and product teams to understand pain points with current CPQ processes and establish requirements for CloudSense implementation.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "a1-telekom-a-003",
+    "title": "Develop custom pricing model template for A1 Telekom's service tiers",
+    "description": "Build CloudSense configuration to replicate A1 Telekom's multi-tiered telecom pricing structure including bundles, discounts, and regulatory compliance rules.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-03-31",
+    "createdAt": "2026-01-22"
+  },
+  {
+    "id": "a1-telekom-a-004",
+    "title": "Prepare ROI and business case presentation for executive sponsor",
+    "description": "Quantify time savings, quote accuracy improvements, and revenue acceleration benefits from CloudSense CPQ implementation to justify budget approval and project initiation.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-15",
+    "createdAt": "2026-01-25"
+  }
+]

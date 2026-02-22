@@ -1,0 +1,44 @@
+{
+  "painPoints": [
+    {
+      "id": "PP001",
+      "title": "Complex Quote Configuration Management",
+      "description": "Ntirety's sales team struggles with manual quote configuration for complex hybrid cloud solutions, leading to longer sales cycles and increased errors in pricing configurations across multiple hosting tiers and service bundles.",
+      "status": "Active",
+      "severity": "High",
+      "identifiedDate": "2024-01-15",
+      "owner": "Sales Operations Manager"
+    },
+    {
+      "id": "PP002",
+      "title": "Lack of Real-time Pricing Visibility",
+      "description": "Current CPQ system lacks real-time integration with dynamic pricing models and inventory management, causing quote delays, outdated pricing information, and reduced ability to respond quickly to competitive opportunities.",
+      "status": "Active",
+      "severity": "High",
+      "identifiedDate": "2024-01-15",
+      "owner": "Pricing Strategy Lead"
+    }
+  ],
+  "opportunities": [
+    {
+      "id": "OPP001",
+      "title": "Accelerated Sales Cycle Through Automated Quote Generation",
+      "description": "Implementing CloudSense CPQ automation can reduce quote generation time by 60%, enabling faster customer responses, improved win rates, and increased sales team productivity for Ntirety's enterprise hosting solutions.",
+      "status": "Identified",
+      "estimatedValue": 2500000,
+      "probability": 0.85,
+      "identifiedDate": "2024-01-15",
+      "owner": "VP of Sales"
+    },
+    {
+      "id": "OPP002",
+      "title": "Enhanced Revenue Recognition and Upsell Capabilities",
+      "description": "CloudSense CPQ's advanced bundling and recommendation engine can identify cross-sell and upsell opportunities, improving average contract value by 25-35% across managed hosting, security, and compliance service offerings.",
+      "status": "Identified",
+      "estimatedValue": 1800000,
+      "probability": 0.78,
+      "identifiedDate": "2024-01-15",
+      "owner": "Director of Revenue Operations"
+    }
+  ]
+}

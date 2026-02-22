@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "issquared-inc-a-001",
+    "title": "Schedule QBR with VP of Operations",
+    "description": "Conduct quarterly business review to discuss platform utilization metrics, cost optimization opportunities, and roadmap alignment for Kandy UCaaS deployment across their organization.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-15",
+    "createdAt": "2026-01-22"
+  },
+  {
+    "id": "issquared-inc-a-002",
+    "title": "Complete renewal proposal for annual contract",
+    "description": "Prepare comprehensive renewal proposal with tiered pricing options and new feature recommendations for ISSQUARED's $1.18M+ ARR Kandy UCaaS implementation.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-30",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "issquared-inc-a-003",
+    "title": "Validate SIP trunking performance metrics",
+    "description": "Review call quality reports, latency data, and failover statistics to ensure Kandy SIP trunking meets ISSQUARED's enterprise-grade reliability requirements.",
+    "status": "done",
+    "priority": "medium",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-02-10",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "issquared-inc-a-004",
+    "title": "Explore CPaaS API expansion for custom integrations",
+    "description": "Assess opportunities to expand Kandy WebRTC and messaging capabilities through custom API integrations to unlock incremental upsell revenue.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success",
+    "dueDate": "2026-05-20",
+    "createdAt": "2026-02-03"
+  }
+]

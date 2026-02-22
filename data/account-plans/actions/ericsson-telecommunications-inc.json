@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "ericsson-telecommunications-inc-a-001",
+    "title": "Complete Q1 2026 business review and renewal planning",
+    "description": "Conduct quarterly business review with Ericsson stakeholders to discuss STL service performance, upcoming telecom software needs, and renewal terms for their $707,608 ARR contract.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-31",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "ericsson-telecommunications-inc-a-002",
+    "title": "Prepare custom development proposal for 5G network optimization",
+    "description": "Work with Solutions Engineer to scope and price a custom development engagement for Ericsson's 5G network optimization requirements leveraging STL's professional services.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "ericsson-telecommunications-inc-a-003",
+    "title": "Schedule executive sponsor check-in with VP of Network Operations",
+    "description": "Establish quarterly touchpoint with Ericsson's VP of Network Operations to ensure alignment on strategic telecom software initiatives and identify expansion opportunities.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-15",
+    "createdAt": "2026-02-01"
+  },
+  {
+    "id": "ericsson-telecommunications-inc-a-004",
+    "title": "Assess STL training and knowledge transfer program requirements",
+    "description": "Evaluate Ericsson's need for enhanced training and certification programs on STL telecom software platform to improve internal team capabilities.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success Manager",
+    "dueDate": "2026-05-30",
+    "createdAt": "2026-02-05"
+  }
+]

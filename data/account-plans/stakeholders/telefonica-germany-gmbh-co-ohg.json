@@ -1,0 +1,62 @@
+[
+  {
+    "id": "telefonica-germany-gmbh-co-ohg-s-001",
+    "name": "Dr. Klaus Mittelmann",
+    "title": "VP of Business Systems & Digital Transformation",
+    "role": "decision-maker",
+    "relationshipStrength": "strong",
+    "email": "klaus.mittelmann@telefonica.de",
+    "notes": "Oversees Salesforce infrastructure and CPQ implementation roadmap. Critical stakeholder for CloudSense adoption to streamline product catalog management and reduce quote-to-order cycle time across German markets.",
+    "interests": [
+      "Salesforce ecosystem optimization",
+      "Order management automation",
+      "Revenue recognition compliance"
+    ],
+    "lastInteraction": "2025-11-14"
+  },
+  {
+    "id": "telefonica-germany-gmbh-co-ohg-s-002",
+    "name": "Petra Schneider",
+    "title": "Director of Billing & Revenue Operations",
+    "role": "champion",
+    "relationshipStrength": "strong",
+    "email": "petra.schneider@telefonica.de",
+    "notes": "Drives billing process improvements and regulatory compliance in telecom services. Advocates for CloudSense CPQ integration with billing systems to enable real-time revenue tracking and reduce billing disputes.",
+    "interests": [
+      "Billing system integration",
+      "Regulatory compliance (BNetzA)",
+      "Revenue accuracy"
+    ],
+    "lastInteraction": "2025-10-22"
+  },
+  {
+    "id": "telefonica-germany-gmbh-co-ohg-s-003",
+    "name": "Thomas Eckhardt",
+    "title": "Senior Manager, Enterprise Sales Operations",
+    "role": "influencer",
+    "relationshipStrength": "moderate",
+    "email": "thomas.eckhardt@telefonica.de",
+    "notes": "Manages sales enablement and quote management workflows. Interested in CPQ capabilities for complex B2B telecom services (connectivity, cloud, managed services) to improve sales velocity and deal accuracy.",
+    "interests": [
+      "Sales productivity",
+      "Quote accuracy",
+      "Product bundling flexibility"
+    ],
+    "lastInteraction": "2025-09-18"
+  },
+  {
+    "id": "telefonica-germany-gmbh-co-ohg-s-004",
+    "name": "Gabriele Bauer",
+    "title": "Head of IT Service Delivery & Salesforce Operations",
+    "role": "user",
+    "relationshipStrength": "moderate",
+    "email": "gabriele.bauer@telefonica.de",
+    "notes": "Responsible for day-to-day Salesforce platform management and user adoption. Needs training and support documentation for CloudSense CPQ configuration to manage product catalogs and pricing rules efficiently.",
+    "interests": [
+      "Salesforce platform stability",
+      "User adoption metrics",
+      "System performance"
+    ],
+    "lastInteraction": "2025-08-30"
+  }
+]

@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "nomia-uk-limited-a-001",
+    "title": "Schedule QBR with CTO and engineering leadership",
+    "description": "Establish quarterly business review cadence with Nomia UK's technical leadership to discuss NewNet Communications platform utilization and roadmap alignment.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-01-30",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "nomia-uk-limited-a-002",
+    "title": "Conduct product adoption audit across SS7 and IMS modules",
+    "description": "Complete comprehensive review of Nomia UK's usage patterns on SS7, LTE, IMS, and next-gen signaling features to identify expansion opportunities.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-02-01"
+  },
+  {
+    "id": "nomia-uk-limited-a-003",
+    "title": "Develop carrier customer success case study",
+    "description": "Create technical case study showcasing how Nomia UK leverages NewNet Communications for carrier network optimization to support pipeline development.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success Manager",
+    "dueDate": "2026-04-15",
+    "createdAt": "2026-02-05"
+  },
+  {
+    "id": "nomia-uk-limited-a-004",
+    "title": "Prepare engagement strategy for next-gen signaling expansion",
+    "description": "Build proposal outlining next-generation signaling capabilities and ROI to position Nomia UK for migration from legacy SS7 infrastructure.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-05-31",
+    "createdAt": "2026-01-20"
+  }
+]

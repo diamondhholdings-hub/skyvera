@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "momentum-energy-a-001",
+    "title": "Complete CloudSense CPQ optimization audit",
+    "description": "Reviewed current quote-to-cash workflow and identified 3 opportunities to reduce quote cycle time by 40% through enhanced CPQ configuration.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-02-15",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "momentum-energy-a-002",
+    "title": "Schedule Q1 Business Review with VP of Operations",
+    "description": "Plan comprehensive review of 2025 adoption metrics, cross-sell opportunities within the $962k ARR account, and CPQ roadmap alignment.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-10",
+    "createdAt": "2026-01-25"
+  },
+  {
+    "id": "momentum-energy-a-003",
+    "title": "Prepare renewal proposal with expanded CPQ licensing tiers",
+    "description": "Develop tiered renewal offering that includes advanced product bundling features and multi-user licenses to support their growing telecom service portfolio.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-05",
+    "createdAt": "2026-02-01"
+  },
+  {
+    "id": "momentum-energy-a-004",
+    "title": "Conduct user adoption training for new quote approvers",
+    "description": "Deliver CloudSense CPQ training to 4 newly promoted approvers to ensure compliance with updated approval workflows and maximize system ROI.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success",
+    "dueDate": "2026-05-20",
+    "createdAt": "2026-02-03"
+  }
+]

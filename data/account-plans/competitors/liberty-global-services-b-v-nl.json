@@ -1,0 +1,36 @@
+[
+  {
+    "id": "liberty-global-services-b-v-nl-c-001",
+    "name": "Amdocs",
+    "type": "our-competitor",
+    "description": "Amdocs offers enterprise BSS/OSS solutions with CPQ capabilities, competing directly with Skyvera's Salesforce-native platform for telecom operators.",
+    "strengths": [
+      "Established market presence with deep telecom industry relationships and 300+ operator customers",
+      "Comprehensive end-to-end BSS ecosystem beyond CPQ including billing, order management, and revenue assurance",
+      "Strong professional services and implementation support network globally"
+    ],
+    "weaknesses": [
+      "Complex, non-Salesforce-native architecture requiring extensive customization and integration work",
+      "Higher total cost of ownership with lengthy implementation cycles compared to cloud-native solutions",
+      "Legacy technology stack limits agility in rapidly evolving 5G and edge computing service monetization"
+    ],
+    "lastUpdated": "2026-02-01"
+  },
+  {
+    "id": "liberty-global-services-b-v-nl-c-002",
+    "name": "NetCracker",
+    "type": "both",
+    "description": "NetCracker (part of NEC) provides unified CPQ and BSS platforms for telecoms while also competing with Liberty Global's service offerings in broadband and mobile markets.",
+    "strengths": [
+      "Strong embedded CPQ functionality within broader BSS/OSS suite with native telecom domain models",
+      "Advanced machine learning capabilities for pricing optimization and revenue management",
+      "Proven scalability with major European operators including multi-country deployments"
+    ],
+    "weaknesses": [
+      "Not natively built on Salesforce, requiring additional middleware and integration complexity",
+      "Longer sales cycles and higher implementation costs than lightweight Salesforce-based solutions",
+      "Steeper learning curve and lower adoption rates among sales teams compared to Salesforce-native CPQ tools"
+    ],
+    "lastUpdated": "2026-02-01"
+  }
+]

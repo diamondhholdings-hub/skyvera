@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "hubexo-south-uk-ltd-a-001",
+    "title": "Schedule QBR with CTO and procurement team",
+    "description": "Conduct quarterly business review to discuss CloudSense CPQ optimization opportunities and align on 2026 expansion roadmap for Hubexo's telecom service offerings.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-15",
+    "createdAt": "2026-02-01"
+  },
+  {
+    "id": "hubexo-south-uk-ltd-a-002",
+    "title": "Prepare renewal proposal with upsell modules",
+    "description": "Develop comprehensive renewal proposal highlighting CloudSense CPQ advanced features (billing orchestration, dynamic pricing) to support $693k ARR growth target.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-02-05"
+  },
+  {
+    "id": "hubexo-south-uk-ltd-a-003",
+    "title": "Conduct CPQ configuration audit and optimization review",
+    "description": "Complete technical review of Hubexo's current CloudSense CPQ setup to identify inefficiencies in quote generation and pricing rules that could improve deal velocity.",
+    "status": "done",
+    "priority": "medium",
+    "owner": "Customer Success Manager",
+    "dueDate": "2026-01-30",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "hubexo-south-uk-ltd-a-004",
+    "title": "Develop executive business case for multi-tenant CPQ expansion",
+    "description": "Create ROI-focused business case document demonstrating value of expanding CloudSense CPQ to additional Hubexo business units in EMEA region.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-30",
+    "createdAt": "2026-02-10"
+  }
+]

@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "digital-space-group-limited-a-001",
+    "title": "Schedule QBR with Digital Space Group leadership",
+    "description": "Conduct quarterly business review to assess Kandy UCaaS utilization and identify expansion opportunities given current $0 ARR baseline.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-15",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "digital-space-group-limited-a-002",
+    "title": "Complete discovery call on SIP trunking requirements",
+    "description": "Understand Digital Space Group's current communications infrastructure and map Kandy SIP trunking capabilities to their telecom needs.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-02-05"
+  },
+  {
+    "id": "digital-space-group-limited-a-003",
+    "title": "Prepare ROI proposal for WebRTC and messaging integration",
+    "description": "Develop business case demonstrating value of Kandy's CPaaS messaging and WebRTC features for Digital Space Group's use cases.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-10",
+    "createdAt": "2026-01-25"
+  },
+  {
+    "id": "digital-space-group-limited-a-004",
+    "title": "Onboard Digital Space Group onto Kandy platform",
+    "description": "Successfully provisioned Kandy UCaaS environment and completed initial training for Digital Space Group technical team.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Customer Success",
+    "dueDate": "2026-02-14",
+    "createdAt": "2026-01-15"
+  }
+]

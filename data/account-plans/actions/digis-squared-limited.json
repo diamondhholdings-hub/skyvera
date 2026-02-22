@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "digis-squared-limited-a-001",
+    "title": "Complete IMS signaling architecture audit",
+    "description": "Assessed current NewNet Communications IMS deployment across DIGIS Squared's carrier network and documented optimization opportunities.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-01-31",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "digis-squared-limited-a-002",
+    "title": "Schedule QBR with DIGIS Squared executive stakeholders",
+    "description": "Prepare comprehensive business review covering SS7/LTE/IMS utilization, ROI metrics, and next-gen signaling roadmap alignment for Q1 2026.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "digis-squared-limited-a-003",
+    "title": "Develop LTE signaling expansion proposal",
+    "description": "Create technical and commercial proposal for expanding LTE signaling capacity to support DIGIS Squared's projected 25% subscriber growth.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-15",
+    "createdAt": "2026-01-25"
+  },
+  {
+    "id": "digis-squared-limited-a-004",
+    "title": "Identify SS7 legacy modernization opportunities",
+    "description": "Evaluate DIGIS Squared's existing SS7 infrastructure and present next-gen signaling migration options to reduce operational complexity and costs.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-04-30",
+    "createdAt": "2026-02-05"
+  }
+]

@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "new-license-sales-skyvera-a-001",
+    "title": "Complete SS7 signaling protocol technical evaluation",
+    "description": "Document NewNet Communications SS7 capabilities and compatibility with Skyvera's carrier infrastructure requirements.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-01-15",
+    "createdAt": "2026-01-08"
+  },
+  {
+    "id": "new-license-sales-skyvera-a-002",
+    "title": "Prepare LTE and IMS integration proposal",
+    "description": "Create detailed implementation plan for integrating NewNet Communications LTE/IMS signaling software with Skyvera's next-gen network architecture.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-02-03"
+  },
+  {
+    "id": "new-license-sales-skyvera-a-003",
+    "title": "Schedule proof-of-concept demonstration",
+    "description": "Coordinate hands-on demo of next-gen signaling software capabilities with Skyvera's technical team and network operations center.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-03-15",
+    "createdAt": "2026-01-10"
+  },
+  {
+    "id": "new-license-sales-skyvera-a-004",
+    "title": "Develop licensing and pricing model",
+    "description": "Create customized license structure and commercial terms for Skyvera's carrier-grade SS7/LTE/IMS software deployment.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-30",
+    "createdAt": "2026-02-05"
+  }
+]

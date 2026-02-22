@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "telenet-group-a-001",
+    "title": "Schedule QBR with CTO and Network Operations leadership",
+    "description": "Conduct quarterly business review to discuss IMS modernization roadmap and SS7 optimization opportunities for Q2 network upgrades.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-02-15",
+    "createdAt": "2026-01-10"
+  },
+  {
+    "id": "telenet-group-a-002",
+    "title": "Prepare renewal proposal with next-gen signaling enhancements",
+    "description": "Develop renewal package highlighting LTE/5G signaling capabilities and cost optimization for their $578K annual commitment.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-03-30",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "telenet-group-a-003",
+    "title": "Conduct technical deep-dive on IMS network resilience",
+    "description": "Schedule architecture review session to assess current IMS deployment and identify redundancy improvements for carrier-grade reliability.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Customer Success Engineer",
+    "dueDate": "2026-04-20",
+    "createdAt": "2026-01-12"
+  },
+  {
+    "id": "telenet-group-a-004",
+    "title": "Evaluate SS7 security audit and compliance requirements",
+    "description": "Review regulatory compliance needs and initiate security assessment for their signaling infrastructure ahead of Q2 2026.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Account Manager",
+    "dueDate": "2026-05-10",
+    "createdAt": "2026-01-18"
+  }
+]

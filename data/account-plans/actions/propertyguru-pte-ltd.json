@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "propertyguru-pte-ltd-a-001",
+    "title": "Schedule QBR with PropertyGuru leadership team",
+    "description": "Quarterly business review to discuss CPQ adoption metrics, upsell opportunities for advanced pricing rules, and 2026 growth initiatives aligned with their $1M+ ARR commitment.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-02-15",
+    "createdAt": "2026-01-10"
+  },
+  {
+    "id": "propertyguru-pte-ltd-a-002",
+    "title": "Prepare renewal proposal with add-on services",
+    "description": "Draft renewal proposal including CloudSense CPQ advanced modules for dynamic bundling and partner ecosystem integrations to drive incremental revenue before Q2 renewal.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-01",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "propertyguru-pte-ltd-a-003",
+    "title": "Conduct CPQ configuration audit and optimization workshop",
+    "description": "Review PropertyGuru's current quote template configurations and train their team on advanced pricing logic features to maximize ROI and reduce manual quote handling.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-04-10",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "propertyguru-pte-ltd-a-004",
+    "title": "Identify and scope competitive upgrade opportunity",
+    "description": "Evaluate PropertyGuru's usage data to uncover gaps where CloudSense Revenue Intelligence or billing integration modules could address pain points vs. competing CPQ platforms.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success Manager",
+    "dueDate": "2026-05-05",
+    "createdAt": "2026-01-12"
+  }
+]

@@ -1,0 +1,42 @@
+[
+  {
+    "id": "evolutio-cloud-enabler-s-a-a-001",
+    "title": "Schedule QBR with CTO and Finance stakeholders",
+    "description": "Conduct quarterly business review to align on Kandy UCaaS utilization metrics, ROI validation, and expansion opportunities across their European operations.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-15",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "evolutio-cloud-enabler-s-a-a-002",
+    "title": "Prepare renewal proposal with SIP trunking upgrade",
+    "description": "Develop renewal contract for March 2026 with proposal to add premium SIP trunking tier and messaging API expansion to support their growing cloud communication needs.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-01-25"
+  },
+  {
+    "id": "evolutio-cloud-enabler-s-a-a-003",
+    "title": "Complete WebRTC integration technical assessment",
+    "description": "Document their current WebRTC implementation across contact center and identify optimization opportunities to improve platform adoption and reduce support tickets.",
+    "status": "done",
+    "priority": "medium",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-02-10",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "evolutio-cloud-enabler-s-a-a-004",
+    "title": "Identify cross-sell opportunities with messaging and analytics modules",
+    "description": "Analyze their current usage patterns and account growth trajectory to develop a targeted upsell strategy for advanced messaging and real-time analytics capabilities.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success Manager",
+    "dueDate": "2026-04-30",
+    "createdAt": "2026-02-05"
+  }
+]

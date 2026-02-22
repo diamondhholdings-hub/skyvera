@@ -1,0 +1,53 @@
+{
+  "painPoints": [
+    {
+      "id": "PP001",
+      "title": "Complex Product Catalog Management Across Multiple Service Bundles",
+      "description": "Unidad Editorial's CloudSense CPQ implementation struggles with managing intricate telecom product hierarchies, including bundled services (broadband, voice, mobile) with interdependent pricing rules and promotional constraints. Manual catalog updates cause quote generation delays and pricing inconsistencies across channels.",
+      "status": "active",
+      "severity": "high",
+      "identifiedDate": "2024-01-15",
+      "owner": "Sales Operations Manager"
+    },
+    {
+      "id": "PP002",
+      "title": "Quote-to-Cash Process Fragmentation and Billing Integration Gaps",
+      "description": "Disconnect between CloudSense CPQ quote generation and downstream billing systems results in order fulfillment delays, manual reconciliation efforts, and revenue recognition issues. Integration with existing ERP and billing platforms requires custom API middleware that is difficult to maintain.",
+      "status": "active",
+      "severity": "high",
+      "identifiedDate": "2024-02-03",
+      "owner": "Finance Operations Director"
+    },
+    {
+      "id": "PP003",
+      "title": "Limited Dynamic Pricing and Discount Management Flexibility",
+      "description": "Current CloudSense CPQ configuration lacks advanced scenario modeling for competitive pricing adjustments and regional discount strategies. Sales teams cannot quickly respond to market changes, resulting in lost deal velocity and margin compression in high-competition segments.",
+      "status": "active",
+      "severity": "medium",
+      "identifiedDate": "2024-01-28",
+      "owner": "Revenue Operations Lead"
+    }
+  ],
+  "opportunities": [
+    {
+      "id": "OPP001",
+      "title": "Expand CloudSense CPQ to Multi-Tenant SaaS Offering for Reseller Network",
+      "description": "Leverage existing CloudSense CPQ implementation to create a white-label, multi-tenant platform for Unidad Editorial's telecom reseller and partner ecosystem. This enables partners to configure, price, and quote services independently while maintaining central governance and margin controls, driving incremental recurring revenue.",
+      "status": "exploring",
+      "estimatedValue": 285000,
+      "probability": 68,
+      "identifiedDate": "2024-03-10",
+      "owner": "Strategic Partnerships Manager"
+    },
+    {
+      "id": "OPP002",
+      "title": "Implement AI-Driven Predictive Pricing and Deal Analytics Module",
+      "description": "Enhance CloudSense CPQ with machine learning capabilities to predict optimal pricing based on customer segments, competitive landscape, and historical win/loss patterns. Integrate predictive analytics dashboard to recommend deal structures and identify upsell/cross-sell opportunities, improving quote win rates and average deal size.",
+      "status": "proposed",
+      "estimatedValue": 156000,
+      "probability": 52,
+      "identifiedDate": "2024-03-05",
+      "owner": "Product Innovation Lead"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+[
+  {
+    "id": "odido-netherlands-b-v-c-001",
+    "name": "Mavenir",
+    "type": "our-competitor",
+    "description": "Mavenir provides cloud-native signaling and telecom software solutions for SS7, IMS, and 5G core networks across European carriers.",
+    "strengths": [
+      "Established presence with major European telecom operators including tier-1 carriers",
+      "Comprehensive cloud-native architecture with strong 5G and IMS portfolio",
+      "Extensive partnerships and integration capabilities with existing telecom infrastructure"
+    ],
+    "weaknesses": [
+      "Higher deployment complexity and longer implementation timelines compared to Skyvera's streamlined solutions",
+      "Premium pricing model may limit adoption among mid-market carriers like Odido",
+      "Less agile in rapid feature deployment for legacy SS7 modernization scenarios"
+    ],
+    "lastUpdated": "2026-02-01"
+  },
+  {
+    "id": "odido-netherlands-b-v-c-002",
+    "name": "Ulticom",
+    "type": "our-competitor",
+    "description": "Ulticom specializes in signaling software and protocol testing solutions for SS7, Diameter, and IMS networks serving European telecommunications operators.",
+    "strengths": [
+      "Deep expertise in SS7 protocol and legacy network modernization",
+      "Strong reputation in signaling layer testing and validation for interoperability",
+      "Established customer base among regional and mid-market European carriers"
+    ],
+    "weaknesses": [
+      "Limited next-generation signaling capabilities and slower innovation in 5G-era solutions",
+      "Smaller engineering team reduces ability to compete on feature velocity versus Skyvera",
+      "Less comprehensive IMS and modern telecom stack integration compared to competitors"
+    ],
+    "lastUpdated": "2026-02-01"
+  }
+]

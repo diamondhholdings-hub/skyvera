@@ -1,0 +1,42 @@
+[
+  {
+    "id": "beedigital-ai-s-a-u-a-001",
+    "title": "Schedule QBR with Finance and Procurement leads",
+    "description": "Review BeeDIGITAL's CloudSense CPQ utilization, ROI metrics, and renewal roadmap for their $754K ARR contract.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-02-15",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "beedigital-ai-s-a-u-a-002",
+    "title": "Conduct CloudSense CPQ optimization workshop",
+    "description": "Guide BeeDIGITAL's ops team through advanced pricing rules and quote automation to reduce sales cycle time by 20%.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-03-10",
+    "createdAt": "2026-01-25"
+  },
+  {
+    "id": "beedigital-ai-s-a-u-a-003",
+    "title": "Prepare renewal proposal with add-on modules",
+    "description": "Package CloudSense Advanced Analytics and Multi-tenant Invoicing add-ons as upsell opportunities for Q2 2026 renewal.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-01",
+    "createdAt": "2026-01-28"
+  },
+  {
+    "id": "beedigital-ai-s-a-u-a-004",
+    "title": "Execute customer reference call with telecom peer",
+    "description": "Arrange BeeDIGITAL to speak with similar-sized telecom using CloudSense CPQ to strengthen retention confidence.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success",
+    "dueDate": "2026-05-15",
+    "createdAt": "2026-02-05"
+  }
+]

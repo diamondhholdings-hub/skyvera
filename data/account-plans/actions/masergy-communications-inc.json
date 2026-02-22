@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "masergy-communications-inc-a-001",
+    "title": "Complete CloudSense CPQ platform optimization audit",
+    "description": "Reviewed Masergy's current quote generation workflows and identified 3 efficiency improvements within CloudSense configuration to reduce cycle time by 15%.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-01-30",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "masergy-communications-inc-a-002",
+    "title": "Conduct quarterly business review on CPQ adoption metrics",
+    "description": "Schedule QBR with Masergy's VP of Operations to review quote accuracy rates, pricing discrepancy resolution, and ROI against the $1.4M ARR investment.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-02-01"
+  },
+  {
+    "id": "masergy-communications-inc-a-003",
+    "title": "Prepare renewal proposal with expanded module recommendations",
+    "description": "Develop renewal proposal including upgrade to Advanced Pricing Rules and Multi-Currency modules to support Masergy's planned European expansion.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-15",
+    "createdAt": "2026-02-10"
+  },
+  {
+    "id": "masergy-communications-inc-a-004",
+    "title": "Schedule technical training on new CloudSense billing integration features",
+    "description": "Coordinate hands-on training session with Masergy's technical team to enable usage of latest automated invoice generation capabilities in CloudSense.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success Manager",
+    "dueDate": "2026-05-20",
+    "createdAt": "2026-02-05"
+  }
+]

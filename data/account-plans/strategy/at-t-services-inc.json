@@ -1,0 +1,53 @@
+{
+  "painPoints": [
+    {
+      "id": "PP001",
+      "title": "SIP Trunk Interoperability and Legacy System Integration",
+      "description": "AT&T Services faces challenges integrating Kandy SIP trunking with legacy on-premises PBX systems and third-party carrier infrastructure. Inconsistent codec support and signaling protocol variations create call quality issues and increase support overhead across their enterprise customer base.",
+      "status": "active",
+      "severity": "high",
+      "identifiedDate": "2024-01-15",
+      "owner": "Chief Technology Officer"
+    },
+    {
+      "id": "PP002",
+      "title": "WebRTC Security and Compliance Complexity",
+      "description": "Implementing WebRTC-based communications within Kandy platform requires managing encryption, SRTP/DTLS protocols, and regulatory compliance (HIPAA, PCI-DSS) across customer deployments. Current security model increases operational complexity and slows customer onboarding.",
+      "status": "active",
+      "severity": "high",
+      "identifiedDate": "2024-02-03",
+      "owner": "VP of Security and Compliance"
+    },
+    {
+      "id": "PP003",
+      "title": "CPaaS Platform Scalability During Peak Messaging Volumes",
+      "description": "Kandy messaging component experiences latency and throughput constraints during high-volume SMS/RCS campaigns from enterprise customers. Current infrastructure requires optimization to maintain sub-second delivery SLAs and support multi-tenant isolation at scale.",
+      "status": "active",
+      "severity": "medium",
+      "identifiedDate": "2024-01-28",
+      "owner": "Director of Platform Operations"
+    }
+  ],
+  "opportunities": [
+    {
+      "id": "OPP001",
+      "title": "Expand Kandy UCaaS to Mid-Market Financial Services Vertical",
+      "description": "Target 200-500 employee financial institutions requiring embedded communications (voice, video, messaging) within banking applications. Leverage Kandy's WebRTC and SIP trunking capabilities with pre-built compliance templates for SOX, GLBA, and PCI-DSS requirements. Estimated TAM expansion of $8-12M in new ARR.",
+      "status": "exploring",
+      "estimatedValue": 10500000,
+      "probability": 65,
+      "identifiedDate": "2024-02-15",
+      "owner": "VP of Sales - Enterprise"
+    },
+    {
+      "id": "OPP002",
+      "title": "Cross-Sell Kandy Messaging API to Existing AT&T Enterprise Customers",
+      "description": "Introduce CPaaS messaging (SMS, MMS, RCS, WhatsApp Business) to current AT&T enterprise base managing SIP trunking and voice. Bundle Kandy messaging APIs with existing telecom services contracts. Conservative penetration of 15-20% of installed base projects $1.5-2.2M incremental ARR within 18 months.",
+      "status": "active",
+      "estimatedValue": 1800000,
+      "probability": 78,
+      "identifiedDate": "2024-01-20",
+      "owner": "VP of Customer Success"
+    }
+  ]
+}

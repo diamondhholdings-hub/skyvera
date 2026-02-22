@@ -1,0 +1,36 @@
+[
+  {
+    "id": "telekom-romania-mobile-communications-s-a-formerly-cosmote-romanian-telecom-c-001",
+    "name": "Mavenir",
+    "type": "our-competitor",
+    "description": "Mavenir provides cloud-native signaling and IMS solutions for carriers with extensive 5G and next-gen network architecture capabilities.",
+    "strengths": [
+      "Comprehensive cloud-native architecture with deep 5G integration",
+      "Strong global carrier relationships and extensive deployment experience",
+      "Advanced network slicing and orchestration capabilities"
+    ],
+    "weaknesses": [
+      "Higher implementation complexity and longer deployment timelines compared to Skyvera's streamlined solutions",
+      "Significant licensing costs and vendor lock-in concerns for Eastern European operators",
+      "Less agile in supporting legacy SS7/LTE interoperability scenarios"
+    ],
+    "lastUpdated": "2026-02-01"
+  },
+  {
+    "id": "telekom-romania-mobile-communications-s-a-formerly-cosmote-romanian-telecom-c-002",
+    "name": "Ulticom",
+    "type": "our-competitor",
+    "description": "Ulticom specializes in signaling software and protocol testing solutions for telecom networks including SS7, Diameter, and emerging signaling protocols.",
+    "strengths": [
+      "Deep expertise in SS7 and legacy signaling protocol troubleshooting",
+      "Established presence in Eastern European telecommunications markets",
+      "Strong focus on regulatory compliance and interoperability testing"
+    ],
+    "weaknesses": [
+      "Limited next-generation IMS and 5G signaling capabilities compared to Skyvera",
+      "Legacy product architecture with slower innovation cycles",
+      "Smaller ecosystem and partnership network for integrated carrier solutions"
+    ],
+    "lastUpdated": "2026-02-01"
+  }
+]

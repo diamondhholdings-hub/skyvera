@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "vodafone-fiji-limited-a-001",
+    "title": "Complete Q1 2026 QBR with Vodafone Fiji Leadership",
+    "description": "Conduct quarterly business review to assess UCaaS adoption metrics, usage trends across SIP trunking and messaging services, and identify expansion opportunities within their regional operations.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-15",
+    "createdAt": "2026-01-10"
+  },
+  {
+    "id": "vodafone-fiji-limited-a-002",
+    "title": "Prepare Renewal Proposal with Premium Support Add-on",
+    "description": "Develop customized renewal proposal for Kandy UCaaS platform including premium support tier and WebRTC enhancement modules to align with their $43K ARR baseline and anticipated growth.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-30",
+    "createdAt": "2026-02-05"
+  },
+  {
+    "id": "vodafone-fiji-limited-a-003",
+    "title": "Schedule Technical Deep-dive on SIP Trunking Optimization",
+    "description": "Coordinate with Solutions Engineer to conduct technical session focused on optimizing SIP trunk configuration and redundancy for improved call quality across Fiji's telecommunications network.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-05-20",
+    "createdAt": "2026-01-25"
+  },
+  {
+    "id": "vodafone-fiji-limited-a-004",
+    "title": "Execute Customer Health Check and Training Assessment",
+    "description": "Conduct comprehensive health assessment covering messaging platform utilization, identify training gaps among Vodafone Fiji team members, and recommend upskilling initiatives to maximize CPaaS adoption.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success Manager",
+    "dueDate": "2026-06-10",
+    "createdAt": "2026-02-01"
+  }
+]

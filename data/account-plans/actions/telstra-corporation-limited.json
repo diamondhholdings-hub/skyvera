@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "telstra-corporation-limited-a-001",
+    "title": "Complete CloudSense CPQ optimization review",
+    "description": "Finalized assessment of Telstra's current CPQ workflows and identified 3 efficiency improvements to reduce quote-to-order cycle time by 25%.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-02-15",
+    "createdAt": "2026-01-10"
+  },
+  {
+    "id": "telstra-corporation-limited-a-002",
+    "title": "Implement CloudSense CPQ custom pricing rules for enterprise bundles",
+    "description": "Currently configuring dynamic pricing logic in CloudSense to support Telstra's tiered enterprise bundle offerings and volume discounts across regions.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-03-30",
+    "createdAt": "2026-01-12"
+  },
+  {
+    "id": "telstra-corporation-limited-a-003",
+    "title": "Schedule Q2 business review and renewal discussion",
+    "description": "Coordinate strategic QBR with Telstra procurement and network operations leadership to review CloudSense ROI and discuss contract renewal for 2027.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-20",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "telstra-corporation-limited-a-004",
+    "title": "Prepare advanced CloudSense training for Telstra sales enablement team",
+    "description": "Develop customized training materials and conduct hands-on workshop to empower Telstra's 45-person sales team on CloudSense CPQ advanced features and automation capabilities.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success",
+    "dueDate": "2026-05-10",
+    "createdAt": "2026-01-18"
+  }
+]

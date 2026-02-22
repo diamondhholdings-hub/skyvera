@@ -1,0 +1,62 @@
+[
+  {
+    "id": "beedigital-ai-s-a-u-s-001",
+    "name": "María José García López",
+    "title": "Chief Technology Officer",
+    "role": "decision-maker",
+    "relationshipStrength": "strong",
+    "email": "maria.garcia@beedigital-ai.es",
+    "notes": "Leads digital transformation initiatives and oversees CloudSense CPQ implementation. Prioritizes seamless Salesforce integration for order management and automated billing workflows to reduce time-to-revenue.",
+    "interests": [
+      "Salesforce-native CPQ automation",
+      "Real-time billing and order orchestration",
+      "Multi-tenant product catalog management"
+    ],
+    "lastInteraction": "2025-11-15"
+  },
+  {
+    "id": "beedigital-ai-s-a-u-s-002",
+    "name": "Juan Carlos Rodríguez Fernández",
+    "title": "Vice President of Revenue Operations",
+    "role": "champion",
+    "relationshipStrength": "strong",
+    "email": "juan.rodriguez@beedigital-ai.es",
+    "notes": "Owns quoting and deal acceleration processes. Passionate about improving quote-to-cash cycle and enabling field sales with dynamic pricing rules for telecom service bundles.",
+    "interests": [
+      "CPQ configuration for telecom packages",
+      "Sales enablement and quote accuracy",
+      "Revenue recognition compliance"
+    ],
+    "lastInteraction": "2025-10-22"
+  },
+  {
+    "id": "beedigital-ai-s-a-u-s-003",
+    "name": "Isabel Martínez Sánchez",
+    "title": "Director of Billing and Subscription Management",
+    "role": "influencer",
+    "relationshipStrength": "moderate",
+    "email": "isabel.martinez@beedigital-ai.es",
+    "notes": "Manages recurring billing, usage-based pricing models, and subscription lifecycle. Seeks CloudSense integration to automate invoice generation and improve billing accuracy for mobile and fixed-line services.",
+    "interests": [
+      "Usage-based billing automation",
+      "Subscription lifecycle management",
+      "Billing system integration with Salesforce"
+    ],
+    "lastInteraction": "2025-09-18"
+  },
+  {
+    "id": "beedigital-ai-s-a-u-s-004",
+    "name": "Rafael Gómez Núñez",
+    "title": "Senior Sales Operations Analyst",
+    "role": "user",
+    "relationshipStrength": "moderate",
+    "email": "rafael.gomez@beedigital-ai.es",
+    "notes": "Daily user of CloudSense for quote configuration and order submission. Focuses on reducing quote turnaround time and ensuring product data accuracy for complex telecom bundles and add-ons.",
+    "interests": [
+      "User interface usability",
+      "CPQ workflow efficiency",
+      "Product data governance"
+    ],
+    "lastInteraction": "2025-11-08"
+  }
+]

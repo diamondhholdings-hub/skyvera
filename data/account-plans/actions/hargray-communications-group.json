@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "hargray-communications-group-a-001",
+    "title": "Schedule QBR with CTO and Network Operations Director",
+    "description": "Conduct quarterly business review to assess Kandy UCaaS platform utilization, review SIP trunk performance metrics, and identify expansion opportunities across their multi-site operations.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-15",
+    "createdAt": "2026-01-22"
+  },
+  {
+    "id": "hargray-communications-group-a-002",
+    "title": "Prepare renewal proposal with expanded messaging capabilities",
+    "description": "Develop renewal proposal highlighting WebRTC enhancements and advanced messaging features to support HARGRAY's growing customer engagement needs with their enterprise telecom customer base.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-30",
+    "createdAt": "2026-01-28"
+  },
+  {
+    "id": "hargray-communications-group-a-003",
+    "title": "Validate CPaaS integration performance with recent API updates",
+    "description": "Technical review with Solutions Engineer to confirm HARGRAY's CPaaS integrations are optimized and compatible with the latest platform updates released in Q1 2026.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-02-05"
+  },
+  {
+    "id": "hargray-communications-group-a-004",
+    "title": "Complete customer success check-in and platform training",
+    "description": "Conducted monthly health check with HARGRAY support team and delivered training on new WebRTC dashboard reporting features to maximize platform ROI.",
+    "status": "done",
+    "priority": "medium",
+    "owner": "Customer Success Manager",
+    "dueDate": "2026-02-10",
+    "createdAt": "2026-01-15"
+  }
+]

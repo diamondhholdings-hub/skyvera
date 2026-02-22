@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "dplay-entertainment-ltd-a-001",
+    "title": "Complete initial CloudSense CPQ platform training for operations team",
+    "description": "Dplay Entertainment Ltd operations team completed foundational training on CloudSense CPQ configuration, pricing rules, and quote generation workflows.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-01-30",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "dplay-entertainment-ltd-a-002",
+    "title": "Configure custom pricing models for Dplay's media delivery services in CloudSense",
+    "description": "Account team is currently building tiered pricing structures and dynamic discount rules specific to Dplay's telecom media delivery bundles within the CloudSense CPQ system.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-02-28",
+    "createdAt": "2026-02-01"
+  },
+  {
+    "id": "dplay-entertainment-ltd-a-003",
+    "title": "Schedule executive business review to discuss first module go-live and roadmap",
+    "description": "Schedule QBR with Dplay Entertainment Ltd leadership team to review CloudSense CPQ module launch results and align on next phases for BSS integration.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-15",
+    "createdAt": "2026-02-10"
+  },
+  {
+    "id": "dplay-entertainment-ltd-a-004",
+    "title": "Develop proposal for advanced analytics and reporting dashboard integration",
+    "description": "Prepare scope and pricing proposal for extending CloudSense CPQ with custom analytics dashboards to provide Dplay with real-time quoting and revenue insights.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-30",
+    "createdAt": "2026-02-05"
+  }
+]

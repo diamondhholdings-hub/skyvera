@@ -1,0 +1,36 @@
+[
+  {
+    "id": "telefonica-germany-gmbh-co-ohg-c-001",
+    "name": "Amdocs",
+    "type": "both",
+    "description": "Amdocs offers comprehensive BSS/OSS and CPQ solutions that compete directly with Skyvera while also serving as a telecom infrastructure vendor competing against Telefonica's services.",
+    "strengths": [
+      "Established enterprise-grade platform with 25+ years of telecom industry expertise",
+      "Deep integration capabilities with existing legacy telecom systems and ERP platforms",
+      "Large professional services ecosystem with proven deployment methodologies"
+    ],
+    "weaknesses": [
+      "Heavy on-premise architecture with slower cloud-native Salesforce integration compared to Skyvera's native CPQ",
+      "Complex implementation timelines (12-18 months typical) versus Skyvera's faster deployment",
+      "Higher total cost of ownership due to extensive customization requirements and legacy infrastructure dependencies"
+    ],
+    "lastUpdated": "2026-02-01"
+  },
+  {
+    "id": "telefonica-germany-gmbh-co-ohg-c-002",
+    "name": "Oracle Communications",
+    "type": "both",
+    "description": "Oracle Communications provides integrated BSS, CPQ, and network management solutions that directly compete with Skyvera's Salesforce-native platform while offering enterprise telecom infrastructure services.",
+    "strengths": [
+      "Massive installed base across major global telecom operators with 99.99% uptime SLAs",
+      "Vertically integrated portfolio spanning billing, provisioning, and revenue management",
+      "Strong financial backing and continuous R&D investment in AI-powered pricing optimization"
+    ],
+    "weaknesses": [
+      "Limited native Salesforce integration requiring extensive middleware and custom APIs versus Skyvera's out-of-box Salesforce compatibility",
+      "Steep learning curve and vendor lock-in reducing flexibility for multi-cloud strategies",
+      "Higher licensing and infrastructure costs making it less accessible for mid-market German telecom operators"
+    ],
+    "lastUpdated": "2026-02-01"
+  }
+]

@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "new-sales-ps-go-get-a-001",
+    "title": "Complete CloudSense CPQ platform discovery session",
+    "description": "Conduct initial technical discovery with New Sales Ps - Go Get stakeholders to understand their current quoting process and identify CPQ requirements.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-01-30",
+    "createdAt": "2026-01-15"
+  },
+  {
+    "id": "new-sales-ps-go-get-a-002",
+    "title": "Prepare CloudSense CPQ implementation proposal and ROI analysis",
+    "description": "Develop detailed implementation timeline, resource plan, and financial ROI model demonstrating how CloudSense CPQ will accelerate their sales cycle and reduce quote errors.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-02-14",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "new-sales-ps-go-get-a-003",
+    "title": "Schedule executive sponsor alignment meeting",
+    "description": "Book meeting with New Sales Ps - Go Get's VP of Sales and IT Director to present CloudSense CPQ value proposition and secure budget approval.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-03-01",
+    "createdAt": "2026-01-18"
+  },
+  {
+    "id": "new-sales-ps-go-get-a-004",
+    "title": "Identify and document Salesforce integration requirements",
+    "description": "Work with their technical team to map existing Salesforce configuration and define CloudSense CPQ integration points for pricing rules and catalog management.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-03-15",
+    "createdAt": "2026-01-22"
+  }
+]

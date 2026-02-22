@@ -1,0 +1,62 @@
+[
+  {
+    "id": "unidad-editorial-s-a-s-001",
+    "name": "María García Rodríguez",
+    "title": "Chief Technology Officer",
+    "role": "decision-maker",
+    "relationshipStrength": "strong",
+    "email": "maria.garcia@unidadeditorial.es",
+    "notes": "Responsible for evaluating CloudSense CPQ implementation to streamline telecom service configuration and quoting processes. Priority is reducing quote-to-order cycle time and improving billing accuracy across multiple product lines.",
+    "interests": [
+      "Salesforce platform optimization",
+      "CPQ automation",
+      "Order management efficiency"
+    ],
+    "lastInteraction": "2025-11-15"
+  },
+  {
+    "id": "unidad-editorial-s-a-s-002",
+    "name": "Carlos Mendez Fernández",
+    "title": "Director of Product Management",
+    "role": "champion",
+    "relationshipStrength": "strong",
+    "email": "carlos.mendez@unidadeditorial.es",
+    "notes": "Actively championing CloudSense CPQ adoption to enable dynamic product catalog management and bundling of telecom services. Focused on improving customer experience through faster, more accurate quote generation.",
+    "interests": [
+      "Product catalog management",
+      "Service bundling capabilities",
+      "Customer self-service"
+    ],
+    "lastInteraction": "2025-12-03"
+  },
+  {
+    "id": "unidad-editorial-s-a-s-003",
+    "name": "Javier Ruiz López",
+    "title": "VP of Sales Operations",
+    "role": "influencer",
+    "relationshipStrength": "moderate",
+    "email": "javier.ruiz@unidadeditorial.es",
+    "notes": "Evaluating CPQ for sales team enablement and improving deal velocity. Interested in configuration rules and margin protection within the telecom billing ecosystem to ensure profitable service delivery.",
+    "interests": [
+      "Sales team productivity",
+      "Margin management",
+      "Quote accuracy"
+    ],
+    "lastInteraction": "2025-10-22"
+  },
+  {
+    "id": "unidad-editorial-s-a-s-004",
+    "name": "Isabel Romero González",
+    "title": "Finance Director",
+    "role": "blocker",
+    "relationshipStrength": "weak",
+    "email": "isabel.romero@unidadeditorial.es",
+    "notes": "Concerned about implementation costs and ROI timeline for CloudSense CPQ deployment. Requires detailed cost-benefit analysis demonstrating improved billing accuracy and reduced revenue leakage before approval.",
+    "interests": [
+      "Implementation ROI",
+      "Billing accuracy",
+      "Cost control"
+    ],
+    "lastInteraction": "2025-09-18"
+  }
+]

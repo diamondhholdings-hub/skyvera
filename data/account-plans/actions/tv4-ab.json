@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "tv4-ab-a-001",
+    "title": "Complete CloudSense CPQ optimization review",
+    "description": "Finished comprehensive analysis of TV4 AB's quote-to-cash workflow and identified 3 process improvements in CPQ configuration.",
+    "status": "done",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-02-15",
+    "createdAt": "2026-01-20"
+  },
+  {
+    "id": "tv4-ab-a-002",
+    "title": "Implement custom pricing rules in CloudSense CPQ",
+    "description": "Currently configuring dynamic bundling logic for TV4 AB's premium telecom packages to reduce quote generation time by 40%.",
+    "status": "in-progress",
+    "priority": "high",
+    "owner": "Solutions Engineer",
+    "dueDate": "2026-03-31",
+    "createdAt": "2026-01-25"
+  },
+  {
+    "id": "tv4-ab-a-003",
+    "title": "Schedule Q2 business review and renewal planning",
+    "description": "Conduct strategic QBR with TV4 AB stakeholders to review platform adoption metrics and discuss expansion opportunities for next contract cycle.",
+    "status": "todo",
+    "priority": "high",
+    "owner": "Account Manager",
+    "dueDate": "2026-04-30",
+    "createdAt": "2026-01-22"
+  },
+  {
+    "id": "tv4-ab-a-004",
+    "title": "Develop advanced CPQ reporting dashboard",
+    "description": "Create custom Salesforce dashboards for TV4 AB to track quote metrics, win rates, and average deal cycle time across their sales organization.",
+    "status": "todo",
+    "priority": "medium",
+    "owner": "Customer Success Manager",
+    "dueDate": "2026-05-15",
+    "createdAt": "2026-02-01"
+  }
+]
