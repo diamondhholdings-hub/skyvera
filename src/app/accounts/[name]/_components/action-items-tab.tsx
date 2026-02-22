@@ -173,7 +173,8 @@ export function ActionItemsTab({ initialActions, stakeholders = [] }: ActionItem
             {stakeholders.slice(0, 4).map((s) => (
               <div
                 key={s.id}
-                className="p-6 bg-[var(--highlight)] border-l-[3px] border-[var(--accent)] rounded-r-lg"
+                className="p-6 bg-[var(--highlight)] rounded-r-lg"
+                style={{ borderLeft: '4px solid var(--accent)' }}
               >
                 <h4 className="font-display font-semibold text-[var(--secondary)] mb-2">
                   To {s.name} ({s.role})
@@ -188,7 +189,7 @@ export function ActionItemsTab({ initialActions, stakeholders = [] }: ActionItem
       )}
 
       {/* W1-P2-007: Escalation Triggers */}
-      <div className="mt-6 border-l-4 border-[var(--critical)] bg-[var(--paper)] rounded-r-lg p-6 shadow-sm">
+      <div className="mt-6 bg-[var(--paper)] rounded-r-lg p-6 shadow-sm" style={{ borderLeft: '4px solid var(--critical)' }}>
         <h3 className="font-display font-semibold text-[var(--ink)] mb-2">
           ⚠ Escalation Triggers to Skyvera Leadership
         </h3>
