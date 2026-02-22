@@ -51,9 +51,6 @@ export function DashboardNavigation() {
       const element = document.getElementById(id)
       if (element) {
         element.style.display = id === activeSection ? 'block' : 'none'
-        if (id === activeSection) {
-          element.style.animation = 'fadeIn 0.5s ease-out'
-        }
       }
     })
   }, [activeSection])

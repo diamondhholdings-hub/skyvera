@@ -34,7 +34,7 @@ export async function FinancialSummarySection() {
   const arAging = 11.5e6 // $11.5M from reference
 
   return (
-    <section id="financial-summary">
+    <section id="financial-summary" style={{ display: 'none' }}>
       {/* Section Header */}
       <h2 className="font-display text-3xl font-semibold text-[var(--secondary)] mt-8 mb-5 pb-3 border-b-4 border-[var(--secondary)]">
         Financial Executive Summary
