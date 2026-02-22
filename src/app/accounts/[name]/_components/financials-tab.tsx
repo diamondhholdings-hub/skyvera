@@ -64,7 +64,7 @@ export function FinancialsTab({ customer }: FinancialsTabProps) {
         <h2 className="font-display text-2xl font-semibold text-[var(--secondary)] mb-4 pb-2 border-b-[2px] border-[var(--border)]">
           Subscription Details
         </h2>
-        <div className="bg-white rounded-none border border-[var(--border)] overflow-hidden">
+        <div style={{ background: "white", border: "1px solid var(--border)", boxShadow: "0 1px 3px rgba(0,0,0,0.04)", overflow: "hidden" }}>
           <table className="w-full border-collapse text-sm">
             <thead>
               <tr className="bg-[var(--secondary)] text-white">
@@ -134,7 +134,7 @@ export function FinancialsTab({ customer }: FinancialsTabProps) {
         <h2 className="font-display text-2xl font-semibold text-[var(--secondary)] mb-4 pb-2 border-b-[2px] border-[var(--border)]">
           Revenue Breakdown
         </h2>
-        <div className="bg-white rounded-none border border-[var(--border)] p-6">
+        <div style={{ background: "white", border: "1px solid var(--border)", boxShadow: "0 1px 3px rgba(0,0,0,0.04)", padding: "2rem" }}>
           {/* Stacked bar */}
           <div className="flex h-8 rounded-none overflow-hidden border border-[var(--border)] mb-6">
             {rrPercent > 0 && (
@@ -184,7 +184,7 @@ export function FinancialsTab({ customer }: FinancialsTabProps) {
         <h2 className="font-display text-2xl font-semibold text-[var(--secondary)] mb-4 pb-2 border-b-[2px] border-[var(--border)]">
           Account Summary
         </h2>
-        <div className="bg-white rounded-none border border-[var(--border)] p-6">
+        <div style={{ background: "white", border: "1px solid var(--border)", boxShadow: "0 1px 3px rgba(0,0,0,0.04)", padding: "2rem" }}>
           <div className="flex items-start gap-4">
             <div
               className="rounded-full p-3 flex-shrink-0"

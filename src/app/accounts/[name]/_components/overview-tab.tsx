@@ -117,7 +117,7 @@ export function OverviewTab({
       {/* 2-Column: Account Status + KPIs */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1.5rem' }}>
         {/* Account Status */}
-        <div className="bg-white rounded-none border border-[var(--border)] p-6">
+        <div style={{ background: "white", border: "1px solid var(--border)", boxShadow: "0 1px 3px rgba(0,0,0,0.04)", padding: "2rem" }}>
           <h3 className="font-display text-xl font-semibold text-[var(--secondary)] mb-4">
             Account Status
           </h3>
@@ -152,7 +152,7 @@ export function OverviewTab({
         </div>
 
         {/* Revenue KPIs */}
-        <div className="bg-white rounded-none border border-[var(--border)] p-6">
+        <div style={{ background: "white", border: "1px solid var(--border)", boxShadow: "0 1px 3px rgba(0,0,0,0.04)", padding: "2rem" }}>
           <h3 className="font-display text-xl font-semibold text-[var(--secondary)] mb-4">
             Revenue Overview
           </h3>
@@ -210,7 +210,7 @@ export function OverviewTab({
           <h2 className="font-display text-2xl font-semibold text-[var(--secondary)] mb-4 pb-2 border-b-[2px] border-[var(--border)]">
             Risk Register
           </h2>
-          <div className="bg-white rounded-none border border-[var(--border)] overflow-hidden">
+          <div style={{ background: "white", border: "1px solid var(--border)", boxShadow: "0 1px 3px rgba(0,0,0,0.04)", overflow: "hidden" }}>
             <table className="w-full border-collapse text-sm">
               <thead>
                 <tr className="bg-[var(--secondary)] text-white">
@@ -260,7 +260,7 @@ export function OverviewTab({
           <h2 className="font-display text-2xl font-semibold text-[var(--secondary)] mb-4 pb-2 border-b-[2px] border-[var(--border)]">
             Expansion Opportunities
           </h2>
-          <div className="bg-white rounded-none border border-[var(--border)] overflow-hidden">
+          <div style={{ background: "white", border: "1px solid var(--border)", boxShadow: "0 1px 3px rgba(0,0,0,0.04)", overflow: "hidden" }}>
             <table className="w-full border-collapse text-sm">
               <thead>
                 <tr className="bg-[var(--secondary)] text-white">
@@ -296,7 +296,7 @@ export function OverviewTab({
 
       {/* Health Factors */}
       {customer.healthFactors.length > 0 && (
-        <div className="bg-white rounded-none border border-[var(--border)] p-6">
+        <div style={{ background: "white", border: "1px solid var(--border)", boxShadow: "0 1px 3px rgba(0,0,0,0.04)", padding: "2rem" }}>
           <h3 className="font-display text-xl font-semibold text-[var(--secondary)] mb-4">
             Health Factors
           </h3>

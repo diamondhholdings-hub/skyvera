@@ -102,90 +102,79 @@ export default async function AccountPlanPage({ params, searchParams }: AccountP
         </Link>
       </div>
 
-      {/* Hero Header */}
-      <div className="relative overflow-hidden bg-gradient-to-br from-secondary to-[#1a2332] text-paper px-8 pt-12 pb-10">
-        {/* W1-P1-001: Decorative SVG grid texture overlay */}
+      {/* Hero Header — matches Telstra: gradient secondary→#1a2332, subtle SVG grid, glass stat cards */}
+      <div
+        style={{
+          background: 'linear-gradient(135deg, var(--secondary) 0%, #1a2332 100%)',
+          color: 'var(--paper)',
+          padding: '4rem 2rem 3rem',
+          position: 'relative',
+          overflow: 'hidden',
+        }}
+      >
+        {/* Telstra-style subtle SVG grid overlay — right 60%, very low opacity stroke */}
         <div
-          className="absolute top-0 right-0 w-[60%] h-full pointer-events-none opacity-30"
           style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='1' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E")`,
-            backgroundSize: '40px 40px',
+            position: 'absolute',
+            top: 0,
+            right: 0,
+            width: '60%',
+            height: '100%',
+            pointerEvents: 'none',
+            opacity: 0.5,
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='grid' width='20' height='20' patternUnits='userSpaceOnUse'%3E%3Cpath d='M 20 0 L 0 0 0 20' fill='none' stroke='rgba(255,255,255,0.06)' stroke-width='1'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100' height='100' fill='url(%23grid)'/%3E%3C/svg%3E")`,
           }}
         />
-        <div className="max-w-[1400px] mx-auto relative">
-          <div className="flex justify-between items-start mb-6">
-            <div className="flex-1">
-              <h1 className="font-display text-4xl font-light text-paper mb-2">
+        <div style={{ maxWidth: '1400px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1.5rem' }}>
+            <div>
+              <h1 style={{ fontFamily: 'var(--font-display, "Cormorant Garamond", serif)', fontSize: '3.5rem', fontWeight: 300, letterSpacing: '-0.02em', color: 'var(--paper)', lineHeight: 1.1 }}>
                 {customer.customer_name}
               </h1>
-              {/* W1-P1-003: Plain text subtitle — no Badge or HealthIndicator */}
-              <p className="text-[var(--paper)]/85 text-base mt-1">
+              <p style={{ fontSize: '1.1rem', opacity: 0.85, marginTop: '0.5rem' }}>
                 {customer.bu} Business Unit | Skyvera | Q1 2026
               </p>
             </div>
             <RefreshButton label="Refresh Data" />
           </div>
 
-          {/* W1-P1-002: Stat Cards — Total ARR, Health Score, Business Unit, Account Status */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1.5rem', marginTop: '1.5rem' }}>
-            <div
-              className="bg-white/10 p-5 rounded border border-white/10"
-              style={{ backdropFilter: 'blur(10px)' }}
-            >
-              <div className="text-xs uppercase tracking-wider text-[var(--paper)]/70 mb-2">
-                Total ARR
+          {/* Glass stat cards — Telstra: rgba(255,255,255,0.08), blur(10px), 4px radius */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '2rem', marginTop: '2rem' }}>
+            {[
+              {
+                label: 'Total ARR',
+                value: arr >= 1_000_000 ? `$${(arr / 1_000_000).toFixed(1)}M` : `$${(arr / 1000).toFixed(0)}K`,
+                sub: 'Annual Recurring Revenue',
+              },
+              {
+                label: 'Health Score',
+                value: customer.healthScore.charAt(0).toUpperCase() + customer.healthScore.slice(1),
+                sub: 'Account health status',
+              },
+              { label: 'Business Unit', value: customer.bu, sub: 'Skyvera Platform' },
+              { label: 'Account Status', value: 'Active', sub: 'Q1 2026' },
+            ].map(({ label, value, sub }) => (
+              <div
+                key={label}
+                style={{
+                  background: 'rgba(255,255,255,0.08)',
+                  backdropFilter: 'blur(10px)',
+                  padding: '1.5rem',
+                  borderRadius: '4px',
+                  border: '1px solid rgba(255,255,255,0.1)',
+                }}
+              >
+                <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.1em', opacity: 0.7, marginBottom: '0.5rem' }}>
+                  {label}
+                </div>
+                <div style={{ fontSize: '2rem', fontFamily: 'var(--font-display, "Cormorant Garamond", serif)', fontWeight: 600 }}>
+                  {value}
+                </div>
+                <div style={{ fontSize: '0.8rem', marginTop: '0.5rem', opacity: 0.7 }}>
+                  {sub}
+                </div>
               </div>
-              <div className="text-[2rem] font-display font-semibold text-paper">
-                {arr >= 1000000
-                  ? `$${(arr / 1000000).toFixed(1)}M`
-                  : `$${(arr / 1000).toFixed(0)}K`}
-              </div>
-              <p className="text-xs text-[var(--paper)]/60 mt-1">
-                Annual Recurring Revenue
-              </p>
-            </div>
-            <div
-              className="bg-white/10 p-5 rounded border border-white/10"
-              style={{ backdropFilter: 'blur(10px)' }}
-            >
-              <div className="text-xs uppercase tracking-wider text-[var(--paper)]/70 mb-2">
-                Health Score
-              </div>
-              <div className="text-[2rem] font-display font-semibold text-paper capitalize">
-                {customer.healthScore}
-              </div>
-              <p className="text-xs text-[var(--paper)]/60 mt-1">
-                Account health status
-              </p>
-            </div>
-            <div
-              className="bg-white/10 p-5 rounded border border-white/10"
-              style={{ backdropFilter: 'blur(10px)' }}
-            >
-              <div className="text-xs uppercase tracking-wider text-[var(--paper)]/70 mb-2">
-                Business Unit
-              </div>
-              <div className="text-[2rem] font-display font-semibold text-paper">
-                {customer.bu}
-              </div>
-              <p className="text-xs text-[var(--paper)]/60 mt-1">
-                Skyvera Platform
-              </p>
-            </div>
-            <div
-              className="bg-white/10 p-5 rounded border border-white/10"
-              style={{ backdropFilter: 'blur(10px)' }}
-            >
-              <div className="text-xs uppercase tracking-wider text-[var(--paper)]/70 mb-2">
-                Account Status
-              </div>
-              <div className="text-[2rem] font-display font-semibold text-paper">
-                Active
-              </div>
-              <p className="text-xs text-[var(--paper)]/60 mt-1">
-                Q1 2026
-              </p>
-            </div>
+            ))}
           </div>
         </div>
       </div>

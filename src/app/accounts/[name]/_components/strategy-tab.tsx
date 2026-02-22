@@ -20,7 +20,7 @@ export function StrategyTab({ painPoints, opportunities }: StrategyTabProps) {
           <h2 className="font-display text-2xl font-semibold text-[var(--secondary)] mb-4 pb-2 border-b-[2px] border-[var(--border)]">
             Pain Points
           </h2>
-          <div className="bg-white rounded-none border border-[var(--border)] overflow-hidden">
+          <div style={{ background: "white", border: "1px solid var(--border)", boxShadow: "0 1px 3px rgba(0,0,0,0.04)", overflow: "hidden" }}>
             <table className="w-full border-collapse text-sm">
               <thead>
                 <tr className="bg-[var(--secondary)] text-white">
@@ -78,7 +78,7 @@ export function StrategyTab({ painPoints, opportunities }: StrategyTabProps) {
           <h2 className="font-display text-2xl font-semibold text-[var(--secondary)] mb-4 pb-2 border-b-[2px] border-[var(--border)]">
             Growth Opportunities
           </h2>
-          <div className="bg-white rounded-none border border-[var(--border)] overflow-hidden">
+          <div style={{ background: "white", border: "1px solid var(--border)", boxShadow: "0 1px 3px rgba(0,0,0,0.04)", overflow: "hidden" }}>
             <table className="w-full border-collapse text-sm">
               <thead>
                 <tr className="bg-[var(--secondary)] text-white">

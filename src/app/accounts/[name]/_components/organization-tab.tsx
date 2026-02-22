@@ -46,7 +46,7 @@ export function OrganizationTab({ stakeholders }: OrganizationTabProps) {
 
     return (
       <div
-        className="bg-white rounded-none border border-[var(--border)] p-3 mb-2 cursor-pointer hover:shadow-sm transition-all"
+        style={{ background: "white", border: "1px solid var(--border)", padding: "0.75rem", marginBottom: "0.5rem", cursor: "pointer", transition: "box-shadow 0.2s ease" }}
         style={isExecutive ? { borderLeft: '3px solid var(--accent)' } : {}}
         onClick={() => toggle(stakeholder.id)}
       >
@@ -85,7 +85,7 @@ export function OrganizationTab({ stakeholders }: OrganizationTabProps) {
     description: string
   }) => (
     <div
-      className="bg-white rounded-none border border-[var(--border)] p-5"
+      style={{ background: "white", border: "1px solid var(--border)", boxShadow: "0 1px 3px rgba(0,0,0,0.04)", padding: "1.5rem" }}
       style={{ borderTop: `3px solid ${accent}` }}
     >
       <div className="font-display text-lg font-semibold text-[var(--secondary)] mb-1">{title}</div>
@@ -151,7 +151,7 @@ export function OrganizationTab({ stakeholders }: OrganizationTabProps) {
         <h2 className="font-display text-2xl font-semibold text-[var(--secondary)] mb-4 pb-2 border-b-[2px] border-[var(--border)]">
           All Stakeholders
         </h2>
-        <div className="bg-white rounded-none border border-[var(--border)] overflow-hidden">
+        <div style={{ background: "white", border: "1px solid var(--border)", boxShadow: "0 1px 3px rgba(0,0,0,0.04)", overflow: "hidden" }}>
           <table className="w-full border-collapse text-sm">
             <thead>
               <tr className="bg-[var(--secondary)] text-white">

@@ -87,7 +87,7 @@ export function IntelligenceTab({ intelligenceReport, news, customerName }: Inte
             {sections.map(({ title, content }, index) => (
               <details
                 key={title}
-                className="bg-white rounded-none border border-[var(--border)] overflow-hidden group"
+                style={{ background: "white", border: "1px solid var(--border)", boxShadow: "0 1px 3px rgba(0,0,0,0.04)", overflow: "hidden" }} className="group"
                 open={index === 0}
               >
                 <summary className="flex items-center justify-between p-5 cursor-pointer hover:bg-[var(--highlight)] transition-colors list-none">
@@ -121,7 +121,7 @@ export function IntelligenceTab({ intelligenceReport, news, customerName }: Inte
             {news!.articles.map((article, i) => (
               <div
                 key={i}
-                className="bg-white rounded-none border border-[var(--border)] p-5 hover:-translate-y-0.5 hover:shadow-md transition-all relative overflow-hidden group"
+                style={{ background: "white", border: "1px solid var(--border)", boxShadow: "0 1px 3px rgba(0,0,0,0.04)", padding: "1.5rem", position: "relative", overflow: "hidden", transition: "all 0.3s ease" }} className="group"
               >
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[var(--accent)] to-[var(--secondary)] opacity-0 group-hover:opacity-100 transition-opacity" />
                 <div className="flex items-start justify-between gap-4">
