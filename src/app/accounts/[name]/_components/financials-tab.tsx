@@ -1,12 +1,11 @@
 /**
  * FinancialsTab - Detailed financial metrics and subscription breakdown
  * Server Component - receives customer data as props
- * Displays: RR, NRR, Total, ARR, Subscriptions table, Revenue breakdown
+ * Telstra-style: dark thead tables, metric-boxes with accent border-left, valid borders
  */
 
 import type { CustomerWithHealth } from '@/lib/types/customer'
-import { Card } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
+import { Calendar } from 'lucide-react'
 
 interface FinancialsTabProps {
   customer: CustomerWithHealth
@@ -15,167 +14,198 @@ interface FinancialsTabProps {
 export function FinancialsTab({ customer }: FinancialsTabProps) {
   const arr = customer.rr * 4
 
-  // Format currency helper
   const formatCurrency = (value: number): string => {
     return `$${value.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}`
   }
 
-  // Calculate revenue percentages for breakdown
   const rrPercent = customer.total > 0 ? (customer.rr / customer.total) * 100 : 0
   const nrrPercent = customer.total > 0 ? (customer.nrr / customer.total) * 100 : 0
 
   return (
-    <div className="space-y-6">
-      {/* KPI Row */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <KPICard title="Recurring Revenue" value={formatCurrency(customer.rr)} />
-        <KPICard title="Non-Recurring Revenue" value={formatCurrency(customer.nrr)} />
-        <KPICard title="Total Revenue" value={formatCurrency(customer.total)} highlight />
-        <KPICard title="ARR" value={formatCurrency(arr)} />
+    <div className="space-y-8">
+      {/* ARR Metric Row */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        {[
+          {
+            label: 'ARR',
+            value: formatCurrency(arr),
+            sub: 'Annual Recurring Revenue',
+          },
+          {
+            label: 'Recurring Revenue',
+            value: formatCurrency(customer.rr),
+            sub: 'Quarterly recurring',
+          },
+          {
+            label: 'Non-Recurring',
+            value: formatCurrency(customer.nrr),
+            sub: 'One-time revenue',
+          },
+          {
+            label: 'Total Revenue',
+            value: formatCurrency(customer.total),
+            sub: 'Combined this period',
+          },
+        ].map(({ label, value, sub }) => (
+          <div
+            key={label}
+            className="bg-[var(--highlight)] rounded-lg p-6"
+            style={{ borderLeft: '3px solid var(--accent)' }}
+          >
+            <div className="text-xs text-[var(--muted)] uppercase tracking-widest mb-1">{label}</div>
+            <div className="font-display text-3xl font-bold text-[var(--secondary)] mb-1">{value}</div>
+            <div className="text-xs text-[var(--muted)]">{sub}</div>
+          </div>
+        ))}
       </div>
 
-      {/* Subscriptions Table */}
-      <Card title="Subscriptions">
-        {customer.subscriptions && customer.subscriptions.length > 0 ? (
-          <div className="overflow-x-auto">
-            <table
-              className="w-full"
-              style={{ borderCollapse: 'separate', borderSpacing: 0, fontSize: '0.95rem' }}
-            >
-              <thead>
-                <tr>
-                  <th className="bg-secondary text-white p-4 text-left font-semibold text-xs uppercase tracking-wider">
-                    Sub ID
-                  </th>
-                  <th className="bg-secondary text-white p-4 text-right font-semibold text-xs uppercase tracking-wider">
-                    ARR
-                  </th>
-                  <th className="bg-secondary text-white p-4 text-left font-semibold text-xs uppercase tracking-wider">
-                    Renewal Quarter
-                  </th>
-                  <th className="bg-secondary text-white p-4 text-center font-semibold text-xs uppercase tracking-wider">
-                    Will Renew
-                  </th>
-                  <th className="bg-secondary text-white p-4 text-right font-semibold text-xs uppercase tracking-wider">
-                    Projected ARR
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {customer.subscriptions.map((sub) => (
-                  <tr key={sub.sub_id} className="hover:bg-[var(--highlight)] border-b border-[var(--border)]">
-                    <td className="p-4 text-sm text-ink">{sub.sub_id}</td>
-                    <td className="p-4 text-sm font-display font-semibold text-ink text-right">
-                      {sub.arr !== null ? formatCurrency(sub.arr) : 'N/A'}
+      {/* Subscription Data Table */}
+      <div>
+        <h2 className="font-display text-2xl font-semibold text-[var(--secondary)] mb-4 pb-2 border-b-[2px] border-[var(--border)]">
+          Subscription Details
+        </h2>
+        <div className="bg-white rounded-xl border border-[var(--border)] overflow-hidden">
+          <table className="w-full border-collapse text-sm">
+            <thead>
+              <tr className="bg-[var(--secondary)] text-white">
+                <th className="p-4 text-left text-xs uppercase tracking-widest font-semibold">
+                  Sub ID
+                </th>
+                <th className="p-4 text-left text-xs uppercase tracking-widest font-semibold">
+                  ARR
+                </th>
+                <th className="p-4 text-left text-xs uppercase tracking-widest font-semibold">
+                  Renewal Quarter
+                </th>
+                <th className="p-4 text-left text-xs uppercase tracking-widest font-semibold">
+                  Will Renew
+                </th>
+                <th className="p-4 text-left text-xs uppercase tracking-widest font-semibold">
+                  Projected ARR
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {customer.subscriptions.length > 0 ? (
+                customer.subscriptions.map((sub, i) => (
+                  <tr
+                    key={i}
+                    className="border-b border-[var(--border)] hover:bg-[var(--highlight)] transition-colors"
+                  >
+                    <td className="p-4 text-[var(--ink)] font-medium">
+                      {sub.sub_id ?? '—'}
                     </td>
-                    <td className="p-4 text-sm text-ink">{sub.renewal_qtr || 'N/A'}</td>
-                    <td className="p-4 text-center">
-                      <RenewalBadge willRenew={sub.will_renew || 'TBD'} />
+                    <td className="p-4 text-[var(--ink)]">
+                      {sub.arr != null ? formatCurrency(sub.arr) : '—'}
                     </td>
-                    <td className="p-4 text-sm font-display font-semibold text-ink text-right">
-                      {sub.projected_arr !== null ? formatCurrency(sub.projected_arr) : 'N/A'}
+                    <td className="p-4 text-[var(--muted)]">{sub.renewal_qtr ?? '—'}</td>
+                    <td className="p-4">
+                      <span
+                        className={`inline-block px-3 py-1 rounded-sm text-xs font-semibold uppercase tracking-wide text-white ${
+                          sub.will_renew === 'Yes'
+                            ? 'bg-[var(--success)]'
+                            : sub.will_renew === 'No' || sub.will_renew === 'No (SF)'
+                            ? 'bg-[var(--critical)]'
+                            : 'bg-[var(--warning)]'
+                        }`}
+                      >
+                        {sub.will_renew ?? 'TBD'}
+                      </span>
+                    </td>
+                    <td className="p-4 text-[var(--ink)]">
+                      {sub.projected_arr != null ? formatCurrency(sub.projected_arr) : '—'}
                     </td>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        ) : (
-          <div className="text-center py-8 text-muted">
-            <p>No subscription data available</p>
-          </div>
-        )}
-      </Card>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan={5} className="p-8 text-center text-[var(--muted)]">
+                    No subscription data available
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
+      </div>
 
       {/* Revenue Breakdown */}
-      <Card title="Revenue Breakdown">
-        <div className="space-y-4">
+      <div>
+        <h2 className="font-display text-2xl font-semibold text-[var(--secondary)] mb-4 pb-2 border-b-[2px] border-[var(--border)]">
+          Revenue Breakdown
+        </h2>
+        <div className="bg-white rounded-xl border border-[var(--border)] p-6">
           {/* Stacked bar */}
-          <div className="flex h-8 rounded-lg overflow-hidden border border-[var(--border)]">
-            <div
-              className="bg-accent flex items-center justify-center text-white text-xs font-medium"
-              style={{ width: `${rrPercent}%` }}
-            >
-              {rrPercent > 10 && `${rrPercent.toFixed(0)}%`}
-            </div>
-            <div
-              className="bg-secondary flex items-center justify-center text-white text-xs font-medium"
-              style={{ width: `${nrrPercent}%` }}
-            >
-              {nrrPercent > 10 && `${nrrPercent.toFixed(0)}%`}
-            </div>
+          <div className="flex h-8 rounded-lg overflow-hidden border border-[var(--border)] mb-6">
+            {rrPercent > 0 && (
+              <div
+                className="flex items-center justify-center text-white text-xs font-medium"
+                style={{ width: `${rrPercent}%`, background: 'var(--accent)' }}
+              >
+                {rrPercent > 10 && `${rrPercent.toFixed(0)}%`}
+              </div>
+            )}
+            {nrrPercent > 0 && (
+              <div
+                className="flex items-center justify-center text-white text-xs font-medium"
+                style={{ width: `${nrrPercent}%`, background: 'var(--secondary)' }}
+              >
+                {nrrPercent > 10 && `${nrrPercent.toFixed(0)}%`}
+              </div>
+            )}
           </div>
 
           {/* Legend */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="flex items-center gap-2">
-              <div className="w-4 h-4 bg-accent rounded"></div>
+            <div className="flex items-center gap-3">
+              <div className="w-4 h-4 rounded flex-shrink-0" style={{ background: 'var(--accent)' }} />
               <div>
-                <p className="text-sm font-medium text-ink">
+                <p className="text-sm font-medium text-[var(--ink)]">
                   Recurring Revenue: {formatCurrency(customer.rr)}
                 </p>
-                <p className="text-xs text-muted">{rrPercent.toFixed(1)}% of total</p>
+                <p className="text-xs text-[var(--muted)]">{rrPercent.toFixed(1)}% of total</p>
               </div>
             </div>
-            <div className="flex items-center gap-2">
-              <div className="w-4 h-4 bg-secondary rounded"></div>
+            <div className="flex items-center gap-3">
+              <div className="w-4 h-4 rounded flex-shrink-0" style={{ background: 'var(--secondary)' }} />
               <div>
-                <p className="text-sm font-medium text-ink">
+                <p className="text-sm font-medium text-[var(--ink)]">
                   Non-Recurring Revenue: {formatCurrency(customer.nrr)}
                 </p>
-                <p className="text-xs text-muted">{nrrPercent.toFixed(1)}% of total</p>
+                <p className="text-xs text-[var(--muted)]">{nrrPercent.toFixed(1)}% of total</p>
               </div>
             </div>
           </div>
         </div>
-      </Card>
+      </div>
+
+      {/* Account Summary */}
+      <div>
+        <h2 className="font-display text-2xl font-semibold text-[var(--secondary)] mb-4 pb-2 border-b-[2px] border-[var(--border)]">
+          Account Summary
+        </h2>
+        <div className="bg-white rounded-xl border border-[var(--border)] p-6">
+          <div className="flex items-start gap-4">
+            <div
+              className="rounded-full p-3 flex-shrink-0"
+              style={{ background: 'var(--accent)', color: 'white' }}
+            >
+              <Calendar size={20} />
+            </div>
+            <div>
+              <div className="font-semibold text-[var(--secondary)] text-lg mb-1">
+                {customer.customer_name}
+              </div>
+              <div className="text-sm text-[var(--muted)]">
+                {customer.bu} Business Unit — Rank #{customer.rank ?? '—'} of total accounts.{' '}
+                {customer.subscriptions.length > 0
+                  ? `${customer.subscriptions.length} active subscription(s) tracked.`
+                  : 'No subscriptions on record.'}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  )
-}
-
-/**
- * Simple KPI Card
- */
-function KPICard({
-  title,
-  value,
-  highlight = false,
-}: {
-  title: string
-  value: string
-  highlight?: boolean
-}) {
-  return (
-    <div className="bg-highlight p-5 border-l-3 border-accent shadow-sm">
-      <h3 className="text-xs uppercase tracking-wider text-muted font-semibold">{title}</h3>
-      <p className={`text-2xl font-display font-semibold mt-2 ${highlight ? 'text-accent' : 'text-secondary'}`}>
-        {value}
-      </p>
-    </div>
-  )
-}
-
-/**
- * Renewal badge with color coding (WCAG: color + icon + text)
- */
-function RenewalBadge({ willRenew }: { willRenew: string }) {
-  const config = {
-    Yes: { variant: 'success' as const, icon: '✓', label: 'Yes' },
-    No: { variant: 'danger' as const, icon: '✕', label: 'No' },
-    TBD: { variant: 'warning' as const, icon: '?', label: 'TBD' },
-  }
-
-  const badgeConfig = config[willRenew as keyof typeof config] || {
-    variant: 'default' as const,
-    icon: '?',
-    label: willRenew,
-  }
-
-  return (
-    <Badge variant={badgeConfig.variant}>
-      <span className="inline-flex items-center gap-1">
-        {badgeConfig.icon} {badgeConfig.label}
-      </span>
-    </Badge>
   )
 }
