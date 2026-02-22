@@ -91,7 +91,7 @@ export default async function AccountPlanPage({ params, searchParams }: AccountP
 
 
   return (
-    <div>
+    <div style={{ background: 'var(--paper)', minHeight: '100vh' }}>
       {/* Back link */}
       <div className="max-w-[1400px] mx-auto px-8 pt-4">
         <Link
@@ -127,7 +127,7 @@ export default async function AccountPlanPage({ params, searchParams }: AccountP
           </div>
 
           {/* W1-P1-002: Stat Cards — Total ARR, Health Score, Business Unit, Account Status */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-6">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1.5rem', marginTop: '1.5rem' }}>
             <div
               className="bg-white/10 p-5 rounded border border-white/10"
               style={{ backdropFilter: 'blur(10px)' }}
