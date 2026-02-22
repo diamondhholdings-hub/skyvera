@@ -1,13 +1,12 @@
 /**
- * OverviewTab - Account overview with KPIs, health factors, and intelligence snippet
- * Server Component - receives data as props
- * Displays: ARR, Total Revenue, Health Score, Subscription Count, Quick Summary
+ * OverviewTab - Account overview with Telstra-style design
+ * Server Component - receives customer data as props
+ * Displays: alert banner, 90-day priorities, account status, KPIs, risks, opportunities
  */
 
 import type { CustomerWithHealth } from '@/lib/types/customer'
 import type { PainPoint, Opportunity } from '@/lib/types/account-plan'
-import { Card } from '@/components/ui/card'
-import Link from 'next/link'
+import { AlertTriangle, TrendingUp, TrendingDown, Shield } from 'lucide-react'
 
 interface OverviewTabProps {
   customer: CustomerWithHealth
@@ -16,218 +15,300 @@ interface OverviewTabProps {
   opportunities?: Opportunity[]
 }
 
-export function OverviewTab({ customer, intelligenceReport, painPoints = [], opportunities = [] }: OverviewTabProps) {
+export function OverviewTab({
+  customer,
+  intelligenceReport,
+  painPoints = [],
+  opportunities = [],
+}: OverviewTabProps) {
   const arr = customer.rr * 4
-  const subscriptionCount = customer.subscriptions?.length || 0
+  const hasAlert = customer.healthScore === 'red' || customer.healthScore === 'yellow'
 
-  // Format currency helper
+  // Top 3 critical pain points as 90-day priorities
+  const topPainPoints = painPoints.slice(0, 3)
+
   const formatCurrency = (value: number): string => {
-    if (value >= 1000000) {
-      return `$${(value / 1000000).toFixed(1)}M`
-    }
-    return `$${(value / 1000).toFixed(0)}K`
+    if (value >= 1_000_000) return `$${(value / 1_000_000).toFixed(2)}M`
+    return `$${(value / 1_000).toFixed(0)}K`
   }
 
-  // Truncate intelligence report for preview (first 500 chars)
-  const truncatedReport = intelligenceReport
-    ? intelligenceReport.substring(0, 500) + (intelligenceReport.length > 500 ? '...' : '')
-    : null
-
-  // Determine if account needs critical alert (yellow or red health)
-  const showCriticalAlert = customer.healthScore === 'yellow' || customer.healthScore === 'red'
+  const priorityLabels = ['30-Day', '60-Day', '90-Day']
 
   return (
-    <div className="space-y-6">
-      {/* Critical Alert Banner (if health is at risk) */}
-      {showCriticalAlert && (
+    <div className="space-y-8">
+      {/* Alert Banner */}
+      {hasAlert && (
         <div
-          className="bg-gradient-to-r from-[var(--critical)] to-[#c62828] text-white p-6 border-l-4 border-[#8b1a1a]"
-          style={{ boxShadow: '0 4px 12px rgba(197,75,49,0.2)' }}
+          className="text-white rounded-lg p-5 shadow-lg"
+          style={{
+            background: 'linear-gradient(135deg, var(--critical), #d4594a)',
+            borderLeft: '5px solid rgba(255,255,255,0.3)',
+          }}
         >
-          <h3 className="font-display text-xl font-semibold mb-2">
-            🚨 CRITICAL: Account Health Alert
-          </h3>
-          <p className="text-white/90">
-            This account shows {customer.healthScore === 'red' ? 'high-risk' : 'moderate-risk'} indicators.
-            {customer.healthFactors && customer.healthFactors.length > 0
+          <div className="flex items-center gap-3 font-bold text-lg mb-2">
+            <AlertTriangle size={20} />
+            ACCOUNT RISK ALERT
+          </div>
+          <div className="text-white/90 text-sm leading-relaxed">
+            {customer.healthScore === 'red'
+              ? 'This account is at high risk and requires immediate executive attention.'
+              : 'This account shows moderate-risk indicators requiring proactive management.'}
+            {customer.healthFactors.length > 0
               ? ` Key concerns: ${customer.healthFactors.slice(0, 2).join(', ')}.`
-              : ' Immediate attention required.'}
-            {' '}Review the Strategy tab for specific action items and competitive threats.
-          </p>
+              : ''}
+          </div>
         </div>
       )}
 
-      {/* Keys to Success (Next 90 Days) */}
-      <Card title="Keys to Success in Next 90 Days">
+      {/* 90-Day Priority Metric Boxes */}
+      <div>
+        <h2 className="font-display text-2xl font-semibold text-[var(--secondary)] mb-4 pb-2 border-b-[2px] border-[var(--border)]">
+          90-Day Priorities
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="bg-highlight/50 p-4 border-l-3 border-accent">
-            <div className="text-xs uppercase tracking-wider text-muted font-bold mb-1">#1 Priority</div>
-            <div className="font-display text-base font-semibold text-secondary">
-              {customer.healthScore === 'red' ? 'Stabilize Account Relationship' : 'Strengthen Executive Engagement'}
-            </div>
-          </div>
-          <div className="bg-highlight/50 p-4 border-l-3 border-accent">
-            <div className="text-xs uppercase tracking-wider text-muted font-bold mb-1">#2 Priority</div>
-            <div className="font-display text-base font-semibold text-secondary">
-              {subscriptionCount > 0 ? `Secure ${subscriptionCount} Subscription Renewals` : 'Identify Expansion Opportunities'}
-            </div>
-          </div>
-          <div className="bg-highlight/50 p-4 border-l-3 border-accent">
-            <div className="text-xs uppercase tracking-wider text-muted font-bold mb-1">#3 Priority</div>
-            <div className="font-display text-base font-semibold text-secondary">
-              Execute Upsell Strategy
-            </div>
+          {topPainPoints.length > 0 ? (
+            topPainPoints.map((pp, i) => (
+              <div
+                key={pp.id}
+                className="bg-[var(--highlight)] rounded-lg p-6"
+                style={{ borderLeft: '3px solid var(--accent)' }}
+              >
+                <div className="font-display text-3xl font-bold text-[var(--secondary)] mb-1">
+                  {priorityLabels[i]}
+                </div>
+                <div className="text-xs text-[var(--muted)] uppercase tracking-widest mb-2">
+                  {pp.severity} severity
+                </div>
+                <div className="text-sm text-[var(--ink)] font-medium leading-snug">
+                  {pp.title}
+                </div>
+              </div>
+            ))
+          ) : (
+            [
+              { label: '30-Day', title: 'Strengthen Executive Engagement' },
+              {
+                label: '60-Day',
+                title:
+                  customer.subscriptions.length > 0
+                    ? `Secure ${customer.subscriptions.length} Subscription Renewals`
+                    : 'Identify Expansion Opportunities',
+              },
+              { label: '90-Day', title: 'Execute Upsell Strategy' },
+            ].map(({ label, title }, i) => (
+              <div
+                key={i}
+                className="bg-[var(--highlight)] rounded-lg p-6"
+                style={{ borderLeft: '3px solid var(--accent)' }}
+              >
+                <div className="font-display text-3xl font-bold text-[var(--secondary)] mb-1">
+                  {label}
+                </div>
+                <div className="text-xs text-[var(--muted)] uppercase tracking-widest mb-2">
+                  priority
+                </div>
+                <div className="text-sm text-[var(--ink)] font-medium leading-snug">{title}</div>
+              </div>
+            ))
+          )}
+        </div>
+      </div>
+
+      {/* 2-Column: Account Status + KPIs */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* Account Status */}
+        <div className="bg-white rounded-xl border border-[var(--border)] p-6">
+          <h3 className="font-display text-xl font-semibold text-[var(--secondary)] mb-4">
+            Account Status
+          </h3>
+          <table className="w-full border-collapse text-sm">
+            <tbody>
+              {[
+                { label: 'Account', value: customer.customer_name },
+                { label: 'Business Unit', value: customer.bu },
+                { label: 'Rank', value: `#${customer.rank ?? '—'} of accounts` },
+                {
+                  label: 'ARR',
+                  value: formatCurrency(arr),
+                },
+                {
+                  label: 'Health Score',
+                  value: customer.healthScore.charAt(0).toUpperCase() + customer.healthScore.slice(1),
+                },
+                {
+                  label: '% of Revenue',
+                  value: customer.pct_of_total != null ? `${customer.pct_of_total.toFixed(2)}%` : '—',
+                },
+              ].map(({ label, value }) => (
+                <tr key={label} className="border-b border-[var(--border)]">
+                  <td className="py-3 pr-4 text-xs uppercase tracking-widest text-[var(--muted)] font-semibold w-36">
+                    {label}
+                  </td>
+                  <td className="py-3 text-[var(--ink)] font-medium">{value}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        {/* Revenue KPIs */}
+        <div className="bg-white rounded-xl border border-[var(--border)] p-6">
+          <h3 className="font-display text-xl font-semibold text-[var(--secondary)] mb-4">
+            Revenue Overview
+          </h3>
+          <div className="grid grid-cols-2 gap-3">
+            {[
+              {
+                label: 'ARR',
+                value: formatCurrency(arr),
+                icon: <TrendingUp size={16} className="text-[var(--success)]" />,
+              },
+              {
+                label: 'Recurring Rev',
+                value: formatCurrency(customer.rr),
+                icon: <Shield size={16} className="text-[var(--accent)]" />,
+              },
+              {
+                label: 'Non-Recurring',
+                value: formatCurrency(customer.nrr),
+                icon:
+                  customer.nrr > 0 ? (
+                    <TrendingUp size={16} className="text-[var(--success)]" />
+                  ) : (
+                    <TrendingDown size={16} className="text-[var(--critical)]" />
+                  ),
+              },
+              {
+                label: 'Subscriptions',
+                value: `${customer.subscriptions.length}`,
+                icon: null,
+              },
+            ].map(({ label, value, icon }) => (
+              <div
+                key={label}
+                className="bg-[var(--highlight)] rounded-lg p-4"
+                style={{ borderLeft: '3px solid var(--accent)' }}
+              >
+                <div className="flex items-center gap-1.5 mb-1">
+                  {icon}
+                  <span className="text-xs text-[var(--muted)] uppercase tracking-widest">
+                    {label}
+                  </span>
+                </div>
+                <div className="font-display text-xl font-bold text-[var(--secondary)]">
+                  {value}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-      </Card>
-
-      {/* KPI Row */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <KPICard title="ARR" value={formatCurrency(arr)} />
-        <KPICard title="Total Revenue" value={formatCurrency(customer.total)} />
-        <KPICard title="Health Score" value={customer.healthScore} isHealth />
-        <KPICard title="Subscriptions" value={subscriptionCount.toString()} />
       </div>
 
-      {/* Two-column grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {/* Account Summary */}
-        <Card title="Account Summary">
-          <dl className="space-y-3">
-            <div>
-              <dt className="text-sm font-medium text-muted">Customer Name</dt>
-              <dd className="text-base text-ink mt-1">{customer.customer_name}</dd>
-            </div>
-            <div>
-              <dt className="text-sm font-medium text-muted">Business Unit</dt>
-              <dd className="text-base text-ink mt-1">{customer.bu}</dd>
-            </div>
-            <div>
-              <dt className="text-sm font-medium text-muted">Rank</dt>
-              <dd className="text-base text-ink mt-1">
-                #{customer.rank} of total customers
-              </dd>
-            </div>
-            <div>
-              <dt className="text-sm font-medium text-muted">% of Total Revenue</dt>
-              <dd className="text-base text-ink mt-1">
-                {customer.pct_of_total !== undefined ? customer.pct_of_total.toFixed(2) : 'N/A'}%
-              </dd>
-            </div>
-          </dl>
-        </Card>
+      {/* Pain Points (Risks) Table */}
+      {painPoints.length > 0 && (
+        <div>
+          <h2 className="font-display text-2xl font-semibold text-[var(--secondary)] mb-4 pb-2 border-b-[2px] border-[var(--border)]">
+            Risk Register
+          </h2>
+          <div className="bg-white rounded-xl border border-[var(--border)] overflow-hidden">
+            <table className="w-full border-collapse text-sm">
+              <thead>
+                <tr className="bg-[var(--secondary)] text-white">
+                  <th className="p-4 text-left text-xs uppercase tracking-widest font-semibold">
+                    Risk
+                  </th>
+                  <th className="p-4 text-left text-xs uppercase tracking-widest font-semibold">
+                    Severity
+                  </th>
+                  <th className="p-4 text-left text-xs uppercase tracking-widest font-semibold">
+                    Status
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {painPoints.map((risk) => (
+                  <tr
+                    key={risk.id}
+                    className="border-b border-[var(--border)] hover:bg-[var(--highlight)] transition-colors"
+                  >
+                    <td className="p-4 text-[var(--ink)]">{risk.title}</td>
+                    <td className="p-4">
+                      <span
+                        className={`inline-block px-3 py-1 rounded-sm text-xs font-semibold uppercase tracking-wide text-white ${
+                          risk.severity === 'high'
+                            ? 'bg-[var(--critical)]'
+                            : risk.severity === 'medium'
+                            ? 'bg-[var(--warning)]'
+                            : 'bg-[var(--success)]'
+                        }`}
+                      >
+                        {risk.severity}
+                      </span>
+                    </td>
+                    <td className="p-4 text-[var(--muted)] text-sm">{risk.status}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
 
-        {/* Quick Intelligence */}
-        <Card title="Quick Intelligence">
-          {truncatedReport ? (
-            <div className="space-y-3">
-              <p className="text-sm text-ink whitespace-pre-wrap">{truncatedReport}</p>
-              <Link
-                href={`?tab=intelligence`}
-                className="text-sm text-accent hover:text-accent/80 hover:underline inline-block"
-              >
-                View full report on Intelligence tab →
-              </Link>
-            </div>
-          ) : (
-            <div className="text-center py-8">
-              <p className="text-muted text-sm">No intelligence report available</p>
-              <p className="text-xs text-muted/70 mt-1">
-                Intelligence reports are generated for key accounts
-              </p>
-            </div>
-          )}
-        </Card>
-      </div>
+      {/* Opportunities Table */}
+      {opportunities.length > 0 && (
+        <div>
+          <h2 className="font-display text-2xl font-semibold text-[var(--secondary)] mb-4 pb-2 border-b-[2px] border-[var(--border)]">
+            Expansion Opportunities
+          </h2>
+          <div className="bg-white rounded-xl border border-[var(--border)] overflow-hidden">
+            <table className="w-full border-collapse text-sm">
+              <thead>
+                <tr className="bg-[var(--secondary)] text-white">
+                  <th className="p-4 text-left text-xs uppercase tracking-widest font-semibold">
+                    Opportunity
+                  </th>
+                  <th className="p-4 text-left text-xs uppercase tracking-widest font-semibold">
+                    Value
+                  </th>
+                  <th className="p-4 text-left text-xs uppercase tracking-widest font-semibold">
+                    Status
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {opportunities.map((opp) => (
+                  <tr
+                    key={opp.id}
+                    className="border-b border-[var(--border)] hover:bg-[var(--highlight)] transition-colors"
+                  >
+                    <td className="p-4 text-[var(--ink)] font-medium">{opp.title}</td>
+                    <td className="p-4 text-[var(--ink)]">
+                      {opp.estimatedValue ? `$${(opp.estimatedValue / 1_000).toFixed(0)}K` : '—'}
+                    </td>
+                    <td className="p-4 text-[var(--muted)]">{opp.status}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
 
       {/* Health Factors */}
-      <Card title="Health Factors">
-        {customer.healthFactors && customer.healthFactors.length > 0 ? (
+      {customer.healthFactors.length > 0 && (
+        <div className="bg-white rounded-xl border border-[var(--border)] p-6">
+          <h3 className="font-display text-xl font-semibold text-[var(--secondary)] mb-4">
+            Health Factors
+          </h3>
           <ul className="space-y-2">
-            {customer.healthFactors.map((factor, index) => (
-              <li key={index} className="flex items-start gap-2">
-                <span className="text-muted/50 mt-1">•</span>
-                <span className="text-sm text-ink">{factor}</span>
+            {customer.healthFactors.map((factor, i) => (
+              <li key={i} className="flex items-start gap-2 text-sm text-[var(--ink)]">
+                <span className="text-[var(--muted)]/60 mt-0.5">•</span>
+                {factor}
               </li>
             ))}
           </ul>
-        ) : (
-          <p className="text-sm text-muted">No specific health factors recorded</p>
-        )}
-      </Card>
-
-      {/* W1-P1-005: Risk & Opportunity Summary */}
-      {(painPoints.length > 0 || opportunities.length > 0) && (
-        <div className="bg-[var(--paper)] border border-[var(--border)] rounded-lg p-6">
-          <h3 className="font-display text-xl text-[var(--secondary)] mb-4">Risk & Opportunity Summary</h3>
-          <div className="grid grid-cols-2 gap-6">
-            <div>
-              <h4 className="text-sm font-semibold uppercase tracking-wider text-[var(--critical)] mb-3">Top Risks</h4>
-              <ul className="space-y-2">
-                {painPoints.slice(0, 3).map((p) => (
-                  <li key={p.id} className="text-sm text-[var(--ink)] flex gap-2">
-                    <span className="text-[var(--critical)] flex-shrink-0">▸</span>{p.title}
-                  </li>
-                ))}
-                {painPoints.length === 0 && (
-                  <li className="text-sm text-[var(--muted)]">No risks identified</li>
-                )}
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-sm font-semibold uppercase tracking-wider text-[var(--success)] mb-3">Top Opportunities</h4>
-              <ul className="space-y-2">
-                {opportunities.slice(0, 3).map((o) => (
-                  <li key={o.id} className="text-sm text-[var(--ink)] flex gap-2">
-                    <span className="text-[var(--success)] flex-shrink-0">▸</span>{o.title}
-                  </li>
-                ))}
-                {opportunities.length === 0 && (
-                  <li className="text-sm text-[var(--muted)]">No opportunities identified</li>
-                )}
-              </ul>
-            </div>
-          </div>
         </div>
-      )}
-    </div>
-  )
-}
-
-/**
- * Simple KPI Card for overview metrics
- */
-function KPICard({
-  title,
-  value,
-  isHealth = false,
-}: {
-  title: string
-  value: string | number
-  isHealth?: boolean
-}) {
-  const healthConfig = {
-    green: { color: 'bg-success/20 text-[#2e7d32]', icon: '✓' },
-    yellow: { color: 'bg-warning/20 text-[#e65100]', icon: '⚠' },
-    red: { color: 'bg-critical/20 text-[#c62828]', icon: '✕' },
-  }
-
-  return (
-    <div className="bg-highlight p-5 border-l-3 border-accent shadow-sm card-hover animate-fade-in">
-      <h3 className="text-xs uppercase tracking-wider text-muted font-semibold">{title}</h3>
-      {isHealth ? (
-        <div className="mt-2">
-          <span
-            className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium ${
-              healthConfig[value as keyof typeof healthConfig]?.color || 'bg-highlight text-muted'
-            }`}
-          >
-            {healthConfig[value as keyof typeof healthConfig]?.icon || '?'}
-            <span className="capitalize">{value}</span>
-          </span>
-        </div>
-      ) : (
-        <p className="text-2xl font-display font-semibold text-secondary mt-2">{value}</p>
       )}
     </div>
   )
