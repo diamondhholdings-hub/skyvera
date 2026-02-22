@@ -6,6 +6,8 @@
 import type { IntelligenceReport } from '@/lib/types/account-plan'
 import type { NewsArticle } from '@/lib/types/news'
 import { ExternalLink, Radio } from 'lucide-react'
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 
 interface IntelligenceTabProps {
   intelligenceReport: { raw: string; structured?: IntelligenceReport } | null
@@ -103,8 +105,34 @@ export function IntelligenceTab({ intelligenceReport, news, customerName }: Inte
                     <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                   </svg>
                 </summary>
-                <div className="px-5 pb-5 text-sm text-[var(--ink)] leading-relaxed border-t border-[var(--border)] pt-4 whitespace-pre-wrap">
-                  {content}
+                <div className="px-5 pb-5 border-t border-[var(--border)] pt-4">
+                  <ReactMarkdown
+                    remarkPlugins={[remarkGfm]}
+                    components={{
+                      table: ({ children }) => (
+                        <div style={{ overflowX: 'auto', marginBottom: '1rem' }}>
+                          <table className="w-full border-collapse text-sm">{children}</table>
+                        </div>
+                      ),
+                      thead: ({ children }) => <thead className="bg-[var(--secondary)] text-white">{children}</thead>,
+                      th: ({ children }) => <th className="p-2 text-left text-xs uppercase tracking-widest font-semibold">{children}</th>,
+                      tbody: ({ children }) => <tbody>{children}</tbody>,
+                      tr: ({ children }) => <tr className="border-b border-[var(--border)] hover:bg-[var(--highlight)] transition-colors">{children}</tr>,
+                      td: ({ children }) => <td className="p-2 text-sm text-[var(--ink)]">{children}</td>,
+                      p: ({ children }) => <p className="text-sm text-[var(--ink)] leading-relaxed mb-3 last:mb-0">{children}</p>,
+                      strong: ({ children }) => <strong className="font-semibold" style={{ color: 'var(--secondary)' }}>{children}</strong>,
+                      em: ({ children }) => <em className="italic text-[var(--muted)]">{children}</em>,
+                      h3: ({ children }) => <h3 className="font-semibold text-sm mt-4 mb-1" style={{ color: 'var(--secondary)' }}>{children}</h3>,
+                      h4: ({ children }) => <h4 className="font-semibold text-xs uppercase tracking-wide mt-3 mb-1" style={{ color: 'var(--muted)' }}>{children}</h4>,
+                      ul: ({ children }) => <ul className="list-disc pl-5 space-y-1 text-sm text-[var(--ink)] mb-3">{children}</ul>,
+                      ol: ({ children }) => <ol className="list-decimal pl-5 space-y-1 text-sm text-[var(--ink)] mb-3">{children}</ol>,
+                      li: ({ children }) => <li className="leading-relaxed">{children}</li>,
+                      hr: () => <hr className="my-4 border-[var(--border)]" />,
+                      blockquote: ({ children }) => <blockquote className="border-l-2 border-[var(--accent)] pl-4 text-sm text-[var(--muted)] italic my-3">{children}</blockquote>,
+                    }}
+                  >
+                    {content}
+                  </ReactMarkdown>
                 </div>
               </details>
             ))}
