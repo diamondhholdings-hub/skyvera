@@ -106,7 +106,7 @@ export function ActionItemsTab({ initialActions, stakeholders = [] }: ActionItem
     <div className="space-y-6">
       {/* Empty state */}
       {actions.length === 0 && (
-        <div className="text-center py-12 bg-[var(--highlight)] rounded-none border border-[var(--border)]">
+        <div className="text-center py-12 rounded-none" style={{ background: 'white', border: '1px solid var(--border)', boxShadow: '0 1px 3px rgba(0,0,0,0.04)' }}>
           <p className="text-[var(--muted)] mb-2">No action items yet</p>
           <p className="text-sm text-[var(--muted)]">Create your first action using the form below</p>
         </div>
@@ -168,19 +168,19 @@ export function ActionItemsTab({ initialActions, stakeholders = [] }: ActionItem
       {/* W1-P2-006: Key Messages by Stakeholder */}
       {stakeholders && stakeholders.length > 0 && (
         <div className="mt-8">
-          <h3 className="font-display text-xl text-[var(--secondary)] mb-4">Key Messages by Stakeholder</h3>
+          <h3 className="font-display text-xl mb-4" style={{ color: 'var(--secondary)' }}>Key Messages by Stakeholder</h3>
           <div className="grid grid-cols-2 gap-4">
             {stakeholders.slice(0, 4).map((s) => (
               <div
                 key={s.id}
-                className="p-6 bg-[var(--highlight)] rounded-r-lg"
-                style={{ borderLeft: '4px solid var(--accent)' }}
+                className="rounded-none"
+                style={{ background: 'white', border: '1px solid var(--border)', borderLeft: '4px solid var(--accent)', padding: '1.5rem', boxShadow: '0 1px 3px rgba(0,0,0,0.04)' }}
               >
-                <h4 className="font-display font-semibold text-[var(--secondary)] mb-2">
+                <h4 className="font-display font-semibold mb-2" style={{ color: 'var(--secondary)' }}>
                   To {s.name} ({s.role})
                 </h4>
                 <p className="text-sm text-[var(--ink)]">
-                  {`Focus on ${s.name}'s strategic priorities and demonstrate CloudSense's value in addressing their key challenges.`}
+                  {`Focus on ${s.name}'s strategic priorities and demonstrate Skyvera's value in addressing their key challenges.`}
                 </p>
               </div>
             ))}
@@ -190,7 +190,7 @@ export function ActionItemsTab({ initialActions, stakeholders = [] }: ActionItem
 
       {/* W1-P2-007: Escalation Triggers */}
       <div className="mt-6 bg-[var(--paper)] rounded-r-lg p-6 shadow-sm" style={{ borderLeft: '4px solid var(--critical)' }}>
-        <h3 className="font-display font-semibold text-[var(--ink)] mb-2">
+        <h3 className="font-display font-semibold mb-2" style={{ color: 'var(--ink)' }}>
           ⚠ Escalation Triggers to Skyvera Leadership
         </h3>
         <p className="text-sm text-[var(--muted)] mb-3">

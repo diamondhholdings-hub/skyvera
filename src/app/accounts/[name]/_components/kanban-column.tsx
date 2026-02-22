@@ -26,7 +26,7 @@ export function KanbanColumn({ id, title, actions, onQuickAdd }: KanbanColumnPro
     <div ref={setNodeRef} className="bg-highlight/20 p-4 rounded-lg min-h-[200px] border border-[var(--border)]">
       {/* Header */}
       <div className="flex items-center justify-between mb-3">
-        <h3 className="font-display text-lg font-semibold text-secondary">{title}</h3>
+        <h3 className="font-display text-lg font-semibold" style={{ color: 'var(--secondary)' }}>{title}</h3>
         <span className="text-sm text-muted">
           {actions.length} {actions.length === 1 ? 'item' : 'items'}
         </span>

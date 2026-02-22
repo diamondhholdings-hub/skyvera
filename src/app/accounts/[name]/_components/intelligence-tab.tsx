@@ -80,7 +80,7 @@ export function IntelligenceTab({ intelligenceReport, news, customerName }: Inte
       {/* Expandable Sections */}
       {sections.length > 0 && (
         <div>
-          <h2 className="font-display text-2xl font-semibold text-[var(--secondary)] mb-4 pb-2 border-b-[2px] border-[var(--border)]">
+          <h2 className="font-display text-2xl font-semibold mb-4 pb-2 border-b-[2px] border-[var(--border)]" style={{ color: 'var(--secondary)' }}>
             Intelligence Report
           </h2>
           <div className="space-y-3">
@@ -91,9 +91,10 @@ export function IntelligenceTab({ intelligenceReport, news, customerName }: Inte
                 open={index === 0}
               >
                 <summary className="flex items-center justify-between p-5 cursor-pointer hover:bg-[var(--highlight)] transition-colors list-none">
-                  <span className="font-semibold text-[var(--secondary)]">{title}</span>
+                  <span className="font-semibold" style={{ color: 'var(--secondary)' }}>{title}</span>
                   <svg
-                    className="w-4 h-4 text-[var(--muted)] transition-transform group-open:rotate-180"
+                    className="group-open:rotate-180"
+                    style={{ width: '16px', height: '16px', flexShrink: 0, color: 'var(--muted)', transition: 'transform 0.2s' }}
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -114,7 +115,7 @@ export function IntelligenceTab({ intelligenceReport, news, customerName }: Inte
       {/* News & Signals */}
       {hasNews && (
         <div>
-          <h2 className="font-display text-2xl font-semibold text-[var(--secondary)] mb-4 pb-2 border-b-[2px] border-[var(--border)]">
+          <h2 className="font-display text-2xl font-semibold mb-4 pb-2 border-b-[2px] border-[var(--border)]" style={{ color: 'var(--secondary)' }}>
             Recent News & Signals
           </h2>
           <div className="space-y-4">
@@ -126,7 +127,7 @@ export function IntelligenceTab({ intelligenceReport, news, customerName }: Inte
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[var(--accent)] to-[var(--secondary)] opacity-0 group-hover:opacity-100 transition-opacity" />
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex-1">
-                    <div className="font-semibold text-[var(--secondary)] mb-1 leading-snug">
+                    <div className="font-semibold mb-1 leading-snug" style={{ color: 'var(--secondary)' }}>
                       {article.title}
                     </div>
                     <div className="text-sm text-[var(--muted)] leading-relaxed mb-3">

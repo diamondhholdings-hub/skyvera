@@ -17,7 +17,7 @@ export function StrategyTab({ painPoints, opportunities }: StrategyTabProps) {
       {/* Pain Points Table */}
       {painPoints.length > 0 && (
         <div>
-          <h2 className="font-display text-2xl font-semibold text-[var(--secondary)] mb-4 pb-2 border-b-[2px] border-[var(--border)]">
+          <h2 className="font-display text-2xl font-semibold mb-4 pb-2 border-b-[2px] border-[var(--border)]" style={{ color: 'var(--secondary)' }}>
             Pain Points
           </h2>
           <div style={{ background: "white", border: "1px solid var(--border)", boxShadow: "0 1px 3px rgba(0,0,0,0.04)", overflow: "hidden" }}>
@@ -75,7 +75,7 @@ export function StrategyTab({ painPoints, opportunities }: StrategyTabProps) {
       {/* Opportunities Table */}
       {opportunities.length > 0 && (
         <div>
-          <h2 className="font-display text-2xl font-semibold text-[var(--secondary)] mb-4 pb-2 border-b-[2px] border-[var(--border)]">
+          <h2 className="font-display text-2xl font-semibold mb-4 pb-2 border-b-[2px] border-[var(--border)]" style={{ color: 'var(--secondary)' }}>
             Growth Opportunities
           </h2>
           <div style={{ background: "white", border: "1px solid var(--border)", boxShadow: "0 1px 3px rgba(0,0,0,0.04)", overflow: "hidden" }}>
@@ -126,7 +126,7 @@ export function StrategyTab({ painPoints, opportunities }: StrategyTabProps) {
 
       {/* Empty state */}
       {painPoints.length === 0 && opportunities.length === 0 && (
-        <div className="bg-[var(--highlight)] border border-[var(--border)] rounded-none p-12 text-center">
+        <div className="rounded-none p-12 text-center" style={{ background: 'white', border: '1px solid var(--border)', boxShadow: '0 1px 3px rgba(0,0,0,0.04)' }}>
           <p className="text-lg font-medium text-[var(--muted)] mb-1">No strategy data available</p>
           <p className="text-sm text-[var(--muted)]">
             Pain points and opportunities will appear here as they are identified.

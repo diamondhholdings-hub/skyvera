@@ -62,7 +62,7 @@ export function OverviewTab({
 
       {/* 90-Day Priority Metric Boxes */}
       <div>
-        <h2 className="font-display text-2xl font-semibold text-[var(--secondary)] mb-4 pb-2 border-b-[2px] border-[var(--border)]">
+        <h2 className="font-display text-2xl font-semibold mb-4 pb-2 border-b-[2px] border-[var(--border)]" style={{ color: 'var(--secondary)' }}>
           90-Day Priorities
         </h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem' }}>
@@ -70,10 +70,10 @@ export function OverviewTab({
             topPainPoints.map((pp, i) => (
               <div
                 key={pp.id}
-                className="bg-[var(--highlight)] rounded-none p-6"
-                style={{ borderLeft: '3px solid var(--accent)' }}
+                className="rounded-none"
+                style={{ background: 'white', border: '1px solid var(--border)', borderLeft: '3px solid var(--accent)', padding: '1.5rem', boxShadow: '0 1px 3px rgba(0,0,0,0.04)' }}
               >
-                <div className="font-display text-3xl font-bold text-[var(--secondary)] mb-1">
+                <div className="font-display text-3xl font-bold mb-1" style={{ color: 'var(--secondary)' }}>
                   {priorityLabels[i]}
                 </div>
                 <div className="text-xs text-[var(--muted)] uppercase tracking-widest mb-2">
@@ -98,10 +98,10 @@ export function OverviewTab({
             ].map(({ label, title }, i) => (
               <div
                 key={i}
-                className="bg-[var(--highlight)] rounded-none p-6"
-                style={{ borderLeft: '3px solid var(--accent)' }}
+                className="rounded-none"
+                style={{ background: 'white', border: '1px solid var(--border)', borderLeft: '3px solid var(--accent)', padding: '1.5rem', boxShadow: '0 1px 3px rgba(0,0,0,0.04)' }}
               >
-                <div className="font-display text-3xl font-bold text-[var(--secondary)] mb-1">
+                <div className="font-display text-3xl font-bold mb-1" style={{ color: 'var(--secondary)' }}>
                   {label}
                 </div>
                 <div className="text-xs text-[var(--muted)] uppercase tracking-widest mb-2">
@@ -118,7 +118,7 @@ export function OverviewTab({
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1.5rem' }}>
         {/* Account Status */}
         <div style={{ background: "white", border: "1px solid var(--border)", boxShadow: "0 1px 3px rgba(0,0,0,0.04)", padding: "2rem" }}>
-          <h3 className="font-display text-xl font-semibold text-[var(--secondary)] mb-4">
+          <h3 className="font-display text-xl font-semibold mb-4" style={{ color: 'var(--secondary)' }}>
             Account Status
           </h3>
           <table className="w-full border-collapse text-sm">
@@ -153,7 +153,7 @@ export function OverviewTab({
 
         {/* Revenue KPIs */}
         <div style={{ background: "white", border: "1px solid var(--border)", boxShadow: "0 1px 3px rgba(0,0,0,0.04)", padding: "2rem" }}>
-          <h3 className="font-display text-xl font-semibold text-[var(--secondary)] mb-4">
+          <h3 className="font-display text-xl font-semibold mb-4" style={{ color: 'var(--secondary)' }}>
             Revenue Overview
           </h3>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '0.75rem' }}>
@@ -186,8 +186,8 @@ export function OverviewTab({
             ].map(({ label, value, icon }) => (
               <div
                 key={label}
-                className="bg-[var(--highlight)] rounded-none p-4"
-                style={{ borderLeft: '3px solid var(--accent)' }}
+                className="rounded-none"
+                style={{ background: 'white', border: '1px solid var(--border)', borderLeft: '3px solid var(--accent)', padding: '1rem', boxShadow: '0 1px 3px rgba(0,0,0,0.04)' }}
               >
                 <div className="flex items-center gap-1.5 mb-1">
                   {icon}
@@ -195,7 +195,7 @@ export function OverviewTab({
                     {label}
                   </span>
                 </div>
-                <div className="font-display text-xl font-bold text-[var(--secondary)]">
+                <div className="font-display text-xl font-bold" style={{ color: 'var(--secondary)' }}>
                   {value}
                 </div>
               </div>
@@ -207,7 +207,7 @@ export function OverviewTab({
       {/* Pain Points (Risks) Table */}
       {painPoints.length > 0 && (
         <div>
-          <h2 className="font-display text-2xl font-semibold text-[var(--secondary)] mb-4 pb-2 border-b-[2px] border-[var(--border)]">
+          <h2 className="font-display text-2xl font-semibold mb-4 pb-2 border-b-[2px] border-[var(--border)]" style={{ color: 'var(--secondary)' }}>
             Risk Register
           </h2>
           <div style={{ background: "white", border: "1px solid var(--border)", boxShadow: "0 1px 3px rgba(0,0,0,0.04)", overflow: "hidden" }}>
@@ -257,7 +257,7 @@ export function OverviewTab({
       {/* Opportunities Table */}
       {opportunities.length > 0 && (
         <div>
-          <h2 className="font-display text-2xl font-semibold text-[var(--secondary)] mb-4 pb-2 border-b-[2px] border-[var(--border)]">
+          <h2 className="font-display text-2xl font-semibold mb-4 pb-2 border-b-[2px] border-[var(--border)]" style={{ color: 'var(--secondary)' }}>
             Expansion Opportunities
           </h2>
           <div style={{ background: "white", border: "1px solid var(--border)", boxShadow: "0 1px 3px rgba(0,0,0,0.04)", overflow: "hidden" }}>
@@ -297,7 +297,7 @@ export function OverviewTab({
       {/* Health Factors */}
       {customer.healthFactors.length > 0 && (
         <div style={{ background: "white", border: "1px solid var(--border)", boxShadow: "0 1px 3px rgba(0,0,0,0.04)", padding: "2rem" }}>
-          <h3 className="font-display text-xl font-semibold text-[var(--secondary)] mb-4">
+          <h3 className="font-display text-xl font-semibold mb-4" style={{ color: 'var(--secondary)' }}>
             Health Factors
           </h3>
           <ul className="space-y-2">

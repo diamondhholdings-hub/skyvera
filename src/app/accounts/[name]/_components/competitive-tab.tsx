@@ -32,7 +32,7 @@ export function CompetitiveTab({ competitors }: CompetitiveTabProps) {
     <div className="space-y-8">
       {/* Our Advantages */}
       <div>
-        <h2 className="font-display text-2xl font-semibold text-[var(--secondary)] mb-4 pb-2 border-b-[2px] border-[var(--border)]">
+        <h2 className="font-display text-2xl font-semibold mb-4 pb-2 border-b-[2px] border-[var(--border)]" style={{ color: 'var(--secondary)' }}>
           Our Advantages
         </h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem' }}>
@@ -45,7 +45,7 @@ export function CompetitiveTab({ competitors }: CompetitiveTabProps) {
               <div className="flex items-start gap-3">
                 <CheckCircle size={18} className="text-[var(--success)] flex-shrink-0 mt-0.5" />
                 <div>
-                  <div className="font-semibold text-[var(--secondary)] mb-1">{adv.title}</div>
+                  <div className="font-semibold mb-1" style={{ color: 'var(--secondary)' }}>{adv.title}</div>
                   <div className="text-sm text-[var(--muted)]">{adv.description}</div>
                 </div>
               </div>
@@ -57,7 +57,7 @@ export function CompetitiveTab({ competitors }: CompetitiveTabProps) {
       {/* Competitive Landscape Table */}
       {competitors.length > 0 && (
         <div>
-          <h2 className="font-display text-2xl font-semibold text-[var(--secondary)] mb-4 pb-2 border-b-[2px] border-[var(--border)]">
+          <h2 className="font-display text-2xl font-semibold mb-4 pb-2 border-b-[2px] border-[var(--border)]" style={{ color: 'var(--secondary)' }}>
             Competitive Landscape
           </h2>
           <div style={{ background: "white", border: "1px solid var(--border)", boxShadow: "0 1px 3px rgba(0,0,0,0.04)", overflow: "hidden" }}>
@@ -78,7 +78,7 @@ export function CompetitiveTab({ competitors }: CompetitiveTabProps) {
                       key={comp.id ?? i}
                       className="border-b border-[var(--border)] hover:bg-[var(--highlight)] transition-colors"
                     >
-                      <td className="p-4 font-semibold text-[var(--secondary)]">{comp.name}</td>
+                      <td className="p-4 font-semibold" style={{ color: 'var(--secondary)' }}>{comp.name}</td>
                       <td className="p-4 text-[var(--muted)] text-sm">
                         {comp.strengths.length > 0 ? comp.strengths.join(', ') : '—'}
                       </td>
@@ -109,7 +109,7 @@ export function CompetitiveTab({ competitors }: CompetitiveTabProps) {
 
       {/* Empty state for competitors */}
       {competitors.length === 0 && (
-        <div className="bg-[var(--highlight)] border border-[var(--border)] rounded-none p-12 text-center">
+        <div className="rounded-none p-12 text-center" style={{ background: 'white', border: '1px solid var(--border)', boxShadow: '0 1px 3px rgba(0,0,0,0.04)' }}>
           <p className="text-lg font-medium text-[var(--muted)] mb-1">No competitive intelligence available</p>
           <p className="text-sm text-[var(--muted)]">
             Competitive analysis will appear here as data is gathered.
