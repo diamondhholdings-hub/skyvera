@@ -46,8 +46,7 @@ export function OrganizationTab({ stakeholders }: OrganizationTabProps) {
 
     return (
       <div
-        style={{ background: "white", border: "1px solid var(--border)", padding: "0.75rem", marginBottom: "0.5rem", cursor: "pointer", transition: "box-shadow 0.2s ease" }}
-        style={isExecutive ? { borderLeft: '3px solid var(--accent)' } : {}}
+        style={{ background: "white", border: "1px solid var(--border)", padding: "0.75rem", marginBottom: "0.5rem", cursor: "pointer", transition: "box-shadow 0.2s ease", ...(isExecutive ? { borderLeft: '3px solid var(--accent)' } : {}) }}
         onClick={() => toggle(stakeholder.id)}
       >
         <div className="flex items-center justify-between">
@@ -85,8 +84,7 @@ export function OrganizationTab({ stakeholders }: OrganizationTabProps) {
     description: string
   }) => (
     <div
-      style={{ background: "white", border: "1px solid var(--border)", boxShadow: "0 1px 3px rgba(0,0,0,0.04)", padding: "1.5rem" }}
-      style={{ borderTop: `3px solid ${accent}` }}
+      style={{ background: "white", border: "1px solid var(--border)", boxShadow: "0 1px 3px rgba(0,0,0,0.04)", padding: "1.5rem", borderTop: `3px solid ${accent}` }}
     >
       <div className="font-display text-lg font-semibold text-[var(--secondary)] mb-1">{title}</div>
       <div className="text-xs text-[var(--muted)] mb-4">{description}</div>
