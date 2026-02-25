@@ -86,6 +86,13 @@ export class ExcelAdapter implements DataAdapter {
         parsed = JSON.parse(stdout)
       }
 
+      // Accounts that represent future sales targets, not real customers
+      const EXCLUDED_ACCOUNTS = new Set([
+        'New Sales Ps - Go Get',
+        'New License Sales - Skyvera',
+        'Various: License increments',
+      ])
+
       // Validate and store customer data
       let totalValidated = 0
       let totalInvalid = 0
@@ -94,6 +101,7 @@ export class ExcelAdapter implements DataAdapter {
         const validatedCustomers: Customer[] = []
 
         for (const customer of customers) {
+          if (EXCLUDED_ACCOUNTS.has(customer.customer_name)) continue
           const validationResult = this.validator.validateCustomer(customer)
 
           if (validationResult.success) {
