@@ -8,6 +8,7 @@ import { buildScenarioPrompt, type Scenario } from '@/lib/intelligence/claude/pr
 import { scenarioImpactResponseSchema, type ScenarioInput, type ImpactMetric, type ScenarioImpactResponse } from './types'
 import type { BaselineMetrics } from '@/lib/data/server/scenario-data'
 import { ok, err, type Result } from '@/lib/types/result'
+import { extractJSON } from '@/lib/intelligence/nlq/interpreter'
 
 /**
  * Analyze scenario with Claude for impact assessment
@@ -57,7 +58,7 @@ export async function analyzeScenarioWithClaude(
     // Parse and validate JSON response
     let parsed: unknown
     try {
-      parsed = JSON.parse(response.value.content)
+      parsed = extractJSON(response.value.content)
     } catch (parseError) {
       return err(new Error('Failed to parse Claude response as JSON'))
     }

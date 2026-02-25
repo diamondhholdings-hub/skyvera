@@ -16,6 +16,7 @@ import {
   type ScenarioRefinementSuggestion,
 } from '@/lib/intelligence/claude/prompts/conversational-scenario'
 import { ScenarioCalculator } from './calculator'
+import { extractJSON } from '@/lib/intelligence/nlq/interpreter'
 import { analyzeScenarioWithClaude } from './analyzer'
 import type { BaselineMetrics } from '@/lib/data/server/scenario-data'
 import type { ScenarioInput } from './types'
@@ -111,7 +112,8 @@ export class ScenarioConversationManager {
       }
 
       // Parse response
-      const parsed = JSON.parse(response.value.content)
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const parsed = extractJSON(response.value.content) as any
 
       // Determine response type
       if (parsed.needsClarification) {
@@ -206,7 +208,8 @@ export class ScenarioConversationManager {
       }
 
       // Parse response
-      const parsed = JSON.parse(response.value.content)
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const parsed = extractJSON(response.value.content) as any
 
       // Determine response type and handle accordingly
       return await this.handleConversationResponse(
@@ -246,7 +249,8 @@ export class ScenarioConversationManager {
         return err(response.error)
       }
 
-      const parsed = JSON.parse(response.value.content)
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const parsed = extractJSON(response.value.content) as any
       return ok(parsed)
     } catch (error) {
       console.error('[refineScenario] Error:', error)
@@ -278,7 +282,8 @@ export class ScenarioConversationManager {
         return err(response.error)
       }
 
-      const parsed = JSON.parse(response.value.content)
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const parsed = extractJSON(response.value.content) as any
       return ok(parsed)
     } catch (error) {
       console.error('[compareVersions] Error:', error)

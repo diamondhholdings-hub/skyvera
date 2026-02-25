@@ -13,7 +13,7 @@ import { NLQResponse, nlqResponseSchema } from './types'
  * Extract first valid JSON object from a string that may contain
  * markdown code fences, preamble text, or other wrapping.
  */
-function extractJSON(text: string): unknown {
+export function extractJSON(text: string): unknown {
   // 1. Try direct parse first (pure JSON response)
   try { return JSON.parse(text.trim()) } catch {}
 
