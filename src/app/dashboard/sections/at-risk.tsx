@@ -26,7 +26,7 @@ export async function AtRiskSection() {
       return (b.rr + b.nrr) - (a.rr + a.nrr)
     })
 
-  const totalAtRiskARR = atRiskCustomers.reduce((sum, c) => sum + c.rr * 4, 0)
+  const totalAtRiskARR = atRiskCustomers.reduce((sum, c) => sum + c.rr + c.nrr, 0)
 
   return (
     <section id="at-risk" style={{ display: 'none' }}>
@@ -51,7 +51,7 @@ export async function AtRiskSection() {
         fontWeight: 500
       }}>
         <strong>IMMEDIATE ACTION REQUIRED:</strong> {atRiskCustomers.length} accounts at risk
-        representing ${(totalAtRiskARR / 1e6).toFixed(1)}M in ARR
+        representing ${(totalAtRiskARR / 1e6).toFixed(1)}M in Revenue
       </div>
 
       <table style={{
@@ -67,7 +67,7 @@ export async function AtRiskSection() {
             <th style={{ padding: '1rem', fontWeight: 600, fontSize: '0.875rem' }}>Priority</th>
             <th style={{ padding: '1rem', fontWeight: 600, fontSize: '0.875rem' }}>Customer</th>
             <th style={{ padding: '1rem', fontWeight: 600, fontSize: '0.875rem' }}>BU</th>
-            <th style={{ padding: '1rem', fontWeight: 600, fontSize: '0.875rem' }}>ARR at Risk</th>
+            <th style={{ padding: '1rem', fontWeight: 600, fontSize: '0.875rem' }}>Revenue at Risk</th>
             <th style={{ padding: '1rem', fontWeight: 600, fontSize: '0.875rem' }}>Health</th>
             <th style={{ padding: '1rem', fontWeight: 600, fontSize: '0.875rem' }}>Risk Factors</th>
             <th style={{ padding: '1rem', fontWeight: 600, fontSize: '0.875rem' }}>Actions</th>
@@ -75,7 +75,7 @@ export async function AtRiskSection() {
         </thead>
         <tbody style={{ backgroundColor: 'white' }}>
           {atRiskCustomers.map((customer, index) => {
-            const arr = customer.rr * 4
+            const arr = customer.rr + customer.nrr
             const healthBgColor = customer.healthScore === 'red' ? '#ef4444' : '#f59e0b'
             const healthLabel = customer.healthScore === 'red' ? 'CRITICAL' : 'AT RISK'
 
