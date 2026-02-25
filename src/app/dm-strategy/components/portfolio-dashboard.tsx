@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 import type { BusinessUnitMetrics, Recommendation, FilterOption, ImpactProjection } from '../types';
 import BUCard from './bu-card';
@@ -17,6 +18,7 @@ interface PortfolioDashboardProps {
 }
 
 export default function PortfolioDashboard({ businessUnits, recommendations }: PortfolioDashboardProps) {
+  const router = useRouter();
   const [selectedBU, setSelectedBU] = useState<string | null>(null);
   const [activeFilter, setActiveFilter] = useState<string>('all');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
@@ -109,7 +111,10 @@ export default function PortfolioDashboard({ businessUnits, recommendations }: P
   };
 
   const handleReview = (id: string) => {
-    // TODO: Navigate to detailed view
+    const rec = recommendations.find(r => r.id === id);
+    if (rec?.accountName) {
+      router.push(`/accounts/${encodeURIComponent(rec.accountName)}`);
+    }
   };
 
   const handleDeferOpen = (id: string) => {
