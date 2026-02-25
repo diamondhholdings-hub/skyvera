@@ -54,12 +54,20 @@
       },
       {
         "customer_name": "Masergy",
-        "rr": 0,
+        "rr": 349943.99,
         "nrr": 1924000.0,
-        "total": 1924000.0,
-        "subscriptions": [],
+        "total": 2273943.99,
+        "subscriptions": [
+          {
+            "sub_id": 1781385.0,
+            "arr": 349943.99,
+            "renewal_qtr": "Next Yr",
+            "will_renew": "Yes",
+            "projected_arr": 437429.9875
+          }
+        ],
         "rank": 4,
-        "pct_of_total": 5.946750059026593
+        "pct_of_total": 7.028366
       },
       {
         "customer_name": "Vodafone Netherlands",
@@ -479,23 +487,6 @@
         ],
         "rank": 28,
         "pct_of_total": 1.1095158813273454
-      },
-      {
-        "customer_name": "Masergy Communications, Inc.",
-        "rr": 349943.99,
-        "nrr": 0,
-        "total": 349943.99,
-        "subscriptions": [
-          {
-            "sub_id": 1781385.0,
-            "arr": 349943.99,
-            "renewal_qtr": "Next Yr",
-            "will_renew": "Yes",
-            "projected_arr": 437429.9875
-          }
-        ],
-        "rank": 29,
-        "pct_of_total": 1.0816161347133584
       },
       {
         "customer_name": "Hawaiian Telcom Communications, Inc.",
