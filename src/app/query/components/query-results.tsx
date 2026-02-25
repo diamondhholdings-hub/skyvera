@@ -248,7 +248,10 @@ function ConfidenceBadge({ level }: { level: 'HIGH' | 'MEDIUM' | 'LOW' }) {
 /**
  * Format data point values with appropriate formatting
  */
-function formatValue(value: string | number): string {
+function formatValue(value: string | number | (string | number)[]): string {
+  if (Array.isArray(value)) {
+    return value.join(', ')
+  }
   if (typeof value === 'number') {
     // Format currency if large number
     if (Math.abs(value) >= 1000) {
