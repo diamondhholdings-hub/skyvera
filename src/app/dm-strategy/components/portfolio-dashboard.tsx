@@ -112,9 +112,12 @@ export default function PortfolioDashboard({ businessUnits, recommendations }: P
 
   const handleReview = (id: string) => {
     const rec = recommendations.find(r => r.id === id);
-    if (rec?.accountName) {
-      router.push(`/accounts/${encodeURIComponent(rec.accountName)}`);
+    if (!rec) return;
+    if (!rec.accountName || rec.accountName === 'Portfolio-wide') {
+      toast.info(`This is a portfolio-wide recommendation for ${rec.businessUnit} — no single account page.`);
+      return;
     }
+    router.push(`/accounts/${encodeURIComponent(rec.accountName)}`);
   };
 
   const handleDeferOpen = (id: string) => {
