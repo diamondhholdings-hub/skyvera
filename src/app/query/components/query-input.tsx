@@ -65,7 +65,8 @@ export function QueryInput({ onSubmit, isLoading }: QueryInputProps) {
             aria-label="Clear input"
           >
             <svg
-              className="w-5 h-5"
+              width="20"
+              height="20"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -94,7 +95,9 @@ export function QueryInput({ onSubmit, isLoading }: QueryInputProps) {
           {isLoading ? (
             <>
               <svg
-                className="animate-spin h-4 w-4"
+                width="16"
+                height="16"
+                className="animate-spin"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -118,7 +121,8 @@ export function QueryInput({ onSubmit, isLoading }: QueryInputProps) {
           ) : (
             <>
               <svg
-                className="w-4 h-4"
+                width="16"
+                height="16"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"

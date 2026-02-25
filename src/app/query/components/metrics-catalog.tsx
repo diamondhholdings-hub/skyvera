@@ -45,7 +45,9 @@ export function MetricsCatalog({ metrics }: MetricsCatalogProps) {
       >
         <h2 className="font-display text-lg font-semibold text-[var(--secondary)]">Browse Metrics Catalog</h2>
         <svg
-          className={`w-5 h-5 text-[var(--muted)] transition-transform ${
+          width="20"
+          height="20"
+          className={`text-[var(--muted)] transition-transform ${
             isExpanded ? 'rotate-180' : ''
           }`}
           fill="none"
@@ -76,7 +78,9 @@ export function MetricsCatalog({ metrics }: MetricsCatalogProps) {
                          text-sm"
             />
             <svg
-              className="w-4 h-4 text-[var(--muted)] absolute left-3 top-1/2 -translate-y-1/2"
+              width="16"
+              height="16"
+              className="text-[var(--muted)] absolute left-3 top-1/2 -translate-y-1/2"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -152,7 +156,7 @@ function MetricCard({ metric }: { metric: SerializableMetricDefinition }) {
 
       {/* Source */}
       <div className="flex items-center gap-1.5 text-xs text-[var(--muted)]">
-        <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+        <svg width="14" height="14" fill="currentColor" viewBox="0 0 20 20">
           <path d="M9 2a2 2 0 00-2 2v8a2 2 0 002 2h6a2 2 0 002-2V6.414A2 2 0 0016.414 5L14 2.586A2 2 0 0012.586 2H9z" />
           <path d="M3 8a2 2 0 012-2v10h8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z" />
         </svg>
