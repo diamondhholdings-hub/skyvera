@@ -33,16 +33,19 @@ export function QueryPageClient({ cannedQueries, metrics }: QueryPageClientProps
   const executeQuery = async (
     query: string,
     filters?: QueryFilters,
-    cannedQueryId?: string
+    cannedQueryId?: string,
+    contextOverride?: string
   ) => {
     setIsLoading(true)
 
     try {
-      // Build conversation context from history
+      // Build conversation context from history (or use override for clarification chains)
       const conversationContext =
-        conversationHistory.length > 0
-          ? `Previous queries in this conversation:\n${conversationHistory.join('\n')}`
-          : undefined
+        contextOverride !== undefined
+          ? contextOverride
+          : conversationHistory.length > 0
+            ? `Previous queries in this conversation:\n${conversationHistory.join('\n')}`
+            : undefined
 
       // Call API
       const response = await fetch('/api/query', {
@@ -71,11 +74,14 @@ export function QueryPageClient({ cannedQueries, metrics }: QueryPageClientProps
       }
       setCurrentResult(result)
 
-      // Add to conversation history
+      // Add to conversation history — record clarification question (not generic "needed")
+      const answerForHistory = data.response.needsClarification
+        ? `[clarification needed] ${data.response.clarificationQuestion || ''}`
+        : (data.response.answer || 'No answer')
       setConversationHistory((prev) => [
         ...prev,
         `Q: ${query}`,
-        `A: ${data.response.answer || 'Clarification needed'}`,
+        `A: ${answerForHistory}`,
       ])
     } catch (error) {
       console.error('Query execution error:', error)
@@ -117,9 +123,18 @@ export function QueryPageClient({ cannedQueries, metrics }: QueryPageClientProps
   const handleClarificationSelect = (option: string) => {
     if (!currentResult) return
 
-    // Append clarification to original query
+    // Build full context inline (bypasses async React state) so Claude knows
+    // the clarification was already answered and must not ask again
+    const enrichedContext = [
+      ...conversationHistory,
+      `Q: ${currentResult.query}`,
+      `AI asked for clarification: ${currentResult.response.clarificationQuestion || ''}`,
+      `User answered: ${option}`,
+      `IMPORTANT: The user has answered the clarification. Do NOT ask for more clarification. Provide the final answer now.`,
+    ].join('\n')
+
     const refinedQuery = `${currentResult.query} - ${option}`
-    executeQuery(refinedQuery)
+    executeQuery(refinedQuery, undefined, undefined, enrichedContext)
   }
 
   /**

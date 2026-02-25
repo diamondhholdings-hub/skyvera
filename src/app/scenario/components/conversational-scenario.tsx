@@ -9,6 +9,8 @@
 import { useState, useRef, useEffect } from 'react'
 import { toast } from 'sonner'
 import { Send, Sparkles, RotateCcw, TrendingUp, GitCompare, Loader2 } from 'lucide-react'
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 import ImpactDisplay from './impact-display'
 import type { BaselineMetrics } from '@/lib/data/server/scenario-data'
 
@@ -285,7 +287,9 @@ export default function ConversationalScenario({ baseline }: ConversationalScena
                         <span>AI Advisor</span>
                       </div>
                     )}
-                    <div className="whitespace-pre-wrap">{message.content}</div>
+                    <div className="prose prose-sm max-w-none [&_p]:mb-2 [&_ul]:mb-2 [&_li]:ml-4">
+                      <ReactMarkdown remarkPlugins={[remarkGfm]}>{message.content}</ReactMarkdown>
+                    </div>
                   </div>
                 </div>
               ))}
