@@ -88,7 +88,7 @@ export default async function AccountPlanPage({ params, searchParams }: AccountP
 
   // Calculate total revenue
   const totalRevenue = (customer.rr || 0) + (customer.nrr || 0)
-  const arr = (customer.rr || 0) * 4
+  const arr = customer.rr || 0
 
 
   return (
