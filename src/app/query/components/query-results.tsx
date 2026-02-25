@@ -24,7 +24,9 @@ export function QueryResults({
       <div className="border-2 border-dashed border-[var(--border)] rounded-lg p-12">
         <div className="text-center text-[var(--muted)]">
           <svg
-            className="w-16 h-16 mx-auto mb-4 text-[var(--muted)]"
+            width="64"
+            height="64"
+            className="mx-auto mb-4 text-[var(--muted)]"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"

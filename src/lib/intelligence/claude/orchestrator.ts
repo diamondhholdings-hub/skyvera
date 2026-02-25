@@ -246,7 +246,7 @@ export class ClaudeOrchestrator {
     for (let attempt = 0; attempt <= maxRetries; attempt++) {
       try {
         const response = await this.client.messages.create({
-          model: 'claude-sonnet-4-5-20250929',
+          model: 'claude-haiku-4-5-20251001',
           max_tokens: request.maxTokens || 4096,
           temperature: request.temperature || 0.7,
           system: request.systemPrompt,
