@@ -34,6 +34,7 @@ interface ConversationalScenarioProps {
 
 export default function ConversationalScenario({ baseline }: ConversationalScenarioProps) {
   const [conversationId, setConversationId] = useState<string | null>(null)
+  const [conversationState, setConversationState] = useState<any>(null)
   const [messages, setMessages] = useState<Message[]>([])
   const [input, setInput] = useState('')
   const [loading, setLoading] = useState(false)
@@ -71,6 +72,7 @@ export default function ConversationalScenario({ baseline }: ConversationalScena
       const data = await response.json()
 
       setConversationId(data.conversationId)
+      setConversationState(data.conversationState)
       setMessages(data.messages)
       setCurrentResponse(data.response)
       setInput('')
@@ -93,7 +95,7 @@ export default function ConversationalScenario({ baseline }: ConversationalScena
       const response = await fetch(`/api/scenarios/conversation/${conversationId}/message`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: input }),
+        body: JSON.stringify({ message: input, conversationState }),
       })
 
       if (!response.ok) {
@@ -103,6 +105,7 @@ export default function ConversationalScenario({ baseline }: ConversationalScena
 
       const data = await response.json()
 
+      setConversationState(data.conversationState)
       setMessages(data.messages)
       setCurrentResponse(data.response)
       if (data.versions) {
