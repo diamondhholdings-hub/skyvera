@@ -21,7 +21,7 @@ export function OverviewTab({
   painPoints = [],
   opportunities = [],
 }: OverviewTabProps) {
-  const arr = customer.rr
+  const arr = customer.rr + customer.nrr
   const hasAlert = customer.healthScore === 'red' || customer.healthScore === 'yellow'
 
   // Top 3 critical pain points as 90-day priorities
@@ -128,7 +128,7 @@ export function OverviewTab({
                 { label: 'Business Unit', value: customer.bu },
                 { label: 'Rank', value: `#${customer.rank ?? '—'} of accounts` },
                 {
-                  label: 'ARR',
+                  label: customer.rr > 0 ? 'ARR' : 'Annual Rev',
                   value: formatCurrency(arr),
                 },
                 {
@@ -159,7 +159,7 @@ export function OverviewTab({
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '0.75rem' }}>
             {[
               {
-                label: 'ARR',
+                label: customer.rr > 0 ? 'ARR' : 'Annual Rev',
                 value: formatCurrency(arr),
                 icon: <TrendingUp size={16} className="text-[var(--success)]" />,
               },

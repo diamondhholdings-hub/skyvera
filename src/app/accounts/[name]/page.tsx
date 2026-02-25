@@ -88,7 +88,7 @@ export default async function AccountPlanPage({ params, searchParams }: AccountP
 
   // Calculate total revenue
   const totalRevenue = (customer.rr || 0) + (customer.nrr || 0)
-  const arr = customer.rr || 0
+  const arr = totalRevenue // rr + nrr; for NRR-only accounts rr=0 so use total
 
 
   return (
@@ -146,9 +146,9 @@ export default async function AccountPlanPage({ params, searchParams }: AccountP
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '2rem', marginTop: '2rem' }}>
             {[
               {
-                label: 'Total ARR',
+                label: 'Annual Revenue',
                 value: arr >= 1_000_000 ? `$${(arr / 1_000_000).toFixed(1)}M` : `$${(arr / 1000).toFixed(0)}K`,
-                sub: 'Annual Recurring Revenue',
+                sub: customer.rr > 0 ? 'Recurring + Non-Recurring' : 'Non-Recurring Revenue',
               },
               {
                 label: 'Health Score',

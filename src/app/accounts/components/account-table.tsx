@@ -49,7 +49,15 @@ export function AccountTable({ customers }: AccountTableProps) {
     { accessorKey: 'rr', header: 'ARR' },
     { accessorKey: 'nrr', header: 'NRR' },
     { accessorKey: 'total', header: 'Total' },
-    { accessorKey: 'healthScore', header: 'Health', filterFn: 'equals' },
+    {
+      accessorKey: 'healthScore',
+      header: 'Health',
+      filterFn: (row, columnId, filterValue) => {
+        const health = row.getValue(columnId) as string
+        if (filterValue === 'at-risk') return health === 'yellow' || health === 'red'
+        return health === filterValue
+      },
+    },
   ], [])
 
   const table = useReactTable({

@@ -23,7 +23,7 @@ export function AccountFilters({
 
   const healthScoreMap: Record<string, string> = {
     Healthy: 'green',
-    'At Risk': 'yellow',
+    'At Risk': 'at-risk', // matches both yellow + red (41 total)
     Critical: 'red',
   }
 
