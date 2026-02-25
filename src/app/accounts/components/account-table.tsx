@@ -99,7 +99,7 @@ export function AccountTable({ customers }: AccountTableProps) {
       {
         id: 'arr',
         header: 'ARR',
-        accessorFn: (row) => row.rr * 4,
+        accessorFn: (row) => row.rr,
         cell: (info) => (
           <span className="text-right block">{formatCurrency(info.getValue() as number)}</span>
         ),
@@ -241,7 +241,7 @@ export function AccountTable({ customers }: AccountTableProps) {
                 </div>
                 <div className="text-center">
                   <p className="text-xs uppercase text-muted mb-1">ARR</p>
-                  <p className="text-sm font-semibold text-ink">{formatCurrency(customer.rr * 4)}</p>
+                  <p className="text-sm font-semibold text-ink">{formatCurrency(customer.rr)}</p>
                 </div>
               </div>
 

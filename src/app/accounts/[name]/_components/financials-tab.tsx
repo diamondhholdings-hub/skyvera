@@ -12,7 +12,7 @@ interface FinancialsTabProps {
 }
 
 export function FinancialsTab({ customer }: FinancialsTabProps) {
-  const arr = customer.rr * 4
+  const arr = customer.rr
 
   const formatCurrency = (value: number): string => {
     return `$${value.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}`

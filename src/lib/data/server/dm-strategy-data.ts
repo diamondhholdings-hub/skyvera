@@ -59,9 +59,9 @@ export async function getDMRecommendations(
               status: 'pending',
               title: `Urgent: ${bu.bu} Revenue Retention Below Target`,
               description: `${bu.bu} DM% is ${bu.dm_pct.toFixed(1)}%, ${dmGap.toFixed(1)} points below the 90% target. Immediate action required to prevent further revenue erosion.`,
-              rationale: `Current quarterly ARR at risk: $${((dmGap / 100) * bu.current_rr / 1000).toFixed(0)}K. If trend continues, projected annual ARR at risk could exceed $${((dmGap / 100) * bu.current_rr * 4 / 1000000).toFixed(1)}M.`,
+              rationale: `ARR at risk: $${((dmGap / 100) * bu.current_rr / 1000).toFixed(0)}K based on current ARR of $${(bu.current_rr / 1000000).toFixed(1)}M.`,
               suggestedAction: 'Conduct urgent account health review, identify at-risk customers, deploy retention team to top 10 accounts, and implement immediate engagement plan.',
-              estimatedARRImpact: (dmGap / 100) * bu.current_rr * 4 * 0.6, // 60% recovery of annualized ARR gap
+              estimatedARRImpact: (dmGap / 100) * bu.current_rr * 0.6, // 60% recovery of annualized ARR gap
               estimatedDMImpact: dmGap * 0.6, // Assuming 60% recovery
               estimatedEffort: 'high',
               timeframe: '30 days',
@@ -80,9 +80,9 @@ export async function getDMRecommendations(
               status: 'pending',
               title: `Increase ${bu.bu} Customer Engagement`,
               description: `${bu.bu} DM% is ${bu.dm_pct.toFixed(1)}%, slightly below target. Proactive engagement can prevent further decline.`,
-              rationale: `Current quarterly ARR at risk: $${((dmGap / 100) * bu.current_rr / 1000).toFixed(0)}K. Historical data shows engagement initiatives can recover 3-4 percentage points.`,
+              rationale: `ARR at risk: $${((dmGap / 100) * bu.current_rr / 1000).toFixed(0)}K. Historical data shows engagement initiatives can recover 3-4 percentage points.`,
               suggestedAction: 'Launch quarterly business review (QBR) campaign, increase product adoption touchpoints, and deploy customer success playbooks for mid-tier accounts.',
-              estimatedARRImpact: (dmGap / 100) * bu.current_rr * 4 * 0.7, // 70% recovery of annualized ARR gap
+              estimatedARRImpact: (dmGap / 100) * bu.current_rr * 0.7, // 70% recovery of annualized ARR gap
               estimatedDMImpact: dmGap * 0.7,
               estimatedEffort: 'medium',
               timeframe: '60 days',
@@ -291,14 +291,14 @@ export async function getDMPortfolioSummary(): Promise<Result<PortfolioSummary, 
           const totalImpact = buRecommendations.reduce((sum, r) => sum + r.estimatedARRImpact, 0)
 
           const dmGap = Math.max(0, 90 - bu.dm_pct)
-          const atRiskARR = (dmGap / 100) * bu.current_rr * 4 // Annualized
+          const atRiskARR = (dmGap / 100) * bu.current_rr
 
           return {
             bu: bu.bu as any,
             currentDM: bu.dm_pct,
             targetDM: 90,
             dmGap,
-            currentARR: bu.current_rr * 4,
+            currentARR: bu.current_rr,
             atRiskARR,
             recommendationCount: buRecommendations.length,
             criticalCount,

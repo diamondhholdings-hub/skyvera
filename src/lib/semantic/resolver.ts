@@ -230,7 +230,7 @@ export class SemanticResolver {
             rr: customer.rr,
             nrr: customer.nrr,
             total: customer.total,
-            arr: customer.rr * 4, // Annualize quarterly RR
+            arr: customer.rr, // rr is already annual ARR
             subscriptionCount: customer.subscriptions.length,
           }
 

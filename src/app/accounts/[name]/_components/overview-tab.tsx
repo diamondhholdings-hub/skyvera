@@ -21,7 +21,7 @@ export function OverviewTab({
   painPoints = [],
   opportunities = [],
 }: OverviewTabProps) {
-  const arr = customer.rr * 4
+  const arr = customer.rr
   const hasAlert = customer.healthScore === 'red' || customer.healthScore === 'yellow'
 
   // Top 3 critical pain points as 90-day priorities
