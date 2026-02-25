@@ -15,12 +15,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="font-sans">
+      <body style={{ fontFamily: 'var(--font-body)', background: 'var(--paper)', color: 'var(--ink)' }}>
         <NavBar />
         <main className="min-h-screen">
           {children}
         </main>
-        <Toaster position="top-right" richColors />
+        <Toaster
+          position="top-right"
+          richColors
+          toastOptions={{
+            style: {
+              fontFamily: 'var(--font-body)',
+              fontSize: '0.875rem',
+            },
+          }}
+        />
       </body>
     </html>
   );
