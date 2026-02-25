@@ -1,4 +1,5 @@
-import type { BusinessUnitMetrics, MonthlyDMData } from '../types';
+import type { BusinessUnitMetrics, MonthlyDMData, DMThresholdViolation } from '../types';
+import { DM_THRESHOLDS } from '@/lib/intelligence/dm-strategy/constants';
 
 // Historical DM% data (Feb 2025 - Jan 2026)
 export const cloudsenseHistory: MonthlyDMData[] = [
@@ -46,13 +47,46 @@ export const stlHistory: MonthlyDMData[] = [
   { month: 'Jan 26', dmPercent: 91.8, revenue: 983000, targetDM: 95.0 },
 ];
 
+// Helper to build threshold violations from model-correct DM values
+function makeViolations(monthly: number, quarterly: number, annual: number): DMThresholdViolation[] {
+  return [
+    {
+      period: 'monthly',
+      value: monthly,
+      floor: DM_THRESHOLDS.monthly.floor,
+      target: DM_THRESHOLDS.monthly.target,
+      isViolation: monthly < DM_THRESHOLDS.monthly.floor,
+      isRedFlag: monthly < DM_THRESHOLDS.monthly.redFlagTrigger,
+    },
+    {
+      period: 'quarterly',
+      value: quarterly,
+      floor: DM_THRESHOLDS.quarterly.floor,
+      target: DM_THRESHOLDS.quarterly.target,
+      isViolation: quarterly < DM_THRESHOLDS.quarterly.floor,
+      isRedFlag: quarterly < DM_THRESHOLDS.quarterly.redFlagTrigger,
+    },
+    {
+      period: 'annual',
+      value: annual,
+      floor: DM_THRESHOLDS.annual.floor,
+      target: DM_THRESHOLDS.annual.target,
+      isViolation: annual < DM_THRESHOLDS.annual.floor,
+      isRedFlag: annual < DM_THRESHOLDS.annual.redFlagTrigger,
+    },
+  ]
+}
+
 export const sampleBusinessUnits: BusinessUnitMetrics[] = [
   {
+    // Cloudsense: ttm=94.7% → Scenario B (Melting Ice Cube)
+    // Monthly/quarterly derived from sensitivity table interpolation
     name: 'Cloudsense',
     currentDM: 94.7,
-    monthlyDM: 93.2,
-    quarterlyDM: 94.1,
+    monthlyDM: 99.6,    // model-correct: interpolated from sensitivity table (94.7% annual)
+    quarterlyDM: 98.6,  // model-correct: interpolated from sensitivity table
     ttmDM: 94.7,
+    annualDM: 94.7,
     targetDM: 95.0,
     trend: 'down',
     trendValue: -0.3,
@@ -61,13 +95,17 @@ export const sampleBusinessUnits: BusinessUnitMetrics[] = [
     recommendationCount: 5,
     color: '#0066A1',
     history: cloudsenseHistory,
+    scenario: 'B',
+    thresholdViolations: makeViolations(99.6, 98.6, 94.7),
   },
   {
+    // Kandy: ttm=97.8% → Scenario B (Melting Ice Cube, but near breakeven)
     name: 'Kandy',
     currentDM: 97.8,
-    monthlyDM: 98.5,
-    quarterlyDM: 98.1,
+    monthlyDM: 99.8,    // model-correct: interpolated from sensitivity table (97.8% annual)
+    quarterlyDM: 99.4,  // model-correct: interpolated from sensitivity table
     ttmDM: 97.8,
+    annualDM: 97.8,
     targetDM: 95.0,
     trend: 'up',
     trendValue: 0.5,
@@ -76,13 +114,17 @@ export const sampleBusinessUnits: BusinessUnitMetrics[] = [
     recommendationCount: 4,
     color: '#00B8D4',
     history: kandyHistory,
+    scenario: 'B',
+    thresholdViolations: makeViolations(99.8, 99.4, 97.8),
   },
   {
+    // STL: ttm=92.5% → Scenario B (Melting Ice Cube)
     name: 'STL',
     currentDM: 92.5,
-    monthlyDM: 91.8,
-    quarterlyDM: 92.2,
+    monthlyDM: 99.4,    // model-correct: interpolated from sensitivity table (92.5% annual)
+    quarterlyDM: 98.1,  // model-correct: interpolated from sensitivity table
     ttmDM: 92.5,
+    annualDM: 92.5,
     targetDM: 95.0,
     trend: 'neutral',
     trendValue: 0.0,
@@ -91,5 +133,7 @@ export const sampleBusinessUnits: BusinessUnitMetrics[] = [
     recommendationCount: 3,
     color: '#27AE60',
     history: stlHistory,
+    scenario: 'B',
+    thresholdViolations: makeViolations(99.4, 98.1, 92.5),
   },
 ];

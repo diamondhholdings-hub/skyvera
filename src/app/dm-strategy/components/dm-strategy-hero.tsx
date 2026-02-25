@@ -2,6 +2,7 @@
 
 import React from 'react';
 import type { DashboardStats } from '../types';
+import { DM_SCENARIOS, DM_THRESHOLDS } from '@/lib/intelligence/dm-strategy/constants';
 import '../styles.css';
 
 interface DMStrategyHeroProps {
@@ -186,6 +187,18 @@ export default function DMStrategyHero({ stats }: DMStrategyHeroProps) {
           >
             TTM (12 Months)
           </div>
+          <div style={{
+            display: 'flex',
+            justifyContent: 'center',
+            gap: '12px',
+            marginTop: '8px',
+            fontSize: '0.7rem',
+            opacity: 0.75
+          }}>
+            <span>Floor: {DM_THRESHOLDS.annual.floor.toFixed(1)}%</span>
+            <span>•</span>
+            <span>Target: {DM_THRESHOLDS.annual.target.toFixed(1)}%</span>
+          </div>
         </div>
 
         {/* Potential ARR - Highlighted */}
@@ -344,8 +357,62 @@ export default function DMStrategyHero({ stats }: DMStrategyHeroProps) {
         )}
       </div>
 
+      {/* Scenario Breakdown */}
+      {stats.scenarioBreakdown && (
+        <div style={{
+          marginTop: 'var(--space-xl)',
+          display: 'flex',
+          justifyContent: 'center',
+          gap: 'var(--space-md)',
+          flexWrap: 'wrap'
+        }}>
+          {(Object.keys(DM_SCENARIOS) as Array<keyof typeof DM_SCENARIOS>).map((key) => {
+            const count = stats.scenarioBreakdown[key] ?? 0;
+            if (count === 0) return null;
+            const scenario = DM_SCENARIOS[key];
+            return (
+              <div
+                key={key}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  background: 'rgba(255,255,255,0.1)',
+                  padding: '6px 12px',
+                  borderRadius: '20px',
+                  border: `1px solid ${scenario.color}60`
+                }}
+              >
+                <span style={{
+                  width: '10px',
+                  height: '10px',
+                  borderRadius: '50%',
+                  background: scenario.color,
+                  flexShrink: 0
+                }} />
+                <span style={{ fontSize: '0.75rem', fontWeight: 600, color: scenario.color }}>
+                  {key}
+                </span>
+                <span style={{ fontSize: '0.75rem', opacity: 0.8 }}>
+                  {scenario.label}
+                </span>
+                <span style={{
+                  fontSize: '0.75rem',
+                  background: 'rgba(255,255,255,0.15)',
+                  padding: '1px 6px',
+                  borderRadius: '10px',
+                  fontWeight: 700
+                }}>
+                  {count}
+                </span>
+              </div>
+            );
+          })}
+        </div>
+      )}
+
       {/* Quick Action CTA */}
-      <div style={{ marginTop: 'var(--space-xl)' }}>
+      <div style={{ marginTop: 'var(--space-lg)' }}>
         <p style={{ fontSize: '0.875rem', opacity: 0.8, marginBottom: 'var(--space-sm)' }}>
           💡 Recommendations are prioritized by impact and confidence
         </p>

@@ -1,7 +1,8 @@
 'use client';
 
 import React from 'react';
-import type { BusinessUnitMetrics } from '../types';
+import type { BusinessUnitMetrics, DMThresholdViolation } from '../types';
+import { DM_SCENARIOS } from '@/lib/intelligence/dm-strategy/constants';
 import '../styles.css';
 
 interface BUCardProps {
@@ -10,9 +11,18 @@ interface BUCardProps {
   onClick?: (bu: string) => void;
 }
 
+function ThresholdStatusIcon({ violation }: { violation: DMThresholdViolation }) {
+  if (violation.isRedFlag) return <span style={{ color: '#DC2626', fontWeight: 700 }}>✗</span>;
+  if (violation.isViolation) return <span style={{ color: '#F59E0B', fontWeight: 700 }}>⚠</span>;
+  if (violation.value >= violation.target) return <span style={{ color: '#10B981', fontWeight: 700 }}>✓</span>;
+  return <span style={{ color: '#6366F1', fontWeight: 700 }}>~</span>; // above floor, below target
+}
+
 export default function BUCard({ metrics, isActive = false, onClick }: BUCardProps) {
   const percentage = (metrics.currentDM / metrics.targetDM) * 100;
   const isOnTarget = metrics.currentDM >= metrics.targetDM;
+
+  const scenario = metrics.scenario ? DM_SCENARIOS[metrics.scenario] : null;
 
   // SVG Donut Chart
   const size = 120;
@@ -46,11 +56,28 @@ export default function BUCard({ metrics, isActive = false, onClick }: BUCardPro
       }}
       onClick={() => onClick?.(metrics.name)}
     >
-      {/* BU Name */}
+      {/* BU Name + Scenario Badge */}
       <div className="dm-flex dm-justify-between dm-items-center dm-mb-md">
-        <h3 className="dm-h4" style={{ margin: 0, color: metrics.color }}>
-          {metrics.name}
-        </h3>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <h3 className="dm-h4" style={{ margin: 0, color: metrics.color }}>
+            {metrics.name}
+          </h3>
+          {scenario && (
+            <span style={{
+              background: `${scenario.color}20`,
+              color: scenario.color,
+              border: `1px solid ${scenario.color}60`,
+              borderRadius: '4px',
+              padding: '2px 7px',
+              fontSize: '0.65rem',
+              fontWeight: 800,
+              letterSpacing: '0.5px',
+              textTransform: 'uppercase'
+            }}>
+              {scenario.key} · {scenario.label}
+            </span>
+          )}
+        </div>
         {metrics.recommendationCount > 0 && (
           <span
             className="dm-badge"
@@ -166,6 +193,37 @@ export default function BUCard({ metrics, isActive = false, onClick }: BUCardPro
             Target: {metrics.targetDM.toFixed(1)}%
           </div>
         </div>
+
+        {/* Threshold Status — Monthly / Quarterly / Annual */}
+        {metrics.thresholdViolations && metrics.thresholdViolations.length > 0 && (
+          <div style={{
+            marginTop: 'var(--space-sm)',
+            paddingTop: 'var(--space-sm)',
+            borderTop: '1px dashed var(--border)',
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr 1fr',
+            gap: '4px'
+          }}>
+            {metrics.thresholdViolations.map((v) => (
+              <div key={v.period} style={{
+                textAlign: 'center',
+                background: v.isRedFlag ? '#FEF2F2' : v.isViolation ? '#FFFBEB' : '#F0FDF4',
+                borderRadius: '4px',
+                padding: '4px 2px'
+              }}>
+                <div style={{ fontSize: '0.9rem', lineHeight: 1 }}>
+                  <ThresholdStatusIcon violation={v} />
+                </div>
+                <div style={{ fontSize: '0.6rem', color: 'var(--muted)', marginTop: '2px', fontWeight: 600, textTransform: 'capitalize' }}>
+                  {v.period === 'annual' ? 'TTM' : v.period}
+                </div>
+                <div style={{ fontSize: '0.65rem', fontWeight: 700, color: v.isViolation ? '#B45309' : '#065F46' }}>
+                  {v.value.toFixed(1)}%
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
 
       {/* Trend Indicator */}

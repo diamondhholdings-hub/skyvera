@@ -8,6 +8,7 @@ import RecommendationCard from './recommendation-card';
 import RecommendationFilters from './recommendation-filters';
 import ImpactCalculator from './impact-calculator';
 import AcceptRecommendationModal from './accept-modal';
+import { DM_SENSITIVITY_TABLE, DM_THRESHOLDS } from '@/lib/intelligence/dm-strategy/constants';
 import '../styles.css';
 
 interface PortfolioDashboardProps {
@@ -367,7 +368,7 @@ export default function PortfolioDashboard({ businessUnits, recommendations }: P
           )}
         </div>
 
-        {/* Right Sidebar - Impact Calculator */}
+        {/* Right Sidebar - Impact Calculator + Sensitivity Reference */}
         <div>
           <ImpactCalculator
             projection={projection}
@@ -375,6 +376,78 @@ export default function PortfolioDashboard({ businessUnits, recommendations }: P
               // TODO: Implement accept all functionality
             }}
           />
+
+          {/* Sensitivity Reference Panel */}
+          <div className="dm-card" style={{ marginTop: 'var(--space-md)' }}>
+            <h3 className="dm-h4" style={{ marginBottom: 'var(--space-xs)', fontSize: '0.875rem' }}>
+              DM% Sensitivity Reference
+            </h3>
+            <p style={{ fontSize: '0.7rem', color: 'var(--muted)', marginBottom: 'var(--space-sm)' }}>
+              Annual DM compounded to quarterly &amp; monthly rates
+            </p>
+
+            {/* Thresholds Legend */}
+            <div style={{
+              display: 'flex',
+              gap: '8px',
+              marginBottom: 'var(--space-sm)',
+              flexWrap: 'wrap'
+            }}>
+              <span style={{ fontSize: '0.65rem', color: 'var(--muted)' }}>
+                M floor: <strong>{DM_THRESHOLDS.monthly.floor}%</strong>
+              </span>
+              <span style={{ fontSize: '0.65rem', color: 'var(--muted)' }}>
+                Q floor: <strong>{DM_THRESHOLDS.quarterly.floor}%</strong>
+              </span>
+              <span style={{ fontSize: '0.65rem', color: 'var(--muted)' }}>
+                TTM floor: <strong>{DM_THRESHOLDS.annual.floor}%</strong>
+              </span>
+            </div>
+
+            {/* Table */}
+            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.7rem' }}>
+              <thead>
+                <tr style={{ borderBottom: '2px solid var(--border)' }}>
+                  <th style={{ textAlign: 'left', padding: '4px 4px', color: 'var(--muted)', fontWeight: 600 }}>Annual</th>
+                  <th style={{ textAlign: 'right', padding: '4px 4px', color: 'var(--muted)', fontWeight: 600 }}>Quarterly</th>
+                  <th style={{ textAlign: 'right', padding: '4px 4px', color: 'var(--muted)', fontWeight: 600 }}>Monthly</th>
+                  <th style={{ textAlign: 'right', padding: '4px 4px', color: 'var(--muted)', fontWeight: 600 }}>Verdict</th>
+                </tr>
+              </thead>
+              <tbody>
+                {DM_SENSITIVITY_TABLE.map((row) => {
+                  const isFloor = row.annualDM === 90;
+                  const isBreakeven = row.annualDM === 100;
+                  return (
+                    <tr
+                      key={row.annualDM}
+                      style={{
+                        borderBottom: '1px solid var(--border)',
+                        background: isFloor ? '#FEF9C3' : isBreakeven ? '#F0FDF4' : 'transparent',
+                        fontWeight: (isFloor || isBreakeven) ? 700 : 400
+                      }}
+                    >
+                      <td style={{ padding: '4px 4px' }}>{row.annualDM}%</td>
+                      <td style={{ padding: '4px 4px', textAlign: 'right' }}>
+                        {row.quarterlyDM.toFixed(1)}%
+                      </td>
+                      <td style={{ padding: '4px 4px', textAlign: 'right' }}>
+                        {row.monthlyDM.toFixed(1)}%
+                      </td>
+                      <td style={{
+                        padding: '4px 4px',
+                        textAlign: 'right',
+                        color: isFloor ? '#B45309' : isBreakeven ? '#065F46' : 'var(--muted)',
+                        fontSize: '0.65rem'
+                      }}>
+                        {row.verdict}
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
 

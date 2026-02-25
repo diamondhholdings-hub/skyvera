@@ -1,5 +1,8 @@
 // DM% Strategy Component Library - TypeScript Types
 
+import type { DMScenarioKey, DMThresholdViolation } from '@/lib/intelligence/dm-strategy/types';
+export type { DMScenarioKey, DMThresholdViolation };
+
 export type Priority = 'critical' | 'high' | 'medium' | 'low';
 
 export type BusinessUnit = 'Cloudsense' | 'Kandy' | 'STL';
@@ -40,6 +43,7 @@ export interface BusinessUnitMetrics {
   monthlyDM: number; // current month DM%
   quarterlyDM: number; // current quarter DM%
   ttmDM: number; // trailing 12 months DM% (calculated from history)
+  annualDM: number; // model-aligned alias for ttmDM (Jigtree nomenclature)
   targetDM: number; // percentage
   trend: TrendDirection;
   trendValue: number; // percentage points change
@@ -48,6 +52,8 @@ export interface BusinessUnitMetrics {
   recommendationCount: number;
   color: string; // hex color for branding
   history?: MonthlyDMData[]; // 12-24 months of historical data for charting
+  scenario: DMScenarioKey; // A/B/C/D Jigtree model classification
+  thresholdViolations: DMThresholdViolation[]; // monthly/quarterly/annual threshold status
 }
 
 export interface ImpactProjection {
@@ -99,4 +105,5 @@ export interface DashboardStats {
   activeRecommendations: number;
   totalAccounts: number;
   atRiskAccounts: number;
+  scenarioBreakdown: Record<DMScenarioKey, number>; // count of BUs per scenario
 }

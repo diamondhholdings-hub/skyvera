@@ -17,7 +17,9 @@ import type {
   BusinessUnit,
   Priority,
   TrendDirection,
+  DMScenarioKey,
 } from '@/app/dm-strategy/types'
+import { classifyDMScenario, checkThresholdViolations } from './analyzer'
 
 /**
  * Map backend BU names to frontend BusinessUnit enum
@@ -140,12 +142,17 @@ export function adaptBUToBusinessUnitMetrics(
     : bu.dm_pct
   const monthlyDM = quarterlyDM // Most recent quarter as proxy for monthly
 
+  const annualDM = ttmDM
+  const scenario = classifyDMScenario(annualDM)
+  const thresholdViolations = checkThresholdViolations(monthlyDM, quarterlyDM, annualDM)
+
   return {
     name,
     currentDM: ttmDM,
     monthlyDM,
     quarterlyDM,
     ttmDM,
+    annualDM,
     targetDM,
     trend: trend.direction,
     trendValue: trend.value,
@@ -154,6 +161,8 @@ export function adaptBUToBusinessUnitMetrics(
     recommendationCount,
     color: getBUColor(name),
     history: transformToMonthlyData(bu.ttm_quarters, targetDM),
+    scenario,
+    thresholdViolations,
   }
 }
 
@@ -178,8 +187,15 @@ export function adaptTrackerDataToDashboardStats(
     .filter(r => r.status === 'pending')
     .reduce((sum, r) => sum + (r.estimatedARRImpact || 0), 0)
 
-  // Count at-risk accounts (BUs below 90% target)
+  // Count at-risk accounts (BUs below 90% annual floor)
   const atRiskAccounts = dmData.business_units.filter(bu => !bu.meets_target).length
+
+  // Compute scenario breakdown (count of BUs per A/B/C/D scenario)
+  const scenarioBreakdown: Record<DMScenarioKey, number> = { A: 0, B: 0, C: 0, D: 0 }
+  for (const bu of dmData.business_units) {
+    const key = classifyDMScenario(bu.dm_pct)
+    scenarioBreakdown[key]++
+  }
 
   return {
     currentDM: ttmDM,
@@ -190,6 +206,7 @@ export function adaptTrackerDataToDashboardStats(
     activeRecommendations: recommendations.filter(r => r.status === 'pending').length,
     totalAccounts: accountCount,
     atRiskAccounts,
+    scenarioBreakdown,
   }
 }
 

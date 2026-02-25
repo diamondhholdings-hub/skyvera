@@ -16,13 +16,15 @@ import '../styles.css';
 // Sample Data
 const sampleStats: DashboardStats = {
   currentDM: 94.8,
-  monthlyDM: 93.5,
-  quarterlyDM: 94.2,
+  monthlyDM: 99.6,
+  quarterlyDM: 98.6,
   ttmDM: 94.8,
   potentialARR: 2100000,
   activeRecommendations: 12,
   totalAccounts: 140,
-  atRiskAccounts: 8
+  atRiskAccounts: 8,
+  // All three BUs are Scenario B (Melting Ice Cube) at current demo DM levels
+  scenarioBreakdown: { A: 0, B: 3, C: 0, D: 0 },
 };
 
 const sampleRecommendations: Recommendation[] = [

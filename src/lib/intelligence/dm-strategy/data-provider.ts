@@ -12,7 +12,8 @@ import { ok, err, type Result } from '@/lib/types/result'
 import { getDMTrackerData } from '@/lib/data/server/dm-tracker-data'
 import { getDMRecommendations } from '@/lib/data/server/dm-strategy-data'
 import { adaptDMDataForUI } from './adapters'
-import type { BusinessUnitMetrics, DashboardStats, Recommendation } from '@/app/dm-strategy/types'
+import { classifyDMScenario } from './analyzer'
+import type { BusinessUnitMetrics, DashboardStats, Recommendation, DMScenarioKey } from '@/app/dm-strategy/types'
 
 /**
  * Complete DM Strategy UI data
@@ -103,6 +104,10 @@ export async function getDMStrategyUIDataForBU(
   const buRecommendations = recommendations.filter(r => r.businessUnit === buName)
 
   // Recalculate dashboard stats for single BU
+  const buScenario = classifyDMScenario(bu.annualDM)
+  const scenarioBreakdown: Record<DMScenarioKey, number> = { A: 0, B: 0, C: 0, D: 0 }
+  scenarioBreakdown[buScenario] = 1
+
   const dashboardStats: DashboardStats = {
     currentDM: bu.ttmDM,
     monthlyDM: bu.monthlyDM,
@@ -114,6 +119,7 @@ export async function getDMStrategyUIDataForBU(
     activeRecommendations: buRecommendations.filter(r => r.status === 'pending').length,
     totalAccounts: bu.accountCount,
     atRiskAccounts: bu.ttmDM < bu.targetDM ? 1 : 0,
+    scenarioBreakdown,
   }
 
   return ok({

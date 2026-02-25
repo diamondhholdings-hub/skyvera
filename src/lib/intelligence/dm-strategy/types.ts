@@ -211,6 +211,55 @@ export const DMScenarioProjectionSchema = z.object({
 })
 export type DMScenarioProjection = z.infer<typeof DMScenarioProjectionSchema>
 
+// ── Model-aligned types (Jigtree DM Financial Model) ─────────────────────────
+
+/** Scenario key per Jigtree model: A=Collapsing, B=Melting Ice Cube, C=Stable, D=Cash Machine */
+export type DMScenarioKey = 'A' | 'B' | 'C' | 'D'
+
+export interface DMScenarioInfo {
+  key: DMScenarioKey
+  label: string
+  dmRange: string
+  description: string
+  verdict: string
+  color: string
+}
+
+export interface DMThresholdViolation {
+  period: 'monthly' | 'quarterly' | 'annual'
+  value: number
+  floor: number
+  target: number
+  isViolation: boolean   // value is below floor
+  isRedFlag: boolean     // value is below red flag trigger
+}
+
+export interface IceMeltComponents {
+  iceMelt: number               // ice melt rate used (%)
+  standardPriceIncrease: number // dollar contribution from standard tier repricing
+  platinumPriceIncrease: number // dollar contribution from platinum tier repricing
+  upsell: number                // dollar contribution from upsell
+  crossSell: number             // dollar contribution from cross-sell
+  newBusiness: number           // dollar contribution from new business
+  endingARR: number             // beginningARR after all forces applied
+  dm: number                    // endingARR / beginningARR × 100
+}
+
+export interface ContractTermMix {
+  annual: number
+  threeYear: number
+  fiveYear: number
+  percentRenewingPerYear: number
+  effectiveAnnualRepricing: number
+}
+
+export interface PricingAssumptions {
+  standardRate: number
+  platinumRate: number
+  platinumMixPct: number
+  blendedRate: number
+}
+
 // Analysis run tracking
 export const DMAnalysisRunSchema = z.object({
   runId: z.string(),

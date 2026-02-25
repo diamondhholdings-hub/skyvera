@@ -4,7 +4,14 @@
  */
 
 import { Result, ok, err } from '@/lib/types/result'
-import { DMRecommendation, DMScenarioProjection } from './types'
+import {
+  DMRecommendation,
+  DMScenarioProjection,
+  IceMeltComponents,
+  ContractTermMix,
+  DMScenarioKey,
+} from './types'
+import { DM_CONSTANTS, DM_SCENARIOS } from './constants'
 import { prisma } from '@/lib/db/prisma'
 
 /**
@@ -250,6 +257,106 @@ export function rankByExpectedValue(
       calculateARRImpact(b) * (b.impact.confidenceLevel / 100)
     return evB - evA // Descending order
   })
+}
+
+/**
+ * Calculate a full one-year DM waterfall showing each revenue force component.
+ * Models the Jigtree DM formula: Ending ARR = Beginning ARR - IceMelt + Repricing + Expansion
+ */
+export function calculateDMComponents(
+  beginningARR: number,
+  iceMeltRate: number,
+  platinumMixPct: number,
+  contractTermMix: ContractTermMix,
+  expansionRates: { upsell: number; crossSell: number; newBusiness: number }
+): IceMeltComponents {
+  const standardMixPct = 1 - platinumMixPct
+  const renewingPct = contractTermMix.percentRenewingPerYear
+
+  const standardPriceIncrease =
+    beginningARR * standardMixPct * renewingPct * DM_CONSTANTS.pricing.standardRate
+  const platinumPriceIncrease =
+    beginningARR * platinumMixPct * renewingPct * DM_CONSTANTS.pricing.platinumRate
+  const iceMelt = beginningARR * iceMeltRate
+  const upsell = beginningARR * expansionRates.upsell
+  const crossSell = beginningARR * expansionRates.crossSell
+  const newBusiness = beginningARR * expansionRates.newBusiness
+
+  const endingARR =
+    beginningARR -
+    iceMelt +
+    standardPriceIncrease +
+    platinumPriceIncrease +
+    upsell +
+    crossSell +
+    newBusiness
+
+  return {
+    iceMelt: iceMeltRate * 100,
+    standardPriceIncrease,
+    platinumPriceIncrease,
+    upsell,
+    crossSell,
+    newBusiness,
+    endingARR,
+    dm: beginningARR > 0 ? (endingARR / beginningARR) * 100 : 100,
+  }
+}
+
+/**
+ * Project DM% over 10 years for a given scenario (A/B/C/D).
+ * Uses the scenario's ice melt rate with default 4% upsell + 2% cross-sell expansion.
+ */
+export function projectDM10Year(
+  beginningARR: number,
+  scenarioKey: DMScenarioKey
+): IceMeltComponents[] {
+  const scenario = DM_SCENARIOS[scenarioKey]
+  const contractTermMix: ContractTermMix = {
+    annual: DM_CONSTANTS.contractMix.annual,
+    threeYear: DM_CONSTANTS.contractMix.threeYear,
+    fiveYear: DM_CONSTANTS.contractMix.fiveYear,
+    percentRenewingPerYear: DM_CONSTANTS.contractMix.percentRenewingPerYear,
+    effectiveAnnualRepricing: DM_CONSTANTS.contractMix.effectiveAnnualRepricing,
+  }
+  const expansionRates = { upsell: 0.04, crossSell: 0.02, newBusiness: 0.00 }
+
+  const projections: IceMeltComponents[] = []
+  let arr = beginningARR
+
+  for (let i = 0; i < 10; i++) {
+    const components = calculateDMComponents(
+      arr,
+      scenario.iceMeltRate,
+      DM_CONSTANTS.pricing.platinumMixPct,
+      contractTermMix,
+      expansionRates
+    )
+    projections.push(components)
+    arr = components.endingARR
+  }
+
+  return projections
+}
+
+/**
+ * Calculate the ice melt rate at which DM = 100% (break-even).
+ * At break-even, price increases + expansion exactly offset natural churn.
+ */
+export function calculateBreakevenIceMelt(
+  platinumMixPct: number,
+  contractTermMix: ContractTermMix,
+  expansionRate: number
+): number {
+  const standardMixPct = 1 - platinumMixPct
+  const renewingPct = contractTermMix.percentRenewingPerYear
+
+  const priceIncreaseRate =
+    standardMixPct * renewingPct * DM_CONSTANTS.pricing.standardRate +
+    platinumMixPct * renewingPct * DM_CONSTANTS.pricing.platinumRate
+
+  // Breakeven: iceMelt = priceIncreaseRate + expansionRate
+  return priceIncreaseRate + expansionRate
 }
 
 /**

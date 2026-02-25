@@ -9,7 +9,10 @@ import {
   AccountDMAnalysis,
   PortfolioDMAnalysis,
   DMRecommendation,
+  DMScenarioKey,
+  DMThresholdViolation,
 } from './types'
+import { DM_SCENARIOS, DM_THRESHOLDS } from './constants'
 import { generateRecommendations } from './recommender'
 
 interface AccountWithIntelligence {
@@ -59,15 +62,17 @@ export async function analyzeAccount(
     const currentDM = currentARR > 0 ? (projectedARR / currentARR) * 100 : 100
     const projectedDM = currentDM // For now, same as current (can be enhanced with trend analysis)
 
-    // Assess risk
+    // Assess risk using model-aligned annual floor (90%)
     const riskFactors: string[] = []
     const atRisk =
-      currentDM < 90 ||
+      currentDM < DM_THRESHOLDS.annual.floor ||
       account.healthScore === 'red' ||
       account.healthScore === 'yellow'
 
-    if (currentDM < 90) {
-      riskFactors.push(`DM% below target (${currentDM.toFixed(1)}% vs 90%)`)
+    if (currentDM < DM_THRESHOLDS.annual.floor) {
+      riskFactors.push(
+        `DM% below floor (${currentDM.toFixed(1)}% vs ${DM_THRESHOLDS.annual.floor}% annual floor)`
+      )
     }
     if (account.healthScore === 'red') {
       riskFactors.push('Poor health score (red)')
@@ -162,7 +167,7 @@ export async function analyzeAccount(
       bu: account.bu,
       currentDM,
       projectedDM,
-      targetDM: 90,
+      targetDM: DM_THRESHOLDS.annual.target,
       atRisk,
       riskFactors,
       hasGrowthOpportunity,
@@ -272,7 +277,7 @@ export async function analyzePortfolio(
       accountsAnalyzed: accountAnalyses.length,
       currentDM,
       projectedDM,
-      targetDM: 90,
+      targetDM: DM_THRESHOLDS.annual.target,
       atRiskAccounts,
       totalARRAtRisk,
       growthAccounts,
@@ -324,6 +329,55 @@ export async function identifyAtRiskAccounts(
         : new Error('Failed to identify at-risk accounts')
     )
   }
+}
+
+/**
+ * Classify an annual DM% into a Jigtree scenario (A/B/C/D)
+ * A: < 90% (Collapsing), B: 90–99.99% (Melting Ice Cube),
+ * C: 100–114.99% (Stable), D: 115%+ (Cash Machine)
+ */
+export function classifyDMScenario(annualDM: number): DMScenarioKey {
+  if (annualDM < DM_SCENARIOS.B.dmMin) return 'A'   // < 90%
+  if (annualDM < DM_SCENARIOS.C.dmMin) return 'B'   // 90–99.99%
+  if (annualDM < DM_SCENARIOS.D.dmMin) return 'C'   // 100–114.99%
+  return 'D'                                          // 115%+
+}
+
+/**
+ * Check monthly, quarterly, and annual DM% values against model thresholds.
+ * Returns a violation record for each period.
+ */
+export function checkThresholdViolations(
+  monthly: number,
+  quarterly: number,
+  annual: number
+): DMThresholdViolation[] {
+  return [
+    {
+      period: 'monthly',
+      value: monthly,
+      floor: DM_THRESHOLDS.monthly.floor,
+      target: DM_THRESHOLDS.monthly.target,
+      isViolation: monthly < DM_THRESHOLDS.monthly.floor,
+      isRedFlag: monthly < DM_THRESHOLDS.monthly.redFlagTrigger,
+    },
+    {
+      period: 'quarterly',
+      value: quarterly,
+      floor: DM_THRESHOLDS.quarterly.floor,
+      target: DM_THRESHOLDS.quarterly.target,
+      isViolation: quarterly < DM_THRESHOLDS.quarterly.floor,
+      isRedFlag: quarterly < DM_THRESHOLDS.quarterly.redFlagTrigger,
+    },
+    {
+      period: 'annual',
+      value: annual,
+      floor: DM_THRESHOLDS.annual.floor,
+      target: DM_THRESHOLDS.annual.target,
+      isViolation: annual < DM_THRESHOLDS.annual.floor,
+      isRedFlag: annual < DM_THRESHOLDS.annual.redFlagTrigger,
+    },
+  ]
 }
 
 /**

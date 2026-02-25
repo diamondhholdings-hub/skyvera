@@ -6,12 +6,17 @@
 // Types
 export * from './types'
 
+// Constants
+export { DM_CONSTANTS, DM_THRESHOLDS, DM_SCENARIOS, DM_SENSITIVITY_TABLE } from './constants'
+
 // Analyzer
 export {
   analyzeAccount,
   analyzePortfolio,
   identifyAtRiskAccounts,
   identifyGrowthOpportunities,
+  classifyDMScenario,
+  checkThresholdViolations,
 } from './analyzer'
 
 // Recommender
@@ -30,6 +35,9 @@ export {
   calculatePaybackPeriod,
   rankByExpectedValue,
   groupByType,
+  calculateDMComponents,
+  projectDM10Year,
+  calculateBreakevenIceMelt,
 } from './impact-calculator'
 
 // Prioritizer
