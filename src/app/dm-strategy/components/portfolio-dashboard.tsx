@@ -185,7 +185,24 @@ export default function PortfolioDashboard({ businessUnits, recommendations }: P
   };
 
   return (
-    <div style={{ padding: 'var(--space-lg)' }}>
+    <div>
+      {/* BU Cards — horizontal columns across the full width */}
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
+        gap: 'var(--space-md)',
+        marginBottom: 'var(--space-xl)',
+      }}>
+        {businessUnits.map((bu) => (
+          <BUCard
+            key={bu.name}
+            metrics={bu}
+            isActive={selectedBU === bu.name}
+            onClick={(buName) => setSelectedBU(buName === selectedBU ? null : buName)}
+          />
+        ))}
+      </div>
+
       {/* Defer Reason Inline Dialog */}
       {deferringId && (
         <div
@@ -243,25 +260,10 @@ export default function PortfolioDashboard({ businessUnits, recommendations }: P
         </div>
       )}
 
-      <div className="dm-grid-3col">
-        {/* Left Sidebar - BU Overview */}
-        <div>
-          <h2 className="dm-h4" style={{ marginBottom: 'var(--space-lg)' }}>
-            Business Units
-          </h2>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-md)' }}>
-            {businessUnits.map((bu) => (
-              <BUCard
-                key={bu.name}
-                metrics={bu}
-                isActive={selectedBU === bu.name}
-                onClick={(buName) => setSelectedBU(buName === selectedBU ? null : buName)}
-              />
-            ))}
-          </div>
-        </div>
+      {/* Recommendations + Sidebar — two-column layout below */}
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 320px', gap: 'var(--space-xl)', alignItems: 'start' }}>
 
-        {/* Center - Recommendation Feed */}
+        {/* Left — Recommendation Feed */}
         <div>
           {selectedBU && (
             <div style={{ marginBottom: 'var(--space-md)' }}>

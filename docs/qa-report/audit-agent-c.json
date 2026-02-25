@@ -1,0 +1,385 @@
+{
+  "agent": "C",
+  "audited_at": "2026-02-19",
+  "pages": [
+    {
+      "page": "/dm-strategy",
+      "screenshot": "tests/screenshots/dm-strategy.png",
+      "crashed": false,
+      "is_user_facing": true,
+      "uses_shared_nav": true,
+      "uses_design_tokens": false,
+      "notes": "NavBar is rendered via layout.tsx (global), not imported in page.tsx itself. Page renders real data from getDMStrategyUIData(). All component styling is driven by dm-strategy/styles.css which defines its own independent token set, not the shared editorial tokens from globals.css.",
+      "issues": [
+        {
+          "id": "dm-001",
+          "severity": "P1",
+          "type": "design",
+          "description": "src/app/dm-strategy/styles.css defines a completely parallel CSS custom property system (:root block with --primary-blue, --accent-cyan, --white, --text-dark, --text-light, --background, --border, --critical, --warning, --success) that duplicates and conflicts with the shared editorial tokens in globals.css. The shared system uses --ink, --paper, --accent (#c84b31), --secondary (#2d4263), --muted, --border. The dm-strategy system redefines --border to #E1E8ED instead of the shared #e8e6e1, and introduces --primary-blue (#0066A1) and --accent-cyan (#00B8D4) which have no equivalent in the editorial palette.",
+          "files_affected": [
+            "src/app/dm-strategy/styles.css"
+          ],
+          "shared_component": false,
+          "fix_approach": "Remove the :root block from styles.css entirely. Map --primary-blue to var(--secondary), --accent-cyan to a new token or drop in favour of var(--accent), --text-dark to var(--ink), --text-light to var(--muted), --background to var(--paper), --border to var(--border), --white to white. Update all consumer classes accordingly."
+        },
+        {
+          "id": "dm-002",
+          "severity": "P1",
+          "type": "design",
+          "description": "dm-strategy hero section uses background: linear-gradient(135deg, var(--primary-blue) 0%, #004d7a 100%) — a blue/teal gradient — instead of the shared editorial header gradient bg-gradient-to-br from-[var(--secondary)] to-[#1a2332]. The page appears visually distinct from the rest of the app which uses the dark navy-to-near-black gradient. The dm-strategy hero is a standalone rounded card rather than a full-width header band.",
+          "files_affected": [
+            "src/app/dm-strategy/components/dm-strategy-hero.tsx"
+          ],
+          "shared_component": false,
+          "fix_approach": "Replace the hero gradient with the shared from-[var(--secondary)] to-[#1a2332] gradient and remove the rounded-card wrapping to match the full-bleed header treatment used on other pages."
+        },
+        {
+          "id": "dm-003",
+          "severity": "P1",
+          "type": "design",
+          "description": "The trends link banner on the main page uses a hardcoded blue-to-cyan gradient (bg-gradient-to-r from-blue-600 to-cyan-500 via Tailwind classes) instead of the editorial accent colour var(--accent) (#c84b31) or the shared secondary palette. This introduces a third blue variant not present in the design system.",
+          "files_affected": [
+            "src/app/dm-strategy/page.tsx"
+          ],
+          "shared_component": false,
+          "fix_approach": "Replace Tailwind gradient classes with the shared secondary-to-dark gradient or use the editorial accent colour for call-to-action elements."
+        },
+        {
+          "id": "dm-004",
+          "severity": "P1",
+          "type": "typography",
+          "description": "dm-strategy/styles.css defines its own typography scale (.dm-h1 through .dm-body, .dm-caption) with font-weight 700 and no font-family declaration, meaning it inherits DM Sans throughout instead of using Cormorant Garamond for headings as the shared system mandates. The shared globals.css sets h1/h2/h3 to font-family: 'Cormorant Garamond', serif. Within the dm-strategy components, heading classes .dm-h3 and .dm-h4 are used for section titles, bypassing the serif font entirely.",
+          "files_affected": [
+            "src/app/dm-strategy/styles.css",
+            "src/app/dm-strategy/components/dm-strategy-hero.tsx",
+            "src/app/dm-strategy/components/recommendation-card.tsx"
+          ],
+          "shared_component": false,
+          "fix_approach": "Add font-family: 'Cormorant Garamond', serif to the .dm-h1 through .dm-h4 classes, or better yet, remove the custom typography scale and use the shared font-display utility class alongside Tailwind heading utilities."
+        },
+        {
+          "id": "dm-005",
+          "severity": "P1",
+          "type": "design",
+          "description": "Multiple dm-strategy components use hardcoded hex colours in inline styles and JS objects rather than CSS custom properties. Confirmed instances: recommendation-card.tsx uses '#E74C3C', '#F39C12', '#27AE60', '#95A5A6', '#0066A1', '#00B8D4', '#27AE60' in priorityConfig and buConfig objects. dm-trend-chart.tsx uses '#10B981', '#EF4444', '#6B7280', '#E5E7EB', '#111827'. These are neither the shared editorial tokens nor the dm-strategy CSS variables, creating a third uncoordinated colour system.",
+          "files_affected": [
+            "src/app/dm-strategy/components/recommendation-card.tsx",
+            "src/app/dm-strategy/components/dm-trend-chart.tsx"
+          ],
+          "shared_component": false,
+          "fix_approach": "Replace hardcoded hex values with CSS custom property references. Use var(--critical), var(--warning), var(--success), var(--muted) from globals.css for status colours. Replace chart axis colours with the shared --border and --muted tokens."
+        },
+        {
+          "id": "dm-006",
+          "severity": "P2",
+          "type": "ux",
+          "description": "handleDefer() in portfolio-dashboard.tsx uses window.prompt() and window.alert() for user interaction. handleModalSubmit() also uses alert(). These are browser-native dialogs that are visually jarring and inconsistent with the app which uses the Sonner toast library (Toaster is set up in layout.tsx).",
+          "files_affected": [
+            "src/app/dm-strategy/components/portfolio-dashboard.tsx"
+          ],
+          "shared_component": false,
+          "fix_approach": "Replace prompt() with an inline form or modal. Replace all alert() calls with toast() from the sonner library, consistent with other pages."
+        },
+        {
+          "id": "dm-007",
+          "severity": "P2",
+          "type": "design",
+          "description": "The error state rendered in page.tsx when getDMStrategyUIData() fails uses hardcoded Tailwind blue classes (bg-blue-600 text-white rounded hover:bg-blue-700) for the 'View Demo Page' button, inconsistent with the editorial accent colour. The error card also uses text-red-600 and border-red-200 rather than var(--critical).",
+          "files_affected": [
+            "src/app/dm-strategy/page.tsx"
+          ],
+          "shared_component": false,
+          "fix_approach": "Style error state buttons using var(--accent) and var(--secondary). Use var(--critical) for error text colour."
+        },
+        {
+          "id": "dm-008",
+          "severity": "P2",
+          "type": "design",
+          "description": "The live data indicator at the bottom of page.tsx uses hardcoded Tailwind green utility classes (bg-green-50 border-green-200 text-green-800) instead of the shared success/editorial token system.",
+          "files_affected": [
+            "src/app/dm-strategy/page.tsx"
+          ],
+          "shared_component": false,
+          "fix_approach": "Replace with border-[var(--success)] and text in var(--ink), or use a consistent alert/notice pattern from the design system."
+        }
+      ]
+    },
+    {
+      "page": "/dm-strategy/demo",
+      "screenshot": "tests/screenshots/dm-strategy-demo.png",
+      "crashed": false,
+      "is_user_facing": false,
+      "uses_shared_nav": true,
+      "uses_design_tokens": false,
+      "notes": "Demo page renders sample data using the same component library as /dm-strategy. NavBar is provided by layout.tsx. The page uses hardcoded background '#FAFAFA' instead of var(--paper). The trends link uses hardcoded gradient from #0066A1 to #00B8D4 with hardcoded boxShadow rgba values. This page appears to be a developer reference page, not a primary user-facing page.",
+      "issues": [
+        {
+          "id": "demo-001",
+          "severity": "P1",
+          "type": "design",
+          "description": "Page root div uses hardcoded style background: '#FAFAFA' instead of var(--paper) from the shared design system. Although numerically close, this bypasses the token system and means a theme change would not propagate.",
+          "files_affected": [
+            "src/app/dm-strategy/demo/page.tsx"
+          ],
+          "shared_component": false,
+          "fix_approach": "Replace background: '#FAFAFA' with background: 'var(--paper)' or use the Tailwind class bg-[var(--paper)]."
+        },
+        {
+          "id": "demo-002",
+          "severity": "P1",
+          "type": "design",
+          "description": "The trends link banner uses fully hardcoded gradient (background: 'linear-gradient(135deg, #0066A1 0%, #00B8D4 100%)'), hardcoded boxShadow with rgba(0, 102, 161, 0.3), and inline mouse event handlers that mutate style directly. This is the same blue/teal colour scheme inconsistency as the parent page.",
+          "files_affected": [
+            "src/app/dm-strategy/demo/page.tsx"
+          ],
+          "shared_component": false,
+          "fix_approach": "Use the shared secondary-to-dark gradient and the shared shadow token, or consolidate this link into a reusable component shared with /dm-strategy/page.tsx."
+        },
+        {
+          "id": "demo-003",
+          "severity": "P2",
+          "type": "classification",
+          "description": "The demo page is accessible at /dm-strategy/demo with no authentication or access restriction. It is reachable from the live /dm-strategy error state via a 'View Demo Page' link. If this is a developer testing page, it should be hidden behind an environment flag or removed from production routing.",
+          "files_affected": [
+            "src/app/dm-strategy/demo/page.tsx",
+            "src/app/dm-strategy/page.tsx"
+          ],
+          "shared_component": false,
+          "fix_approach": "Add a process.env.NODE_ENV === 'development' guard or move the demo route under a /dev/ prefix that can be blocked in production."
+        }
+      ]
+    },
+    {
+      "page": "/dm-strategy/trends",
+      "screenshot": "tests/screenshots/dm-strategy-trends.png",
+      "crashed": false,
+      "is_user_facing": true,
+      "uses_shared_nav": true,
+      "uses_design_tokens": false,
+      "notes": "Page renders 12-month trend charts using recharts, consuming sample data from demo-data.ts. NavBar is provided by layout.tsx. The page uses hardcoded background '#FAFAFA'. All major layout elements use inline styles with hardcoded hex colours.",
+      "issues": [
+        {
+          "id": "trends-001",
+          "severity": "P1",
+          "type": "design",
+          "description": "Page header h1 uses hardcoded color: '#0066A1' (inline style) instead of var(--secondary) from the shared token system. The shared editorial system defines var(--secondary) as #2d4263 (dark navy), not a bright primary blue. This makes the page header visually distinct from all other pages.",
+          "files_affected": [
+            "src/app/dm-strategy/trends/page.tsx"
+          ],
+          "shared_component": false,
+          "fix_approach": "Replace color: '#0066A1' with color: 'var(--secondary)' or use the shared font-display heading class which inherits the editorial colour."
+        },
+        {
+          "id": "trends-002",
+          "severity": "P1",
+          "type": "design",
+          "description": "Portfolio-wide chart wrapper uses hardcoded background: 'linear-gradient(135deg, #0066A1 0%, #004d7a 100%)'. BU insight cards use hardcoded borderLeft colours (#0066A1, #00B8D4, #27AE60) and hardcoded background tints (#F0F9FF, #F0FDFF, #F0FDF4) that do not derive from any editorial token.",
+          "files_affected": [
+            "src/app/dm-strategy/trends/page.tsx"
+          ],
+          "shared_component": false,
+          "fix_approach": "Replace the gradient wrapper with the shared secondary gradient. Replace insight card border colours with var(--secondary), var(--accent), or var(--success). Replace hardcoded background tints with var(--paper) or the shared --highlight token."
+        },
+        {
+          "id": "trends-003",
+          "severity": "P1",
+          "type": "design",
+          "description": "Breadcrumb navigation uses raw <a> tags with hardcoded color: '#0066A1' instead of Next.js Link component with editorial link styling. The active breadcrumb item uses hardcoded color: '#111827' (Tailwind gray-900) instead of var(--ink).",
+          "files_affected": [
+            "src/app/dm-strategy/trends/page.tsx"
+          ],
+          "shared_component": false,
+          "fix_approach": "Replace <a> tags with Next.js <Link> components. Apply var(--secondary) for link colour and var(--ink) for active state."
+        },
+        {
+          "id": "trends-004",
+          "severity": "P1",
+          "type": "design",
+          "description": "Page root uses hardcoded background: '#FAFAFA' in inline style instead of var(--paper).",
+          "files_affected": [
+            "src/app/dm-strategy/trends/page.tsx"
+          ],
+          "shared_component": false,
+          "fix_approach": "Replace with background: 'var(--paper)' or className using bg-[var(--paper)]."
+        },
+        {
+          "id": "trends-005",
+          "severity": "P1",
+          "type": "data",
+          "description": "The trends page is presented as a live user-facing page but consumes ONLY sample/demo data imported from '../demo/demo-data'. There is no real data integration for this route. The screenshot shows data that is purely static mock data, which could mislead users into thinking the charts reflect real live business metrics.",
+          "files_affected": [
+            "src/app/dm-strategy/trends/page.tsx"
+          ],
+          "shared_component": false,
+          "fix_approach": "Connect the trends page to the same real data provider used by /dm-strategy (getDMStrategyUIData or equivalent). Until real data is available, display a clear 'Demo data' notice."
+        },
+        {
+          "id": "trends-006",
+          "severity": "P2",
+          "type": "design",
+          "description": "DMTrendChart component uses hardcoded hex colours '#10B981' (green) and '#EF4444' (red) for peak/trough stat labels and latest value conditional colouring. These are Tailwind default palette colours that do not map to the app's --success (#4caf50) and --critical (#e53935) tokens.",
+          "files_affected": [
+            "src/app/dm-strategy/components/dm-trend-chart.tsx"
+          ],
+          "shared_component": false,
+          "fix_approach": "Replace '#10B981' with var(--success) and '#EF4444' with var(--critical). Also replace '#6B7280' axis labels with var(--muted) and '#E5E7EB' grid/border colour with var(--border)."
+        }
+      ]
+    },
+    {
+      "page": "/product-agent",
+      "screenshot": "tests/screenshots/product-agent.png",
+      "crashed": false,
+      "is_user_facing": true,
+      "uses_shared_nav": true,
+      "uses_design_tokens": false,
+      "notes": "NavBar is present (provided by layout.tsx). Page renders with static content and no real data loading. The entire page uses Tailwind utility classes with hardcoded semantic colours (gray-*, blue-*, green-*, purple-*, orange-*) with zero use of the editorial CSS custom properties. There is a broken link to /product-agent/backlog and /product-agent/submit-request — these routes do not appear to have pages implemented based on the codebase structure.",
+      "issues": [
+        {
+          "id": "pa-001",
+          "severity": "P1",
+          "type": "design",
+          "description": "The entire page uses Tailwind semantic colour classes (text-gray-900, bg-gray-50, text-blue-600, text-green-600, text-purple-600, text-orange-600, bg-blue-100, bg-green-100, bg-purple-100) instead of the shared editorial CSS custom properties. The page background is bg-gray-50 instead of bg-[var(--paper)]. No reference to --ink, --paper, --accent, --secondary, --muted, or --border anywhere in the file.",
+          "files_affected": [
+            "src/app/product-agent/page.tsx"
+          ],
+          "shared_component": false,
+          "fix_approach": "Replace bg-gray-50 with bg-[var(--paper)], text-gray-900 with text-[var(--ink)], text-gray-600 with text-[var(--muted)]. Replace the blue/green/purple/orange stat colours with var(--secondary) and var(--accent). Replace card shadow-md with a border border-[var(--border)] approach consistent with the editorial style."
+        },
+        {
+          "id": "pa-002",
+          "severity": "P1",
+          "type": "typography",
+          "description": "The page h1 (Product Agent) uses text-4xl font-bold text-gray-900 via Tailwind, which renders in DM Sans (inherited from body) at a non-editorial font size. The shared system requires h1 elements to use Cormorant Garamond (font-display class) at 3.5rem with font-weight 300 per globals.css. The page typography is completely mismatched from the editorial look of the rest of the app.",
+          "files_affected": [
+            "src/app/product-agent/page.tsx"
+          ],
+          "shared_component": false,
+          "fix_approach": "Add the font-display class to the h1 element and remove conflicting Tailwind text-size/font-weight classes. Use text-[var(--secondary)] for section h2 headings consistent with globals.css h2 styling."
+        },
+        {
+          "id": "pa-003",
+          "severity": "P1",
+          "type": "design",
+          "description": "The 'Ready to Get Started?' CTA section uses bg-gradient-to-r from-blue-500 to-purple-600 — a blue-to-purple gradient with no relationship to the editorial colour system. All other gradient headers in the app use from-[var(--secondary)] to-[#1a2332] (dark navy gradient). The button within uses bg-white text-blue-600, which will also be mismatched.",
+          "files_affected": [
+            "src/app/product-agent/page.tsx"
+          ],
+          "shared_component": false,
+          "fix_approach": "Replace from-blue-500 to-purple-606 with from-[var(--secondary)] to-[#1a2332]. Update button text colour from text-blue-600 to text-[var(--secondary)]."
+        },
+        {
+          "id": "pa-004",
+          "severity": "P0",
+          "type": "broken_link",
+          "description": "The page contains two navigation links to routes that do not exist: /product-agent/submit-request (Submit Request button) and /product-agent/backlog (View Backlog button). Clicking these will produce a 404 in the Next.js app. The test-analysis sub-page references /product-agent/backlog as a 'View Product Backlog' link also. Only the /product-agent/test-analysis sub-route has an implemented page.tsx.",
+          "files_affected": [
+            "src/app/product-agent/page.tsx",
+            "src/app/product-agent/test-analysis/page.tsx"
+          ],
+          "shared_component": false,
+          "fix_approach": "Either implement the missing sub-pages or disable/remove the links pointing to unimplemented routes until they are built. Consider marking them as 'Coming Soon' with disabled button styling."
+        }
+      ]
+    },
+    {
+      "page": "/product-agent/test-analysis",
+      "screenshot": "tests/screenshots/product-agent-test-analysis.png",
+      "crashed": false,
+      "is_user_facing": false,
+      "uses_shared_nav": true,
+      "uses_design_tokens": false,
+      "notes": "NavBar is present via layout.tsx. The screenshot shows the pre-analysis configuration state (form not yet submitted). Visually the page uses the same Tailwind gray/blue colour scheme as the parent product-agent page, inconsistent with the editorial design system. The back link uses text-blue-600 instead of the editorial link style. The page is labeled as a 'test environment' in its own UI copy, confirming this is primarily a dev/internal tool.",
+      "issues": [
+        {
+          "id": "ta-001",
+          "severity": "P1",
+          "type": "design",
+          "description": "Same systematic design token violation as the parent product-agent page: all styling uses Tailwind semantic grays and blues (bg-gray-50, text-gray-900, bg-blue-600, border-gray-300 etc.) with zero editorial CSS variable usage.",
+          "files_affected": [
+            "src/app/product-agent/test-analysis/page.tsx"
+          ],
+          "shared_component": false,
+          "fix_approach": "Apply the same token-replacement remediation as pa-001. Replace gray/blue Tailwind classes with editorial tokens throughout."
+        },
+        {
+          "id": "ta-002",
+          "severity": "P1",
+          "type": "typography",
+          "description": "H1 'Test Analysis' in the screenshot renders in Cormorant Garamond (serif) — this appears correct. However, inspection of the source shows the h1 is styled with Tailwind class text-4xl font-bold text-gray-900. The serif rendering is actually coming from the global h1 rule in globals.css overriding Tailwind's font-family. This is a fragile dependency: if Tailwind's preflight or specificity rules change, the heading could revert to DM Sans. The font-weight should be 300 (globals.css) but Tailwind font-bold applies 700, creating a specificity conflict.",
+          "files_affected": [
+            "src/app/product-agent/test-analysis/page.tsx"
+          ],
+          "shared_component": false,
+          "fix_approach": "Explicitly add the font-display class and remove font-bold from the h1. Use font-light or font-[300] to honour the editorial 3.5rem/light-weight h1 specification."
+        },
+        {
+          "id": "ta-003",
+          "severity": "P1",
+          "type": "design",
+          "description": "The PRD generation progress banner and 'Next Steps' CTA section use bg-gradient-to-r from-blue-600 to-purple-600, same off-brand blue-purple gradient as the parent page. The 'Run Analysis' button uses bg-blue-600 instead of var(--accent) or var(--secondary).",
+          "files_affected": [
+            "src/app/product-agent/test-analysis/page.tsx"
+          ],
+          "shared_component": false,
+          "fix_approach": "Replace blue-purple gradient with from-[var(--secondary)] to-[#1a2332]. Replace bg-blue-600 CTA buttons with bg-[var(--accent)] or bg-[var(--secondary)]."
+        },
+        {
+          "id": "ta-004",
+          "severity": "P2",
+          "type": "classification",
+          "description": "The page UI copy explicitly states 'This is a test environment. Analysis will scan your real customer data but won't publish PRDs to production.' This should be classified as an internal/developer-facing page and not linked from a primary navigation item or user-facing route without appropriate access controls.",
+          "files_affected": [
+            "src/app/product-agent/test-analysis/page.tsx"
+          ],
+          "shared_component": false,
+          "fix_approach": "Add environment-based gating or move under a dev-only route prefix. Alternatively, rebrand as a proper 'Run Analysis' feature if it is intended to be user-facing, removing the 'test environment' language."
+        }
+      ]
+    },
+    {
+      "page": "/test-dm-tracker",
+      "screenshot": "tests/screenshots/test-dm-tracker.png",
+      "crashed": false,
+      "is_user_facing": false,
+      "uses_shared_nav": false,
+      "uses_design_tokens": false,
+      "notes": "This is clearly a developer test page. It renders the DMTracker component in a custom blue-gradient test harness with no shared NavBar (the file does not import NavBar, and the layout.tsx NavBar IS rendered — visible in screenshot at top — but the page replaces the visual header with its own gradient header styled with hardcoded #1e3c72/#2a5298 colours). The page file comment explicitly says 'Test page for DM Tracker component'. It should not be a production-accessible route.",
+      "issues": [
+        {
+          "id": "tdmt-001",
+          "severity": "P1",
+          "type": "design",
+          "description": "Page uses completely custom inline styling with hardcoded hex colours #1e3c72 and #2a5298 for its gradient background and header — colours not present in either the editorial design system or the dm-strategy custom system. The page also hard-codes fontFamily to a system font stack, overriding the DM Sans body font from globals.css.",
+          "files_affected": [
+            "src/app/test-dm-tracker/page.tsx"
+          ],
+          "shared_component": false,
+          "fix_approach": "If this page is to remain, replace all hardcoded colours with editorial CSS variables and remove the inline font-family override. If it is purely a dev/test scaffold, remove it from the production route tree."
+        },
+        {
+          "id": "tdmt-002",
+          "severity": "P1",
+          "type": "design",
+          "description": "The page creates a custom standalone white-card container with its own header section that duplicates the visual role of the shared NavBar. The shared NavBar from layout.tsx IS still rendered above (visible in screenshot), creating two visual header bands — the shared NavBar at the top, and the page's custom gradient header card below it. This is visually incoherent.",
+          "files_affected": [
+            "src/app/test-dm-tracker/page.tsx"
+          ],
+          "shared_component": false,
+          "fix_approach": "Remove the custom header <header> element from the page entirely and rely on the shared NavBar and a standard editorial page-title h1 instead."
+        },
+        {
+          "id": "tdmt-003",
+          "severity": "P2",
+          "type": "classification",
+          "description": "Route /test-dm-tracker is publicly accessible in production with no authentication or environment gating. The page name, inline comment ('Test page for DM Tracker component'), and double-header visual glitch all confirm this is a developer scaffold that was never cleaned up. It should be removed or gated.",
+          "files_affected": [
+            "src/app/test-dm-tracker/page.tsx"
+          ],
+          "shared_component": false,
+          "fix_approach": "Delete the route entirely, or conditionally render it only when NODE_ENV === 'development'. Remove any navigation links that could surface this page to end users."
+        }
+      ]
+    }
+  ]
+}

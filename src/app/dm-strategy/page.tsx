@@ -59,18 +59,19 @@ export default async function DMStrategyPage() {
       <div className="max-w-7xl mx-auto px-6 py-4">
         <Link
           href="/dm-strategy/trends"
-          className="block bg-gradient-to-r from-[var(--secondary)] to-[#1a2332] text-white p-4 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
+          className="block bg-gradient-to-r from-[var(--secondary)] to-[#1a2332] p-4 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
+          style={{ color: '#FFFFFF', textDecoration: 'none' }}
         >
           <div className="flex items-center justify-between">
             <div>
-              <h3 className="text-lg font-semibold mb-1">
+              <h3 style={{ color: '#FFFFFF', fontWeight: 600, fontSize: '1.125rem', marginBottom: '0.25rem' }}>
                 View 12-Month DM% Trend Charts
               </h3>
-              <p className="text-sm opacity-90">
+              <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '0.875rem' }}>
                 Visualize retention trends with interactive charts for each business unit
               </p>
             </div>
-            <span className="text-3xl">→</span>
+            <span style={{ color: '#FFFFFF', fontSize: '1.5rem' }}>→</span>
           </div>
         </Link>
       </div>

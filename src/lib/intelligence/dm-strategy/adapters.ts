@@ -25,14 +25,18 @@ import { classifyDMScenario, checkThresholdViolations } from './analyzer'
  * Map backend BU names to frontend BusinessUnit enum
  */
 function mapBusinessUnit(bu: string): BusinessUnit {
-  // Normalize to handle variations
-  const normalized = bu.trim()
+  const n = bu.trim().toLowerCase()
 
-  if (normalized.toLowerCase().includes('cloudsense')) return 'Cloudsense'
-  if (normalized.toLowerCase().includes('kandy')) return 'Kandy'
-  if (normalized.toLowerCase().includes('stl')) return 'STL'
+  if (n.includes('cloudsense')) return 'Cloudsense'
+  if (n.includes('kandy')) return 'Kandy'
+  if (n === 'stl' || n.includes('software technology')) return 'STL'
+  if (n.includes('newnet') || n === 'new net') return 'NewNet'
+  if (n.includes('voltdelta') || n === 'volt delta') return 'voltDelta'
+  if (n.includes('service gateway')) return 'Service Gateway'
+  if (n.includes('mobilogy')) return 'Mobilogy'
+  if (n.includes('peerapp')) return 'Peerapp'
+  if (n.includes('responsetek')) return 'Responsetek'
 
-  // Default to first BU if unrecognized (shouldn't happen with real data)
   console.warn(`[Adapter] Unrecognized BU: "${bu}", defaulting to Cloudsense`)
   return 'Cloudsense'
 }
@@ -45,6 +49,12 @@ function getBUColor(bu: BusinessUnit): string {
     Cloudsense: '#0066A1',
     Kandy: '#00B8D4',
     STL: '#27AE60',
+    NewNet: '#7C3AED',
+    voltDelta: '#EA580C',
+    'Service Gateway': '#0891B2',
+    Mobilogy: '#BE185D',
+    Peerapp: '#15803D',
+    Responsetek: '#B45309',
   }
   return colorMap[bu]
 }

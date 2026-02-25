@@ -5,7 +5,7 @@ export type { DMScenarioKey, DMThresholdViolation };
 
 export type Priority = 'critical' | 'high' | 'medium' | 'low';
 
-export type BusinessUnit = 'Cloudsense' | 'Kandy' | 'STL';
+export type BusinessUnit = 'Cloudsense' | 'Kandy' | 'STL' | 'NewNet' | 'voltDelta' | 'Service Gateway' | 'Mobilogy' | 'Peerapp' | 'Responsetek';
 
 export type RecommendationStatus = 'pending' | 'accepted' | 'deferred' | 'in_progress' | 'completed';
 

@@ -1,0 +1,425 @@
+{
+  "agent": "B",
+  "reference": "Telstra_Account_Plan_Interactive.html",
+  "pages": [
+    {
+      "page": "/accounts/[name]",
+      "screenshot": "tests/screenshots/account-plan-bt.png",
+      "crashed": true,
+      "crash_description": "The screenshot for British Telecommunications shows a 'Page not found' 404 error rendered by the app's not-found component. The account plan page did not load at all. The customer name lookup in getAllCustomersWithHealth() returned no match, triggering the notFound() call in page.tsx line 86. This is the highest-severity issue: the entire page is non-functional for at least one real account.",
+      "issues": [
+        {
+          "id": "acct-000",
+          "severity": "P0",
+          "type": "crash",
+          "tab": "all",
+          "description": "The account plan page for 'British Telecommunications' crashes with a 404 Page Not Found. The page.tsx calls notFound() when the customer name lookup fails (line 86). This means either: (1) the URL-encoded name does not match any customer_name in the data layer with case-insensitive comparison, or (2) 'British Telecommunications' does not exist in the customer dataset at all. The Playwright test navigated to this URL and received a 404, confirming the route is broken.",
+          "files_affected": [
+            "src/app/accounts/[name]/page.tsx"
+          ],
+          "shared_component": false,
+          "telstra_reference": "Telstra reference renders fully with all tabs, hero header, stat cards, and tab content. No 404 scenario exists.",
+          "fix_approach": "Investigate why 'British Telecommunications' does not resolve in getAllCustomersWithHealth(). Check for name normalization issues (e.g., 'BT' vs 'British Telecommunications'), URL encoding mismatches, or missing data. Add fuzzy matching or ensure the test fixture data matches what the route expects."
+        },
+        {
+          "id": "acct-001",
+          "severity": "P1",
+          "type": "visual",
+          "tab": "hero-header",
+          "description": "The hero header gradient direction differs from the Telstra reference. The implementation uses 'bg-gradient-to-br' (135deg to bottom-right) matching the reference's 'linear-gradient(135deg, var(--secondary) 0%, #1a2332 100%)'. This is actually consistent. However, the Telstra reference adds a decorative SVG grid overlay pattern via a CSS ::before pseudo-element (a subtle grid of white lines at 3% opacity covering the right 60% of the header). The current implementation has no such texture overlay, making the header look flatter.",
+          "files_affected": [
+            "src/app/accounts/[name]/page.tsx"
+          ],
+          "shared_component": false,
+          "telstra_reference": ".header::before { content: ''; position: absolute; top: 0; right: 0; width: 60%; height: 100%; background: SVG grid pattern; opacity: 0.5; } — creates a subtle geometric texture on the header background.",
+          "fix_approach": "Add a ::before or a child div with the SVG grid pattern as a background-image, positioned absolute within the hero header div, width 60%, height 100%, right 0, opacity 0.5, pointer-events none."
+        },
+        {
+          "id": "acct-002",
+          "severity": "P1",
+          "type": "missing-feature",
+          "tab": "hero-header",
+          "description": "The Telstra reference hero has 4 stat cards showing: 'Total ARR', 'Account Rank', 'Health Score', and 'Champion Status'. Our implementation shows: 'Total Revenue', 'Recurring Revenue', 'Non-Recurring Revenue', and 'Health Score'. Two key metrics are missing entirely: (1) Account Rank is not shown in the hero — it exists in data (customer.rank) but is not surfaced as a stat card. (2) 'Champion Status' / relationship risk signal is completely absent. Additionally the reference stat cards show a '.stat-change' sub-label below the value (e.g., '8.3% of Cloudsense', 'Largest Customer', 'Nathan Bell Departed'). Our cards have no sub-labels.",
+          "files_affected": [
+            "src/app/accounts/[name]/page.tsx"
+          ],
+          "shared_component": false,
+          "telstra_reference": "4 stat cards: Total ARR ($2.18M + '8.3% of Cloudsense'), Account Rank (#1 + 'Largest Customer'), Health Score (7.5/10 + 'Medium-High'), Champion Status ('AT RISK' + 'Nathan Bell Departed'). Each card has a .stat-change secondary line.",
+          "fix_approach": "Replace the current 4 stat cards with: ARR (computed from RR*4), Account Rank (#N with 'Top N% of customers' sub-label), Health Score (with qualitative label), and a 4th card from account plan data (champion status or renewal date). Add a sub-label row to each stat card."
+        },
+        {
+          "id": "acct-003",
+          "severity": "P2",
+          "type": "visual",
+          "tab": "hero-header",
+          "description": "The Telstra reference stat cards use backdrop-filter: blur(10px) on the glass cards (rgba(255,255,255,0.08) background + blur). The current implementation uses bg-white/10 without any backdrop blur, so the glass effect is absent. The reference also has border-radius: 4px on stat cards; the implementation uses the default Tailwind 'rounded' which is also 4px — this matches. The Telstra stat value font-size is 2rem with Cormorant Garamond weight 600. The implementation uses text-2xl (1.5rem) which is smaller than the reference's 2rem.",
+          "files_affected": [
+            "src/app/accounts/[name]/page.tsx"
+          ],
+          "shared_component": false,
+          "telstra_reference": ".stat-card { background: rgba(255,255,255,0.08); backdrop-filter: blur(10px); } .stat-value { font-size: 2rem; font-family: Cormorant Garamond; font-weight: 600; }",
+          "fix_approach": "Add backdrop-blur-sm (or inline style backdrop-filter: blur(10px)) to stat card divs. Upgrade stat value text size from text-2xl to a custom text-[2rem] or text-3xl to better match the reference's 2rem sizing."
+        },
+        {
+          "id": "acct-004",
+          "severity": "P1",
+          "type": "visual",
+          "tab": "hero-header",
+          "description": "The Telstra reference subtitle line ('CloudSense Business Unit | Skyvera | Q1 2026') is a standalone text element below the h1, styled at 1.1rem opacity 0.85, and the period separator is plain text '|'. The current implementation uses a flex row with Badge components and pipe characters. The Badge component wraps the BU name in a pill/chip, which is visually inconsistent with the reference's plain text subtitle style. The HealthIndicator component is also used inline in the subtitle, whereas the reference shows health only in the stat card row.",
+          "files_affected": [
+            "src/app/accounts/[name]/page.tsx"
+          ],
+          "shared_component": false,
+          "telstra_reference": "<div class='subtitle'>CloudSense Business Unit | Skyvera | Q1 2026</div> — plain text, no badges, font-size 1.1rem, opacity 0.85.",
+          "fix_approach": "Replace the Badge and HealthIndicator in the subtitle with a plain text string formatted as '{BU} Business Unit | Skyvera | Q1 2026' using opacity-85 text styling. Move health indicator display to the stat card only."
+        },
+        {
+          "id": "acct-005",
+          "severity": "P2",
+          "type": "visual",
+          "tab": "tab-navigation",
+          "description": "The Telstra reference nav-tab active state uses background: var(--paper) (#fafaf8, the warm off-white) for the active tab. The current implementation uses bg-accent/5 for the active tab background, which is a light terracotta tint — not the paper color. The reference's active tab blends into the page background (paper), creating a seamless visual connection. Additionally the reference nav container is max-width: 1400px with padding: 0 2rem, while the implementation uses px-8 (32px) — consistent, but the reference's nav is a full-width container div with inner max-width, while the implementation wraps just the nav list.",
+          "files_affected": [
+            "src/app/accounts/[name]/_components/tab-navigation.tsx"
+          ],
+          "shared_component": false,
+          "telstra_reference": ".nav-tab.active { color: var(--accent); border-bottom-color: var(--accent); background: var(--paper); } — active tab background is paper (#fafaf8), not a tinted accent.",
+          "fix_approach": "Change the active tab background from 'bg-accent/5' to 'bg-paper' (or 'bg-[var(--paper)]') so it matches the reference's paper-background active tab."
+        },
+        {
+          "id": "acct-006",
+          "severity": "P2",
+          "type": "visual",
+          "tab": "tab-navigation",
+          "description": "The Telstra reference tab labels are: '📊 Overview', '👔 Key Executives', '🏢 Org Structure', '💡 Pain Points', '⚔️ Competitive', '📋 Action Plan', '💰 Financial'. The implementation has 7 tabs but with different labels and a different tab for 'intelligence': '📊 Overview', '🏢 Organization', '💡 Strategy & Pain Points', '⚔️ Competitive', '📋 Action Plan', '💰 Financial', '🔍 Intelligence'. The reference has 'Key Executives' as a separate tab from 'Org Structure', whereas we combine them into one 'Organization' tab. The reference has NO Intelligence tab — that data is inline in the overview. Our 'Intelligence' tab replaces something that doesn't exist in the reference.",
+          "files_affected": [
+            "src/app/accounts/[name]/_components/tab-navigation.tsx"
+          ],
+          "shared_component": false,
+          "telstra_reference": "7 tabs: 📊 Overview, 👔 Key Executives, 🏢 Org Structure, 💡 Pain Points, ⚔️ Competitive, 📋 Action Plan, 💰 Financial. The Intelligence/news content is not a separate tab.",
+          "fix_approach": "Consider splitting Organization into 'Key Executives' and 'Org Structure' tabs to match reference. Rename 'Strategy & Pain Points' to '💡 Pain Points'. Consider absorbing Intelligence content into the Overview tab or a sidebar. Tab label copy and emoji should match reference exactly."
+        },
+        {
+          "id": "acct-007",
+          "severity": "P1",
+          "type": "missing-feature",
+          "tab": "overview",
+          "description": "The Telstra reference Overview tab includes two Chart.js charts: 'ARR by Entity' (doughnut chart) and 'Customer Concentration' (pie chart). These are prominent visual elements taking up a full 2-column grid row in the overview. The current implementation has no charts whatsoever in the Overview tab — it shows only KPI boxes, an Account Summary card, Quick Intelligence card, and Health Factors card. The chart library (Chart.js) is referenced in the Telstra HTML but not imported anywhere in the implementation.",
+          "files_affected": [
+            "src/app/accounts/[name]/_components/overview-tab.tsx"
+          ],
+          "shared_component": false,
+          "telstra_reference": "Two chart cards in the overview: canvas#overviewEntityChart (doughnut: ARR split by entity/subscription) and canvas#overviewConcentrationChart (pie: customer concentration vs. rest of base). Both inside .grid.grid-2 with .chart-container height: 350px.",
+          "fix_approach": "Add a Chart.js (or recharts/visx) chart section to overview-tab.tsx below the Account Summary grid. Implement an ARR-by-subscription doughnut and a concentration pie using customer.subscriptions data."
+        },
+        {
+          "id": "acct-008",
+          "severity": "P2",
+          "type": "visual",
+          "tab": "overview",
+          "description": "The Telstra reference 'Keys to Success' section renders the 3 priority metric-boxes inside a .card wrapper with an h2 heading using font-display 'Cormorant Garamond'. Our implementation wraps these in a Card component which is correct, but the metric-box items in the reference do NOT use border-left-3 on the box itself; instead the metric-box has only a left border via CSS class. The implementation uses bg-highlight/50 p-4 border-l-3 border-accent, which is close. However, the reference metric-box value font size is 1.3rem (overriding the default 1.8rem) for the priority text, making the priority label the same size as descriptive text. Our implementation uses font-display text-base (1rem) which is smaller. Also the reference priority label div uses class 'label' (uppercase, 0.85rem, --muted color) while we use text-xs uppercase tracking-wider text-muted font-bold — this is roughly equivalent.",
+          "files_affected": [
+            "src/app/accounts/[name]/_components/overview-tab.tsx"
+          ],
+          "shared_component": false,
+          "telstra_reference": ".metric-box .value { font-size: 1.8rem; font-family: Cormorant Garamond; color: var(--secondary); } — but for Keys to Success items the value style is overridden to font-size: 1.3rem inline. The box has border-left: 3px solid var(--accent) and background: var(--highlight).",
+          "fix_approach": "Increase the priority value text size from text-base to approximately text-[1.3rem] (or text-xl) within the Keys to Success cards."
+        },
+        {
+          "id": "acct-009",
+          "severity": "P1",
+          "type": "missing-feature",
+          "tab": "overview",
+          "description": "The Telstra reference Overview tab contains a 'Risk & Opportunity Summary' card alongside the Account Status card. This card has two sections: 'Top Risks' (in var(--critical) color) with a bulleted list, and 'Top Opportunities' (in var(--success) color) with a bulleted list. The current implementation has no Risk & Opportunity Summary section in the Overview tab. It only shows an Account Summary card and a Quick Intelligence card. The Quick Intelligence card shows raw markdown text instead of structured risk/opportunity content.",
+          "files_affected": [
+            "src/app/accounts/[name]/_components/overview-tab.tsx"
+          ],
+          "shared_component": false,
+          "telstra_reference": "<div class='card'><h2>Risk & Opportunity Summary</h2> <h3 style='color: var(--critical)'>Top Risks</h3> <ul>...</ul> <h3 style='color: var(--success)'>Top Opportunities</h3> <ul>...</ul></div> — structured two-section card with color-coded risk/opportunity lists.",
+          "fix_approach": "Replace or augment the Quick Intelligence card with a Risk & Opportunity Summary card. Use accountData.strategy.painPoints for risks and accountData.strategy.opportunities for opportunities. Display top 3 of each with color-coded headings."
+        },
+        {
+          "id": "acct-010",
+          "severity": "P2",
+          "type": "visual",
+          "tab": "overview",
+          "description": "The Telstra reference alert banner has 'margin: -1rem 0 3rem' applied, meaning it pulls up slightly into the container padding and creates a flush top edge effect. The current implementation uses the default Card/div spacing inside the space-y-6 container. The reference alert banner is not rounded (no border-radius), it is a rectangular full-width strip. The current implementation adds 'rounded' and 'shadow-lg' to the alert div which creates a different aesthetic — the reference is sharp-edged with only a left border.",
+          "files_affected": [
+            "src/app/accounts/[name]/_components/overview-tab.tsx"
+          ],
+          "shared_component": false,
+          "telstra_reference": ".alert-banner { background: linear-gradient(135deg, var(--critical) 0%, #c62828 100%); padding: 1.5rem 2rem; margin: -1rem 0 3rem; border-left: 4px solid #8b1a1a; box-shadow: 0 4px 12px rgba(197,75,49,0.2); } — no border-radius, sharp rectangular edges.",
+          "fix_approach": "Remove 'rounded' from the alert banner div. Add negative top margin to pull it closer to the tab bar. Remove shadow-lg or replace with the reference's specific box-shadow value."
+        },
+        {
+          "id": "acct-011",
+          "severity": "P2",
+          "type": "visual",
+          "tab": "overview",
+          "description": "The overview KPI cards in our implementation use 'bg-highlight' (var(--highlight) = #ecdbba warm tan) as the background with 'card-hover animate-fade-in' classes. The Telstra reference KPI equivalents use the .metric-box pattern (also var(--highlight) background and border-left accent) which is consistent. However, our KPI card includes an excessive translateY(-4px) hover animation via the card-hover class which is more aggressive than the reference's subtle translateY(-2px) card hover on .card elements. More critically, the KPI health card uses a colored pill badge rather than displaying the score as a number (e.g. '7.5/10' as shown in the Telstra reference).",
+          "files_affected": [
+            "src/app/accounts/[name]/_components/overview-tab.tsx"
+          ],
+          "shared_component": false,
+          "telstra_reference": "Health Score stat card in the hero shows '7.5/10' as a numeric value with a qualitative label 'Medium-High' below it — not a colored badge pill.",
+          "fix_approach": "Display health score numerically in the KPI card (e.g. compute a numeric score from the string value, or show the raw percentage). Reserve the colored pill pattern for inline badges, not for the primary KPI metric display."
+        },
+        {
+          "id": "acct-012",
+          "severity": "P1",
+          "type": "missing-feature",
+          "tab": "organization",
+          "description": "The Telstra reference has TWO organization-related tabs: 'Key Executives' (👔) and 'Org Structure' (🏢). Key Executives shows: (1) a 2x2 Decision Maker/Influencer matrix with 4 quadrants (Supporter DM, Detractor DM, Supporter Influencer, Detractor Influencer) using color-coded quadrant borders, (2) expandable accordion cards for each executive with Profile table and Strategic Context/Key Message callout blocks, (3) a 'Relationship Actions - Next 30/60/90 Days' data table. The current implementation combines everything into a single 'Organization' tab that shows only the tree-based org chart with StakeholderCards. The executive detail accordions, the 2x2 decision matrix, and the relationship actions table are entirely absent.",
+          "files_affected": [
+            "src/app/accounts/[name]/_components/organization-tab.tsx",
+            "src/app/accounts/[name]/_components/stakeholder-card.tsx",
+            "src/app/accounts/[name]/_components/tab-navigation.tsx"
+          ],
+          "shared_component": false,
+          "telstra_reference": "Key Executives tab has: .decision-matrix (4-quadrant grid, 200px min-height each, color-coded borders for supporter/detractor x DM/influencer), .expandable accordion per executive (open/collapsed, with profile table + strategic context + key message highlight block), and a data-table for relationship actions with 30/60/90 day timeline badges.",
+          "fix_approach": "Split Organization into two tabs. Add a Key Executives tab that implements: the 2x2 decision matrix using stakeholder.role and a supporterOrDetractor field, expandable accordion sections per stakeholder with profile details and a key message callout, and a relationship actions table. Keep the tree chart in a separate Org Structure tab."
+        },
+        {
+          "id": "acct-013",
+          "severity": "P2",
+          "type": "visual",
+          "tab": "organization",
+          "description": "The Telstra reference org chart uses .org-node boxes with a fixed min-width: 250px, border: 2px solid var(--secondary), and box-shadow: 0 2px 8px rgba(0,0,0,0.1). The CEO node uses border-color: var(--accent) with a gradient background (accent tint). 'Target' nodes use border-color: var(--success) with border-width: 3px. Below each node title (.org-node-title, font-weight 700, --secondary color) is an .org-node-name in small --muted text. Our StakeholderCard uses border-l-4 border-l-accent (left-only accent border) on a w-64 card. This differs from the reference's full-perimeter secondary-colored border. The reference org nodes are display: inline-block, arranged in horizontal rows per level. Our implementation uses indentation (paddingLeft per level) which creates a different visual hierarchy.",
+          "files_affected": [
+            "src/app/accounts/[name]/_components/organization-tab.tsx",
+            "src/app/accounts/[name]/_components/stakeholder-card.tsx"
+          ],
+          "shared_component": false,
+          "telstra_reference": ".org-node { background: white; border: 2px solid var(--secondary); min-width: 250px; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); display: inline-block; } .org-node-title { font-weight: 700; color: var(--secondary); font-size: 1.1rem; } — arranged in horizontal grid rows per organizational level.",
+          "fix_approach": "Change OrganizationTab to render stakeholders in horizontal grid rows per level (display grid, not indented list). Update StakeholderCard to use a full border (border-2 border-secondary) instead of left-border-only. The role badge and left accent border pattern should be preserved for the exec card in the Key Executives tab, but the org node in the Org Chart tab should match the reference's full-border style."
+        },
+        {
+          "id": "acct-014",
+          "severity": "P1",
+          "type": "missing-feature",
+          "tab": "strategy",
+          "description": "The Telstra reference 'Pain Points' tab renders a full data-table with columns: Identified Pain, Customer Owner, Urgency, Budget?, CloudSense Solution, Next Action — all within a single wide table, not a two-column card grid. Below the table is a 'Strategic Initiatives (2025-2026)' section with 4 cards in a grid-2 layout. Our StrategyTab renders pain points as individual card components in a two-column grid with severity badge and owner, but lacks: (1) the Owner field display, (2) a Budget column, (3) a CloudSense Solution field, (4) a Next Action field with badge, and (5) the Strategic Initiatives section entirely. Opportunities are present but the reference has no separate 'Opportunities' section — instead it uses the pain point table's 'CloudSense Solution' and 'Next Action' columns to imply the same.",
+          "files_affected": [
+            "src/app/accounts/[name]/_components/strategy-tab.tsx"
+          ],
+          "shared_component": false,
+          "telstra_reference": "Pain Points tab uses a .data-table with 6 columns (Identified Pain, Customer Owner, Urgency badge, Budget badge, CloudSense Solution, Next Action badge+date). Below: Strategic Initiatives section with 4 cards (Connected Future 30, Enterprise Reset, NAS Product Rationalization, Accenture AI Hub).",
+          "fix_approach": "Add a tabular pain point view option or replace the card grid with a data-table matching the reference's 6-column layout. Extend the PainPoint data model to include budget, solution, and nextAction fields. Add a 'Strategic Initiatives' section below the pain points table using opportunity data or a new strategicInitiatives data field."
+        },
+        {
+          "id": "acct-015",
+          "severity": "P2",
+          "type": "visual",
+          "tab": "strategy",
+          "description": "The empty-state panels in StrategyTab use hard-coded Tailwind color classes (bg-slate-50, border-slate-200, text-slate-600) instead of the design token classes (bg-highlight, border-[var(--border)], text-muted). This breaks the editorial theme consistency. The same issue exists in CompetitiveTab empty states.",
+          "files_affected": [
+            "src/app/accounts/[name]/_components/strategy-tab.tsx",
+            "src/app/accounts/[name]/_components/competitive-tab.tsx"
+          ],
+          "shared_component": false,
+          "telstra_reference": "All empty states in the Telstra reference use the design token colors (--paper, --border, --muted) consistently. No raw Tailwind slate- classes appear.",
+          "fix_approach": "Replace all bg-slate-*, border-slate-*, text-slate-* classes in strategy-tab.tsx and competitive-tab.tsx with design token equivalents: bg-highlight, border-[var(--border)], text-muted, text-ink."
+        },
+        {
+          "id": "acct-016",
+          "severity": "P1",
+          "type": "missing-feature",
+          "tab": "competitive",
+          "description": "The Telstra reference Competitive tab contains 4 distinct sections: (1) CPQ Competitors at Telstra — a 6-column data table (Competitor, Threat Level, Key Customer Sponsor, Risk, How We Differentiate, Next Action), (2) CloudSense Competitive Advantages — a metrics-grid of 6 advantage boxes, (3) Defensive Strategy — an ordered list of 5 strategic actions, (4) Competitive Risk Timeline — a 5-column risk table (Risk Event, Probability, Impact, Timing, Mitigation). The current implementation shows only competitor cards split into two columns (Our Competitors vs. Customer's Market Rivals) plus a summary count card. The entire table-based competitive analysis, advantage grid, defensive strategy, and risk timeline sections are absent.",
+          "files_affected": [
+            "src/app/accounts/[name]/_components/competitive-tab.tsx"
+          ],
+          "shared_component": false,
+          "telstra_reference": "Competitive tab has 4 major sections all using .card wrapper: (1) 6-col competitor threat table with badge-coded threat levels, (2) metrics-grid with 6 .metric-box advantage descriptions, (3) numbered defensive strategy list, (4) risk timeline 5-col table with probability/impact badges.",
+          "fix_approach": "Extend CompetitiveTab to render a data-table view for competitors (with Threat Level, Sponsor, Risk, Differentiation, Next Action columns). Add a Competitive Advantages metrics-grid section below. Add Defensive Strategy and Risk Timeline sections. Extend the Competitor data type to include threatLevel, customerSponsor, risk, differentiation, nextAction fields."
+        },
+        {
+          "id": "acct-017",
+          "severity": "P2",
+          "type": "visual",
+          "tab": "competitive",
+          "description": "Competitor cards in the current implementation use bg-white border-[var(--border)] rounded p-4 shadow-sm, which is consistent with the design system but the header section lacks the accent top border sweep animation (.card::before pseudo-element that scales from 0 to 1 on hover). The Telstra reference .card has a gradient top-border sweep on hover (accent to secondary, 3px, scaleX from 0 to 1). This micro-interaction is defined in globals.css but is not applied to competitor cards or any cards in the account plan components.",
+          "files_affected": [
+            "src/app/accounts/[name]/_components/competitive-tab.tsx",
+            "src/app/globals.css"
+          ],
+          "shared_component": true,
+          "telstra_reference": ".card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, var(--accent), var(--secondary)); transform: scaleX(0); transform-origin: left; transition: transform 0.6s ease; } .card:hover::before { transform: scaleX(1); }",
+          "fix_approach": "Apply the card::before hover animation to the shared Card component in the design system (src/components/ui/card.tsx), or add 'relative overflow-hidden' and the pseudo-element logic to the card wrapper so all account plan cards get the sweep animation automatically."
+        },
+        {
+          "id": "acct-018",
+          "severity": "P1",
+          "type": "missing-feature",
+          "tab": "action-items",
+          "description": "The Telstra reference Action Plan tab uses a vertical center-line timeline for the 30/60/90 day phases — not a Kanban board. The timeline has: a centered vertical line (::before pseudo-element), alternating left/right timeline items (odd=right-aligned, even=left-aligned), each with a circular accent-colored marker, a content block with date header and bulleted action list. Below the timeline is a full data-table with 6 columns (Action, Owner, Target/Outcome, Timeline, Priority, Status). Below that is a 'Key Messages by Stakeholder' section (4 highlight boxes with accent left border) and an 'Escalation Triggers' card. Our implementation renders only a Kanban board (3 columns: To Do, In Progress, Done) with drag-and-drop — which is a functional addition but the reference timeline visualization and the key messages/escalation sections are entirely absent.",
+          "files_affected": [
+            "src/app/accounts/[name]/_components/action-items-tab.tsx",
+            "src/app/accounts/[name]/_components/kanban-column.tsx",
+            "src/app/accounts/[name]/_components/action-card.tsx"
+          ],
+          "shared_component": false,
+          "telstra_reference": "Action Plan tab has: .timeline (centered vertical line, alternating left/right items, accent circle markers) for 30/60/90 day phases, then a 6-col .data-table (Action, Owner, Target, Timeline, Priority, Status) with badge-coded priority/status, then .grid.grid-2 of 4 key message highlight boxes (var(--highlight) bg, accent left border), then an escalation triggers card (border-left: 4px solid var(--critical)).",
+          "fix_approach": "Add a 30/60/90 Day Timeline section above the Kanban board, implemented as a CSS timeline with center line and alternating left/right content boxes. Add Key Messages by Stakeholder section (4 grid highlight boxes). Add Escalation Triggers card below. These can be driven by structured data from the account plan data layer."
+        },
+        {
+          "id": "acct-019",
+          "severity": "P2",
+          "type": "visual",
+          "tab": "action-items",
+          "description": "Kanban column headers in our implementation use font-display text-lg font-semibold text-secondary. The column background is bg-highlight/20. The reference does not have a Kanban; it uses a linear action item list (.action-item) with border-left: 4px solid var(--accent), grid-template-columns: 1fr auto, and a completed state (opacity: 0.6, border-left-color: var(--success)). Our ActionCard uses border border-[var(--border)] without the left accent border that the reference's action items use.",
+          "files_affected": [
+            "src/app/accounts/[name]/_components/action-card.tsx",
+            "src/app/accounts/[name]/_components/kanban-column.tsx"
+          ],
+          "shared_component": false,
+          "telstra_reference": ".action-item { padding: 1.25rem; background: white; border-left: 4px solid var(--accent); box-shadow: 0 2px 4px rgba(0,0,0,0.05); display: grid; grid-template-columns: 1fr auto; } .action-item.completed { opacity: 0.6; border-left-color: var(--success); }",
+          "fix_approach": "Update ActionCard to include a left accent border (border-l-4 border-accent) matching the reference style. For 'done' status cards, apply reduced opacity and switch the left border color to var(--success) to match the reference's completed state."
+        },
+        {
+          "id": "acct-020",
+          "severity": "P1",
+          "type": "missing-feature",
+          "tab": "financials",
+          "description": "The Telstra reference Financial tab contains 5 distinct sections: (1) Contract Summary table with 8 columns including Start/End dates, Growth badge, and Renewal quarter — our table has only 5 columns (Sub ID, ARR, Renewal Quarter, Will Renew, Projected ARR) and is missing Start Date, End Date columns, and does not show a Growth % badge per row. (2) Two Chart.js charts: Revenue Growth Projection (bar chart: Current ARR vs upsell vs full upside) and Top 10 Customers ARR comparison (horizontal bar chart). (3) Strategic Impact Analysis — 6 metric-boxes showing churn impact, concentration %, upsell opportunity, total upside, payment behavior. (4) Expansion Opportunities — 5-column table (Opportunity, Description, Revenue Potential, Probability, Timeline). (5) Telstra Company Overview — 2x2 table grid (Company Profile + Strategic Investments). Sections 2-5 are entirely absent from our implementation.",
+          "files_affected": [
+            "src/app/accounts/[name]/_components/financials-tab.tsx"
+          ],
+          "shared_component": false,
+          "telstra_reference": "Financial tab has 5 sections: contract table (8 cols with totals highlight-row), 2 Chart.js charts (bar charts in .chart-container height:350px), metrics-grid (6 boxes for impact analysis), expansion opportunities table (5 cols with probability badges), and company overview (2x2 data tables). Also uses .highlight-row for total rows: background: rgba(200,75,49,0.08), font-weight: 600.",
+          "fix_approach": "Extend FinancialsTab: add Start Date and End Date columns and a Growth % badge column to the subscriptions table. Add a totals highlight row at the bottom. Add Chart.js charts for ARR growth projection and peer comparison. Add a Strategic Impact Analysis metrics section and an Expansion Opportunities table driven by accountData.strategy.opportunities. Add a Company Overview section."
+        },
+        {
+          "id": "acct-021",
+          "severity": "P2",
+          "type": "visual",
+          "tab": "financials",
+          "description": "The Telstra reference table has a .highlight-row style for total/summary rows: background: rgba(200, 75, 49, 0.08) and font-weight: 600. Our subscriptions table has no total row and no highlight-row pattern. The reference also uses border-collapse: separate with border-spacing: 0 on its data tables, whereas our implementation uses a plain table without explicit border-collapse styling. The reference table font-size is 0.95rem with th padding: 1rem; our implementation uses text-sm (0.875rem) with py-3 px-4 padding — close but smaller.",
+          "files_affected": [
+            "src/app/accounts/[name]/_components/financials-tab.tsx"
+          ],
+          "shared_component": false,
+          "telstra_reference": ".data-table { border-collapse: separate; border-spacing: 0; font-size: 0.95rem; } .data-table th { padding: 1rem; } .data-table td { padding: 1rem; } .highlight-row { background: rgba(200,75,49,0.08); font-weight: 600; }",
+          "fix_approach": "Add a totals/summary row to the subscriptions table with the highlight-row accent background. Apply border-separate and normalize font sizes to 0.95rem on the financial table. Increase cell padding to 1rem to match reference."
+        },
+        {
+          "id": "acct-022",
+          "severity": "P2",
+          "type": "missing-feature",
+          "tab": "intelligence",
+          "description": "The Intelligence tab is not present in the Telstra reference at all — the reference integrates intelligence/news content within the Overview tab via the Risk & Opportunity summary and account status sections. Having a dedicated Intelligence tab is an additive feature. However, within our implementation the intelligence content is rendered as raw whitespace-pre-wrap text (truncated at 2000 chars) in a plain div, with no structured sections for Opportunities, Risks, and Recommendations that a structured IntelligenceReport type would provide. The news timeline is a simple card list, not the alternating left/right .timeline component used in the Action Plan reference.",
+          "files_affected": [
+            "src/app/accounts/[name]/_components/intelligence-tab.tsx"
+          ],
+          "shared_component": false,
+          "telstra_reference": "No Intelligence tab in the reference. Intelligence data is surfaced through the Risk & Opportunity Summary card in the Overview tab and through the strategic context sections of the executive accordion items. News is not displayed as a separate timeline in the reference.",
+          "fix_approach": "If the Intelligence tab is kept as an addition (not in reference), upgrade the content presentation: parse the structured IntelligenceReport fields (opportunities, risks, recommendations) into separate sections with design-token-styled cards. Convert the news feed into the CSS timeline pattern (alternating left/right) matching the Action Plan reference timeline, reusing the same .timeline CSS class."
+        },
+        {
+          "id": "acct-023",
+          "severity": "P3",
+          "type": "visual",
+          "tab": "intelligence",
+          "description": "NewsArticleCard uses hard-coded bg-white border-[var(--border)] and hover:border-accent/30. The empty state uses bg-slate-50 border-slate-200 and text-slate-600/text-slate-500 instead of design token classes. The Lightbulb, AlertTriangle, Target imports from lucide-react are imported in intelligence-tab.tsx but the Lightbulb and Target icons are never actually rendered — dead imports.",
+          "files_affected": [
+            "src/app/accounts/[name]/_components/intelligence-tab.tsx"
+          ],
+          "shared_component": false,
+          "telstra_reference": "N/A — tab not in reference. Apply design system tokens consistently.",
+          "fix_approach": "Remove unused Lightbulb and Target lucide imports. Replace bg-slate-*, text-slate-* in empty states with design token equivalents. The no-intelligence warning panel should use var(--warning) or var(--critical) token consistently."
+        },
+        {
+          "id": "acct-024",
+          "severity": "P3",
+          "type": "visual",
+          "tab": "organization",
+          "description": "OrganizationTab empty state uses hard-coded text-slate-700 and text-slate-500 classes. The 'Roles' and 'Relationship Health' summary cards use bg-white (should be bg-paper or bg-highlight for the editorial theme). The connector lines for the tree hierarchy use hard-coded border-slate-300 instead of border-[var(--border)]. Relationship color dots use hard-coded bg-green-500, bg-amber-500, bg-red-500 instead of the design token success/warning/critical vars.",
+          "files_affected": [
+            "src/app/accounts/[name]/_components/organization-tab.tsx"
+          ],
+          "shared_component": false,
+          "telstra_reference": "All UI elements in the Telstra reference use design token CSS custom properties exclusively — no hard-coded color values except for the specific hex overrides that match the token values.",
+          "fix_approach": "Replace text-slate-700 with text-secondary or text-ink, text-slate-500 with text-muted, border-slate-300 with border-[var(--border)], bg-green-500 with bg-success, bg-amber-500 with bg-warning, bg-red-500 with bg-critical throughout organization-tab.tsx."
+        },
+        {
+          "id": "acct-025",
+          "severity": "P3",
+          "type": "visual",
+          "tab": "strategy",
+          "description": "PainPointCard h3 title uses font-semibold text-ink without font-display. In the Telstra reference, all major card titles and strategic content headings use Cormorant Garamond (font-display). Pain point titles should use font-display for the editorial typographic hierarchy. Same issue in OpportunityCard.",
+          "files_affected": [
+            "src/app/accounts/[name]/_components/strategy-tab.tsx"
+          ],
+          "shared_component": false,
+          "telstra_reference": "All heading-level content in .card elements (h2, h3, strong.action-item-title) uses font-family: Cormorant Garamond via the h1/h2/h3 selector in globals.css. Card section headings within pain point detail cards would inherit this.",
+          "fix_approach": "Add font-display class to PainPointCard h3 (pain point title) and OpportunityCard h3 (opportunity title). This maintains the editorial serif hierarchy for content headings within cards."
+        },
+        {
+          "id": "acct-026",
+          "severity": "P2",
+          "type": "missing-feature",
+          "tab": "action-items",
+          "description": "The 'Key Messages by Stakeholder' section from the Telstra reference Action Plan tab is entirely absent from our implementation. This is a 2x2 grid of highlight boxes (var(--highlight) background, 3px accent left border, h4 heading, message text) — one box per key stakeholder (Oliver, Kim, Michael, Steven in the reference). This section contextualizes WHY each action matters by stakeholder persona.",
+          "files_affected": [
+            "src/app/accounts/[name]/_components/action-items-tab.tsx"
+          ],
+          "shared_component": false,
+          "telstra_reference": "<div class='card'><h3>Key Messages by Stakeholder</h3><div class='grid grid-2'> 4x <div style='padding:1.5rem; background:var(--highlight); border-left:3px solid var(--accent)'><h4>To [Name] ([Role])</h4><p>message text</p></div></div></div>",
+          "fix_approach": "Add a 'Key Messages by Stakeholder' section below the Kanban board (or above it). Drive content from stakeholder data — use the top 4 decision makers/influencers from accountData.stakeholders and populate message context from accountData.strategy or a new keyMessages field."
+        },
+        {
+          "id": "acct-027",
+          "severity": "P2",
+          "type": "missing-feature",
+          "tab": "action-items",
+          "description": "The Escalation Triggers card from the Telstra reference is absent. The reference shows a card with border-left: 4px solid var(--critical), a warning heading, and a bulleted list of 6 trigger conditions that should prompt escalation to leadership.",
+          "files_affected": [
+            "src/app/accounts/[name]/_components/action-items-tab.tsx"
+          ],
+          "shared_component": false,
+          "telstra_reference": "<div class='card' style='border-left: 4px solid var(--critical)'><h3>⚠️ Escalation Triggers to Skyvera Leadership</h3><p>Escalate immediately if...</p><ul> 6 trigger conditions </ul></div>",
+          "fix_approach": "Add an Escalation Triggers card at the bottom of ActionItemsTab. Populate from a new escalationTriggers field in account plan data, or derive from health score / renewal proximity logic."
+        },
+        {
+          "id": "acct-028",
+          "severity": "P3",
+          "type": "visual",
+          "tab": "tab-navigation",
+          "description": "The Telstra reference nav has box-shadow: 0 2px 8px rgba(0,0,0,0.05) on the sticky nav container. The current implementation has shadow-sm (0 1px 2px rgba(0,0,0,0.05)) which is slightly less visible. The reference also applies the max-width and padding to the nav container itself (not just an inner div), making the sticky bar full-width white with centered content. The current implementation wraps only the flex nav inside the max-width div, which is equivalent but the outer sticky div has no explicit background-color specification beyond bg-white — on narrow viewports this is fine but worth verifying.",
+          "files_affected": [
+            "src/app/accounts/[name]/_components/tab-navigation.tsx"
+          ],
+          "shared_component": false,
+          "telstra_reference": ".nav-tabs { box-shadow: 0 2px 8px rgba(0,0,0,0.05); } — the reference uses a slightly stronger shadow than Tailwind's shadow-sm.",
+          "fix_approach": "Replace shadow-sm with shadow-[0_2px_8px_rgba(0,0,0,0.05)] on the sticky nav container to exactly match the reference shadow specification."
+        },
+        {
+          "id": "acct-029",
+          "severity": "P3",
+          "type": "visual",
+          "tab": "all",
+          "description": "The Telstra reference includes a footer: bg-secondary, text-paper, text-align center, padding 2rem, margin-top 4rem, with three lines (Account Plan title, Generated date, Source attribution). The current account plan page has no footer — the tab content ends and the page stops. This omission makes the page feel incomplete.",
+          "files_affected": [
+            "src/app/accounts/[name]/page.tsx"
+          ],
+          "shared_component": false,
+          "telstra_reference": "<div class='footer'><p>Telstra Strategic Account Plan | CloudSense Business Unit | Skyvera</p><p>Generated: February 3, 2026 | Confidential - Internal Use Only</p><p>Source: ...</p></div>",
+          "fix_approach": "Add a footer section at the bottom of the account plan page layout (after the tab content div) with secondary background, paper text, centered, showing the account name, BU, generated date, and a confidentiality notice."
+        },
+        {
+          "id": "acct-030",
+          "severity": "P2",
+          "type": "visual",
+          "tab": "all",
+          "description": "The Telstra reference .card component has a hover state with box-shadow: 0 4px 12px rgba(0,0,0,0.08) and transform: translateY(-2px). The shared Card component in the design system may not implement this. The overview/financials/strategy/competitive tabs all use Card wrapper components — if the shared Card component does not have these hover styles, all cards will lack the micro-interaction that the reference defines. The globals.css defines .card-hover with translateY(-4px) which is more aggressive. The reference uses only -2px lift.",
+          "files_affected": [
+            "src/app/globals.css"
+          ],
+          "shared_component": true,
+          "telstra_reference": ".card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); transform: translateY(-2px); } — 2px upward lift, not 4px.",
+          "fix_approach": "Update .card-hover in globals.css from translateY(-4px) to translateY(-2px) to match the reference's subtle lift. Ensure the shared Card UI component applies the card-hover class or equivalent hover styles."
+        }
+      ]
+    }
+  ]
+}

@@ -32,6 +32,12 @@ const ACCOUNT_COUNTS: { [bu: string]: number } = {
   Cloudsense: 65,
   Kandy: 45,
   STL: 30,
+  NewNet: 28,
+  voltDelta: 38,
+  'Service Gateway': 14,
+  Mobilogy: 12,
+  Peerapp: 22,
+  Responsetek: 18,
 }
 
 /**

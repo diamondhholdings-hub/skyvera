@@ -45,10 +45,16 @@ const priorityConfig = {
   }
 };
 
-const buConfig = {
+const buConfig: Record<string, string> = {
   Cloudsense: DESIGN_TOKENS.secondary,
   Kandy: DESIGN_TOKENS.accent,
-  STL: DESIGN_TOKENS.success
+  STL: DESIGN_TOKENS.success,
+  NewNet: '#7C3AED',
+  voltDelta: '#EA580C',
+  'Service Gateway': '#0891B2',
+  Mobilogy: '#BE185D',
+  Peerapp: '#15803D',
+  Responsetek: '#B45309',
 };
 
 export default function RecommendationCard({

@@ -1,0 +1,288 @@
+{
+  "agent": "A",
+  "audited_at": "2026-02-19",
+  "pages": [
+    {
+      "page": "/",
+      "screenshot": "tests/screenshots/root.png",
+      "crashed": false,
+      "notes": "Root page is a server-side redirect to /dashboard. The screenshot shows the dashboard — root itself has no rendered content to audit. Redirect is correct behavior.",
+      "issues": []
+    },
+    {
+      "page": "/dashboard",
+      "screenshot": "tests/screenshots/dashboard.png",
+      "crashed": false,
+      "issues": [
+        {
+          "id": "dash-001",
+          "severity": "P1",
+          "type": "design_token_violation",
+          "description": "Dashboard page uses hardcoded inline-style background 'linear-gradient(135deg, #1e3c72 0%, #2a5298 100%)' for both the outer wrapper and the header, instead of the design system gradient 'bg-gradient-to-br from-[var(--secondary)] to-[#1a2332]'. The page-level gradient blues (#1e3c72, #2a5298) are not editorial tokens.",
+          "files_affected": ["src/app/dashboard/page.tsx"],
+          "shared_component": false,
+          "fix_approach": "Replace hardcoded inline style background with Tailwind class 'bg-gradient-to-br from-[var(--secondary)] to-[#1a2332]' on the header element, matching the pattern used in /accounts, /alerts, /query, and /scenario."
+        },
+        {
+          "id": "dash-002",
+          "severity": "P1",
+          "type": "design_token_violation",
+          "description": "Dashboard page outer wrapper uses 'background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%)' as a full-page backdrop. All other pages use the standard 'var(--paper)' body background with content that fills inside the NavBar margin. The dashboard is the only page that wraps everything in a blue gradient shell, creating a different visual structure.",
+          "files_affected": ["src/app/dashboard/page.tsx"],
+          "shared_component": false,
+          "fix_approach": "Remove the outer blue gradient wrapper div. Let the page body background (var(--paper)) be the base, consistent with other pages."
+        },
+        {
+          "id": "dash-003",
+          "severity": "P1",
+          "type": "design_token_violation",
+          "description": "DashboardNavigation component uses hardcoded colors entirely outside of the design system: active button background '#1e3c72', inactive button background '#667eea', hover background '#764ba2'. None of these are editorial tokens (var(--secondary), var(--accent), var(--highlight), etc.).",
+          "files_affected": ["src/app/dashboard/components/dashboard-navigation.tsx"],
+          "shared_component": false,
+          "fix_approach": "Replace all inline style colors in navigation buttons with CSS custom property references: active state should use var(--secondary) or var(--accent), inactive should use a muted variant, matching the nav-bar.tsx pattern."
+        },
+        {
+          "id": "dash-004",
+          "severity": "P1",
+          "type": "design_token_violation",
+          "description": "FinancialSummarySection uses numerous hardcoded hex colors in inline styles that are not design tokens: section h2 border '#667eea', issue block border '#667eea', table header background '#1e3c72', variance badge colors '#f5576c', '#fa709a', '#4facfe'. Also uses '#2a5298' for h3 color instead of var(--secondary).",
+          "files_affected": ["src/app/dashboard/sections/financial-summary.tsx"],
+          "shared_component": false,
+          "fix_approach": "Replace all hardcoded hex color inline styles with CSS custom property references from the design system (var(--secondary), var(--accent), var(--critical), var(--warning), var(--success))."
+        },
+        {
+          "id": "dash-005",
+          "severity": "P1",
+          "type": "typography_violation",
+          "description": "Dashboard page.tsx header h1 uses inline style fontFamily '-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif' with fontWeight 700 — not the Cormorant Garamond display font that should be used for headings. The design system specifies h1/h2/h3 use 'Cormorant Garamond' via globals.css, and font-display Tailwind class.",
+          "files_affected": ["src/app/dashboard/page.tsx"],
+          "shared_component": false,
+          "fix_approach": "Remove the inline fontFamily override on the outer wrapper. Apply font-display class (Cormorant Garamond) to the h1 header element. Remove the conflicting inline fontFamily style from the container div."
+        },
+        {
+          "id": "dash-006",
+          "severity": "P1",
+          "type": "layout",
+          "description": "Dashboard page wraps its entire content (header + nav + sections + footer) inside a white rounded card with boxShadow '0 20px 60px rgba(0,0,0,0.3)' inside the blue gradient outer shell. This creates a nested card-within-blue-page layout that is unique to dashboard and inconsistent with the flat, full-bleed design used by all other pages.",
+          "files_affected": ["src/app/dashboard/page.tsx"],
+          "shared_component": false,
+          "fix_approach": "Remove the nested white-card wrapper div. Let sections render directly inside the page container at max-width, consistent with other pages using 'max-w-[1400px] mx-auto px-8'."
+        },
+        {
+          "id": "dash-007",
+          "severity": "P1",
+          "type": "navigation",
+          "description": "DashboardNavigation is a 'use client' component that uses useSearchParams() but is rendered inside a Suspense boundary that is NOT wrapping DashboardNavigation specifically — it is above the Suspense. useSearchParams() without a Suspense boundary around it will cause a full-page Suspense fallback in Next.js 14+ during SSR, potentially showing a blank/skeleton state instead of the actual navigation on first render.",
+          "files_affected": [
+            "src/app/dashboard/page.tsx",
+            "src/app/dashboard/components/dashboard-navigation.tsx"
+          ],
+          "shared_component": false,
+          "fix_approach": "Wrap DashboardNavigation in its own Suspense boundary in dashboard/page.tsx, or use the Next.js recommended pattern of wrapping the useSearchParams() consumer in Suspense."
+        },
+        {
+          "id": "dash-008",
+          "severity": "P2",
+          "type": "design_token_violation",
+          "description": "DashboardSkeleton loading fallback in dashboard/page.tsx uses 'bg-slate-100' — a generic Tailwind color class — instead of design system tokens like 'bg-[var(--border)]' or 'bg-[var(--highlight)]'.",
+          "files_affected": ["src/app/dashboard/page.tsx"],
+          "shared_component": false,
+          "fix_approach": "Replace 'bg-slate-100' in DashboardSkeleton with 'bg-[var(--border)]' or 'bg-[var(--highlight)]' to stay within the editorial token system."
+        },
+        {
+          "id": "dash-009",
+          "severity": "P2",
+          "type": "design_token_violation",
+          "description": "KPICard shared component (used in the dashboard gradient header area) uses hardcoded hex colors '#888' for label text, '#aaa' for target text, '#2ecc71' for positive delta, and '#e74c3c' for negative delta — none of which are editorial tokens. Should use var(--muted), var(--success), var(--critical).",
+          "files_affected": ["src/components/ui/kpi-card.tsx"],
+          "shared_component": true,
+          "fix_approach": "Replace '#888' with 'text-[var(--muted)]', '#aaa' with 'text-[var(--muted)]/80', '#2ecc71' badge with 'bg-[var(--success)]/20 text-[var(--success)]', '#e74c3c' badge with 'bg-[var(--critical)]/20 text-[var(--critical)]'."
+        }
+      ]
+    },
+    {
+      "page": "/accounts",
+      "screenshot": "tests/screenshots/accounts.png",
+      "crashed": false,
+      "issues": [
+        {
+          "id": "acct-001",
+          "severity": "P1",
+          "type": "design_token_violation",
+          "description": "AccountTable uses 'text-blue-600 hover:text-blue-800' for customer name links in the hidden TanStack table column definition (line 64). These are generic Tailwind blue classes, not editorial tokens. The correct color for interactive links should be 'text-[var(--accent)]' or 'text-[var(--secondary)]'.",
+          "files_affected": ["src/app/accounts/components/account-table.tsx"],
+          "shared_component": false,
+          "fix_approach": "Replace 'text-blue-600 hover:text-blue-800' on the customer_name link cell with 'text-[var(--accent)] hover:text-[var(--accent)]/80 hover:underline'."
+        },
+        {
+          "id": "acct-002",
+          "severity": "P1",
+          "type": "design_token_violation",
+          "description": "AccountFilters uses 'bg-green-600 border-green-600', 'bg-yellow-600 border-yellow-600', 'bg-red-600 border-red-600' for the active health filter button states instead of CSS custom property tokens. Should use var(--success), var(--warning), var(--critical).",
+          "files_affected": ["src/app/accounts/components/account-filters.tsx"],
+          "shared_component": false,
+          "fix_approach": "Replace 'bg-green-600 border-green-600' with 'bg-[var(--success)] border-[var(--success)]', 'bg-yellow-600' with 'bg-[var(--warning)]', 'bg-red-600' with 'bg-[var(--critical)]'."
+        },
+        {
+          "id": "acct-003",
+          "severity": "P1",
+          "type": "design_token_violation",
+          "description": "HealthIndicator shared component uses 'bg-green-500' (a generic Tailwind class) for the 'healthy' green dot instead of 'bg-[var(--success)]'. Inconsistent with the warning and critical states which correctly use var() tokens.",
+          "files_affected": ["src/components/ui/health-indicator.tsx"],
+          "shared_component": true,
+          "fix_approach": "Replace 'bg-green-500' on the green health config with 'bg-[var(--success)]'."
+        },
+        {
+          "id": "acct-004",
+          "severity": "P1",
+          "type": "data_quality",
+          "description": "AccountStats component displays a hardcoded 'Total Revenue' value of '$12.6M' (string literal on line 21) instead of computing it from the actual customer data passed via props. This value will be stale/incorrect if underlying data changes.",
+          "files_affected": ["src/app/accounts/components/account-stats.tsx"],
+          "shared_component": false,
+          "fix_approach": "Remove the hardcoded '$12.6M' string. Compute total revenue from the stats prop data, or add a totalRevenue field to the AccountStats props interface sourced from the server data layer."
+        },
+        {
+          "id": "acct-005",
+          "severity": "P2",
+          "type": "design_token_violation",
+          "description": "Error state UI in accounts/page.tsx uses generic Tailwind classes 'bg-red-50 border-red-200 text-red-800 text-red-600' instead of editorial design tokens (var(--critical), var(--highlight), var(--ink)). Same pattern seen in the stats error block.",
+          "files_affected": ["src/app/accounts/page.tsx"],
+          "shared_component": false,
+          "fix_approach": "Replace Tailwind red-* classes with 'bg-[var(--critical)]/5 border-[var(--critical)]/30 text-[var(--critical)]' and 'text-[var(--ink)]'."
+        },
+        {
+          "id": "acct-006",
+          "severity": "P2",
+          "type": "design_token_violation",
+          "description": "The accounts/loading.tsx skeleton state uses 'bg-slate-200', 'border-slate-200', 'bg-slate-50', 'bg-slate-50 border-b border-slate-200' — all generic Tailwind classes instead of editorial tokens.",
+          "files_affected": ["src/app/accounts/loading.tsx"],
+          "shared_component": false,
+          "fix_approach": "Replace all 'slate-*' classes in the loading skeleton with editorial equivalents: 'bg-[var(--border)]' for skeleton blocks, 'bg-[var(--highlight)]' for header rows."
+        }
+      ]
+    },
+    {
+      "page": "/alerts",
+      "screenshot": "tests/screenshots/alerts.png",
+      "crashed": false,
+      "issues": [
+        {
+          "id": "alrt-001",
+          "severity": "P1",
+          "type": "visual",
+          "description": "The alerts screenshot shows a very large bell icon dominating the top of the page, followed by a long list of tiny text. The large bell icon visible at the top of the screenshot is from a missing or incorrect first alert card rendering — likely the alert-summary SVG bell is rendering at enormous size (w-8 h-8 = 32px but appears ~200px tall in screenshot) because the parent flex container or the SVG viewBox scaling is incorrect at certain viewport widths.",
+          "files_affected": ["src/app/alerts/components/alert-summary.tsx"],
+          "shared_component": false,
+          "fix_approach": "Inspect the SVG bell element in AlertSummary. Ensure the 'w-8 h-8' constraint is not being overridden by a parent element. Add explicit 'flex-shrink-0' and confirm the SVG element has explicit width/height attributes in addition to Tailwind classes."
+        },
+        {
+          "id": "alrt-002",
+          "severity": "P1",
+          "type": "layout",
+          "description": "Screenshot shows alert cards rendering as an extremely long single-column list with no visible grid layout. The AlertList component uses 'grid grid-cols-1 lg:grid-cols-2 gap-4' — at large viewport this should be 2 columns, but the screenshot shows everything in a very tall single column, suggesting the grid is not activating at the expected breakpoint or the screenshot was captured at a narrow viewport.",
+          "files_affected": ["src/app/alerts/components/alert-list.tsx"],
+          "shared_component": false,
+          "fix_approach": "Verify the lg: breakpoint is being applied correctly. If Playwright screenshots are captured at a sub-lg viewport, consider setting the test viewport to at least 1280px wide, or changing the grid threshold to 'md:grid-cols-2'."
+        },
+        {
+          "id": "alrt-003",
+          "severity": "P2",
+          "type": "design_token_violation",
+          "description": "The alerts/loading.tsx skeleton uses 'bg-slate-200 animate-pulse rounded-lg' — generic Tailwind slate classes instead of editorial tokens.",
+          "files_affected": ["src/app/alerts/loading.tsx"],
+          "shared_component": false,
+          "fix_approach": "Replace 'bg-slate-200' with 'bg-[var(--border)]' in loading.tsx to maintain editorial design system consistency."
+        }
+      ]
+    },
+    {
+      "page": "/query",
+      "screenshot": "tests/screenshots/query.png",
+      "crashed": false,
+      "issues": [
+        {
+          "id": "qry-001",
+          "severity": "P1",
+          "type": "visual",
+          "description": "The query screenshot shows the QueryInput component is not visible at the top of the content area — the large speech-bubble SVG empty state fills the left two-thirds of the layout but there is no visible input field above it. The QueryInput form appears to be missing from the rendered layout or is not scrolled into view in the screenshot, suggesting either an ordering issue or the input is rendered below the empty state placeholder.",
+          "files_affected": ["src/app/query/components/query-page-client.tsx", "src/app/query/components/query-input.tsx"],
+          "shared_component": false,
+          "fix_approach": "Verify that QueryInput renders before QueryResults in the DOM order. The 'space-y-6' container should show the input field at the top. Check if there is a CSS overflow or min-height issue pushing the input out of the initial viewport."
+        },
+        {
+          "id": "qry-002",
+          "severity": "P1",
+          "type": "design_token_violation",
+          "description": "The query/loading.tsx skeleton uses 'bg-slate-200 animate-pulse rounded-lg' throughout — generic Tailwind slate classes instead of editorial tokens.",
+          "files_affected": ["src/app/query/loading.tsx"],
+          "shared_component": false,
+          "fix_approach": "Replace 'bg-slate-200' with 'bg-[var(--border)]' in query/loading.tsx."
+        },
+        {
+          "id": "qry-003",
+          "severity": "P2",
+          "type": "visual",
+          "description": "MetricsCatalog accordion ('Browse Metrics Catalog') is collapsed by default (isExpanded starts false). The screenshot shows only the collapsed chevron-down state visible in the bottom of the right column. This is acceptable default behavior, but the large chevron icon rendering at significant size in the screenshot suggests the collapsed button height is too large or the chevron SVG is not constrained.",
+          "files_affected": ["src/app/query/components/metrics-catalog.tsx"],
+          "shared_component": false,
+          "fix_approach": "Add explicit size constraints on the MetricsCatalog header button. Confirm 'w-5 h-5' is applied to the chevron SVG and the button has a reasonable py- value (current code already has this, may be a viewport rendering issue)."
+        }
+      ]
+    },
+    {
+      "page": "/scenario",
+      "screenshot": "tests/screenshots/scenario.png",
+      "crashed": false,
+      "issues": [
+        {
+          "id": "scen-001",
+          "severity": "P1",
+          "type": "design_token_violation",
+          "description": "ConversationalScenario component uses extensive generic Tailwind classes throughout, violating the editorial design system. Specific violations: header 'bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200', heading 'text-slate-900', body text 'text-slate-600', 'text-slate-700', 'text-slate-400', example prompts card 'border-slate-200 bg-slate-50 hover:bg-slate-100 hover:border-blue-300 text-slate-700', chat container 'border border-slate-200', user message bubbles 'bg-blue-600 text-white', AI message bubbles 'bg-slate-100 text-slate-900 border border-slate-200', action buttons 'border-slate-300 hover:bg-slate-50', input field 'border-slate-300 focus:border-blue-500 focus:ring-blue-200 disabled:bg-slate-50', send button 'bg-blue-600 hover:bg-blue-700 focus:ring-blue-500', versions panel 'border-slate-200', version cards 'bg-slate-50 border-slate-200 hover:border-blue-300'.",
+          "files_affected": ["src/app/scenario/components/conversational-scenario.tsx"],
+          "shared_component": false,
+          "fix_approach": "Replace all Tailwind slate-* and blue-* classes with editorial tokens: slate-900/slate-700 → text-[var(--ink)], slate-600 → text-[var(--muted)], slate-200/slate-100/slate-50 → bg-[var(--highlight)] or border-[var(--border)], blue-600/blue-700 (buttons/messages) → bg-[var(--accent)] or bg-[var(--secondary)], blue-* gradients → from-[var(--secondary)] to-[#1a2332]."
+        },
+        {
+          "id": "scen-002",
+          "severity": "P1",
+          "type": "typography_violation",
+          "description": "ConversationalScenario header h2 uses 'text-slate-900' color class instead of editorial 'text-[var(--secondary)]' or 'text-[var(--ink)]'. The section heading 'Scenario Versions' (h3 in version history) uses 'text-slate-900 font-semibold' without 'font-display' (Cormorant Garamond). The 'text-2xl font-display font-semibold text-slate-900' on the main heading partially applies the display font but uses a non-editorial color.",
+          "files_affected": ["src/app/scenario/components/conversational-scenario.tsx"],
+          "shared_component": false,
+          "fix_approach": "Replace 'text-slate-900' color on all headings with 'text-[var(--ink)]' or 'text-[var(--secondary)]'. Add 'font-display' to the 'Scenario Versions' h3. Change the purple icon (Sparkles 'text-purple-600') to 'text-[var(--accent)]'."
+        },
+        {
+          "id": "scen-003",
+          "severity": "P2",
+          "type": "design_token_violation",
+          "description": "Scenario loading.tsx (ScenarioLoading component) uses 'bg-slate-200' for all skeleton pulse elements — generic Tailwind instead of editorial tokens.",
+          "files_affected": ["src/app/scenario/loading.tsx"],
+          "shared_component": false,
+          "fix_approach": "Replace 'bg-slate-200' with 'bg-[var(--border)]' throughout ScenarioLoading."
+        },
+        {
+          "id": "scen-004",
+          "severity": "P2",
+          "type": "visual",
+          "description": "The scenario mode toggle button for 'Traditional Form' shows as an unstyled grey pill with no gradient background in the screenshot. When active, both mode buttons use 'bg-gradient-to-r from-[var(--accent)] to-[var(--secondary)]' — this is a correct editorial gradient but mixes --accent (red) to --secondary (navy) which creates a jarring orange-to-blue sweep that is not a documented design pattern. All other gradients in the app go from --secondary to darker navy.",
+          "files_affected": ["src/app/scenario/components/scenario-mode-selector.tsx"],
+          "shared_component": false,
+          "fix_approach": "Consider changing the active button gradient to 'bg-[var(--secondary)]' solid or 'bg-gradient-to-br from-[var(--secondary)] to-[#1a2332]' for consistency with other active states in the app."
+        },
+        {
+          "id": "scen-005",
+          "severity": "P2",
+          "type": "design_token_violation",
+          "description": "Scenario error boundary (src/app/scenario/error.tsx) and accounts error boundary (src/app/accounts/error.tsx) use generic Tailwind 'text-slate-900', 'bg-blue-600 hover:bg-blue-700' for the retry/return button instead of editorial tokens.",
+          "files_affected": [
+            "src/app/scenario/error.tsx",
+            "src/app/accounts/error.tsx"
+          ],
+          "shared_component": false,
+          "fix_approach": "Replace 'bg-blue-600 hover:bg-blue-700' with 'bg-[var(--accent)] hover:bg-[var(--accent)]/90' and 'text-slate-900' with 'text-[var(--ink)]' in both error boundaries."
+        }
+      ]
+    }
+  ]
+}
