@@ -46,7 +46,7 @@ export type NLQRequest = z.infer<typeof nlqRequestSchema>
 export const nlqResponseSchema = z.object({
   interpretation: z.string(),
   answer: z.string().nullable(),
-  dataPoints: z.record(z.string(), z.union([z.number(), z.string()])).optional(),
+  dataPoints: z.record(z.string(), z.union([z.number(), z.string()])).nullish(),
   needsClarification: z.boolean(),
   clarificationQuestion: z.string().optional(),
   clarificationOptions: z.array(z.string()).optional(),

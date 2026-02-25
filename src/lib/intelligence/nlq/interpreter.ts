@@ -10,6 +10,30 @@ import { Result, ok, err } from '@/lib/types/result'
 import { NLQResponse, nlqResponseSchema } from './types'
 
 /**
+ * Extract first valid JSON object from a string that may contain
+ * markdown code fences, preamble text, or other wrapping.
+ */
+function extractJSON(text: string): unknown {
+  // 1. Try direct parse first (pure JSON response)
+  try { return JSON.parse(text.trim()) } catch {}
+
+  // 2. Strip ```json ... ``` or ``` ... ``` fences
+  const fenced = text.match(/```(?:json)?\s*([\s\S]*?)```/i)
+  if (fenced) {
+    try { return JSON.parse(fenced[1].trim()) } catch {}
+  }
+
+  // 3. Find the first { ... } block (largest match)
+  const braceStart = text.indexOf('{')
+  const braceEnd = text.lastIndexOf('}')
+  if (braceStart !== -1 && braceEnd > braceStart) {
+    try { return JSON.parse(text.slice(braceStart, braceEnd + 1)) } catch {}
+  }
+
+  throw new Error('No valid JSON found in response')
+}
+
+/**
  * Available data sources in the Skyvera system
  */
 const AVAILABLE_DATA_SOURCES = [
@@ -64,9 +88,10 @@ export async function interpretQuery(
     }
 
     // Parse and validate Claude's JSON response
+    // Strip markdown code fences if present (Claude sometimes wraps JSON)
     let parsedContent
     try {
-      parsedContent = JSON.parse(response.value.content)
+      parsedContent = extractJSON(response.value.content)
     } catch (parseError) {
       return err(new Error('Failed to parse Claude response as JSON'))
     }
@@ -140,10 +165,10 @@ Use the data above to provide specific, accurate answers to the user's query.
       })
     }
 
-    // Parse and validate response
+    // Parse and validate response (strip markdown code fences if present)
     let parsedContent
     try {
-      parsedContent = JSON.parse(response.value.content)
+      parsedContent = extractJSON(response.value.content)
     } catch (parseError) {
       return err(new Error('Failed to parse Claude response as JSON'))
     }
