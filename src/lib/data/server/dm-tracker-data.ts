@@ -132,7 +132,7 @@ export async function getDMTrackerData(): Promise<Result<DMTrackerData, Error>> 
         }
 
         // Python/openpyxl unavailable (e.g., Vercel) — use static snapshot
-        console.warn('[getDMTrackerData] Falling back to static snapshot data')
+        console.warn('[DMTracker] Python parsing unavailable, serving static snapshot from 2026-03-09. Data may be stale.')
         return ok(STATIC_DM_SNAPSHOT)
       }
     },
@@ -153,7 +153,7 @@ export async function getDMTrackerData(): Promise<Result<DMTrackerData, Error>> 
  */
 const STATIC_DM_SNAPSHOT: DMTrackerData = {
   fiscal_quarter: "Q1'26",
-  extracted_at: new Date().toISOString(),
+  extracted_at: '2026-03-09T00:00:00.000Z', // Last verified date — do NOT replace with new Date(), data is static
   business_units: [
     {
       bu: 'Cloudsense',

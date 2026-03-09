@@ -74,16 +74,27 @@ export class ExcelAdapter implements DataAdapter {
         const raw = readFileSync(snapshotPath, 'utf-8')
         parsed = JSON.parse(raw)
         console.log('[ExcelAdapter] Connecting - loading from JSON snapshot...')
-      } catch {
-        // Fallback: Python bridge (local dev only — not available on Vercel)
-        console.log('[ExcelAdapter] Snapshot not found, falling back to Python parser...')
-        const { stdout, stderr } = await execFileAsync('python3', [
-          this.scriptPath,
-          '--type',
-          'all',
-        ])
-        if (stderr) console.log('[ExcelAdapter] Python parser output:', stderr.trim())
-        parsed = JSON.parse(stdout)
+      } catch (snapshotError) {
+        if ((snapshotError as NodeJS.ErrnoException).code === 'ENOENT') {
+          // Snapshot file not found — fall back to Python bridge (local dev only, not available on Vercel)
+          console.warn('[ExcelAdapter] Snapshot not found, falling back to Python parser...')
+          const { stdout, stderr } = await execFileAsync('python3', [
+            this.scriptPath,
+            '--type',
+            'all',
+          ])
+          if (stderr) console.log('[ExcelAdapter] Python parser output:', stderr.trim())
+          parsed = JSON.parse(stdout)
+        } else {
+          // Any other error (malformed JSON, permission denied, wrong schema, etc.) is a real
+          // problem the developer needs to know about — do NOT silently fall back.
+          return err(
+            new Error(
+              `Failed to load data snapshot at "${snapshotPath}": ${(snapshotError as Error).message}. ` +
+              `Fix the underlying issue (e.g. run \`npm run refresh-data\` to regenerate the snapshot) and retry.`
+            )
+          )
+        }
       }
 
       // Accounts that represent future sales targets, not real customers
@@ -101,7 +112,10 @@ export class ExcelAdapter implements DataAdapter {
         const validatedCustomers: Customer[] = []
 
         for (const customer of customers) {
-          if (EXCLUDED_ACCOUNTS.has(customer.customer_name)) continue
+          if (EXCLUDED_ACCOUNTS.has(customer.customer_name)) {
+            console.log(`[ExcelAdapter] Excluded placeholder account: "${customer.customer_name}" in ${buName}`)
+            continue
+          }
           const validationResult = this.validator.validateCustomer(customer)
 
           if (validationResult.success) {
@@ -313,12 +327,14 @@ export class ExcelAdapter implements DataAdapter {
    * Check if a customer record can be coerced to valid format
    */
   private canCoerce(customer: any): boolean {
-    // Can coerce if has required fields but types are slightly off
+    // Can coerce if has required fields but types are slightly off.
+    // rr and nrr must already be actual numbers — null means unknown revenue and
+    // must NOT be silently stored as 0, which would corrupt BU revenue totals.
     return (
       customer.customer_name &&
       typeof customer.customer_name === 'string' &&
-      (typeof customer.rr === 'number' || customer.rr === null) &&
-      (typeof customer.nrr === 'number' || customer.nrr === null) &&
+      typeof customer.rr === 'number' &&
+      typeof customer.nrr === 'number' &&
       Array.isArray(customer.subscriptions)
     )
   }
@@ -327,12 +343,15 @@ export class ExcelAdapter implements DataAdapter {
    * Coerce a customer record to valid format
    */
   private coerceCustomer(customer: any): Customer {
+    // Belt-and-suspenders: canCoerce already guarantees rr/nrr are numbers, but use
+    // nullish coalescing (??) here so that a legitimate 0 value is preserved rather
+    // than being treated as falsy and replaced (which || would do).
     return {
       customer_name: customer.customer_name,
-      rr: customer.rr || 0,
-      nrr: customer.nrr || 0,
-      total: customer.total || (customer.rr || 0) + (customer.nrr || 0),
-      subscriptions: customer.subscriptions || [],
+      rr: customer.rr ?? 0,
+      nrr: customer.nrr ?? 0,
+      total: customer.total ?? (customer.rr ?? 0) + (customer.nrr ?? 0),
+      subscriptions: customer.subscriptions ?? [],
       rank: customer.rank,
       pct_of_total: customer.pct_of_total,
     }

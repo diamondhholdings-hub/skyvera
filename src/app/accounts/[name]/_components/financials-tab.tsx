@@ -12,7 +12,10 @@ interface FinancialsTabProps {
 }
 
 export function FinancialsTab({ customer }: FinancialsTabProps) {
-  const arr = customer.rr
+  const hasRR = customer.rr > 0
+  const primaryRevenueLabel = hasRR ? 'ARR' : 'Annual Rev'
+  const primaryRevenueValue = hasRR ? customer.rr : customer.nrr
+  const primaryRevenueSub = hasRR ? 'Annual Recurring Revenue' : 'Non-Recurring Revenue'
 
   const formatCurrency = (value: number): string => {
     return `$${value.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}`
@@ -27,9 +30,9 @@ export function FinancialsTab({ customer }: FinancialsTabProps) {
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1rem' }}>
         {[
           {
-            label: 'ARR',
-            value: formatCurrency(arr),
-            sub: 'Annual Recurring Revenue',
+            label: primaryRevenueLabel,
+            value: formatCurrency(primaryRevenueValue),
+            sub: primaryRevenueSub,
           },
           {
             label: 'Recurring Revenue',

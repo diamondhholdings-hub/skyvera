@@ -61,7 +61,7 @@ export async function getDMRecommendations(
               description: `${bu.bu} DM% is ${bu.dm_pct.toFixed(1)}%, ${dmGap.toFixed(1)} points below the 90% target. Immediate action required to prevent further revenue erosion.`,
               rationale: `ARR at risk: $${((dmGap / 100) * bu.current_rr / 1000).toFixed(0)}K based on current ARR of $${(bu.current_rr / 1000000).toFixed(1)}M.`,
               suggestedAction: 'Conduct urgent account health review, identify at-risk customers, deploy retention team to top 10 accounts, and implement immediate engagement plan.',
-              estimatedARRImpact: (dmGap / 100) * bu.current_rr * 0.6, // 60% recovery of annualized ARR gap
+              estimatedARRImpact: (dmGap / 100) * bu.current_rr * 0.6, // 60% of ARR gap recovered (current_rr is already annual)
               estimatedDMImpact: dmGap * 0.6, // Assuming 60% recovery
               estimatedEffort: 'high',
               timeframe: '30 days',
@@ -82,7 +82,7 @@ export async function getDMRecommendations(
               description: `${bu.bu} DM% is ${bu.dm_pct.toFixed(1)}%, slightly below target. Proactive engagement can prevent further decline.`,
               rationale: `ARR at risk: $${((dmGap / 100) * bu.current_rr / 1000).toFixed(0)}K. Historical data shows engagement initiatives can recover 3-4 percentage points.`,
               suggestedAction: 'Launch quarterly business review (QBR) campaign, increase product adoption touchpoints, and deploy customer success playbooks for mid-tier accounts.',
-              estimatedARRImpact: (dmGap / 100) * bu.current_rr * 0.7, // 70% recovery of annualized ARR gap
+              estimatedARRImpact: (dmGap / 100) * bu.current_rr * 0.7, // 70% of ARR gap recovered (current_rr is already annual)
               estimatedDMImpact: dmGap * 0.7,
               estimatedEffort: 'medium',
               timeframe: '60 days',
@@ -228,6 +228,10 @@ export async function getTopUrgentRecommendations(
   })
 
   if (!allResult.success) {
+    console.error(
+      '[getTopUrgentRecommendations] Failed to fetch critical recommendations, degrading to high priority:',
+      allResult.error.message
+    )
     // Try high priority as fallback
     const highResult = await getDMRecommendations({
       priority: 'high',

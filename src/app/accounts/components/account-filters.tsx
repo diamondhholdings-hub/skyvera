@@ -19,11 +19,11 @@ export function AccountFilters({
   activeHealth,
 }: AccountFiltersProps) {
   const buOptions = ['All', 'Cloudsense', 'Kandy', 'STL', 'NewNet']
-  const healthOptions = ['All', 'Healthy', 'At Risk', 'Critical']
+  const healthOptions = ['All', 'Healthy', 'At Risk & Critical', 'Critical']
 
   const healthScoreMap: Record<string, string> = {
     Healthy: 'green',
-    'At Risk': 'at-risk', // matches both yellow + red (41 total)
+    'At Risk & Critical': 'at-risk', // matches both yellow + red (non-healthy)
     Critical: 'red',
   }
 
@@ -68,7 +68,7 @@ export function AccountFilters({
                   isActive
                     ? health === 'Healthy'
                       ? 'bg-[var(--success)] text-white border-[var(--success)]'
-                      : health === 'At Risk'
+                      : health === 'At Risk & Critical'
                         ? 'bg-[var(--warning)] text-white border-[var(--warning)]'
                         : health === 'Critical'
                           ? 'bg-[var(--critical)] text-white border-[var(--critical)]'
