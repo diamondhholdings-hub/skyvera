@@ -1,5 +1,5 @@
 /**
- * Account Plan Page - Individual customer account details with 7-tab navigation
+ * Account Plan Page - Individual customer account details with 8-tab navigation
  * Server Component - fetches account plan data and customer financials
  * URL format: /accounts/[encoded-name]?tab=overview
  * Next.js 16: params and searchParams are Promises
@@ -13,11 +13,12 @@ import { getAllCustomersWithHealth } from '@/lib/data/server/account-data'
 import { TabNavigation } from './_components/tab-navigation'
 import { OverviewTab } from './_components/overview-tab'
 import { FinancialsTab } from './_components/financials-tab'
-import { StrategyTab } from './_components/strategy-tab'
+import { KeyExecutivesTab } from './_components/key-executives-tab'
+import { OrgStructureTab } from './_components/org-structure-tab'
+import { PainPointsTab } from './_components/pain-points-tab'
 import { CompetitiveTab } from './_components/competitive-tab'
-import { OrganizationTab } from './_components/organization-tab'
+import { ActionPlanTab } from './_components/action-plan-tab'
 import { IntelligenceTab } from './_components/intelligence-tab'
-import { ActionItemsTab } from './_components/action-items-tab'
 import { RefreshButton } from '@/components/ui/refresh-button'
 import { SalesforceSyncButton } from '@/components/ui/salesforce-sync-button'
 
@@ -195,25 +196,26 @@ export default async function AccountPlanPage({ params, searchParams }: AccountP
               intelligenceReport={accountData.intelligence.raw}
               painPoints={accountData.strategy.painPoints}
               opportunities={accountData.strategy.opportunities}
+              allBuCustomers={customersResult.value.filter(c => c.bu === customer.bu)}
             />
           </Suspense>
         )}
 
-        {activeTab === 'financials' && (
+        {activeTab === 'key-executives' && (
           <Suspense fallback={<TabSkeleton />}>
-            <FinancialsTab customer={customer} />
+            <KeyExecutivesTab stakeholders={accountData.stakeholders} />
           </Suspense>
         )}
 
-        {activeTab === 'organization' && (
+        {activeTab === 'org-structure' && (
           <Suspense fallback={<TabSkeleton />}>
-            <OrganizationTab stakeholders={accountData.stakeholders} />
+            <OrgStructureTab stakeholders={accountData.stakeholders} customerName={customerName} bu={customer.bu} />
           </Suspense>
         )}
 
-        {activeTab === 'strategy' && (
+        {activeTab === 'pain-points' && (
           <Suspense fallback={<TabSkeleton />}>
-            <StrategyTab
+            <PainPointsTab
               painPoints={accountData.strategy.painPoints}
               opportunities={accountData.strategy.opportunities}
             />
@@ -226,6 +228,21 @@ export default async function AccountPlanPage({ params, searchParams }: AccountP
           </Suspense>
         )}
 
+        {activeTab === 'action-plan' && (
+          <Suspense fallback={<TabSkeleton />}>
+            <ActionPlanTab
+              actions={accountData.actions}
+              stakeholders={accountData.stakeholders}
+            />
+          </Suspense>
+        )}
+
+        {activeTab === 'financials' && (
+          <Suspense fallback={<TabSkeleton />}>
+            <FinancialsTab customer={customer} />
+          </Suspense>
+        )}
+
         {activeTab === 'intelligence' && (
           <Suspense fallback={<TabSkeleton />}>
             <IntelligenceTab
@@ -233,15 +250,6 @@ export default async function AccountPlanPage({ params, searchParams }: AccountP
               news={accountData.news}
               customerName={customerName}
               enrichment={accountData.enrichment ?? null}
-            />
-          </Suspense>
-        )}
-
-        {activeTab === 'action-items' && (
-          <Suspense fallback={<TabSkeleton />}>
-            <ActionItemsTab
-              initialActions={accountData.actions}
-              stakeholders={accountData.stakeholders}
             />
           </Suspense>
         )}
