@@ -1,102 +1,84 @@
 /**
- * CompetitiveTab — Telstra-style rebuild with competitive landscape table,
- * advantage cards, and position banner.
- * Server Component.
+ * CompetitiveTab - Full Telstra-style rebuild
+ * Threat table + advantages metrics grid + defensive strategy + risk timeline
+ * Server Component
  */
 
 import type { Competitor } from '@/lib/types/account-plan'
-import { CheckCircle } from 'lucide-react'
 
 interface CompetitiveTabProps {
   competitors: Competitor[]
 }
 
+function Badge({ children, variant = 'neutral' }: { children: React.ReactNode; variant?: 'critical' | 'high' | 'medium' | 'success' | 'neutral' }) {
+  const styles = {
+    critical: { background: '#e53935', color: 'white' },
+    high: { background: '#ff9800', color: 'white' },
+    medium: { background: '#ffc107', color: '#1a1a1a' },
+    success: { background: '#4caf50', color: 'white' },
+    neutral: { background: '#8b8b8b', color: 'white' },
+  }
+  return (
+    <span style={{ display: 'inline-block', padding: '0.25rem 0.7rem', borderRadius: '2px', fontSize: '0.7rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em', ...styles[variant] }}>
+      {children}
+    </span>
+  )
+}
+
 const STATIC_ADVANTAGES = [
-  { title: 'Deep Telco Expertise', description: '15+ years of telecom domain knowledge and implementation experience.' },
-  { title: '3x Faster Integration', description: 'Proven integration frameworks deliver go-live 3× faster than market average.' },
-  { title: '99.9% Uptime SLA', description: 'Enterprise-grade reliability backed by a contractual uptime guarantee.' },
-  { title: '94% Customer Retention', description: 'Industry-leading annual renewal rate reflecting consistent value delivery.' },
-  { title: '340% ROI Delivered', description: 'Average 3-year ROI across our customer portfolio.' },
-  { title: '8-Week Implementation', description: 'Rapid deployment methodology from contract to production go-live.' },
+  { label: 'Salesforce-Native', value: 'Built on Salesforce', description: 'Seamless with existing SF ecosystem, deep CRM integration, no middleware.' },
+  { label: 'Telecom-Specific', value: 'Purpose-Built', description: 'Complex telecom bundles handled natively — not generic enterprise CPQ.' },
+  { label: 'TM Forum Compliant', value: 'Open APIs', description: 'Aligns with autonomous network, composable architecture, open standards.' },
+  { label: 'Full Quote-to-Cash', value: 'CPQ + Order Mgmt', description: 'End-to-end vs. CPQ-only competitors. Fewer integration points.' },
+  { label: 'AI Roadmap', value: 'AI-Powered', description: 'AI-powered recommendations, predictive insights, intelligent automation.' },
+  { label: 'Proven Track Record', value: '94% Retention', description: 'Industry-leading annual renewal rate reflecting consistent value delivery.' },
 ]
 
 export function CompetitiveTab({ competitors }: CompetitiveTabProps) {
-  // Derive threat level from competitor type as a proxy (no threatLevel in schema)
-  const getThreatLevel = (competitor: Competitor): 'high' | 'medium' | 'low' => {
-    if (competitor.type === 'both') return 'high'
-    if (competitor.type === 'our-competitor') return 'medium'
-    return 'low'
+  const getThreatVariant = (c: Competitor): 'critical' | 'high' | 'medium' | 'neutral' => {
+    if (c.threatLevel === 'critical') return 'critical'
+    if (c.threatLevel === 'high' || c.type === 'both') return 'high'
+    if (c.threatLevel === 'medium' || c.type === 'our-competitor') return 'medium'
+    return 'neutral'
   }
 
   return (
-    <div className="space-y-8">
-      {/* Our Advantages */}
-      <div>
-        <h2 className="font-display text-2xl font-semibold mb-4 pb-2 border-b-[2px] border-[var(--border)]" style={{ color: 'var(--secondary)' }}>
-          Our Advantages
-        </h2>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem' }}>
-          {STATIC_ADVANTAGES.map((adv, i) => (
-            <div
-              key={i}
-              style={{ background: "white", border: "1px solid var(--border)", boxShadow: "0 1px 3px rgba(0,0,0,0.04)", padding: "1.5rem", position: "relative", overflow: "hidden", transition: "all 0.3s ease" }} className="group"
-            >
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[var(--accent)] to-[var(--secondary)] opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="flex items-start gap-3">
-                <CheckCircle size={18} className="text-[var(--success)] flex-shrink-0 mt-0.5" />
-                <div>
-                  <div className="font-semibold mb-1" style={{ color: '#2d4263' }}>{adv.title}</div>
-                  <div className="text-sm text-[var(--muted)]">{adv.description}</div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
+    <div className="space-y-10">
 
-      {/* Competitive Landscape Table */}
-      {competitors.length > 0 && (
-        <div>
-          <h2 className="font-display text-2xl font-semibold mb-4 pb-2 border-b-[2px] border-[var(--border)]" style={{ color: 'var(--secondary)' }}>
-            Competitive Landscape
-          </h2>
-          <div style={{ background: "white", border: "1px solid var(--border)", boxShadow: "0 1px 3px rgba(0,0,0,0.04)", overflow: "hidden" }}>
-            <table className="w-full border-collapse text-sm">
+      {/* Competitive Threats Table */}
+      <div>
+        <h2 style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: '1.75rem', fontWeight: 600, color: 'var(--secondary)', marginBottom: '1rem', paddingBottom: '0.5rem', borderBottom: '2px solid var(--border)' }}>
+          Competitive Landscape Analysis
+        </h2>
+        {competitors.length > 0 ? (
+          <div style={{ background: 'white', border: '1px solid var(--border)', boxShadow: '0 1px 3px rgba(0,0,0,0.04)', overflow: 'hidden' }}>
+            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.875rem' }}>
               <thead>
-                <tr className="bg-[var(--secondary)] text-white">
-                  <th className="p-4 text-left text-xs uppercase tracking-widest font-semibold">Competitor</th>
-                  <th className="p-4 text-left text-xs uppercase tracking-widest font-semibold">Strengths</th>
-                  <th className="p-4 text-left text-xs uppercase tracking-widest font-semibold">Weaknesses</th>
-                  <th className="p-4 text-left text-xs uppercase tracking-widest font-semibold">Threat</th>
+                <tr style={{ background: 'var(--secondary)', color: 'white' }}>
+                  {['Competitor', 'Threat Level', 'Customer Sponsor', 'Differentiators', 'Weaknesses', 'Next Action'].map(h => (
+                    <th key={h} style={{ padding: '1rem', textAlign: 'left', fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 600 }}>{h}</th>
+                  ))}
                 </tr>
               </thead>
               <tbody>
                 {competitors.map((comp, i) => {
-                  const threatLevel = getThreatLevel(comp)
+                  const threatVariant = getThreatVariant(comp)
+                  const isHighThreat = threatVariant === 'critical' || threatVariant === 'high'
                   return (
-                    <tr
-                      key={comp.id ?? i}
-                      className="border-b border-[var(--border)] hover:bg-[var(--highlight)] transition-colors"
-                    >
-                      <td className="p-4 font-semibold" style={{ color: 'var(--secondary)' }}>{comp.name}</td>
-                      <td className="p-4 text-[var(--muted)] text-sm">
-                        {comp.strengths.length > 0 ? comp.strengths.join(', ') : '—'}
+                    <tr key={comp.id ?? i} style={{ borderBottom: '1px solid var(--border)', background: isHighThreat ? 'rgba(255,152,0,0.06)' : 'transparent' }}>
+                      <td style={{ padding: '1rem', fontWeight: 600, color: 'var(--secondary)' }}>{comp.name}</td>
+                      <td style={{ padding: '1rem' }}><Badge variant={threatVariant}>{comp.threatLevel ?? (comp.type === 'both' ? 'HIGH' : comp.type === 'our-competitor' ? 'MEDIUM' : 'LOW')}</Badge></td>
+                      <td style={{ padding: '1rem', color: 'var(--ink)', fontSize: '0.8rem' }}>{comp.customerSponsor || '—'}</td>
+                      <td style={{ padding: '1rem', color: 'var(--muted)', fontSize: '0.8rem', lineHeight: 1.6 }}>
+                        {comp.weaknesses.length > 0 ? comp.weaknesses.slice(0, 2).map((w, j) => <div key={j}>• {w}</div>) : '—'}
                       </td>
-                      <td className="p-4 text-[var(--muted)] text-sm">
-                        {comp.weaknesses.length > 0 ? comp.weaknesses.join(', ') : '—'}
+                      <td style={{ padding: '1rem', color: 'var(--muted)', fontSize: '0.8rem', lineHeight: 1.6 }}>
+                        {comp.strengths.length > 0 ? comp.strengths.slice(0, 2).map((s, j) => <div key={j}>• {s}</div>) : '—'}
                       </td>
-                      <td className="p-4">
-                        <span
-                          className={`inline-block px-3 py-1 rounded-sm text-xs font-semibold uppercase tracking-wide text-white ${
-                            threatLevel === 'high'
-                              ? 'bg-[var(--critical)]'
-                              : threatLevel === 'medium'
-                              ? 'bg-[var(--warning)]'
-                              : 'bg-[var(--success)]'
-                          }`}
-                        >
-                          {threatLevel}
-                        </span>
+                      <td style={{ padding: '1rem' }}>
+                        {comp.nextActionToDefend
+                          ? <><Badge variant={isHighThreat ? 'high' : 'medium'}>Q1&apos;26</Badge><div style={{ fontSize: '0.75rem', color: 'var(--muted)', marginTop: '0.25rem' }}>{comp.nextActionToDefend}</div></>
+                          : <span style={{ color: 'var(--muted)' }}>Monitor</span>}
                       </td>
                     </tr>
                   )
@@ -104,18 +86,43 @@ export function CompetitiveTab({ competitors }: CompetitiveTabProps) {
               </tbody>
             </table>
           </div>
-        </div>
-      )}
+        ) : (
+          <div style={{ padding: '3rem', textAlign: 'center', background: 'white', border: '1px solid var(--border)', color: 'var(--muted)' }}>
+            No competitive intelligence available yet.
+          </div>
+        )}
+      </div>
 
-      {/* Empty state for competitors */}
-      {competitors.length === 0 && (
-        <div className="rounded-none p-12 text-center" style={{ background: 'white', border: '1px solid var(--border)', boxShadow: '0 1px 3px rgba(0,0,0,0.04)' }}>
-          <p className="text-lg font-medium text-[var(--muted)] mb-1">No competitive intelligence available</p>
-          <p className="text-sm text-[var(--muted)]">
-            Competitive analysis will appear here as data is gathered.
-          </p>
+      {/* Competitive Advantages Metrics Grid */}
+      <div style={{ background: 'white', border: '1px solid var(--border)', boxShadow: '0 1px 3px rgba(0,0,0,0.04)', padding: '2rem' }}>
+        <h3 style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: '1.4rem', fontWeight: 600, color: 'var(--secondary)', marginBottom: '1.5rem' }}>
+          Our Competitive Advantages
+        </h3>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem' }}>
+          {STATIC_ADVANTAGES.map(({ label, value, description }) => (
+            <div key={label} style={{ background: 'var(--highlight)', padding: '1.5rem', borderLeft: '3px solid var(--accent)' }}>
+              <div style={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--muted)', marginBottom: '0.4rem' }}>{label}</div>
+              <div style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: '1.3rem', fontWeight: 600, color: 'var(--secondary)', marginBottom: '0.5rem' }}>{value}</div>
+              <p style={{ fontSize: '0.8rem', color: 'var(--muted)', lineHeight: 1.5 }}>{description}</p>
+            </div>
+          ))}
         </div>
-      )}
+      </div>
+
+      {/* Defensive Strategy */}
+      <div style={{ background: 'white', border: '1px solid var(--border)', boxShadow: '0 1px 3px rgba(0,0,0,0.04)', padding: '2rem' }}>
+        <h3 style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: '1.4rem', fontWeight: 600, color: 'var(--secondary)', marginBottom: '1rem' }}>
+          Defensive Strategy & Competitive Positioning
+        </h3>
+        <ol style={{ marginLeft: '1.5rem', lineHeight: 2.2, fontSize: '0.9rem', color: 'var(--ink)' }}>
+          <li><strong>Strengthen Platform Positioning:</strong> Emphasize native integration depth and telecom-specific capabilities that generic competitors cannot match.</li>
+          <li><strong>Demonstrate Business Alignment:</strong> Position platform as enabler of faster sales, simpler quotes, fewer errors — directly supporting customer cost reduction goals.</li>
+          <li><strong>Present AI Roadmap:</strong> Highlight AI-powered capabilities and composable architecture alignment with customer technology direction.</li>
+          <li><strong>Expand Footprint Before Review Cycles:</strong> Drive adoption and usage before any competitive evaluation, creating switching costs beyond technology.</li>
+          <li><strong>Build Multi-Threaded Relationships:</strong> Executive relationships that survive contact turnover create strategic moats.</li>
+        </ol>
+      </div>
+
     </div>
   )
 }
