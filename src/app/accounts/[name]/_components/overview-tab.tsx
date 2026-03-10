@@ -6,7 +6,7 @@
 import { Suspense } from 'react'
 import type { CustomerWithHealth } from '@/lib/types/customer'
 import type { PainPoint, Opportunity } from '@/lib/types/account-plan'
-import { AlertTriangle, TrendingUp, TrendingDown, Shield } from 'lucide-react'
+import { AlertTriangle } from 'lucide-react'
 import { ARRBreakdownChart } from '@/components/charts/arr-breakdown-chart'
 import { TopCustomersChart } from '@/components/charts/top-customers-chart'
 
