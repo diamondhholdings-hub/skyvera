@@ -12,6 +12,8 @@ export const SubscriptionSchema = z.object({
   renewal_qtr: z.string().nullable(),
   will_renew: z.string().nullable(), // "Yes", "No", "TBD", "No (SF)", "BU decision required"
   projected_arr: z.number().nullable(),
+  startDate: z.string().optional(),
+  endDate: z.string().optional(),
 })
 export type Subscription = z.infer<typeof SubscriptionSchema>
 

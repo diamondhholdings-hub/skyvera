@@ -46,6 +46,7 @@ export const StakeholderSchema = z.object({
   relationshipStrength: RelationshipStrengthSchema,
   lastInteraction: z.string().optional(), // ISO date string
   notes: z.string().optional(),
+  keyMessage: z.string().optional(),
 })
 export type Stakeholder = z.infer<typeof StakeholderSchema>
 
@@ -64,6 +65,8 @@ export const PainPointSchema = z.object({
   severity: SeveritySchema,
   identifiedDate: z.string(), // ISO date string
   owner: z.string().optional(),
+  cloudSenseSolution: z.string().optional(),
+  nextAction: z.string().optional(),
 })
 export type PainPoint = z.infer<typeof PainPointSchema>
 
@@ -131,6 +134,9 @@ export const CompetitorSchema = z.object({
   strengths: z.array(z.string()),
   weaknesses: z.array(z.string()),
   lastUpdated: z.string(), // ISO date string
+  threatLevel: z.enum(['critical', 'high', 'medium', 'low']).optional(),
+  customerSponsor: z.string().optional(),
+  nextActionToDefend: z.string().optional(),
 })
 export type Competitor = z.infer<typeof CompetitorSchema>
 
