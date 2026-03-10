@@ -10,6 +10,11 @@ import { ok, err } from '@/lib/types/result'
 import { ExcelAdapter } from '../adapters/excel/parser'
 import { NewsAPIAdapter } from '../adapters/external/newsapi'
 import { NotionAdapter } from '../adapters/external/notion'
+import { RapidAPIEnrichmentAdapter } from '../adapters/rapidapi/enrichment'
+import { RapidAPINewsSentimentAdapter } from '../adapters/rapidapi/news-sentiment'
+import { RapidAPIFinancialIntelAdapter } from '../adapters/rapidapi/financial-intel'
+import { HiringSignalsAdapter } from '../adapters/rapidapi/hiring-signals'
+import { RiskCompetitiveAdapter } from '../adapters/rapidapi/risk-competitive'
 
 export type AdapterStatus = 'connected' | 'degraded' | 'failed'
 
@@ -293,6 +298,11 @@ export async function getConnectorFactory(): Promise<ConnectorFactory> {
     instance.register(new ExcelAdapter())
     instance.register(new NewsAPIAdapter())
     instance.register(new NotionAdapter())
+    instance.register(new RapidAPIEnrichmentAdapter())
+    instance.register(new RapidAPINewsSentimentAdapter())
+    instance.register(new RapidAPIFinancialIntelAdapter())
+    instance.register(new HiringSignalsAdapter())
+    instance.register(new RiskCompetitiveAdapter())
 
     // Initialize all adapters
     await instance.initialize()

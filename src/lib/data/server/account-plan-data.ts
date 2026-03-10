@@ -16,6 +16,7 @@ import type {
   PainPoint,
 } from '@/lib/types/account-plan'
 import type { NewsArticle } from '@/lib/types/news'
+import type { AccountEnrichment } from '@/lib/types/enrichment'
 import {
   StakeholderSchema,
   StrategyDataSchema,
@@ -301,6 +302,28 @@ export async function getCustomerNews(
 }
 
 /**
+ * Get enrichment data for account from RapidAPI adapter output
+ * Reads data/enrichment/{slug}.json — returns null if not found (graceful degradation)
+ */
+export async function getAccountEnrichment(customerName: string): Promise<AccountEnrichment | null> {
+  const slug = slugifyCustomerName(customerName)
+  const filePath = path.join(process.cwd(), `data/enrichment/${slug}.json`)
+
+  try {
+    const content = await readFile(filePath, 'utf-8')
+    const data = JSON.parse(content) as AccountEnrichment
+    return data
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code === 'ENOENT') {
+      // File not found — not an error, just no enrichment yet
+      return null
+    }
+    console.error(`[getAccountEnrichment] Error loading enrichment for ${customerName}:`, error)
+    return null
+  }
+}
+
+/**
  * Get all account plan data for customer (aggregate function)
  * Calls all data functions in parallel and returns combined result
  */
@@ -312,6 +335,7 @@ export async function getAccountPlanData(customerName: string) {
     competitorsResult,
     intelligenceResult,
     newsResult,
+    enrichment,
   ] = await Promise.all([
     getStakeholders(customerName),
     getStrategyData(customerName),
@@ -319,6 +343,7 @@ export async function getAccountPlanData(customerName: string) {
     getCompetitors(customerName),
     getIntelligenceReport(customerName),
     getCustomerNews(customerName),
+    getAccountEnrichment(customerName),
   ])
 
   // Collect errors (only return errors for actual failures, not missing files)
@@ -344,6 +369,7 @@ export async function getAccountPlanData(customerName: string) {
     competitors: competitorsResult.success ? competitorsResult.value : [],
     intelligence: intelligenceResult.success ? intelligenceResult.value : { raw: '' },
     news: newsResult.success ? newsResult.value : { articles: [] },
+    enrichment,
   })
 }
 

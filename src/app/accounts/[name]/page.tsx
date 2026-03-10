@@ -232,6 +232,7 @@ export default async function AccountPlanPage({ params, searchParams }: AccountP
               intelligenceReport={accountData.intelligence}
               news={accountData.news}
               customerName={customerName}
+              enrichment={accountData.enrichment ?? null}
             />
           </Suspense>
         )}

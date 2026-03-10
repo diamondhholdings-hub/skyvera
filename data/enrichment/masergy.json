@@ -1,0 +1,12 @@
+{
+  "customerName": "Masergy",
+  "slug": "masergy",
+  "enrichedAt": "2026-03-10T02:26:41.521Z",
+  "enrichmentStatus": {
+    "company": "error",
+    "financials": "error",
+    "hiring": "error",
+    "risk": "error",
+    "news": "error"
+  }
+}

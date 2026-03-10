@@ -1,0 +1,56 @@
+{
+  "customerName": "Telefonica UK Limited",
+  "slug": "telefonica-uk-limited",
+  "companyProfile": {
+    "name": "Telefonica UK Limited",
+    "enrichedAt": "2026-03-10T02:59:09.790Z",
+    "sources": [
+      "crunchbase"
+    ]
+  },
+  "financials": {
+    "companyName": "Telefonica UK Limited",
+    "isPublic": false,
+    "enrichedAt": "2026-03-10T02:59:09.511Z"
+  },
+  "hiringSignals": {
+    "companyName": "Telefonica UK Limited",
+    "totalOpenRoles": 0,
+    "recentPostings30d": 0,
+    "hiringVelocityTrend": "unknown",
+    "keyDepartmentsHiring": [],
+    "topRoles": [],
+    "layoffSignals": false,
+    "csHiring": false,
+    "techHiring": false,
+    "enrichedAt": "2026-03-10T02:59:23.288Z"
+  },
+  "riskCompetitive": {
+    "companyName": "Telefonica UK Limited",
+    "bankruptcyRisk": {
+      "flag": false
+    },
+    "fundingHealth": {
+      "signal": "unknown"
+    },
+    "webPresence": {},
+    "marketPerception": {
+      "overallSentiment": "unknown"
+    },
+    "cyberIncidents": {
+      "recentBreach": false
+    },
+    "competitorLandscape": {
+      "primaryCompetitors": []
+    },
+    "enrichedAt": "2026-03-10T02:59:15.228Z"
+  },
+  "enrichedAt": "2026-03-10T02:59:23.288Z",
+  "enrichmentStatus": {
+    "company": "ok",
+    "financials": "ok",
+    "hiring": "ok",
+    "risk": "ok",
+    "news": "skipped"
+  }
+}
