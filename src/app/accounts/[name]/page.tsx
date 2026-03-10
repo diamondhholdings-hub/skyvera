@@ -239,7 +239,7 @@ export default async function AccountPlanPage({ params, searchParams }: AccountP
 
         {activeTab === 'financials' && (
           <Suspense fallback={<TabSkeleton />}>
-            <FinancialsTab customer={customer} />
+            <FinancialsTab customer={customer} allBuCustomers={customersResult.value.filter(c => c.bu === customer.bu)} />
           </Suspense>
         )}
 

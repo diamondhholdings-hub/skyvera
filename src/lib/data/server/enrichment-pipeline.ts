@@ -183,8 +183,8 @@ export async function enrichAccount(
 
     return ok(enrichment)
   } catch (error) {
-    const msg = error instanceof Error ? error.message : 'Unknown error'
-    console.error(`[enrichAccount] Fatal error enriching "${customerName}":`, msg)
+    const msg = error instanceof Error ? error.message : String(error)
+    console.error(`[enrichAccount] Fatal error enriching "${customerName}":`, error)
     return err(new Error(`enrichAccount failed for "${customerName}": ${msg}`))
   }
 }
@@ -200,7 +200,9 @@ export async function getEnrichmentCache(customerName: string): Promise<AccountE
   try {
     const raw = await readFile(filePath, 'utf-8')
     return JSON.parse(raw) as AccountEnrichment
-  } catch {
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code === 'ENOENT') return null
+    console.error(`[getEnrichmentCache] Error reading enrichment for "${customerName}":`, error)
     return null
   }
 }
@@ -232,7 +234,7 @@ export async function enrichAllAccounts(
       succeeded++
     } else {
       failed++
-      console.error(`[enrichAllAccounts] Failed: "${name}":`, result.error.message)
+      console.error(`[enrichAllAccounts] Failed: "${name}":`, result.error)
     }
 
     // Rate-limit guard: 500ms between calls (skip delay after the last item)

@@ -130,7 +130,7 @@ export function OverviewTab({
               <h3 style={{ color: 'var(--critical, #e53935)', fontFamily: '"Cormorant Garamond", serif', fontSize: '1.1rem', marginBottom: '0.75rem' }}>Top Risks</h3>
               <ul style={{ marginLeft: '1.25rem', marginBottom: '1.5rem', fontSize: '0.875rem', lineHeight: 1.8 }}>
                 {painPoints.slice(0, 3).map(pp => (
-                  <li key={pp.id}><strong>{pp.title}:</strong> {pp.description?.slice(0, 80)}{pp.description?.length > 80 ? '…' : ''}</li>
+                  <li key={pp.id}><strong>{pp.title}:</strong> {pp.description.slice(0, 80)}{pp.description.length > 80 ? '…' : ''}</li>
                 ))}
               </ul>
             </>
@@ -142,7 +142,7 @@ export function OverviewTab({
                 {topOpportunities.map(opp => (
                   <li key={opp.id}>
                     <strong>{opp.title}{opp.estimatedValue ? ` (+${formatCurrency(opp.estimatedValue)})` : ''}:</strong>{' '}
-                    {opp.description?.slice(0, 80)}{opp.description?.length > 80 ? '…' : ''}
+                    {opp.description.slice(0, 80)}{opp.description.length > 80 ? '…' : ''}
                   </li>
                 ))}
               </ul>

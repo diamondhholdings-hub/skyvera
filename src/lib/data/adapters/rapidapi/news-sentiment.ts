@@ -202,7 +202,7 @@ export class RapidAPINewsSentimentAdapter implements DataAdapter {
    * Health check - degraded mode is still "healthy" (just limited).
    */
   async healthCheck(): Promise<boolean> {
-    return true
+    return !this.degraded
   }
 
   /**

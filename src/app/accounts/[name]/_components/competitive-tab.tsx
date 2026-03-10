@@ -70,10 +70,10 @@ export function CompetitiveTab({ competitors }: CompetitiveTabProps) {
                       <td style={{ padding: '1rem' }}><Badge variant={threatVariant}>{comp.threatLevel ?? (comp.type === 'both' ? 'HIGH' : comp.type === 'our-competitor' ? 'MEDIUM' : 'LOW')}</Badge></td>
                       <td style={{ padding: '1rem', color: 'var(--ink)', fontSize: '0.8rem' }}>{comp.customerSponsor || '—'}</td>
                       <td style={{ padding: '1rem', color: 'var(--muted)', fontSize: '0.8rem', lineHeight: 1.6 }}>
-                        {comp.weaknesses.length > 0 ? comp.weaknesses.slice(0, 2).map((w, j) => <div key={j}>• {w}</div>) : '—'}
+                        {comp.strengths.length > 0 ? comp.strengths.slice(0, 2).map((s, j) => <div key={j}>• {s}</div>) : '—'}
                       </td>
                       <td style={{ padding: '1rem', color: 'var(--muted)', fontSize: '0.8rem', lineHeight: 1.6 }}>
-                        {comp.strengths.length > 0 ? comp.strengths.slice(0, 2).map((s, j) => <div key={j}>• {s}</div>) : '—'}
+                        {comp.weaknesses.length > 0 ? comp.weaknesses.slice(0, 2).map((w, j) => <div key={j}>• {w}</div>) : '—'}
                       </td>
                       <td style={{ padding: '1rem' }}>
                         {comp.nextActionToDefend

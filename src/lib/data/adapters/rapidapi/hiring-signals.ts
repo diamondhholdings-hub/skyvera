@@ -197,8 +197,7 @@ export class HiringSignalsAdapter implements DataAdapter {
    * Health check - return true if API key configured
    */
   async healthCheck(): Promise<boolean> {
-    // Degraded mode is still "healthy" - just limited functionality
-    return true
+    return !this.degraded
   }
 
   /**

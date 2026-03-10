@@ -321,8 +321,7 @@ export class RapidAPIEnrichmentAdapter implements DataAdapter {
   }
 
   async healthCheck(): Promise<boolean> {
-    // Degraded mode is still "healthy" — just limited functionality
-    return true
+    return !this.degraded
   }
 
   async disconnect(): Promise<void> {
@@ -672,11 +671,6 @@ export class RapidAPIEnrichmentAdapter implements DataAdapter {
     }
 
     const autocompleteRaw = await autocompleteResponse.json()
-    // DEBUG: log autocomplete structure to understand actual shape on first run
-    console.log(
-      '[Crunchbase DEBUG] autocomplete response:',
-      JSON.stringify(autocompleteRaw).slice(0, 600)
-    )
 
     // The autocomplete2 endpoint matches the official Crunchbase v4 autocomplete shape:
     //   { entities: [ { identifier: { permalink, entity_def_id, uuid, value }, short_description }, ... ] }
@@ -725,12 +719,6 @@ export class RapidAPIEnrichmentAdapter implements DataAdapter {
 
     const orgData: CrunchbaseOrgResponse = await orgResponse.json()
 
-    // DEBUG: log the first 800 chars of the org response so we can see the actual shape
-    console.log(
-      '[Crunchbase DEBUG] org response (first 800 chars):',
-      JSON.stringify(orgData).slice(0, 800)
-    )
-
     // Resolve properties from multiple possible wrapper shapes:
     //   1. { properties: { ... } }           — standard Crunchbase v4 entity lookup
     //   2. { data: { properties: { ... } } } — some RapidAPI wrappers add a data envelope
@@ -743,7 +731,6 @@ export class RapidAPIEnrichmentAdapter implements DataAdapter {
       const hasRootFields = orgData.short_description != null || orgData.founded_on != null
       if (hasRootFields) {
         // Treat the root object itself as properties
-        console.log('[Crunchbase DEBUG] org response appears to be flat (no properties wrapper)')
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const flatProps = orgData as any as CrunchbaseOrgProperties
         return this.buildCrunchbaseProfile(flatProps)

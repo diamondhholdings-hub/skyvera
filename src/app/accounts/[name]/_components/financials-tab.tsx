@@ -73,6 +73,7 @@ export function FinancialsTab({ customer, allBuCustomers = [] }: FinancialsTabPr
           Contract Summary
         </h2>
         <div style={{ background: 'white', border: '1px solid var(--border)', boxShadow: '0 1px 3px rgba(0,0,0,0.04)', overflow: 'hidden' }}>
+          <style>{`.sub-row:hover { background: var(--highlight) !important; }`}</style>
           <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.875rem' }}>
             <thead>
               <tr style={{ background: 'var(--secondary)', color: 'white' }}>
@@ -83,10 +84,7 @@ export function FinancialsTab({ customer, allBuCustomers = [] }: FinancialsTabPr
             </thead>
             <tbody>
               {customer.subscriptions.length > 0 ? customer.subscriptions.map((sub, i) => (
-                <tr key={i} style={{ borderBottom: '1px solid var(--border)' }}
-                  onMouseEnter={e => (e.currentTarget.style.background = 'var(--highlight)')}
-                  onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
-                >
+                <tr key={i} className="sub-row" style={{ borderBottom: '1px solid var(--border)' }}>
                   <td style={{ padding: '1rem', fontWeight: 500, color: 'var(--secondary)' }}>{sub.sub_id ?? '—'}</td>
                   <td style={{ padding: '1rem', color: 'var(--muted)' }}>{sub.startDate ?? '—'}</td>
                   <td style={{ padding: '1rem', color: 'var(--muted)' }}>{sub.endDate ?? '—'}</td>
