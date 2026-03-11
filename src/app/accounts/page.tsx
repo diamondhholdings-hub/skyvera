@@ -5,9 +5,11 @@
  */
 
 import { getAllCustomersWithHealth, getCustomerCount } from '@/lib/data/server/account-data'
+import { getCompletenessScores } from '@/lib/data/server/account-plan-data'
 import { RefreshButton } from '@/components/ui/refresh-button'
 import { AccountStats } from './components/account-stats'
 import { AccountTable } from './components/account-table'
+import { AccountsSearch } from '@/components/accounts-search'
 import { Suspense } from 'react'
 
 export const metadata = {
@@ -29,7 +31,13 @@ function TableSkeleton() {
   )
 }
 
-export default async function AccountsPage() {
+interface AccountsPageProps {
+  searchParams: Promise<{ search?: string; bu?: string; health?: string }>
+}
+
+export default async function AccountsPage({ searchParams }: AccountsPageProps) {
+  const { search } = await searchParams
+
   // Fetch customers and stats
   const [customersResult, statsResult] = await Promise.all([
     getAllCustomersWithHealth(),
@@ -65,9 +73,23 @@ export default async function AccountsPage() {
 
   const customers = customersResult.value
   const stats = statsResult.value
+
+  // Apply server-side search filter (supports bookmarkable URLs)
+  const searchQuery = search?.toLowerCase().trim() ?? ''
+  const filtered = searchQuery
+    ? customers.filter(
+        (c) =>
+          c.customer_name.toLowerCase().includes(searchQuery) ||
+          c.bu.toLowerCase().includes(searchQuery) ||
+          c.healthScore.toLowerCase().includes(searchQuery)
+      )
+    : customers
+
+  // Fetch completeness scores for filtered accounts in parallel
+  const scores = await getCompletenessScores(filtered.map((c) => c.customer_name))
+
   // Compute total revenue from all customer totals
   const totalRevenue = customers.reduce((sum, c) => sum + (c.total || 0), 0)
-  const lastUpdated = new Date()
 
   return (
     <div>
@@ -89,9 +111,16 @@ export default async function AccountsPage() {
 
       {/* Content Container */}
       <div className="max-w-[1400px] mx-auto py-8 px-8">
+        {/* Search bar — needs Suspense because it uses useSearchParams() */}
+        <div style={{ marginBottom: '20px' }}>
+          <Suspense fallback={null}>
+            <AccountsSearch />
+          </Suspense>
+        </div>
+
         {/* Customer Table */}
         <Suspense fallback={<TableSkeleton />}>
-          <AccountTable customers={customers} />
+          <AccountTable customers={filtered} completenessScores={scores} />
         </Suspense>
       </div>
     </div>

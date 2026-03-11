@@ -272,3 +272,89 @@ h4 { font-size: 1.125rem; }
 ::-webkit-scrollbar-track { background: var(--surface-2); }
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+
+/* ── Print / PDF Export ──────────────────────────────────── */
+
+@media print {
+  /* Hide navigation, header hero, buttons, chat panel */
+  nav,
+  header,
+  .no-print,
+  [data-print="hide"] {
+    display: none !important;
+  }
+
+  /* Remove backgrounds, show content cleanly */
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 11pt;
+  }
+
+  /* Page setup */
+  @page {
+    margin: 1.5cm;
+    size: A4;
+  }
+
+  /* Keep cards readable */
+  [style*="background: white"],
+  [style*="background:white"] {
+    border: 1px solid #ccc !important;
+    box-shadow: none !important;
+    break-inside: avoid;
+  }
+
+  /* Preserve accent colors for headings */
+  [style*="color: var(--secondary)"],
+  [style*="color:var(--secondary)"] {
+    color: #2d4263 !important;
+  }
+
+  [style*="color: var(--accent)"],
+  [style*="color:var(--accent)"] {
+    color: #c84b31 !important;
+  }
+
+  /* Ensure highlight background prints */
+  [style*="background: var(--highlight)"],
+  [style*="background:var(--highlight)"] {
+    background: #ecdbba !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Dark table headers */
+  [style*="background: var(--secondary)"],
+  [style*="background:var(--secondary)"] {
+    background: #2d4263 !important;
+    color: white !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Tab navigation hidden in print */
+  [class*="tab-nav"],
+  [data-tab-nav] {
+    display: none !important;
+  }
+
+  /* Charts: attempt to show, fall back gracefully */
+  canvas {
+    max-width: 100% !important;
+  }
+
+  /* Page breaks */
+  h2 {
+    break-before: auto;
+    break-after: avoid;
+  }
+
+  table {
+    break-inside: auto;
+  }
+
+  tr {
+    break-inside: avoid;
+  }
+}

@@ -21,6 +21,7 @@ import { ActionPlanTab } from './_components/action-plan-tab'
 import { IntelligenceTab } from './_components/intelligence-tab'
 import { RefreshButton } from '@/components/ui/refresh-button'
 import { SalesforceSyncButton } from '@/components/ui/salesforce-sync-button'
+import { PrintButton } from '@/components/ui/print-button'
 
 interface AccountPlanPageProps {
   params: Promise<{ name: string }>
@@ -95,7 +96,7 @@ export default async function AccountPlanPage({ params, searchParams }: AccountP
   return (
     <div style={{ background: 'var(--paper)', minHeight: '100vh' }}>
       {/* Back link */}
-      <div className="max-w-[1400px] mx-auto px-8 pt-4">
+      <div className="max-w-[1400px] mx-auto px-8 pt-4" data-print="hide">
         <Link
           href="/accounts"
           className="inline-flex items-center text-sm text-accent hover:text-accent/80 hover:underline"
@@ -137,7 +138,8 @@ export default async function AccountPlanPage({ params, searchParams }: AccountP
                 {customer.bu} Business Unit | Skyvera | Q1 2026
               </p>
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', alignItems: 'flex-end' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', alignItems: 'flex-end' }} data-print="hide">
+              <PrintButton customerName={customerName} />
               <RefreshButton label="Refresh Data" />
               <SalesforceSyncButton accountName={customerName} />
             </div>
@@ -185,7 +187,9 @@ export default async function AccountPlanPage({ params, searchParams }: AccountP
       </div>
 
       {/* Tab Navigation */}
-      <TabNavigation accountName={name} />
+      <div data-print="hide">
+        <TabNavigation accountName={name} />
+      </div>
 
       {/* Tab Content */}
       <div className="max-w-[1400px] mx-auto px-8 py-6">

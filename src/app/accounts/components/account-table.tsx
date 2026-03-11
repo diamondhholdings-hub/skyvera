@@ -15,9 +15,11 @@ import type { CustomerWithHealth } from '@/lib/types/customer'
 import { HealthIndicator } from '@/components/ui/health-indicator'
 import { Badge } from '@/components/ui/badge'
 import { AccountFilters } from './account-filters'
+import { CompletenessBadge } from '@/components/completeness-badge'
 
 interface AccountTableProps {
   customers: CustomerWithHealth[]
+  completenessScores?: Record<string, number>
 }
 
 const PAGE_SIZE = 24
@@ -28,7 +30,7 @@ function formatCurrency(value: number): string {
   return value === 0 ? '—' : `$${value}`
 }
 
-export function AccountTable({ customers }: AccountTableProps) {
+export function AccountTable({ customers, completenessScores = {} }: AccountTableProps) {
   const [sorting, setSorting] = useState<SortingState>([{ id: 'total', desc: true }])
   const [globalFilter, setGlobalFilter] = useState('')
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
@@ -269,7 +271,7 @@ export function AccountTable({ customers }: AccountTableProps) {
               </div>
 
               {/* Footer */}
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px', flexWrap: 'wrap' }}>
                 <span style={{
                   fontSize: '0.75rem',
                   fontWeight: 600,
@@ -278,9 +280,11 @@ export function AccountTable({ customers }: AccountTableProps) {
                   background: 'rgba(200,75,49,0.08)',
                   padding: '3px 8px',
                   borderRadius: '4px',
+                  flexShrink: 0,
                 }}>
                   {c.bu}
                 </span>
+                <CompletenessBadge score={completenessScores[c.customer_name] ?? 0} />
                 <HealthIndicator score={c.healthScore} />
               </div>
             </Link>

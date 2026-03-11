@@ -566,3 +566,37 @@ export async function getAccountRetentionStrategy(
     )
   }
 }
+
+/**
+ * Get data completeness scores for a list of customers (0-100).
+ * Checks presence of intelligence JSON files for each account.
+ */
+export async function getCompletenessScores(
+  customerNames: string[]
+): Promise<Record<string, number>> {
+  const scores: Record<string, number> = {}
+  const intelligenceDir = path.join(process.cwd(), 'data', 'intelligence')
+
+  await Promise.all(
+    customerNames.map(async (name) => {
+      try {
+        const slug = slugifyCustomerName(name)
+        const files = ['stakeholders', 'strategy', 'actions', 'competitors', 'intelligence']
+        let found = 0
+        for (const file of files) {
+          try {
+            await readFile(path.join(intelligenceDir, slug, `${file}.json`), 'utf-8')
+            found++
+          } catch {
+            // file missing — counts as 0
+          }
+        }
+        scores[name] = Math.round((found / files.length) * 100)
+      } catch {
+        scores[name] = 0
+      }
+    })
+  )
+
+  return scores
+}
