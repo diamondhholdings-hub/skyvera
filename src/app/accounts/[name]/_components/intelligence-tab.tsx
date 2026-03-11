@@ -22,6 +22,21 @@ import { ExternalLink, Radio } from 'lucide-react'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { EnrichButton } from './enrich-button'
+import { ReEnrichButton } from '@/components/ui/re-enrich-button'
+
+// ─── Helpers ──────────────────────────────────────────────────────────────────
+
+/** Format an ISO enrichedAt string as "March 7, 2026 (3 days ago)". */
+function formatEnrichedAt(iso: string): string {
+  const date = new Date(iso)
+  if (isNaN(date.getTime())) return iso
+  const formatted = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
+  const diffDays = Math.round((Date.now() - date.getTime()) / (1000 * 60 * 60 * 24))
+  if (diffDays === 0) return `${formatted} (today)`
+  if (diffDays === 1) return `${formatted} (1 day ago)`
+  if (diffDays < 0) return formatted
+  return `${formatted} (${diffDays} days ago)`
+}
 
 // ─── Helper components ────────────────────────────────────────────────────────
 
@@ -1061,6 +1076,29 @@ export function IntelligenceTab({
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
+      {/* Last enriched banner (when enrichment data exists) */}
+      {hasEnrichment && enrichment?.enrichedAt && (
+        <div
+          style={{
+            background: 'rgba(45,66,99,0.06)',
+            border: '1px solid var(--border)',
+            padding: '0.75rem 1rem',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: '1rem',
+            flexWrap: 'wrap',
+            fontSize: '0.8rem',
+            color: 'var(--muted)',
+          }}
+        >
+          <span>
+            🔄 Last enriched: <strong style={{ color: 'var(--ink)' }}>{formatEnrichedAt(enrichment.enrichedAt)}</strong>
+          </span>
+          <ReEnrichButton customerName={customerName} />
+        </div>
+      )}
+
       {/* Enrich prompt (when no enrichment but markdown/legacy news exists) */}
       {showEnrichPrompt && (
         <div

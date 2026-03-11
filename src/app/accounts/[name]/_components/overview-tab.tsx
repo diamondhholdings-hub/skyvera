@@ -23,6 +23,60 @@ function formatCurrency(value: number): string {
   return `$${(value / 1_000).toFixed(0)}K`
 }
 
+/** Parse a renewal_qtr string like "Q2 2026" into the first day of that quarter. */
+function parseRenewalQtr(qtr: string): Date | null {
+  const match = qtr.trim().match(/^Q([1-4])\s+(\d{4})$/)
+  if (!match) return null
+  const quarterMonth = [0, 3, 6, 9][parseInt(match[1], 10) - 1] // Jan, Apr, Jul, Oct
+  return new Date(parseInt(match[2], 10), quarterMonth, 1)
+}
+
+/** Return renewal display value and colour for the Account Status table. */
+function getRenewalDisplay(
+  subscriptions: Array<{ renewal_qtr: string | null; endDate?: string }>
+): { text: string; color: string } {
+  if (!subscriptions.length) return { text: '—', color: 'var(--ink)' }
+
+  const today = new Date()
+  let soonestMs = Infinity
+  let soonestDate: Date | null = null
+  let soonestQtrLabel = ''
+
+  for (const sub of subscriptions) {
+    let candidate: Date | null = null
+    let label = ''
+
+    if (sub.endDate) {
+      candidate = new Date(sub.endDate)
+      label = sub.renewal_qtr ?? candidate.toLocaleDateString('en-US', { month: 'short', year: 'numeric' })
+    } else if (sub.renewal_qtr) {
+      candidate = parseRenewalQtr(sub.renewal_qtr)
+      label = sub.renewal_qtr
+    }
+
+    if (!candidate || isNaN(candidate.getTime())) continue
+
+    const ms = candidate.getTime() - today.getTime()
+    if (ms < soonestMs) {
+      soonestMs = ms
+      soonestDate = candidate
+      soonestQtrLabel = label
+    }
+  }
+
+  if (!soonestDate) return { text: '—', color: 'var(--ink)' }
+
+  const daysUntil = Math.round(soonestMs / (1000 * 60 * 60 * 24))
+
+  if (daysUntil < 0) return { text: '⚠️ Renewal overdue', color: '#dc2626' }
+
+  const label = soonestQtrLabel || soonestDate.toLocaleDateString('en-US', { month: 'short', year: 'numeric' })
+
+  if (daysUntil < 90) return { text: `🚨 ${label} (${daysUntil} days)`, color: '#dc2626' }
+  if (daysUntil <= 180) return { text: `⚠️ ${label} (${daysUntil} days)`, color: '#d97706' }
+  return { text: `${label} (${daysUntil} days)`, color: '#16a34a' }
+}
+
 const priorityLabels = ['#1 Priority', '#2 Priority', '#3 Priority']
 
 export function OverviewTab({
@@ -35,6 +89,7 @@ export function OverviewTab({
   const hasAlert = customer.healthScore === 'red' || customer.healthScore === 'yellow'
   const topPainPoints = painPoints.slice(0, 3)
   const topOpportunities = opportunities.slice(0, 3)
+  const renewal = getRenewalDisplay(customer.subscriptions)
 
   const defaultPriorities = [
     { label: '#1 Priority', title: 'Strengthen Executive Engagement' },
@@ -110,6 +165,7 @@ export function OverviewTab({
                 { label: customer.rr > 0 ? 'ARR' : 'Annual Rev', value: formatCurrency(arr) },
                 { label: 'Health Score', value: customer.healthScore.charAt(0).toUpperCase() + customer.healthScore.slice(1) },
                 { label: '% of Revenue', value: customer.pct_of_total != null ? `${customer.pct_of_total.toFixed(2)}%` : '—' },
+                { label: 'Subscriptions', value: customer.subscriptions.length > 0 ? `${customer.subscriptions.length} active` : '—' },
               ].map(({ label, value }) => (
                 <tr key={label} style={{ borderBottom: '1px solid var(--border)' }}>
                   <td style={{ padding: '0.75rem 1rem 0.75rem 0', fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--muted)', fontWeight: 600, width: '9rem' }}>
@@ -118,6 +174,15 @@ export function OverviewTab({
                   <td style={{ padding: '0.75rem 0', color: 'var(--ink)', fontWeight: 500 }}>{value}</td>
                 </tr>
               ))}
+              {/* Next Renewal row rendered separately for custom colour */}
+              <tr style={{ borderBottom: '1px solid var(--border)' }}>
+                <td style={{ padding: '0.75rem 1rem 0.75rem 0', fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--muted)', fontWeight: 600, width: '9rem' }}>
+                  Next Renewal
+                </td>
+                <td style={{ padding: '0.75rem 0', color: renewal.color, fontWeight: 500 }}>
+                  {renewal.text}
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>
