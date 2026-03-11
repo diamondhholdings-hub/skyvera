@@ -8,10 +8,12 @@
 
 import { useState } from 'react'
 import type { ActionItem, Stakeholder } from '@/lib/types/account-plan'
+import { StatusCycleButton } from '@/components/ui/status-cycle-button'
 
 interface ActionPlanTabProps {
   actions: ActionItem[]
   stakeholders?: Stakeholder[]
+  accountName?: string
 }
 
 function Badge({ children, variant = 'neutral' }: { children: React.ReactNode; variant?: 'critical' | 'high' | 'medium' | 'success' | 'neutral' }) {
@@ -49,16 +51,13 @@ const TIMELINE_PHASES = [
   },
 ]
 
-export function ActionPlanTab({ actions, stakeholders = [] }: ActionPlanTabProps) {
+export function ActionPlanTab({ actions, stakeholders = [], accountName = '' }: ActionPlanTabProps) {
   const [actionStatuses, setActionStatuses] = useState<Record<string, ActionItem['status']>>(
     Object.fromEntries(actions.map(a => [a.id, a.status]))
   )
 
-  const toggleStatus = (id: string) => {
-    setActionStatuses(prev => ({
-      ...prev,
-      [id]: prev[id] === 'done' ? 'todo' : prev[id] === 'todo' ? 'in-progress' : 'done',
-    }))
+  const handleStatusUpdate = (id: string, newStatus: string) => {
+    setActionStatuses(prev => ({ ...prev, [id]: newStatus as ActionItem['status'] }))
   }
 
   const priorityVariant = (p: string) => p === 'high' ? 'critical' : p === 'medium' ? 'high' : 'medium'
@@ -167,13 +166,14 @@ export function ActionPlanTab({ actions, stakeholders = [] }: ActionPlanTabProps
                       <td style={{ padding: '1rem', color: 'var(--muted)', fontSize: '0.8rem' }}>{action.dueDate || '—'}</td>
                       <td style={{ padding: '1rem' }}><Badge variant={priorityVariant(action.priority) as 'critical' | 'high' | 'medium'}>{action.priority}</Badge></td>
                       <td style={{ padding: '1rem' }}>
-                        <button
-                          onClick={() => toggleStatus(action.id)}
-                          style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
-                          title="Click to cycle status"
-                        >
-                          <Badge variant={statusVariant(currentStatus) as 'success' | 'high' | 'neutral'}>{currentStatus.replace('-', ' ')}</Badge>
-                        </button>
+                        <StatusCycleButton
+                          id={action.id}
+                          status={currentStatus}
+                          statuses={['todo', 'in-progress', 'done']}
+                          accountName={accountName}
+                          type="action"
+                          onUpdate={(s) => handleStatusUpdate(action.id, s)}
+                        />
                       </td>
                     </tr>
                   )

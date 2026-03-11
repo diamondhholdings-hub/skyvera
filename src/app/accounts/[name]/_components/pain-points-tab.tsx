@@ -1,14 +1,19 @@
+'use client'
+
 /**
  * PainPointsTab - 6-column pain points table + strategic initiatives cards
- * Server Component
+ * Client Component — status column uses StatusCycleButton for inline editing
  * Matches Telstra HTML pain-points section
  */
 
+import { useState } from 'react'
 import type { PainPoint, Opportunity } from '@/lib/types/account-plan'
+import { StatusCycleButton } from '@/components/ui/status-cycle-button'
 
 interface PainPointsTabProps {
   painPoints: PainPoint[]
   opportunities: Opportunity[]
+  accountName?: string
 }
 
 function Badge({ children, variant }: { children: React.ReactNode; variant: 'critical' | 'high' | 'medium' | 'success' | 'neutral' }) {
@@ -30,7 +35,13 @@ function Badge({ children, variant }: { children: React.ReactNode; variant: 'cri
   )
 }
 
-export function PainPointsTab({ painPoints, opportunities }: PainPointsTabProps) {
+export function PainPointsTab({ painPoints, opportunities, accountName = '' }: PainPointsTabProps) {
+  const [localPainPoints, setLocalPainPoints] = useState(painPoints)
+
+  const handleStatusUpdate = (id: string, newStatus: string) => {
+    setLocalPainPoints(prev => prev.map(pp => pp.id === id ? { ...pp, status: newStatus as PainPoint['status'] } : pp))
+  }
+
   return (
     <div className="space-y-10">
 
@@ -50,7 +61,7 @@ export function PainPointsTab({ painPoints, opportunities }: PainPointsTabProps)
                 </tr>
               </thead>
               <tbody>
-                {painPoints.map((pp, i) => {
+                {localPainPoints.map((pp, i) => {
                   const isHigh = pp.severity === 'high'
                   const urgencyVariant = pp.severity === 'high' ? 'critical' : pp.severity === 'medium' ? 'high' : 'medium'
                   return (
@@ -62,11 +73,14 @@ export function PainPointsTab({ painPoints, opportunities }: PainPointsTabProps)
                       <td style={{ padding: '1rem', color: 'var(--ink)', fontSize: '0.8rem' }}>{pp.owner || '—'}</td>
                       <td style={{ padding: '1rem' }}><Badge variant={urgencyVariant as 'critical' | 'high' | 'medium'}>{pp.severity?.toUpperCase()}</Badge></td>
                       <td style={{ padding: '1rem' }}>
-                        {pp.status === 'active'
-                          ? <Badge variant="critical">Active</Badge>
-                          : pp.status === 'monitoring'
-                            ? <Badge variant="medium">TBD</Badge>
-                            : <Badge variant="success">Resolved</Badge>}
+                        <StatusCycleButton
+                          id={pp.id}
+                          status={pp.status}
+                          statuses={['active', 'monitoring', 'resolved']}
+                          accountName={accountName}
+                          type="pain-point"
+                          onUpdate={(s) => handleStatusUpdate(pp.id, s)}
+                        />
                       </td>
                       <td style={{ padding: '1rem', color: 'var(--muted)', fontSize: '0.8rem', lineHeight: 1.5 }}>
                         {pp.cloudSenseSolution || 'Platform capabilities address this pain point'}
