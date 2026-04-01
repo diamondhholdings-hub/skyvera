@@ -13,6 +13,7 @@ import { ExpansionSection } from './sections/expansion'
 import { ActionPlanSection } from './sections/action-plan'
 import { DMBriefingSection } from './sections/dm-briefing'
 import { DashboardNavigation } from './components/dashboard-navigation'
+import { PageHeader } from '@/components/ui/page-header'
 
 // Skeleton fallback
 function DashboardSkeleton() {
@@ -32,17 +33,11 @@ export default function DashboardPage() {
   return (
     <div>
       {/* Header */}
-      <header className="bg-gradient-to-br from-[var(--secondary)] to-[#1a2332] text-[var(--paper)] px-10 pt-12 pb-10 text-center">
-        <h1 className="font-display text-5xl font-light text-[var(--paper)] mb-3">
-          Skyvera Executive Intelligence Report
-        </h1>
-        <div className="text-lg text-[var(--paper)]/90 mb-2">
-          Financial &amp; Customer Intelligence Analysis - Q1&apos;26
-        </div>
-        <div className="text-sm text-[var(--paper)]/70" suppressHydrationWarning>
-          Report Date: {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })} | Classification: Executive Confidential
-        </div>
-      </header>
+      <PageHeader
+        title="Skyvera Executive Intelligence Report"
+        subtitle="Financial & Customer Intelligence Analysis — Q1&#x2019;26"
+        centered
+      />
 
       {/* 7-Section Navigation */}
       <Suspense fallback={<div className="h-10 bg-[var(--border)] animate-pulse rounded" />}>

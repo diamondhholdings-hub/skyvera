@@ -35,21 +35,27 @@ export default function DMStrategyHero({ stats }: DMStrategyHeroProps) {
       <h1
         className="dm-hero-title"
         style={{
-          fontSize: '2.5rem',
-          fontWeight: 700,
+          fontFamily: 'var(--font-display)',
+          fontSize: 'clamp(2rem, 3.5vw, 2.75rem)',
+          fontWeight: 300,
+          letterSpacing: '-0.025em',
+          lineHeight: 1.1,
           marginBottom: 'var(--space-md)',
           color: '#FFFFFF'
         }}
       >
-        DM% Strategy & Revenue Retention
+        DM% Strategy &amp; Revenue Retention
       </h1>
 
       {/* Subtitle */}
       <p
         className="dm-hero-subtitle"
         style={{
-          fontSize: '1.125rem',
-          opacity: 0.9,
+          fontFamily: 'var(--font-body)',
+          fontSize: '1rem',
+          fontWeight: 400,
+          color: 'rgba(226,232,240,0.75)',
+          letterSpacing: '0.01em',
           marginBottom: 'var(--space-xl)',
           maxWidth: '800px',
           marginLeft: 'auto',

@@ -13,6 +13,7 @@ import { CannedQueries } from './canned-queries'
 import { QueryResults } from './query-results'
 import { MetricsCatalog } from './metrics-catalog'
 import { RefreshButton } from '@/components/ui/refresh-button'
+import { PageHeader } from '@/components/ui/page-header'
 
 // Serializable metric definition without the calculate function
 type SerializableMetricDefinition = Omit<MetricDefinition, 'calculate'>
@@ -147,17 +148,11 @@ export function QueryPageClient({ cannedQueries, metrics }: QueryPageClientProps
   return (
     <div>
       {/* Editorial Header */}
-      <div className="bg-gradient-to-br from-[var(--secondary)] to-[#1a2332] text-[var(--paper)] px-8 pt-12 pb-8">
-        <div className="max-w-[1400px] mx-auto flex items-center justify-between">
-          <div>
-            <h1 className="font-display text-4xl font-light text-[var(--paper)]">Business Intelligence Query</h1>
-            <p className="text-[var(--paper)]/80 mt-2">
-              Query your business data using natural language
-            </p>
-          </div>
-          <RefreshButton label="Refresh Data" />
-        </div>
-      </div>
+      <PageHeader
+        title="Business Intelligence Query"
+        subtitle="Query your business data using natural language"
+        action={<RefreshButton label="Refresh Data" />}
+      />
 
       {/* Content */}
       <div className="max-w-[1400px] mx-auto px-8 py-8">
