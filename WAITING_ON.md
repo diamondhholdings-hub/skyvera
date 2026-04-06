@@ -13,29 +13,16 @@ None currently.
 
 ## 🟡 Pending Human Action
 
-### 1. Commit & push agent session work → main
-**What:** Parallel agents this session produced uncommitted changes across the codebase.
-Work in progress — 3 of 6 agents still running (api-hardening, unit-tests, e2e-tests).
-**Once agents complete:** Stage and commit all changes, push to main, Vercel auto-deploys.
-**Files changed (so far):**
-- `.github/workflows/ci.yml` — GitHub Actions CI (new)
-- `src/components/ui/error-boundary.tsx` — React ErrorBoundary component (new)
-- `src/lib/middleware/rate-limit.ts` — In-memory rate limiter (new, in progress)
-- `src/lib/validation/schemas.ts` — Zod input schemas (new, in progress)
-- `src/lib/intelligence/`, `src/lib/cache/`, `src/lib/data/`, `src/lib/semantic/` — JSDoc added
-- `src/app/accounts/[name]/_components/action-plan-tab.tsx` — ErrorBoundary wrapped
-- `src/app/accounts/[name]/_components/pain-points-tab.tsx` — ErrorBoundary wrapped
-- `src/app/accounts/[name]/page.tsx` — ErrorBoundary wrapped around chat panel
-- `src/app/api/` — Rate limiting + Zod validation added (in progress)
-- `tests/unit/` — New Vitest unit tests (in progress)
-- `tests/smoke/`, `tests/e2e/` — Expanded Playwright tests (in progress)
-- `vitest.config.ts` — Vitest setup (new)
-
-### 2. RapidAPI Key (for live enrichment)
+### 1. RapidAPI Key (for live enrichment)
 **What:** The 5 RapidAPI enrichment adapters are wired up but need a valid API key to run live.
-**Where to set:** `.env.local` → `RAPIDAPI_KEY=<your-key>`
-**Status:** Pre-cached enrichment data exists in `data/enrichment/` for ~4 accounts. All others return 0% enrichment score.
-**Action:** Add `RAPIDAPI_KEY` to Vercel environment variables and re-run enrichment for all accounts.
+**Where to set:** `.env.local` → `RAPIDAPI_KEY=<your-key>` and Vercel env vars
+**Status:** Adapters now return `skipped` (not `error`) when key is missing — no broken UI. Pre-cached data exists for ~4 accounts.
+**Action:** Add `RAPIDAPI_KEY` to Vercel environment variables and re-run enrichment for all 140 accounts.
+
+### 2. OpenCorporates API Key
+**What:** Corporate registry adapter is built but needs a key to fetch live data (directors, legal name, jurisdiction).
+**Where to set:** `.env.local` → `OPENCORPORATES_API_KEY=<your-key>` and Vercel env vars
+**Status:** Adapter returns `skipped` gracefully when key is missing.
 
 ---
 
@@ -51,10 +38,10 @@ Work in progress — 3 of 6 agents still running (api-hardening, unit-tests, e2e
 
 ### 5. RapidAPI enrichment for all 140 accounts
 **What:** Run `scripts/enrich-accounts.ts` to populate `data/enrichment/` for every customer.
-**Depends on:** Item 2 (RapidAPI key in env).
+**Depends on:** Item 1 (RapidAPI key in env).
 
 ### 6. Sentry error monitoring
-**What:** Add Sentry DSN to env vars and wrap `_app` with Sentry provider.
+**What:** Add Sentry DSN to env vars and instrument error tracking.
 **Effort:** ~1 hour.
 
 ---
@@ -63,7 +50,17 @@ Work in progress — 3 of 6 agents still running (api-hardening, unit-tests, e2e
 
 | Date | Item | Resolution |
 |------|------|------------|
-| 2026-04-06 | fix/pr-review-hardening merge | Already on origin/main (was pushed directly) |
+| 2026-04-06 | Session work commit | All work committed as `55c6a30`, pushed to `origin/main` |
+| 2026-04-06 | CI/CD pipeline | `.github/workflows/ci.yml` — type-check + build + smoke tests on every PR |
+| 2026-04-06 | Rate limiting | In-memory per-IP rate limiter on all 9 Claude-calling routes |
+| 2026-04-06 | Input validation | Zod schemas at all API entry points |
+| 2026-04-06 | RapidAPI degraded mode | Missing key now returns `skipped` not `error` for all 5 adapters |
+| 2026-04-06 | OpenCorporates integration | New adapter + enrichment pipeline + type extension |
+| 2026-04-06 | Error boundaries | `error-boundary.tsx` + 3 high-risk components wrapped |
+| 2026-04-06 | Unit test suite | Vitest — 161/161 passing across 9 test files |
+| 2026-04-06 | Smoke tests expanded | Playwright — 49/49 passing (+15 new, +10 selector fixes) |
+| 2026-04-06 | All docs updated | README, TODO, SESSION_SUMMARY, tests/README, docs/INDEX, docs/architecture |
+| 2026-04-06 | fix/pr-review-hardening | Already on origin/main (was pushed directly) |
 | 2026-03-10 | 14 PR review issues | Fixed in `eda6b2a` |
 | 2026-03-10 | Export/PDF functionality | Implemented via `@media print` |
 | 2026-03-10 | Inline status editing | StatusCycleButton + PATCH API routes |

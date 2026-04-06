@@ -1,3 +1,97 @@
+# Session Summary - Platform Hardening & Test Coverage
+**Date:** 2026-04-06
+**Objective:** Harden the Skyvera Intelligence Platform with CI/CD, error boundaries, API security, documentation, and comprehensive test coverage via 8 parallel agents.
+
+## Agents Dispatched
+
+6 parallel agents:
+1. **CI/CD** — GitHub Actions workflow
+2. **Error Boundaries** — React error boundary component
+3. **API Hardening** — Rate limiting + Zod input validation
+4. **JSDoc** — Library documentation
+5. **Unit Tests** — Vitest test suite
+6. **E2E Test Expansion** — Playwright smoke test expansion
+
+2 additional targeted agents:
+7. **OpenCorporates Integration** — Corporate registry enrichment adapter
+8. **RapidAPI Degraded Fix** — Graceful degradation when key is absent
+
+## Completed Work
+
+### CI/CD Pipeline
+- `.github/workflows/ci.yml` — runs type-check, build, and smoke tests on every PR
+- Automated quality gate on all future contributions
+
+### Error Boundaries
+- `src/components/ui/error-boundary.tsx` — reusable React ErrorBoundary component
+- Applied to 3 critical components across the app
+
+### API Hardening
+- `src/lib/middleware/rate-limit.ts` — in-memory per-IP rate limiter applied to 9 API routes
+- `src/lib/validation/schemas.ts` — Zod schemas applied to all Claude-calling routes
+
+### JSDoc Documentation
+- 10 lib files documented (~40 functions)
+- Includes full DM waterfall formula documentation
+
+### Unit Tests (Vitest)
+- New `vitest.config.ts`
+- 9 test files, 161/161 passing
+- Run: `npm run test:unit`
+
+### Smoke Tests (Playwright)
+- 49/49 passing (+15 new tests, +10 broken selectors fixed)
+- Run: `npx playwright test tests/smoke/`
+
+### OpenCorporates Adapter
+- `src/lib/data/adapters/external/opencorporates.ts`
+- Fetches: directors, legal name, jurisdiction, incorporation date
+- Wired into enrichment pipeline as 6th adapter
+
+### RapidAPI Degraded Fix
+- All 5 RapidAPI adapters now return `skipped` status (not `error`) when `RAPIDAPI_KEY` is missing
+- Prevents false error reporting in environments without the key
+
+## Metrics
+
+| Metric | Before | After |
+|--------|--------|-------|
+| Unit tests | 0 | 161/161 |
+| Smoke tests | 34 | 49/49 |
+| Total tests | 34 | 210/210 |
+| Rate-limited routes | 0 | 9 |
+| Zod-validated routes | 0 | all Claude-calling |
+| Enrichment adapters | 5 | 6 |
+| CI on PRs | No | Yes |
+
+## New Capabilities
+- Corporate registry enrichment (directors, legal name, jurisdiction, incorporation date)
+- Per-IP rate limiting on all sensitive API routes
+- Zod schema validation — malformed requests rejected before reaching Claude
+- GitHub Actions CI gate on every PR
+
+## Commit
+- `55c6a30` pushed to `origin/main`
+- CLAUDE.md and WAITING_ON.md updated
+
+## Remaining (Low Priority)
+- Add `OPENCORPORATES_API_KEY` to Vercel env vars (when key is available)
+- Add `RAPIDAPI_KEY` to Vercel env vars + run enrichment for all 140 accounts
+- Authentication system (NextAuth + Google OAuth — deferred by design)
+- PostgreSQL/Turso migration
+- Sentry error monitoring
+- Dark mode
+- Redis caching for Claude API
+- Error boundaries on remaining non-critical components
+
+---
+
+**Session Status:** COMPLETE
+**Tests Passing:** 210/210 (100%)
+**Agents Dispatched:** 8
+
+---
+
 # Session Summary - Code Quality Improvements
 **Date:** 2026-02-17
 **Objective:** Complete medium and low priority TODO items for Skyvera Intelligence Platform

@@ -4,7 +4,7 @@
 
 [![Next.js](https://img.shields.io/badge/Next.js-16.1-black)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue)](https://www.typescriptlang.org/)
-[![Claude](https://img.shields.io/badge/Claude-Sonnet%204.5-purple)](https://www.anthropic.com/claude)
+[![Claude](https://img.shields.io/badge/Claude-Sonnet%204.6-purple)](https://www.anthropic.com/claude)
 [![Prisma](https://img.shields.io/badge/Prisma-5.22-2D3748)](https://www.prisma.io/)
 
 ## Overview
@@ -16,14 +16,14 @@ Skyvera Intelligence System is a production-ready executive intelligence platfor
 - **Customer Health Intelligence**: Monitor 140+ enterprise accounts with AI-powered health scoring and churn risk detection
 - **Scenario Planning**: Model business impacts (pricing changes, churn scenarios, expansion opportunities)
 - **Natural Language Insights**: Ask complex financial questions in plain English, powered by Claude AI
-- **Account Intelligence**: Comprehensive OSINT-powered account plans with 7-tab structure (overview, financials, organization, strategy, competitive, intelligence, action items)
+- **Account Intelligence**: Comprehensive OSINT-powered account plans with 8-tab structure (overview, financials, key-executives, org-structure, pain-points, competitive, action-plan, intelligence)
 - **Product Intelligence**: AI-driven pattern detection for identifying product opportunities from customer data
 
 ## Quick Start (5 Minutes)
 
 ### Prerequisites
 
-- **Node.js**: 18.x or later
+- **Node.js**: 20.x or later
 - **npm**: 9.x or later
 - **Anthropic API Key**: Get one at [console.anthropic.com](https://console.anthropic.com/)
 
@@ -72,20 +72,30 @@ Open [http://localhost:3000](http://localhost:3000) to see the application.
 ### 2. Customer Intelligence
 - **140+ Enterprise Accounts**: Complete portfolio tracking with subscription details
 - **Health Scoring**: AI-powered risk assessment (Healthy, At Risk, Critical)
-- **Account Plans**: 7-tab comprehensive intelligence
-  - Overview: Executive summary, key metrics, relationship strength
+- **Account Plans**: 8-tab comprehensive intelligence
+  - Overview: Executive summary, key metrics, renewal countdown, relationship strength
   - Financials: Revenue trends, contract details, payment history
-  - Organization: Org chart, stakeholders, decision-makers
-  - Strategy: Business priorities, technology roadmap, strategic initiatives
+  - Key Executives: Decision-maker profiles and contact intelligence
+  - Org Structure: Org chart, stakeholders, reporting lines
+  - Pain Points: Inline-editable pain point tracking with status cycling
   - Competitive: Competitor landscape, win/loss analysis
+  - Action Plan: Kanban board for account planning with inline status editing
   - Intelligence: Market news, M&A activity, leadership changes (OSINT-powered)
-  - Action Items: Kanban board for account planning
 - **Advanced Filtering**: By business unit, health score, revenue tier
+- **URL-driven Search**: Debounced search bar with bookmarkable `?search=` state
+- **Data Completeness Scoring**: 0-100% badge covering 7 dimensions (stakeholders, pain points, competitors, opportunities, actions, intelligence, enrichment)
+- **Renewal Countdown**: Days-to-renewal indicator in account overview
+- **Last-Enriched Badge**: Shows when account data was last refreshed
+- **Per-Account AI Chat**: Floating streaming chat panel with full account context powered by Claude
+- **Print/PDF Export**: `@media print` layout for clean A4 account plan export
+- **Inline Status Editing**: Optimistic status cycling on pain points and action items
+- **OpenCorporates Integration**: Corporate registry data — directors, legal name, jurisdiction
+- **RapidAPI Enrichment Pipeline**: 5 adapters — financial-intel, hiring-signals, news-sentiment, risk-competitive, enrichment
 
 ### 3. Natural Language Queries
 - Ask questions in plain English: "Which customers are at risk of churning?"
 - Semantic understanding of financial metrics (RR, ARR, NRR, EBITDA)
-- Context-aware responses powered by Claude Sonnet 4.5
+- Context-aware responses powered by Claude Sonnet 4.6
 - Canned queries for common analysis patterns
 - Full metrics catalog with definitions
 
@@ -114,7 +124,7 @@ Open [http://localhost:3000](http://localhost:3000) to see the application.
 - **Tailwind CSS 4.1**: Utility-first styling with custom design system
 
 ### AI & Intelligence
-- **Anthropic Claude Sonnet 4.5**: Natural language queries, scenario analysis, PRD generation
+- **Anthropic Claude Sonnet 4.6**: Natural language queries, scenario analysis, PRD generation, per-account chat
 - **Custom Orchestrator**: Request queue, rate limiting, caching, retry logic
 - **Semantic Layer**: Financial metric definitions with business context
 
@@ -137,7 +147,7 @@ Skyvera/
 │   ├── app/                    # Next.js App Router pages
 │   │   ├── dashboard/          # Executive dashboard
 │   │   ├── accounts/           # Customer intelligence
-│   │   │   └── [name]/         # Individual account plans (7 tabs)
+│   │   │   └── [name]/         # Individual account plans (8 tabs)
 │   │   ├── query/              # Natural language queries
 │   │   ├── scenario/           # Scenario modeling
 │   │   ├── product-agent/      # Product intelligence system
@@ -176,11 +186,23 @@ Create a `.env.local` file in the root directory:
 # Required: Anthropic API Key for Claude AI
 ANTHROPIC_API_KEY=sk-ant-...
 
+# Required: Database URL (SQLite for development)
+DATABASE_URL=file:./dev.db
+
+# Required for tests: application base URL
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+
 # Optional: News API for OSINT intelligence
 NEWSAPI_KEY=...
 
-# Database URL (SQLite for development)
-DATABASE_URL=file:./dev.db
+# Optional: RapidAPI key for company enrichment (all 140 accounts)
+RAPIDAPI_KEY=...
+
+# Optional: OpenCorporates API for corporate registry data (directors, legal name, jurisdiction)
+OPENCORPORATES_API_KEY=...
+
+# Optional: Extend cache TTLs to 30 min (useful for demos)
+DEMO_MODE=true
 
 # Environment
 NODE_ENV=development
@@ -201,12 +223,40 @@ npm run prisma:generate  # Generate Prisma client
 npm run prisma:push      # Push schema to database
 
 # Testing
+npm run test:unit        # Run Vitest unit tests (161 tests)
 npm run test:e2e         # Run Playwright E2E tests
 npm run test:e2e:ui      # Run tests with UI
+npx playwright test tests/smoke/   # Smoke tests (49 tests)
+npx playwright test tests/e2e/     # Full E2E suite
+npm run test:unit && npx playwright test  # Run all tests
 
 # Code Quality
 npm run lint             # ESLint checks
 ```
+
+## CI/CD
+
+GitHub Actions runs on every pull request (`.github/workflows/ci.yml`):
+
+- **Type-check**: `tsc --noEmit` across the full codebase
+- **Build**: `next build` to catch build-time errors
+- **Smoke tests**: Playwright smoke suite (49 tests) against the built app
+
+Merges to `main` trigger an automatic Vercel production deployment.
+
+## Rate Limiting
+
+All routes that call the Claude API enforce in-memory per-IP rate limits:
+
+| Route | Limit |
+|-------|-------|
+| `/api/query` | 20 req/min |
+| `/api/scenarios/analyze` | 10 req/min |
+| `/api/product-agent/*` | 10 req/min |
+| `/api/accounts/[name]/chat` | 20 req/min |
+| `/api/enrich` | 5 req/min |
+
+Rate-limited responses return HTTP 429 with a `Retry-After` header. All API entry points also validate request bodies with Zod schemas before any AI call is made.
 
 ## API Endpoints
 
@@ -261,6 +311,10 @@ For detailed API documentation, see [docs/api/](docs/api/).
 3. Add environment variables:
    - `ANTHROPIC_API_KEY`
    - `DATABASE_URL` (use Turso or Neon for production)
+   - `NEXT_PUBLIC_APP_URL` (your Vercel deployment URL)
+   - `RAPIDAPI_KEY` (optional — company enrichment)
+   - `OPENCORPORATES_API_KEY` (optional — corporate registry)
+   - `NEWSAPI_KEY` (optional — news intelligence)
 4. Deploy
 
 ### Docker

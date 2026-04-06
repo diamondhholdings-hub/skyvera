@@ -104,7 +104,15 @@ All documentation follows these principles:
 ### Features
 - [Executive Dashboard](./user-guide.md#dashboard)
 - [Customer Intelligence](./user-guide.md#customer-intelligence)
-- [Account Plans (7 tabs)](./user-guide.md#account-plans)
+- [Account Plans (8 tabs)](./user-guide.md#account-plans)
+- [Per-Account AI Chat Panel](./user-guide.md#account-chat)
+- [Print/PDF Export](./user-guide.md#print-export)
+- [Inline Status Editing](./user-guide.md#inline-editing)
+- [URL-driven Account Search](./user-guide.md#account-search)
+- [Data Completeness Scoring](./user-guide.md#completeness-scoring)
+- [Renewal Countdown & Last-Enriched Badge](./user-guide.md#renewal-countdown)
+- [RapidAPI Enrichment Pipeline](./user-guide.md#enrichment)
+- [OpenCorporates Integration](./user-guide.md#opencorporates)
 - [Natural Language Queries](./user-guide.md#natural-language-queries)
 - [Scenario Modeling](./user-guide.md#scenario-modeling)
 - [Product Agent](./user-guide.md#product-agent)
@@ -116,6 +124,11 @@ All documentation follows these principles:
 - [Server vs Client Components](./architecture.md#server-vs-client-components)
 - [Claude AI Integration](./architecture.md#claude-ai-integration)
 - [Database Schema](./architecture.md#database-schema)
+- [Rate Limiting](../README.md#rate-limiting)
+- [Error Boundaries](./architecture.md#error-boundaries)
+- [CI/CD Pipeline](../README.md#cicd)
+- [RapidAPI Adapters](./architecture.md#rapidapi-adapters)
+- [OpenCorporates Adapter](./architecture.md#opencorporates-adapter)
 
 ### Development
 - [Project Structure](./development.md#project-structure)
@@ -243,6 +256,14 @@ When making changes to the codebase:
 ---
 
 ## Version History
+
+### v0.2.0 (2026-04-06)
+- Updated to Claude Sonnet 4.6, Node.js 20+
+- Account plans expanded to 8 tabs
+- New features: AI chat panel, print/PDF export, inline editing, URL search, completeness scoring, renewal countdown, OpenCorporates integration, RapidAPI enrichment pipeline
+- Added CI/CD (GitHub Actions), rate limiting, Zod input validation, React error boundaries
+- Unit tests: 161/161 (Vitest) + Smoke tests: 49/49 (Playwright)
+- Updated environment variable documentation
 
 ### v0.1.0 (2026-02-12)
 - Initial comprehensive documentation suite

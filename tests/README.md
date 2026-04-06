@@ -2,40 +2,76 @@
 
 ## Overview
 
-This directory contains E2E (End-to-End) tests for the Skyvera Intelligence Platform using Playwright.
+This directory contains unit tests (Vitest) and E2E/smoke tests (Playwright) for the Skyvera Intelligence Platform.
 
-**Current Status:** 34/34 tests passing (100%)
+**Current Status:** ~210 tests passing (161 unit + 49 smoke)
 
 ## Test Structure
 
 ```
 tests/
-├── e2e/                      # Full user journey tests
-│   └── demo-flow.spec.ts     # Complete demo walkthrough
-├── smoke/                    # Quick smoke tests per feature
-│   ├── dashboard.spec.ts     # Dashboard functionality
-│   ├── accounts.spec.ts      # Accounts listing
-│   ├── account-plan.spec.ts  # Individual account plans
-│   └── dm-strategy.spec.ts   # DM Strategy page
-├── pages/                    # Page Object Model
+├── unit/                              # Vitest unit tests (161 tests)
+│   ├── scenario-calculator.test.ts    # Scenario impact calculations
+│   ├── impact-calculator.test.ts      # DM strategy impact math
+│   ├── cache-manager.test.ts          # Cache hit/miss/TTL/invalidation
+│   ├── semantic-resolver.test.ts      # Financial metric resolution
+│   ├── excel-transforms.test.ts       # Excel data transformations
+│   ├── error-boundary.test.ts         # React ErrorBoundary component
+│   ├── opencorporates-adapter.test.ts # OpenCorporates adapter
+│   ├── rapidapi-degraded.test.ts      # RapidAPI degraded mode behavior
+│   └── rate-limit.test.ts             # In-memory rate limiter
+├── e2e/                               # Full user journey tests
+│   └── demo-flow.spec.ts              # Complete demo walkthrough
+├── smoke/                             # Quick smoke tests per feature (49 tests)
+│   ├── dashboard.spec.ts              # Dashboard functionality
+│   ├── accounts.spec.ts               # Accounts listing
+│   ├── account-plan.spec.ts           # Individual account plans
+│   ├── dm-strategy.spec.ts            # DM Strategy page
+│   ├── query.spec.ts                  # Query page
+│   └── alerts.spec.ts                 # Alerts page
+├── pages/                             # Page Object Model
 │   ├── dashboard.page.ts
 │   ├── accounts.page.ts
 │   └── account-plan.page.ts
-└── utils/                    # Test utilities
-    ├── hydration-helpers.ts  # Handle client-side hydration
-    └── test-data-fixtures.ts # Consistent test data
+└── utils/                             # Test utilities
+    ├── hydration-helpers.ts           # Handle client-side hydration
+    └── test-data-fixtures.ts          # Consistent test data
 ```
 
 ## Running Tests
 
+### Unit Tests (Vitest)
+
 ```bash
-# Run all tests
+# Run all unit tests
+npm run test:unit
+
+# Run with interactive UI
+npm run test:unit:ui
+
+# Run directly via vitest
+npx vitest run tests/unit/
+
+# Run a specific unit test file
+npx vitest run tests/unit/cache-manager.test.ts
+```
+
+### Playwright Tests (Smoke + E2E)
+
+```bash
+# Run all Playwright tests (smoke + E2E)
 npm run test:e2e
 
-# Run tests with UI
+# Run with UI
 npm run test:e2e:ui
 
-# Run specific test file
+# Run only smoke tests
+npx playwright test tests/smoke/
+
+# Run only E2E tests
+npx playwright test tests/e2e/
+
+# Run a specific smoke test file
 npx playwright test tests/smoke/dashboard.spec.ts
 
 # Run tests in headed mode (see browser)
@@ -44,6 +80,79 @@ npx playwright test --headed
 # Run tests in debug mode
 npx playwright test --debug
 ```
+
+## CI/CD
+
+Smoke tests run automatically on every pull request via GitHub Actions (`.github/workflows/ci.yml`).
+
+The CI pipeline runs: **type-check → build → smoke tests**
+
+- **Smoke tests** are used in CI because they are fast and require no external API calls.
+- **E2E tests** (`tests/e2e/`) are excluded from CI as they require external APIs and are run manually.
+
+```yaml
+# .github/workflows/ci.yml (excerpt)
+- name: Run smoke tests
+  run: npx playwright test tests/smoke/
+
+- name: Upload test results
+  if: always()
+  uses: actions/upload-artifact@v3
+  with:
+    name: playwright-report
+    path: playwright-report/
+```
+
+## Unit Tests (Vitest)
+
+Unit tests live in `tests/unit/` and are configured via `vitest.config.ts` at the project root. They run in Node.js environment with no browser required.
+
+### Config (`vitest.config.ts`)
+
+```typescript
+export default defineConfig({
+  test: {
+    environment: 'node',
+    include: ['tests/unit/**/*.test.ts'],
+    globals: false,
+  },
+  resolve: {
+    alias: { '@': resolve(__dirname, './src') },
+  },
+})
+```
+
+### Coverage areas
+
+| File | What it tests |
+|------|--------------|
+| `scenario-calculator.test.ts` | Revenue impact math for scenarios |
+| `impact-calculator.test.ts` | DM strategy churn/expansion projections |
+| `cache-manager.test.ts` | TTL expiry, hit/miss, manual invalidation |
+| `semantic-resolver.test.ts` | Resolving ARR, EBITDA, NRR metric strings |
+| `excel-transforms.test.ts` | Raw Excel row → typed domain objects |
+| `error-boundary.test.ts` | React ErrorBoundary render/catch behavior |
+| `opencorporates-adapter.test.ts` | OpenCorporates HTTP adapter parsing |
+| `rapidapi-degraded.test.ts` | Adapter behavior when `degraded = true` |
+| `rate-limit.test.ts` | In-memory rate limiter token bucket logic |
+
+## Playwright Tests (Smoke + E2E)
+
+### Smoke Tests (`tests/smoke/`)
+
+Fast per-feature checks that verify core flows without requiring external API calls. These are the primary tests for CI.
+
+**6 smoke files, 49 tests total:**
+- `dashboard.spec.ts` — KPI cards, BU breakdown, navigation
+- `accounts.spec.ts` — Account listing, search/filter
+- `account-plan.spec.ts` — Account detail tabs (overview, financials, etc.)
+- `dm-strategy.spec.ts` — DM strategy recommendations page
+- `query.spec.ts` — NLQ query interface
+- `alerts.spec.ts` — Alerts and notification display
+
+### E2E Tests (`tests/e2e/`)
+
+Full demo walkthrough across all features. Requires a running dev server and may exercise external APIs. Run manually before releases.
 
 ## Best Practices
 
@@ -146,12 +255,12 @@ When a test fails:
 All page interactions should go through page objects for maintainability:
 
 ```typescript
-// ✅ GOOD - Using page object
+// GOOD - Using page object
 const accounts = new AccountsPage(page)
 await accounts.goto()
 await accounts.searchByName('British')
 
-// ❌ BAD - Direct page interaction
+// BAD - Direct page interaction
 await page.goto('/accounts')
 await page.locator('input').fill('British')
 ```
@@ -239,10 +348,10 @@ If tests click before step 3, they fail with "element not found" or timeout erro
 
 ### Signs of Hydration Issues
 
-- ✅ `toBeVisible()` passes (element in DOM)
-- ❌ `click()` fails (element not interactive)
-- ❌ Tests pass locally but fail in CI
-- ❌ Random timeouts
+- `toBeVisible()` passes (element in DOM)
+- `click()` fails (element not interactive)
+- Tests pass locally but fail in CI
+- Random timeouts
 
 ### Solution Pattern
 
@@ -260,27 +369,6 @@ await hydratedClick(page.getByRole('button', { name: 'Tab' }))
 await waitForTabContent(page, '[role="tabpanel"]')
 ```
 
-## CI/CD Integration
-
-Tests run automatically on:
-- Pull requests
-- Merges to main
-- Manual triggers
-
-### GitHub Actions Configuration
-
-```yaml
-- name: Run Playwright tests
-  run: npm run test:e2e
-
-- name: Upload test results
-  if: always()
-  uses: actions/upload-artifact@v3
-  with:
-    name: playwright-report
-    path: playwright-report/
-```
-
 ## Maintenance
 
 ### When to Update Tests
@@ -295,7 +383,7 @@ Tests run automatically on:
 Check test health regularly:
 
 ```bash
-# Run tests 10 times to detect flakiness
+# Run Playwright tests 10 times to detect flakiness
 for i in {1..10}; do npm run test:e2e; done
 
 # Check for consistently slow tests
@@ -344,11 +432,12 @@ export default defineConfig({
 ## Resources
 
 - [Playwright Documentation](https://playwright.dev/)
+- [Vitest Documentation](https://vitest.dev/)
 - [Next.js Testing Guide](https://nextjs.org/docs/app/building-your-application/testing/playwright)
 - [React Hydration](https://react.dev/reference/react-dom/client/hydrateRoot)
 - [Investigation Document](../ralph/investigation.md) - Tab switching hydration fix
 
 ---
 
-Last Updated: 2026-02-16
-Test Suite Status: 34/34 passing (100%)
+Last Updated: 2026-04-06
+Test Suite Status: ~210 tests passing (161 unit + 49 smoke, 100%)

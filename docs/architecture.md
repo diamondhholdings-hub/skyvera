@@ -8,10 +8,13 @@ Comprehensive system architecture for the Skyvera Executive Intelligence System.
 - [Technology Choices](#technology-choices)
 - [Data Flow](#data-flow)
 - [Server vs Client Components](#server-vs-client-components)
+- [Middleware Layer](#middleware-layer)
+- [Validation Layer](#validation-layer)
 - [Caching Strategy](#caching-strategy)
 - [Claude AI Integration](#claude-ai-integration)
 - [Error Handling](#error-handling)
 - [Database Schema](#database-schema)
+- [CI/CD Pipeline](#cicd-pipeline)
 - [Security Considerations](#security-considerations)
 
 ---
@@ -22,12 +25,17 @@ Comprehensive system architecture for the Skyvera Executive Intelligence System.
 graph TB
     subgraph "Client Layer"
         UI[Next.js UI<br/>React Server Components]
-        Client[Client Components<br/>Interactive Elements]
+        Client[Client Components<br/>Interactive Elements + ErrorBoundary]
     end
 
     subgraph "Application Layer"
         API[API Routes<br/>Route Handlers]
         Server[Server Functions<br/>Data Fetchers]
+    end
+
+    subgraph "Middleware Layer"
+        RateLimit[Rate Limiter<br/>Per-IP Sliding Window]
+        Validation[Zod Validation<br/>Input Schemas]
     end
 
     subgraph "Intelligence Layer"
@@ -39,19 +47,23 @@ graph TB
 
     subgraph "Data Layer"
         Semantic[Semantic Layer<br/>Metric Definitions]
-        Adapters[Data Adapters<br/>Excel, News API]
-        Cache[Cache Manager<br/>In-Memory LRU]
+        Adapters[Data Adapters<br/>Excel, NewsAPI, OpenCorporates, RapidAPI ×5]
+        Cache[Cache Manager<br/>In-Memory LRU + DEMO_MODE]
         DB[(SQLite<br/>Prisma ORM)]
     end
 
     subgraph "External Services"
-        Claude[Claude API<br/>Sonnet 4.5]
+        Claude[Claude API<br/>Sonnet 4.6]
         NewsAPI[News API<br/>OSINT Data]
+        RapidAPI[RapidAPI<br/>Enrichment ×5]
+        OpenCorp[OpenCorporates<br/>Corporate Registry]
     end
 
     UI --> API
     Client --> API
-    API --> Server
+    API --> RateLimit
+    RateLimit --> Validation
+    Validation --> Server
     Server --> Orchestrator
     Server --> Scenario
     Server --> Pattern
@@ -62,6 +74,8 @@ graph TB
     Server --> Cache
     Adapters --> DB
     Adapters --> NewsAPI
+    Adapters --> RapidAPI
+    Adapters --> OpenCorp
     Cache --> DB
     Orchestrator --> Semantic
     Semantic --> DB
@@ -110,7 +124,7 @@ graph TB
 - **Easy backups**: Copy the `.db` file
 - **Production path**: Migrate to Turso (hosted SQLite) or PostgreSQL
 
-### AI: Anthropic Claude Sonnet 4.5
+### AI: Anthropic Claude Sonnet 4.6
 
 **Why Claude?**
 - **Long context**: 200K token window for complex queries
@@ -268,6 +282,80 @@ export function QueryInput() {
 - Keep as small as possible
 - Lift state up when needed
 - Prefer Server Actions over client-side API calls
+
+---
+
+## Middleware Layer
+
+All API routes that invoke Claude pass through a per-IP sliding-window rate limiter before reaching business logic.
+
+### Implementation
+
+```typescript
+// src/lib/middleware/rate-limit.ts
+export function rateLimit(options: RateLimitOptions) {
+  // In-memory map: IP → timestamp[]
+  // Sliding window: drop entries older than windowMs
+  // Returns HTTP 429 + { error, retryAfter } when limit exceeded
+}
+```
+
+### Limits by Route
+
+| Route group | Limit |
+|---|---|
+| `/api/query`, `/api/scenarios`, `/api/dm-strategy`, `/api/product-agent` | 20 req/min |
+| `/api/accounts/[name]/chat` | 10 req/min |
+| `/api/enrich` | 5 req/min |
+
+### 429 Response Format
+
+```json
+{
+  "error": "Too many requests",
+  "retryAfter": 42
+}
+```
+
+`retryAfter` is the number of seconds until the next slot opens.
+
+---
+
+## Validation Layer
+
+All API route entry points parse and validate request bodies through Zod schemas before any processing occurs.
+
+### Implementation
+
+```typescript
+// src/lib/validation/schemas.ts
+export const querySchema = z.object({
+  query: z.string().min(3).max(500),
+  filters: z.object({
+    bu: z.enum(['Cloudsense', 'Kandy', 'STL']).optional()
+  }).optional()
+})
+
+// Applied at route entry point
+const parsed = querySchema.safeParse(await req.json())
+if (!parsed.success) {
+  return NextResponse.json(
+    { error: 'Validation failed', issues: parsed.error.issues },
+    { status: 400 }
+  )
+}
+```
+
+### 400 Response Format
+
+```json
+{
+  "error": "Validation failed",
+  "issues": [
+    { "path": ["query"], "message": "String must contain at least 3 character(s)" }
+  ]
+}
+```
 
 ---
 
@@ -486,6 +574,31 @@ const customers = result.value
 
 ### Error Boundaries
 
+Next.js file-based error boundaries (`src/app/error.tsx`) catch page-level rendering errors. Additionally, a reusable React `ErrorBoundary` class component wraps individual interactive islands to prevent one failing widget from taking down the entire page.
+
+```typescript
+// src/components/ui/error-boundary.tsx
+export class ErrorBoundary extends React.Component<Props, State> {
+  static getDerivedStateFromError(error: Error): State {
+    return { hasError: true, error }
+  }
+  // renders fallback UI when caught
+}
+
+// HOC for wrapping components
+export function withErrorBoundary<P>(
+  Component: React.ComponentType<P>,
+  fallback: React.ReactNode
+): React.ComponentType<P>
+```
+
+**Wrapped components:**
+- `AccountChatPanel` — floating AI chat panel
+- Pain-points status cycle buttons
+- Action-plan status cycle buttons
+
+**Next.js file-based boundary:**
+
 ```typescript
 // src/app/error.tsx
 'use client'
@@ -647,6 +760,32 @@ erDiagram
 
 ---
 
+## CI/CD Pipeline
+
+A GitHub Actions workflow (`.github/workflows/ci.yml`) runs on every pull request against `main`.
+
+### Workflow Steps
+
+```
+1. Checkout + setup Node.js 20 (caches node_modules and .next/cache)
+2. npm ci
+3. tsc --noEmit          → TypeScript type check
+4. npm run build         → Next.js production build
+5. Playwright smoke      → 49 tests across 6 spec files
+```
+
+### Test Coverage
+
+| Suite | Tool | Count |
+|---|---|---|
+| Unit tests | Vitest | 161 tests, 9 files (`tests/unit/`) |
+| Smoke tests | Playwright | 49 tests, 6 files (`tests/smoke/`) |
+| E2E tests | Playwright | Demo flows (`tests/e2e/`) |
+
+All three suites must pass before a PR can be merged.
+
+---
+
 ## Security Considerations
 
 ### API Key Management
@@ -699,13 +838,21 @@ await prisma.customer.findMany({
 })
 ```
 
+### Rate Limiting
+
+Per-IP sliding-window rate limiting is applied at the middleware layer to all Claude-calling routes (see [Middleware Layer](#middleware-layer)). Exceeding the limit returns HTTP 429 with a `retryAfter` value.
+
+### Zod Input Validation
+
+All API route bodies are validated through Zod schemas at the entry point before any processing occurs (see [Validation Layer](#validation-layer)). Invalid payloads are rejected with HTTP 400 and structured issue details — no raw user input ever reaches business logic.
+
 ### Production Hardening Checklist
 
 - [ ] Add authentication (OAuth, JWT, API keys)
-- [ ] Implement rate limiting per user/IP
+- [x] Implement rate limiting per user/IP
 - [ ] Enable CORS with whitelist
 - [ ] Use HTTPS only (enforce in production)
-- [ ] Sanitize user inputs
+- [x] Validate and sanitize user inputs (Zod schemas)
 - [ ] Add request logging
 - [ ] Implement CSRF protection
 - [ ] Use helmet.js for security headers

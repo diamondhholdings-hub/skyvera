@@ -54,17 +54,38 @@ tests/
 - **Result type** for error handling — no thrown exceptions at data boundaries (`src/lib/types/result.ts`)
 - **Server Components** fetch data; **Client Components** (`"use client"`) handle interactivity
 - **ErrorBoundary** (`src/components/ui/error-boundary.tsx`) wraps high-risk client components
-- **Rate limiting** on all Claude-calling API routes (in-memory, IP-keyed, sliding window)
-- **Zod validation** at API entry points — 400 with issue details on failure
+- **Rate limiting** (`src/lib/middleware/rate-limit.ts`) — in-memory per-IP sliding window; Claude routes 10-20 req/min, enrich 5 req/min; returns 429 + `{ error, retryAfter }`
+- **Zod validation** (`src/lib/validation/schemas.ts`) — at all API entry points; returns 400 + `issues` array on failure
 - **ClaudeOrchestrator** singleton — 50 RPM, priority queue, cache, exponential backoff
 - **URL-based tab state** (`?tab=overview`) — bookmarkable account detail pages
 - **DEMO_MODE** env flag — extends cache TTLs (30min vs 5min)
-- **healthCheck()** on RapidAPI adapters returns `!this.degraded` (not hardcoded `true`)
+- **RapidAPI degraded mode** — missing `RAPIDAPI_KEY` returns `ok({ data: [] })` not `err()`; pipeline marks sections `skipped` not `error`
+- **OpenCorporates degraded mode** — same pattern; missing key → graceful skip, never blocks pipeline
+- **healthCheck()** on all external adapters returns `!this.degraded` (not hardcoded `true`)
 - Enrichment errors: distinguish ENOENT (return null) from real errors (log + return null)
 - Print/PDF: `@media print` hides `[data-print="hide"]` elements, A4, `-webkit-print-color-adjust: exact`
 - Data completeness score: 7-dimension 0-100 scale
 - Search on accounts page: server-side filtered via `?search=` searchParam (bookmarkable)
 - Event handlers ILLEGAL in Server Components — use CSS `:hover` via `<style>` tag + className
+- `arr: customer.rr` alias in `src/lib/semantic/resolver.ts` — field name is misleading; values are already annual (known gotcha, documented)
+
+## Testing
+
+```bash
+# Unit tests (Vitest) — business logic, adapters, middleware
+npm run test:unit          # 161 tests across 9 files
+
+# Smoke tests (Playwright) — UI behavior, no external APIs needed
+npx playwright test tests/smoke/    # 49 tests across 6 files
+
+# E2E tests (Playwright) — full demo flows, requires running dev server
+npx playwright test tests/e2e/
+
+# Run all
+npm run test:unit && npx playwright test tests/smoke/
+```
+
+CI runs type-check + build + smoke tests automatically on every PR via `.github/workflows/ci.yml`.
 
 ## Key Files
 

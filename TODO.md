@@ -1,156 +1,88 @@
 # Skyvera Intelligence Platform - TODO
 
-## 🚀 Production Status
-- ✅ **DEPLOYED**: https://skyvera.vercel.app
-- ✅ **Repository**: https://github.com/diamondhholdings-hub/skyvera.git
-- ✅ **Test Coverage**: 34/34 passing (100%)
+## Production Status
+- **DEPLOYED**: https://skyvera.vercel.app
+- **Repository**: https://github.com/diamondhholdings-hub/skyvera.git
+- **Test Coverage**: 210/210 passing (161 unit + 49 smoke)
+- **CI/CD**: GitHub Actions on every PR (type-check + build + smoke tests)
 
 ---
 
-## ✅ Test Suite - ALL PASSING (34/34)
+## Completed (as of 2026-04-06)
 
-### Account Plan Tests (13/13) ✅
-- [x] Tab switching works - Financials
-- [x] Tab switching works - Organization
-- [x] Tab switching works - Competitive
-- [x] Tab switching works - Intelligence
-- [x] Tab switching works - Action Items
-- [x] Tab switching works - Strategy
-- [x] Back link returns to accounts list
-- [x] Health indicator displays
-- [x] Direct tab URL navigation works
-- [x] Account plan page loads
-- [x] All 8 tabs are visible
-- [x] Overview tab loads by default
-- [x] Business unit badge displays
+### Infrastructure & DevOps
+- GitHub Actions CI/CD: `.github/workflows/ci.yml` — type-check, build, smoke tests on every PR
+- Health check endpoint at `/api/health`
+- Prisma postinstall script for Vercel deployment
+- Database indexes (7 strategic indexes across 3 models)
 
-### Dashboard Tests (8/8) ✅
-- [x] KPIs display real values
-- [x] Refresh button is visible and clickable
-- [x] Navigation links work
-- [x] Charts and visualizations render
-- [x] Business Unit breakdown displays
-- [x] Alerts preview displays
-- [x] Dashboard loads in under 2 seconds
-- [x] Dashboard page loads
+### Quality & Hardening
+- React ErrorBoundary: `src/components/ui/error-boundary.tsx` — wraps 3 critical components
+- Rate limiting: `src/lib/middleware/rate-limit.ts` — in-memory per-IP, applied to 9 API routes
+- Zod input validation: `src/lib/validation/schemas.ts` — applied to all Claude-calling routes
+- JSDoc documentation: 10 lib files, ~40 functions (includes full DM waterfall formula)
+- ESLint: known ESLint 9 + Next.js circular dependency — TypeScript compiler provides coverage
 
-### Accounts Tests (8/8) ✅
-- [x] Accounts page loads with table visible
-- [x] Account stats display
-- [x] Search/filter works
-- [x] Clear search shows all accounts
-- [x] Account rows are clickable
-- [x] Health indicators display correctly
-- [x] Table sorting works
-- [x] Refresh button works
+### Testing
+- Unit tests (Vitest): 161/161 passing — `npm run test:unit`
+- Smoke tests (Playwright): 49/49 passing — `npx playwright test tests/smoke/`
+- Test utilities: `tests/utils/hydration-helpers.ts`, `tests/utils/test-data-fixtures.ts`
 
-### DM Strategy Tests (3/3) ✅
-- [x] Should load with recommendations
-- [x] Should filter by business unit
-- [x] Should show recommendation details
+### Integrations
+- OpenCorporates adapter: `src/lib/data/adapters/external/opencorporates.ts` — directors, legal name, jurisdiction, incorporation date; wired as 6th enrichment adapter
+- RapidAPI degraded fix: all 5 adapters return `skipped` (not `error`) when `RAPIDAPI_KEY` is absent
+- NewsAPI, RapidAPI x5 enrichment adapters
+- Inline status editing for pain points and action items (optimistic + revert)
+- Print/PDF export with `@media print` styling
 
-### E2E Tests (2/2) ✅
-- [x] Complete demo walkthrough
-- [x] Demo flow passes 3 consecutive times
+### Code Quality
+- TypeScript: 0 errors
+- Security audit: 0 vulnerabilities
+- Debug code removed from production paths
 
 ---
 
-## 🟡 Medium Priority - Code Quality
+## Pending — Low Priority
 
-### Test Infrastructure
-- [x] Investigate why tab switching tests are failing (hydration issues?) ✅
-- [x] Add better waits/assertions for client-side rendered content ✅
-- [x] Review page object selectors for accuracy ✅
-- [x] Consider adding test data fixtures for consistency ✅
+### Environment / Ops
+- [ ] Add `OPENCORPORATES_API_KEY` to Vercel env vars (when key is available)
+- [ ] Add `RAPIDAPI_KEY` to Vercel env vars and run enrichment for all 140 accounts
+- [ ] Configure automated database backups
+- [ ] Add pre-commit hooks (Husky + lint-staged)
 
-### Code Cleanup
-- [x] Remove any remaining debug code/console.logs ✅
-- [x] Verify all TypeScript types are correct ✅
-- [x] Run ESLint and fix any warnings (Note: ESLint 9 config issue with Next.js)
-- [ ] Ensure all components have proper error boundaries
+### Security & Auth
+- [ ] Authentication system (NextAuth + Google OAuth — deferred by design for demo)
+- [ ] Add CSRF protection
 
----
-
-## 🟢 Low Priority - Enhancements
-
-### Features
-- [ ] Add customer intelligence analysis dashboard
-- [ ] Implement advanced financial reporting filters
-- [ ] Add export functionality (CSV/PDF reports)
-- [ ] Create user preferences/settings page
-- [ ] Add dark mode support
+### Observability
+- [ ] Set up error monitoring (Sentry)
+- [ ] Error boundaries on remaining non-critical components
 
 ### Performance
-- [ ] Database query optimization review
-- [ ] Implement Redis caching for expensive queries
-- [ ] Add API response compression
+- [ ] PostgreSQL/Turso migration (SQLite has concurrency limits in prod)
+- [ ] Redis caching for Claude API responses
 - [ ] Lighthouse audit and Core Web Vitals optimization
-- [ ] Implement ISR (Incremental Static Regeneration) where applicable
+- [ ] API response compression
+- [ ] ISR (Incremental Static Regeneration) for frequently accessed pages
 
-### Documentation
-- [x] Create comprehensive README.md with: ✅
-  - [x] Project overview ✅
-  - [x] Setup instructions ✅
-  - [x] Environment variables documentation ✅
-  - [x] Development workflow ✅
-  - [x] Deployment guide ✅
-- [ ] Add JSDoc comments to complex functions
-- [ ] Document API endpoints and their contracts (Partially complete in README)
-- [ ] Create architecture diagram
-
-### DevOps
-- [ ] Set up CI/CD pipeline (GitHub Actions)
-  - [ ] Run tests on PR
-  - [ ] Auto-deploy to Vercel on merge to main
-  - [ ] Run linting/type checking
-- [ ] Add pre-commit hooks (Husky + lint-staged)
-- [ ] Set up error monitoring (Sentry or similar)
-- [ ] Configure automated database backups
-- [x] Add health check endpoint ✅
-
-### Security
-- [x] Audit dependencies for vulnerabilities ✅ (0 vulnerabilities found)
-- [ ] Implement rate limiting on API routes
-- [ ] Add CSRF protection
-- [ ] Review authentication/authorization patterns
-- [ ] Add input validation on all forms
+### Features
+- [ ] Dark mode
+- [ ] User preferences/settings page
+- [ ] Advanced financial reporting filters
+- [ ] Architecture diagram
 
 ---
 
-## 📝 Technical Debt
+## Test Commands
 
-### Database
-- [x] Review Prisma schema for optimization opportunities ✅
-- [x] Add database indexes for common queries ✅ (Added 7 strategic indexes)
-- [ ] Consider migration to PostgreSQL for production (currently SQLite)
-- [x] Set up database seeding for development ✅ (Already exists: /api/seed)
+```bash
+# Unit tests (Vitest)
+npm run test:unit
 
-### Code Organization
-- [ ] Consider extracting shared components to component library
-- [ ] Refactor large page components into smaller pieces
-- [ ] Implement consistent error handling patterns
-- [ ] Add unit tests for business logic functions
+# Smoke tests (Playwright)
+npx playwright test tests/smoke/
+```
 
 ---
 
-## 🎯 Recent Accomplishments
-
-- ✅ Fixed test selector mismatches (4/34 → 15/34 tests passing)
-- ✅ Added Prisma postinstall script for Vercel deployment
-- ✅ Deployed to production successfully
-- ✅ Set up Git repository and version control
-- ✅ Configured Vercel project and CI/CD
-
----
-
-## 📊 Metrics
-
-- **Test Pass Rate**: 100% (34/34) ✅
-- **Target**: 100% (34/34) ✅
-- **Improvement Achieved**: +19 tests fixed
-
----
-
-_Last Updated: 2026-02-17_
-_Test Suite Completed: 2026-02-16_
-_Code Quality Tasks Completed: 2026-02-17_
+_Last Updated: 2026-04-06_
