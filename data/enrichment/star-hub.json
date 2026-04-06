@@ -1,15 +1,15 @@
 {
-  "customerName": "Masergy",
-  "slug": "masergy",
+  "customerName": "Star Hub",
+  "slug": "star-hub",
   "companyProfile": {
-    "name": "Masergy",
-    "enrichedAt": "2026-04-06T16:40:47.871Z",
+    "name": "Star Hub",
+    "enrichedAt": "2026-04-06T16:42:59.505Z",
     "sources": [
       "crunchbase"
     ]
   },
   "hiringSignals": {
-    "companyName": "Masergy",
+    "companyName": "Star Hub",
     "totalOpenRoles": 0,
     "recentPostings30d": 0,
     "hiringVelocityTrend": "unknown",
@@ -18,10 +18,10 @@
     "layoffSignals": false,
     "csHiring": false,
     "techHiring": false,
-    "enrichedAt": "2026-04-06T16:40:52.080Z"
+    "enrichedAt": "2026-04-06T16:43:07.409Z"
   },
   "riskCompetitive": {
-    "companyName": "Masergy",
+    "companyName": "Star Hub",
     "bankruptcyRisk": {
       "flag": false
     },
@@ -38,22 +38,22 @@
     "competitorLandscape": {
       "primaryCompetitors": []
     },
-    "enrichedAt": "2026-04-06T16:40:47.592Z"
+    "enrichedAt": "2026-04-06T16:42:59.449Z"
   },
   "corporateRegistry": {
-    "legalName": "MASERGY",
-    "jurisdiction": "be",
-    "companyNumber": "0429172540",
-    "incorporationDate": "1986-06-11",
+    "legalName": "5 STAR HOLDINGS HUB, LLC",
+    "jurisdiction": "us_ny",
+    "companyNumber": "7202770",
+    "incorporationDate": "2023-12-12",
     "dissolutionDate": null,
-    "companyType": "Société anonyme",
-    "status": "unknown",
-    "registeredAddress": "Avenue Louise 32, Ixelles, 1050, Belgium",
+    "companyType": "DOMESTIC LIMITED LIABILITY COMPANY",
+    "status": "active",
+    "registeredAddress": "316 RIDGE ROAD, LACKAWANNA, NY, 14218, United States",
     "directors": [],
     "source": "opencorporates",
-    "enrichedAt": "2026-04-06T16:40:48.199Z"
+    "enrichedAt": "2026-04-06T16:42:59.805Z"
   },
-  "enrichedAt": "2026-04-06T16:40:52.080Z",
+  "enrichedAt": "2026-04-06T16:43:07.409Z",
   "enrichmentStatus": {
     "company": "ok",
     "financials": "error",

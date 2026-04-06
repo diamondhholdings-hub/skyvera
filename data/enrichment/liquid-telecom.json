@@ -3,15 +3,10 @@
   "slug": "liquid-telecom",
   "companyProfile": {
     "name": "Liquid Telecom",
-    "enrichedAt": "2026-03-10T03:10:08.120Z",
+    "enrichedAt": "2026-04-06T16:40:32.060Z",
     "sources": [
       "crunchbase"
     ]
-  },
-  "financials": {
-    "companyName": "Liquid Telecom",
-    "isPublic": false,
-    "enrichedAt": "2026-03-10T03:10:07.185Z"
   },
   "hiringSignals": {
     "companyName": "Liquid Telecom",
@@ -23,7 +18,7 @@
     "layoffSignals": false,
     "csHiring": false,
     "techHiring": false,
-    "enrichedAt": "2026-03-10T03:10:12.806Z"
+    "enrichedAt": "2026-04-06T16:40:32.413Z"
   },
   "riskCompetitive": {
     "companyName": "Liquid Telecom",
@@ -43,106 +38,28 @@
     "competitorLandscape": {
       "primaryCompetitors": []
     },
-    "enrichedAt": "2026-03-10T03:10:14.619Z"
+    "enrichedAt": "2026-04-06T16:40:38.838Z"
   },
-  "recentNews": [
-    {
-      "title": "Like Trump, Iran’s new supreme leader is a real estate mogul, with a house on ‘Billionaire’s Row,’ a villa in Dubai, and upscale European hotels",
-      "summary": "Mojtaba Khamenei, who was named Iran’s new supreme leader over the weekend, shares something in common with President Donald Trump: They have both amassed global real-estate empires.\nThe son of Ayatollah Ali Khamenei, who was killed in an airstrike when the war began, represents the Islamic…",
-      "url": "https://fortune.com/2026/03/09/iran-new-supreme-leader-mojtaba-khamenei-real-estate-mogul-billionaires-row-villa-dubai-european-hotels/?ref=biztoc.com",
-      "source": "fortune.com",
-      "publishedAt": "Mon, 09 Mar 2026 17:58:41 GMT",
-      "sentiment": "neutral",
-      "sentimentScore": 0
-    },
-    {
-      "title": "February 2026's top 10 European tech deals you need to know about",
-      "summary": "February 2026 saw a notable increase in funding compared\nwith January, driven mainly by larger capital inflows rather than a sharp rise\nin the number of deals. \nDeal activity reached 296 transactions, up 11.7 per\ncent from 265 in January, indicating steady but moderate growth in deal volume.\nThe…",
-      "url": "https://tech.eu/2026/03/09/february-2026s-top-10-european-tech-deals-you-need-to-know-about/?ref=biztoc.com",
-      "source": "tech.eu",
-      "publishedAt": "Mon, 09 Mar 2026 14:00:00 GMT",
-      "sentiment": "neutral",
-      "sentimentScore": 0
-    },
-    {
-      "title": "The 4 ETFs To Buy Before The Fed Lowers Rates And Shoots Them Higher",
-      "summary": "Quick Read\n \n \n \niShares 20+ Year Treasury Bond ETF (TLT) yields 4.8%, up 1.9% one-year. iShares Investment Grade Corporate Bond ETF (LQD) yields 4.9%, up 6.3%. Vanguard REIT (VNQ) yields 3.82%, up 7.97%. iShares SmallCap (IJR) up 22.65% one-year.\n \n \n \nThe Fed cut rates three times to 3.75% then…",
-      "url": "https://247wallst.com/investing/2026/03/06/the-4-etfs-to-buy-before-the-fed-lowers-rates-and-shoots-them-higher/?ref=biztoc.com",
-      "source": "247wallst.com",
-      "publishedAt": "Fri, 06 Mar 2026 14:37:07 GMT",
-      "sentiment": "neutral",
-      "sentimentScore": 0
-    },
-    {
-      "title": "Set It and Forget It: The Dividend Stocks Worth Holding for the Rest of Your Life",
-      "summary": "Quick Read\n \n \n \nAT&T (T) has expanding free cash flow and can easily afford to pay its nearly 4% annual dividend yield.\n \n \n \nAlong with a 2.18% dividend yield, Wells Fargo (WFC) provides the assurance of a banking stand-by with rising revenue and profits.\n \n \n \nYou can access a 2.13% dividend…",
-      "url": "https://247wallst.com/investing/2026/03/06/set-it-and-forget-it-the-dividend-stocks-worth-holding-for-the-rest-of-your-life/?ref=biztoc.com",
-      "source": "247wallst.com",
-      "publishedAt": "Fri, 06 Mar 2026 14:00:32 GMT",
-      "sentiment": "neutral",
-      "sentimentScore": 0
-    },
-    {
-      "title": "Systemic Risk: A 12-Order Cascading Analysis Of A Zero-Flow Strait Of Hormuz Closure",
-      "summary": "Systemic Risk: A 12-Order Cascading Analysis Of A Zero-Flow Strait Of Hormuz Closure\n \nAuthored by Craig Tindale via X:\nExecutive Summary\nThe modern world order, having organized itself around efficiency, cost minimization, and logistical precision, has created a machinery of dependence so extreme…",
-      "url": "https://www.zerohedge.com/geopolitical/systemic-risk-12-order-cascading-analysis-zero-flow-strait-hormuz-closure?ref=biztoc.com",
-      "source": "zerohedge.com",
-      "publishedAt": "Thu, 05 Mar 2026 21:20:00 GMT",
-      "sentiment": "neutral",
-      "sentimentScore": 0
-    },
-    {
-      "title": "Is Grupo Televisa, S.A.B. (TV) A Good Stock To Buy?",
-      "summary": "We came across a bullish thesis on Grupo Televisa, S.A.B. on Danny’s Substack by Danny Green. In this article, we will summarize the bulls’ thesis on TV. Grupo Televisa, S.A.B.'s share was trading at $2.9500 as of February 27th. TV’s trailing P/E was 0.13 according to Yahoo Finance.\nGrupo…",
-      "url": "https://finance.yahoo.com/news/grupo-televisa-b-tv-good-205827348.html?ref=biztoc.com",
-      "source": "finance.yahoo.com",
-      "publishedAt": "Thu, 05 Mar 2026 20:58:27 GMT",
-      "sentiment": "neutral",
-      "sentimentScore": 0
-    },
-    {
-      "title": "A $1 Billion Reason to Buy Pinterest Stock Now",
-      "summary": "After a bruising stretch on Wall Street, Pinterest (PINS) has finally caught a break. The visual discovery platform saw its stock surge more than 9% on Mar. 3, followed by another 1.5% gain on Mar. 4, after reports surfaced that the legendary activist investor firm Elliott Investment Management…",
-      "url": "https://www.barchart.com/story/news/592220/a-1-billion-reason-to-buy-pinterest-stock-now?ref=biztoc.com",
-      "source": "barchart.com",
-      "publishedAt": "Thu, 05 Mar 2026 20:49:02 GMT",
-      "sentiment": "neutral",
-      "sentimentScore": 0
-    },
-    {
-      "title": "Q4 2026 Earnings Call Transcript",
-      "summary": "Image source: The Motley Fool.\nDate\nWednesday, March 4, 2026 at 9 a.m. ET\nCall participants\n-\nPresident & Chief Executive Officer — Dan Peyovich\n-\nChief Financial Officer — Drew DeFerrari\n-\nVice President, Investor Relations — Callie Tommaso\nNeed a quote from a Motley Fool analyst? Email…",
-      "url": "https://finance.yahoo.com/news/dycom-dy-q4-2026-earnings-154820675.html?ref=biztoc.com",
-      "source": "finance.yahoo.com",
-      "publishedAt": "Wed, 04 Mar 2026 15:48:20 GMT",
-      "sentiment": "neutral",
-      "sentimentScore": 0
-    },
-    {
-      "title": "The 30 early-stage startups in 2026 most likely to become tech's next unicorns",
-      "summary": "The cofounders of Created by Humans, left to right: Jen Singerman, Trip Adler and Edward Igushev\nCreated by Humans\nThe VC firm TRAC developed a model that uses AI to predict which startups are likely to become unicorns.\nUnicorns are startups valued at more than $1 billion.\nTRAC says startups on…",
-      "url": "https://www.businessinsider.com/the-30-early-stage-startups-in-2026-most-likely-to-become-techs-next-unicorns-2026-3?ref=biztoc.com",
-      "source": "businessinsider.com",
-      "publishedAt": "Wed, 04 Mar 2026 10:00:01 GMT",
-      "sentiment": "neutral",
-      "sentimentScore": 0
-    },
-    {
-      "title": "Live: Will AST SpaceMobile Beat Earnings After the Bell Tonight?",
-      "summary": "Live Updates\n \n \n \nFinally! Access 25+ Cryptocurrencies The Easy Way\nAfter years of waiting for a good option, SoFi now offers access to major cryptocurrencies like Bitcoin, Ethereum, and Solana, along with more than 25 total digital assets. What stands out isn’t just the selection, it’s the…",
-      "url": "https://247wallst.com/investing/2026/03/02/live-will-ast-spacemobile-beat-earnings-after-the-bell-tonight/?ref=biztoc.com",
-      "source": "247wallst.com",
-      "publishedAt": "Mon, 02 Mar 2026 19:55:00 GMT",
-      "sentiment": "neutral",
-      "sentimentScore": 0
-    }
-  ],
-  "enrichedAt": "2026-03-10T03:10:14.619Z",
+  "corporateRegistry": {
+    "legalName": "LIQUID CLOUD TELECOM LIMITED",
+    "jurisdiction": "gb",
+    "companyNumber": "07606313",
+    "incorporationDate": "2011-04-15",
+    "dissolutionDate": "2013-11-26",
+    "companyType": "Private Limited Company",
+    "status": "inactive",
+    "registeredAddress": "200 Strand, London, WC2R 1DJ, United Kingdom",
+    "directors": [],
+    "source": "opencorporates",
+    "enrichedAt": "2026-04-06T16:40:33.254Z"
+  },
+  "enrichedAt": "2026-04-06T16:40:38.838Z",
   "enrichmentStatus": {
     "company": "ok",
-    "financials": "ok",
+    "financials": "error",
     "hiring": "ok",
     "risk": "ok",
-    "news": "ok"
+    "news": "skipped",
+    "corporate": "ok"
   }
 }

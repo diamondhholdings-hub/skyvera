@@ -1,0 +1,116 @@
+{
+  "customerName": "Synaptic Technologies",
+  "slug": "synaptic-technologies",
+  "companyProfile": {
+    "name": "Synaptic Technologies",
+    "enrichedAt": "2026-04-06T16:48:35.925Z",
+    "sources": [
+      "crunchbase"
+    ]
+  },
+  "hiringSignals": {
+    "companyName": "Synaptic Technologies",
+    "totalOpenRoles": 14,
+    "recentPostings30d": 14,
+    "hiringVelocityTrend": "stable",
+    "keyDepartmentsHiring": [
+      "Engineering",
+      "Operations",
+      "Finance",
+      "Marketing",
+      "Legal"
+    ],
+    "topRoles": [
+      {
+        "title": "Sr. Digital Engineer, ASIC",
+        "department": "Engineering",
+        "location": "Peachtree Corners, Georgia, US",
+        "postedDate": "2026-03-09T00:00:00.000Z"
+      },
+      {
+        "title": "Intern, Technology and Innovation",
+        "location": "Irvine, California, US",
+        "postedDate": "2026-03-20T00:00:00.000Z"
+      },
+      {
+        "title": "Staff Program Manager",
+        "department": "Operations",
+        "location": "San Jose, California, US",
+        "postedDate": "2026-03-31T00:00:00.000Z"
+      },
+      {
+        "title": "Sr. Digital Verification Engineer, Video Interface Products",
+        "department": "Engineering",
+        "location": "Norcross, Georgia, US",
+        "postedDate": "2026-03-10T00:00:00.000Z"
+      },
+      {
+        "title": "Director of Quality Engineering & Test Automation",
+        "department": "Engineering",
+        "location": "San Jose, California, US",
+        "postedDate": "2026-04-01T00:00:00.000Z"
+      },
+      {
+        "title": "ATE Hardware Intern: PCB Design & Testing",
+        "location": "Irvine, California, US",
+        "postedDate": "2026-04-04T00:00:00.000Z"
+      },
+      {
+        "title": "Sr. Accountant, Technical Accounting & SEC Reporting",
+        "department": "Finance",
+        "location": "San Jose, California, US",
+        "postedDate": "2026-03-10T00:00:00.000Z"
+      },
+      {
+        "title": "Senior Director Wireless Product Marketing",
+        "department": "Marketing",
+        "location": "Austin, Texas, US",
+        "postedDate": "2026-03-30T00:00:00.000Z"
+      },
+      {
+        "title": "Intern, Information Security",
+        "location": "San Jose, California, US",
+        "postedDate": "2026-03-24T00:00:00.000Z"
+      },
+      {
+        "title": "Intern, Legal",
+        "department": "Legal",
+        "location": "San Jose, California, US",
+        "postedDate": "2026-04-03T00:00:00.000Z"
+      }
+    ],
+    "layoffSignals": false,
+    "csHiring": false,
+    "techHiring": true,
+    "enrichedAt": "2026-04-06T16:48:45.602Z"
+  },
+  "riskCompetitive": {
+    "companyName": "Synaptic Technologies",
+    "bankruptcyRisk": {
+      "flag": false
+    },
+    "fundingHealth": {
+      "signal": "unknown"
+    },
+    "webPresence": {},
+    "marketPerception": {
+      "overallSentiment": "unknown"
+    },
+    "cyberIncidents": {
+      "recentBreach": false
+    },
+    "competitorLandscape": {
+      "primaryCompetitors": []
+    },
+    "enrichedAt": "2026-04-06T16:48:35.821Z"
+  },
+  "enrichedAt": "2026-04-06T16:48:45.602Z",
+  "enrichmentStatus": {
+    "company": "ok",
+    "financials": "error",
+    "hiring": "ok",
+    "risk": "ok",
+    "news": "skipped",
+    "corporate": "skipped"
+  }
+}

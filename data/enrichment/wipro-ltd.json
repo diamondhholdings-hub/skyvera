@@ -1,0 +1,111 @@
+{
+  "customerName": "Wipro Ltd.",
+  "slug": "wipro-ltd",
+  "companyProfile": {
+    "name": "Wipro Ltd.",
+    "enrichedAt": "2026-04-06T16:49:43.375Z",
+    "sources": [
+      "crunchbase"
+    ]
+  },
+  "hiringSignals": {
+    "companyName": "Wipro Ltd.",
+    "totalOpenRoles": 17,
+    "recentPostings30d": 17,
+    "hiringVelocityTrend": "stable",
+    "keyDepartmentsHiring": [
+      "Engineering",
+      "Finance",
+      "Sales"
+    ],
+    "topRoles": [
+      {
+        "title": "Remote work from home at WIPRO LT Capitol Heights, MD",
+        "location": "Capitol Heights, Maryland, US",
+        "postedDate": "2026-03-11T00:00:00.000Z"
+      },
+      {
+        "title": "Data Privacy Architect - One Trust",
+        "department": "Engineering",
+        "location": "Washington, District of Columbia, US",
+        "postedDate": "2026-03-25T00:00:00.000Z"
+      },
+      {
+        "title": "Oracle Apps SCM Techno-Functional",
+        "location": "Bowling Green, Virginia, US",
+        "postedDate": "2026-04-04T00:00:00.000Z"
+      },
+      {
+        "title": "ADMINISTRATOR L1",
+        "location": "Hillsboro, Maryland, US",
+        "postedDate": "2026-03-11T00:00:00.000Z"
+      },
+      {
+        "title": "Strategic Pursuit Leader Entity L2",
+        "location": "Trenton, New Jersey, US",
+        "postedDate": "2026-03-31T00:00:00.000Z"
+      },
+      {
+        "title": "LEAD ADMINISTRATOR L1",
+        "location": "Indiana, US",
+        "postedDate": "2026-04-02T00:00:00.000Z"
+      },
+      {
+        "title": "BUSINESS ANALYST L4",
+        "department": "Finance",
+        "location": "New York, New York, US",
+        "postedDate": "2026-03-30T00:00:00.000Z"
+      },
+      {
+        "title": "Senior ServiceNow Architect",
+        "department": "Engineering",
+        "location": "Dallas, Pennsylvania, US",
+        "postedDate": "2026-04-05T00:00:00.000Z"
+      },
+      {
+        "title": "TECHNO FUNCTIONAL CONSULTANT L1",
+        "location": "Indiana, US",
+        "postedDate": "2026-03-30T00:00:00.000Z"
+      },
+      {
+        "title": "F5 Engineer",
+        "department": "Engineering",
+        "location": "Minneapolis, Minnesota, US",
+        "postedDate": "2026-04-04T00:00:00.000Z"
+      }
+    ],
+    "layoffSignals": false,
+    "csHiring": false,
+    "techHiring": true,
+    "enrichedAt": "2026-04-06T16:49:48.080Z"
+  },
+  "riskCompetitive": {
+    "companyName": "Wipro Ltd.",
+    "bankruptcyRisk": {
+      "flag": false
+    },
+    "fundingHealth": {
+      "signal": "unknown"
+    },
+    "webPresence": {},
+    "marketPerception": {
+      "overallSentiment": "unknown"
+    },
+    "cyberIncidents": {
+      "recentBreach": false
+    },
+    "competitorLandscape": {
+      "primaryCompetitors": []
+    },
+    "enrichedAt": "2026-04-06T16:49:43.202Z"
+  },
+  "enrichedAt": "2026-04-06T16:49:48.080Z",
+  "enrichmentStatus": {
+    "company": "ok",
+    "financials": "error",
+    "hiring": "ok",
+    "risk": "ok",
+    "news": "skipped",
+    "corporate": "skipped"
+  }
+}

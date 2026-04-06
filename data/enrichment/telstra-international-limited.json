@@ -1,15 +1,15 @@
 {
-  "customerName": "Masergy",
-  "slug": "masergy",
+  "customerName": "Telstra International Limited",
+  "slug": "telstra-international-limited",
   "companyProfile": {
-    "name": "Masergy",
-    "enrichedAt": "2026-04-06T16:40:47.871Z",
+    "name": "Telstra International Limited",
+    "enrichedAt": "2026-04-06T16:43:26.658Z",
     "sources": [
       "crunchbase"
     ]
   },
   "hiringSignals": {
-    "companyName": "Masergy",
+    "companyName": "Telstra International Limited",
     "totalOpenRoles": 0,
     "recentPostings30d": 0,
     "hiringVelocityTrend": "unknown",
@@ -18,10 +18,10 @@
     "layoffSignals": false,
     "csHiring": false,
     "techHiring": false,
-    "enrichedAt": "2026-04-06T16:40:52.080Z"
+    "enrichedAt": "2026-04-06T16:43:30.087Z"
   },
   "riskCompetitive": {
-    "companyName": "Masergy",
+    "companyName": "Telstra International Limited",
     "bankruptcyRisk": {
       "flag": false
     },
@@ -38,22 +38,21 @@
     "competitorLandscape": {
       "primaryCompetitors": []
     },
-    "enrichedAt": "2026-04-06T16:40:47.592Z"
+    "enrichedAt": "2026-04-06T16:43:26.348Z"
   },
   "corporateRegistry": {
-    "legalName": "MASERGY",
-    "jurisdiction": "be",
-    "companyNumber": "0429172540",
-    "incorporationDate": "1986-06-11",
-    "dissolutionDate": null,
-    "companyType": "Société anonyme",
-    "status": "unknown",
-    "registeredAddress": "Avenue Louise 32, Ixelles, 1050, Belgium",
+    "legalName": "REACH SERVICES HONG KONG LIMITED",
+    "jurisdiction": "hk",
+    "companyNumber": "0286027",
+    "incorporationDate": "1990-08-29",
+    "dissolutionDate": "2016-02-26",
+    "companyType": "Private company limited by shares",
+    "status": "inactive",
     "directors": [],
     "source": "opencorporates",
-    "enrichedAt": "2026-04-06T16:40:48.199Z"
+    "enrichedAt": "2026-04-06T16:43:27.342Z"
   },
-  "enrichedAt": "2026-04-06T16:40:52.080Z",
+  "enrichedAt": "2026-04-06T16:43:30.087Z",
   "enrichmentStatus": {
     "company": "ok",
     "financials": "error",

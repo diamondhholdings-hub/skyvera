@@ -1,15 +1,15 @@
 {
-  "customerName": "Masergy",
-  "slug": "masergy",
+  "customerName": "ISSQUARED, Inc.",
+  "slug": "issquared-inc",
   "companyProfile": {
-    "name": "Masergy",
-    "enrichedAt": "2026-04-06T16:40:47.871Z",
+    "name": "ISSQUARED, INC.",
+    "enrichedAt": "2026-04-06T16:45:22.498Z",
     "sources": [
       "crunchbase"
     ]
   },
   "hiringSignals": {
-    "companyName": "Masergy",
+    "companyName": "ISSQUARED, INC.",
     "totalOpenRoles": 0,
     "recentPostings30d": 0,
     "hiringVelocityTrend": "unknown",
@@ -18,10 +18,10 @@
     "layoffSignals": false,
     "csHiring": false,
     "techHiring": false,
-    "enrichedAt": "2026-04-06T16:40:52.080Z"
+    "enrichedAt": "2026-04-06T16:45:23.058Z"
   },
   "riskCompetitive": {
-    "companyName": "Masergy",
+    "companyName": "ISSQUARED, Inc.",
     "bankruptcyRisk": {
       "flag": false
     },
@@ -38,22 +38,22 @@
     "competitorLandscape": {
       "primaryCompetitors": []
     },
-    "enrichedAt": "2026-04-06T16:40:47.592Z"
+    "enrichedAt": "2026-04-06T16:46:58.623Z"
   },
   "corporateRegistry": {
-    "legalName": "MASERGY",
-    "jurisdiction": "be",
-    "companyNumber": "0429172540",
-    "incorporationDate": "1986-06-11",
+    "legalName": "ISSQUARED CANADA, INC.",
+    "jurisdiction": "ca_on",
+    "companyNumber": "1000395195",
+    "incorporationDate": "2023-01-01",
     "dissolutionDate": null,
-    "companyType": "Société anonyme",
-    "status": "unknown",
-    "registeredAddress": "Avenue Louise 32, Ixelles, 1050, Belgium",
+    "companyType": "Ontario Business Corporation",
+    "status": "active",
+    "registeredAddress": "Toronto, Ontario, Canada",
     "directors": [],
     "source": "opencorporates",
-    "enrichedAt": "2026-04-06T16:40:48.199Z"
+    "enrichedAt": "2026-04-06T16:45:23.107Z"
   },
-  "enrichedAt": "2026-04-06T16:40:52.080Z",
+  "enrichedAt": "2026-04-06T16:46:59.502Z",
   "enrichmentStatus": {
     "company": "ok",
     "financials": "error",

@@ -1,0 +1,111 @@
+{
+  "customerName": "Bharti Airtel Limited - Gurgaon",
+  "slug": "bharti-airtel-limited-gurgaon",
+  "companyProfile": {
+    "name": "Bharti Airtel Limited - Gurgaon",
+    "enrichedAt": "2026-04-06T16:49:38.187Z",
+    "sources": [
+      "crunchbase"
+    ]
+  },
+  "hiringSignals": {
+    "companyName": "Bharti Airtel Limited - Gurgaon",
+    "totalOpenRoles": 10,
+    "recentPostings30d": 10,
+    "hiringVelocityTrend": "stable",
+    "keyDepartmentsHiring": [
+      "Product",
+      "Finance",
+      "Sales"
+    ],
+    "topRoles": [
+      {
+        "title": "RBI Complaint Management",
+        "location": "Gurugram, Haryana, IN",
+        "postedDate": "2026-04-06T10:00:00.000Z"
+      },
+      {
+        "title": "PSS NIPS",
+        "location": "Gurugram, Haryana, IN",
+        "postedDate": "2026-03-30T00:00:00.000Z"
+      },
+      {
+        "title": "VAM-NCR",
+        "location": "Gurugram, Haryana, IN",
+        "postedDate": "2026-03-30T00:00:00.000Z"
+      },
+      {
+        "title": "Recovery & Refurbished Sourcing (Electronics Devices)",
+        "location": "Gurugram, Haryana, IN",
+        "postedDate": "2026-03-31T00:00:00.000Z"
+      },
+      {
+        "title": "Lead - Radio Planning",
+        "location": "Gurugram, Haryana, IN",
+        "postedDate": "2026-03-23T00:00:00.000Z"
+      },
+      {
+        "title": "Head COE",
+        "location": "Gurugram, Haryana, IN",
+        "postedDate": "2026-03-30T00:00:00.000Z"
+      },
+      {
+        "title": "Product Manager/ Strategy (Cyber Security)",
+        "department": "Product",
+        "location": "Gurugram, Haryana, IN",
+        "postedDate": "2026-03-23T00:00:00.000Z"
+      },
+      {
+        "title": "Airtel Payments Bank - Product Manager - Payment Aggregator",
+        "department": "Product",
+        "location": "Gurugram, Haryana, IN",
+        "postedDate": "2026-03-15T00:00:00.000Z"
+      },
+      {
+        "title": "Business Analyst - Configuration Specialist",
+        "department": "Finance",
+        "location": "Gurugram, Haryana, IN",
+        "postedDate": "2026-03-29T00:00:00.000Z"
+      },
+      {
+        "title": "Presales Consultant - Telecoms",
+        "department": "Sales",
+        "location": "Gurugram, Haryana, IN",
+        "postedDate": "2026-04-04T00:00:00.000Z"
+      }
+    ],
+    "layoffSignals": false,
+    "csHiring": false,
+    "techHiring": false,
+    "enrichedAt": "2026-04-06T16:49:41.032Z"
+  },
+  "riskCompetitive": {
+    "companyName": "Bharti Airtel Limited - Gurgaon",
+    "bankruptcyRisk": {
+      "flag": false
+    },
+    "fundingHealth": {
+      "signal": "unknown"
+    },
+    "webPresence": {},
+    "marketPerception": {
+      "overallSentiment": "unknown"
+    },
+    "cyberIncidents": {
+      "recentBreach": false
+    },
+    "competitorLandscape": {
+      "primaryCompetitors": []
+    },
+    "enrichedAt": "2026-04-06T16:49:38.032Z"
+  },
+  "enrichedAt": "2026-04-06T16:49:41.032Z",
+  "enrichmentStatus": {
+    "company": "ok",
+    "financials": "error",
+    "hiring": "ok",
+    "risk": "ok",
+    "news": "skipped",
+    "corporate": "skipped"
+  }
+}

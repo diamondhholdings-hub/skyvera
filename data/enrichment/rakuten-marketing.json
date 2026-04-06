@@ -1,0 +1,127 @@
+{
+  "customerName": "Rakuten Marketing",
+  "slug": "rakuten-marketing",
+  "companyProfile": {
+    "name": "Rakuten Marketing",
+    "enrichedAt": "2026-04-06T16:44:17.412Z",
+    "sources": [
+      "crunchbase"
+    ]
+  },
+  "hiringSignals": {
+    "companyName": "Rakuten Marketing",
+    "totalOpenRoles": 18,
+    "recentPostings30d": 18,
+    "hiringVelocityTrend": "stable",
+    "keyDepartmentsHiring": [
+      "Marketing",
+      "Customer Success",
+      "Product",
+      "Sales",
+      "Engineering"
+    ],
+    "topRoles": [
+      {
+        "title": "Director, Corporate Communications, Performance Marketing",
+        "department": "Marketing",
+        "location": "Gunnison, Colorado, US",
+        "postedDate": "2026-04-03T00:00:00.000Z"
+      },
+      {
+        "title": "Associate Agency Development Manager",
+        "location": "Massachusetts, US",
+        "postedDate": "2026-03-26T00:00:00.000Z"
+      },
+      {
+        "title": "VP of Loyalty & Retention Marketing: Grow Lifetime Value",
+        "department": "Marketing",
+        "postedDate": "2026-03-29T00:00:00.000Z"
+      },
+      {
+        "title": "Strategic Affiliate Marketing Account Manager",
+        "department": "Customer Success",
+        "location": "Chicago, Illinois, US",
+        "postedDate": "2026-03-27T00:00:00.000Z"
+      },
+      {
+        "title": "Account Coordinator, Rakuten Card Linked Offer Network",
+        "location": "Massachusetts, US",
+        "postedDate": "2026-04-03T00:00:00.000Z"
+      },
+      {
+        "title": "Director Marketing Strategy & Operations",
+        "department": "Marketing",
+        "location": "San Mateo, California, US",
+        "postedDate": "2026-04-02T00:00:00.000Z"
+      },
+      {
+        "title": "Manager, Procurement & Vendor Management",
+        "location": "Salt Lake City, Utah, US",
+        "postedDate": "2026-04-01T00:00:00.000Z"
+      },
+      {
+        "title": "Product Marketing Manager - B2B Growth & Enablement (PTO)",
+        "department": "Marketing",
+        "location": "San Mateo, California, US",
+        "postedDate": "2026-03-31T00:00:00.000Z"
+      },
+      {
+        "title": "Product Manager Lead",
+        "department": "Product",
+        "postedDate": "2026-03-27T00:00:00.000Z"
+      },
+      {
+        "title": "Corporate Business Management and Transaction Management-Business Management Section-Business Strategy Control Department-Group Sales Division",
+        "department": "Sales",
+        "location": "US",
+        "postedDate": "2026-04-03T00:00:00.000Z"
+      }
+    ],
+    "layoffSignals": false,
+    "csHiring": true,
+    "techHiring": true,
+    "enrichedAt": "2026-04-06T16:44:22.618Z"
+  },
+  "riskCompetitive": {
+    "companyName": "Rakuten Marketing",
+    "bankruptcyRisk": {
+      "flag": false
+    },
+    "fundingHealth": {
+      "signal": "unknown"
+    },
+    "webPresence": {},
+    "marketPerception": {
+      "overallSentiment": "unknown"
+    },
+    "cyberIncidents": {
+      "recentBreach": false
+    },
+    "competitorLandscape": {
+      "primaryCompetitors": []
+    },
+    "enrichedAt": "2026-04-06T16:44:17.328Z"
+  },
+  "corporateRegistry": {
+    "legalName": "RAKUTEN MARKETING AUSTRALIA PTY LTD",
+    "jurisdiction": "au",
+    "companyNumber": "155366215",
+    "incorporationDate": "2012-01-27",
+    "dissolutionDate": null,
+    "companyType": "Australian Proprietary Company, Limited By Shares",
+    "status": "unknown",
+    "registeredAddress": "SYDNEY, New South Wales, 2000, Australia",
+    "directors": [],
+    "source": "opencorporates",
+    "enrichedAt": "2026-04-06T16:44:17.963Z"
+  },
+  "enrichedAt": "2026-04-06T16:44:22.619Z",
+  "enrichmentStatus": {
+    "company": "ok",
+    "financials": "error",
+    "hiring": "ok",
+    "risk": "ok",
+    "news": "skipped",
+    "corporate": "ok"
+  }
+}

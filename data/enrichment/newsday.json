@@ -1,15 +1,15 @@
 {
-  "customerName": "Masergy",
-  "slug": "masergy",
+  "customerName": "Newsday",
+  "slug": "newsday",
   "companyProfile": {
-    "name": "Masergy",
-    "enrichedAt": "2026-04-06T16:40:47.871Z",
+    "name": "Newsday",
+    "enrichedAt": "2026-04-06T16:44:25.520Z",
     "sources": [
       "crunchbase"
     ]
   },
   "hiringSignals": {
-    "companyName": "Masergy",
+    "companyName": "Newsday",
     "totalOpenRoles": 0,
     "recentPostings30d": 0,
     "hiringVelocityTrend": "unknown",
@@ -18,10 +18,10 @@
     "layoffSignals": false,
     "csHiring": false,
     "techHiring": false,
-    "enrichedAt": "2026-04-06T16:40:52.080Z"
+    "enrichedAt": "2026-04-06T16:44:26.161Z"
   },
   "riskCompetitive": {
-    "companyName": "Masergy",
+    "companyName": "Newsday",
     "bankruptcyRisk": {
       "flag": false
     },
@@ -38,22 +38,22 @@
     "competitorLandscape": {
       "primaryCompetitors": []
     },
-    "enrichedAt": "2026-04-06T16:40:47.592Z"
+    "enrichedAt": "2026-04-06T16:44:25.337Z"
   },
   "corporateRegistry": {
-    "legalName": "MASERGY",
-    "jurisdiction": "be",
-    "companyNumber": "0429172540",
-    "incorporationDate": "1986-06-11",
+    "legalName": "ARIZONA NEWSDAY CORP.",
+    "jurisdiction": "us_az",
+    "companyNumber": "02136660",
+    "incorporationDate": "1989-04-10",
     "dissolutionDate": null,
-    "companyType": "Société anonyme",
-    "status": "unknown",
-    "registeredAddress": "Avenue Louise 32, Ixelles, 1050, Belgium",
+    "companyType": "Domestic For-Profit Corporation",
+    "status": "inactive",
+    "registeredAddress": "3003 N CENTRAL AVE #1900, PHOENIX, AZ, 85012",
     "directors": [],
     "source": "opencorporates",
-    "enrichedAt": "2026-04-06T16:40:48.199Z"
+    "enrichedAt": "2026-04-06T16:44:25.983Z"
   },
-  "enrichedAt": "2026-04-06T16:40:52.080Z",
+  "enrichedAt": "2026-04-06T16:44:26.374Z",
   "enrichmentStatus": {
     "company": "ok",
     "financials": "error",

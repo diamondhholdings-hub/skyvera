@@ -1,0 +1,111 @@
+{
+  "customerName": "CITY OF LOS ANGELES",
+  "slug": "city-of-los-angeles",
+  "companyProfile": {
+    "name": "CITY OF LOS ANGELES",
+    "enrichedAt": "2026-04-06T16:47:32.488Z",
+    "sources": [
+      "crunchbase"
+    ]
+  },
+  "hiringSignals": {
+    "companyName": "CITY OF LOS ANGELES",
+    "totalOpenRoles": 19,
+    "recentPostings30d": 19,
+    "hiringVelocityTrend": "stable",
+    "keyDepartmentsHiring": [
+      "Engineering",
+      "Finance",
+      "Sales",
+      "Operations",
+      "Legal"
+    ],
+    "topRoles": [
+      {
+        "title": "ADMINISTRATIVE AID",
+        "location": "Los Angeles, California, US",
+        "postedDate": "2026-03-31T00:00:00.000Z"
+      },
+      {
+        "title": "Deputy City Engineer I Public Works",
+        "department": "Engineering",
+        "location": "Los Angeles, California, US",
+        "postedDate": "2026-03-31T00:00:00.000Z"
+      },
+      {
+        "title": "ASSISTANT PUBLIC WORKS DIRECTOR",
+        "location": "Inglewood, California, US",
+        "postedDate": "2026-03-16T00:00:00.000Z"
+      },
+      {
+        "title": "Field Organizer",
+        "location": "Los Angeles, California, US",
+        "postedDate": "2026-03-15T00:00:00.000Z"
+      },
+      {
+        "title": "Temporary Finance Manager",
+        "department": "Finance",
+        "location": "Los Angeles, California, US",
+        "postedDate": "2026-04-05T23:00:00.000Z"
+      },
+      {
+        "title": "Food Service Expert",
+        "location": "Los Angeles, California, US",
+        "postedDate": "2026-04-01T00:00:00.000Z"
+      },
+      {
+        "title": "Process Expert",
+        "location": "Los Angeles, California, US",
+        "postedDate": "2026-04-05T00:00:00.000Z"
+      },
+      {
+        "title": "Bilingual Trainer & On-Camera Spokesperson",
+        "location": "Los Angeles, California, US",
+        "postedDate": "2026-04-02T00:00:00.000Z"
+      },
+      {
+        "title": "Kiln Steward",
+        "location": "Los Angeles, California, US",
+        "postedDate": "2026-04-02T00:00:00.000Z"
+      },
+      {
+        "title": "Utilities Materials Administrator",
+        "location": "Los Angeles, California, US",
+        "postedDate": "2026-03-17T00:00:00.000Z"
+      }
+    ],
+    "layoffSignals": false,
+    "csHiring": false,
+    "techHiring": true,
+    "enrichedAt": "2026-04-06T16:47:36.574Z"
+  },
+  "riskCompetitive": {
+    "companyName": "CITY OF LOS ANGELES",
+    "bankruptcyRisk": {
+      "flag": false
+    },
+    "fundingHealth": {
+      "signal": "unknown"
+    },
+    "webPresence": {},
+    "marketPerception": {
+      "overallSentiment": "unknown"
+    },
+    "cyberIncidents": {
+      "recentBreach": false
+    },
+    "competitorLandscape": {
+      "primaryCompetitors": []
+    },
+    "enrichedAt": "2026-04-06T16:47:32.190Z"
+  },
+  "enrichedAt": "2026-04-06T16:47:36.574Z",
+  "enrichmentStatus": {
+    "company": "ok",
+    "financials": "error",
+    "hiring": "ok",
+    "risk": "ok",
+    "news": "skipped",
+    "corporate": "skipped"
+  }
+}

@@ -87,6 +87,28 @@ npm run test:unit && npx playwright test tests/smoke/
 
 CI runs type-check + build + smoke tests automatically on every PR via `.github/workflows/ci.yml`.
 
+## Environment Variables (current state)
+
+| Variable | `.env.local` | Vercel | Notes |
+|----------|-------------|--------|-------|
+| `ANTHROPIC_API_KEY` | ✅ | ✅ | Required |
+| `DATABASE_URL` | ✅ | ✅ | `file:./dev.db` locally |
+| `RAPIDAPI_KEY` | ✅ | ✅ | Enrichment pipeline (5 adapters) |
+| `OPENCORPORATES_API_KEY` | ✅ | ✅ | Corporate registry (directors, legal name) |
+| `NEXT_PUBLIC_APP_URL` | ✅ | ✅ | Required for Playwright tests |
+| `NEWSAPI_KEY` | — | — | Optional — news intelligence |
+| `DEMO_MODE` | — | — | Optional — set `true` to extend cache TTLs to 30min |
+
+## Bulk Enrichment
+
+```bash
+npm run enrich:accounts              # All 140 accounts (~19 min)
+npm run enrich:accounts -- --limit 10          # First 10 only
+npm run enrich:accounts -- --bu Cloudsense     # One BU only
+```
+
+Results written to `data/enrichment/{slug}.json`. Corporate registry sections require `OPENCORPORATES_API_KEY` in `.env.local`.
+
 ## Key Files
 
 ### Budget Data

@@ -1,15 +1,15 @@
 {
-  "customerName": "Masergy",
-  "slug": "masergy",
+  "customerName": "Ziggo Services B.V.",
+  "slug": "ziggo-services-bv",
   "companyProfile": {
-    "name": "Masergy",
-    "enrichedAt": "2026-04-06T16:40:47.871Z",
+    "name": "Ziggo Services B.V.",
+    "enrichedAt": "2026-04-06T16:44:43.972Z",
     "sources": [
       "crunchbase"
     ]
   },
   "hiringSignals": {
-    "companyName": "Masergy",
+    "companyName": "Ziggo Services B.V.",
     "totalOpenRoles": 0,
     "recentPostings30d": 0,
     "hiringVelocityTrend": "unknown",
@@ -18,10 +18,10 @@
     "layoffSignals": false,
     "csHiring": false,
     "techHiring": false,
-    "enrichedAt": "2026-04-06T16:40:52.080Z"
+    "enrichedAt": "2026-04-06T16:44:44.712Z"
   },
   "riskCompetitive": {
-    "companyName": "Masergy",
+    "companyName": "Ziggo Services B.V.",
     "bankruptcyRisk": {
       "flag": false
     },
@@ -38,22 +38,22 @@
     "competitorLandscape": {
       "primaryCompetitors": []
     },
-    "enrichedAt": "2026-04-06T16:40:47.592Z"
+    "enrichedAt": "2026-04-06T16:44:43.681Z"
   },
   "corporateRegistry": {
-    "legalName": "MASERGY",
-    "jurisdiction": "be",
-    "companyNumber": "0429172540",
-    "incorporationDate": "1986-06-11",
+    "legalName": "Ziggo Services B.V.",
+    "jurisdiction": "nl",
+    "companyNumber": "62393944",
+    "incorporationDate": null,
     "dissolutionDate": null,
-    "companyType": "Société anonyme",
-    "status": "unknown",
-    "registeredAddress": "Avenue Louise 32, Ixelles, 1050, Belgium",
+    "companyType": "Besloten Vennootschap",
+    "status": "active",
+    "registeredAddress": "Atoomweg 100, Utrecht, 3542AB, Netherlands",
     "directors": [],
     "source": "opencorporates",
-    "enrichedAt": "2026-04-06T16:40:48.199Z"
+    "enrichedAt": "2026-04-06T16:44:44.686Z"
   },
-  "enrichedAt": "2026-04-06T16:40:52.080Z",
+  "enrichedAt": "2026-04-06T16:44:44.871Z",
   "enrichmentStatus": {
     "company": "ok",
     "financials": "error",

@@ -1,0 +1,109 @@
+{
+  "customerName": "Vodafone GmbH",
+  "slug": "vodafone-gmbh",
+  "companyProfile": {
+    "name": "Vodafone GmbH",
+    "enrichedAt": "2026-04-06T16:50:15.890Z",
+    "sources": [
+      "crunchbase"
+    ]
+  },
+  "hiringSignals": {
+    "companyName": "Vodafone GmbH",
+    "totalOpenRoles": 9,
+    "recentPostings30d": 9,
+    "hiringVelocityTrend": "stable",
+    "keyDepartmentsHiring": [
+      "Operations",
+      "Sales",
+      "Engineering",
+      "People & HR"
+    ],
+    "topRoles": [
+      {
+        "title": "Project Manager Core Transport Operations - maternity cover",
+        "department": "Operations",
+        "location": "Ohio, US",
+        "postedDate": "2026-04-02T00:00:00.000Z"
+      },
+      {
+        "title": "Senior Sales Manager, Americas",
+        "department": "Sales",
+        "location": "Mountain Home, Arkansas, US",
+        "postedDate": "2026-03-30T00:00:00.000Z"
+      },
+      {
+        "title": "Head of Agentic AI MILANO, 22940, Italy AI Product Engineering & Services Posted 20 hours ago",
+        "department": "Engineering",
+        "location": "Ohio, US",
+        "postedDate": "2026-04-04T00:00:00.000Z"
+      },
+      {
+        "title": "Germany L&D Strategy Lead",
+        "location": "Ohio, US",
+        "postedDate": "2026-03-30T00:00:00.000Z"
+      },
+      {
+        "title": "Expert Partner Manager (m/w/d) for Vantage Towers",
+        "location": "Ohio, US",
+        "postedDate": "2026-03-18T00:00:00.000Z"
+      },
+      {
+        "title": "Internal Controls & Audit Specialist",
+        "location": "Ohio, US",
+        "postedDate": "2026-04-03T00:00:00.000Z"
+      },
+      {
+        "title": "Executive VP & Technical Architect",
+        "department": "Engineering",
+        "location": "Ohio, US",
+        "postedDate": "2026-03-30T00:00:00.000Z"
+      },
+      {
+        "title": "Hybrid Project Manager - Core Transport Ops (Telecom)",
+        "department": "Operations",
+        "location": "Ohio, US",
+        "postedDate": "2026-04-02T00:00:00.000Z"
+      },
+      {
+        "title": "VodafoneThree - Programme Manager N/A, United Kingdom Project Services Posted 7 hours ago",
+        "department": "People & HR",
+        "location": "Ohio, US",
+        "postedDate": "2026-04-03T00:00:00.000Z"
+      }
+    ],
+    "layoffSignals": false,
+    "csHiring": false,
+    "techHiring": true,
+    "enrichedAt": "2026-04-06T16:50:23.178Z"
+  },
+  "riskCompetitive": {
+    "companyName": "Vodafone GmbH",
+    "bankruptcyRisk": {
+      "flag": false
+    },
+    "fundingHealth": {
+      "signal": "unknown"
+    },
+    "webPresence": {},
+    "marketPerception": {
+      "overallSentiment": "unknown"
+    },
+    "cyberIncidents": {
+      "recentBreach": false
+    },
+    "competitorLandscape": {
+      "primaryCompetitors": []
+    },
+    "enrichedAt": "2026-04-06T16:50:15.723Z"
+  },
+  "enrichedAt": "2026-04-06T16:50:23.178Z",
+  "enrichmentStatus": {
+    "company": "ok",
+    "financials": "error",
+    "hiring": "ok",
+    "risk": "ok",
+    "news": "skipped",
+    "corporate": "skipped"
+  }
+}

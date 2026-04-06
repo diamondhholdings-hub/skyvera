@@ -1,0 +1,74 @@
+{
+  "customerName": "Bharti Airtel Limited - Mumbai",
+  "slug": "bharti-airtel-limited-mumbai",
+  "companyProfile": {
+    "name": "Bharti Airtel Limited - Mumbai",
+    "enrichedAt": "2026-04-06T16:48:46.816Z",
+    "sources": [
+      "crunchbase"
+    ]
+  },
+  "hiringSignals": {
+    "companyName": "Bharti Airtel Limited - Mumbai",
+    "totalOpenRoles": 3,
+    "recentPostings30d": 3,
+    "hiringVelocityTrend": "declining",
+    "keyDepartmentsHiring": [
+      "Engineering",
+      "Customer Success"
+    ],
+    "topRoles": [
+      {
+        "title": "Fibre Engineer",
+        "department": "Engineering",
+        "location": "Mumbai, Maharashtra, IN",
+        "postedDate": "2026-04-06T11:00:00.000Z"
+      },
+      {
+        "title": "Key Account Manager - Mid Market - Mumbai",
+        "department": "Customer Success",
+        "location": "Mumbai, Maharashtra, IN",
+        "postedDate": "2026-04-01T00:00:00.000Z"
+      },
+      {
+        "title": "Installation Engineer",
+        "department": "Engineering",
+        "location": "Mumbai, Maharashtra, IN",
+        "postedDate": "2026-03-25T00:00:00.000Z"
+      }
+    ],
+    "layoffSignals": false,
+    "csHiring": true,
+    "techHiring": true,
+    "enrichedAt": "2026-04-06T16:48:58.290Z"
+  },
+  "riskCompetitive": {
+    "companyName": "Bharti Airtel Limited - Mumbai",
+    "bankruptcyRisk": {
+      "flag": false
+    },
+    "fundingHealth": {
+      "signal": "unknown"
+    },
+    "webPresence": {},
+    "marketPerception": {
+      "overallSentiment": "unknown"
+    },
+    "cyberIncidents": {
+      "recentBreach": false
+    },
+    "competitorLandscape": {
+      "primaryCompetitors": []
+    },
+    "enrichedAt": "2026-04-06T16:48:46.704Z"
+  },
+  "enrichedAt": "2026-04-06T16:48:58.290Z",
+  "enrichmentStatus": {
+    "company": "ok",
+    "financials": "error",
+    "hiring": "ok",
+    "risk": "ok",
+    "news": "skipped",
+    "corporate": "skipped"
+  }
+}

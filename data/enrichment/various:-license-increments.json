@@ -1,15 +1,15 @@
 {
-  "customerName": "Masergy",
-  "slug": "masergy",
+  "customerName": "Various: License increments",
+  "slug": "various:-license-increments",
   "companyProfile": {
-    "name": "Masergy",
-    "enrichedAt": "2026-04-06T16:40:47.871Z",
+    "name": "Various: License increments",
+    "enrichedAt": "2026-04-06T16:45:02.274Z",
     "sources": [
       "crunchbase"
     ]
   },
   "hiringSignals": {
-    "companyName": "Masergy",
+    "companyName": "Various: License increments",
     "totalOpenRoles": 0,
     "recentPostings30d": 0,
     "hiringVelocityTrend": "unknown",
@@ -18,10 +18,10 @@
     "layoffSignals": false,
     "csHiring": false,
     "techHiring": false,
-    "enrichedAt": "2026-04-06T16:40:52.080Z"
+    "enrichedAt": "2026-04-06T16:45:13.839Z"
   },
   "riskCompetitive": {
-    "companyName": "Masergy",
+    "companyName": "Various: License increments",
     "bankruptcyRisk": {
       "flag": false
     },
@@ -38,28 +38,15 @@
     "competitorLandscape": {
       "primaryCompetitors": []
     },
-    "enrichedAt": "2026-04-06T16:40:47.592Z"
+    "enrichedAt": "2026-04-06T16:45:02.098Z"
   },
-  "corporateRegistry": {
-    "legalName": "MASERGY",
-    "jurisdiction": "be",
-    "companyNumber": "0429172540",
-    "incorporationDate": "1986-06-11",
-    "dissolutionDate": null,
-    "companyType": "Société anonyme",
-    "status": "unknown",
-    "registeredAddress": "Avenue Louise 32, Ixelles, 1050, Belgium",
-    "directors": [],
-    "source": "opencorporates",
-    "enrichedAt": "2026-04-06T16:40:48.199Z"
-  },
-  "enrichedAt": "2026-04-06T16:40:52.080Z",
+  "enrichedAt": "2026-04-06T16:45:13.839Z",
   "enrichmentStatus": {
     "company": "ok",
     "financials": "error",
     "hiring": "ok",
     "risk": "ok",
     "news": "skipped",
-    "corporate": "ok"
+    "corporate": "skipped"
   }
 }

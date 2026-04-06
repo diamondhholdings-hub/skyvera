@@ -1,0 +1,125 @@
+{
+  "customerName": "CoreSite",
+  "slug": "coresite",
+  "companyProfile": {
+    "name": "CoreSite",
+    "enrichedAt": "2026-04-06T16:42:06.955Z",
+    "sources": [
+      "crunchbase"
+    ]
+  },
+  "hiringSignals": {
+    "companyName": "CoreSite",
+    "totalOpenRoles": 12,
+    "recentPostings30d": 12,
+    "hiringVelocityTrend": "stable",
+    "keyDepartmentsHiring": [
+      "Operations"
+    ],
+    "topRoles": [
+      {
+        "title": "Data Center Operations Technician II - Night Shift (VA2) (1891)",
+        "department": "Operations",
+        "location": "Reston, Virginia, US",
+        "postedDate": "2026-03-25T00:00:00.000Z"
+      },
+      {
+        "title": "Data Center Operations Technician IV (m/w/d)",
+        "department": "Operations",
+        "location": "Reston, Virginia, US",
+        "postedDate": "2026-04-05T00:00:00.000Z"
+      },
+      {
+        "title": "Senior Data Center Technician IV – Day Shift",
+        "location": "Reston, Virginia, US",
+        "postedDate": "2026-04-03T00:00:00.000Z"
+      },
+      {
+        "title": "Skillbridge Data Center Technician (SB0001) - Full-time / Part-time",
+        "location": "Reston, Virginia, US",
+        "postedDate": "2026-03-20T00:00:00.000Z"
+      },
+      {
+        "title": "Senior Data Center Operations Technician",
+        "department": "Operations",
+        "location": "Reston, Virginia, US",
+        "postedDate": "2026-04-03T00:00:00.000Z"
+      },
+      {
+        "title": "Senior Construction Project Manager (VA3) (1767) - Full-time / Part-time",
+        "department": "Operations",
+        "postedDate": "2026-03-20T00:00:00.000Z"
+      },
+      {
+        "title": "Data Center Technician - SkillBridge Path to Ops Excellence",
+        "department": "Operations",
+        "location": "Reston, Virginia, US",
+        "postedDate": "2026-04-02T00:00:00.000Z"
+      },
+      {
+        "title": "Senior Construction Project Manager; VA;",
+        "department": "Operations",
+        "location": "Reston, Virginia, US",
+        "postedDate": "2026-04-04T00:00:00.000Z"
+      },
+      {
+        "title": "Data Center Operations Technician II - Night Shift; VA;",
+        "department": "Operations",
+        "location": "Vienna, Virginia, US",
+        "postedDate": "2026-03-28T00:00:00.000Z"
+      },
+      {
+        "title": "Data Center Technician II — Night Shift Operations",
+        "department": "Operations",
+        "location": "Reston, Virginia, US",
+        "postedDate": "2026-03-28T00:00:00.000Z"
+      }
+    ],
+    "layoffSignals": false,
+    "csHiring": false,
+    "techHiring": false,
+    "enrichedAt": "2026-04-06T16:42:25.765Z"
+  },
+  "riskCompetitive": {
+    "companyName": "CoreSite",
+    "bankruptcyRisk": {
+      "flag": false
+    },
+    "fundingHealth": {
+      "signal": "unknown"
+    },
+    "webPresence": {},
+    "marketPerception": {
+      "overallSentiment": "unknown"
+    },
+    "cyberIncidents": {
+      "recentBreach": false
+    },
+    "competitorLandscape": {
+      "primaryCompetitors": []
+    },
+    "enrichedAt": "2026-04-06T16:42:05.887Z"
+  },
+  "corporateRegistry": {
+    "legalName": "CORESITE 1099 14TH STREET NW, L.L.C.",
+    "jurisdiction": "us_dc",
+    "companyNumber": "EXTUID_4174357",
+    "incorporationDate": "2016-10-27",
+    "dissolutionDate": null,
+    "companyType": "Limited Liability Company",
+    "status": "active",
+    "registeredAddress": "1001 17th Street, Suite 500,, Denver, Colorado, 80202",
+    "directors": [],
+    "source": "opencorporates",
+    "enrichedAt": "2026-04-06T16:42:06.587Z"
+  },
+  "enrichedAt": "2026-04-06T16:42:25.765Z",
+  "enrichmentStatus": {
+    "company": "ok",
+    "financials": "error",
+    "hiring": "ok",
+    "risk": "ok",
+    "news": "skipped",
+    "corporate": "ok"
+  }
+}

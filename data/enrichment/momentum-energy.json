@@ -1,0 +1,126 @@
+{
+  "customerName": "Momentum Energy",
+  "slug": "momentum-energy",
+  "companyProfile": {
+    "name": "Momentum Energy",
+    "enrichedAt": "2026-04-06T16:43:14.877Z",
+    "sources": [
+      "crunchbase"
+    ]
+  },
+  "hiringSignals": {
+    "companyName": "Momentum Energy",
+    "totalOpenRoles": 16,
+    "recentPostings30d": 16,
+    "hiringVelocityTrend": "stable",
+    "keyDepartmentsHiring": [
+      "Sales",
+      "Legal",
+      "Engineering",
+      "Marketing"
+    ],
+    "topRoles": [
+      {
+        "title": "Solar Sales Recruiter",
+        "department": "Sales",
+        "location": "Washington, District of Columbia, US",
+        "postedDate": "2026-03-31T00:00:00.000Z"
+      },
+      {
+        "title": "$5,000 TRAINING BONUS for Solar Originator New Hires- We train you for Success!",
+        "location": "Paramus, New Jersey, US",
+        "postedDate": "2026-03-27T00:00:00.000Z"
+      },
+      {
+        "title": "Retail Sales Associate | Hourly + Bonuses",
+        "department": "Sales",
+        "location": "Hamilton Township, New Jersey, US",
+        "postedDate": "2026-04-02T00:00:00.000Z"
+      },
+      {
+        "title": "Solar Consultant",
+        "location": "Hauppauge, New York, US",
+        "postedDate": "2026-04-03T00:00:00.000Z"
+      },
+      {
+        "title": "Senior Legal Counsel - Energy & Regulatory Compliance",
+        "department": "Legal",
+        "location": "Elizabeth, New Jersey, US",
+        "postedDate": "2026-03-28T00:00:00.000Z"
+      },
+      {
+        "title": "Engineer 2",
+        "department": "Engineering",
+        "location": "Fort Meade, Maryland, US",
+        "postedDate": "2026-04-04T00:00:00.000Z"
+      },
+      {
+        "title": "In Home Solar Consultant - Woodbridge, NJ",
+        "location": "Woodbridge, Virginia, US",
+        "postedDate": "2026-03-29T00:00:00.000Z"
+      },
+      {
+        "title": "Sales Development Representative",
+        "department": "Sales",
+        "location": "North Carolina, US",
+        "postedDate": "2026-04-03T00:00:00.000Z"
+      },
+      {
+        "title": "Site Assessor",
+        "location": "Harrisburg, Pennsylvania, US",
+        "postedDate": "2026-03-08T00:00:00.000Z"
+      },
+      {
+        "title": "Energy Customer Care Champion",
+        "location": "Elizabeth, New Jersey, US",
+        "postedDate": "2026-03-28T00:00:00.000Z"
+      }
+    ],
+    "layoffSignals": false,
+    "csHiring": false,
+    "techHiring": true,
+    "enrichedAt": "2026-04-06T16:43:20.011Z"
+  },
+  "riskCompetitive": {
+    "companyName": "Momentum Energy",
+    "bankruptcyRisk": {
+      "flag": false
+    },
+    "fundingHealth": {
+      "signal": "unknown"
+    },
+    "webPresence": {},
+    "marketPerception": {
+      "overallSentiment": "unknown"
+    },
+    "cyberIncidents": {
+      "recentBreach": false
+    },
+    "competitorLandscape": {
+      "primaryCompetitors": []
+    },
+    "enrichedAt": "2026-04-06T16:43:14.800Z"
+  },
+  "corporateRegistry": {
+    "legalName": "DCP Partners MEG Holdings, LLC",
+    "jurisdiction": "us_tx",
+    "companyNumber": "0800701521",
+    "incorporationDate": "2006-08-30",
+    "dissolutionDate": "2008-12-30",
+    "companyType": "Foreign Limited Liability Company (LLC)",
+    "status": "unknown",
+    "registeredAddress": "370 17th Street,, Suite 2775, Denver, CO, 80202, USA",
+    "directors": [],
+    "source": "opencorporates",
+    "enrichedAt": "2026-04-06T16:43:15.398Z"
+  },
+  "enrichedAt": "2026-04-06T16:43:20.011Z",
+  "enrichmentStatus": {
+    "company": "ok",
+    "financials": "error",
+    "hiring": "ok",
+    "risk": "ok",
+    "news": "skipped",
+    "corporate": "ok"
+  }
+}

@@ -1,15 +1,15 @@
 {
-  "customerName": "Masergy",
-  "slug": "masergy",
+  "customerName": "Ofcom",
+  "slug": "ofcom",
   "companyProfile": {
-    "name": "Masergy",
-    "enrichedAt": "2026-04-06T16:40:47.871Z",
+    "name": "Ofcom",
+    "enrichedAt": "2026-04-06T16:44:02.569Z",
     "sources": [
       "crunchbase"
     ]
   },
   "hiringSignals": {
-    "companyName": "Masergy",
+    "companyName": "Ofcom",
     "totalOpenRoles": 0,
     "recentPostings30d": 0,
     "hiringVelocityTrend": "unknown",
@@ -18,10 +18,10 @@
     "layoffSignals": false,
     "csHiring": false,
     "techHiring": false,
-    "enrichedAt": "2026-04-06T16:40:52.080Z"
+    "enrichedAt": "2026-04-06T16:44:03.119Z"
   },
   "riskCompetitive": {
-    "companyName": "Masergy",
+    "companyName": "Ofcom",
     "bankruptcyRisk": {
       "flag": false
     },
@@ -38,22 +38,21 @@
     "competitorLandscape": {
       "primaryCompetitors": []
     },
-    "enrichedAt": "2026-04-06T16:40:47.592Z"
+    "enrichedAt": "2026-04-06T16:44:02.419Z"
   },
   "corporateRegistry": {
-    "legalName": "MASERGY",
-    "jurisdiction": "be",
-    "companyNumber": "0429172540",
-    "incorporationDate": "1986-06-11",
+    "legalName": "OFCOM -OFICINA E COMERCIO DE MATERIAIS DE INFORMATICA LTDA",
+    "jurisdiction": "br",
+    "companyNumber": "07064727000181",
+    "incorporationDate": null,
     "dissolutionDate": null,
-    "companyType": "Société anonyme",
+    "companyType": null,
     "status": "unknown",
-    "registeredAddress": "Avenue Louise 32, Ixelles, 1050, Belgium",
     "directors": [],
     "source": "opencorporates",
-    "enrichedAt": "2026-04-06T16:40:48.199Z"
+    "enrichedAt": "2026-04-06T16:44:02.823Z"
   },
-  "enrichedAt": "2026-04-06T16:40:52.080Z",
+  "enrichedAt": "2026-04-06T16:44:03.777Z",
   "enrichmentStatus": {
     "company": "ok",
     "financials": "error",

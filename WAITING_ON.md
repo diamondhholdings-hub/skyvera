@@ -13,32 +13,24 @@ None currently.
 
 ## 🟡 Pending Human Action
 
-### 1. RapidAPI Key (for live enrichment)
-**What:** The 5 RapidAPI enrichment adapters are wired up but need a valid API key to run live.
-**Where to set:** `.env.local` → `RAPIDAPI_KEY=<your-key>` and Vercel env vars
-**Status:** Adapters now return `skipped` (not `error`) when key is missing — no broken UI. Pre-cached data exists for ~4 accounts.
-**Action:** Add `RAPIDAPI_KEY` to Vercel environment variables and re-run enrichment for all 140 accounts.
-
-### 2. OpenCorporates API Key
-**What:** Corporate registry adapter is built but needs a key to fetch live data (directors, legal name, jurisdiction).
-**Where to set:** `.env.local` → `OPENCORPORATES_API_KEY=<your-key>` and Vercel env vars
-**Status:** Adapter returns `skipped` gracefully when key is missing.
+None currently — all API keys configured.
 
 ---
 
 ## 🟢 No Blocker — Ready to build when prioritized
 
 ### 3. Authentication system
-**Decision needed:** Who are the users? Single-tenant (just Skyvera team) vs multi-tenant?
-**Simple path:** Add NextAuth.js with Google OAuth — 1 day of work.
+**Status:** On hold by design. Revisit when platform is ready for broader access.
 
-### 4. PostgreSQL / Turso migration
+### 4. Supabase (PostgreSQL) migration
+**Decision:** Use Supabase — already in use on other Vercel projects.
 **Reason:** SQLite has write concurrency issues in production (Vercel serverless).
-**Simple path:** Turso (libSQL hosted, SQLite-compatible) — minimal code changes.
+**Next:** Connect Supabase project, update DATABASE_URL, run `prisma db push`, re-seed.
+**Action needed:** Provide Supabase connection string or link the project via Vercel Supabase integration.
 
 ### 5. RapidAPI enrichment for all 140 accounts
-**What:** Run `scripts/enrich-accounts.ts` to populate `data/enrichment/` for every customer.
-**Depends on:** Item 1 (RapidAPI key in env).
+**What:** Run `npm run enrich:accounts` — in progress as of 2026-04-06 (~19 min, sequential with 500ms guard).
+**Status:** 3/3 test accounts succeeded. Full run kicked off in background.
 
 ### 6. Sentry error monitoring
 **What:** Add Sentry DSN to env vars and instrument error tracking.
@@ -50,6 +42,9 @@ None currently.
 
 | Date | Item | Resolution |
 |------|------|------------|
+| 2026-04-06 | RAPIDAPI_KEY added to Vercel + .env.local | Enrichment pipeline live; bulk run in progress |
+| 2026-04-06 | OPENCORPORATES_API_KEY | Added to Vercel + .env.local — fully configured |
+| 2026-04-06 | ANTHROPIC_API_KEY | Added to Vercel development env + .env.local |
 | 2026-04-06 | Session work commit | All work committed as `55c6a30`, pushed to `origin/main` |
 | 2026-04-06 | CI/CD pipeline | `.github/workflows/ci.yml` — type-check + build + smoke tests on every PR |
 | 2026-04-06 | Rate limiting | In-memory per-IP rate limiter on all 9 Claude-calling routes |

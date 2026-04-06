@@ -1,0 +1,66 @@
+{
+  "customerName": "4iG",
+  "slug": "4ig",
+  "companyProfile": {
+    "name": "4iG",
+    "enrichedAt": "2026-04-06T16:49:57.222Z",
+    "sources": [
+      "crunchbase"
+    ]
+  },
+  "hiringSignals": {
+    "companyName": "4iG",
+    "totalOpenRoles": 2,
+    "recentPostings30d": 2,
+    "hiringVelocityTrend": "declining",
+    "keyDepartmentsHiring": [
+      "Sales"
+    ],
+    "topRoles": [
+      {
+        "title": "Team Lead - Business Development",
+        "department": "Sales",
+        "location": "Countryside, Illinois, US",
+        "postedDate": "2026-03-28T00:00:00.000Z"
+      },
+      {
+        "title": "Service Delivery Manager",
+        "location": "Countryside, Illinois, US",
+        "postedDate": "2026-03-29T00:00:00.000Z"
+      }
+    ],
+    "layoffSignals": false,
+    "csHiring": false,
+    "techHiring": false,
+    "enrichedAt": "2026-04-06T16:50:00.770Z"
+  },
+  "riskCompetitive": {
+    "companyName": "4iG",
+    "bankruptcyRisk": {
+      "flag": false
+    },
+    "fundingHealth": {
+      "signal": "unknown"
+    },
+    "webPresence": {},
+    "marketPerception": {
+      "overallSentiment": "unknown"
+    },
+    "cyberIncidents": {
+      "recentBreach": false
+    },
+    "competitorLandscape": {
+      "primaryCompetitors": []
+    },
+    "enrichedAt": "2026-04-06T16:49:57.139Z"
+  },
+  "enrichedAt": "2026-04-06T16:50:00.770Z",
+  "enrichmentStatus": {
+    "company": "ok",
+    "financials": "error",
+    "hiring": "ok",
+    "risk": "ok",
+    "news": "skipped",
+    "corporate": "skipped"
+  }
+}

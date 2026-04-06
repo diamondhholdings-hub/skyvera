@@ -1,15 +1,15 @@
 {
-  "customerName": "Masergy",
-  "slug": "masergy",
+  "customerName": "Thryv Australia Pty Ltd",
+  "slug": "thryv-australia-pty-ltd",
   "companyProfile": {
-    "name": "Masergy",
-    "enrichedAt": "2026-04-06T16:40:47.871Z",
+    "name": "Thryv Australia Pty Ltd",
+    "enrichedAt": "2026-04-06T16:41:56.352Z",
     "sources": [
       "crunchbase"
     ]
   },
   "hiringSignals": {
-    "companyName": "Masergy",
+    "companyName": "Thryv Australia Pty Ltd",
     "totalOpenRoles": 0,
     "recentPostings30d": 0,
     "hiringVelocityTrend": "unknown",
@@ -18,10 +18,10 @@
     "layoffSignals": false,
     "csHiring": false,
     "techHiring": false,
-    "enrichedAt": "2026-04-06T16:40:52.080Z"
+    "enrichedAt": "2026-04-06T16:41:56.801Z"
   },
   "riskCompetitive": {
-    "companyName": "Masergy",
+    "companyName": "Thryv Australia Pty Ltd",
     "bankruptcyRisk": {
       "flag": false
     },
@@ -38,22 +38,22 @@
     "competitorLandscape": {
       "primaryCompetitors": []
     },
-    "enrichedAt": "2026-04-06T16:40:47.592Z"
+    "enrichedAt": "2026-04-06T16:41:56.236Z"
   },
   "corporateRegistry": {
-    "legalName": "MASERGY",
-    "jurisdiction": "be",
-    "companyNumber": "0429172540",
-    "incorporationDate": "1986-06-11",
+    "legalName": "THRYV AUSTRALIA HOLDINGS PTY LTD",
+    "jurisdiction": "au",
+    "companyNumber": "638633342",
+    "incorporationDate": "2020-01-22",
     "dissolutionDate": null,
-    "companyType": "Société anonyme",
+    "companyType": "Australian Proprietary Company, Limited By Shares",
     "status": "unknown",
-    "registeredAddress": "Avenue Louise 32, Ixelles, 1050, Belgium",
+    "registeredAddress": "MELBOURNE, Victoria, 3000, Australia",
     "directors": [],
     "source": "opencorporates",
-    "enrichedAt": "2026-04-06T16:40:48.199Z"
+    "enrichedAt": "2026-04-06T16:41:56.615Z"
   },
-  "enrichedAt": "2026-04-06T16:40:52.080Z",
+  "enrichedAt": "2026-04-06T16:41:57.169Z",
   "enrichmentStatus": {
     "company": "ok",
     "financials": "error",

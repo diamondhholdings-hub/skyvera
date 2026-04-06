@@ -1,15 +1,15 @@
 {
-  "customerName": "Masergy",
-  "slug": "masergy",
+  "customerName": "EMIRCOM",
+  "slug": "emircom",
   "companyProfile": {
-    "name": "Masergy",
-    "enrichedAt": "2026-04-06T16:40:47.871Z",
+    "name": "EMIRCOM",
+    "enrichedAt": "2026-04-06T16:45:16.623Z",
     "sources": [
       "crunchbase"
     ]
   },
   "hiringSignals": {
-    "companyName": "Masergy",
+    "companyName": "EMIRCOM",
     "totalOpenRoles": 0,
     "recentPostings30d": 0,
     "hiringVelocityTrend": "unknown",
@@ -18,10 +18,10 @@
     "layoffSignals": false,
     "csHiring": false,
     "techHiring": false,
-    "enrichedAt": "2026-04-06T16:40:52.080Z"
+    "enrichedAt": "2026-04-06T16:45:15.057Z"
   },
   "riskCompetitive": {
-    "companyName": "Masergy",
+    "companyName": "EMIRCOM",
     "bankruptcyRisk": {
       "flag": false
     },
@@ -38,22 +38,22 @@
     "competitorLandscape": {
       "primaryCompetitors": []
     },
-    "enrichedAt": "2026-04-06T16:40:47.592Z"
+    "enrichedAt": "2026-04-06T16:45:14.583Z"
   },
   "corporateRegistry": {
-    "legalName": "MASERGY",
-    "jurisdiction": "be",
-    "companyNumber": "0429172540",
-    "incorporationDate": "1986-06-11",
+    "legalName": "EMIRCOM (PVT.) LIMITED",
+    "jurisdiction": "pk",
+    "companyNumber": "0057511",
+    "incorporationDate": "2006-07-26",
     "dissolutionDate": null,
-    "companyType": "Société anonyme",
-    "status": "unknown",
-    "registeredAddress": "Avenue Louise 32, Ixelles, 1050, Belgium",
+    "companyType": "Private Companies",
+    "status": "active",
+    "registeredAddress": "HOUSE # 39, MAIN SCHOOL ROAD, F-7/1, ISLAMABAD. ISLAMABAD islamabad Islamabad Capital Territory (I.C.T.) 44000, Pakistan",
     "directors": [],
     "source": "opencorporates",
-    "enrichedAt": "2026-04-06T16:40:48.199Z"
+    "enrichedAt": "2026-04-06T16:45:15.403Z"
   },
-  "enrichedAt": "2026-04-06T16:40:52.080Z",
+  "enrichedAt": "2026-04-06T16:45:16.623Z",
   "enrichmentStatus": {
     "company": "ok",
     "financials": "error",

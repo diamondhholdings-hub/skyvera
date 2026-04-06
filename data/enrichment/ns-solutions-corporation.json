@@ -1,0 +1,96 @@
+{
+  "customerName": "Ns Solutions Corporation",
+  "slug": "ns-solutions-corporation",
+  "companyProfile": {
+    "name": "NS Solutions Corporation",
+    "enrichedAt": "2026-04-06T16:50:01.671Z",
+    "sources": [
+      "crunchbase"
+    ]
+  },
+  "hiringSignals": {
+    "companyName": "NS Solutions Corporation",
+    "totalOpenRoles": 7,
+    "recentPostings30d": 7,
+    "hiringVelocityTrend": "stable",
+    "keyDepartmentsHiring": [
+      "Operations",
+      "Engineering"
+    ],
+    "topRoles": [
+      {
+        "title": "field representative",
+        "location": "Manchester, New Hampshire, US",
+        "postedDate": "2026-04-06T13:00:00.000Z"
+      },
+      {
+        "title": "Technical Program Manager III (W2 Only)",
+        "department": "Operations",
+        "location": "Mountain View, Missouri, US",
+        "postedDate": "2026-03-25T00:00:00.000Z"
+      },
+      {
+        "title": "Data Scientist (W2 Only)",
+        "department": "Engineering",
+        "location": "New York, New York, US",
+        "postedDate": "2026-03-26T00:00:00.000Z"
+      },
+      {
+        "title": "PeopleSoft Financials Developer (Migration Specialist)",
+        "department": "Engineering",
+        "location": "West Virginia, US",
+        "postedDate": "2026-03-31T00:00:00.000Z"
+      },
+      {
+        "title": "IBM Developer (W2 Only)",
+        "department": "Engineering",
+        "location": "Philadelphia, Pennsylvania, US",
+        "postedDate": "2026-03-26T00:00:00.000Z"
+      },
+      {
+        "title": "Product Engineer",
+        "department": "Engineering",
+        "location": "Winamac, Indiana, US",
+        "postedDate": "2026-03-24T00:00:00.000Z"
+      },
+      {
+        "title": "On-Site Services Specialist at NS IT Solutions West Plains, MO",
+        "location": "West Plains, Missouri, US",
+        "postedDate": "2026-03-14T00:00:00.000Z"
+      }
+    ],
+    "layoffSignals": false,
+    "csHiring": false,
+    "techHiring": true,
+    "enrichedAt": "2026-04-06T16:50:10.538Z"
+  },
+  "riskCompetitive": {
+    "companyName": "Ns Solutions Corporation",
+    "bankruptcyRisk": {
+      "flag": false
+    },
+    "fundingHealth": {
+      "signal": "unknown"
+    },
+    "webPresence": {},
+    "marketPerception": {
+      "overallSentiment": "unknown"
+    },
+    "cyberIncidents": {
+      "recentBreach": false
+    },
+    "competitorLandscape": {
+      "primaryCompetitors": []
+    },
+    "enrichedAt": "2026-04-06T16:52:16.802Z"
+  },
+  "enrichedAt": "2026-04-06T16:52:17.680Z",
+  "enrichmentStatus": {
+    "company": "ok",
+    "financials": "error",
+    "hiring": "ok",
+    "risk": "ok",
+    "news": "skipped",
+    "corporate": "skipped"
+  }
+}

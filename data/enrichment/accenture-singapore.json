@@ -1,0 +1,131 @@
+{
+  "customerName": "Accenture Singapore",
+  "slug": "accenture-singapore",
+  "companyProfile": {
+    "name": "Accenture Singapore",
+    "enrichedAt": "2026-04-06T16:44:35.199Z",
+    "sources": [
+      "crunchbase"
+    ]
+  },
+  "hiringSignals": {
+    "companyName": "Accenture Singapore",
+    "totalOpenRoles": 20,
+    "recentPostings30d": 20,
+    "hiringVelocityTrend": "stable",
+    "keyDepartmentsHiring": [
+      "Finance",
+      "Engineering",
+      "Operations",
+      "Marketing",
+      "People & HR"
+    ],
+    "topRoles": [
+      {
+        "title": "Project Management Lead",
+        "location": "SG",
+        "postedDate": "2026-03-29T00:00:00.000Z"
+      },
+      {
+        "title": "Recruiting Senior Analyst",
+        "department": "Finance",
+        "location": "SG",
+        "postedDate": "2026-03-30T00:00:00.000Z"
+      },
+      {
+        "title": "Strategy Analyst, Accenture Strategy",
+        "department": "Finance",
+        "location": "SG",
+        "postedDate": "2026-03-27T00:00:00.000Z"
+      },
+      {
+        "title": "GenAI Full-Stack Engineer/ Agentic App Engineer",
+        "department": "Engineering",
+        "location": "SG",
+        "postedDate": "2026-03-13T00:00:00.000Z"
+      },
+      {
+        "title": "Azure Cloud Ops Consultant",
+        "department": "Operations",
+        "location": "SG",
+        "postedDate": "2026-04-01T00:00:00.000Z"
+      },
+      {
+        "title": "SAP S/4HANA Finance Functional Lead (FM/GL/AA)",
+        "department": "Finance",
+        "location": "SG",
+        "postedDate": "2026-03-18T00:00:00.000Z"
+      },
+      {
+        "title": "Business Analyst (Java, JavaScript, SQL, AWS Cloud)",
+        "department": "Finance",
+        "location": "SG",
+        "postedDate": "2026-03-10T00:00:00.000Z"
+      },
+      {
+        "title": "Payments Domain Architect",
+        "department": "Engineering",
+        "location": "SG",
+        "postedDate": "2026-03-30T00:00:00.000Z"
+      },
+      {
+        "title": "Digital Growth Lead",
+        "department": "Marketing",
+        "location": "SG",
+        "postedDate": "2026-03-25T00:00:00.000Z"
+      },
+      {
+        "title": "AI/ML Computational Scientist",
+        "department": "Engineering",
+        "location": "SG",
+        "postedDate": "2026-03-13T00:00:00.000Z"
+      }
+    ],
+    "layoffSignals": false,
+    "csHiring": false,
+    "techHiring": true,
+    "enrichedAt": "2026-04-06T16:44:38.670Z"
+  },
+  "riskCompetitive": {
+    "companyName": "Accenture Singapore",
+    "bankruptcyRisk": {
+      "flag": false
+    },
+    "fundingHealth": {
+      "signal": "unknown"
+    },
+    "webPresence": {},
+    "marketPerception": {
+      "overallSentiment": "unknown"
+    },
+    "cyberIncidents": {
+      "recentBreach": false
+    },
+    "competitorLandscape": {
+      "primaryCompetitors": []
+    },
+    "enrichedAt": "2026-04-06T16:44:34.814Z"
+  },
+  "corporateRegistry": {
+    "legalName": "ACCENTURE (SINGAPORE)",
+    "jurisdiction": "no",
+    "companyNumber": "989790412",
+    "incorporationDate": "2006-05-08",
+    "dissolutionDate": null,
+    "companyType": "Norsk avdeling av utenlandsk foretak",
+    "status": "unknown",
+    "registeredAddress": "10 Anson Road International Plaza, SINGAPORE 079903, Singapore",
+    "directors": [],
+    "source": "opencorporates",
+    "enrichedAt": "2026-04-06T16:44:35.868Z"
+  },
+  "enrichedAt": "2026-04-06T16:44:38.670Z",
+  "enrichmentStatus": {
+    "company": "ok",
+    "financials": "error",
+    "hiring": "ok",
+    "risk": "ok",
+    "news": "skipped",
+    "corporate": "ok"
+  }
+}

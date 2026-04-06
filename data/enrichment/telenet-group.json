@@ -1,0 +1,73 @@
+{
+  "customerName": "Telenet Group",
+  "slug": "telenet-group",
+  "companyProfile": {
+    "name": "Telenet Group",
+    "enrichedAt": "2026-04-06T16:51:05.159Z",
+    "sources": [
+      "crunchbase"
+    ]
+  },
+  "hiringSignals": {
+    "companyName": "Telenet Group",
+    "totalOpenRoles": 3,
+    "recentPostings30d": 3,
+    "hiringVelocityTrend": "declining",
+    "keyDepartmentsHiring": [
+      "Product",
+      "Sales"
+    ],
+    "topRoles": [
+      {
+        "title": "Product Owner Data",
+        "department": "Product",
+        "location": "Wisconsin, US",
+        "postedDate": "2026-04-03T00:00:00.000Z"
+      },
+      {
+        "title": "Sales Development Representative-Call Center Marketing",
+        "department": "Sales",
+        "location": "Athens, Alabama, US",
+        "postedDate": "2026-04-01T00:00:00.000Z"
+      },
+      {
+        "title": "UC&C Value Proposition & Roadmap Lead",
+        "location": "Belgium, Wisconsin, US",
+        "postedDate": "2026-03-28T00:00:00.000Z"
+      }
+    ],
+    "layoffSignals": false,
+    "csHiring": false,
+    "techHiring": false,
+    "enrichedAt": "2026-04-06T16:51:11.046Z"
+  },
+  "riskCompetitive": {
+    "companyName": "Telenet Group",
+    "bankruptcyRisk": {
+      "flag": false
+    },
+    "fundingHealth": {
+      "signal": "unknown"
+    },
+    "webPresence": {},
+    "marketPerception": {
+      "overallSentiment": "unknown"
+    },
+    "cyberIncidents": {
+      "recentBreach": false
+    },
+    "competitorLandscape": {
+      "primaryCompetitors": []
+    },
+    "enrichedAt": "2026-04-06T16:51:05.062Z"
+  },
+  "enrichedAt": "2026-04-06T16:51:11.047Z",
+  "enrichmentStatus": {
+    "company": "ok",
+    "financials": "error",
+    "hiring": "ok",
+    "risk": "ok",
+    "news": "skipped",
+    "corporate": "skipped"
+  }
+}

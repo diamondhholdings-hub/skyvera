@@ -1,15 +1,15 @@
 {
-  "customerName": "Masergy",
-  "slug": "masergy",
+  "customerName": "Foxtel Management Pty Limited",
+  "slug": "foxtel-management-pty-limited",
   "companyProfile": {
-    "name": "Masergy",
-    "enrichedAt": "2026-04-06T16:40:47.871Z",
+    "name": "Foxtel Management Pty Limited",
+    "enrichedAt": "2026-04-06T16:41:49.647Z",
     "sources": [
       "crunchbase"
     ]
   },
   "hiringSignals": {
-    "companyName": "Masergy",
+    "companyName": "Foxtel Management Pty Limited",
     "totalOpenRoles": 0,
     "recentPostings30d": 0,
     "hiringVelocityTrend": "unknown",
@@ -18,10 +18,10 @@
     "layoffSignals": false,
     "csHiring": false,
     "techHiring": false,
-    "enrichedAt": "2026-04-06T16:40:52.080Z"
+    "enrichedAt": "2026-04-06T16:41:53.709Z"
   },
   "riskCompetitive": {
-    "companyName": "Masergy",
+    "companyName": "Foxtel Management Pty Limited",
     "bankruptcyRisk": {
       "flag": false
     },
@@ -38,22 +38,22 @@
     "competitorLandscape": {
       "primaryCompetitors": []
     },
-    "enrichedAt": "2026-04-06T16:40:47.592Z"
+    "enrichedAt": "2026-04-06T16:41:49.514Z"
   },
   "corporateRegistry": {
-    "legalName": "MASERGY",
-    "jurisdiction": "be",
-    "companyNumber": "0429172540",
-    "incorporationDate": "1986-06-11",
+    "legalName": "FOXTEL MANAGEMENT PTY LIMITED",
+    "jurisdiction": "au",
+    "companyNumber": "068671938",
+    "incorporationDate": "1995-03-28",
     "dissolutionDate": null,
-    "companyType": "Société anonyme",
+    "companyType": "Australian Proprietary Company, Limited By Shares",
     "status": "unknown",
-    "registeredAddress": "Avenue Louise 32, Ixelles, 1050, Belgium",
+    "registeredAddress": "NORTH RYDE, New South Wales, 2113, Australia",
     "directors": [],
     "source": "opencorporates",
-    "enrichedAt": "2026-04-06T16:40:48.199Z"
+    "enrichedAt": "2026-04-06T16:41:50.454Z"
   },
-  "enrichedAt": "2026-04-06T16:40:52.080Z",
+  "enrichedAt": "2026-04-06T16:41:53.709Z",
   "enrichmentStatus": {
     "company": "ok",
     "financials": "error",
