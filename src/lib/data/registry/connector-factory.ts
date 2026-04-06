@@ -10,6 +10,7 @@ import { ok, err } from '@/lib/types/result'
 import { ExcelAdapter } from '../adapters/excel/parser'
 import { NewsAPIAdapter } from '../adapters/external/newsapi'
 import { NotionAdapter } from '../adapters/external/notion'
+import { OpenCorporatesAdapter } from '../adapters/external/opencorporates'
 import { RapidAPIEnrichmentAdapter } from '../adapters/rapidapi/enrichment'
 import { RapidAPINewsSentimentAdapter } from '../adapters/rapidapi/news-sentiment'
 import { RapidAPIFinancialIntelAdapter } from '../adapters/rapidapi/financial-intel'
@@ -298,6 +299,7 @@ export async function getConnectorFactory(): Promise<ConnectorFactory> {
     instance.register(new ExcelAdapter())
     instance.register(new NewsAPIAdapter())
     instance.register(new NotionAdapter())
+    instance.register(new OpenCorporatesAdapter())
     instance.register(new RapidAPIEnrichmentAdapter())
     instance.register(new RapidAPINewsSentimentAdapter())
     instance.register(new RapidAPIFinancialIntelAdapter())

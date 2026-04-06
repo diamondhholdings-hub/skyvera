@@ -10,8 +10,18 @@ import { Result, ok, err } from '@/lib/types/result'
 import { NLQResponse, nlqResponseSchema } from './types'
 
 /**
- * Extract first valid JSON object from a string that may contain
+ * Extract the first valid JSON object from a string that may contain
  * markdown code fences, preamble text, or other wrapping.
+ *
+ * Claude sometimes returns JSON wrapped in triple-backtick fences or preceded
+ * by a conversational sentence. This function tries three strategies in order:
+ * 1. Direct parse (pure JSON response — fastest path).
+ * 2. Strip ` ```json … ``` ` or ` ``` … ``` ` fences, then parse the inner content.
+ * 3. Extract the outermost `{ … }` block by finding the first `{` and last `}`.
+ *
+ * @param text  Raw string from a Claude API response
+ * @returns     Parsed JavaScript value (object, array, etc.)
+ * @throws      {Error} If no valid JSON can be found via any strategy
  */
 export function extractJSON(text: string): unknown {
   // 1. Try direct parse first (pure JSON response)
@@ -48,7 +58,19 @@ const AVAILABLE_DATA_SOURCES = [
 ]
 
 /**
- * Interpret a natural language query and generate an answer
+ * Interpret a natural language business-intelligence query using Claude.
+ *
+ * Sends the query to Claude with financial metric definitions injected as system
+ * context so the model understands Skyvera-specific terminology (ARR, DM%, RR, etc.).
+ * Validates the response against `nlqResponseSchema` before returning.
+ *
+ * Degrades gracefully when `ANTHROPIC_API_KEY` is missing: returns a low-confidence
+ * placeholder response rather than throwing, so the UI can still render.
+ *
+ * @param query               Free-text question, e.g. "What is Cloudsense ARR this quarter?"
+ * @param conversationContext Optional prior conversation turns to enable follow-up questions
+ * @returns                   Result wrapping a validated NLQResponse (answer, sources,
+ *                            confidence, optional clarification request)
  */
 export async function interpretQuery(
   query: string,
@@ -112,8 +134,17 @@ export async function interpretQuery(
 }
 
 /**
- * Interpret query with additional data context
- * Enriches the prompt with specific data values for more accurate answers
+ * Interpret a query with pre-fetched data injected into the prompt.
+ *
+ * Use this variant when the caller already has the relevant data in memory
+ * (e.g. the current account's financials) and wants Claude to answer
+ * specifically against those values rather than reasoning from general knowledge.
+ * The `contextData` object is serialised as JSON and prepended to the prompt.
+ *
+ * @param query               Free-text question from the user
+ * @param contextData         Key/value data to inject, e.g. `{ arr: 3_200_000, bu: 'Kandy' }`
+ * @param conversationContext Optional prior conversation turns for follow-up support
+ * @returns                   Result wrapping a validated NLQResponse
  */
 export async function interpretQueryWithData(
   query: string,

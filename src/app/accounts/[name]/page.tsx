@@ -23,6 +23,7 @@ import { RefreshButton } from '@/components/ui/refresh-button'
 import { SalesforceSyncButton } from '@/components/ui/salesforce-sync-button'
 import { PrintButton } from '@/components/ui/print-button'
 import { AccountChatPanel } from '@/components/account-chat-panel'
+import { ErrorBoundary } from '@/components/ui/error-boundary'
 
 interface AccountPlanPageProps {
   params: Promise<{ name: string }>
@@ -277,8 +278,10 @@ export default async function AccountPlanPage({ params, searchParams }: AccountP
           | Confidential — Internal Use Only
         </p>
       </footer>
-      {/* Floating AI chat panel */}
-      <AccountChatPanel customerName={customerName} bu={customer.bu} />
+      {/* Floating AI chat panel — error boundary prevents chat crash from killing the page */}
+      <ErrorBoundary>
+        <AccountChatPanel customerName={customerName} bu={customer.bu} />
+      </ErrorBoundary>
     </div>
   )
 }

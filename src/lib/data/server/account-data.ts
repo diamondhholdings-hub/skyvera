@@ -24,8 +24,18 @@ export interface CustomerCountSummary {
 }
 
 /**
- * Get all customers with health scores and BU annotation
- * CRITICAL: Each customer is annotated with its BU during iteration
+ * Fetch all customers across all BUs, annotate each with its BU, and compute health scores.
+ *
+ * Queries the Excel adapter once per BU (4 separate calls) rather than fetching all
+ * customers in one call, because the adapter groups data by BU internally and only
+ * exposes per-BU queries. The BU annotation on each customer record is critical —
+ * without it, the accounts list page cannot filter or group by business unit.
+ *
+ * Failed BU fetches are skipped with a warning (partial data is returned rather than
+ * failing the whole request). The returned list is sorted by total revenue descending.
+ *
+ * @returns  Result containing all CustomerWithHealth records across Cloudsense, Kandy,
+ *           STL, and NewNet, or an error if every BU fetch fails
  */
 export async function getAllCustomersWithHealth(): Promise<
   Result<CustomerWithHealth[], Error>
@@ -146,7 +156,14 @@ export async function getCustomersByBU(bu: BU): Promise<Result<CustomerWithHealt
 }
 
 /**
- * Get customer count summary (total, by BU, by health score)
+ * Return a lightweight count summary: total customers, breakdown by BU, and
+ * breakdown by health score tier (green/yellow/red).
+ *
+ * Delegates to `getAllCustomersWithHealth` — this means it fetches and scores all
+ * customers on every call. Suitable for the dashboard KPI card but avoid calling
+ * in tight loops; prefer caching the result at the Server Component level.
+ *
+ * @returns  Result containing CustomerCountSummary with total, byBU, and byHealth counts
  */
 export async function getCustomerCount(): Promise<Result<CustomerCountSummary, Error>> {
   try {

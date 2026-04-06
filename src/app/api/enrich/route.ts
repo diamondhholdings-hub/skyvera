@@ -12,6 +12,8 @@
 
 import { NextRequest, NextResponse } from 'next/server'
 import { enrichAccount, getEnrichmentCache } from '@/lib/data/server/enrichment-pipeline'
+import { rateLimit, rateLimitHeaders } from '@/lib/middleware/rate-limit'
+import { enrichRequestSchema } from '@/lib/validation/schemas'
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url)
@@ -31,7 +33,7 @@ export async function GET(request: NextRequest) {
       return NextResponse.json(
         {
           error: 'Enrichment not found. Use POST /api/enrich to trigger enrichment.',
-          customerName: customerName.trim(),
+          customerName,
         },
         { status: 404 }
       )
@@ -50,32 +52,38 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
-  let body: unknown
+  // Rate limit: 5 requests per minute (expensive external API calls)
+  const rl = rateLimit(request, { limit: 5, window: 60_000 })
+  if (!rl.success) {
+    return NextResponse.json(
+      { error: 'Too many requests', retryAfter: rl.reset },
+      { status: 429, headers: rateLimitHeaders(rl) }
+    )
+  }
 
+  let rawBody: unknown
   try {
-    body = await request.json()
+    rawBody = await request.json()
   } catch {
     return NextResponse.json({ error: 'Invalid JSON body' }, { status: 400 })
   }
 
-  const customerName =
-    body && typeof body === 'object' && 'customerName' in body
-      ? (body as { customerName: unknown }).customerName
-      : undefined
-
-  if (typeof customerName !== 'string' || !customerName.trim()) {
+  const validation = enrichRequestSchema.safeParse(rawBody)
+  if (!validation.success) {
     return NextResponse.json(
-      { error: 'Missing or invalid field: customerName (string required)' },
+      { error: 'Validation failed', details: validation.error.issues },
       { status: 400 }
     )
   }
 
+  const customerName = validation.data.customerName.trim()
+
   try {
-    const result = await enrichAccount(customerName.trim())
+    const result = await enrichAccount(customerName)
 
     if (!result.success) {
       return NextResponse.json(
-        { error: result.error.message, customerName: customerName.trim() },
+        { error: result.error.message, customerName },
         { status: 500 }
       )
     }
@@ -86,7 +94,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(
       {
         error: error instanceof Error ? error.message : 'Unknown error during enrichment',
-        customerName: customerName.trim(),
+        customerName,
       },
       { status: 500 }
     )

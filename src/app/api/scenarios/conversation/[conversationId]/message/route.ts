@@ -3,10 +3,11 @@
  * Send a message in an existing conversation (stateless — state passed from client)
  */
 
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 import { z } from 'zod'
 import { getConversationManager, type ConversationState } from '@/lib/intelligence/scenarios/conversation-manager'
 import { getBaselineMetrics } from '@/lib/data/server/scenario-data'
+import { rateLimit, rateLimitHeaders } from '@/lib/middleware/rate-limit'
 
 const messageSchema = z.object({
   message: z.string().min(1, 'Message cannot be empty'),
@@ -14,9 +15,18 @@ const messageSchema = z.object({
 })
 
 export async function POST(
-  request: Request,
+  request: NextRequest,
   { params }: { params: Promise<{ conversationId: string }> }
 ) {
+  // Rate limit: 20 requests per minute (conversational, higher cadence)
+  const rl = rateLimit(request, { limit: 20, window: 60_000 })
+  if (!rl.success) {
+    return NextResponse.json(
+      { error: 'Too many requests', retryAfter: rl.reset },
+      { status: 429, headers: rateLimitHeaders(rl) }
+    )
+  }
+
   try {
     const { conversationId } = await params
 

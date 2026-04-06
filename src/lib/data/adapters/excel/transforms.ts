@@ -28,7 +28,16 @@ export function transformRawCustomer(raw: Record<string, unknown>): Result<Custo
 }
 
 /**
- * Transform raw financial data to validated FinancialMetrics type
+ * Transform raw financial data (from the Excel parser) to a validated FinancialMetrics object.
+ *
+ * Key mapping decisions:
+ * - `arr` is derived as `totalRR × 4` (annualised quarterly RR).
+ * - `grossMargin` is computed inline as `(revenue − COGS) / revenue × 100`.
+ * - Missing numeric fields default to `0` rather than `undefined` so downstream
+ *   calculations never divide by undefined.
+ *
+ * @param raw  Key/value map from the Excel parser, field names must match the mapping above
+ * @returns    Result wrapping a validated FinancialMetrics, or an error listing Zod failures
  */
 export function transformRawFinancials(raw: Record<string, unknown>): Result<FinancialMetrics, Error> {
   try {
@@ -61,7 +70,18 @@ export function transformRawFinancials(raw: Record<string, unknown>): Result<Fin
 }
 
 /**
- * Aggregate customer data into BU-level financial summaries
+ * Aggregate a flat customer list into per-BU financial summaries.
+ *
+ * EBITDA and margins are computed from hardcoded ratios (COGS 21%, OpEx 17%) as a
+ * placeholder until the full Excel P&L adapter is wired in. Target margins come from
+ * CLAUDE.md: Cloudsense 63.6%, Kandy 75%, STL 75%, NewNet 70%.
+ *
+ * Note: The `byBU` grouping map is currently unpopulated — this function is a
+ * partial implementation and will produce an empty result until the customer data
+ * model includes a `bu` field for grouping. Tracked as tech debt.
+ *
+ * @param customers  Flat list of customers (currently expected to be pre-grouped externally)
+ * @returns          Map from BU name to its aggregated BUFinancialSummary
  */
 export function aggregateByBU(customers: Customer[]): Map<BU, BUFinancialSummary> {
   const byBU = new Map<BU, Customer[]>()

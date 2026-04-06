@@ -67,12 +67,12 @@ test.describe('Account Plan Smoke Tests', () => {
     const accountPlan = new AccountPlanPage(page)
     await accountPlan.goto(HERO_ACCOUNT)
 
-    // Click organization tab
-    await accountPlan.clickTab('organization')
+    // Click organization tab (tab ID is org-structure)
+    await accountPlan.clickTab('org-structure')
     await accountPlan.waitForTabContent()
 
     // Verify URL updated
-    await expect(page).toHaveURL(/tab=organization/)
+    await expect(page).toHaveURL(/tab=org-structure/)
 
     // Verify org content appears (stakeholders, org chart)
     await expect(page.getByText(/stakeholder|contact|role/i).first()).toBeVisible({ timeout: 5000 })
@@ -82,12 +82,12 @@ test.describe('Account Plan Smoke Tests', () => {
     const accountPlan = new AccountPlanPage(page)
     await accountPlan.goto(HERO_ACCOUNT)
 
-    // Click strategy tab
-    await accountPlan.clickTab('strategy')
+    // Click pain-points tab (tab ID is pain-points)
+    await accountPlan.clickTab('pain-points')
     await accountPlan.waitForTabContent()
 
     // Verify URL updated
-    await expect(page).toHaveURL(/tab=strategy/)
+    await expect(page).toHaveURL(/tab=pain-points/)
 
     // Verify strategy content (pain points, opportunities)
     await expect(page.getByText(/pain point|opportunity|strategic/i).first()).toBeVisible({ timeout: 5000 })
@@ -127,12 +127,12 @@ test.describe('Account Plan Smoke Tests', () => {
     const accountPlan = new AccountPlanPage(page)
     await accountPlan.goto(HERO_ACCOUNT)
 
-    // Click action items tab
-    await accountPlan.clickTab('action-items')
+    // Click action plan tab (tab ID is action-plan)
+    await accountPlan.clickTab('action-plan')
     await accountPlan.waitForTabContent()
 
     // Verify URL updated
-    await expect(page).toHaveURL(/tab=action-items/)
+    await expect(page).toHaveURL(/tab=action-plan/)
 
     // Verify action items tab content loads
     await expect(page.locator('[role="tabpanel"]').or(page.locator('main')).first()).toBeVisible({ timeout: 5000 })
@@ -180,5 +180,49 @@ test.describe('Account Plan Smoke Tests', () => {
     // Verify intelligence tab content loads
     await expect(page).toHaveURL(/tab=intelligence/)
     await expect(page.locator('[role="tabpanel"]').or(page.locator('main')).first()).toBeVisible({ timeout: 20000 })
+  })
+
+  test('All 8 tab labels are present in navigation', async ({ page }) => {
+    const encodedName = encodeURIComponent(HERO_ACCOUNT)
+    await page.goto(`/accounts/${encodedName}`)
+    await expect(page.locator('h1').first()).toBeVisible()
+
+    // Wait for tab navigation to hydrate
+    const nav = page.locator('nav').first()
+    await expect(nav).toBeVisible({ timeout: 10000 })
+
+    // Each tab label (with emoji) must be present as a button or option
+    const expectedLabels = [
+      /overview/i,
+      /key.?exec/i,
+      /org.?struct/i,
+      /pain.?point/i,
+      /competitive/i,
+      /action.?plan/i,
+      /financial/i,
+      /intelligence/i,
+    ]
+    for (const label of expectedLabels) {
+      await expect(page.getByRole('button', { name: label }).or(page.locator('option', { hasText: label })).first()).toBeVisible({ timeout: 5000 })
+    }
+  })
+
+  test('Direct URL navigation to financials tab loads content', async ({ page }) => {
+    const encodedName = encodeURIComponent(HERO_ACCOUNT)
+    await page.goto(`/accounts/${encodedName}?tab=financials`)
+
+    await expect(page).toHaveURL(/tab=financials/)
+    // Financial content: ARR, revenue, or subscription data
+    await expect(page.getByText(/ARR|revenue|subscription/i).first()).toBeVisible({ timeout: 10000 })
+  })
+
+  test('Print button is visible in normal view', async ({ page }) => {
+    const accountPlan = new AccountPlanPage(page)
+    await accountPlan.goto(HERO_ACCOUNT)
+    await expect(accountPlan.customerName).toBeVisible()
+
+    // PrintButton renders with aria-label="Export as PDF"
+    const printButton = page.getByRole('button', { name: /export as pdf/i })
+    await expect(printButton).toBeVisible({ timeout: 5000 })
   })
 })

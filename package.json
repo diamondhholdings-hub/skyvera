@@ -14,6 +14,8 @@
     "generate-demo-data": "npx tsx scripts/generate-demo-data.ts",
     "warmup": "npx tsx scripts/warmup-cache.ts",
     "enrich:accounts": "npx tsx scripts/enrich-accounts.ts",
+    "test:unit": "vitest run tests/unit",
+    "test:unit:ui": "vitest --ui tests/unit",
     "test:e2e": "npx playwright test",
     "test:e2e:ui": "npx playwright test --ui"
   },
@@ -58,8 +60,10 @@
     "@tailwindcss/postcss": "^4.1.18",
     "@types/better-sqlite3": "^7.6.13",
     "@types/node": "^25.2.2",
+    "@vitest/ui": "^4.1.2",
     "dotenv": "^17.2.4",
     "ts-node": "^10.9.2",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.2"
   }
 }

@@ -93,6 +93,43 @@ test.describe('Demo Flow E2E', () => {
     await expect(dashboard.totalRevenueKPI).toBeVisible()
   })
 
+  test('Account detail flow: list → detail → tab switch', async ({ page }) => {
+    // Step 1: Navigate to accounts list
+    await page.goto('/accounts')
+    await expect(page.getByRole('heading', { name: /Customer Account Plans/i })).toBeVisible({ timeout: 10000 })
+
+    // Wait for at least one account card to appear
+    const firstCard = page.locator('a.account-card').first()
+    await expect(firstCard).toBeVisible({ timeout: 10000 })
+
+    // Step 2: Click the first account card
+    await firstCard.click()
+
+    // Step 3: Verify account detail page loaded — h1 customer name and back link
+    await expect(page).toHaveURL(/\/accounts\/[^/]+/)
+    await expect(page.locator('h1').first()).toBeVisible({ timeout: 10000 })
+    await expect(page.getByText(/back to accounts/i)).toBeVisible({ timeout: 5000 })
+
+    // Step 4: Overview tab loads by default (no ?tab= param, or tab=overview)
+    const url = page.url()
+    expect(url).toMatch(/\/accounts\/[^/]+(\?tab=overview|[^?]*)$/)
+
+    // Wait for tab navigation to render
+    const nav = page.locator('nav').first()
+    await expect(nav).toBeVisible({ timeout: 10000 })
+
+    // Step 5: Switch to the Financials tab via button click
+    const financialsBtn = page.getByRole('button', { name: /financial/i })
+    await expect(financialsBtn).toBeVisible({ timeout: 10000 })
+    await financialsBtn.click()
+
+    // Verify URL updated to financials tab
+    await expect(page).toHaveURL(/tab=financials/, { timeout: 10000 })
+
+    // Verify financial content loaded
+    await expect(page.getByText(/ARR|revenue|subscription/i).first()).toBeVisible({ timeout: 10000 })
+  })
+
   test('Demo flow passes 3 consecutive times', async ({ page }) => {
     // Run the core demo flow 3 times to validate stability
     for (let run = 1; run <= 3; run++) {

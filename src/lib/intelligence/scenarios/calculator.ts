@@ -8,7 +8,20 @@ import type { BaselineMetrics } from '@/lib/data/server/scenario-data'
 
 export class ScenarioCalculator {
   /**
-   * Calculate impact metrics for a scenario
+   * Dispatch a what-if scenario to the appropriate calculator and return a list of
+   * before/after impact metrics.
+   *
+   * Three scenario types are supported:
+   * - `financial`  — pricing or cost-structure changes (e.g. "+5% price increase")
+   * - `headcount`  — FTE adds/cuts with annualised salary cost impact
+   * - `customer`   — churn and/or new-logo acquisition
+   *
+   * Returns an empty array for unrecognised scenario types rather than throwing,
+   * so callers can safely render "no changes" without error handling.
+   *
+   * @param input    Typed scenario parameters (discriminated union on `type`)
+   * @param baseline Current-quarter actuals used as the "before" state
+   * @returns        Array of named metrics each with before, after, change, and changePercent
    */
   calculate(input: ScenarioInput, baseline: BaselineMetrics): ImpactMetric[] {
     switch (input.type) {
@@ -24,7 +37,18 @@ export class ScenarioCalculator {
   }
 
   /**
-   * Calculate financial scenario impact (pricing/cost changes)
+   * Model the P&L effect of a simultaneous pricing and/or cost change.
+   *
+   * Key assumptions baked in:
+   * - Pricing change applies proportionally to RR only (NRR is treated as fixed).
+   * - ARR is derived as newRR × 4 (quarterly RR annualised).
+   * - Cost change applies to the entire cost base, not just COGS or a single line.
+   * - EBITDA = newRevenue − newCosts (no tax/interest adjustments at this level).
+   *
+   * @example
+   * // Cloudsense +3% price increase with no cost change
+   * calculator.calculate({ type: 'financial', pricingChange: 3, costChange: 0 }, baseline)
+   * // → [{ name: 'Total Revenue', before: 8_000_000, after: 8_240_000, ... }, ...]
    */
   private calculateFinancialImpact(
     input: Extract<ScenarioInput, { type: 'financial' }>,
@@ -56,7 +80,16 @@ export class ScenarioCalculator {
   }
 
   /**
-   * Calculate headcount scenario impact
+   * Model the cost and margin effect of adding or removing headcount.
+   *
+   * The annual salary cost is divided by 4 to get the quarterly P&L hit,
+   * keeping all baseline metrics on a per-quarter basis.
+   * Revenue is assumed unchanged — this is a pure cost-side scenario.
+   * A negative `headcountChange` (reduction) improves margin accordingly.
+   *
+   * @example
+   * // Hire 2 engineers at $120K each → +$60K quarterly cost
+   * calculator.calculate({ type: 'headcount', headcountChange: 2, avgSalaryCost: 120_000 }, baseline)
    */
   private calculateHeadcountImpact(
     input: Extract<ScenarioInput, { type: 'headcount' }>,
@@ -90,7 +123,17 @@ export class ScenarioCalculator {
   }
 
   /**
-   * Calculate customer scenario impact (churn/acquisition)
+   * Model the revenue effect of simultaneous churn and new-logo acquisition.
+   *
+   * Churn removes a percentage of current RR; acquisition adds quarterly revenue
+   * derived from annual ARR of new logos (acquisitionCount × avgCustomerARR ÷ 4).
+   * EBITDA is projected by holding the current net margin percentage constant —
+   * i.e. the cost base scales with revenue, which is a simplification suitable
+   * for high-level scenario planning but not precise budgeting.
+   *
+   * @example
+   * // 5% Kandy churn + 3 new logos at $200K ARR each
+   * calculator.calculate({ type: 'customer', churnRate: 5, acquisitionCount: 3, avgCustomerARR: 200_000 }, baseline)
    */
   private calculateCustomerImpact(
     input: Extract<ScenarioInput, { type: 'customer' }>,

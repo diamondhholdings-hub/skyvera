@@ -3,13 +3,23 @@
  * Analyze what-if scenario and return calculated metrics + Claude analysis
  */
 
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 import { scenarioInputSchema } from '@/lib/intelligence/scenarios/types'
 import { ScenarioCalculator } from '@/lib/intelligence/scenarios/calculator'
 import { analyzeScenarioWithClaude } from '@/lib/intelligence/scenarios/analyzer'
 import { getBaselineMetrics } from '@/lib/data/server/scenario-data'
+import { rateLimit, rateLimitHeaders } from '@/lib/middleware/rate-limit'
 
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
+  // Rate limit: 10 requests per minute (Claude API call)
+  const rl = rateLimit(request, { limit: 10, window: 60_000 })
+  if (!rl.success) {
+    return NextResponse.json(
+      { error: 'Too many requests', retryAfter: rl.reset },
+      { status: 429, headers: rateLimitHeaders(rl) }
+    )
+  }
+
   try {
     // Parse request body
     const body = await request.json()

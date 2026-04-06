@@ -149,7 +149,7 @@ export class HiringSignalsAdapter implements DataAdapter {
     }
 
     if (this.degraded) {
-      return err(new Error('RAPIDAPI_KEY not configured - cannot fetch hiring signals'))
+      return ok({ data: [], source: this.name, timestamp: new Date(), count: 0 })
     }
 
     const companyName = query.filters.customerName

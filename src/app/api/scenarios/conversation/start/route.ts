@@ -3,17 +3,27 @@
  * Start a new conversational scenario analysis session (stateless - no DB required)
  */
 
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 import { z } from 'zod'
 import { getConversationManager } from '@/lib/intelligence/scenarios/conversation-manager'
 import { getBaselineMetrics } from '@/lib/data/server/scenario-data'
 import { randomUUID } from 'crypto'
+import { rateLimit, rateLimitHeaders } from '@/lib/middleware/rate-limit'
 
 const startConversationSchema = z.object({
   query: z.string().min(5, 'Query must be at least 5 characters'),
 })
 
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
+  // Rate limit: 10 requests per minute (Claude API call)
+  const rl = rateLimit(request, { limit: 10, window: 60_000 })
+  if (!rl.success) {
+    return NextResponse.json(
+      { error: 'Too many requests', retryAfter: rl.reset },
+      { status: 429, headers: rateLimitHeaders(rl) }
+    )
+  }
+
   try {
     const body = await request.json()
     const validation = startConversationSchema.safeParse(body)

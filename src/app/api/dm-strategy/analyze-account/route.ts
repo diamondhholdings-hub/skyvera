@@ -3,20 +3,32 @@
  * Analyze single account for DM% retention recommendations
  */
 
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 import { analyzeAccount } from '@/lib/intelligence/dm-strategy/analyzer'
 import { prisma } from '@/lib/db/prisma'
+import { rateLimit, rateLimitHeaders } from '@/lib/middleware/rate-limit'
+import { dmStrategyAnalyzeAccountSchema } from '@/lib/validation/schemas'
 
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
+  // Rate limit: 10 requests per minute (Claude API call)
+  const rl = rateLimit(request, { limit: 10, window: 60_000 })
+  if (!rl.success) {
+    return NextResponse.json(
+      { error: 'Too many requests', retryAfter: rl.reset },
+      { status: 429, headers: rateLimitHeaders(rl) }
+    )
+  }
+
   try {
-    const { accountName } = await request.json()
-
-    if (!accountName) {
+    const rawBody = await request.json().catch(() => ({}))
+    const validation = dmStrategyAnalyzeAccountSchema.safeParse(rawBody)
+    if (!validation.success) {
       return NextResponse.json(
-        { error: 'accountName is required' },
+        { error: 'Validation failed', details: validation.error.issues },
         { status: 400 }
       )
     }
+    const { accountName } = validation.data
 
     // Run analysis
     const analysisResult = await analyzeAccount(accountName)

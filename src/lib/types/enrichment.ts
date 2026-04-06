@@ -3,12 +3,14 @@ export type { SentimentNewsArticle } from '@/lib/data/adapters/rapidapi/news-sen
 export type { PublicCompanyFinancials } from '@/lib/data/adapters/rapidapi/financial-intel'
 export type { HiringSignal } from '@/lib/data/adapters/rapidapi/hiring-signals'
 export type { RiskCompetitiveProfile } from '@/lib/data/adapters/rapidapi/risk-competitive'
+export type { CorporateRegistryData } from '@/lib/data/adapters/external/opencorporates'
 
 import type { CompanyProfile } from '@/lib/data/adapters/rapidapi/enrichment'
 import type { SentimentNewsArticle } from '@/lib/data/adapters/rapidapi/news-sentiment'
 import type { PublicCompanyFinancials } from '@/lib/data/adapters/rapidapi/financial-intel'
 import type { HiringSignal } from '@/lib/data/adapters/rapidapi/hiring-signals'
 import type { RiskCompetitiveProfile } from '@/lib/data/adapters/rapidapi/risk-competitive'
+import type { CorporateRegistryData } from '@/lib/data/adapters/external/opencorporates'
 
 // Combined enrichment data for a single account
 export interface AccountEnrichment {
@@ -19,6 +21,7 @@ export interface AccountEnrichment {
   hiringSignals?: HiringSignal
   riskCompetitive?: RiskCompetitiveProfile
   recentNews?: SentimentNewsArticle[]
+  corporateRegistry?: CorporateRegistryData
   enrichedAt: string
   enrichmentStatus: {
     company: 'ok' | 'error' | 'pending' | 'skipped'
@@ -26,5 +29,6 @@ export interface AccountEnrichment {
     hiring: 'ok' | 'error' | 'pending' | 'skipped'
     risk: 'ok' | 'error' | 'pending' | 'skipped'
     news: 'ok' | 'error' | 'pending' | 'skipped'
+    corporate: 'ok' | 'error' | 'pending' | 'skipped'
   }
 }

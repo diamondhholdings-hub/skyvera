@@ -15,8 +15,22 @@ import { DM_CONSTANTS, DM_SCENARIOS } from './constants'
 import { prisma } from '@/lib/db/prisma'
 
 /**
- * Calculate ARR impact of a recommendation
- * Considers confidence level and risk factors
+ * Calculate the risk-adjusted ARR impact of a single recommendation.
+ *
+ * Applies two discount multipliers to the raw `arrImpact` figure:
+ * - **Confidence discount**: `confidenceLevel / 100` (0–1). A recommendation
+ *   with 70% confidence retains 70% of its stated ARR impact.
+ * - **Risk discount**: high=0.7, medium=0.85, low=1.0. High-risk actions
+ *   are discounted an additional 30% to reflect execution uncertainty.
+ *
+ * The result represents expected value, not best-case impact.
+ *
+ * @param recommendation  A DM recommendation with pre-populated impact estimates
+ * @returns               Risk-adjusted ARR impact in dollars (annual)
+ *
+ * @example
+ * // Raw impact $500K, 80% confidence, medium risk → $500K × 0.8 × 0.85 = $340K
+ * calculateARRImpact({ impact: { arrImpact: 500_000, confidenceLevel: 80 }, risk: 'medium' })
  */
 export function calculateARRImpact(
   recommendation: DMRecommendation
@@ -34,7 +48,17 @@ export function calculateARRImpact(
 }
 
 /**
- * Calculate DM% impact of a recommendation
+ * Calculate the risk-adjusted DM percentage-point improvement from a recommendation.
+ *
+ * DM% (Decline/Maintenance rate) measures how much of beginning ARR is retained
+ * at year-end. A `dmImpact` of +2.5 means DM% moves from e.g. 94.7% → 97.2%.
+ * The same confidence and risk discounts applied in `calculateARRImpact` are used here.
+ *
+ * @param recommendation  DM recommendation with `impact.dmImpact` in percentage points
+ * @param currentARR      The account's current ARR (used by callers for context; not
+ *                        consumed directly by this function but required by the signature
+ *                        to allow future dollar-weighted DM calculations)
+ * @returns               Risk-adjusted DM percentage-point change (e.g. 1.8 means +1.8pp)
  */
 export function calculateDMImpact(
   recommendation: DMRecommendation,
@@ -73,7 +97,21 @@ export function calculateMarginImpact(
 }
 
 /**
- * Project scenario: What happens if all recommendations are accepted?
+ * Project the aggregate ARR and DM% outcome if every supplied recommendation is executed.
+ *
+ * Fetches live baseline data from the database (filtered by BU if provided), then
+ * applies each recommendation's risk-adjusted ARR and DM impacts on top. The resulting
+ * `DMScenarioProjection` shows baseline vs. projected state side-by-side.
+ *
+ * Confidence is bucketed from the average confidenceLevel across all recommendations:
+ * ≥80 = HIGH, ≥60 = MEDIUM, <60 = LOW.
+ *
+ * Note: Revenue projection is simplified — it adds the ARR impact directly to totalRevenue
+ * rather than annualising through RR. Suitable for executive "what-if" views.
+ *
+ * @param recommendations  List of DM recommendations to model (can mix accounts and types)
+ * @param bu               Optional BU filter (e.g. 'Kandy'); omit to project across all BUs
+ * @returns                Result containing baseline, projected, and delta metrics
  */
 export async function projectScenario(
   recommendations: DMRecommendation[],
@@ -181,7 +219,20 @@ export async function projectScenario(
 }
 
 /**
- * Calculate ROI for a recommendation (ARR impact / implementation cost)
+ * Calculate the annual ROI multiple for a recommendation.
+ *
+ * ROI = risk-adjusted ARR impact ÷ implementation cost.
+ * A result of 5 means the initiative returns $5 in ARR for every $1 spent.
+ *
+ * When no explicit cost is provided, a proxy is derived from `timeline`:
+ * - `immediate`  → $5K   (quick CSM action, e.g. a renewal call)
+ * - `short-term` → $15K  (moderate effort, e.g. a QBR + custom deck)
+ * - `medium-term`→ $50K  (significant project, e.g. integration work)
+ * - `long-term`  → $100K (major initiative, e.g. product roadmap item)
+ *
+ * @param recommendation              DM recommendation to evaluate
+ * @param estimatedImplementationCost Actual cost estimate in dollars; 0 uses timeline proxy
+ * @returns                           ROI multiple (e.g. 4.2 = 420% return); Infinity if cost is 0
  */
 export function calculateROI(
   recommendation: DMRecommendation,
@@ -213,7 +264,15 @@ export function calculateROI(
 }
 
 /**
- * Calculate payback period (months to recover implementation cost)
+ * Calculate how many months it takes to recover the implementation cost from ARR impact.
+ *
+ * Payback (months) = implementation cost ÷ (risk-adjusted ARR impact ÷ 12).
+ * Uses the same timeline-based cost proxies as `calculateROI` when no explicit cost
+ * is provided. Returns `Infinity` when monthly impact is zero or negative.
+ *
+ * @param recommendation              DM recommendation to evaluate
+ * @param estimatedImplementationCost Actual cost estimate in dollars; 0 uses timeline proxy
+ * @returns                           Payback period in months; Infinity if impact ≤ 0
  */
 export function calculatePaybackPeriod(
   recommendation: DMRecommendation,
@@ -245,7 +304,17 @@ export function calculatePaybackPeriod(
 }
 
 /**
- * Rank recommendations by expected value (EV = impact × confidence)
+ * Sort recommendations by expected value (EV), highest first.
+ *
+ * EV = risk-adjusted ARR impact × (confidenceLevel / 100).
+ * This double-applies the confidence discount (once inside `calculateARRImpact`,
+ * once here), intentionally producing a conservative ranking that surfaces only
+ * high-confidence, high-impact actions at the top.
+ *
+ * Returns a new array — the original is not mutated.
+ *
+ * @param recommendations  Unsorted list of DM recommendations
+ * @returns                New array sorted by EV descending
  */
 export function rankByExpectedValue(
   recommendations: DMRecommendation[]
@@ -260,8 +329,35 @@ export function rankByExpectedValue(
 }
 
 /**
- * Calculate a full one-year DM waterfall showing each revenue force component.
- * Models the Jigtree DM formula: Ending ARR = Beginning ARR - IceMelt + Repricing + Expansion
+ * Calculate the full one-year DM% waterfall for a given ARR base.
+ *
+ * Implements the Jigtree DM formula:
+ * ```
+ * Ending ARR = Beginning ARR
+ *            − IceMelt                           (natural attrition)
+ *            + Standard price increase            (standard-tier renewals × rate)
+ *            + Platinum price increase            (platinum-tier renewals × rate)
+ *            + Upsell                             (expansion within existing products)
+ *            + Cross-sell                         (new product lines to existing customers)
+ *            + New business                       (net-new logos, often 0 in retention models)
+ * DM% = Ending ARR / Beginning ARR × 100
+ * ```
+ *
+ * Only the portion of the book renewing in a given year (`percentRenewingPerYear`)
+ * is eligible for repricing, so multi-year contract holders provide a natural drag
+ * on price-increase capture.
+ *
+ * @param beginningARR      ARR at the start of the period (dollars)
+ * @param iceMeltRate       Gross attrition rate as a decimal (e.g. 0.08 = 8% churn)
+ * @param platinumMixPct    Fraction of ARR on Platinum support tier (0–1)
+ * @param contractTermMix   Mix of annual/3-year/5-year contracts and % renewing per year
+ * @param expansionRates    Upsell, cross-sell, and new-business rates as decimals
+ * @returns                 Full waterfall components plus ending ARR and resulting DM%
+ *
+ * @example
+ * // Cloudsense baseline: $8M ARR, 6% ice melt, 20% platinum, 4% upsell
+ * calculateDMComponents(8_000_000, 0.06, 0.20, contractMix, { upsell: 0.04, crossSell: 0.02, newBusiness: 0 })
+ * // → { iceMelt: 6, endingARR: ~8_160_000, dm: ~102 }
  */
 export function calculateDMComponents(
   beginningARR: number,
@@ -304,8 +400,16 @@ export function calculateDMComponents(
 }
 
 /**
- * Project DM% over 10 years for a given scenario (A/B/C/D).
- * Uses the scenario's ice melt rate with default 4% upsell + 2% cross-sell expansion.
+ * Project ARR and DM% over a 10-year horizon for one of the named scenarios (A/B/C/D).
+ *
+ * Each scenario corresponds to a different ice-melt rate defined in `DM_SCENARIOS`.
+ * Expansion is fixed at 4% upsell + 2% cross-sell (no new business) for a conservative
+ * retention-only projection. Each year's ending ARR becomes the next year's beginning ARR,
+ * compounding the waterfall effect over time.
+ *
+ * @param beginningARR  Starting ARR for year 1 (dollars)
+ * @param scenarioKey   One of the predefined scenario keys ('A' | 'B' | 'C' | 'D')
+ * @returns             Array of 10 yearly `IceMeltComponents`, one per year
  */
 export function projectDM10Year(
   beginningARR: number,
@@ -340,8 +444,22 @@ export function projectDM10Year(
 }
 
 /**
- * Calculate the ice melt rate at which DM = 100% (break-even).
- * At break-even, price increases + expansion exactly offset natural churn.
+ * Solve for the maximum ice-melt (gross churn) rate at which DM% = 100% (break-even).
+ *
+ * At break-even, the sum of repricing gains and expansion revenue exactly offsets
+ * natural attrition. The formula is:
+ * ```
+ * breakeven iceMelt = (standardMix × renewingPct × standardRate)
+ *                   + (platinumMix × renewingPct × platinumRate)
+ *                   + expansionRate
+ * ```
+ * Any ice-melt rate above this threshold results in net ARR decline (DM% < 100%).
+ * Useful for stress-testing: "How much churn can Kandy absorb before ARR shrinks?"
+ *
+ * @param platinumMixPct    Fraction of ARR on Platinum tier (0–1)
+ * @param contractTermMix   Contract term distribution and annual renewal percentage
+ * @param expansionRate     Combined upsell + cross-sell + new-business rate as a decimal
+ * @returns                 Break-even ice-melt rate as a decimal (e.g. 0.072 = 7.2%)
  */
 export function calculateBreakevenIceMelt(
   platinumMixPct: number,

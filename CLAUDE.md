@@ -4,12 +4,67 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Repository Purpose
 
-This is a business analysis repository for Skyvera, a multi-business unit SaaS company with three primary verticals:
+This repository is **both** a business analysis tool and a full AI-powered executive intelligence platform for Skyvera, a multi-business unit SaaS company with three primary verticals:
 - **Cloudsense** - Largest BU by revenue (~$8M quarterly)
 - **Kandy** - Mid-size BU (~$3.3M quarterly)
 - **STL (Software Technology Labs)** - Smaller BU (~$1M quarterly)
 
-The repository contains financial analysis, budgeting data, and executive dashboards for strategic decision-making.
+### Platform (Next.js App)
+- **Stack:** Next.js 16 + TypeScript + Tailwind + Prisma (SQLite) + Claude Sonnet 4.6
+- **Deployed:** https://skyvera.vercel.app
+- **Repo:** https://github.com/diamondhholdings-hub/skyvera.git
+- **Pages:** dashboard, /accounts, /accounts/[name] (8-tab), /query, /scenario, /dm-strategy, /alerts
+- **API routes:** `src/app/api/` — 22 routes covering query, scenarios, dm-strategy, enrichment, account chat, account plan CRUD
+- **Intelligence layer:** `src/lib/intelligence/` — Claude orchestrator (50 RPM, priority queue, cache), NLQ engine, scenario calculator, DM strategy engine
+- **Data layer:** `src/lib/data/` — Excel parser, RapidAPI ×5 adapters, server-side fetchers
+- **Test suite:** Playwright smoke + E2E (`tests/`), Vitest unit tests (`tests/unit/`)
+
+### Business Analysis Files
+The repository also contains the original financial analysis files:
+- Excel budget file: `2025-12-11 Skyvera - Budget - Q1'26 - For Todd.xlsx`
+- `Business_Analysis_Dashboard.html` — standalone Chart.js executive dashboard
+
+## Platform Architecture
+
+```
+src/app/              Next.js App Router pages + API routes
+src/components/       Shared UI components (ErrorBoundary, PageHeader, etc.)
+src/lib/
+  intelligence/       Claude orchestrator, NLQ, scenarios, DM strategy
+  data/               Adapters (Excel, RapidAPI ×5), server fetchers
+  middleware/         Rate limiter (in-memory, per-IP)
+  validation/         Zod schemas for API input validation
+  cache/              Cache manager (DEMO_MODE aware, jitter support)
+  semantic/           Financial metric resolver (ARR, EBITDA, etc.)
+  errors/             Error types + Result pattern
+data/
+  intelligence/       OSINT reports for 140 accounts
+  enrichment/         RapidAPI cache (JSON per account slug)
+  account-plans/      strategy/, actions/, stakeholders/ per account
+prisma/               SQLite schema (Customer, Subscription, DMRecommendation)
+tests/
+  smoke/              Playwright smoke tests (fast, no server needed)
+  e2e/                Playwright E2E tests (full demo flows)
+  unit/               Vitest unit tests (business logic)
+.github/workflows/    CI: type-check + build + smoke tests on every PR
+```
+
+## Key Patterns
+
+- **Result type** for error handling — no thrown exceptions at data boundaries (`src/lib/types/result.ts`)
+- **Server Components** fetch data; **Client Components** (`"use client"`) handle interactivity
+- **ErrorBoundary** (`src/components/ui/error-boundary.tsx`) wraps high-risk client components
+- **Rate limiting** on all Claude-calling API routes (in-memory, IP-keyed, sliding window)
+- **Zod validation** at API entry points — 400 with issue details on failure
+- **ClaudeOrchestrator** singleton — 50 RPM, priority queue, cache, exponential backoff
+- **URL-based tab state** (`?tab=overview`) — bookmarkable account detail pages
+- **DEMO_MODE** env flag — extends cache TTLs (30min vs 5min)
+- **healthCheck()** on RapidAPI adapters returns `!this.degraded` (not hardcoded `true`)
+- Enrichment errors: distinguish ENOENT (return null) from real errors (log + return null)
+- Print/PDF: `@media print` hides `[data-print="hide"]` elements, A4, `-webkit-print-color-adjust: exact`
+- Data completeness score: 7-dimension 0-100 scale
+- Search on accounts page: server-side filtered via `?search=` searchParam (bookmarkable)
+- Event handlers ILLEGAL in Server Components — use CSS `:hover` via `<style>` tag + className
 
 ## Key Files
 

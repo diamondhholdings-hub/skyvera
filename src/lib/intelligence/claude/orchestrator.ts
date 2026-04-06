@@ -70,7 +70,20 @@ export class ClaudeOrchestrator {
   }
 
   /**
-   * Process a Claude API request with caching and rate limiting
+   * Submit a request to Claude, returning a cached response if one exists.
+   *
+   * Request flow:
+   * 1. Compute a cache key from `request.cacheKey` or a djb2 hash of the prompt.
+   * 2. Return the cached `ClaudeResponse` immediately if fresh (no API call).
+   * 3. Otherwise, enqueue by priority (HIGH > MEDIUM > LOW) and wait for a rate-limiter slot.
+   * 4. On success, store the response in cache (5 min for HIGH-priority, 15 min otherwise).
+   *
+   * HIGH-priority requests (user-facing NLQ, scenario analysis) get a shorter
+   * cache TTL so users see fresher answers. LOW/MEDIUM (background enrichment)
+   * tolerate a longer staleness window to reduce API spend.
+   *
+   * @param request  Request parameters including prompt, priority, and optional cache key
+   * @returns        Result wrapping a ClaudeResponse with `cached: true` if served from cache
    */
   async processRequest(
     request: ClaudeRequest
@@ -129,7 +142,16 @@ export class ClaudeOrchestrator {
   }
 
   /**
-   * Process multiple requests respecting rate limits
+   * Process a batch of requests, sorted by priority, and return a keyed result map.
+   *
+   * Requests are sorted HIGH → MEDIUM → LOW before processing so that
+   * user-facing requests are never starved behind background enrichment jobs.
+   * Processing is sequential (one at a time) to honour the rate limiter — this
+   * means a large batch can take considerable time; prefer individual
+   * `processRequest` calls for latency-sensitive paths.
+   *
+   * @param requests  Array of Claude requests (mixed priorities allowed)
+   * @returns         Map from cache key → Result<ClaudeResponse>
    */
   async batchProcess(
     requests: ClaudeRequest[]
@@ -230,7 +252,17 @@ export class ClaudeOrchestrator {
   }
 
   /**
-   * Call Claude API with retry logic
+   * Call the Claude API with exponential backoff retry for 429 rate-limit errors.
+   *
+   * Retries up to 3 times on HTTP 429. Each retry waits `1000 × 2^attempt` ms
+   * plus up to 1 second of random jitter to avoid retry storms. Other error codes
+   * (4xx/5xx) fail immediately without retrying.
+   *
+   * Uses `claude-haiku-4-5-20251001` — the fast, low-cost model appropriate for
+   * high-volume NLQ and enrichment tasks. Switch to Sonnet for higher reasoning tasks.
+   *
+   * @param request  The Claude request to execute
+   * @returns        Result wrapping the response content and token usage counts
    */
   private async callClaudeAPI(
     request: ClaudeRequest
@@ -301,7 +333,14 @@ export class ClaudeOrchestrator {
   }
 
   /**
-   * Simple hash function for cache keys (djb2 algorithm)
+   * Produce a short, stable cache key from a prompt string using the djb2 algorithm.
+   *
+   * djb2: `hash = hash * 33 XOR charCode` for each character, then unsigned 32-bit.
+   * The result is base-36 encoded for compact key strings. Not cryptographically
+   * secure — used only for cache bucketing, not for security purposes.
+   *
+   * @param prompt  The full prompt string (prompt + systemPrompt concatenated by caller)
+   * @returns       Base-36 hash string, e.g. `'1q3z9m'`
    */
   private hashPrompt(prompt: string): string {
     let hash = 5381

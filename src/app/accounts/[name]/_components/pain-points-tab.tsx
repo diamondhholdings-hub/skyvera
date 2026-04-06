@@ -9,6 +9,7 @@
 import { useState } from 'react'
 import type { PainPoint, Opportunity } from '@/lib/types/account-plan'
 import { StatusCycleButton } from '@/components/ui/status-cycle-button'
+import { ErrorBoundary } from '@/components/ui/error-boundary'
 
 interface PainPointsTabProps {
   painPoints: PainPoint[]
@@ -73,14 +74,16 @@ export function PainPointsTab({ painPoints, opportunities, accountName = '' }: P
                       <td style={{ padding: '1rem', color: 'var(--ink)', fontSize: '0.8rem' }}>{pp.owner || '—'}</td>
                       <td style={{ padding: '1rem' }}><Badge variant={urgencyVariant as 'critical' | 'high' | 'medium'}>{pp.severity?.toUpperCase()}</Badge></td>
                       <td style={{ padding: '1rem' }}>
-                        <StatusCycleButton
-                          id={pp.id}
-                          status={pp.status}
-                          statuses={['active', 'monitoring', 'resolved']}
-                          accountName={accountName}
-                          type="pain-point"
-                          onUpdate={(s) => handleStatusUpdate(pp.id, s)}
-                        />
+                        <ErrorBoundary>
+                          <StatusCycleButton
+                            id={pp.id}
+                            status={pp.status}
+                            statuses={['active', 'monitoring', 'resolved']}
+                            accountName={accountName}
+                            type="pain-point"
+                            onUpdate={(s) => handleStatusUpdate(pp.id, s)}
+                          />
+                        </ErrorBoundary>
                       </td>
                       <td style={{ padding: '1rem', color: 'var(--muted)', fontSize: '0.8rem', lineHeight: 1.5 }}>
                         {pp.cloudSenseSolution || 'Platform capabilities address this pain point'}

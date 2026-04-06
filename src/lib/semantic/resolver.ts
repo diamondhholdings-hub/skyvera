@@ -51,8 +51,12 @@ export interface DataProvider {
 }
 
 /**
- * MockDataProvider - loads data from JSON files for immediate testing
- * This enables testing the semantic layer before adapters are built in Plan 04
+ * MockDataProvider — loads customer JSON files from `data/` for offline testing.
+ *
+ * Intended for development and unit tests only. It derives synthetic financial
+ * figures from raw customer data using hard-coded ratios from CLAUDE.md
+ * (COGS 21%, OpEx 17%) and simulates a 5% historical RR decline for `priorRR`.
+ * Replace with the real Excel or Salesforce adapter for production use.
  */
 export class MockDataProvider implements DataProvider {
   private dataPath: string
@@ -137,11 +141,21 @@ export class SemanticResolver {
   }
 
   /**
-   * Resolve a metric by name with caching
+   * Resolve a named financial metric for a business unit, using a 5-minute
+   * cache to avoid repeated data-provider calls within a single request burst.
    *
-   * @param metricName Name of the metric (ARR, EBITDA, NetMargin, etc.)
-   * @param context Context for the metric (business unit, quarter)
-   * @returns Result containing the calculated metric value
+   * Metric names are looked up in `METRIC_DEFINITIONS` (see `schema/financial.ts`).
+   * Each definition carries a `calculate` function that receives the raw financial
+   * data object and returns a scalar. For example, the `ARR` definition computes
+   * `quarterlyRR × 4`.
+   *
+   * Cache keys follow the pattern `metric:{name}:{bu}:{quarter}`, so separate
+   * BU/quarter combinations never collide.
+   *
+   * @param metricName  Canonical metric name, e.g. `'ARR'`, `'EBITDA'`, `'NetMargin'`
+   * @param context     BU (required) and optional quarter string (defaults to `'current'`)
+   * @returns           Result wrapping the calculated numeric metric value
+   * @throws            Returns `err` (does not throw) for unknown metrics or provider failures
    */
   async resolveMetric(
     metricName: string,
@@ -193,11 +207,18 @@ export class SemanticResolver {
   }
 
   /**
-   * Resolve all financial metrics for a specific customer
+   * Resolve financial metrics for a single named customer within a BU.
    *
-   * @param customerName Name of the customer
-   * @param bu Business unit the customer belongs to
-   * @returns Result containing customer financial metrics
+   * Important: in the customer JSON files the `rr` field already stores annual ARR
+   * (not quarterly RR), so `CustomerFinancials.arr` is set directly to `customer.rr`
+   * without further annualisation. This is intentional — the field name in the raw
+   * data is misleading but the values are already annual figures.
+   *
+   * Results are cached for 10 minutes (with jitter) under the key `customer:{bu}:{name}`.
+   *
+   * @param customerName  Customer name exactly as stored in the JSON data file
+   * @param bu            Business unit the customer belongs to (used for data file lookup)
+   * @returns             Result containing customer financials, or an error if not found
    */
   async resolveCustomerMetrics(
     customerName: string,

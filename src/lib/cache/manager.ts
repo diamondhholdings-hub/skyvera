@@ -34,7 +34,13 @@ export const DEMO_CACHE_TTL = {
 } as const
 
 /**
- * Get active TTL based on DEMO_MODE environment variable
+ * Return the TTL constants appropriate for the current environment.
+ *
+ * When `DEMO_MODE=true`, all TTLs are extended (5–30 min → 30–60 min) to prevent
+ * live API calls from disrupting a demonstration. Set this flag in `.env.local`
+ * or as a Vercel environment variable for demo deployments.
+ *
+ * @returns Either `CACHE_TTL` (production) or `DEMO_CACHE_TTL` (demo mode)
  */
 export function getActiveTTL() {
   return DEMO_MODE ? DEMO_CACHE_TTL : CACHE_TTL
@@ -54,7 +60,16 @@ export class CacheManager {
   }
 
   /**
-   * Cache-aside pattern: Check cache, if miss call fetcher, store result, return
+   * Cache-aside read: return a cached value if fresh, otherwise call `fetcher`,
+   * store the result, and return it.
+   *
+   * Failures in both the cache read and cache write are caught and logged rather
+   * than thrown, so a broken cache never prevents data from reaching the caller.
+   *
+   * @param key      Cache key, e.g. `'metric:ARR:Cloudsense:Q1'`
+   * @param fetcher  Async function to call on a cache miss
+   * @param options  TTL and optional jitter configuration
+   * @returns        Cached or freshly fetched value of type T
    */
   async get<T>(
     key: string,
@@ -90,7 +105,12 @@ export class CacheManager {
   }
 
   /**
-   * Manual set with TTL
+   * Store a value with a TTL. Jitter is applied by default (±10%) to prevent
+   * cache stampedes when many keys are written with the same TTL.
+   *
+   * @param key     Cache key
+   * @param value   Value to store
+   * @param options TTL in seconds; set `jitter: false` for deterministic expiry
    */
   set<T>(key: string, value: T, options: CacheOptions): void {
     const baseTTLMs = options.ttl * 1000
@@ -114,8 +134,17 @@ export class CacheManager {
   }
 
   /**
-   * Remove all keys matching glob pattern (e.g., 'metric:ARR:*')
-   * Returns count of removed keys.
+   * Remove all cache entries whose keys match a glob pattern.
+   *
+   * Supports `*` as a wildcard (maps to `.*` in regex). Other regex special
+   * characters are escaped, so dots and brackets in key names are treated literally.
+   *
+   * Useful for bulk invalidation after a data refresh, e.g.:
+   * - `invalidatePattern('metric:*')` — clear all computed metrics
+   * - `invalidatePattern('customer:Kandy:*')` — clear all Kandy account caches
+   *
+   * @param pattern  Glob-style pattern string
+   * @returns        Number of keys removed
    */
   invalidatePattern(pattern: string): number {
     let count = 0
@@ -132,7 +161,14 @@ export class CacheManager {
   }
 
   /**
-   * Get value with metadata for "last updated X minutes ago" display
+   * Retrieve a cached value along with its timestamp metadata.
+   *
+   * Used by the orchestrator and UI components that display "last enriched X min ago"
+   * badges. Returns `null` for both missing keys and expired entries so callers
+   * can treat both cases uniformly without checking expiry separately.
+   *
+   * @param key  Cache key to look up
+   * @returns    Object with value, createdAt, expiresAt, and ttlRemaining (ms); or null
    */
   getWithMetadata<T>(key: string): {
     value: T
@@ -184,7 +220,14 @@ export class CacheManager {
   }
 
   /**
-   * Add ±10% random jitter to prevent thundering herd
+   * Add ±10% random jitter to a TTL to spread cache expirations.
+   *
+   * Without jitter, all entries written with the same TTL expire simultaneously,
+   * causing a "thundering herd" where every caller fires a fetcher at once.
+   * A ±10% random offset desynchronises expiry times across hot keys.
+   *
+   * @param baseTTLMs  Base TTL in milliseconds
+   * @returns          Jittered TTL in milliseconds (baseTTL ± up to 10%)
    */
   private addJitter(baseTTLMs: number): number {
     const jitterPercent = 0.1
@@ -219,6 +262,16 @@ export class CacheManager {
 // Singleton instance
 let cacheManagerInstance: CacheManager | null = null
 
+/**
+ * Return the process-level CacheManager singleton.
+ *
+ * Creates the instance on first call; subsequent calls return the same object.
+ * In Next.js, each worker process gets its own singleton — there is no shared
+ * cache across serverless function instances. For multi-instance consistency
+ * consider migrating to Redis/Upstash (tracked in tech debt).
+ *
+ * @returns The shared CacheManager instance for this process
+ */
 export function getCacheManager(): CacheManager {
   if (!cacheManagerInstance) {
     cacheManagerInstance = new CacheManager()

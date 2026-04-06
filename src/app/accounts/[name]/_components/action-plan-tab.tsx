@@ -9,6 +9,7 @@
 import { useState } from 'react'
 import type { ActionItem, Stakeholder } from '@/lib/types/account-plan'
 import { StatusCycleButton } from '@/components/ui/status-cycle-button'
+import { ErrorBoundary } from '@/components/ui/error-boundary'
 
 interface ActionPlanTabProps {
   actions: ActionItem[]
@@ -166,14 +167,16 @@ export function ActionPlanTab({ actions, stakeholders = [], accountName = '' }: 
                       <td style={{ padding: '1rem', color: 'var(--muted)', fontSize: '0.8rem' }}>{action.dueDate || '—'}</td>
                       <td style={{ padding: '1rem' }}><Badge variant={priorityVariant(action.priority) as 'critical' | 'high' | 'medium'}>{action.priority}</Badge></td>
                       <td style={{ padding: '1rem' }}>
-                        <StatusCycleButton
-                          id={action.id}
-                          status={currentStatus}
-                          statuses={['todo', 'in-progress', 'done']}
-                          accountName={accountName}
-                          type="action"
-                          onUpdate={(s) => handleStatusUpdate(action.id, s)}
-                        />
+                        <ErrorBoundary>
+                          <StatusCycleButton
+                            id={action.id}
+                            status={currentStatus}
+                            statuses={['todo', 'in-progress', 'done']}
+                            accountName={accountName}
+                            type="action"
+                            onUpdate={(s) => handleStatusUpdate(action.id, s)}
+                          />
+                        </ErrorBoundary>
                       </td>
                     </tr>
                   )

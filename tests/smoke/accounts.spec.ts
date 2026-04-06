@@ -158,4 +158,45 @@ test.describe('Accounts Smoke Tests', () => {
     await expect(accounts.pageTitle).toBeVisible()
     await expect(accounts.accountTable).toBeVisible()
   })
+
+  test('Data completeness badges are visible', async ({ page }) => {
+    const accounts = new AccountsPage(page)
+    await accounts.goto()
+    await accounts.waitForTableLoaded()
+
+    // CompletenessBadge renders "{n}% complete" text on each account card
+    const badge = page.getByText(/\d+% complete/i).first()
+    await expect(badge).toBeVisible({ timeout: 10000 })
+  })
+
+  test('URL search parameter filters accounts', async ({ page }) => {
+    // Navigate directly with ?search= — server-side filtered, bookmarkable
+    await page.goto('/accounts?search=cloud')
+
+    // Page heading still visible
+    await expect(page.getByRole('heading', { name: /Customer Account Plans/i })).toBeVisible()
+
+    // At least one account card should be visible (Cloudsense accounts)
+    const firstCard = page.locator('a.account-card').first()
+    await expect(firstCard).toBeVisible({ timeout: 10000 })
+
+    // URL retains the search param
+    await expect(page).toHaveURL(/search=cloud/)
+  })
+
+  test('Account card links navigate to detail page', async ({ page }) => {
+    const accounts = new AccountsPage(page)
+    await accounts.goto()
+    await accounts.waitForTableLoaded()
+
+    // Get the href of the first account card before clicking
+    const firstCard = page.locator('a.account-card').first()
+    const href = await firstCard.getAttribute('href')
+    expect(href).toMatch(/\/accounts\/[^/]+/)
+
+    // Click and verify navigation
+    await firstCard.click()
+    await expect(page).toHaveURL(/\/accounts\/[^/]+/)
+    await expect(page.locator('h1').first()).toBeVisible({ timeout: 10000 })
+  })
 })

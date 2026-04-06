@@ -58,40 +58,26 @@ export class AccountPlanPage {
   /**
    * Click a specific tab by name (works with both desktop buttons and mobile select)
    */
-  async clickTab(tabName: 'overview' | 'financials' | 'organization' | 'strategy' | 'competitive' | 'intelligence' | 'action-items' | 'retention') {
+  async clickTab(tabName: 'overview' | 'financials' | 'organization' | 'strategy' | 'competitive' | 'intelligence' | 'action-items' | 'retention' | 'key-executives' | 'org-structure' | 'pain-points' | 'action-plan') {
     const labelMap: Record<string, string> = {
-      'overview': 'Overview',
-      'financials': 'Financials',
-      'organization': 'Organization',
-      'strategy': 'Strategy',
-      'competitive': 'Competitive',
-      'intelligence': 'Intelligence',
-      'action-items': 'Action Items',
-      'retention': 'Retention Strategy'
+      'overview': '📊 Overview',
+      'financials': '💰 Financial',
+      'organization': '🏢 Org Structure',
+      'org-structure': '🏢 Org Structure',
+      'strategy': '💡 Pain Points',
+      'pain-points': '💡 Pain Points',
+      'competitive': '⚔️ Competitive',
+      'intelligence': '🧠 Intelligence',
+      'action-items': '📋 Action Plan',
+      'action-plan': '📋 Action Plan',
+      'key-executives': '👔 Key Executives',
+      'retention': '📋 Action Plan'
     }
 
-    // Wait for either desktop buttons or mobile select to be visible (handles hydration)
+    // TabNavigation renders desktop buttons — wait for nav to hydrate then click
     const button = this.page.getByRole('button', { name: labelMap[tabName] })
-    const select = this.page.locator('#tab-select')
-
-    await Promise.race([
-      button.waitFor({ state: 'visible', timeout: 10000 }),
-      select.waitFor({ state: 'visible', timeout: 10000 })
-    ]).catch(() => {
-      // If neither appears, continue - locator will handle the error
-    })
-
-    // Check if mobile select is visible
-    const isSelectVisible = await select.isVisible().catch(() => false)
-
-    if (isSelectVisible) {
-      // Mobile: use select dropdown
-      await select.selectOption({ value: tabName })
-    } else {
-      // Desktop: click button (wait for it to be ready)
-      await button.waitFor({ state: 'visible', timeout: 5000 })
-      await button.click()
-    }
+    await button.waitFor({ state: 'visible', timeout: 10000 })
+    await button.click()
   }
 
   /**
@@ -106,15 +92,27 @@ export class AccountPlanPage {
   }
 
   /**
-   * Verify all 8 tabs are accessible (via select dropdown - responsive design shows select on current viewport)
+   * Verify all 8 tabs are accessible as desktop buttons in the nav
    */
   async verifyAllTabsVisible() {
-    // Current viewport shows mobile select, so just verify it has 8 options
-    const select = this.page.locator('#tab-select')
-    await expect(select).toBeVisible({ timeout: 5000 })
+    // TabNavigation renders buttons in a <nav> — wait for nav to hydrate
+    const nav = this.page.locator('nav').first()
+    await expect(nav).toBeVisible({ timeout: 10000 })
 
-    const options = await select.locator('option').count()
-    expect(options).toBe(8)
+    // Each of the 8 tab buttons must be present
+    const tabLabels = [
+      /overview/i,
+      /key.?exec/i,
+      /org.?struct/i,
+      /pain.?point/i,
+      /competitive/i,
+      /action.?plan/i,
+      /financial/i,
+      /intelligence/i,
+    ]
+    for (const label of tabLabels) {
+      await expect(this.page.getByRole('button', { name: label }).first()).toBeVisible({ timeout: 5000 })
+    }
   }
 
   /**

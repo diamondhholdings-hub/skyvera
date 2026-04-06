@@ -10,8 +10,18 @@ import {
   getCannedQueryById,
   expandTemplate,
 } from '@/lib/intelligence/nlq/canned-queries'
+import { rateLimit, rateLimitHeaders } from '@/lib/middleware/rate-limit'
 
 export async function POST(request: NextRequest) {
+  // Rate limit: 10 requests per minute (Claude API call)
+  const rl = rateLimit(request, { limit: 10, window: 60_000 })
+  if (!rl.success) {
+    return NextResponse.json(
+      { error: 'Too many requests', retryAfter: rl.reset },
+      { status: 429, headers: rateLimitHeaders(rl) }
+    )
+  }
+
   try {
     // Parse and validate request body
     const body = await request.json()

@@ -1,10 +1,28 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/db/prisma';
+import { rateLimit, rateLimitHeaders } from '@/lib/middleware/rate-limit';
+import { productAgentAnalyzeSchema } from '@/lib/validation/schemas';
 
 export async function POST(request: NextRequest) {
+  // Rate limit: 10 requests per minute (Claude API call)
+  const rl = rateLimit(request, { limit: 10, window: 60_000 });
+  if (!rl.success) {
+    return NextResponse.json(
+      { error: 'Too many requests', retryAfter: rl.reset },
+      { status: 429, headers: rateLimitHeaders(rl) }
+    );
+  }
+
   try {
-    const body = await request.json();
-    const { scope, businessUnit, analysisType, focus } = body;
+    const rawBody = await request.json();
+    const validation = productAgentAnalyzeSchema.safeParse(rawBody);
+    if (!validation.success) {
+      return NextResponse.json(
+        { error: 'Validation failed', details: validation.error.issues },
+        { status: 400 }
+      );
+    }
+    const { scope, businessUnit, analysisType, focus } = validation.data;
 
     console.log('[Product Agent] Starting analysis:', { scope, businessUnit, analysisType, focus });
 

@@ -35,7 +35,23 @@ interface RecommendationContext {
 }
 
 /**
- * Generate AI-powered recommendations for a specific account
+ * Generate AI-powered DM% improvement recommendations for a single account.
+ *
+ * Builds a rich prompt from the account's current DM%, ARR, risk factors, and
+ * renewal schedule, then sends it to Claude at temperature 0.8 for creative
+ * diversity. The raw response is parsed, validated against
+ * `ClaudeRecommendationResponseSchema`, converted to `DMRecommendation` objects,
+ * and then re-prioritised by `prioritizeRecommendations`.
+ *
+ * All recommendations are initialised with `priority: 'medium'` — the prioritiser
+ * overwrites this based on impact, confidence, and urgency signals.
+ * `recommendationId` is stamped with a timestamp + index to ensure uniqueness
+ * across multiple generation calls for the same account.
+ *
+ * @param accountName  Customer name as it appears in the Skyvera database
+ * @param context      Financial and risk context for the account
+ * @returns            Result containing prioritised recommendations, or an error
+ *                     if Claude is unavailable or response parsing fails
  */
 export async function generateRecommendations(
   accountName: string,
@@ -123,7 +139,19 @@ export async function generateRecommendations(
 }
 
 /**
- * Generate portfolio-level recommendations (cross-account patterns)
+ * Generate strategic recommendations that span multiple accounts within a BU.
+ *
+ * Unlike `generateRecommendations` which focuses on one account, this function
+ * reasons across the whole portfolio to surface pattern-based actions: e.g.
+ * "5 telecom accounts need the same integration feature" or
+ * "re-price the bottom decile of Kandy accounts to improve overall DM%".
+ *
+ * The prompt explicitly lists top at-risk and top opportunity accounts so Claude
+ * can reason about cross-account prioritisation and resource allocation.
+ * Portfolio-level recommendations are assigned `accountName: 'Portfolio'`.
+ *
+ * @param context  BU-level portfolio summary including risk and opportunity account lists
+ * @returns        Result containing 3–5 prioritised portfolio recommendations
  */
 export async function generatePortfolioRecommendations(
   context: {

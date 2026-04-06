@@ -29,11 +29,11 @@ export class AccountsPage {
     // Search/filter input - using placeholder text or role
     this.searchInput = page.getByPlaceholder(/search/i).or(page.getByRole('searchbox')).first()
 
-    // Table elements - now using card-based grid layout
-    this.accountTable = page.locator('.grid').first()
+    // Table elements - AccountTable renders cards with className="account-card"
+    this.accountTable = page.locator('.account-card').first()
 
-    // First account card in grid
-    this.firstAccountRow = page.locator('.grid a').first()
+    // First account card (Link renders as <a class="account-card">)
+    this.firstAccountRow = page.locator('a.account-card').first()
 
     // Stats - match actual component text
     this.totalAccountsCount = page.getByText(/Total Customers/i)
@@ -82,7 +82,7 @@ export class AccountsPage {
    * Get number of visible account cards
    */
   async getAccountRowCount(): Promise<number> {
-    return await this.page.locator('.grid a').count()
+    return await this.page.locator('a.account-card').count()
   }
 
   /**

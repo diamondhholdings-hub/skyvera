@@ -280,7 +280,7 @@ export class RapidAPIEnrichmentAdapter implements DataAdapter {
     }
 
     if (this.degraded) {
-      return err(new Error('RAPIDAPI_KEY not configured - cannot fetch company enrichment data'))
+      return ok({ data: [], source: this.name, timestamp: new Date(), count: 0 })
     }
 
     const companyName = query.filters.customerName

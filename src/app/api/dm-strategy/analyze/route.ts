@@ -3,13 +3,32 @@
  * Analyze all accounts and generate DM% retention recommendations
  */
 
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 import { analyzePortfolio } from '@/lib/intelligence/dm-strategy/analyzer'
 import { prisma } from '@/lib/db/prisma'
+import { rateLimit, rateLimitHeaders } from '@/lib/middleware/rate-limit'
+import { dmStrategyAnalyzeSchema } from '@/lib/validation/schemas'
 
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
+  // Rate limit: 10 requests per minute (expensive portfolio analysis)
+  const rl = rateLimit(request, { limit: 10, window: 60_000 })
+  if (!rl.success) {
+    return NextResponse.json(
+      { error: 'Too many requests', retryAfter: rl.reset },
+      { status: 429, headers: rateLimitHeaders(rl) }
+    )
+  }
+
   try {
-    const { bu } = await request.json().catch(() => ({}))
+    const rawBody = await request.json().catch(() => ({}))
+    const validation = dmStrategyAnalyzeSchema.safeParse(rawBody)
+    if (!validation.success) {
+      return NextResponse.json(
+        { error: 'Validation failed', details: validation.error.issues },
+        { status: 400 }
+      )
+    }
+    const { bu } = validation.data
 
     // Create analysis run record
     const runId = `run-${Date.now()}`

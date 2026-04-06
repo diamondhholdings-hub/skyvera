@@ -8,29 +8,30 @@ import { NextRequest } from 'next/server'
 import Anthropic from '@anthropic-ai/sdk'
 import { getAccountPlanData } from '@/lib/data/server/account-plan-data'
 import { getAllCustomersWithHealth } from '@/lib/data/server/account-data'
-
-interface ChatMessage {
-  role: 'user' | 'assistant'
-  content: string
-}
-
-interface ChatRequest {
-  message: string
-  history: ChatMessage[]
-}
+import { rateLimit, rateLimitHeaders } from '@/lib/middleware/rate-limit'
+import { chatMessageSchema } from '@/lib/validation/schemas'
 
 export async function POST(
   request: NextRequest,
   { params }: { params: Promise<{ name: string }> }
 ) {
+  // Rate limit: 20 requests per minute (streaming chat)
+  const rl = rateLimit(request, { limit: 20, window: 60_000 })
+  if (!rl.success) {
+    return new Response(
+      JSON.stringify({ error: 'Too many requests', retryAfter: rl.reset }),
+      { status: 429, headers: { 'Content-Type': 'application/json', ...rateLimitHeaders(rl) } }
+    )
+  }
+
   try {
     const { name } = await params
     const customerName = decodeURIComponent(name).replace(/\+/g, ' ')
 
-    // Parse request body
-    let body: ChatRequest
+    // Parse and validate request body
+    let rawBody: unknown
     try {
-      body = await request.json()
+      rawBody = await request.json()
     } catch {
       return new Response(JSON.stringify({ error: 'Invalid request body' }), {
         status: 400,
@@ -38,14 +39,18 @@ export async function POST(
       })
     }
 
-    const { message, history } = body
-
-    if (!message || typeof message !== 'string') {
-      return new Response(JSON.stringify({ error: 'message is required' }), {
-        status: 400,
-        headers: { 'Content-Type': 'application/json' },
-      })
+    const validation = chatMessageSchema.safeParse(rawBody)
+    if (!validation.success) {
+      return new Response(
+        JSON.stringify({
+          error: 'Validation failed',
+          details: validation.error.issues,
+        }),
+        { status: 400, headers: { 'Content-Type': 'application/json' } }
+      )
     }
+
+    const { message, history } = validation.data
 
     // Fetch account plan data in parallel with customer data
     const [accountDataResult, customersResult] = await Promise.all([

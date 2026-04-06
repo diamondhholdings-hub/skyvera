@@ -179,7 +179,7 @@ export class RapidAPIFinancialIntelAdapter implements DataAdapter {
     }
 
     if (this.degraded) {
-      return err(new Error('RAPIDAPI_KEY not configured - cannot fetch financial intelligence'))
+      return ok({ data: [], source: this.name, timestamp: new Date(), count: 0 })
     }
 
     const customerName = query.filters.customerName
