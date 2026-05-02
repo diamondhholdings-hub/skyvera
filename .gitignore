@@ -39,3 +39,8 @@ trends-page-error.png
 playwright-report/
 test-results/
 .playwright-mcp/
+.env*.local
+
+# Beads / Dolt files (added by bd init)
+.dolt/
+.beads-credential-key

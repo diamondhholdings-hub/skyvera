@@ -1,0 +1,7 @@
+{
+  "database": "dolt",
+  "backend": "dolt",
+  "dolt_mode": "embedded",
+  "dolt_database": "skyvera",
+  "project_id": "1acee211-8d2b-4999-a5c4-8bba06635f1e"
+}
