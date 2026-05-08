@@ -40,6 +40,7 @@ describe('ScenarioCalculator', () => {
         pricingChange: 5,
         costChange: 0,
         targetMargin: 65,
+        affectedBU: 'All',
       }
       const metrics = calc.calculate(input, BASELINE)
       const arrMetric = metrics.find((m) => m.name === 'Annual Recurring Revenue (ARR)')
@@ -58,6 +59,7 @@ describe('ScenarioCalculator', () => {
         pricingChange: 5,
         costChange: 0,
         targetMargin: 65,
+        affectedBU: 'All',
       }
       const metrics = calc.calculate(input, BASELINE)
       const rev = metrics.find((m) => m.name === 'Total Revenue')!
@@ -73,6 +75,7 @@ describe('ScenarioCalculator', () => {
         pricingChange: 0,
         costChange: -10,
         targetMargin: 65,
+        affectedBU: 'All',
       }
       const metrics = calc.calculate(input, BASELINE)
       const ebitda = metrics.find((m) => m.name === 'EBITDA')!
@@ -88,6 +91,7 @@ describe('ScenarioCalculator', () => {
         pricingChange: 0,
         costChange: 0,
         targetMargin: 62.5,
+        affectedBU: 'All',
       }
       const metrics = calc.calculate(input, BASELINE)
       const rev = metrics.find((m) => m.name === 'Total Revenue')!
@@ -105,6 +109,7 @@ describe('ScenarioCalculator', () => {
         pricingChange: -20,
         costChange: 0,
         targetMargin: 50,
+        affectedBU: 'All',
       }
       const metrics = calc.calculate(input, BASELINE)
       const arr = metrics.find((m) => m.name === 'Annual Recurring Revenue (ARR)')!
@@ -120,6 +125,7 @@ describe('ScenarioCalculator', () => {
         pricingChange: 3,
         costChange: 2,
         targetMargin: 63,
+        affectedBU: 'All',
       }
       const metrics = calc.calculate(input, BASELINE)
       expect(metrics).toHaveLength(5)
@@ -138,6 +144,7 @@ describe('ScenarioCalculator', () => {
         pricingChange: 10,
         costChange: 5,
         targetMargin: 65,
+        affectedBU: 'All',
       }
       const metrics = calc.calculate(input, BASELINE)
       for (const m of metrics) {
@@ -158,6 +165,7 @@ describe('ScenarioCalculator', () => {
         description: 'Hire two senior engineers for Cloudsense BU',
         headcountChange: 2,
         avgSalaryCost: 120_000,
+        affectedBU: 'All',
       }
       const metrics = calc.calculate(input, BASELINE)
       const hc = metrics.find((m) => m.name === 'Headcount')!
@@ -174,6 +182,7 @@ describe('ScenarioCalculator', () => {
         description: 'Hire two senior engineers for Cloudsense BU',
         headcountChange: 2,
         avgSalaryCost: salary,
+        affectedBU: 'All',
       }
       const metrics = calc.calculate(input, BASELINE)
       const hcCost = metrics.find((m) => m.name === 'Headcount Cost')!
@@ -188,6 +197,7 @@ describe('ScenarioCalculator', () => {
         description: 'Reduce STL headcount by five through attrition',
         headcountChange: -5,
         avgSalaryCost: 90_000,
+        affectedBU: 'All',
       }
       const metrics = calc.calculate(input, BASELINE)
       const totalCosts = metrics.find((m) => m.name === 'Total Costs')!
@@ -203,6 +213,7 @@ describe('ScenarioCalculator', () => {
         description: 'No headcount change — baseline verification scenario',
         headcountChange: 0,
         avgSalaryCost: 100_000,
+        affectedBU: 'All',
       }
       const metrics = calc.calculate(input, BASELINE)
       const hc = metrics.find((m) => m.name === 'Headcount')!
@@ -218,6 +229,7 @@ describe('ScenarioCalculator', () => {
         description: 'Add 10 FTEs to support Kandy growth targets',
         headcountChange: 10,
         avgSalaryCost: 100_000,
+        affectedBU: 'All',
       }
       const metrics = calc.calculate(input, BASELINE)
       // No "Total Revenue" metric in headcount scenario — costs change, not revenue
@@ -239,6 +251,7 @@ describe('ScenarioCalculator', () => {
         churnRate: 5,
         acquisitionCount: 10,
         avgCustomerARR: 100_000,
+        affectedBU: 'All',
       }
       const metrics = calc.calculate(input, BASELINE)
       const arr = metrics.find((m) => m.name === 'Annual Recurring Revenue (ARR)')!
@@ -256,6 +269,7 @@ describe('ScenarioCalculator', () => {
         churnRate: 100,
         acquisitionCount: acqCount,
         avgCustomerARR: acqARR,
+        affectedBU: 'All',
       }
       const metrics = calc.calculate(input, BASELINE)
       const rr = metrics.find((m) => m.name === 'Recurring Revenue')!
@@ -271,6 +285,7 @@ describe('ScenarioCalculator', () => {
         churnRate: 0,
         acquisitionCount: 0,
         avgCustomerARR: 100_000,
+        affectedBU: 'All',
       }
       const metrics = calc.calculate(input, BASELINE)
       const rr = metrics.find((m) => m.name === 'Recurring Revenue')!
@@ -286,6 +301,7 @@ describe('ScenarioCalculator', () => {
         churnRate: 10,
         acquisitionCount: 5,
         avgCustomerARR: 200_000,
+        affectedBU: 'All',
       }
       const metrics = calc.calculate(input, BASELINE)
       const margin = metrics.find((m) => m.name === 'Net Margin %')!
@@ -301,6 +317,7 @@ describe('ScenarioCalculator', () => {
         churnRate: 0,
         acquisitionCount: 20,
         avgCustomerARR: 500_000,
+        affectedBU: 'All',
       }
       const metrics = calc.calculate(input, BASELINE)
       const rev = metrics.find((m) => m.name === 'Total Revenue')!
@@ -315,6 +332,7 @@ describe('ScenarioCalculator', () => {
         churnRate: 10,
         acquisitionCount: 15,
         avgCustomerARR: 100_000,
+        affectedBU: 'All',
       }
       const metrics = calc.calculate(input, BASELINE)
       const cc = metrics.find((m) => m.name === 'Customer Count')!
@@ -352,6 +370,7 @@ describe('ScenarioCalculator', () => {
         pricingChange: 5,
         costChange: 0,
         targetMargin: 65,
+        affectedBU: 'All',
       }
       const metrics = calc.calculate(input, zeroBaseline)
       for (const m of metrics) {
