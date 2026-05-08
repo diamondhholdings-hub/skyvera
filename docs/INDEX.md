@@ -2,6 +2,8 @@
 
 Complete documentation for the Skyvera Executive Intelligence System.
 
+_Last updated: May 8, 2026_
+
 ## Quick Links
 
 - [README (Start Here)](../README.md) - Project overview, quick start, features
@@ -19,7 +21,11 @@ Complete documentation for the Skyvera Executive Intelligence System.
 
 | Document | Description | Lines |
 |----------|-------------|-------|
-| [README.md](../README.md) | **Start here!** Project overview, quick start (5 min), features, tech stack, troubleshooting | 350+ |
+| [README.md](../README.md) | **Start here!** Project overview, quick start (5 min), features, tech stack, troubleshooting | 400+ |
+| [PRODUCT.md](../PRODUCT.md) | Design system: component standards, page layout rules, UX patterns | — |
+| [DESIGN.md](../DESIGN.md) | CSS token vars, OKLCH color palette, spacing/typography/shadow scale | — |
+| [CHANGELOG.md](../CHANGELOG.md) | Release history and notable changes per version | — |
+| [SYSTEM_REVIEW_2026-05-08.md](../SYSTEM_REVIEW_2026-05-08.md) | System review snapshot — May 8, 2026 | — |
 
 ### Core Documentation
 
@@ -46,11 +52,11 @@ Complete documentation for the Skyvera Executive Intelligence System.
 
 ## Documentation Coverage
 
-### Total Lines: ~4,200+ lines of documentation
+### Total Lines: ~4,800+ lines of documentation
 
 **Breakdown:**
-- Root README: 350 lines
-- Core guides: 3,200 lines
+- Root README + PRODUCT.md + DESIGN.md: 500+ lines
+- Core guides (architecture, development, user-guide, deployment): 3,700+ lines
 - API documentation: 1,630 lines
 
 ### Documentation Standards
@@ -256,6 +262,17 @@ When making changes to the codebase:
 ---
 
 ## Version History
+
+### v0.3.0 (2026-05-08)
+- Documentation refresh: all guides updated to reflect current platform state
+- Accessibility: WCAG 2.2 compliance documented (ARIA patterns, focus management, reduced-motion)
+- Design system: PRODUCT.md and DESIGN.md added to index
+- Testing: corrected counts (161 Vitest unit, 49 Playwright smoke), CI/CD section added to development guide
+- Zod v4 migration noted in architecture and development guides
+- Account plans: confirmed 8-tab structure documented throughout (was "7-tab" in some guides)
+- Bulk enrichment commands documented in user guide
+- Beads issue tracker (`bd`) documented in README and development guide
+- SYSTEM_REVIEW_2026-05-08.md and CHANGELOG.md added to root documentation index
 
 ### v0.2.0 (2026-04-06)
 - Updated to Claude Sonnet 4.6, Node.js 20+

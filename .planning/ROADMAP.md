@@ -17,7 +17,8 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 3: Intelligence Features** - Scenario modeling + Natural language query (Hours 14-20)
 - [x] **Phase 4: Advanced Account Intelligence** - 7-tab account plans with real-time intelligence (Hours 20-22)
 - [x] **Phase 5: Demo Readiness** - Testing, hardening, demo preparation (Hours 22-24)
-- [ ] **Phase 6: Visual Design Implementation** - UI polish matching reference HTML designs
+- [x] **Phase 6: Visual Design Implementation** - UI polish matching reference HTML designs
+- [ ] **Phase 7: Post-Launch Hardening** - CI/CD, accessibility, enrichment, test coverage, migrations
 
 ## Phase Details
 
@@ -74,11 +75,11 @@ Plans:
 - [x] 03-02-PLAN.md -- Natural language query: canned queries, interpreter, clarification + API route + UI with metrics catalog (NLQ-01 through NLQ-03)
 
 ### Phase 4: Advanced Account Intelligence
-**Goal**: Users can view comprehensive 7-tab account plans with real-time intelligence and competitive context
+**Goal**: Users can view comprehensive 8-tab account plans with real-time intelligence and competitive context
 **Depends on**: Phase 2, Phase 3
 **Requirements**: ACCT-04, ACCT-05, ACCT-06, ACCT-07, ACCT-08, ACCT-09, ACCT-10
 **Success Criteria** (what must be TRUE):
-  1. User navigates 7-tab account plan interface (Overview, Financials, Organization, Strategy, Competitive, Intelligence, Action Items)
+  1. User navigates 8-tab account plan interface (Overview, Financials, Organization, Strategy, Competitive, Intelligence, Action Items, Chat)
   2. User views organization structure and stakeholder mapping per account with role definitions
   3. User tracks pain points and opportunities per account with status indicators
   4. User manages action plans per account with ownership and due dates
@@ -124,11 +125,45 @@ Plans:
 **Plans**: 5 plans
 
 Plans:
-- [ ] 06-01-PLAN.md -- Design system foundation: CSS variables, Google Fonts, Tailwind config, shared UI component restyling
-- [ ] 06-02-PLAN.md -- Dashboard page: gradient header, editorial KPI cards, themed charts and BU breakdown
-- [ ] 06-03-PLAN.md -- Account directory: gradient header with stats, customer card grid with hover effects
-- [ ] 06-04-PLAN.md -- Account plan pages: hero header with stat cards, sticky tabs, editorial tab content
-- [ ] 06-05-PLAN.md -- Secondary pages (Alerts, Scenario, Query) restyling and human visual verification
+- [x] 06-01-PLAN.md -- Design system foundation: CSS variables, Google Fonts, Tailwind config, shared UI component restyling
+- [x] 06-02-PLAN.md -- Dashboard page: gradient header, editorial KPI cards, themed charts and BU breakdown
+- [x] 06-03-PLAN.md -- Account directory: gradient header with stats, customer card grid with hover effects
+- [x] 06-04-PLAN.md -- Account plan pages: hero header with stat cards, sticky tabs, editorial tab content
+- [x] 06-05-PLAN.md -- Secondary pages (Alerts, Scenario, Query) restyling and human visual verification
+
+### Phase 7: Post-Launch Hardening
+**Goal**: Platform is production-grade — CI/CD, full accessibility compliance, enriched data, comprehensive test coverage, and a path to production infrastructure
+**Depends on**: Phase 6
+**Requirements**: (Hardening and infrastructure — no new functional requirements)
+**Success Criteria** (what must be TRUE):
+  1. CI/CD pipeline runs on every PR with type-check + build + smoke tests
+  2. All API routes protected by rate limiting and Zod input validation
+  3. Error boundaries wrap all high-risk client components
+  4. All 140 accounts enriched via RapidAPI + OpenCorporates pipeline
+  5. 161 Vitest unit tests + 49 Playwright smoke tests passing
+  6. WCAG 2.2 compliance: tab nav, dialog ARIA, focus trap, fieldset/legend, reduced-motion, semantic tokens
+  7. tsc: 0 errors (Zod v4 migration complete)
+  8. PRODUCT.md + DESIGN.md documenting design system and product register
+**Plans**: Ongoing (not plan-file tracked)
+
+Progress:
+- [x] CI/CD pipeline (`.github/workflows/ci.yml`)
+- [x] Rate limiting and Zod input validation
+- [x] Error boundaries
+- [x] RapidAPI + OpenCorporates enrichment (140 accounts)
+- [x] 161 Vitest unit tests
+- [x] 49 Playwright smoke tests
+- [x] ARIA/WCAG 2.2 compliance (47 findings fixed)
+- [x] Zod v4 migration (tsc 0 errors)
+- [x] PRODUCT.md + DESIGN.md design system documentation
+- [ ] PR #2 merge (fix/pr-review-hardening → main)
+- [ ] Supabase (PostgreSQL) migration
+- [ ] Authentication system
+- [ ] Sentry error monitoring
+- [ ] Mobile responsiveness
+- [ ] DM briefing Accept handler (skyvera-prf, P3)
+- [ ] BU performance table row navigation (skyvera-iph, P3)
+- [ ] Wire financial-summary hardcoded metrics to data layer (skyvera-0yu, P2)
 
 ## Progress
 
@@ -142,4 +177,5 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 | 3. Intelligence Features | 2/2 | Complete ✓ | 2026-02-09 |
 | 4. Advanced Account Intelligence | 4/4 | Complete ✓ | 2026-02-09 |
 | 5. Demo Readiness | 4/4 | Complete ✓ | 2026-02-09 |
-| 6. Visual Design Implementation | 0/5 | Not started | - |
+| 6. Visual Design Implementation | 5/5 | Complete ✓ | 2026-04-06 |
+| 7. Post-Launch Hardening | ongoing | In progress | - |

@@ -69,6 +69,23 @@ tests/
 - Event handlers ILLEGAL in Server Components — use CSS `:hover` via `<style>` tag + className
 - `arr: customer.rr` alias in `src/lib/semantic/resolver.ts` — field name is misleading; values are already annual (known gotcha, documented)
 
+### WCAG 2.2 / Accessibility Patterns
+- **Tab navigation**: uses `<Link href="?tab=X" scroll={false}>` + `aria-current="page"` inside `<nav aria-label="...">` — simpler than APG tablist pattern, avoids arrow-key keyboard contract
+- **Chat panel / modals**: `role="dialog" aria-modal="true" aria-labelledby` with inline focus trap; Escape key restores focus to trigger (FAB or button)
+- **Reduced motion**: `@media (prefers-reduced-motion: reduce)` block in `globals.css` disables all `.animate-*` classes — do not apply animations outside this guard
+- **Filter groups**: use `<fieldset><legend>` not bare `<label>` elements for grouped controls
+- **Emoji**: wrap decorative emoji in `aria-hidden="true"` spans; never use raw emoji in interactive label text
+
+### TypeScript / Zod
+- **tsc: 0 errors** as of 2026-05-08 (previously 24 pre-existing Zod v4 API drift errors)
+- **Zod v4**: use `z.record(z.string(), z.unknown())` not `z.record(z.unknown())`; use `error:` not `errorMap:` for custom enum messages
+
+### Design System
+- `PRODUCT.md` — product register, target users, anti-references (required by impeccable skill)
+- `DESIGN.md` — design tokens (24 colors, 8 typography, 16 components), Editorial Datafeed register
+- Primary color: brick-red `#C84B31` (`--accent`)
+- CSS token vars in use: `var(--accent)`, `var(--accent-hover)`, `var(--surface)`, `var(--critical)`, `var(--warning)`, `var(--success)`, `var(--radius-md)` — never use hardcoded hex values in component files
+
 ## Testing
 
 ```bash
@@ -245,6 +262,14 @@ bd show <id>          # View issue details
 bd update <id> --claim  # Claim work
 bd close <id>         # Complete work
 ```
+
+### Open Issues (as of 2026-05-08)
+
+| ID | Title | Priority |
+|----|-------|----------|
+| skyvera-prf | DM briefing widget Accept button handler | P3 |
+| skyvera-iph | BU performance table row navigation | P3 |
+| skyvera-0yu | Wire financial-summary hardcoded metrics to data layer | P2 |
 
 ### Rules
 
