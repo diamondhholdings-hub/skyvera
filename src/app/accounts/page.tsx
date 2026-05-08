@@ -58,9 +58,9 @@ export default async function AccountsPage({ searchParams }: AccountsPageProps) 
             padding: '1.25rem 1.5rem',
           }}
         >
-          <h2 style={{ fontSize: '1.0625rem', fontWeight: 600, color: 'var(--critical)', margin: '0 0 0.5rem' }}>
+          <h1 style={{ fontSize: '1.0625rem', fontWeight: 600, color: 'var(--critical)', margin: '0 0 0.5rem' }}>
             Unable to load customer data
-          </h2>
+          </h1>
           <p style={{ fontSize: '0.875rem', color: 'var(--muted)', margin: 0 }}>
             {customersResult.error.message}
           </p>
@@ -81,9 +81,9 @@ export default async function AccountsPage({ searchParams }: AccountsPageProps) 
             padding: '1.25rem 1.5rem',
           }}
         >
-          <h2 style={{ fontSize: '1.0625rem', fontWeight: 600, color: 'var(--critical)', margin: '0 0 0.5rem' }}>
+          <h1 style={{ fontSize: '1.0625rem', fontWeight: 600, color: 'var(--critical)', margin: '0 0 0.5rem' }}>
             Unable to load statistics
-          </h2>
+          </h1>
           <p style={{ fontSize: '0.875rem', color: 'var(--muted)', margin: 0 }}>
             {statsResult.error.message}
           </p>

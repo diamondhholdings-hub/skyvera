@@ -67,13 +67,13 @@ export default function DMBriefingWidget({ recommendations, maxItems = 5 }: DMBr
         }}
       >
         <h3 className="dm-h4" style={{ margin: 0, color: 'var(--white)' }}>
-          💡 Revenue Retention Briefing
+          <span aria-hidden="true">💡</span> Revenue Retention Briefing
         </h3>
         <Link
           href="/dm-strategy"
           style={{
             fontSize: '0.875rem',
-            color: 'var(--accent-cyan)',
+            color: 'var(--paper)',
             textDecoration: 'none',
             fontWeight: 600,
             display: 'flex',
@@ -81,7 +81,7 @@ export default function DMBriefingWidget({ recommendations, maxItems = 5 }: DMBr
             gap: 'var(--space-xs)'
           }}
         >
-          View All →
+          View All <span aria-hidden="true">→</span>
         </Link>
       </div>
 
@@ -123,8 +123,8 @@ export default function DMBriefingWidget({ recommendations, maxItems = 5 }: DMBr
                   <span
                     className="dm-badge"
                     style={{
-                      background: 'rgba(0, 184, 212, 0.1)',
-                      color: 'var(--accent-cyan)',
+                      background: 'var(--highlight)',
+                      color: 'var(--secondary)',
                       fontSize: '0.625rem',
                       padding: '2px 6px'
                     }}
@@ -157,12 +157,13 @@ export default function DMBriefingWidget({ recommendations, maxItems = 5 }: DMBr
                     {formatCurrency(rec.arrImpact)} ARR
                   </span>
                   <div className="dm-flex dm-gap-xs">
+                    {/* TODO(skyvera-9at): wire accept handler */}
                     <button
                       className="dm-btn dm-btn-primary dm-btn-sm"
-                      onClick={() => {
-                        // TODO: Implement accept recommendation functionality
-                      }}
-                      style={{ fontSize: '0.75rem', padding: '4px 8px' }}
+                      disabled={true}
+                      aria-disabled="true"
+                      title="Accept handler not yet wired"
+                      style={{ fontSize: '0.75rem', padding: '4px 8px', cursor: 'not-allowed', opacity: 0.6 }}
                     >
                       Accept
                     </button>
@@ -187,9 +188,9 @@ export default function DMBriefingWidget({ recommendations, maxItems = 5 }: DMBr
             style={{
               marginTop: 'var(--space-lg)',
               padding: 'var(--space-md)',
-              background: 'rgba(0, 184, 212, 0.05)',
+              background: 'var(--highlight)',
               borderRadius: 'var(--radius-sm)',
-              border: '1px solid rgba(0, 184, 212, 0.2)'
+              border: '1px solid var(--border)'
             }}
           >
             <div className="dm-flex dm-justify-between dm-items-center">
@@ -200,7 +201,7 @@ export default function DMBriefingWidget({ recommendations, maxItems = 5 }: DMBr
                 style={{
                   fontSize: '1.125rem',
                   fontWeight: 700,
-                  color: 'var(--accent-cyan)'
+                  color: 'var(--secondary)'
                 }}
               >
                 {formatCurrency(

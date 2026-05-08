@@ -187,11 +187,11 @@ test.describe('Account Plan Smoke Tests', () => {
     await page.goto(`/accounts/${encodedName}`)
     await expect(page.locator('h1').first()).toBeVisible()
 
-    // Wait for tab navigation to hydrate
-    const nav = page.locator('nav').first()
-    await expect(nav).toBeVisible({ timeout: 10000 })
+    // Wait for the account-section nav to hydrate
+    const accountNav = page.getByRole('navigation', { name: /account sections/i })
+    await expect(accountNav).toBeVisible({ timeout: 10000 })
 
-    // Each tab label (with emoji) must be present as a button or option
+    // Each tab label must be present as a link in the account-section nav, or as an option in the mobile select
     const expectedLabels = [
       /overview/i,
       /key.?exec/i,
@@ -203,7 +203,9 @@ test.describe('Account Plan Smoke Tests', () => {
       /intelligence/i,
     ]
     for (const label of expectedLabels) {
-      await expect(page.getByRole('button', { name: label }).or(page.locator('option', { hasText: label })).first()).toBeVisible({ timeout: 5000 })
+      await expect(
+        accountNav.getByRole('link', { name: label }).or(page.locator('option', { hasText: label })).first()
+      ).toBeVisible({ timeout: 5000 })
     }
   })
 

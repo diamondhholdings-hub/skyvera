@@ -32,16 +32,15 @@ export class AccountPlanPage {
     this.customerName = page.locator('h1').first()
     this.backLink = page.getByText(/back to accounts/i)
 
-    // Tab navigation - buttons on desktop, select dropdown on mobile
-    // Use the select element as primary since it's always visible
-    this.overviewTab = page.locator('#tab-select').or(page.getByRole('button', { name: 'Overview' }))
-    this.financialsTab = page.locator('#tab-select').or(page.getByRole('button', { name: 'Financials' }))
-    this.organizationTab = page.locator('#tab-select').or(page.getByRole('button', { name: 'Organization' }))
-    this.strategyTab = page.locator('#tab-select').or(page.getByRole('button', { name: 'Strategy' }))
-    this.competitiveTab = page.locator('#tab-select').or(page.getByRole('button', { name: 'Competitive' }))
-    this.intelligenceTab = page.locator('#tab-select').or(page.getByRole('button', { name: 'Intelligence' }))
-    this.actionItemsTab = page.locator('#tab-select').or(page.getByRole('button', { name: 'Action Items' }))
-    this.retentionTab = page.locator('#tab-select').or(page.getByRole('button', { name: 'Retention Strategy' }))
+    // Tab navigation - <a> links on desktop (post-a11y refactor), select dropdown on mobile
+    this.overviewTab = page.locator('#tab-select').or(page.getByRole('link', { name: /Overview/i }))
+    this.financialsTab = page.locator('#tab-select').or(page.getByRole('link', { name: /Financial/i }))
+    this.organizationTab = page.locator('#tab-select').or(page.getByRole('link', { name: /Org Structure/i }))
+    this.strategyTab = page.locator('#tab-select').or(page.getByRole('link', { name: /Pain Points/i }))
+    this.competitiveTab = page.locator('#tab-select').or(page.getByRole('link', { name: /Competitive/i }))
+    this.intelligenceTab = page.locator('#tab-select').or(page.getByRole('link', { name: /Intelligence/i }))
+    this.actionItemsTab = page.locator('#tab-select').or(page.getByRole('link', { name: /Action Plan/i }))
+    this.retentionTab = page.locator('#tab-select').or(page.getByRole('link', { name: /Action Plan/i }))
 
     // Tab content container
     this.tabContent = page.locator('main').or(page.locator('[role="tabpanel"]'))
@@ -74,10 +73,12 @@ export class AccountPlanPage {
       'retention': '📋 Action Plan'
     }
 
-    // TabNavigation renders desktop buttons — wait for nav to hydrate then click
-    const button = this.page.getByRole('button', { name: labelMap[tabName] })
-    await button.waitFor({ state: 'visible', timeout: 10000 })
-    await button.click()
+    // TabNavigation renders desktop links (post-a11y) — scope to account-section nav so header links don't match
+    const visibleText = labelMap[tabName].replace(/^[^\sA-Za-z]+\s*/, '')
+    const accountNav = this.page.getByRole('navigation', { name: /account sections/i })
+    const link = accountNav.getByRole('link', { name: new RegExp(visibleText, 'i') }).first()
+    await link.waitFor({ state: 'visible', timeout: 10000 })
+    await link.click()
   }
 
   /**
@@ -95,11 +96,11 @@ export class AccountPlanPage {
    * Verify all 8 tabs are accessible as desktop buttons in the nav
    */
   async verifyAllTabsVisible() {
-    // TabNavigation renders buttons in a <nav> — wait for nav to hydrate
-    const nav = this.page.locator('nav').first()
-    await expect(nav).toBeVisible({ timeout: 10000 })
+    // TabNavigation renders links in <nav aria-label="Account sections"> — wait for nav to hydrate
+    const accountNav = this.page.getByRole('navigation', { name: /account sections/i })
+    await expect(accountNav).toBeVisible({ timeout: 10000 })
 
-    // Each of the 8 tab buttons must be present
+    // Each of the 8 tab links must be present in the account-section nav
     const tabLabels = [
       /overview/i,
       /key.?exec/i,
@@ -111,7 +112,7 @@ export class AccountPlanPage {
       /intelligence/i,
     ]
     for (const label of tabLabels) {
-      await expect(this.page.getByRole('button', { name: label }).first()).toBeVisible({ timeout: 5000 })
+      await expect(accountNav.getByRole('link', { name: label }).first()).toBeVisible({ timeout: 5000 })
     }
   }
 

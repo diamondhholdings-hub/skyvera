@@ -2,7 +2,7 @@
 
 /**
  * BU Performance Table
- * Exact match to reference HTML styling
+ * Hover via CSS `.table-row-hover` (defined in globals.css).
  */
 
 import type { BUFinancialSummary } from '@/lib/types/financial'
@@ -11,19 +11,20 @@ interface BUPerformanceTableProps {
   buSummaries: BUFinancialSummary[]
 }
 
+// TODO(skyvera-9at): make rows navigable to BU detail
 export function BUPerformanceTable({ buSummaries }: BUPerformanceTableProps) {
   return (
     <table style={{
       width: '100%',
       borderCollapse: 'collapse',
       margin: '20px 0',
-      background: 'white',
-      borderRadius: '10px',
+      background: 'var(--surface)',
+      borderRadius: 'var(--radius-md)',
       overflow: 'hidden',
-      boxShadow: '0 2px 10px rgba(0,0,0,0.1)'
+      boxShadow: 'var(--shadow-sm)'
     }}>
       <thead>
-        <tr style={{ background: '#1e3c72', color: 'white', textAlign: 'left' as const }}>
+        <tr style={{ background: 'var(--secondary)', color: 'var(--paper)', textAlign: 'left' as const }}>
           <th style={{ padding: '15px', fontWeight: 600, fontSize: '0.9em' }}>Business Unit</th>
           <th style={{ padding: '15px', fontWeight: 600, fontSize: '0.9em' }}>Revenue</th>
           <th style={{ padding: '15px', fontWeight: 600, fontSize: '0.9em' }}>Customers</th>
@@ -40,9 +41,7 @@ export function BUPerformanceTable({ buSummaries }: BUPerformanceTableProps) {
             <tr
               key={bu.bu}
               className="table-row-hover"
-              style={{ borderBottom: '1px solid #e9ecef', cursor: 'pointer' }}
-              onMouseEnter={(e) => e.currentTarget.style.background = '#f8f9fa'}
-              onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
+              style={{ borderBottom: '1px solid var(--border)' }}
             >
               <td style={{ padding: '12px 15px', fontSize: '0.9em', fontWeight: 600 }}>
                 {bu.bu}
@@ -66,8 +65,8 @@ export function BUPerformanceTable({ buSummaries }: BUPerformanceTableProps) {
                   borderRadius: '15px',
                   fontSize: '0.8em',
                   fontWeight: 600,
-                  background: delta < 0 ? '#f5576c' : '#4facfe',
-                  color: 'white'
+                  background: delta < 0 ? 'var(--critical)' : 'var(--success)',
+                  color: 'var(--paper)'
                 }}>
                   {delta < 0 ? '-' : '+'}${Math.abs(delta / 1e3).toFixed(0)}K
                 </span>

@@ -3,10 +3,15 @@
 /**
  * 7-Section Dashboard Navigation
  * Uses CSS design tokens throughout — no hardcoded hex colors
+ *
+ * A11y notes:
+ * - Tabs are <a> links (real navigation), inside <nav aria-label>
+ * - Active link gets aria-current="page"
+ * - Hover / focus styling lives in globals.css (.dashboard-tab) — no JS event handlers
  */
 
-import { useSearchParams, useRouter } from 'next/navigation'
-import { useEffect } from 'react'
+import Link from 'next/link'
+import { useSearchParams } from 'next/navigation'
 
 const sections = [
   { id: 'financial-summary', label: 'Financial Summary' },
@@ -19,63 +24,28 @@ const sections = [
 ]
 
 export function DashboardNavigation() {
-  const router = useRouter()
   const searchParams = useSearchParams()
   const activeSection = searchParams.get('section') || 'financial-summary'
 
-  // Inject keyframes CSS once on mount
-  useEffect(() => {
-    if (!document.getElementById('dashboard-keyframes')) {
-      const style = document.createElement('style')
-      style.id = 'dashboard-keyframes'
-      style.textContent = `
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-      `
-      document.head.appendChild(style)
-    }
-  }, [])
-
-  // Hide/show sections based on active state
-  useEffect(() => {
-    // Hide all sections
-    sections.forEach(({ id }) => {
-      const element = document.getElementById(id)
-      if (element) {
-        element.style.display = id === activeSection ? 'block' : 'none'
-      }
-    })
-  }, [activeSection])
-
-  const handleSectionChange = (sectionId: string) => {
-    router.push(`/dashboard?section=${sectionId}`, { scroll: false })
-  }
-
   return (
     <nav
+      aria-label="Dashboard sections"
       className="bg-[var(--highlight)] border-b border-[var(--border)] flex gap-2 flex-wrap px-10 py-4 sticky top-0 z-[100]"
     >
-      {sections.map(({ id, label }) => (
-        <button
-          key={id}
-          onClick={() => handleSectionChange(id)}
-          className={`px-[18px] py-2.5 rounded-lg font-semibold text-sm transition-all ${
-            activeSection === id
-              ? 'bg-[var(--secondary)] text-[var(--paper)]'
-              : 'bg-transparent text-[var(--muted)] hover:bg-[var(--secondary)]/10 hover:text-[var(--ink)]'
-          }`}
-        >
-          {label}
-        </button>
-      ))}
+      {sections.map(({ id, label }) => {
+        const isActive = activeSection === id
+        return (
+          <Link
+            key={id}
+            href={`/dashboard?section=${id}`}
+            scroll={false}
+            aria-current={isActive ? 'page' : undefined}
+            className="dashboard-tab"
+          >
+            {label}
+          </Link>
+        )
+      })}
     </nav>
   )
 }

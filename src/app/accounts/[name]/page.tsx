@@ -56,7 +56,7 @@ export default async function AccountPlanPage({ params, searchParams }: AccountP
     return (
       <div className="p-6">
         <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-          <h2 className="text-lg font-semibold text-red-800">Unable to load account data</h2>
+          <h1 className="text-lg font-semibold text-red-800">Unable to load account data</h1>
           <p className="text-sm text-red-600 mt-2">{accountDataResult.error.message}</p>
         </div>
       </div>
@@ -73,7 +73,7 @@ export default async function AccountPlanPage({ params, searchParams }: AccountP
     return (
       <div className="p-6">
         <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-          <h2 className="text-lg font-semibold text-red-800">Unable to load customer data</h2>
+          <h1 className="text-lg font-semibold text-red-800">Unable to load customer data</h1>
           <p className="text-sm text-red-600 mt-2">{customersResult.error.message}</p>
         </div>
       </div>
@@ -133,7 +133,7 @@ export default async function AccountPlanPage({ params, searchParams }: AccountP
         <div style={{ maxWidth: '1400px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1.5rem' }}>
             <div>
-              <h1 style={{ fontFamily: 'var(--font-display, "Cormorant Garamond", serif)', fontSize: '3.5rem', fontWeight: 300, letterSpacing: '-0.02em', color: 'var(--paper)', lineHeight: 1.1 }}>
+              <h1 id="account-page-title" style={{ fontFamily: 'var(--font-display, "Cormorant Garamond", serif)', fontSize: '3.5rem', fontWeight: 300, letterSpacing: '-0.02em', color: 'var(--paper)', lineHeight: 1.1 }}>
                 {customer.customer_name}
               </h1>
               <p style={{ fontSize: '1.1rem', opacity: 0.85, marginTop: '0.5rem' }}>
@@ -194,7 +194,7 @@ export default async function AccountPlanPage({ params, searchParams }: AccountP
       </div>
 
       {/* Tab Content */}
-      <div className="max-w-[1400px] mx-auto px-8 py-6">
+      <main id="tab-panel" aria-labelledby="account-page-title" className="max-w-[1400px] mx-auto px-8 py-6">
         {activeTab === 'overview' && (
           <Suspense fallback={<TabSkeleton />}>
             <OverviewTab
@@ -261,7 +261,7 @@ export default async function AccountPlanPage({ params, searchParams }: AccountP
             />
           </Suspense>
         )}
-      </div>
+      </main>
 
       {/* W1-P3-004: Page footer */}
       <footer className="bg-[var(--secondary)] text-[var(--paper)] text-center py-8 mt-16">

@@ -53,9 +53,9 @@ test.describe('Dashboard Smoke Tests', () => {
     await dashboard.goto()
     await dashboard.waitForDataLoaded()
 
-    // Navigate to Customer Summary section which has accounts link
-    await page.getByRole('button', { name: 'Customer Summary' }).click()
-    await page.waitForTimeout(1000) // Wait for section to show
+    // Navigate to Customer Summary section (now a link to ?section=customer-summary)
+    await page.getByRole('link', { name: 'Customer Summary' }).click()
+    await page.waitForURL(/section=customer-summary/, { timeout: 5000 })
 
     // Click accounts link in customer summary
     const accountsLink = page.locator('a[href="/accounts"]').first()

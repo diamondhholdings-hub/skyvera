@@ -29,7 +29,49 @@ function DashboardSkeleton() {
   )
 }
 
-export default function DashboardPage() {
+const SECTION_IDS = [
+  'financial-summary',
+  'financial-detailed',
+  'customer-summary',
+  'top-customers',
+  'at-risk',
+  'expansion',
+  'action-plan',
+] as const
+
+type SectionId = (typeof SECTION_IDS)[number]
+
+function renderSection(id: SectionId) {
+  switch (id) {
+    case 'financial-summary':
+      return <FinancialSummarySection />
+    case 'financial-detailed':
+      return <FinancialDetailedSection />
+    case 'customer-summary':
+      return <CustomerSummarySection />
+    case 'top-customers':
+      return <TopCustomersSection />
+    case 'at-risk':
+      return <AtRiskSection />
+    case 'expansion':
+      return <ExpansionSection />
+    case 'action-plan':
+      return <ActionPlanSection />
+  }
+}
+
+export default async function DashboardPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ section?: string }>
+}) {
+  const params = await searchParams
+  const requested = params?.section
+  const activeSection: SectionId =
+    requested && (SECTION_IDS as readonly string[]).includes(requested)
+      ? (requested as SectionId)
+      : 'financial-summary'
+
   return (
     <div>
       {/* Header */}
@@ -45,19 +87,15 @@ export default function DashboardPage() {
       </Suspense>
 
       {/* Content Area */}
-      <div className="max-w-[1400px] mx-auto px-8 py-10">
+      <div className="max-w-[1400px] mx-auto px-10 py-10">
         <Suspense fallback={<DashboardSkeleton />}>
           {/* DM% Strategy Briefing - Top Priority Recommendations */}
           <DMBriefingSection />
 
-          {/* All sections render, visibility controlled by client component */}
-          <FinancialSummarySection />
-          <FinancialDetailedSection />
-          <CustomerSummarySection />
-          <TopCustomersSection />
-          <AtRiskSection />
-          <ExpansionSection />
-          <ActionPlanSection />
+          {/* Only the active section is rendered server-side. The wrapper
+              attribute pairs with a CSS rule in globals.css that overrides
+              the legacy inline `display: none` on each <section>. */}
+          <div data-active-section={activeSection}>{renderSection(activeSection)}</div>
         </Suspense>
       </div>
 

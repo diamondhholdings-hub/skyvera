@@ -156,6 +156,8 @@ export function AccountTable({ customers, completenessScores = {} }: AccountTabl
           </select>
           <button
             onClick={() => setSorting([{ id: sorting[0]?.id || 'total', desc: !sorting[0]?.desc }])}
+            aria-label={`Sort ${sorting[0]?.desc ? 'descending' : 'ascending'}, click to toggle`}
+            aria-pressed={!!sorting[0]?.desc}
             style={{
               padding: '8px 12px',
               border: '1px solid var(--border)',
@@ -247,8 +249,9 @@ export function AccountTable({ customers, completenessScores = {} }: AccountTabl
                   borderRadius: '4px',
                   padding: '2px 6px',
                   flexShrink: 0,
+                  fontVariantNumeric: 'tabular-nums',
                 }}>
-                  #{globalRank}
+                  <span className="sr-only">Rank: </span>#{globalRank}
                 </span>
               </div>
 
@@ -263,7 +266,7 @@ export function AccountTable({ customers, completenessScores = {} }: AccountTabl
                     <p style={{ fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--muted)', margin: '0 0 3px', fontFamily: 'var(--font-body)' }}>
                       {label}
                     </p>
-                    <p style={{ fontSize: '0.875rem', fontWeight: 700, color: 'var(--ink)', margin: 0, fontFamily: 'var(--font-mono)' }}>
+                    <p style={{ fontSize: '0.875rem', fontWeight: 700, color: 'var(--ink)', margin: 0, fontFamily: 'var(--font-mono)', fontVariantNumeric: 'tabular-nums' }}>
                       {value}
                     </p>
                   </div>
@@ -282,7 +285,7 @@ export function AccountTable({ customers, completenessScores = {} }: AccountTabl
                   borderRadius: '4px',
                   flexShrink: 0,
                 }}>
-                  {c.bu}
+                  <span className="sr-only">Business unit: </span>{c.bu}
                 </span>
                 <CompletenessBadge score={completenessScores[c.customer_name] ?? 0} />
                 <HealthIndicator score={c.healthScore} />
@@ -332,6 +335,8 @@ export function AccountTable({ customers, completenessScores = {} }: AccountTabl
               <button
                 key={p}
                 onClick={() => setCurrentPage(p as number)}
+                aria-label={`Page ${p}`}
+                aria-current={p === currentPage ? 'page' : undefined}
                 style={{
                   padding: '8px 12px',
                   border: '1px solid',
@@ -344,6 +349,7 @@ export function AccountTable({ customers, completenessScores = {} }: AccountTabl
                   cursor: 'pointer',
                   fontWeight: p === currentPage ? 700 : 400,
                   minWidth: '36px',
+                  fontVariantNumeric: 'tabular-nums',
                 }}
               >
                 {p}

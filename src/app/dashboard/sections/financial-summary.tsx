@@ -27,11 +27,12 @@ export async function FinancialSummarySection() {
   // Calculate metrics
   const rrPercentage = data.totalRevenue > 0 ? (data.totalRR / data.totalRevenue) * 100 : 0
   const arr = data.totalRR * 4
-  const arrYoYChange = -11.9 // From CLAUDE.md
   const marginGap = data.ebitda - data.ebitdaTarget
   const marginGapPct = data.netMarginPct - data.netMarginTarget
-  const ruleOf40 = 50.6 // From CLAUDE.md (growth + margin)
-  const arAging = 11.5e6 // $11.5M from reference
+  // TODO(skyvera-9at): wire to data layer — currently static benchmarks from CLAUDE.md
+  const arrYoYChange = -11.9
+  const ruleOf40 = 50.6
+  const arAging = 11.5e6
 
   return (
     <section id="financial-summary" style={{ display: 'none' }}>
@@ -54,7 +55,7 @@ export async function FinancialSummarySection() {
       </AlertBox>
 
       {/* Metric Cards Grid */}
-      <div className="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-5 my-8">
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-5 my-8">
         <MetricCard
           variant="primary"
           label="Total Revenue (Q1'26)"
@@ -92,9 +93,12 @@ export async function FinancialSummarySection() {
           subtitle={`${((arAging / arr) * 100).toFixed(1)}% of ARR`}
         />
       </div>
+      <p className="text-xs italic text-[var(--muted)] -mt-4 mb-8">
+        Note: ARR YoY change, Rule of 40, and AR &gt;90 Days are static benchmarks — not live data.
+      </p>
 
       {/* Critical Financial Issues */}
-      <h3 className="font-display text-2xl font-semibold text-[var(--secondary)] mt-8 mb-4 pb-3 border-b-2 border-[var(--border)]">
+      <h3 className="font-display text-xl font-medium text-[var(--ink)] mt-8 mb-4">
         Critical Financial Issues
       </h3>
 
@@ -158,9 +162,12 @@ export async function FinancialSummarySection() {
 
       {/* Issue 2: RR Declining */}
       <div className="bg-[var(--highlight)] rounded-[15px] p-5 my-4 border-l-[5px] border-l-[var(--secondary)]">
-        <div className="text-lg font-bold text-[var(--secondary)] mb-4">
+        <div className="text-lg font-bold text-[var(--secondary)] mb-2">
           2. Recurring Revenue Declining: -$336K
         </div>
+        <p className="text-xs italic text-[var(--muted)] mb-4">
+          Note: Prior Plan column uses static benchmarks — not live data.
+        </p>
         <table
           className="w-full border-collapse rounded-[10px] overflow-hidden"
           style={{ boxShadow: '0 2px 10px rgba(0,0,0,0.1)' }}
@@ -175,7 +182,7 @@ export async function FinancialSummarySection() {
           </thead>
           <tbody className="bg-white">
             {buSummaries.slice(0, 3).map((bu) => {
-              // Mock prior plan data (would come from actual data source)
+              // TODO(skyvera-9at): wire to data layer — static benchmark, not live
               const variance = bu.bu === 'Cloudsense' ? -355000 : bu.bu === 'Kandy' ? -75000 : 146000
               const priorPlan = bu.totalRR - variance
               const variantColorClass =
@@ -222,7 +229,7 @@ export async function FinancialSummarySection() {
       </div>
 
       {/* BU Performance Table */}
-      <h3 className="font-display text-2xl font-semibold text-[var(--secondary)] mt-8 mb-4 pb-3 border-b-2 border-[var(--border)]">
+      <h3 className="font-display text-xl font-medium text-[var(--ink)] mt-8 mb-4">
         Business Unit Performance
       </h3>
       <BUPerformanceTable buSummaries={buSummaries} />
