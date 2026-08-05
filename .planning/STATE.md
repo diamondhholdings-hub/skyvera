@@ -5,14 +5,14 @@
 See: .planning/PROJECT.md (updated 2026-02-08)
 
 **Core value:** Executives and BU leaders can instantly understand business performance, customer health, and scenario impacts through AI-powered intelligence and natural language interaction - eliminating manual data gathering and enabling rapid strategic decision-making
-**Current focus:** Phase 6: Visual Design Implementation
+**Current focus:** Phase 7: Post-Launch Hardening
 
 ## Current Position
 
-Phase: Post-launch hardening (beyond Phase 6)
+Phase: Phase 7: Post-Launch Hardening
 Plan: N/A — operating outside GSD phase structure
 Status: Active post-launch iteration
-Last activity: 2026-05-08 - WCAG 2.2 hardening + Zod v4 migration (PR #2 open, awaiting merge)
+Last activity: 2026-08-05 - PR #2 merged to main (commit efc01d0): CI-blocking package-lock drift fixed, Q3'26 budget data wired in (replacing stale Q1'26 workbook), dashboard double-count bug fixed (getDashboardData was summing the consolidated 'Skyvera' P&L entry with the 3 BU entries it already contains), real per-BU Margin Target/Prior Plan/AR-aging/YoY/Rule-of-40 metrics replacing hardcoded literals, BU performance table now links to /accounts?bu=<name> (accounts page now reads that searchParam), DM briefing widget Accept button wired to POST /api/dm-strategy/accept-recommendation, hero test fixture swapped (British Telecommunications PLC churned out of the Q3'26 data; replaced with Telefonica UK Limited). All 4 open beads issues closed (skyvera-amw, skyvera-0yu, skyvera-iph, skyvera-prf) — 0 open beads issues remain.
 
 Progress: [█████████████████████] 100% (all 6 original phases complete)
 
@@ -229,8 +229,8 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-05-08 (WCAG 2.2 hardening + Zod v4 migration)
-Stopped at: PR #2 open (fix/pr-review-hardening → main) — awaiting merge
+Last session: 2026-08-05 (Q3'26 data wiring, double-count bug fix, BU nav, DM accept button, CI fix)
+Stopped at: PR #2 merged to main (commit efc01d0) — clean working state, 0 open beads issues
 Resume file: None
 
 **PHASE 6 COMPLETE - Visual Design Implementation:**
@@ -242,7 +242,7 @@ Resume file: None
 - ✅ Scenario and query pages verified with editorial styling
 
 **Platform Status:**
-- ✅ All 6 phases (22 plans) complete - fully functional platform
+- ✅ All 6 original phases (22 plans) complete - fully functional platform
 - ✅ Editorial visual design complete across all pages
 - ✅ Demo-ready and production-ready
 - ✅ CI/CD live — every PR runs tsc + build + smoke tests
@@ -251,6 +251,22 @@ Resume file: None
 - ✅ All 140 accounts enriched (RapidAPI + OpenCorporates)
 - ✅ tsc at 0 errors (Zod v4 migration complete)
 - ✅ WCAG 2.2 Level AA — 47 accessibility findings resolved
+- ✅ PR #2 merged to main (2026-08-05, commit efc01d0) — CI fix, Q3'26 data wiring, dashboard double-count bug fix, BU nav, DM accept button
+
+**Phase 7 (Post-Launch Hardening) — as of 2026-08-05:**
+- ✅ CI-blocking bug fixed: package-lock.json had drifted from package.json (npm ci failed locally and in GitHub Actions) — resynced
+- ✅ Budget workbook refreshed: Q1'26 → Q3'26 ("2026-07-02 Skyvera - Budget - Q3'26 - Final - For Todd.xlsx"); all scripts referencing the filename updated
+- ✅ Real financial metrics wired in: per-BU Prior Plan RR/revenue, per-BU real Margin Target, AR > 90 days total, YoY revenue change / Rule of 40 — replacing hardcoded literals
+- ✅ Fixed dashboard double-count bug: getDashboardData() was summing the consolidated 'Skyvera' P&L entry together with the 3 BU entries it already contains, ~doubling every headline KPI; getBUSummaries() now excludes the phantom consolidated row and uses real per-BU Margin Targets
+- ✅ BU performance table rows now link to /accounts?bu=<name>; accounts page reads that searchParam
+- ✅ DM briefing widget Accept button wired (optimistic update + toast → POST /api/dm-strategy/accept-recommendation)
+- ✅ Test fixtures updated for Q3'26 (hero account British Telecommunications PLC churned out; replaced with Telefonica UK Limited)
+- ✅ 0 open beads issues remain (all 4 closed: skyvera-amw, skyvera-0yu, skyvera-iph, skyvera-prf)
+- ⬜ Supabase (PostgreSQL) migration — not yet executed
+- ⬜ Sentry error monitoring — not configured
+- ⬜ npm audit triage — 14 vulnerabilities (1 low, 1 moderate, 11 high, 1 critical) not yet triaged
+- ⬜ Mobile responsiveness audit — not done
+- ⬜ Repo hygiene — .git ~196MB of committed binaries, 38+ overlapping root-level markdown files, several untracked tooling dirs of unknown purpose
 
 ---
 
@@ -260,21 +276,22 @@ Operating outside original GSD phase structure. Tracking via beads issue tracker
 
 ### Open Issues
 
-| ID | Title | Priority | Status |
-|----|-------|----------|--------|
-| skyvera-0yu | Wire hardcoded financial metrics to semantic resolver | P2 | Open |
-| skyvera-prf | DM briefing accept handler — write accepted state to DB | P3 | Open |
-| skyvera-iph | BU table row navigation — keyboard + click drill-down | P3 | Open |
+None — 0 open beads issues as of 2026-08-05.
 
 ### Recently Closed Issues
 
 | ID | Title | Closed |
 |----|-------|--------|
 | skyvera-9at | ARIA/WCAG 2.2 hardening (47 findings) | 2026-05-08 |
+| skyvera-amw | CI fix — package-lock.json drift | 2026-08-05 |
+| skyvera-0yu | Wire hardcoded financial metrics to semantic resolver | 2026-08-05 |
+| skyvera-iph | BU table row navigation — keyboard + click drill-down | 2026-08-05 |
+| skyvera-prf | DM briefing accept handler — write accepted state to DB | 2026-08-05 |
 
 ### Pending External Actions
 
-- PR #2 merge (fix/pr-review-hardening → main) — https://github.com/diamondhholdings-hub/skyvera/pull/2
-- Supabase migration (DATABASE_URL → PostgreSQL)
-- Authentication system
+- Supabase migration (DATABASE_URL → PostgreSQL) — decision made per WAITING_ON.md, not yet executed
+- Authentication system (on hold by design, not a defect)
 - Sentry error monitoring
+- npm dependency vulnerability triage (14 vulnerabilities as of 2026-08-05)
+- Mobile responsiveness audit

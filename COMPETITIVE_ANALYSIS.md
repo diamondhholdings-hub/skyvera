@@ -1,6 +1,12 @@
 # Skyvera — Competitive Analysis
-**Generated:** 2026-05-08
+**Generated:** 2026-08-05
 **Analyst:** Claude Sonnet 4.6 (Skyvera Executive Intelligence Platform)
+
+---
+
+## Changes Since 2026-05-08
+
+No new competitor research or repositioning this refresh — the profiles, threat levels, and scoring below are unchanged from the prior audit. What did change on the platform side: a dashboard KPI double-counting bug was found and fixed (`getDashboardData()` was summing the consolidated "Skyvera" P&L entry together with the three per-BU entries it already contains, roughly doubling every headline metric — revenue, RR, EBITDA), and hardcoded financial benchmarks were replaced with real per-BU figures pulled directly from the budget workbook (Prior Plan RR/revenue, Margin Target, AR > 90 days, YoY revenue change, Rule of 40). This is a small but relevant data point for the "every number traces back to the source data" trust argument made elsewhere in this analysis: unlike a bolt-on BI copilot that narrates whatever numbers it's handed, Skyvera's own engineering caught and corrected a real accuracy defect in its own pipeline — the kind of data-integrity discipline enterprise buyers should expect before trusting AI-generated financial narratives.
 
 ---
 

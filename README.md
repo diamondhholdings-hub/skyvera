@@ -12,8 +12,8 @@
 Skyvera Intelligence System is a production-ready executive intelligence platform designed for portfolio companies managing multiple business units. It combines financial data analysis, customer intelligence, scenario modeling, and AI-powered natural language queries to deliver actionable insights for strategic decision-making.
 
 **Key Business Problems Solved:**
-- **Real-time Portfolio Monitoring**: Track $14.7M quarterly revenue across 3 business units (Cloudsense, Kandy, STL)
-- **Customer Health Intelligence**: Monitor 140+ enterprise accounts with AI-powered health scoring and churn risk detection
+- **Real-time Portfolio Monitoring**: Track quarterly revenue (currently $12.72M) across the 3 core business units (Cloudsense, Kandy, STL), refreshed each quarter from the latest budget workbook
+- **Customer Health Intelligence**: Monitor 100+ enterprise accounts (101 in the current snapshot) with AI-powered health scoring and churn risk detection
 - **Scenario Planning**: Model business impacts (pricing changes, churn scenarios, expansion opportunities)
 - **Natural Language Insights**: Ask complex financial questions in plain English, powered by Claude AI
 - **Account Intelligence**: Comprehensive OSINT-powered account plans with 8-tab structure (overview, financials, key-executives, org-structure, pain-points, competitive, action-plan, intelligence)
@@ -26,6 +26,8 @@ Skyvera Intelligence System is a production-ready executive intelligence platfor
 - **Node.js**: 20.x or later
 - **npm**: 9.x or later
 - **Anthropic API Key**: Get one at [console.anthropic.com](https://console.anthropic.com/)
+- **Python 3** with **openpyxl** installed (`pip3 install openpyxl`) — needed to parse the Excel
+  budget workbook into the JSON snapshot the app reads
 
 ### Installation
 
@@ -34,30 +36,38 @@ Skyvera Intelligence System is a production-ready executive intelligence platfor
 git clone <repository-url>
 cd Skyvera
 
-# Install dependencies
+# Install dependencies (also runs `prisma generate` via postinstall)
 npm install
 
 # Set up environment variables
 cp .env.example .env.local
 
-# Edit .env.local and add your API keys:
-# ANTHROPIC_API_KEY=sk-ant-...
-# DATABASE_URL=file:./dev.db
+# Edit .env.local and add at minimum:
+# ANTHROPIC_API_KEY=sk-ant-...   (required)
+# DATABASE_URL=file:./dev.db     (required)
+# .env.example does not yet include every var this app reads — see
+# "Environment Configuration" below for the full list (NEXT_PUBLIC_APP_URL,
+# RAPIDAPI_KEY, OPENCORPORATES_API_KEY, DEMO_MODE) and add any you need.
 
-# Initialize the database
+# Initialize the local SQLite database
 npx prisma generate
 npx prisma db push
 
-# Seed initial customer data from Excel
-npm run dev
-# Then visit http://localhost:3000/api/seed (POST request)
-# Or use curl: curl -X POST http://localhost:3000/api/seed
+# Generate the customer/financial snapshot from the Excel budget workbook
+# (parses the .xlsx in the repo root into src/data/skyvera-snapshot.json —
+# this is what powers the dashboard, accounts, and query pages)
+npm run refresh-data
 
 # Start the development server
 npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) to see the application.
+
+> **Optional:** a handful of DB-backed features (Product Agent pattern detection, DM Strategy
+> analyzer) read from the Prisma/SQLite `Customer`/`Subscription` tables rather than the JSON
+> snapshot. To populate those tables too, start the dev server and send one POST request:
+> `curl -X POST http://localhost:3000/api/seed`
 
 ## Key Features
 
@@ -70,7 +80,7 @@ Open [http://localhost:3000](http://localhost:3000) to see the application.
 - Strategic action plan with prioritized initiatives
 
 ### 2. Customer Intelligence
-- **140+ Enterprise Accounts**: Complete portfolio tracking with subscription details
+- **100+ Enterprise Accounts**: Complete portfolio tracking with subscription details (101 accounts in the current snapshot, across Cloudsense, Kandy, STL, and NewNet)
 - **Health Scoring**: AI-powered risk assessment (Healthy, At Risk, Critical)
 - **Account Plans**: 8-tab comprehensive intelligence
   - Overview: Executive summary, key metrics, renewal countdown, relationship strength
@@ -173,7 +183,7 @@ Skyvera/
 ├── prisma/
 │   └── schema.prisma           # Database schema
 ├── data/
-│   └── intelligence/           # OSINT reports (140 accounts)
+│   └── intelligence/           # OSINT reports (101 accounts)
 ├── docs/                       # Documentation
 └── tests/                      # E2E tests (Playwright)
 ```
@@ -195,7 +205,7 @@ NEXT_PUBLIC_APP_URL=http://localhost:3000
 # Optional: News API for OSINT intelligence
 NEWSAPI_KEY=...
 
-# Optional: RapidAPI key for company enrichment (all 140 accounts)
+# Optional: RapidAPI key for company enrichment (all 100+ accounts)
 RAPIDAPI_KEY=...
 
 # Optional: OpenCorporates API for corporate registry data (directors, legal name, jurisdiction)
@@ -338,8 +348,11 @@ docker run -p 3000:3000 \
 ### Issue: "Prisma Client not generated"
 **Solution**: Run `npx prisma generate` to generate the Prisma client.
 
+### Issue: Dashboard/accounts pages show no data
+**Solution**: Run `npm run refresh-data` to regenerate `src/data/skyvera-snapshot.json` from the Excel budget workbook in the repo root.
+
 ### Issue: "No customers found in database"
-**Solution**: Seed the database by running a POST request to `/api/seed` or ensure the Excel file is in the root directory.
+**Solution**: This means the Prisma DB tables (used by Product Agent / DM Strategy) are empty — seed them with a POST request to `/api/seed`.
 
 ### Issue: Database locked errors
 **Solution**: SQLite doesn't handle concurrent writes well. For production, use PostgreSQL or Turso (SQLite with better concurrency).
@@ -360,29 +373,41 @@ The platform meets **WCAG 2.2** compliance standards:
 
 ## Documentation
 
-- [API Documentation](docs/api/) - Complete API reference
-- [Architecture Guide](docs/architecture.md) - System design and data flow
-- [Deployment Guide](docs/deployment.md) - Production deployment
-- [Developer Guide](docs/development.md) - Contributing and extending
 - [User Guide](docs/user-guide.md) - Feature walkthroughs
+- [Architecture Guide](docs/architecture.md) - System design and data flow
+- [Developer Guide](docs/development.md) - Contributing and extending
+- [API Documentation](docs/api/) - Complete API reference
+- [Deployment Guide](docs/deployment.md) - Production deployment
+- [Changelog](CHANGELOG.md) - Release history and notable changes
+- [CLAUDE.md](CLAUDE.md) - Guidance for Claude Code / AI agents working in this repo (architecture, patterns, known gotchas)
 - [Product Design Spec](PRODUCT.md) - Design system and component standards
 - [Design Tokens](DESIGN.md) - CSS token vars, OKLCH palette, spacing scale
 
 ## Key Metrics & Business Context
 
-**Current Portfolio (Q1'26):**
-- Total Revenue: $14.7M quarterly
-- Recurring Revenue: $12.6M (86% of total)
-- Net Margin: 62.5% (target: 68.7%)
-- EBITDA: $9.2M
-- Customer Count: 140+ enterprise accounts
-- Business Units: 3 (Cloudsense $8M, Kandy $3.3M, STL $1M)
+Financial figures below reflect the current quarter's budget data (refreshed via `npm run
+refresh-data`) and will shift each time the underlying workbook is updated — treat them as a
+snapshot, not a permanent baseline.
+
+**Current Portfolio Snapshot:**
+- Total Revenue: $12.72M/quarter (Cloudsense $7.31M + Kandy $2.87M + STL $0.79M)
+- Recurring Revenue: $11.29M | Non-Recurring Revenue: $1.43M
+- Net Margin: 61.4% (blended target: 63.0%, -$199K gap)
+- EBITDA: $7.82M
+- AR > 90 Days: $9.81M
+- YoY Revenue Change: -20.4% | Rule of 40: 41.0% — based on the 3 core BUs' historical
+  comparison sheets (~86% of total revenue); smaller divisions (NewNet, PeerApp, Mobilogy, etc.)
+  lack historical comparison data, so this slightly underestimates the true company-wide figure
+- Customer Count: 101 accounts (Cloudsense 53, Kandy 19, STL 14, NewNet 15)
+- Business Units: 3 core (Cloudsense, Kandy, STL), plus smaller divisions (NewNet, PeerApp,
+  Mobilogy, etc.) tracked outside the primary three
 
 **Strategic Priorities:**
-1. Improve net margin from 62.5% to 68.7% target (-$918K gap)
-2. Reverse RR decline (-$336K vs prior plan)
-3. Reduce AR > 90 days from $1.28M
-4. Optimize Salesforce UK contract ($4.1M annual cost)
+1. Close the blended net margin gap (61.4% actual vs. 63.0% target, -$199K)
+2. Reverse RR decline vs. prior plan (Cloudsense -$168K, Kandy -$531K, STL -$30K)
+3. Reduce AR > 90 days ($9.81M)
+4. Right-size large vendor contracts that dominate BU cost structure (e.g., Cloudsense's
+   Salesforce UK contract)
 
 ## Issue Tracking
 

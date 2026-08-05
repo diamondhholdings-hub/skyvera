@@ -14,7 +14,7 @@ product
 
 ## Product Purpose
 
-Skyvera is the executive intelligence layer over a multi-BU SaaS portfolio. The raw material — the Q1'26 budget Excel, 140 customer subscriptions, RapidAPI + OpenCorporates enrichment, OSINT reports — already exists; it just lives in places no executive has time to assemble. This product reads it all, lets a leader ask plain-English questions ("which accounts are most at risk?"), models scenarios with traceable math, and surfaces the five things that should not be buried: **the failed FY'25 EBITDA test, the $918K margin gap, the $336K RR decline, $1.28M of AR over 90 days, and the $4.1M Salesforce UK exposure.** Success looks like: a board member opens a URL, sees the answer, and trusts it without checking the spreadsheet.
+Skyvera is the executive intelligence layer over a multi-BU SaaS portfolio. The raw material — the current quarter's (Q3'26) budget Excel, 101 customer subscriptions, RapidAPI + OpenCorporates enrichment, OSINT reports — already exists; it just lives in places no executive has time to assemble. This product reads it all, lets a leader ask plain-English questions ("which accounts are most at risk?"), models scenarios with traceable math, and surfaces the things that should not be buried: **whether the EBITDA test holds this quarter, a -$199K blended margin gap (61.4% actual vs. 63.0% target), recurring revenue declining across all three core BUs (Cloudsense -$168K, Kandy -$531K, STL -$30K vs. Prior Plan), $9.81M of AR over 90 days, and the concentration risk carried by Skyvera's largest vendor contracts.** Success looks like: a board member opens a URL, sees the answer, and trusts it without checking the spreadsheet.
 
 ## Brand Personality
 

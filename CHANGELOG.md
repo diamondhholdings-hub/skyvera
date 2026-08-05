@@ -9,8 +9,80 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
-### Pending (PR #2 — fix/pr-review-hardening → main)
-- WCAG 2.2 hardening and Zod v4 migration (see v1.4.0 below — awaiting merge)
+---
+
+## [1.5.0] - 2026-08-05
+
+PR #2 (`fix/pr-review-hardening` → `main`, merged as `efc01d0`): WCAG 2.2 hardening, Zod v4
+migration, Q3'26 data refresh, and real-metric wiring. 161/161 unit tests pass, 49/49 smoke
+tests pass, `tsc` 0 errors, CI green. All 4 open beads issues closed (skyvera-amw, skyvera-0yu,
+skyvera-iph, skyvera-prf) — 0 open beads issues remain.
+
+### Fixed
+- **CI-blocking lockfile drift** — `package-lock.json` had drifted from `package.json`, causing
+  `npm ci` to fail both locally and in GitHub Actions; resynced (skyvera-amw)
+- **Dashboard KPI double-counting bug** — `getDashboardData()` was summing the consolidated
+  `Skyvera` P&L entry together with the three per-BU entries it already contains, roughly
+  doubling every headline dashboard KPI (revenue, RR, EBITDA); now sourced directly from the
+  consolidated entry
+- `getBUSummaries()` no longer includes the consolidated `Skyvera` entry as a phantom 4th "BU" row
+
+### Changed
+- **Budget workbook replaced**: `2025-12-11 Skyvera - Budget - Q1'26 - For Todd.xlsx` →
+  `2026-07-02 Skyvera - Budget - Q3'26 - Final - For Todd.xlsx`; every script that reads it by
+  filename updated (`parse_excel_to_json.py`, `extract_dm_data.py`, `inspect_excel.py`)
+- **Real financial metrics wired in place of hardcoded benchmarks**:
+  - Per-BU Prior Plan RR/revenue and per-BU real Margin Target, pulled from the Excel P&L sheets
+    (row 22) — replaces the old hardcoded per-BU lookup table (Cloudsense 63.6%, Kandy 75%,
+    STL 75%; real Q3'26 values are Cloudsense 60%, Kandy 60%, STL 75%)
+  - AR > 90 days total, pulled from the `AR Aging` sheet (previously a hardcoded $11.5M literal)
+  - YoY revenue change and Rule of 40, pulled from the `<BU> - Comparison to PP` sheets
+    (previously hardcoded literals: -11.9% YoY, 50.6% Rule of 40)
+  - Per-BU variance switch statement replaced with real computed values throughout
+- **Test fixtures updated for Q3'26 data**: smoke/e2e "hero account" fixture
+  `British Telecommunications PLC` (churned out of the Q3'26 customer list) replaced with
+  `Telefonica UK Limited` (highest-revenue customer with full curated account-plan content);
+  fixed a quarter-hardcoded test locator
+
+### Added
+- BU performance table rows on the dashboard now link to `/accounts?bu=<name>`; the accounts
+  page — which already declared a `bu` searchParam in its type but never read it — now filters
+  on it (skyvera-iph)
+- DM briefing widget's "Accept" button, previously permanently disabled, now wired with
+  optimistic update + toast, calling `POST /api/dm-strategy/accept-recommendation`
+  (`actionItem` payload made optional for a quick-accept that just sets status to
+  `in_progress`) (skyvera-prf)
+
+### Security
+A same-session adversarial security + code review (two independent finder passes, both
+adversarially verified) surfaced 14 confirmed findings. All critical/high findings with a live
+production impact were fixed immediately:
+- **SOQL injection** in `src/lib/salesforce/sync.ts` — `findAccount()` escaped quotes but not
+  backslashes first, letting an attacker-controlled route parameter break out of the SOQL string
+  literal; fixed by escaping backslashes before quotes
+- **Unauthenticated full data-wipe** — `POST /api/seed` unconditionally deleted every
+  Customer/Subscription row with no auth check; now returns 403 outside non-production
+  environments
+- **Missing rate limiting/validation** on 5 routes that mutate data or call Claude, brought in
+  line with the pattern already used elsewhere: `/api/salesforce/sync/[accountName]`,
+  `/api/scenarios/conversation/[id]/refine`, `/api/scenarios/conversation/[id]/compare`,
+  `/api/product-agent/generate-prd` (also gained a Zod schema, previously an untyped
+  interface-cast), `/api/dm-strategy/accept-recommendation` + `/defer-recommendation` (also
+  gained Zod schemas)
+- **DM% weighting bug** — `PortfolioDashboard` computed "Current DM%" as an unweighted average
+  across business units instead of ARR-weighted, producing a different figure than the correct
+  value shown elsewhere on the same `/dm-strategy` page
+- **Two dormant recurrences of the double-counting bug class** fixed pre-emptively (no live
+  caller yet, but same root cause as the getDashboardData() fix above): `ExcelAdapter.getStats()`
+  and `DataValidator.reconcile()`'s inverted source-priority merge order
+- **Repo hygiene**: removed 100+ untracked `' 2'`-suffixed duplicate files (confirmed
+  byte-identical to their originals before deletion)
+
+Not yet fixed (tracked in `NEXT_PRIORITIES.md`): 14 npm dependency vulnerabilities (1 critical,
+11 high) requiring individual triage; `/api/health` disclosing integration config to
+unauthenticated callers (low severity); the rate limiter's in-memory, per-process architecture
+and its trust in a client-controllable `X-Forwarded-For` header (needs a distributed store to
+fix properly).
 
 ---
 

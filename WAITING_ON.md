@@ -1,7 +1,7 @@
 # WAITING_ON.md — Skyvera Intelligence Platform
 
 > Blockers and external dependencies that require human action before work can continue.
-> Last updated: 2026-05-08
+> Last updated: 2026-08-05
 
 ---
 
@@ -13,44 +13,32 @@ None currently.
 
 ## 🟡 Pending Human Action
 
-### PR #2 — Ready to merge
-**Branch:** `fix/pr-review-hardening` → `main`
-**URL:** https://github.com/diamondhholdings-hub/skyvera/pull/2
-**What's in it:** WCAG 2.2 hardening (47 findings, ARIA tabs, focus trap, fieldset/legend, reduced-motion), Zod v4 migration (24 tsc errors resolved), tsc now at 0 errors.
-**Action needed:** Review and merge PR #2.
+### npm audit — 14 vulnerabilities, 1 critical, 11 high
+**What:** `npm audit` (as of 2026-08-05) reports 14 unresolved vulnerabilities in dependencies: 1 critical, 11 high, 1 moderate, 1 low. Not yet triaged.
+**Action needed:** Run `npm audit` for full detail, triage each finding (patch vs. accept-risk vs. defer), and apply fixes — prioritize the critical and high findings.
 
 ---
 
 ## 🟢 No Blocker — Ready to build when prioritized
 
-### 3. Authentication system
+### 1. Authentication system
 **Status:** On hold by design. Revisit when platform is ready for broader access.
 
-### 4. Supabase (PostgreSQL) migration
+### 2. Supabase (PostgreSQL) migration
 **Decision:** Use Supabase — already in use on other Vercel projects.
 **Reason:** SQLite has write concurrency issues in production (Vercel serverless).
 **Next:** Connect Supabase project, update DATABASE_URL, run `prisma db push`, re-seed.
 **Action needed:** Provide Supabase connection string or link the project via Vercel Supabase integration.
 
-### 6. Sentry error monitoring
+### 3. Sentry error monitoring
 **What:** Add Sentry DSN to env vars and instrument error tracking.
 **Effort:** ~1 hour.
 
 ---
 
-## 🔧 Open Beads Issues — Implementation pending
+## 🔧 Open Beads Issues
 
-### skyvera-0yu — Wire hardcoded financial metrics (P2)
-**What:** Several financial metrics on the dashboard are hardcoded constants rather than computed from live data. Wire them to the semantic resolver / Excel adapter.
-**Priority:** P2 — affects data integrity for executive use.
-
-### skyvera-prf — DM briefing accept handler (P3)
-**What:** The "Accept" button on DM strategy briefing cards has no handler wired — it logs a console warning. Needs to write accepted recommendation state to the DB.
-**Priority:** P3 — UX gap, not blocking.
-
-### skyvera-iph — BU table row navigation (P3)
-**What:** BU breakdown table rows on the dashboard are not keyboard-navigable / clickable to drill into BU detail. Add row-level navigation.
-**Priority:** P3 — accessibility enhancement.
+None currently — 0 open beads issues remain.
 
 ---
 
@@ -58,6 +46,14 @@ None currently.
 
 | Date | Item | Resolution |
 |------|------|------------|
+| 2026-08-05 | Adversarial review findings — SOQL injection, unauthenticated data-wipe, missing rate limiting | A same-session adversarial security + code review (2 findings sets, both adversarially verified) surfaced a confirmed SOQL injection in `src/lib/salesforce/sync.ts`, an unauthenticated `/api/seed` endpoint that wiped all Customer/Subscription data, and 5 routes missing rate limiting/Zod validation. All fixed same-session: backslash-safe SOQL escaping, `/api/seed` env-gated to non-production, `rateLimit()` + Zod added to `/api/salesforce/sync/[accountName]`, `/api/scenarios/conversation/[id]/{refine,compare}`, `/api/product-agent/generate-prd`, and `/api/dm-strategy/{accept,defer}-recommendation`. Also fixed 2 dormant recurrences of the earlier double-counting/merge-order bug class (`ExcelAdapter.getStats()`, `DataValidator.reconcile()`) and a live DM% weighting bug on `/dm-strategy`. Not fixed: `/api/health` info disclosure (low severity) and the rate limiter's in-memory/spoofable-IP architecture (needs a distributed store — bigger change, tracked below). See `SYSTEM_REVIEW_2026-08-05.md` and `NEXT_PRIORITIES.md` for full detail. |
+| 2026-08-05 | Repo hygiene — 100+ stray duplicate files | Removed all `' 2'`-suffixed duplicate source/data/config files and 4 empty stray directories found during the adversarial review, after confirming each was untracked and byte-identical (or empty) versus its original. |
+| 2026-08-05 | PR #2 — WCAG 2.2 hardening, Zod v4 migration, test fixes | Merged to `main` in commit `efc01d0` (PR #2, `fix/pr-review-hardening`); 161/161 unit tests, 49/49 smoke tests pass, tsc 0 errors, CI green |
+| 2026-08-05 | skyvera-0yu — Wire hardcoded financial metrics (P2) | Real Q3'26 figures wired from Excel: per-BU Prior Plan RR/revenue, per-BU real Margin Target, AR > 90 days total, YoY revenue change / Rule of 40 — replacing hardcoded literals |
+| 2026-08-05 | skyvera-prf — DM briefing accept handler (P3) | "Accept" button wired with optimistic update + toast, calling `POST /api/dm-strategy/accept-recommendation` (actionItem payload optional for quick-accept) |
+| 2026-08-05 | skyvera-iph — BU table row navigation (P3) | BU performance table rows now link to `/accounts?bu=<name>`; accounts page now reads the `bu` searchParam it had declared but never used |
+| 2026-08-05 | CI-blocking lockfile drift | `package-lock.json` had drifted from `package.json`, breaking `npm ci` locally and in GitHub Actions — resynced |
+| 2026-08-05 | Dashboard double-counting bug | `getDashboardData()` was summing the consolidated 'Skyvera' P&L entry with the three per-BU entries it already contains, ~doubling every headline KPI (revenue, RR, EBITDA); now sourced directly from the consolidated entry, and `getBUSummaries()` excludes the phantom 4th "BU" row |
 | 2026-05-08 | RapidAPI enrichment for all 140 accounts | Full run complete — all 140 accounts enriched via RapidAPI + OpenCorporates, written to `data/enrichment/` |
 | 2026-05-08 | WCAG 2.2 / ARIA hardening (skyvera-9at) | 47 findings fixed: ARIA tabs, focus trap, fieldset/legend, reduced-motion, scroll-margin-top, emoji aria-hidden |
 | 2026-05-08 | Zod v4 migration + tsc 0 errors | 24 pre-existing TypeScript errors resolved; `errorMap`→`error`, `z.record` signature, 21 test fixtures updated |

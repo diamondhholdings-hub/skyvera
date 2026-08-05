@@ -146,6 +146,15 @@ Plans:
   8. PRODUCT.md + DESIGN.md documenting design system and product register
 **Plans**: Ongoing (not plan-file tracked)
 
+Plans:
+- [x] CI/CD pipeline — GitHub Actions running tsc + build + smoke tests on every PR (done, prior session)
+- [x] WCAG 2.2 accessibility hardening — 47 ARIA/WCAG findings resolved (done, 2026-08-05)
+- [x] Zod v4 migration — 24 pre-existing TypeScript errors resolved, tsc 0 errors (done, 2026-08-05)
+- [x] Real financial data wiring + dashboard double-count bug fix — Q3'26 budget data replacing stale Q1'26 workbook; per-BU Prior Plan RR/revenue, real Margin Target, AR > 90 days, YoY/Rule of 40 replacing hardcoded literals; getDashboardData()/getBUSummaries() no longer double-count the consolidated 'Skyvera' P&L entry (done, 2026-08-05)
+- [x] BU navigation + DM accept button — BU performance table rows link to /accounts?bu=<name> (accounts page now reads that searchParam); DM briefing widget Accept button wired to POST /api/dm-strategy/accept-recommendation (done, 2026-08-05)
+
+**Phase 7 is NOT complete.** The items above are done; the following remain outstanding:
+
 Progress:
 - [x] CI/CD pipeline (`.github/workflows/ci.yml`)
 - [x] Rate limiting and Zod input validation
@@ -156,14 +165,17 @@ Progress:
 - [x] ARIA/WCAG 2.2 compliance (47 findings fixed)
 - [x] Zod v4 migration (tsc 0 errors)
 - [x] PRODUCT.md + DESIGN.md design system documentation
-- [ ] PR #2 merge (fix/pr-review-hardening → main)
-- [ ] Supabase (PostgreSQL) migration
-- [ ] Authentication system
-- [ ] Sentry error monitoring
-- [ ] Mobile responsiveness
-- [ ] DM briefing Accept handler (skyvera-prf, P3)
-- [ ] BU performance table row navigation (skyvera-iph, P3)
-- [ ] Wire financial-summary hardcoded metrics to data layer (skyvera-0yu, P2)
+- [x] PR #2 merge (fix/pr-review-hardening → main) — merged 2026-08-05, commit efc01d0
+- [x] DM briefing Accept handler (skyvera-prf, P3) — closed 2026-08-05
+- [x] BU performance table row navigation (skyvera-iph, P3) — closed 2026-08-05
+- [x] Wire financial-summary hardcoded metrics to data layer (skyvera-0yu, P2) — closed 2026-08-05
+- [ ] Supabase (PostgreSQL) migration — decision made per WAITING_ON.md, not yet executed; SQLite remains in production on Vercel serverless (ephemeral filesystem, write-concurrency risk)
+- [ ] Authentication system — on hold by design (deliberate deferral, not a defect)
+- [ ] Sentry error monitoring — not configured
+- [ ] npm dependency vulnerability triage — 14 vulnerabilities as of 2026-08-05 (1 low, 1 moderate, 11 high, 1 critical), not yet triaged
+- [ ] Mobile responsiveness audit — not done
+- [ ] Rate limiter is in-memory per-process — does not share state across serverless instances/regions; weaker guarantee on Vercel than code comments imply
+- [ ] Repo hygiene — .git ~196MB of committed binaries, 38+ overlapping root-level markdown files, several untracked tooling directories of unknown purpose
 
 ## Progress
 

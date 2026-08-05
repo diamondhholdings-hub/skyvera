@@ -1,7 +1,15 @@
 # Skyvera — Top 1% Assessment
-**Generated:** 2026-05-08
-**Evaluator:** Claude Sonnet 4.6
+**Generated:** 2026-08-05 (rescore — supersedes 2026-05-08 assessment by Claude Sonnet 4.6)
+**Evaluator:** Claude Sonnet 5
 **Question:** Does this platform qualify as top 1% for AI-powered BI/intelligence tools?
+
+> **Post-rescore addendum (same session):** The SOQL injection, the unauthenticated `/api/seed`
+> data-wipe, the 3 confirmed Zod-coverage gaps, and the dormant double-counting recurrence cited
+> below as the drivers of the Type Safety and Production Readiness downgrades were all fixed
+> before this session ended. **The scores and verdict below were not re-run post-fix** — per the
+> verdict's own closing line, this is "very plausibly a 9+/10 platform once they're closed," and
+> they are now closed except for the 14 npm audit vulnerabilities. Treat the scores below as the
+> honest pre-fix record, and `NEXT_PRIORITIES.md` as the current state.
 
 ---
 
@@ -9,206 +17,186 @@
 
 This assessment evaluates Skyvera against the top 1% of AI-powered SaaS tools shipped in the 2024–2026 window. The reference population is production AI SaaS tools with real users and revenue, not demos or prototypes. Each criterion is scored 1–10, with 10 reserved for best-in-class implementations that would satisfy a senior engineering or design reviewer at a top-tier product company.
 
+**What changed since 2026-05-08:** PR #2 ("fix(a11y+tsc): WCAG 2.2 hardening, Zod v4 migration, test fixes") merged to main — WCAG 2.2 hardening, Zod v4 migration (24 pre-existing tsc errors resolved), a CI-blocking `package-lock.json` drift fix, a refreshed Q3'26 budget workbook, real per-BU financial metrics wired in place of hardcoded benchmarks, a genuine double-counting bug found and fixed in `getDashboardData()`, BU-filtered account navigation wired up, the DM briefing "Accept" button wired to a real endpoint, and test fixtures updated for account churn between quarters. All 4 open beads issues closed. Separately, this rescore incorporates an adversarial security/correctness audit that directly read the source and confirmed several findings — some of which contradict claims made in the 2026-05-08 assessment. Scores below are revised only where evidence changed; unchanged criteria say so explicitly.
+
 ---
 
 ## Criterion 1: AI Integration Quality
 
-**Score: 9/10**
+**Score: 8/10** (was 9/10)
 
 **Assessment:**
-AI is load-bearing architecture, not a feature flag. The ClaudeOrchestrator singleton manages 50 RPM, a priority queue, per-request caching, and exponential backoff. Claude is invoked for NLQ resolution, scenario modeling, DM strategy generation, account plan synthesis, and OSINT intelligence reports — not just for "summarize this page" tasks. The semantic layer (`src/lib/semantic/resolver.ts`) pre-processes financial metrics before they reach Claude, which significantly improves answer quality and reduces hallucination risk on domain-specific calculations.
+AI is still load-bearing architecture, not a feature flag. The ClaudeOrchestrator singleton (50 RPM, priority queue, per-request caching, exponential backoff) is unchanged and still genuinely good. Real per-BU financial data (Prior Plan RR/revenue, real Margin Targets, AR aging, YoY/Rule of 40) is now wired into the layer that feeds Claude's scenario modeling and DM strategy generation, in place of the hardcoded benchmarks the last audit didn't know were hardcoded — this is a direct improvement to the grounding data behind every Claude-generated recommendation, and it's the kind of unglamorous correctness work that most teams skip.
 
-The degraded-mode pattern (RapidAPI/OpenCorporates missing key returns `ok({data:[]})`, not `err()`) shows mature thinking about AI pipeline reliability: the system degrades gracefully rather than failing catastrophically.
+Against that, an adversarial audit confirmed the rate-limiting discipline this criterion previously credited as "mature thinking about AI pipeline reliability" is not applied consistently to every Claude-invoking route. `/api/scenarios/conversation/[conversationId]/refine` and `/compare` both invoke Claude (`manager.refineScenario`, `manager.compareVersions`) with **zero** `rateLimit()` call, while sibling routes in the same feature directory (`analyze`, `conversation/start`, `conversation/[id]/message`) all call it. `/api/product-agent/generate-prd` is worse: no auth, no rate limiting, no schema validation on the request body, and it triggers a 16,000-token Claude generation on every hit — an open cost-control hole, not a hypothetical one.
 
 **What reaches 10/10:**
-Streaming responses for long-running queries (currently blocking UI during Claude calls). Confidence scoring on AI outputs. Human-in-the-loop correction that feeds back into the semantic layer.
+Streaming responses for long-running queries. Confidence scoring on AI outputs. Human-in-the-loop correction feeding the semantic layer. Apply `rateLimit()` uniformly to the 2 scenario endpoints and 1 product-agent endpoint confirmed missing it today.
 
 ---
 
 ## Criterion 2: Type Safety
 
-**Score: 9/10**
+**Score: 7/10** (was 9/10)
 
 **Assessment:**
-TypeScript throughout the stack with `tsc 0 errors` enforced in CI. Zod validation at every API entry point returning structured `400 + issues[]` responses. The Result type pattern (`src/lib/types/result.ts`) enforces explicit error handling at data boundaries without exceptions propagating through the call stack. This is a meaningful architectural decision, not just TypeScript boilerplate.
+`tsc 0 errors` in CI is confirmed unchanged, and the Zod v4 migration that resolved the 24 pre-existing errors is real, completed work — the Result type pattern is still a genuine architectural decision, not TypeScript boilerplate.
 
-The Zod schemas (`src/lib/validation/schemas.ts`) cover all 22 API routes. The combination of Zod at the API boundary + Result types internally + TypeScript throughout is the full defensive stack. Very few production AI tools implement all three layers.
+The previous assessment's central claim — "Zod schemas cover all 22 API routes," "Zod validation at every API entry point" — is now known to be false. Direct file reads confirm `/api/dm-strategy/accept-recommendation`, `/api/dm-strategy/defer-recommendation`, and `/api/product-agent/generate-prd` all parse the request body with no Zod schema at all: the first two do raw destructuring with only truthiness checks, and the PRD route does an interface-only `as` cast with no runtime validation. Two of these mutate the database directly; the third triggers an expensive Claude call. This is exactly the class of API boundary the "Result + Zod + TypeScript, full defensive stack" claim was built on, and it doesn't hold at all three of these routes today. This isn't a new regression introduced since 2026-05-08 — it's a gap the last audit didn't catch — but it directly weakens the evidence the 9/10 score rested on, so the score moves down.
 
 **What reaches 10/10:**
-Zod schemas shared between client and server (currently client forms may drift from server validation). Runtime type assertions on Claude API responses (the one place where an external API can return unexpected shapes).
+Close the 3 confirmed unvalidated routes above with Zod schemas. Zod schemas shared between client and server. Runtime type assertions on Claude API responses.
 
 ---
 
 ## Criterion 3: Accessibility
 
-**Score: 8/10**
+**Score: 8/10** (unchanged)
 
 **Assessment:**
-WCAG 2.2 compliance with ARIA patterns and keyboard navigation is non-trivial to achieve in a dashboard-heavy application. Most BI tools score 4–5 here. The PR #2 hardening work specifically addresses WCAG issues, suggesting accessibility is treated as a first-class quality gate rather than an afterthought.
+The WCAG 2.2 hardening this criterion anticipated at the last audit ("the PR #2 hardening work specifically addresses WCAG issues") has since merged: tab navigation via `Link` + `aria-current`, dialog focus traps with Escape-to-restore, `fieldset`/`legend` for grouped controls, a `prefers-reduced-motion` guard, and `aria-hidden` on decorative emoji. This is exactly the scope the last audit was already crediting in advance, so it confirms rather than changes the picture — no score movement.
 
-The pattern of using CSS `:hover` via `<style>` tags instead of event handlers in Server Components (to preserve accessibility semantics) shows architectural discipline. The `[data-print="hide"]` print media query implementation ensures the tool is usable beyond the screen.
-
-**What reaches 10/10:**
-Full axe-core integration in the test suite (automated a11y regression testing on every PR). Screen reader testing on account detail pages (the 8-tab interface is complex enough to warrant it). Focus management on tab switches.
+**What reaches 10/10:** Unchanged — full axe-core CI integration, screen-reader testing on the 8-tab account pages, explicit focus management on tab switches.
 
 ---
 
 ## Criterion 4: Testing Coverage
 
-**Score: 8/10**
+**Score: 8/10** (unchanged)
 
 **Assessment:**
-161 Vitest unit tests + 49 Playwright smoke tests + E2E tests, with CI running type-check + build + smoke on every PR. The test pyramid is correctly shaped: fast unit tests for business logic (adapters, middleware, semantic layer), smoke tests for UI behavior, E2E for full demo flows. This is better than 90% of AI SaaS tools, which ship with no tests or only happy-path E2E.
+Counts are confirmed unchanged: 161 Vitest unit tests, 49 Playwright smoke tests, plus E2E, with CI running type-check + build + smoke on every PR. The pyramid shape is still correct and still better than most AI SaaS tools ship with.
 
-The smoke tests explicitly test "no server needed" scenarios, which means they run fast in CI without requiring the full application stack. This is a mature CI/CD decision.
+One honest caveat worth recording: the adversarial audit found a live, confirmed bug where the `/dm-strategy` page shows two different "Current DM%" values in two different widgets (~90.2% unweighted average in `PortfolioDashboard` vs. 92.4% ARR-weighted in `DMStrategyHero`), and it shipped through the existing 161+49 tests undetected. That's not evidence the test *count* regressed — nothing did — but it is evidence the suite doesn't yet assert cross-component consistency of computed business metrics, which is exactly the kind of bug a BI tool's test suite most needs to catch. Kept at 8/10 rather than lowered, since the counts and shape are unchanged from the last audit's basis for the score; noted here rather than used to inflate or deflate without cause.
 
-**What reaches 10/10:**
-Coverage gates enforced in CI (currently tests run but coverage thresholds aren't gated). Visual regression tests (Playwright screenshots compared on each PR). Load testing for the Claude orchestrator under concurrent requests.
+**What reaches 10/10:** Unchanged — CI coverage gates, visual regression tests, load testing the Claude orchestrator, and (newly relevant) a cross-page consistency check on shared computed metrics.
 
 ---
 
 ## Criterion 5: Design System
 
-**Score: 8/10**
+**Score: 8/10** (unchanged)
 
 **Assessment:**
-PRODUCT.md + DESIGN.md document the Editorial Datafeed design register, token-based color system, typography hierarchy, and component patterns. The `PageHeader` shared component and consistent spacing tokens show extraction has happened — not just documentation. The design register choice (Editorial Datafeed) is deliberate and defensible for an executive intelligence tool.
+No design system changes were reported or found since the last audit. PRODUCT.md + DESIGN.md, the token-based color system, `PageHeader`, and the print/PDF system are all as previously assessed. Score held flat because nothing material changed.
 
-The color system uses purpose-built tokens rather than Tailwind defaults. The print/PDF system (`@media print`, A4, `-webkit-print-color-adjust: exact`) shows the design system was extended to cover non-screen surfaces.
-
-**What reaches 10/10:**
-Storybook or equivalent component catalog for visual regression and onboarding. Design token parity between Figma and code (currently code-only). Documented component decision log explaining why certain patterns were chosen over alternatives.
+**What reaches 10/10:** Unchanged — component catalog, Figma/code token parity, documented component decision log.
 
 ---
 
 ## Criterion 6: Architecture
 
-**Score: 9/10**
+**Score: 8/10** (was 9/10)
 
 **Assessment:**
-The architecture shows consistent application of the right patterns for each layer. Server Components fetch data; Client Components handle interactivity (the "islands" model). ErrorBoundary wraps high-risk client components. Rate limiting is in-memory per-IP sliding window with correct 429 + retryAfter semantics. The enrichment pipeline runs 6 adapters via `Promise.allSettled` (correct choice: partial failure shouldn't block the whole pipeline).
+Genuine positive: `getDashboardData()` was found to be summing the consolidated "Skyvera" P&L entry together with the three per-BU entries it already contains — roughly doubling every headline dashboard KPI (revenue, RR, EBITDA) — and this was found and fixed, now sourcing the consolidated figure directly. `getBUSummaries()` was also fixed to exclude the phantom consolidated "4th BU" row and to use each BU's real Margin Target instead of a hardcoded lookup table. This is real correctness auditing, not just feature velocity, and it's the kind of fix that's easy to skip under deadline pressure.
 
-URL-based tab state (`?tab=overview`) is a specifically correct decision for executive tools that get shared via Slack/email. The `DEMO_MODE` env flag for extended cache TTLs shows operational maturity. The cache manager with jitter support prevents thundering herd on cache expiry.
+Set against that, the same adversarial audit found the identical bug *class* still present elsewhere, unfixed: `ExcelAdapter.getStats()` in `parser.ts` sums `totalRevenue` across `financialsByBU` including the same "Skyvera" consolidated entry — the exact double-count `getDashboardData()` was fixed for, with `dashboard-data.ts` even carrying an explicit code comment warning about it, but no equivalent guard in `getStats()`. (Dormant — `getStats()` has zero live callers today — but it's a landmine, not a hypothetical.) `DataValidator.reconcile()` was also found to invert its own documented intent: it sorts data sources by priority (Excel=1, cache=4) but then applies `Object.assign` in ascending order, so the lowest-priority cache source silently overwrites the highest-priority Excel source for any overlapping field — also dormant (zero callers) but a real logic inversion. And, live and user-facing rather than dormant: the portfolio DM% inconsistency described under Testing Coverage is an architecture/data-flow bug — two widgets on the same page independently compute "current DM%" with no shared source of truth.
 
-The separation of concerns is clean: `src/lib/intelligence/` owns AI logic, `src/lib/data/` owns data fetching, `src/lib/middleware/` owns cross-cutting concerns. New features can be added without touching existing layers.
+Fixing one instance of a bug class while two siblings of the same class remain elsewhere (one live) is evidence the underlying discipline is real but not yet systemic. Score moves to 8/10 to reflect both the credit for the fix and the newly confirmed unfixed instances.
 
-**What reaches 10/10:**
-Supabase/PostgreSQL migration (SQLite is the one architectural weakness that could cause production incidents at scale). Event sourcing or audit log for the AI query history. The `aggregateByBU` known tech debt in `excel/transforms.ts` resolved.
+**What reaches 10/10:** Unchanged from last audit (Supabase/PostgreSQL migration, event sourcing/audit log for AI query history, `aggregateByBU` resolved) plus: apply the `getDashboardData()` fix pattern to `getStats()`, fix the `reconcile()` priority-order inversion, and give the `/dm-strategy` page a single shared DM% computation.
 
 ---
 
 ## Criterion 7: Developer Experience
 
-**Score: 8/10**
+**Score: 7/10** (was 8/10)
 
 **Assessment:**
-CLAUDE.md is a comprehensive developer onboarding document that covers architecture, patterns, environment variables, test commands, and known gotchas (the `arr: customer.rr` alias, the `aggregateByBU` tech debt). The "known gotcha, documented" pattern for the ARR field alias is specifically valuable — it prevents 30 minutes of debugging for every new developer.
+CLAUDE.md remains a genuinely strong onboarding document, and the enrichment CLI ergonomics (`--limit`, `--bu`) are unchanged and still good.
 
-The enrichment pipeline CLI (`npm run enrich:accounts`) with `--limit` and `--bu` flags shows CLI ergonomics were considered. Error messages throughout the API layer return structured responses (400 + issues, 429 + retryAfter) that developers can act on.
+New negative, confirmed directly: the working tree currently contains 100+ untracked duplicate `" 2"`-suffixed source files spread across components, `src/lib`, API routes, and `data/enrichment` (e.g., `route 2.ts` next to `route.ts`, `opencorporates 2.ts` next to `opencorporates.ts`). Diffed examples are byte-identical to their originals today and none are tracked by git, so they're inert right now — but they're a real landmine for the next developer who edits the "real" file, doesn't notice its shadow copy, and later has that shadow silently reappear via an editor autosave or a bad merge. Beyond that, the repo root carries 38+ markdown files with overlapping/superseded content (`HANDOFF.md`, `HANDOFF_RESOLVED.md`, stale session-summary content), several untracked tooling directories of unclear purpose (`.agents/`, `.cortex/`, `.claude/skills/`, `skills-lock.json`), roughly nine loose screenshot PNGs at repo root, and a `.git` directory that has grown to ~196MB from committed binaries (the budget `.xlsx`, HTML dashboard exports). None of this blocks CLAUDE.md's documented workflow, but a new developer has to wade through it first. Score moves to 7/10.
 
-**What reaches 10/10:**
-A `make dev` or single-command setup that handles all prerequisites. API documentation (currently documented in CLAUDE.md prose, not an OpenAPI spec or interactive reference). A local development seed script that populates realistic demo data without the Excel file.
+**What reaches 10/10:** Unchanged (single-command setup, OpenAPI reference, seed script without the Excel dependency) plus: remove or `.gitignore` the untracked `" 2"` duplicate files, and consolidate/archive the 38+ root-level markdown files into a single current-status doc.
 
 ---
 
 ## Criterion 8: Production Readiness
 
-**Score: 6/10**
+**Score: 4/10** (was 6/10)
 
 **Assessment:**
-This is the criterion with the most honest gap. The platform has strong application-layer production readiness (error handling, rate limiting, graceful degradation, CI/CD) but infrastructure-layer gaps that would block enterprise procurement or cause production incidents:
+The 2026-05-08 assessment described this criterion's gaps in the abstract — no auth, SQLite, no error monitoring, no audit log, no platform-wide rate limit — as "infrastructure gaps, all with known solutions and estimated effort." An adversarial audit since then turned several of those abstractions into confirmed, concrete, exploitable findings, which is a materially worse picture than "known debt with a clear remediation plan":
 
-- **No authentication** — intentionally on hold, but this means the platform is currently open to anyone with the URL
-- **SQLite** — cannot handle concurrent serverless writes; a known issue with a planned fix (Supabase migration)
-- **No error monitoring** — Sentry integration is ~1 hour of work but not yet done; production errors are invisible
-- **No audit log** — for a platform handling confidential financial data, this is a compliance gap
-- **No rate limiting on the platform itself** — only on individual routes; a determined actor could still exhaust Claude API credits
+- **Confirmed SOQL injection**: `src/lib/salesforce/sync.ts` builds a SOQL `LIKE` clause from user input using `accountName.replace(/'/g, "\\'")` — escaping quotes but not backslashes first, a textbook incomplete-blacklist bug (an input with a backslash immediately before a quote produces `\\'` in the final query, which most SOQL/SQL parsers read as an escaped backslash followed by an unescaped closing quote). The calling route, `POST /api/salesforce/sync/[accountName]`, has zero auth, zero Zod validation, and zero allow-listing on the decoded path segment before it reaches this function and two others that build SOQL the same way, plus three filesystem writes under `data/account-plans/`.
+- **Confirmed unauthenticated, unrated-limited database wipe**: `POST /api/seed` unconditionally runs `subscription.deleteMany({})` then `customer.deleteMany({})` before reseeding — no auth check, no confirmation flag, no environment guard. Anyone with the URL can empty the production tables with a single request.
+- **Confirmed unauthenticated information disclosure**: `GET /api/health` returns which secrets/integrations are configured (`anthropicKeyConfigured`, `newsApiKeyConfigured`, database URL presence) plus per-adapter health and cache stats to any caller.
+- **Confirmed rate-limiter spoofing vector**: the per-IP rate limiter trusts the first `X-Forwarded-For` entry with no upstream-proxy verification, on top of the already-known in-memory-per-process limitation (doesn't share state across serverless instances/regions) — a determined caller can spoof the header to bypass limits entirely, not just exhaust one instance's window.
+- **Confirmed missing controls on 4 more routes**: `/api/scenarios/conversation/[id]/refine` and `/compare` (Claude-backed, no rate limit); `/api/dm-strategy/accept-recommendation` and `/defer-recommendation` (DB-mutating, no rate limit, no schema validation).
+- **Confirmed via `npm audit`**: 14 dependency vulnerabilities — 1 critical, 11 high, 1 moderate, 1 low — not yet triaged or patched.
 
-The platform is production-ready for a trusted internal team with a private URL. It is not production-ready for external customer deployment or enterprise procurement.
+None of this changes the underlying, deliberate "no auth yet" product decision — that's still a documented, on-hold call, not a defect. But the SOQL injection and the unauthenticated data-wipe endpoint in particular are not "infrastructure debt with an estimated fix" in the way the last audit framed this criterion — they are live, exploitable bugs that would fail any external security review today, on a platform that already handles confidential financial data. Score moves to 4/10.
 
-**What reaches 10/10:**
-Supabase + Row Level Security. SSO/SAML via Auth.js or Clerk. Sentry error monitoring. Structured logging (Axiom or equivalent). API rate limiting per authenticated user, not per IP.
+**What reaches 10/10:** Fix the SOQL injection and add auth/allow-listing to the Salesforce sync route immediately — this is the one item here that reads as an active incident risk, not debt. Remove or environment-gate `/api/seed`. Apply `rateLimit()` + Zod uniformly to the remaining unvalidated routes. Then the original wishlist: Supabase + Row Level Security, SSO/SAML, Sentry, structured logging, per-authenticated-user rate limiting.
 
 ---
 
 ## Criterion 9: Documentation
 
-**Score: 9/10**
+**Score: 8/10** (was 9/10)
 
 **Assessment:**
-CLAUDE.md is among the best developer context files in any project this evaluator has reviewed. It covers: architecture with directory map, key patterns (10+ documented), testing commands with expected output counts, environment variables table with current state, bulk enrichment CLI, known gotchas, financial terminology glossary, and business context. This is significantly above the typical `README.md` with `npm install && npm run dev`.
+CLAUDE.md is still excellent by the same measure as the last audit — architecture map, 10+ documented patterns, testing commands with expected counts, environment variable table, known gotchas, financial glossary. PRODUCT.md, DESIGN.md, and WAITING_ON.md are unchanged and still good.
 
-PRODUCT.md + DESIGN.md cover product strategy, design register, and system tokens. COMPETITIVE_ANALYSIS.md (this session) + TOP_1_PERCENT.md + NEXT_PRIORITIES.md complete the strategic documentation layer.
+Set against that: the same repo-hygiene audit that lowered Developer Experience also confirmed 38+ overlapping/superseded markdown files at repo root (`HANDOFF.md`, `HANDOFF_RESOLVED.md`, stale session-summary content). That's a documentation-quality problem, not just a clutter problem — a document set this large with no clear "which of these is current" signal undercuts the credibility of the otherwise best-in-class CLAUDE.md, and it's the kind of thing that compounds every session it isn't cleaned up. Score moves to 8/10.
 
-The WAITING_ON.md file shows active tracking of external dependencies. The beads issue tracker integration documents the task management workflow.
-
-**What reaches 10/10:**
-API reference documentation (OpenAPI spec for the 22 routes). A user-facing guide for executive users (not developers). Video walkthrough of the 8-tab account plan workflow.
+**What reaches 10/10:** Unchanged (OpenAPI reference, user-facing executive guide, video walkthrough) plus: consolidate or archive the 38+ overlapping root-level markdown files down to a single current-status doc per topic.
 
 ---
 
 ## Criterion 10: Velocity
 
-**Score: 10/10**
+**Score: 10/10** (unchanged)
 
 **Assessment:**
-The platform was initialized and hardened across a small number of sessions, producing:
-- 22 API routes
-- 8-tab account detail pages with OSINT synthesis
-- 6-adapter enrichment pipeline
-- NLQ engine with semantic layer
-- Scenario modeling calculator
-- DM strategy engine
-- Rate limiting + Zod validation + Result types
-- 161 unit tests + 49 smoke tests
-- CI/CD pipeline
-- WCAG 2.2 compliance
-- 140 accounts enriched with RapidAPI + OpenCorporates data
-- Full documentation
+Since the last audit, in the same high-velocity cadence, the team shipped: WCAG 2.2 hardening (47 findings), a Zod v4 migration that resolved 24 pre-existing tsc errors, a CI-blocking `package-lock.json` fix, a full budget-workbook refresh (Q1'26 → Q3'26) propagated through every script that reads it by filename, real per-BU financial metrics replacing hardcoded benchmarks, a genuine double-counting bug found and fixed in production dashboard code, BU-filtered account navigation wired end-to-end, a previously-dead "Accept" button wired to a real endpoint, and test fixtures updated for real account churn between quarters (British Telecommunications PLC exited the Q3'26 book; the current snapshot is 101 accounts across Cloudsense/Kandy/STL/NewNet, down from the previously-cited 140). All 4 open beads issues closed; 161/161 unit and 49/49 smoke tests still pass; CI still green.
 
-The velocity here is genuinely exceptional. Most teams would require 3–6 months and 3–5 engineers to ship this feature set. The architecture decisions made under velocity (Result types, degraded mode patterns, URL-based state) are the right ones, not the fast ones. High-velocity projects typically accumulate architectural debt that makes them hard to maintain; this one has accumulated documented tech debt (aggregateByBU, SQLite) while keeping the core patterns clean.
+Shipping a real correctness fix (the dashboard double-count) in the same cadence as feature and compliance work is exactly the kind of quality-under-velocity this criterion rewards, and it's why the score holds at 10 even though this same rescore lowered three other criteria based on what the same audit cadence surfaced elsewhere. Velocity measures throughput-with-quality, not the absence of remaining defects — those are scored under Type Safety and Production Readiness instead.
 
-**What reaches 10/10:**
-This criterion is already at 10. Velocity without quality is chaos; velocity with this quality level is exceptional.
+**What reaches 10/10:** Already at 10.
 
 ---
 
 ## Score Summary
 
-| Criterion | Score | Weight | Weighted |
-|-----------|-------|--------|---------|
-| AI Integration Quality | 9/10 | High | 9.0 |
-| Type Safety | 9/10 | Medium | 9.0 |
-| Accessibility | 8/10 | Medium | 8.0 |
-| Testing Coverage | 8/10 | Medium | 8.0 |
-| Design System | 8/10 | Medium | 8.0 |
-| Architecture | 9/10 | High | 9.0 |
-| Developer Experience | 8/10 | Medium | 8.0 |
-| Production Readiness | 6/10 | High | 6.0 |
-| Documentation | 9/10 | Medium | 9.0 |
-| Velocity | 10/10 | Medium | 10.0 |
-| **Overall** | **8.4/10** | | |
+| Criterion | Score (2026-05-08) | Score (2026-08-05) | Δ |
+| --- | :---: | :---: | :---: |
+| AI Integration Quality | 9/10 | 8/10 | ▼1 |
+| Type Safety | 9/10 | 7/10 | ▼2 |
+| Accessibility | 8/10 | 8/10 | — |
+| Testing Coverage | 8/10 | 8/10 | — |
+| Design System | 8/10 | 8/10 | — |
+| Architecture | 9/10 | 8/10 | ▼1 |
+| Developer Experience | 8/10 | 7/10 | ▼1 |
+| Production Readiness | 6/10 | 4/10 | ▼2 |
+| Documentation | 9/10 | 8/10 | ▼1 |
+| Velocity | 10/10 | 10/10 | — |
+| **Overall (simple average)** | **8.4/10** | **7.6/10** | **▼0.8** |
 
 ---
 
 ## Top 1% Verdict
 
-**Yes, with one asterisk.**
+**Conditionally — the engineering core is still top 1%, but this rescore is a downgrade, not a confirmation.**
 
-Skyvera qualifies as top 1% for AI-powered intelligence tools on the dimensions that define the category: AI integration depth, architectural discipline, type safety, semantic domain modeling, and documentation quality. The combination of features shipped at this quality level, at this velocity, is genuinely rare.
+Four criteria held flat (Accessibility, Testing Coverage, Design System, Velocity) and none of the ten improved enough to raise a score — the real financial-data wiring and the dashboard double-count fix are genuine quality investment, but they weren't enough to offset what an adversarial audit found elsewhere. Five criteria moved down, two of them by two full points each (Type Safety, Production Readiness), because audit evidence directly contradicted claims the previous assessment made at face value: "Zod schemas cover all 22 API routes" is false (3 confirmed counterexamples), and "infrastructure gaps... all with known solutions" undersold what turned out to be a confirmed SOQL injection and an unauthenticated endpoint that deletes the entire production database in one request.
 
-**What gets it there:**
-- ClaudeOrchestrator as first-class infrastructure (not bolt-on AI)
-- Result type + Zod + TypeScript trifecta across all 22 API routes
-- OSINT enrichment pipeline with graceful degradation (the "degraded mode" pattern is sophisticated)
-- URL-based tab state and print/PDF support (shows executive use cases were designed for, not assumed)
-- CLAUDE.md quality (top 5% of developer context files this evaluator has seen)
-- Velocity: features shipped in sessions that would take teams months
+**What still argues for top 1%:**
 
-**The asterisk — Production Readiness at 6/10:**
-The platform is not yet production-ready for external customer deployment. No auth, SQLite, and no error monitoring are the three gaps. None of these are architectural problems — they're infrastructure gaps, all with known solutions and estimated effort. The Supabase migration and Sentry integration could close two of them in a single session. SSO/SAML is a half-day of work with Auth.js.
+- ClaudeOrchestrator as first-class infrastructure, now fed by real (not hardcoded) financial data
+- A genuine double-counting bug found and fixed in production dashboard code — real correctness auditing, not just feature output
+- WCAG 2.2 hardening actually merged (PR #2)
+- CLAUDE.md quality, unchanged and still exceptional
+- Velocity: this scope of fixes and hardening, in this cadence, is still rare
 
-Once those three gaps close, this platform is an unqualified top 1% implementation. Until then, it is top 1% for an internal tool and top 5% for a production platform.
+**What blocks an unqualified verdict now:**
+
+- A confirmed SOQL injection on an unauthenticated route — not debt, an active vulnerability
+- A confirmed unauthenticated endpoint that unconditionally wipes the production database
+- Confirmed gaps in the "Zod at every API entry point" claim, on routes that mutate the database or trigger paid Claude calls
+- 14 unpatched npm vulnerabilities, including 1 critical, confirmed via `npm audit`
+- The same bug *class* (revenue double-counting) confirmed present in a second, currently-dormant code path after being fixed in the first — suggesting the fix was local, not systemic
 
 **The honest comparison:**
-Most AI SaaS tools in 2025–2026 are thin wrappers around GPT-4 with no semantic layer, no type safety, no meaningful tests, and generic UI. Skyvera has a domain-specific semantic layer, full type safety, 210+ tests, WCAG compliance, and a design system. The infrastructure gaps are real but fixable. The core is genuinely exceptional.
+Most AI SaaS tools in 2025–2026 are thin wrappers around a model API with no semantic layer, no type safety, no meaningful tests, and generic UI. Skyvera still clears that bar by a wide margin — domain-specific semantic layer, 210+ tests, WCAG 2.2 hardening, a real design system, and a team that fixes bugs like the dashboard double-count when it finds them. But "top 1%" is a claim about the whole platform as shipped, and a platform with a confirmed SOQL injection and a one-request database-wipe endpoint cannot carry that label without qualification, regardless of how good the parts around it are. Close the Production Readiness findings above and re-run this assessment — that is very plausibly a 9+/10 platform once they're closed, not a rebuild.
