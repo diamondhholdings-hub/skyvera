@@ -2,9 +2,12 @@
 
 /**
  * BU Performance Table
- * Exact match to reference HTML styling
+ * Hover via CSS `.table-row-hover` (defined in globals.css).
+ * Rows navigate to the accounts list filtered to that BU.
  */
 
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import type { BUFinancialSummary } from '@/lib/types/financial'
 
 interface BUPerformanceTableProps {
@@ -12,18 +15,19 @@ interface BUPerformanceTableProps {
 }
 
 export function BUPerformanceTable({ buSummaries }: BUPerformanceTableProps) {
+  const router = useRouter()
   return (
     <table style={{
       width: '100%',
       borderCollapse: 'collapse',
       margin: '20px 0',
-      background: 'white',
-      borderRadius: '10px',
+      background: 'var(--surface)',
+      borderRadius: 'var(--radius-md)',
       overflow: 'hidden',
-      boxShadow: '0 2px 10px rgba(0,0,0,0.1)'
+      boxShadow: 'var(--shadow-sm)'
     }}>
       <thead>
-        <tr style={{ background: '#1e3c72', color: 'white', textAlign: 'left' as const }}>
+        <tr style={{ background: 'var(--secondary)', color: 'var(--paper)', textAlign: 'left' as const }}>
           <th style={{ padding: '15px', fontWeight: 600, fontSize: '0.9em' }}>Business Unit</th>
           <th style={{ padding: '15px', fontWeight: 600, fontSize: '0.9em' }}>Revenue</th>
           <th style={{ padding: '15px', fontWeight: 600, fontSize: '0.9em' }}>Customers</th>
@@ -35,17 +39,24 @@ export function BUPerformanceTable({ buSummaries }: BUPerformanceTableProps) {
       <tbody>
         {buSummaries.map((bu) => {
           const delta = bu.ebitda - (bu.totalRevenue * bu.netMarginTarget) / 100
+          const href = `/accounts?bu=${encodeURIComponent(bu.bu)}`
 
           return (
             <tr
               key={bu.bu}
               className="table-row-hover"
-              style={{ borderBottom: '1px solid #e9ecef', cursor: 'pointer' }}
-              onMouseEnter={(e) => e.currentTarget.style.background = '#f8f9fa'}
-              onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
+              onClick={() => router.push(href)}
+              style={{ borderBottom: '1px solid var(--border)', cursor: 'pointer' }}
             >
               <td style={{ padding: '12px 15px', fontSize: '0.9em', fontWeight: 600 }}>
-                {bu.bu}
+                <Link
+                  href={href}
+                  onClick={(e) => e.stopPropagation()}
+                  style={{ color: 'inherit', textDecoration: 'none' }}
+                  className="hover:underline"
+                >
+                  {bu.bu}
+                </Link>
               </td>
               <td style={{ padding: '12px 15px', fontSize: '0.9em' }}>
                 ${(bu.totalRevenue / 1e6).toFixed(2)}M
@@ -66,8 +77,8 @@ export function BUPerformanceTable({ buSummaries }: BUPerformanceTableProps) {
                   borderRadius: '15px',
                   fontSize: '0.8em',
                   fontWeight: 600,
-                  background: delta < 0 ? '#f5576c' : '#4facfe',
-                  color: 'white'
+                  background: delta < 0 ? 'var(--critical)' : 'var(--success)',
+                  color: 'var(--paper)'
                 }}>
                   {delta < 0 ? '-' : '+'}${Math.abs(delta / 1e3).toFixed(0)}K
                 </span>

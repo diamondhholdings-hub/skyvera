@@ -2,6 +2,8 @@
 
 Comprehensive system architecture for the Skyvera Executive Intelligence System.
 
+_Last updated: May 8, 2026_
+
 ## Table of Contents
 
 - [High-Level Architecture](#high-level-architecture)
@@ -14,6 +16,8 @@ Comprehensive system architecture for the Skyvera Executive Intelligence System.
 - [Claude AI Integration](#claude-ai-integration)
 - [Error Handling](#error-handling)
 - [Database Schema](#database-schema)
+- [Design System](#design-system)
+- [Accessibility Architecture](#accessibility-architecture)
 - [CI/CD Pipeline](#cicd-pipeline)
 - [Security Considerations](#security-considerations)
 
@@ -323,7 +327,7 @@ export function rateLimit(options: RateLimitOptions) {
 
 ## Validation Layer
 
-All API route entry points parse and validate request bodies through Zod schemas before any processing occurs.
+All API route entry points parse and validate request bodies through Zod schemas before any processing occurs. The codebase uses **Zod v4** — `z.string().min(3)` and similar APIs are unchanged but error message formats and some refinement APIs differ from v3; all schemas in `src/lib/validation/schemas.ts` have been migrated.
 
 ### Implementation
 
@@ -757,6 +761,73 @@ erDiagram
 - `publishedAt`: Recent news sorting
 - `status`: PRD workflow filtering
 - `priorityClass`: P0/P1 PRD queries
+
+---
+
+## Design System
+
+The platform has a documented design system spanning two files at the repo root:
+
+- **`PRODUCT.md`** — component standards, page layout rules, UX patterns (tab navigation, kanban, inline editing, chat panel)
+- **`DESIGN.md`** — CSS token variables, OKLCH-aware color palette, spacing scale, typography, shadow/radius tokens
+
+### Token Architecture
+
+All colors, spacing, and radii are expressed as CSS custom properties defined in `src/app/globals.css` and consumed via Tailwind's `theme.extend` in `tailwind.config.ts`. This means:
+
+- Theming is a single-file change (swap token values, no component edits)
+- Dark mode is addable via a `[data-theme="dark"]` selector override on the token block
+- OKLCH color space is used for perceptually uniform palette steps
+
+### Print/PDF Layout
+
+Account plan pages support clean A4 print output:
+
+```css
+@media print {
+  [data-print="hide"] { display: none; }
+  /* A4 dimensions, -webkit-print-color-adjust: exact */
+}
+```
+
+No print-specific JS required — the `data-print="hide"` attribute on nav, chat panel, and action buttons is all that's needed.
+
+---
+
+## Accessibility Architecture
+
+The platform targets **WCAG 2.2** compliance. Key architectural decisions:
+
+### Navigation
+
+- Tab navigation uses Next.js `<Link>` components (not `<button onClick>`)
+- Active tab receives `aria-current="page"` automatically via URL match
+- `<nav>` elements carry distinct `aria-label` values (e.g., `aria-label="Account tabs"`, `aria-label="Main navigation"`)
+
+### Interactive Components
+
+- Dialogs and modals use `role="dialog"`, `aria-modal="true"`, and `aria-labelledby`
+- Form groups use `<fieldset>` + `<legend>` instead of bare `<div>` wrappers
+- Inline status cycle buttons have `aria-label` describing the current state and next action
+
+### Focus Management
+
+- `scroll-margin-top` is set on all anchor targets so the fixed nav bar does not obscure jumped-to content
+- `prefers-reduced-motion` media query disables CSS transitions and animations for users who opt out
+
+### Server Component Constraint
+
+Event handlers (`onClick`, `onMouseEnter`) are illegal in Server Components. Where hover effects are needed in a Server Component, a `<style>` tag with CSS `:hover` selectors is injected inline — never a client component boundary added just for hover state.
+
+### Testing Accessibility
+
+```bash
+# Run smoke tests — include ARIA assertions
+npx playwright test tests/smoke/
+
+# Check for axe violations in E2E (requires dev server)
+npx playwright test tests/e2e/ --grep accessibility
+```
 
 ---
 

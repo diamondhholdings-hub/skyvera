@@ -10,7 +10,7 @@ const PAGES = [
   { route: '/',                                        name: 'root' },
   { route: '/dashboard',                               name: 'dashboard' },
   { route: '/accounts',                                name: 'accounts' },
-  { route: '/accounts/British%20Telecommunications',   name: 'account-plan-bt' },
+  { route: '/accounts/Telefonica%20UK%20Limited',      name: 'account-plan-bt' },
   { route: '/alerts',                                  name: 'alerts' },
   { route: '/query',                                   name: 'query' },
   { route: '/scenario',                                name: 'scenario' },

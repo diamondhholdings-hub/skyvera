@@ -1,6 +1,8 @@
 /**
  * POST /api/dm-strategy/accept-recommendation
- * Accept a recommendation and optionally create an action item
+ * Accept a recommendation, optionally creating an action item.
+ * If `actionItem` is omitted, this is a quick accept: the recommendation's
+ * status moves to 'in_progress' without an action item attached.
  */
 
 import { NextResponse } from 'next/server'
@@ -20,22 +22,6 @@ export async function POST(request: Request) {
       )
     }
 
-    if (!actionItem) {
-      return NextResponse.json(
-        { error: 'actionItem details are required' },
-        { status: 400 }
-      )
-    }
-
-    // Validate action item fields
-    const { assignedTo, dueDate, priority, board, notes } = actionItem
-    if (!assignedTo || !dueDate || !priority || !board) {
-      return NextResponse.json(
-        { error: 'assignedTo, dueDate, priority, and board are required' },
-        { status: 400 }
-      )
-    }
-
     // Fetch recommendation
     const recommendation = await prisma.dMRecommendation.findUnique({
       where: { recommendationId },
@@ -45,6 +31,32 @@ export async function POST(request: Request) {
       return NextResponse.json(
         { error: 'Recommendation not found' },
         { status: 404 }
+      )
+    }
+
+    // Quick accept: no action item details provided
+    if (!actionItem) {
+      const updated = await prisma.dMRecommendation.update({
+        where: { recommendationId },
+        data: {
+          status: 'in_progress',
+          acceptedAt: new Date(),
+        },
+      })
+
+      return NextResponse.json({
+        success: true,
+        recommendation: updated,
+        message: 'Recommendation accepted',
+      })
+    }
+
+    // Validate action item fields
+    const { assignedTo, dueDate, priority, board, notes } = actionItem
+    if (!assignedTo || !dueDate || !priority || !board) {
+      return NextResponse.json(
+        { error: 'assignedTo, dueDate, priority, and board are required' },
+        { status: 400 }
       )
     }
 

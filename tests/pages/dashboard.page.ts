@@ -32,7 +32,9 @@ export class DashboardPage {
     this.accountsNavLink = page.getByRole('link', { name: 'Accounts' })
 
     // KPI cards - MetricCard uses divs, not headings. Match on label text.
-    this.totalRevenueKPI = page.getByText(/Total Revenue.*Q1'26/i)
+    // Not pinned to a specific quarter — the label reflects whichever quarter
+    // is currently loaded from the Excel data.
+    this.totalRevenueKPI = page.getByText(/Total Revenue/i).first()
     this.netMarginKPI = page.getByText(/Net Margin|EBITDA/i).first()
     this.ebitdaKPI = page.getByText(/EBITDA/i).first()
     this.headcountKPI = page.getByText(/ARR.*Annualized|Rule of 40/i).first()

@@ -70,7 +70,8 @@ export function AccountsSearch() {
       </svg>
 
       <input
-        type="text"
+        type="search"
+        name="search"
         value={value}
         onChange={handleChange}
         placeholder="Search accounts by name, BU, or health..."
@@ -109,6 +110,8 @@ export function AccountsSearch() {
             alignItems: 'center',
             justifyContent: 'center',
             borderRadius: '4px',
+            minWidth: '24px',
+            minHeight: '24px',
           }}
         >
           <svg

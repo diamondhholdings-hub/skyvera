@@ -15,7 +15,7 @@ import { z } from 'zod'
 
 export const queryRequestSchema = z.object({
   query: z.string().min(1, 'query must not be empty').max(2000, 'query too long'),
-  filters: z.record(z.unknown()).optional(),
+  filters: z.record(z.string(), z.unknown()).optional(),
   conversationContext: z.array(z.unknown()).optional(),
   cannedQueryId: z.string().optional(),
 })
@@ -30,7 +30,7 @@ export type QueryRequest = z.infer<typeof queryRequestSchema>
 
 export const scenarioAnalyzeRequestSchema = z.object({
   type: z.string().min(1, 'type is required'),
-  parameters: z.record(z.unknown()).optional(),
+  parameters: z.record(z.string(), z.unknown()).optional(),
   name: z.string().optional(),
   description: z.string().optional(),
 })
@@ -53,7 +53,7 @@ export type ConversationStartRequest = z.infer<typeof conversationStartSchema>
 
 export const conversationMessageSchema = z.object({
   message: z.string().min(1, 'message cannot be empty').max(2000, 'message too long'),
-  conversationState: z.record(z.unknown()),
+  conversationState: z.record(z.string(), z.unknown()),
 })
 
 export type ConversationMessageRequest = z.infer<typeof conversationMessageSchema>
@@ -146,17 +146,13 @@ export const actionStatusValues = ['pending', 'in-progress', 'completed', 'cance
 
 export const patchPainPointSchema = z.object({
   status: z.enum(painPointStatusValues, {
-    errorMap: () => ({
-      message: `status must be one of: ${painPointStatusValues.join(', ')}`,
-    }),
+    error: `status must be one of: ${painPointStatusValues.join(', ')}`,
   }),
 })
 
 export const patchActionItemSchema = z.object({
   status: z.enum(actionStatusValues, {
-    errorMap: () => ({
-      message: `status must be one of: ${actionStatusValues.join(', ')}`,
-    }),
+    error: `status must be one of: ${actionStatusValues.join(', ')}`,
   }),
 })
 

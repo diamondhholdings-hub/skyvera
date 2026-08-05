@@ -17,7 +17,7 @@ from pathlib import Path
 from openpyxl import load_workbook
 
 # Excel file path relative to project root
-EXCEL_FILE = "2025-12-11 Skyvera - Budget - Q1'26 - For Todd.xlsx"
+EXCEL_FILE = "2026-07-02 Skyvera - Budget - Q3'26 - Final - For Todd.xlsx"
 
 def log(message):
     """Log progress to stderr (so it doesn't contaminate JSON output)"""
@@ -206,10 +206,14 @@ def _read_bu_pnl(wb, sheet_name, bu_name):
         log(f"  Warning: Sheet '{sheet_name}' not found, skipping {bu_name}")
         return None
 
-    COL = 3  # Column C = Q1'26 BU Plan
+    COL = 3        # Column C = current-quarter BU Plan
+    COL_PRIOR = 5  # Column E = current-quarter Prior BU Plan (same row layout)
 
     def cell(row):
         return _safe_num(ws.cell(row=row, column=COL).value)
+
+    def prior_cell(row):
+        return _safe_num(ws.cell(row=row, column=COL_PRIOR).value)
 
     rr             = cell(5)
     nrr            = cell(6)
@@ -232,10 +236,17 @@ def _read_bu_pnl(wb, sheet_name, bu_name):
     delta_to_margin = cell(23)
     ebitda         = cell(24)
 
+    # Prior Plan comparison (same rows, Prior BU Plan column) — real variance
+    # data instead of estimated/static benchmarks.
+    rr_prior_plan            = prior_cell(5)
+    total_revenue_prior_plan = prior_cell(7)
+
     return {
         'bu': bu_name,
         'totalRR': rr,
         'totalNRR': nrr,
+        'rrPriorPlan': rr_prior_plan,
+        'totalRevenuePriorPlan': total_revenue_prior_plan,
         'totalRevenue': total_revenue,
         'hcCogs': hc_cogs,
         'nhcCogs': nhc_cogs,
@@ -254,6 +265,98 @@ def _read_bu_pnl(wb, sheet_name, bu_name):
         'marginTarget': margin_target * 100,       # convert to percentage
         'deltaToMargin': delta_to_margin,
         'ebitda': ebitda,
+    }
+
+
+def extract_ar_aging(wb):
+    """Sum real AR > 90 days (>$5k) balances from the 'AR Aging' sheet.
+
+    Sheet layout: header row 3, data from row 4. Column F (index 6, 1-based)
+    is customer name, column G (index 7, 1-based) is the AR > 90 days > $5k
+    balance for that customer.
+    """
+    try:
+        ws = wb['AR Aging']
+    except KeyError:
+        log("Warning: 'AR Aging' sheet not found, AR aging total unavailable")
+        return None
+
+    total = 0.0
+    for row in ws.iter_rows(min_row=4, values_only=True):
+        if not row or len(row) < 7 or not row[5]:
+            continue
+        total += _safe_num(row[6])
+
+    return total
+
+
+def _quarter_year_ago(quarter_label):
+    """Given a label like "Q3'26", return "Q3'25" (same quarter, prior year)."""
+    match = re.match(r"Q([1-4])'(\d{2})", quarter_label or '')
+    if not match:
+        return None
+    quarter, year = match.group(1), int(match.group(2))
+    return f"Q{quarter}'{year - 1:02d}"
+
+
+def extract_yoy_metrics(wb):
+    """Compute real YoY total-revenue growth from the '<BU> - Comparison to PP' sheets.
+
+    Each sheet is a quarter-by-quarter time series with quarter labels in row 4
+    (columns C-J) and Total Revenue in row 7. The current quarter is the last
+    non-empty header column; the comparison quarter is whichever column is
+    labelled with the same quarter one year earlier. Summed across the three
+    core BUs to get a company-wide YoY change — not a static benchmark.
+    """
+    bu_sheets = ['Cloudsense - Comparison to PP', 'Kandy - Comparison to PP', 'STL - Comparison to PP']
+
+    current_total = 0.0
+    prior_year_total = 0.0
+    found_any = False
+
+    for sheet_name in bu_sheets:
+        try:
+            ws = wb[sheet_name]
+        except KeyError:
+            log(f"Warning: '{sheet_name}' not found, skipping for YoY calc")
+            continue
+
+        header = [ws.cell(row=4, column=c).value for c in range(3, 11)]
+
+        current_col = None
+        current_label = None
+        for offset in range(len(header) - 1, -1, -1):
+            if header[offset]:
+                current_col = 3 + offset
+                current_label = header[offset]
+                break
+
+        if current_col is None:
+            log(f"Warning: no quarter headers found in '{sheet_name}'")
+            continue
+
+        prior_label = _quarter_year_ago(current_label)
+        prior_col = None
+        for offset, label in enumerate(header):
+            if label == prior_label:
+                prior_col = 3 + offset
+                break
+
+        if prior_col is None:
+            log(f"Warning: no column for '{prior_label}' in '{sheet_name}' (needed for YoY)")
+            continue
+
+        current_total += _safe_num(ws.cell(row=7, column=current_col).value)
+        prior_year_total += _safe_num(ws.cell(row=7, column=prior_col).value)
+        found_any = True
+
+    if not found_any or prior_year_total == 0:
+        return None
+
+    return {
+        'currentRevenue': current_total,
+        'priorYearRevenue': prior_year_total,
+        'yoyChangePct': (current_total - prior_year_total) / prior_year_total * 100,
     }
 
 
@@ -298,6 +401,23 @@ def extract_financials(wb):
             for bu in bu_configs
         )
         consolidated['customerCount'] = total_customers
+
+        ar_aging = extract_ar_aging(wb)
+        consolidated['arAgingOver90'] = ar_aging
+        if ar_aging is not None:
+            log(f"  ✓ AR > 90 days (>$5k): ${ar_aging:,.0f}")
+
+        yoy = extract_yoy_metrics(wb)
+        if yoy:
+            consolidated['arrYoYChangePct'] = yoy['yoyChangePct']
+            consolidated['ruleOf40'] = yoy['yoyChangePct'] + consolidated['netMargin']
+            log(f"  ✓ YoY revenue change: {yoy['yoyChangePct']:.1f}%, "
+                f"Rule of 40: {consolidated['ruleOf40']:.1f}")
+        else:
+            consolidated['arrYoYChangePct'] = None
+            consolidated['ruleOf40'] = None
+            log("  Warning: could not compute YoY/Rule of 40 (missing comparison data)")
+
         financials_by_bu['Skyvera'] = consolidated
         log(f"  ✓ Skyvera (consolidated): ${consolidated['totalRevenue']:,.0f} revenue, "
             f"{consolidated['netMargin']:.1f}% net margin")

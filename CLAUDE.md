@@ -21,7 +21,7 @@ This repository is **both** a business analysis tool and a full AI-powered execu
 
 ### Business Analysis Files
 The repository also contains the original financial analysis files:
-- Excel budget file: `2025-12-11 Skyvera - Budget - Q1'26 - For Todd.xlsx`
+- Excel budget file: `2026-07-02 Skyvera - Budget - Q3'26 - Final - For Todd.xlsx`
 - `Business_Analysis_Dashboard.html` — standalone Chart.js executive dashboard
 
 ## Platform Architecture
@@ -69,6 +69,23 @@ tests/
 - Event handlers ILLEGAL in Server Components — use CSS `:hover` via `<style>` tag + className
 - `arr: customer.rr` alias in `src/lib/semantic/resolver.ts` — field name is misleading; values are already annual (known gotcha, documented)
 
+### WCAG 2.2 / Accessibility Patterns
+- **Tab navigation**: uses `<Link href="?tab=X" scroll={false}>` + `aria-current="page"` inside `<nav aria-label="...">` — simpler than APG tablist pattern, avoids arrow-key keyboard contract
+- **Chat panel / modals**: `role="dialog" aria-modal="true" aria-labelledby` with inline focus trap; Escape key restores focus to trigger (FAB or button)
+- **Reduced motion**: `@media (prefers-reduced-motion: reduce)` block in `globals.css` disables all `.animate-*` classes — do not apply animations outside this guard
+- **Filter groups**: use `<fieldset><legend>` not bare `<label>` elements for grouped controls
+- **Emoji**: wrap decorative emoji in `aria-hidden="true"` spans; never use raw emoji in interactive label text
+
+### TypeScript / Zod
+- **tsc: 0 errors** as of 2026-05-08 (previously 24 pre-existing Zod v4 API drift errors)
+- **Zod v4**: use `z.record(z.string(), z.unknown())` not `z.record(z.unknown())`; use `error:` not `errorMap:` for custom enum messages
+
+### Design System
+- `PRODUCT.md` — product register, target users, anti-references (required by impeccable skill)
+- `DESIGN.md` — design tokens (24 colors, 8 typography, 16 components), Editorial Datafeed register
+- Primary color: brick-red `#C84B31` (`--accent`)
+- CSS token vars in use: `var(--accent)`, `var(--accent-hover)`, `var(--surface)`, `var(--critical)`, `var(--warning)`, `var(--success)`, `var(--radius-md)` — never use hardcoded hex values in component files
+
 ## Testing
 
 ```bash
@@ -94,10 +111,12 @@ CI runs type-check + build + smoke tests automatically on every PR via `.github/
 | `ANTHROPIC_API_KEY` | ✅ | ✅ | Required |
 | `DATABASE_URL` | ✅ | ✅ | `file:./dev.db` locally |
 | `RAPIDAPI_KEY` | ✅ | ✅ | Enrichment pipeline (5 adapters) |
-| `OPENCORPORATES_API_KEY` | ✅ | ✅ | Corporate registry (directors, legal name) |
+| `OPENCORPORATES_API_KEY` | ✅ | ✅ | Corporate registry (directors, legal name, jurisdiction) |
 | `NEXT_PUBLIC_APP_URL` | ✅ | ✅ | Required for Playwright tests |
 | `NEWSAPI_KEY` | — | — | Optional — news intelligence |
 | `DEMO_MODE` | — | — | Optional — set `true` to extend cache TTLs to 30min |
+
+> **Upcoming:** `DATABASE_URL` will point to Supabase (PostgreSQL) once migration is complete. Currently `file:./dev.db` (SQLite).
 
 ## Bulk Enrichment
 
@@ -112,7 +131,7 @@ Results written to `data/enrichment/{slug}.json`. Corporate registry sections re
 ## Key Files
 
 ### Budget Data
-- **`2025-12-11 Skyvera - Budget - Q1'26 - For Todd.xlsx`** - Master budget file containing:
+- **`2026-07-02 Skyvera - Budget - Q3'26 - Final - For Todd.xlsx`** - Master budget file containing:
   - Multiple business unit P&Ls (Cloudsense, Kandy, STL)
   - Recurring Revenue (RR) and Non-Recurring Revenue (NRR) forecasts
   - Headcount (HC) budget and planning
@@ -144,7 +163,7 @@ Use `openpyxl` library for Excel file manipulation:
 ```python
 from openpyxl import load_workbook
 
-file_path = "2025-12-11 Skyvera - Budget - Q1'26 - For Todd.xlsx"
+file_path = "2026-07-02 Skyvera - Budget - Q3'26 - Final - For Todd.xlsx"
 wb = load_workbook(file_path, data_only=True)  # data_only=True for calculated values
 
 # Access specific sheet
@@ -228,3 +247,59 @@ pip3 install openpyxl  # Excel file reading
 ```
 
 Note: `pandas` is NOT currently installed but can be added if needed for more complex data manipulation.
+
+
+<!-- BEGIN BEADS INTEGRATION v:1 profile:minimal hash:ca08a54f -->
+## Beads Issue Tracker
+
+This project uses **bd (beads)** for issue tracking. Run `bd prime` to see full workflow context and commands.
+
+### Quick Reference
+
+```bash
+bd ready              # Find available work
+bd show <id>          # View issue details
+bd update <id> --claim  # Claim work
+bd close <id>         # Complete work
+```
+
+### Open Issues (as of 2026-05-08)
+
+| ID | Title | Priority |
+|----|-------|----------|
+| skyvera-prf | DM briefing widget Accept button handler | P3 |
+| skyvera-iph | BU performance table row navigation | P3 |
+| skyvera-0yu | Wire financial-summary hardcoded metrics to data layer | P2 |
+
+### Rules
+
+- Use `bd` for ALL task tracking — do NOT use TodoWrite, TaskCreate, or markdown TODO lists
+- Run `bd prime` for detailed command reference and session close protocol
+- Use `bd remember` for persistent knowledge — do NOT use MEMORY.md files
+
+## Session Completion
+
+**When ending a work session**, you MUST complete ALL steps below. Work is NOT complete until `git push` succeeds.
+
+**MANDATORY WORKFLOW:**
+
+1. **File issues for remaining work** - Create issues for anything that needs follow-up
+2. **Run quality gates** (if code changed) - Tests, linters, builds
+3. **Update issue status** - Close finished work, update in-progress items
+4. **PUSH TO REMOTE** - This is MANDATORY:
+   ```bash
+   git pull --rebase
+   bd dolt push
+   git push
+   git status  # MUST show "up to date with origin"
+   ```
+5. **Clean up** - Clear stashes, prune remote branches
+6. **Verify** - All changes committed AND pushed
+7. **Hand off** - Provide context for next session
+
+**CRITICAL RULES:**
+- Work is NOT complete until `git push` succeeds
+- NEVER stop before pushing - that leaves work stranded locally
+- NEVER say "ready to push when you are" - YOU must push
+- If push fails, resolve and retry until it succeeds
+<!-- END BEADS INTEGRATION -->

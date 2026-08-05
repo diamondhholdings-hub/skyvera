@@ -4,6 +4,13 @@
  * AccountChatPanel — floating per-account AI chat widget
  * Anchored bottom-right of viewport; collapsed = round button, expanded = full panel
  * Uses streaming fetch to /api/accounts/[name]/chat
+ *
+ * a11y:
+ * - Expanded panel is a labeled modal dialog (role=dialog, aria-modal, aria-labelledby).
+ * - Escape closes it and returns focus to the FAB.
+ * - Tab cycles through focusable elements inside the panel (focus trap, no library).
+ * - Hover swaps moved to CSS so keyboard users get matching :focus-visible feedback.
+ * - Typing-indicator animation honors prefers-reduced-motion.
  */
 
 import { useState, useRef, useEffect, useCallback } from 'react'
@@ -33,6 +40,9 @@ export function AccountChatPanel({ customerName, bu: _bu }: AccountChatPanelProp
   const [loading, setLoading] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const textareaRef = useRef<HTMLTextAreaElement>(null)
+  const dialogRef = useRef<HTMLDivElement>(null)
+  const fabRef = useRef<HTMLButtonElement>(null)
+  const closeBtnRef = useRef<HTMLButtonElement>(null)
 
   // Scroll to bottom whenever messages update
   useEffect(() => {
@@ -45,6 +55,63 @@ export function AccountChatPanel({ customerName, bu: _bu }: AccountChatPanelProp
       setTimeout(() => textareaRef.current?.focus(), 100)
     }
   }, [open])
+
+  // Return focus to FAB after the panel closes (and the FAB has re-rendered)
+  const justClosedRef = useRef(false)
+  useEffect(() => {
+    if (!open && justClosedRef.current) {
+      justClosedRef.current = false
+      // Use rAF so the FAB has been re-mounted into the DOM before we focus it
+      requestAnimationFrame(() => fabRef.current?.focus())
+    }
+  }, [open])
+
+  const closePanel = useCallback(() => {
+    justClosedRef.current = true
+    setOpen(false)
+  }, [])
+
+  // Escape-to-close + simple focus trap (Tab / Shift+Tab wrap)
+  useEffect(() => {
+    if (!open) return
+
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        e.preventDefault()
+        closePanel()
+        return
+      }
+      if (e.key !== 'Tab') return
+
+      const root = dialogRef.current
+      if (!root) return
+
+      const focusables = Array.from(
+        root.querySelectorAll<HTMLElement>(
+          'a[href], area[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        )
+      ).filter((el) => !el.hasAttribute('aria-hidden') && el.offsetParent !== null)
+
+      if (focusables.length === 0) return
+
+      const first = focusables[0]
+      const last = focusables[focusables.length - 1]
+      const active = document.activeElement as HTMLElement | null
+
+      if (e.shiftKey) {
+        if (active === first || !root.contains(active)) {
+          e.preventDefault()
+          last.focus()
+        }
+      } else if (active === last) {
+        e.preventDefault()
+        first.focus()
+      }
+    }
+
+    document.addEventListener('keydown', handleKey)
+    return () => document.removeEventListener('keydown', handleKey)
+  }, [open, closePanel])
 
   const sendMessage = useCallback(
     async (text: string) => {
@@ -149,9 +216,68 @@ export function AccountChatPanel({ customerName, bu: _bu }: AccountChatPanelProp
         alignItems: 'flex-end',
       }}
     >
+      {/* Component-scoped styles — replaces JS hover handlers and gates the
+          typing-indicator animation behind prefers-reduced-motion. */}
+      <style>{`
+        .chat-suggestion-btn {
+          background: var(--highlight, #ecdbba);
+          border: 1px solid var(--border, #e8e6e1);
+          border-radius: 8px;
+          padding: 0.6rem 0.75rem;
+          font-size: 0.8rem;
+          color: var(--ink, #1a1a1a);
+          cursor: pointer;
+          text-align: left;
+          line-height: 1.4;
+          transition: background 0.15s;
+        }
+        .chat-suggestion-btn:hover,
+        .chat-suggestion-btn:focus-visible {
+          background: #e0ccaa;
+        }
+        .chat-fab {
+          width: 48px;
+          height: 48px;
+          border-radius: 50%;
+          background: var(--accent, #c84b31);
+          border: none;
+          color: #ffffff;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 0 4px 16px rgba(200,75,49,0.4);
+          transition: background 0.15s, box-shadow 0.15s;
+        }
+        .chat-fab:hover,
+        .chat-fab:focus-visible {
+          background: #b03d25;
+        }
+        .chat-typing-dot {
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background: var(--secondary, #2d4263);
+          display: inline-block;
+        }
+        @media (prefers-reduced-motion: no-preference) {
+          .chat-typing-dot {
+            animation: chatDotBounce 1.2s ease-in-out infinite;
+          }
+        }
+        @keyframes chatDotBounce {
+          0%, 80%, 100% { transform: translateY(0); opacity: 0.4; }
+          40% { transform: translateY(-6px); opacity: 1; }
+        }
+      `}</style>
+
       {/* Expanded chat panel */}
       {open && (
         <div
+          ref={dialogRef}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="chat-title"
           style={{
             width: '360px',
             height: '520px',
@@ -179,6 +305,7 @@ export function AccountChatPanel({ customerName, bu: _bu }: AccountChatPanelProp
           >
             <div>
               <div
+                id="chat-title"
                 style={{
                   fontFamily: '"Cormorant Garamond", serif',
                   fontSize: '1.1rem',
@@ -193,7 +320,8 @@ export function AccountChatPanel({ customerName, bu: _bu }: AccountChatPanelProp
               </div>
             </div>
             <button
-              onClick={() => setOpen(false)}
+              ref={closeBtnRef}
+              onClick={closePanel}
               style={{
                 background: 'transparent',
                 border: 'none',
@@ -240,26 +368,7 @@ export function AccountChatPanel({ customerName, bu: _bu }: AccountChatPanelProp
                     <button
                       key={suggestion}
                       onClick={() => handleSuggestion(suggestion)}
-                      style={{
-                        background: 'var(--highlight, #ecdbba)',
-                        border: '1px solid var(--border, #e8e6e1)',
-                        borderRadius: '8px',
-                        padding: '0.6rem 0.75rem',
-                        fontSize: '0.8rem',
-                        color: 'var(--ink, #1a1a1a)',
-                        cursor: 'pointer',
-                        textAlign: 'left',
-                        lineHeight: 1.4,
-                        transition: 'background 0.15s',
-                      }}
-                      onMouseEnter={(e) => {
-                        ;(e.currentTarget as HTMLButtonElement).style.background =
-                          '#e0ccaa'
-                      }}
-                      onMouseLeave={(e) => {
-                        ;(e.currentTarget as HTMLButtonElement).style.background =
-                          'var(--highlight, #ecdbba)'
-                      }}
+                      className="chat-suggestion-btn"
                     >
                       {suggestion}
                     </button>
@@ -324,6 +433,7 @@ export function AccountChatPanel({ customerName, bu: _bu }: AccountChatPanelProp
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
               placeholder="Ask a question..."
+              aria-label="Ask a question about this account"
               rows={1}
               style={{
                 flex: 1,
@@ -376,29 +486,11 @@ export function AccountChatPanel({ customerName, bu: _bu }: AccountChatPanelProp
       {/* Toggle button (collapsed state) */}
       {!open && (
         <button
+          ref={fabRef}
           onClick={() => setOpen(true)}
           aria-label="Open account chat"
-          style={{
-            width: '48px',
-            height: '48px',
-            borderRadius: '50%',
-            background: 'var(--accent, #c84b31)',
-            border: 'none',
-            color: '#ffffff',
-            cursor: 'pointer',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            boxShadow: '0 4px 16px rgba(200,75,49,0.4)',
-            transition: 'background 0.15s, box-shadow 0.15s',
-          }}
-          onMouseEnter={(e) => {
-            ;(e.currentTarget as HTMLButtonElement).style.background = '#b03d25'
-          }}
-          onMouseLeave={(e) => {
-            ;(e.currentTarget as HTMLButtonElement).style.background =
-              'var(--accent, #c84b31)'
-          }}
+          aria-expanded={open}
+          className="chat-fab"
         >
           <MessageCircle size={22} />
         </button>
@@ -407,7 +499,7 @@ export function AccountChatPanel({ customerName, bu: _bu }: AccountChatPanelProp
   )
 }
 
-/** Animated typing indicator — three bouncing dots */
+/** Animated typing indicator — three bouncing dots (motion-safe) */
 function TypingIndicator() {
   return (
     <div
@@ -417,22 +509,10 @@ function TypingIndicator() {
       {[0, 1, 2].map((i) => (
         <span
           key={i}
-          style={{
-            width: '6px',
-            height: '6px',
-            borderRadius: '50%',
-            background: 'var(--secondary, #2d4263)',
-            display: 'inline-block',
-            animation: `chatDotBounce 1.2s ease-in-out ${i * 0.2}s infinite`,
-          }}
+          className="chat-typing-dot"
+          style={{ animationDelay: `${i * 0.2}s` }}
         />
       ))}
-      <style>{`
-        @keyframes chatDotBounce {
-          0%, 80%, 100% { transform: translateY(0); opacity: 0.4; }
-          40% { transform: translateY(-6px); opacity: 1; }
-        }
-      `}</style>
     </div>
   )
 }

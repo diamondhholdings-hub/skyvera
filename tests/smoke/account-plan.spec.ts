@@ -6,8 +6,10 @@
 import { test, expect } from '@playwright/test'
 import { AccountPlanPage } from '../pages/account-plan.page'
 
-// Hero account for testing
-const HERO_ACCOUNT = 'British Telecommunications PLC'
+// Hero account for testing — must exist in the current Excel snapshot AND
+// have full curated account-plan content (data/account-plans/*) so all tabs
+// render real content, not just an empty page.
+const HERO_ACCOUNT = 'Telefonica UK Limited'
 
 test.describe('Account Plan Smoke Tests', () => {
   test('Account plan page loads for hero account', async ({ page }) => {
@@ -16,7 +18,7 @@ test.describe('Account Plan Smoke Tests', () => {
 
     // Verify customer name displays
     await expect(accountPlan.customerName).toBeVisible()
-    await expect(accountPlan.customerName).toContainText('British')
+    await expect(accountPlan.customerName).toContainText('Telefonica')
 
     // Verify back link
     await expect(accountPlan.backLink).toBeVisible()
@@ -74,8 +76,10 @@ test.describe('Account Plan Smoke Tests', () => {
     // Verify URL updated
     await expect(page).toHaveURL(/tab=org-structure/)
 
-    // Verify org content appears (stakeholders, org chart)
-    await expect(page.getByText(/stakeholder|contact|role/i).first()).toBeVisible({ timeout: 5000 })
+    // Verify org content appears (stakeholders, org chart). Matches the
+    // heading rendered for real stakeholder data — not just the "no data"
+    // empty-state copy, which also happens to contain "stakeholder"/"role".
+    await expect(page.getByText(/Organizational Structure|Decision Makers|Decision Hierarchy/i).first()).toBeVisible({ timeout: 5000 })
   })
 
   test('Tab switching works - Strategy', async ({ page }) => {
@@ -187,11 +191,11 @@ test.describe('Account Plan Smoke Tests', () => {
     await page.goto(`/accounts/${encodedName}`)
     await expect(page.locator('h1').first()).toBeVisible()
 
-    // Wait for tab navigation to hydrate
-    const nav = page.locator('nav').first()
-    await expect(nav).toBeVisible({ timeout: 10000 })
+    // Wait for the account-section nav to hydrate
+    const accountNav = page.getByRole('navigation', { name: /account sections/i })
+    await expect(accountNav).toBeVisible({ timeout: 10000 })
 
-    // Each tab label (with emoji) must be present as a button or option
+    // Each tab label must be present as a link in the account-section nav, or as an option in the mobile select
     const expectedLabels = [
       /overview/i,
       /key.?exec/i,
@@ -203,7 +207,9 @@ test.describe('Account Plan Smoke Tests', () => {
       /intelligence/i,
     ]
     for (const label of expectedLabels) {
-      await expect(page.getByRole('button', { name: label }).or(page.locator('option', { hasText: label })).first()).toBeVisible({ timeout: 5000 })
+      await expect(
+        accountNav.getByRole('link', { name: label }).or(page.locator('option', { hasText: label })).first()
+      ).toBeVisible({ timeout: 5000 })
     }
   })
 

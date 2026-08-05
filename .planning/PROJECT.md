@@ -2,7 +2,10 @@
 
 ## What This Is
 
-A comprehensive AI-powered business management platform for Skyvera that unifies financial data, customer account planning, real-time intelligence, and scenario modeling. Replaces fragmented Excel spreadsheets, static dashboards, and manual data gathering with an intelligent system that enables executives, BU leaders, and account managers to make data-driven decisions instantly.
+A comprehensive AI-powered executive intelligence platform for Skyvera that unifies financial data, customer account planning, real-time intelligence, and scenario modeling. Replaces fragmented Excel spreadsheets, static dashboards, and manual data gathering with an intelligent system that enables executives, BU leaders, and account managers to make data-driven decisions instantly.
+
+**Current Phase:** Phase 7 — Post-Launch Hardening (in progress as of 2026-05-08)
+**Design system:** `PRODUCT.md` (product register, users, anti-references) + `DESIGN.md` (24 color tokens, 8 typography tokens, 16 component specs, Editorial Datafeed register)
 
 ## Core Value
 
@@ -27,19 +30,19 @@ Existing capabilities from current codebase:
 
 New capabilities to build for v1:
 
-- [ ] Customer account plan creation with rich intelligence (financial metrics, health indicators, strategic context, action items)
-- [ ] Account plan management for 140 customers across three BUs
-- [ ] Organization structure mapping within account plans
-- [ ] Pain point and opportunity tracking per account
-- [ ] Competitive intelligence (competitors for us and for the customer)
-- [ ] What-if scenario modeling for financial decisions (pricing, costs, margins)
-- [ ] What-if scenario modeling for headcount planning
-- [ ] What-if scenario modeling for customer scenarios (churn, acquisition, retention)
-- [ ] What-if scenario modeling for strategic pivots (divestiture, acquisition)
-- [ ] Real-time news integration for customer companies
-- [ ] Industry and competitive intelligence feeds
-- [ ] Market intelligence aggregation
-- [ ] Natural language querying of all business data
+- [x] Customer account plan creation with rich intelligence (financial metrics, health indicators, strategic context, action items)
+- [x] Account plan management for 140 customers across three BUs (8-tab: Overview, Financials, Organization, Strategy, Competitive, Intelligence, Action Items, Chat)
+- [x] Organization structure mapping within account plans
+- [x] Pain point and opportunity tracking per account
+- [x] Competitive intelligence (competitors for us and for the customer)
+- [x] What-if scenario modeling for financial decisions (pricing, costs, margins)
+- [x] What-if scenario modeling for headcount planning
+- [x] What-if scenario modeling for customer scenarios (churn, acquisition, retention)
+- [x] What-if scenario modeling for strategic pivots (divestiture, acquisition)
+- [x] Real-time news integration for customer companies
+- [x] Industry and competitive intelligence feeds
+- [x] Market intelligence aggregation
+- [x] Natural language querying of all business data
 - [ ] Salesforce CRM integration
 - [ ] Financial system integration (GL data)
 - [ ] Notion Database integration
@@ -98,11 +101,13 @@ New capabilities to build for v1:
 
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
-| 24-hour demo timeline | Speed is critical for business needs, stakeholder engagement | — Pending |
-| Claude-powered intelligence | Leverage AI for insights, natural language query, real-time analysis | — Pending |
-| Reuse existing data structures | Excel budget structure, financial models proven and familiar | — Pending |
-| Skip auth for demo | Single-user demo sufficient to prove value | — Pending |
-| Parallel development approach | Use multiple agents/sessions to build all capabilities simultaneously | — Pending |
+| 24-hour demo timeline | Speed is critical for business needs, stakeholder engagement | Delivered — all 7 phases complete or in progress |
+| Claude-powered intelligence | Leverage AI for insights, natural language query, real-time analysis | Implemented via ClaudeOrchestrator singleton (50 RPM, priority queue, cache) |
+| Reuse existing data structures | Excel budget structure, financial models proven and familiar | Excel adapter live; semantic layer resolves ARR/EBITDA/NRR from existing fields |
+| Skip auth for demo | Single-user demo sufficient to prove value | Auth deferred; on Phase 7 backlog |
+| Parallel development approach | Use multiple agents/sessions to build all capabilities simultaneously | Used throughout; CI/CD added to gate quality on every PR |
+| Editorial Datafeed design system | Professional, data-dense aesthetic befitting executive audience | Implemented — brick-red #C84B31 accent, Cormorant Garamond + DM Sans, CSS token vars |
+| WCAG 2.2 compliance | Accessibility required for enterprise clients | 47 findings fixed in Phase 7 hardening (fix/pr-review-hardening branch) |
 
 ---
-*Last updated: 2026-02-08 after initialization*
+*Last updated: 2026-05-08 — Phase 7 Post-Launch Hardening in progress*

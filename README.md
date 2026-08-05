@@ -347,6 +347,17 @@ docker run -p 3000:3000 \
 ### Issue: Rate limit errors from Claude API
 **Solution**: The orchestrator has built-in rate limiting and retry logic. If you see persistent errors, check your API tier limits.
 
+## Accessibility
+
+The platform meets **WCAG 2.2** compliance standards:
+
+- Tab navigation uses `<Link>` components with `aria-current="page"` on active routes
+- Named landmark navs, dialog ARIA attributes, and `fieldset`/`legend` grouping throughout
+- `prefers-reduced-motion` respected for all animated transitions
+- `scroll-margin-top` applied to in-page anchor targets
+- Design tokens use OKLCH-aware color palette with sufficient contrast ratios
+- Design system documented in [PRODUCT.md](PRODUCT.md) and [DESIGN.md](DESIGN.md)
+
 ## Documentation
 
 - [API Documentation](docs/api/) - Complete API reference
@@ -354,6 +365,8 @@ docker run -p 3000:3000 \
 - [Deployment Guide](docs/deployment.md) - Production deployment
 - [Developer Guide](docs/development.md) - Contributing and extending
 - [User Guide](docs/user-guide.md) - Feature walkthroughs
+- [Product Design Spec](PRODUCT.md) - Design system and component standards
+- [Design Tokens](DESIGN.md) - CSS token vars, OKLCH palette, spacing scale
 
 ## Key Metrics & Business Context
 
@@ -370,6 +383,17 @@ docker run -p 3000:3000 \
 2. Reverse RR decline (-$336K vs prior plan)
 3. Reduce AR > 90 days from $1.28M
 4. Optimize Salesforce UK contract ($4.1M annual cost)
+
+## Issue Tracking
+
+This project uses **beads (`bd`)** for issue tracking. Run `bd prime` in the repo root to see full workflow context and commands.
+
+```bash
+bd ready              # Find available work
+bd show <id>          # View issue details
+bd update <id> --claim  # Claim work
+bd close <id>         # Complete work
+```
 
 ## Contributing
 

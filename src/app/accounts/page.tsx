@@ -37,7 +37,7 @@ interface AccountsPageProps {
 }
 
 export default async function AccountsPage({ searchParams }: AccountsPageProps) {
-  const { search } = await searchParams
+  const { search, bu } = await searchParams
 
   // Fetch customers and stats
   const [customersResult, statsResult] = await Promise.all([
@@ -58,9 +58,9 @@ export default async function AccountsPage({ searchParams }: AccountsPageProps) 
             padding: '1.25rem 1.5rem',
           }}
         >
-          <h2 style={{ fontSize: '1.0625rem', fontWeight: 600, color: 'var(--critical)', margin: '0 0 0.5rem' }}>
+          <h1 style={{ fontSize: '1.0625rem', fontWeight: 600, color: 'var(--critical)', margin: '0 0 0.5rem' }}>
             Unable to load customer data
-          </h2>
+          </h1>
           <p style={{ fontSize: '0.875rem', color: 'var(--muted)', margin: 0 }}>
             {customersResult.error.message}
           </p>
@@ -81,9 +81,9 @@ export default async function AccountsPage({ searchParams }: AccountsPageProps) 
             padding: '1.25rem 1.5rem',
           }}
         >
-          <h2 style={{ fontSize: '1.0625rem', fontWeight: 600, color: 'var(--critical)', margin: '0 0 0.5rem' }}>
+          <h1 style={{ fontSize: '1.0625rem', fontWeight: 600, color: 'var(--critical)', margin: '0 0 0.5rem' }}>
             Unable to load statistics
-          </h2>
+          </h1>
           <p style={{ fontSize: '0.875rem', color: 'var(--muted)', margin: 0 }}>
             {statsResult.error.message}
           </p>
@@ -95,16 +95,20 @@ export default async function AccountsPage({ searchParams }: AccountsPageProps) 
   const customers = customersResult.value
   const stats = statsResult.value
 
+  // Apply server-side BU filter (supports bookmarkable URLs, e.g. from the
+  // dashboard's BU performance table)
+  const byBU = bu ? customers.filter((c) => c.bu.toLowerCase() === bu.toLowerCase()) : customers
+
   // Apply server-side search filter (supports bookmarkable URLs)
   const searchQuery = search?.toLowerCase().trim() ?? ''
   const filtered = searchQuery
-    ? customers.filter(
+    ? byBU.filter(
         (c) =>
           c.customer_name.toLowerCase().includes(searchQuery) ||
           c.bu.toLowerCase().includes(searchQuery) ||
           c.healthScore.toLowerCase().includes(searchQuery)
       )
-    : customers
+    : byBU
 
   // Fetch completeness scores for filtered accounts in parallel
   const scores = await getCompletenessScores(filtered.map((c) => c.customer_name))
@@ -117,7 +121,7 @@ export default async function AccountsPage({ searchParams }: AccountsPageProps) 
       {/* Gradient Header */}
       <PageHeader
         title="Customer Account Plans"
-        subtitle="CloudSense Business Unit · Q1 2026 Strategic Analysis"
+        subtitle={bu ? `${bu} Business Unit · Filtered View` : 'All Business Units · Customer Directory'}
         action={<RefreshButton />}
         centered
       >

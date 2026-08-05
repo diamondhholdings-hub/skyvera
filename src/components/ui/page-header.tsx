@@ -6,8 +6,8 @@
  *   <PageHeader
  *     title="Page Title"
  *     subtitle="Optional subtitle text"
- *     action={<RefreshButton />}   // optional right-side slot
- *     centered                     // optional flag for centered layout
+ *     action={<RefreshButton variant="on-dark" />}  // pass on-dark for AA contrast
+ *     centered                                       // optional flag for centered layout
  *   />
  */
 
@@ -61,7 +61,7 @@ export function PageHeader({
             style={{
               fontFamily: 'var(--font-display)',
               fontSize: 'clamp(2rem, 3.5vw, 2.75rem)',
-              fontWeight: 300,
+              fontWeight: 400,
               letterSpacing: '-0.025em',
               color: '#FFFFFF',
               margin: 0,

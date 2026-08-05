@@ -12,9 +12,11 @@ import { useState } from 'react'
 interface RefreshButtonProps {
   onRefresh?: () => Promise<void>
   label?: string
+  /** Visual variant. 'on-dark' uses white-tinted text for dark backgrounds (e.g. PageHeader gradient). */
+  variant?: 'default' | 'on-dark'
 }
 
-export function RefreshButton({ onRefresh, label = 'Refresh' }: RefreshButtonProps) {
+export function RefreshButton({ onRefresh, label = 'Refresh', variant = 'default' }: RefreshButtonProps) {
   const router = useRouter()
   const [isRefreshing, setIsRefreshing] = useState(false)
 
@@ -31,11 +33,16 @@ export function RefreshButton({ onRefresh, label = 'Refresh' }: RefreshButtonPro
     }
   }
 
+  const colorClasses =
+    variant === 'on-dark'
+      ? 'text-white/85 hover:text-white'
+      : 'text-muted hover:text-ink'
+
   return (
     <button
       onClick={handleRefresh}
       disabled={isRefreshing}
-      className="inline-flex items-center gap-2 text-sm text-muted hover:text-ink disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+      className={`inline-flex items-center gap-2 text-sm ${colorClasses} disabled:opacity-50 disabled:cursor-not-allowed transition-colors`}
       aria-label={label}
     >
       <svg

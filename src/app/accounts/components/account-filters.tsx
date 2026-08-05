@@ -30,8 +30,8 @@ export function AccountFilters({
   return (
     <div className="flex flex-col sm:flex-row gap-4 mb-6">
       {/* BU Filter */}
-      <div className="flex flex-col gap-2">
-        <label className="text-sm font-medium text-ink">Business Unit</label>
+      <fieldset className="flex flex-col gap-2 border-0 p-0 m-0">
+        <legend className="text-sm font-medium text-ink p-0 mb-0">Business Unit</legend>
         <div className="flex gap-2 flex-wrap">
           {buOptions.map((bu) => (
             <button
@@ -47,11 +47,11 @@ export function AccountFilters({
             </button>
           ))}
         </div>
-      </div>
+      </fieldset>
 
       {/* Health Filter */}
-      <div className="flex flex-col gap-2">
-        <label className="text-sm font-medium text-ink">Health Status</label>
+      <fieldset className="flex flex-col gap-2 border-0 p-0 m-0">
+        <legend className="text-sm font-medium text-ink p-0 mb-0">Health Status</legend>
         <div className="flex gap-2 flex-wrap">
           {healthOptions.map((health) => {
             const isActive =
@@ -81,7 +81,7 @@ export function AccountFilters({
             )
           })}
         </div>
-      </div>
+      </fieldset>
     </div>
   )
 }

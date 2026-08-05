@@ -97,7 +97,7 @@ Skyvera/
 │   │   │   ├── accounts/              # Customer intelligence
 │   │   │   │   ├── page.tsx           # Account list
 │   │   │   │   ├── [name]/            # Dynamic account page
-│   │   │   │   │   ├── page.tsx       # Account detail (7 tabs)
+│   │   │   │   │   ├── page.tsx       # Account detail (8 tabs)
 │   │   │   │   │   └── _components/   # Tab components (private)
 │   │   │   │   └── components/        # Shared account components
 │   │   │   ├── query/                 # Natural language queries
@@ -713,12 +713,14 @@ Use these definitions when answering questions.
 
 ## Testing Guidelines
 
-### Unit Tests (Future)
+### Unit Tests (Vitest)
+
+Unit tests live in `tests/unit/` and cover business logic, adapters, middleware, and the semantic layer. The suite currently has **161 tests across 9 files** and must stay green.
 
 ```typescript
-// src/lib/intelligence/scenarios/__tests__/calculator.test.ts
+// tests/unit/scenarios/calculator.test.ts
 import { describe, it, expect } from 'vitest'
-import { ScenarioCalculator } from '../calculator'
+import { ScenarioCalculator } from '@/lib/intelligence/scenarios/calculator'
 
 describe('ScenarioCalculator', () => {
   it('calculates price increase impact correctly', () => {
@@ -738,6 +740,18 @@ describe('ScenarioCalculator', () => {
   })
 })
 ```
+
+```bash
+# Run unit tests
+npm run test:unit          # 161 tests, Vitest
+
+# Watch mode during development
+npx vitest --watch
+```
+
+### Smoke Tests (Playwright)
+
+Smoke tests live in `tests/smoke/` and cover UI behavior without requiring external APIs. The suite has **49 tests across 6 files** and runs in CI on every PR.
 
 ### E2E Tests (Playwright)
 
@@ -769,11 +783,17 @@ test('can query customers', async ({ page }) => {
 ### Running Tests
 
 ```bash
-# Run all E2E tests
-npm run test:e2e
+# Unit tests (Vitest) — business logic, adapters, middleware
+npm run test:unit                             # 161 tests
 
-# Run specific test file
-npx playwright test tests/e2e/dashboard.spec.ts
+# Smoke tests (Playwright) — UI behavior, no external APIs needed
+npx playwright test tests/smoke/              # 49 tests
+
+# E2E tests (Playwright) — full demo flows, requires running dev server
+npx playwright test tests/e2e/
+
+# Run a specific file
+npx playwright test tests/smoke/accounts.spec.ts
 
 # Run tests in headed mode (see browser)
 npx playwright test --headed
@@ -783,7 +803,132 @@ npm run test:e2e:ui
 
 # Debug tests
 npx playwright test --debug
+
+# Run all (CI equivalent)
+npm run test:unit && npx playwright test tests/smoke/
 ```
+
+---
+
+## CI/CD Pipeline
+
+GitHub Actions runs automatically on every pull request to `main` via `.github/workflows/ci.yml`.
+
+### Steps
+
+```
+1. Checkout + setup Node.js 20 (caches node_modules and .next/cache)
+2. npm ci
+3. tsc --noEmit          → TypeScript type check (0 errors required)
+4. npm run build         → Next.js production build
+5. Playwright smoke      → 49 tests across 6 spec files
+```
+
+PRs cannot be merged until all steps pass. Merges to `main` trigger an automatic Vercel production deployment.
+
+### Running CI checks locally
+
+```bash
+npx tsc --noEmit         # Type check
+npm run build            # Build check
+npx playwright test tests/smoke/   # Smoke suite
+```
+
+---
+
+## Zod v4
+
+All API schemas in `src/lib/validation/schemas.ts` use **Zod v4**. Key differences from v3:
+
+- Import is still `import { z } from 'zod'` — no package change
+- `.safeParse()` error format: `parsed.error.issues` (same shape, some message text differs)
+- `.brand()`, `.pipe()`, and refinement chaining syntax updated — refer to Zod v4 changelog before adding new schemas
+- TypeScript type inference is stricter; ensure new schema fields have explicit `.optional()` or `.default()` as needed
+
+---
+
+## Accessibility Development Guide
+
+### Patterns to follow
+
+**Navigation tabs** — always use `<Link>` not `<button>` for tab switching; add `aria-current="page"` when the tab URL matches the current route:
+
+```tsx
+<Link
+  href={`/accounts/${name}?tab=overview`}
+  aria-current={tab === 'overview' ? 'page' : undefined}
+>
+  Overview
+</Link>
+```
+
+**Dialogs and modals** — use `role="dialog"`, `aria-modal="true"`, and `aria-labelledby` pointing to the heading:
+
+```tsx
+<div role="dialog" aria-modal="true" aria-labelledby="dialog-title">
+  <h2 id="dialog-title">Edit Action Item</h2>
+  ...
+</div>
+```
+
+**Form groups** — use `<fieldset>` + `<legend>` instead of bare `<div>` wrappers for radio/checkbox groups.
+
+**Hover effects in Server Components** — event handlers are illegal in Server Components. Use a `<style>` tag with CSS `:hover` selectors instead of adding a `"use client"` boundary just for hover:
+
+```tsx
+// Server Component — DO THIS
+export default function Card() {
+  return (
+    <>
+      <style>{`.card:hover { background: var(--color-surface-hover); }`}</style>
+      <div className="card">...</div>
+    </>
+  )
+}
+```
+
+### Motion
+
+Wrap animated elements with a `prefers-reduced-motion` check in CSS:
+
+```css
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+```
+
+This is already set globally in `src/app/globals.css` — do not add transitions to new components without verifying they respect this rule.
+
+### Testing with screen readers
+
+- **macOS VoiceOver**: `Cmd + F5` to toggle, `VO + Right` to navigate
+- **Playwright axe**: add `@axe-core/playwright` to E2E tests for automated violations
+
+### Anchor scrolling
+
+Add `scroll-margin-top` to any element that is an anchor target so the fixed nav bar does not obscure it:
+
+```css
+.anchor-target {
+  scroll-margin-top: 4rem; /* matches nav height */
+}
+```
+
+---
+
+## Issue Tracking
+
+This project uses **beads (`bd`)** for all task tracking. Run `bd prime` for full workflow context.
+
+```bash
+bd ready              # Find available work
+bd show <id>          # View issue details
+bd update <id> --claim  # Claim work
+bd close <id>         # Complete work
+bd remember           # Store persistent knowledge (use instead of MEMORY.md)
+```
+
+Do NOT use TodoWrite, markdown TODO lists, or TaskCreate — use `bd` exclusively.
 
 ---
 

@@ -15,13 +15,16 @@ import { getCacheManager, getActiveTTL } from '@/lib/cache/manager'
 export interface DashboardData {
   totalRevenue: number
   totalRR: number
-  rrTarget: number // Prior period for comparison
+  rrTarget: number // Real Prior Plan RR from the Excel P&L sheet
   totalNRR: number
   ebitda: number
   ebitdaTarget: number
   netMarginPct: number
-  netMarginTarget: number // 68.7% from CLAUDE.md
+  netMarginTarget: number // Real blended Margin Target from the Excel P&L sheet
   headcount: number
+  arAgingOver90: number | null // Real AR > 90 days total from the 'AR Aging' sheet
+  arrYoYChangePct: number | null // Real YoY revenue change from the Comparison-to-PP sheets
+  ruleOf40: number | null // arrYoYChangePct + netMarginPct
   lastUpdated: Date
 }
 
@@ -49,6 +52,11 @@ interface FinancialSummary {
   ebitda: number
   netMargin: number
   customerCount: number
+  marginTarget?: number
+  rrPriorPlan?: number
+  arAgingOver90?: number | null
+  arrYoYChangePct?: number | null
+  ruleOf40?: number | null
 }
 
 /**
@@ -78,30 +86,32 @@ export async function getDashboardData(): Promise<Result<DashboardData, Error>> 
 
         const allFinancials = result.value.data as FinancialSummary[]
 
-        // Calculate totals
-        let totalRevenue = 0
-        let totalRR = 0
-        let totalNRR = 0
-        let totalEbitda = 0
+        // 'Skyvera' is the consolidated company-wide entry (from the 'P&Ls'
+        // sheet) — use it directly rather than re-summing the per-BU entries,
+        // which would double-count revenue since 'Skyvera' is also present
+        // in this same array.
+        const consolidated = allFinancials.find((f) => f.bu === 'Skyvera')
 
-        for (const financial of allFinancials) {
-          totalRevenue += financial.totalRevenue
-          totalRR += financial.totalRR
-          totalNRR += financial.totalNRR
-          totalEbitda += financial.ebitda
+        if (!consolidated) {
+          return err(new Error("Consolidated 'Skyvera' financials not found in Excel data"))
         }
 
-        // Calculate net margin percentage
-        const netMarginPct = totalRevenue > 0 ? (totalEbitda / totalRevenue) * 100 : 0
+        const totalRevenue = consolidated.totalRevenue
+        const totalRR = consolidated.totalRR
+        const totalNRR = consolidated.totalNRR
+        const totalEbitda = consolidated.ebitda
+        const netMarginPct = consolidated.netMargin
 
-        // RR target: use prior period (assume 5% growth for demo)
-        const rrTarget = totalRR * 0.95
+        // Real Prior Plan RR from the Excel P&L sheet (falls back to current
+        // RR — i.e. zero apparent variance — if the workbook has no Prior
+        // Plan column for this quarter).
+        const rrTarget = consolidated.rrPriorPlan ?? totalRR
 
-        // EBITDA target: based on 68.7% net margin target from CLAUDE.md
-        const netMarginTarget = 68.7
+        // Real blended Margin Target from the Excel P&L sheet.
+        const netMarginTarget = consolidated.marginTarget ?? netMarginPct
         const ebitdaTarget = (totalRevenue * netMarginTarget) / 100
 
-        // Headcount from CLAUDE.md: 58 FTEs
+        // Headcount is not yet extracted from the Excel HC Budget Input sheet.
         const headcount = 58
 
         return ok({
@@ -114,6 +124,9 @@ export async function getDashboardData(): Promise<Result<DashboardData, Error>> 
           netMarginPct,
           netMarginTarget,
           headcount,
+          arAgingOver90: consolidated.arAgingOver90 ?? null,
+          arrYoYChangePct: consolidated.arrYoYChangePct ?? null,
+          ruleOf40: consolidated.ruleOf40 ?? null,
           lastUpdated: new Date(),
         })
       } catch (error) {
@@ -156,24 +169,22 @@ export async function getBUSummaries(): Promise<Result<BUFinancialSummary[], Err
 
         const allFinancials = result.value.data as FinancialSummary[]
 
-        // Targets from CLAUDE.md: Cloudsense 63.6%, Kandy 75%, STL 75%
-        const netMarginTargets: Record<string, number> = {
-          Cloudsense: 63.6,
-          Kandy: 75,
-          STL: 75,
-          NewNet: 70, // Default if exists
-        }
+        // 'Skyvera' is the consolidated company-wide entry, not a BU — exclude
+        // it from the per-BU performance table.
+        const perBU = allFinancials.filter((f) => f.bu !== 'Skyvera')
 
-        // Map to BUFinancialSummary
-        const summaries: BUFinancialSummary[] = allFinancials.map((financial) => ({
+        // Map to BUFinancialSummary using each BU's real Margin Target and
+        // Prior Plan RR from its Excel P&L sheet.
+        const summaries: BUFinancialSummary[] = perBU.map((financial) => ({
           bu: financial.bu as BU,
           totalRR: financial.totalRR,
           totalNRR: financial.totalNRR,
           totalRevenue: financial.totalRevenue,
           customerCount: financial.customerCount,
           netMarginPct: financial.netMargin,
-          netMarginTarget: netMarginTargets[financial.bu] || 70,
+          netMarginTarget: financial.marginTarget ?? financial.netMargin,
           ebitda: financial.ebitda,
+          rrPriorPlan: financial.rrPriorPlan,
         }))
 
         return ok(summaries)

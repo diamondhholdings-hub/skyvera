@@ -1,7 +1,8 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
+import { toast } from 'sonner';
 import type { Recommendation } from '@/app/dm-strategy/types';
 import '@/app/dm-strategy/styles.css';
 
@@ -11,9 +12,41 @@ interface DMBriefingWidgetProps {
 }
 
 export default function DMBriefingWidget({ recommendations, maxItems = 5 }: DMBriefingWidgetProps) {
+  const [acceptedIds, setAcceptedIds] = useState<Set<string>>(new Set());
+  const [pendingId, setPendingId] = useState<string | null>(null);
+
+  const handleAccept = async (recId: string) => {
+    // Optimistic update: hide immediately, revert if the request fails
+    setPendingId(recId);
+    setAcceptedIds((prev) => new Set(prev).add(recId));
+
+    try {
+      const response = await fetch('/api/dm-strategy/accept-recommendation', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ recommendationId: recId }),
+      });
+      const data = await response.json();
+
+      if (!data.success) {
+        throw new Error(data.error || 'Failed to accept recommendation');
+      }
+      toast.success('Recommendation accepted');
+    } catch (error) {
+      setAcceptedIds((prev) => {
+        const next = new Set(prev);
+        next.delete(recId);
+        return next;
+      });
+      toast.error(error instanceof Error ? error.message : 'Failed to accept recommendation');
+    } finally {
+      setPendingId(null);
+    }
+  };
+
   // Get urgent recommendations (critical and high priority)
   const urgentRecommendations = recommendations
-    .filter(r => r.status === 'pending' && (r.priority === 'critical' || r.priority === 'high'))
+    .filter(r => r.status === 'pending' && (r.priority === 'critical' || r.priority === 'high') && !acceptedIds.has(r.id))
     .sort((a, b) => {
       // Sort by priority first (critical > high)
       if (a.priority === 'critical' && b.priority !== 'critical') return -1;
@@ -67,13 +100,13 @@ export default function DMBriefingWidget({ recommendations, maxItems = 5 }: DMBr
         }}
       >
         <h3 className="dm-h4" style={{ margin: 0, color: 'var(--white)' }}>
-          💡 Revenue Retention Briefing
+          <span aria-hidden="true">💡</span> Revenue Retention Briefing
         </h3>
         <Link
           href="/dm-strategy"
           style={{
             fontSize: '0.875rem',
-            color: 'var(--accent-cyan)',
+            color: 'var(--paper)',
             textDecoration: 'none',
             fontWeight: 600,
             display: 'flex',
@@ -81,7 +114,7 @@ export default function DMBriefingWidget({ recommendations, maxItems = 5 }: DMBr
             gap: 'var(--space-xs)'
           }}
         >
-          View All →
+          View All <span aria-hidden="true">→</span>
         </Link>
       </div>
 
@@ -123,8 +156,8 @@ export default function DMBriefingWidget({ recommendations, maxItems = 5 }: DMBr
                   <span
                     className="dm-badge"
                     style={{
-                      background: 'rgba(0, 184, 212, 0.1)',
-                      color: 'var(--accent-cyan)',
+                      background: 'var(--highlight)',
+                      color: 'var(--secondary)',
                       fontSize: '0.625rem',
                       padding: '2px 6px'
                     }}
@@ -159,10 +192,15 @@ export default function DMBriefingWidget({ recommendations, maxItems = 5 }: DMBr
                   <div className="dm-flex dm-gap-xs">
                     <button
                       className="dm-btn dm-btn-primary dm-btn-sm"
-                      onClick={() => {
-                        // TODO: Implement accept recommendation functionality
+                      disabled={pendingId === rec.id}
+                      aria-disabled={pendingId === rec.id}
+                      onClick={() => handleAccept(rec.id)}
+                      style={{
+                        fontSize: '0.75rem',
+                        padding: '4px 8px',
+                        cursor: pendingId === rec.id ? 'wait' : 'pointer',
+                        opacity: pendingId === rec.id ? 0.6 : 1,
                       }}
-                      style={{ fontSize: '0.75rem', padding: '4px 8px' }}
                     >
                       Accept
                     </button>
@@ -187,9 +225,9 @@ export default function DMBriefingWidget({ recommendations, maxItems = 5 }: DMBr
             style={{
               marginTop: 'var(--space-lg)',
               padding: 'var(--space-md)',
-              background: 'rgba(0, 184, 212, 0.05)',
+              background: 'var(--highlight)',
               borderRadius: 'var(--radius-sm)',
-              border: '1px solid rgba(0, 184, 212, 0.2)'
+              border: '1px solid var(--border)'
             }}
           >
             <div className="dm-flex dm-justify-between dm-items-center">
@@ -200,7 +238,7 @@ export default function DMBriefingWidget({ recommendations, maxItems = 5 }: DMBr
                 style={{
                   fontSize: '1.125rem',
                   fontWeight: 700,
-                  color: 'var(--accent-cyan)'
+                  color: 'var(--secondary)'
                 }}
               >
                 {formatCurrency(

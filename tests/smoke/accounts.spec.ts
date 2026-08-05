@@ -47,7 +47,7 @@ test.describe('Accounts Smoke Tests', () => {
     expect(initialCount).toBeGreaterThan(0)
 
     // Search for "British"
-    await accounts.searchByName('British')
+    await accounts.searchByName('Telefonica')
 
     // Wait for debounce
     await page.waitForTimeout(500)
@@ -67,7 +67,7 @@ test.describe('Accounts Smoke Tests', () => {
     await accounts.waitForTableLoaded()
 
     // Search for something specific
-    await accounts.searchByName('British')
+    await accounts.searchByName('Telefonica')
     await page.waitForTimeout(500)
     const filteredCount = await accounts.getAccountRowCount()
 
@@ -86,7 +86,7 @@ test.describe('Accounts Smoke Tests', () => {
     await accounts.waitForTableLoaded()
 
     // Search for British Telecom to narrow results
-    await accounts.searchByName('British')
+    await accounts.searchByName('Telefonica')
     await expect(accounts.firstAccountRow).toBeVisible()
 
     // Click first account

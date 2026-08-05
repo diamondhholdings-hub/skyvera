@@ -2,89 +2,113 @@
   "customers": {
     "Cloudsense": [
       {
-        "customer_name": "Liquid Telecom",
-        "rr": 1073619.8,
-        "nrr": 1416000.0,
-        "total": 2489619.8,
+        "customer_name": "Telefonica UK Limited",
+        "rr": 2692707.28,
+        "nrr": 0,
+        "total": 2692707.28,
         "subscriptions": [
           {
-            "sub_id": 1797503.0,
-            "arr": 1073619.8,
-            "renewal_qtr": "Q4'26",
+            "sub_id": 1848313.0,
+            "arr": 2692707.28,
+            "renewal_qtr": "Q1'27",
             "will_renew": "Yes",
-            "projected_arr": 1342024.75
+            "projected_arr": 3365884.0999999996
           }
         ],
         "rank": 1,
-        "pct_of_total": 7.6949826884635
+        "pct_of_total": 9.34223701567389
       },
       {
-        "customer_name": "Telefonica UK Limited",
-        "rr": 2104857.01,
-        "nrr": 0,
-        "total": 2104857.01,
+        "customer_name": "Liquid Telecom",
+        "rr": 1073619.75,
+        "nrr": 1416000.0,
+        "total": 2489619.75,
         "subscriptions": [
           {
-            "sub_id": 1664529.0,
-            "arr": 2104857.01,
-            "renewal_qtr": "Q1'26",
+            "sub_id": 1797503.0,
+            "arr": 1073619.75,
+            "renewal_qtr": "Q4'26",
             "will_renew": "Yes",
-            "projected_arr": 2631071.2624999997
+            "projected_arr": 1342024.6875
           }
         ],
         "rank": 2,
-        "pct_of_total": 6.50574768630979
+        "pct_of_total": 8.63763319398118
       },
       {
-        "customer_name": "Telstra Corporation Limited",
-        "rr": 1972000.0,
+        "customer_name": "Telstra Limited",
+        "rr": 2405086.54,
         "nrr": 0,
-        "total": 1972000.0,
+        "total": 2405086.54,
         "subscriptions": [
           {
-            "sub_id": 1558381.0,
+            "sub_id": 1802104.0,
             "arr": 1972000.0,
             "renewal_qtr": "Next Yr",
             "will_renew": "Yes",
-            "projected_arr": 2465000.0
+            "projected_arr": 1972000.0
+          },
+          {
+            "sub_id": 1816430.0,
+            "arr": 433086.54,
+            "renewal_qtr": "Q4'26",
+            "will_renew": "Yes",
+            "projected_arr": 433086.54
           }
         ],
         "rank": 3,
-        "pct_of_total": 6.0951097278588575
+        "pct_of_total": 8.344348703170976
       },
       {
-        "customer_name": "Masergy",
-        "rr": 349943.99,
-        "nrr": 1924000.0,
-        "total": 2273943.99,
+        "customer_name": "Masergy Communications, Inc.",
+        "rr": 349944.0,
+        "nrr": 1923999.96,
+        "total": 2273943.96,
         "subscriptions": [
           {
             "sub_id": 1781385.0,
-            "arr": 349943.99,
+            "arr": 349944.0,
             "renewal_qtr": "Next Yr",
             "will_renew": "Yes",
-            "projected_arr": 437429.9875
+            "projected_arr": 437430.0
           }
         ],
         "rank": 4,
-        "pct_of_total": 7.028366
+        "pct_of_total": 7.889354922633873
       },
       {
-        "customer_name": "Vodafone Netherlands",
-        "rr": 1843190.03,
+        "customer_name": "Ziggo Services B.V.",
+        "rr": 1866637.54,
         "nrr": 0,
-        "total": 1843190.03,
+        "total": 1866637.54,
         "subscriptions": [
           {
-            "sub_id": 1693696.0,
-            "arr": 1843190.03,
+            "sub_id": 1799905.0,
+            "arr": 1866637.54,
             "renewal_qtr": "Next Yr",
             "will_renew": "Yes",
-            "projected_arr": 2303987.5375
+            "projected_arr": 1866637.54
           }
         ],
         "rank": 5,
-        "pct_of_total": 5.696980467619401
+        "pct_of_total": 6.476222072320632
+      },
+      {
+        "customer_name": "Maxis Broadband Sdn Bhd",
+        "rr": 1716876.0,
+        "nrr": 0,
+        "total": 1716876.0,
+        "subscriptions": [
+          {
+            "sub_id": 1814924.0,
+            "arr": 1716876.0,
+            "renewal_qtr": "Next Yr",
+            "will_renew": "Yes",
+            "projected_arr": 1716876.0
+          }
+        ],
+        "rank": 6,
+        "pct_of_total": 5.956630576837942
       },
       {
         "customer_name": "Spotify",
@@ -95,77 +119,19 @@
           {
             "sub_id": 1780181.0,
             "arr": 1587300.0,
-            "renewal_qtr": "Next Yr",
+            "renewal_qtr": "Q2'27",
             "will_renew": "Yes",
-            "projected_arr": 1587300.0
-          }
-        ],
-        "rank": 6,
-        "pct_of_total": 4.906068798696939
-      },
-      {
-        "customer_name": "British Telecommunications plc",
-        "rr": 1404790.63,
-        "nrr": 0,
-        "total": 1404790.63,
-        "subscriptions": [
-          {
-            "sub_id": 1674347.0,
-            "arr": 1404790.63,
-            "renewal_qtr": "Q1'26",
-            "will_renew": "No (SF)",
-            "projected_arr": 0.0
+            "projected_arr": 1984125.0
           }
         ],
         "rank": 7,
-        "pct_of_total": 4.341964013447248
-      },
-      {
-        "customer_name": "Maxis Broadband Sdn Bhd",
-        "rr": 1364195.25,
-        "nrr": 0,
-        "total": 1364195.25,
-        "subscriptions": [
-          {
-            "sub_id": 1558377.0,
-            "arr": 1234734.0,
-            "renewal_qtr": "Q4'25",
-            "will_renew": "Yes",
-            "projected_arr": 1543417.5
-          },
-          {
-            "sub_id": 1558755.0,
-            "arr": 129461.25,
-            "renewal_qtr": "Q4'25",
-            "will_renew": "Yes",
-            "projected_arr": 161826.5625
-          }
-        ],
-        "rank": 8,
-        "pct_of_total": 4.216490739844749
-      },
-      {
-        "customer_name": "Centrica Services Ltd",
-        "rr": 1053982.65,
-        "nrr": 0,
-        "total": 1053982.65,
-        "subscriptions": [
-          {
-            "sub_id": 1690990.0,
-            "arr": 1053982.65,
-            "renewal_qtr": "Q2'26",
-            "will_renew": "Yes",
-            "projected_arr": 1053982.65
-          }
-        ],
-        "rank": 9,
-        "pct_of_total": 3.257677435603173
+        "pct_of_total": 5.507071981095237
       },
       {
         "customer_name": "StarHub Ltd",
-        "rr": 919238.9,
+        "rr": 955238.9,
         "nrr": 0,
-        "total": 919238.9,
+        "total": 955238.9,
         "subscriptions": [
           {
             "sub_id": 1788495.0,
@@ -180,43 +146,58 @@
             "renewal_qtr": "Q4'26",
             "will_renew": "Yes",
             "projected_arr": 212000.0
+          },
+          {
+            "sub_id": 1864655.0,
+            "arr": 36000.0,
+            "renewal_qtr": "Next Yr",
+            "will_renew": "Yes",
+            "projected_arr": 36000.0
           }
         ],
-        "rank": 10,
-        "pct_of_total": 2.841207891286144
+        "rank": 8,
+        "pct_of_total": 3.3141620244706327
       },
       {
         "customer_name": "Elisa Oyj",
-        "rr": 897155.47,
+        "rr": 903603.46,
         "nrr": 0,
-        "total": 897155.47,
+        "total": 903603.46,
         "subscriptions": [
           {
             "sub_id": 1785589.0,
-            "arr": 723512.49,
+            "arr": 728712.47,
             "renewal_qtr": "Next Yr",
             "will_renew": "Yes",
-            "projected_arr": 904390.6125
+            "projected_arr": 910890.5874999999
           },
           {
             "sub_id": 1785891.0,
-            "arr": 173642.98,
+            "arr": 174890.99,
             "renewal_qtr": "Next Yr",
             "will_renew": "Yes",
-            "projected_arr": 217053.725
+            "projected_arr": 218613.7375
           }
         ],
-        "rank": 11,
-        "pct_of_total": 2.7729518420886334
+        "rank": 9,
+        "pct_of_total": 3.1350149918646193
       },
       {
-        "customer_name": "New Sales Ps - Go Get",
-        "rr": 0,
-        "nrr": 834000.0,
-        "total": 834000.0,
-        "subscriptions": [],
-        "rank": 12,
-        "pct_of_total": 2.5777492459605917
+        "customer_name": "Virgin Media Limited",
+        "rr": 838707.4,
+        "nrr": 0,
+        "total": 838707.4,
+        "subscriptions": [
+          {
+            "sub_id": 1905095.0,
+            "arr": 838707.4,
+            "renewal_qtr": "Q2'27",
+            "will_renew": "Yes",
+            "projected_arr": 1048384.25
+          }
+        ],
+        "rank": 10,
+        "pct_of_total": 2.9098607842734427
       },
       {
         "customer_name": "Abbott Laboratories",
@@ -225,24 +206,32 @@
         "total": 816927.6,
         "subscriptions": [
           {
-            "sub_id": 1665729.0,
+            "sub_id": 1813724.0,
             "arr": 816927.6,
             "renewal_qtr": "Next Yr",
             "will_renew": "Yes",
-            "projected_arr": 1021159.5
+            "projected_arr": 816927.6
           }
         ],
-        "rank": 13,
-        "pct_of_total": 2.5249814207486763
+        "rank": 11,
+        "pct_of_total": 2.8342966651189925
       },
       {
-        "customer_name": "Dplay Entertainment Ltd",
-        "rr": 0,
-        "nrr": 800000.04,
-        "total": 800000.04,
-        "subscriptions": [],
-        "rank": 14,
-        "pct_of_total": 2.4726612708374622
+        "customer_name": "Foxtel Management Pty Limited",
+        "rr": 703084.15,
+        "nrr": 0,
+        "total": 703084.15,
+        "subscriptions": [
+          {
+            "sub_id": 1786391.0,
+            "arr": 703084.15,
+            "renewal_qtr": "Q1'27",
+            "will_renew": "Yes",
+            "projected_arr": 878855.1875
+          }
+        ],
+        "rank": 12,
+        "pct_of_total": 2.439321503696315
       },
       {
         "customer_name": "Advance Publications US",
@@ -253,146 +242,114 @@
           {
             "sub_id": 1780082.0,
             "arr": 659200.0,
-            "renewal_qtr": "Next Yr",
+            "renewal_qtr": "Q1'27",
             "will_renew": "Yes",
-            "projected_arr": 659200.0
+            "projected_arr": 824000.0
+          }
+        ],
+        "rank": 13,
+        "pct_of_total": 2.28706725252818
+      },
+      {
+        "customer_name": "Ps - Go-Get Cloudsense",
+        "rr": 0,
+        "nrr": 640500.0,
+        "total": 640500.0,
+        "subscriptions": [],
+        "rank": 14,
+        "pct_of_total": 2.222188372640017
+      },
+      {
+        "customer_name": "Discovery Communications Europe Limited",
+        "rr": 634634.73,
+        "nrr": 0,
+        "total": 634634.73,
+        "subscriptions": [
+          {
+            "sub_id": 1878096.0,
+            "arr": 634634.73,
+            "renewal_qtr": "Q2'27",
+            "will_renew": "Yes",
+            "projected_arr": 793293.4125
           }
         ],
         "rank": 15,
-        "pct_of_total": 2.0374727852964294
-      },
-      {
-        "customer_name": "Virgin Media Limited",
-        "rr": 655607.51,
-        "nrr": 0,
-        "total": 655607.51,
-        "subscriptions": [
-          {
-            "sub_id": 1558418.0,
-            "arr": 655607.51,
-            "renewal_qtr": "Q2'26",
-            "will_renew": "Yes",
-            "projected_arr": 819509.3875
-          }
-        ],
-        "rank": 16,
-        "pct_of_total": 2.026369022240529
-      },
-      {
-        "customer_name": "Foxtel Management Pty Limited",
-        "rr": 640260.52,
-        "nrr": 0,
-        "total": 640260.52,
-        "subscriptions": [
-          {
-            "sub_id": 1786391.0,
-            "arr": 640260.52,
-            "renewal_qtr": "Next Yr",
-            "will_renew": "Yes",
-            "projected_arr": 800325.65
-          }
-        ],
-        "rank": 17,
-        "pct_of_total": 1.9789341398661109
+        "pct_of_total": 2.2018390599212125
       },
       {
         "customer_name": "PostNL Holding BV",
-        "rr": 576494.75,
+        "rr": 580638.11,
         "nrr": 0,
-        "total": 576494.75,
+        "total": 580638.11,
         "subscriptions": [
           {
-            "sub_id": 1558410.0,
-            "arr": 576494.75,
-            "renewal_qtr": "Next Yr",
+            "sub_id": 1806212.0,
+            "arr": 580638.11,
+            "renewal_qtr": "Q1'27",
             "will_renew": "Yes",
-            "projected_arr": 1152989.5
+            "projected_arr": 725797.6375
           }
         ],
-        "rank": 18,
-        "pct_of_total": 1.7818452123653954
-      },
-      {
-        "customer_name": "Thryv Australia Pty Ltd",
-        "rr": 567978.58,
-        "nrr": 0,
-        "total": 567978.58,
-        "subscriptions": [
-          {
-            "sub_id": 1664230.0,
-            "arr": 567978.58,
-            "renewal_qtr": "Q1'26",
-            "will_renew": "No",
-            "projected_arr": 0.0
-          }
-        ],
-        "rank": 19,
-        "pct_of_total": 1.7555232090129107
-      },
-      {
-        "customer_name": "A1 Telekom Austria AG.",
-        "rr": 550573.91,
-        "nrr": 0,
-        "total": 550573.91,
-        "subscriptions": [
-          {
-            "sub_id": 1558386.0,
-            "arr": 520967.79,
-            "renewal_qtr": "Q2'26",
-            "will_renew": "Yes",
-            "projected_arr": 651209.7374999999
-          },
-          {
-            "sub_id": 1558395.0,
-            "arr": 29606.12,
-            "renewal_qtr": "Q3'26",
-            "will_renew": "Yes",
-            "projected_arr": 37007.65
-          }
-        ],
-        "rank": 20,
-        "pct_of_total": 1.7017283949017685
+        "rank": 16,
+        "pct_of_total": 2.01450001054438
       },
       {
         "customer_name": "Luminus Hasselt NV/SA",
-        "rr": 541643.21,
+        "rr": 545536.07,
         "nrr": 0,
-        "total": 541643.21,
+        "total": 545536.07,
         "subscriptions": [
           {
-            "sub_id": 1558957.0,
-            "arr": 493023.17,
+            "sub_id": 1807112.0,
+            "arr": 496566.6,
             "renewal_qtr": "Next Yr",
             "will_renew": "Yes",
-            "projected_arr": 616278.9625
+            "projected_arr": 496566.6
           },
           {
-            "sub_id": 1757129.0,
-            "arr": 48620.04,
+            "sub_id": 1807113.0,
+            "arr": 48969.47,
             "renewal_qtr": "Next Yr",
             "will_renew": "Yes",
-            "projected_arr": 60775.05
+            "projected_arr": 48969.47
           }
         ],
-        "rank": 21,
-        "pct_of_total": 1.6741251512675952
+        "rank": 17,
+        "pct_of_total": 1.8927149283524285
+      },
+      {
+        "customer_name": "TechTarget Holdings Inc.",
+        "rr": 527630.51,
+        "nrr": 0,
+        "total": 527630.51,
+        "subscriptions": [
+          {
+            "sub_id": 1906197.0,
+            "arr": 527630.51,
+            "renewal_qtr": "Q2'27",
+            "will_renew": "Yes",
+            "projected_arr": 659538.1375
+          }
+        ],
+        "rank": 18,
+        "pct_of_total": 1.8305923253272793
       },
       {
         "customer_name": "Telefonica Germany GmbH & Co. OHG",
-        "rr": 460063.27,
+        "rr": 463369.82,
         "nrr": 0,
-        "total": 460063.27,
+        "total": 463369.82,
         "subscriptions": [
           {
-            "sub_id": 1675050.0,
-            "arr": 460063.27,
-            "renewal_qtr": "Next Yr",
+            "sub_id": 1813524.0,
+            "arr": 463369.82,
+            "renewal_qtr": "Q1'27",
             "will_renew": "Yes",
-            "projected_arr": 575079.0875
+            "projected_arr": 463369.82
           }
         ],
-        "rank": 22,
-        "pct_of_total": 1.421975716231012
+        "rank": 19,
+        "pct_of_total": 1.6076425077850083
       },
       {
         "customer_name": "CoreSite",
@@ -408,102 +365,59 @@
             "projected_arr": 0.0
           }
         ],
-        "rank": 23,
-        "pct_of_total": 1.410298357605489
-      },
-      {
-        "customer_name": "Telstra - Ges(a)",
-        "rr": 0,
-        "nrr": 431900.0,
-        "total": 431900.0,
-        "subscriptions": [],
-        "rank": 24,
-        "pct_of_total": 1.334927936846978
-      },
-      {
-        "customer_name": "DPLAY ENTERTAINMENT LTD",
-        "rr": 427660.68,
-        "nrr": 0,
-        "total": 427660.68,
-        "subscriptions": [
-          {
-            "sub_id": 1729540.0,
-            "arr": 427660.68,
-            "renewal_qtr": "Q2'26",
-            "will_renew": "Yes",
-            "projected_arr": 534575.85
-          }
-        ],
-        "rank": 25,
-        "pct_of_total": 1.3218249345287698
-      },
-      {
-        "customer_name": "Informa UK Limited",
-        "rr": 412442.44,
-        "nrr": 0,
-        "total": 412442.44,
-        "subscriptions": [
-          {
-            "sub_id": 1558419.0,
-            "arr": 412442.44,
-            "renewal_qtr": "Q2'26",
-            "will_renew": "Yes",
-            "projected_arr": 515553.05
-          }
-        ],
-        "rank": 26,
-        "pct_of_total": 1.2747879960577297
+        "rank": 20,
+        "pct_of_total": 1.5830627104570256
       },
       {
         "customer_name": "Proximus NV",
-        "rr": 400146.55,
+        "rr": 403022.47,
         "nrr": 0,
-        "total": 400146.55,
+        "total": 403022.47,
         "subscriptions": [
           {
             "sub_id": 1558392.0,
-            "arr": 400146.55,
-            "renewal_qtr": "Next Yr",
+            "arr": 403022.47,
+            "renewal_qtr": "Q3'26",
             "will_renew": "Yes",
-            "projected_arr": 500183.1875
+            "projected_arr": 503778.08749999997
           }
         ],
-        "rank": 27,
-        "pct_of_total": 1.2367835342161058
+        "rank": 21,
+        "pct_of_total": 1.3982698622118035
       },
       {
         "customer_name": "DPG Media BV",
-        "rr": 358970.62,
+        "rr": 361550.59,
         "nrr": 0,
-        "total": 358970.62,
+        "total": 361550.59,
         "subscriptions": [
           {
             "sub_id": 1748803.0,
-            "arr": 358970.62,
+            "arr": 361550.59,
             "renewal_qtr": "Q3'26",
-            "will_renew": "No",
+            "will_renew": "No (SF)",
             "projected_arr": 0.0
           }
         ],
-        "rank": 28,
-        "pct_of_total": 1.1095158813273454
+        "rank": 22,
+        "pct_of_total": 1.254384882465477
       },
       {
         "customer_name": "Hawaiian Telcom Communications, Inc.",
-        "rr": 335283.0,
+        "rr": 335282.93,
         "nrr": 0,
-        "total": 335283.0,
+        "total": 335282.93,
         "subscriptions": [
           {
             "sub_id": 1781084.0,
-            "arr": 335283.0,
+            "arr": 335282.93,
             "renewal_qtr": "Q4'26",
             "will_renew": "Yes",
-            "projected_arr": 419103.75
+            "projected_arr": 419103.6625
           }
         ],
-        "rank": 30,
-        "pct_of_total": 1.036301559272668
+        "rank": 23,
+        "pct_of_total": 1.1632503178621028
       },
       {
         "customer_name": "MasterCard Worldwide",
@@ -519,34 +433,42 @@
             "projected_arr": 404231.25
           }
         ],
-        "rank": 31,
-        "pct_of_total": 0.9995269063608705
+        "rank": 24,
+        "pct_of_total": 1.1219709397130242
+      },
+      {
+        "customer_name": "NBN Co Ltd",
+        "rr": 323117.93,
+        "nrr": 0,
+        "total": 323117.93,
+        "subscriptions": [
+          {
+            "sub_id": 1558355.0,
+            "arr": 323117.93,
+            "renewal_qtr": "Q3'26",
+            "will_renew": "Yes",
+            "projected_arr": 403897.4125
+          }
+        ],
+        "rank": 25,
+        "pct_of_total": 1.1210443513466213
       },
       {
         "customer_name": "Telenet BV",
-        "rr": 301575.05,
+        "rr": 303742.52,
         "nrr": 0,
-        "total": 301575.05,
+        "total": 303742.52,
         "subscriptions": [
           {
             "sub_id": 1558389.0,
-            "arr": 301575.05,
+            "arr": 303742.52,
             "renewal_qtr": "Q2'26",
             "will_renew": "Yes",
-            "projected_arr": 376968.8125
+            "projected_arr": 379678.15
           }
         ],
-        "rank": 32,
-        "pct_of_total": 0.9321161363765321
-      },
-      {
-        "customer_name": "Star Hub",
-        "rr": 0,
-        "nrr": 300000.0,
-        "total": 300000.0,
-        "subscriptions": [],
-        "rank": 33,
-        "pct_of_total": 0.9272479302016517
+        "rank": 26,
+        "pct_of_total": 1.0538221642784977
       },
       {
         "customer_name": "Interxion Headquarters BV",
@@ -562,77 +484,73 @@
             "projected_arr": 370531.7125
           }
         ],
-        "rank": 34,
-        "pct_of_total": 0.9161993693058627
+        "rank": 27,
+        "pct_of_total": 1.0284356136916706
       },
       {
-        "customer_name": "NBN Co Ltd",
-        "rr": 294245.94,
+        "customer_name": "ENERWAVE S.A.",
+        "rr": 274581.38,
         "nrr": 0,
-        "total": 294245.94,
+        "total": 274581.38,
         "subscriptions": [
           {
-            "sub_id": 1558355.0,
-            "arr": 294245.94,
+            "sub_id": 1558391.0,
+            "arr": 126211.52,
             "renewal_qtr": "Q3'26",
             "will_renew": "Yes",
-            "projected_arr": 367807.425
+            "projected_arr": 252423.04
+          },
+          {
+            "sub_id": 1820736.0,
+            "arr": 118977.45,
+            "renewal_qtr": "Q4'26",
+            "will_renew": "Yes",
+            "projected_arr": 118977.45
+          },
+          {
+            "sub_id": 1785892.0,
+            "arr": 29392.41,
+            "renewal_qtr": "Q3'26",
+            "will_renew": "Yes",
+            "projected_arr": 58784.82
           }
         ],
-        "rank": 35,
-        "pct_of_total": 0.909463129450798
+        "rank": 28,
+        "pct_of_total": 0.9526487899757223
       },
       {
         "customer_name": "PropertyGuru Pte Ltd",
-        "rr": 262147.67,
+        "rr": 267013.36,
         "nrr": 0,
-        "total": 262147.67,
+        "total": 267013.36,
         "subscriptions": [
           {
             "sub_id": 1558394.0,
-            "arr": 262147.67,
+            "arr": 267013.36,
             "renewal_qtr": "Q2'26",
-            "will_renew": "No",
-            "projected_arr": 0.0
+            "will_renew": "Yes",
+            "projected_arr": 333766.69999999995
           }
         ],
-        "rank": 36,
-        "pct_of_total": 0.810252948048952
+        "rank": 29,
+        "pct_of_total": 0.9263918562553365
       },
       {
         "customer_name": "Momentum Energy",
-        "rr": 240683.73,
+        "rr": 264300.09,
         "nrr": 0,
-        "total": 240683.73,
+        "total": 264300.09,
         "subscriptions": [
           {
-            "sub_id": 1716683.0,
-            "arr": 240683.73,
+            "sub_id": 1813324.0,
+            "arr": 264300.09,
             "renewal_qtr": "Next Yr",
             "will_renew": "Yes",
-            "projected_arr": 300854.66250000003
+            "projected_arr": 264300.09
           }
         ],
-        "rank": 37,
-        "pct_of_total": 0.743911634919044
-      },
-      {
-        "customer_name": "A1 Telekom",
-        "rr": 0,
-        "nrr": 210248.76,
-        "total": 210248.76,
-        "subscriptions": [],
-        "rank": 38,
-        "pct_of_total": 0.6498424251248794
-      },
-      {
-        "customer_name": "A1 Telekom Austria Ag.",
-        "rr": 0,
-        "nrr": 210248.76,
-        "total": 210248.76,
-        "subscriptions": [],
-        "rank": 39,
-        "pct_of_total": 0.6498424251248794
+        "rank": 30,
+        "pct_of_total": 0.916978277729446
       },
       {
         "customer_name": "Telstra International Limited",
@@ -640,20 +558,6 @@
         "nrr": 0,
         "total": 207844.86,
         "subscriptions": [
-          {
-            "sub_id": 1724704.0,
-            "arr": 34640.81,
-            "renewal_qtr": "Q3'26",
-            "will_renew": "Yes",
-            "projected_arr": 43301.0125
-          },
-          {
-            "sub_id": 1724705.0,
-            "arr": 34640.81,
-            "renewal_qtr": "Q3'26",
-            "will_renew": "Yes",
-            "projected_arr": 43301.0125
-          },
           {
             "sub_id": 1724804.0,
             "arr": 34640.81,
@@ -676,6 +580,20 @@
             "projected_arr": 43301.0125
           },
           {
+            "sub_id": 1724704.0,
+            "arr": 34640.81,
+            "renewal_qtr": "Q3'26",
+            "will_renew": "Yes",
+            "projected_arr": 43301.0125
+          },
+          {
+            "sub_id": 1724705.0,
+            "arr": 34640.81,
+            "renewal_qtr": "Q3'26",
+            "will_renew": "Yes",
+            "projected_arr": 43301.0125
+          },
+          {
             "sub_id": 1724904.0,
             "arr": 34640.81,
             "renewal_qtr": "Q3'26",
@@ -683,25 +601,25 @@
             "projected_arr": 43301.0125
           }
         ],
-        "rank": 40,
-        "pct_of_total": 0.6424123874601735
+        "rank": 31,
+        "pct_of_total": 0.7211091822091994
       },
       {
         "customer_name": "BeeDIGITAL AI, S.A.U.",
-        "rr": 188692.05,
+        "rr": 190048.21,
         "nrr": 0,
-        "total": 188692.05,
+        "total": 190048.21,
         "subscriptions": [
           {
             "sub_id": 1772457.0,
-            "arr": 188692.05,
+            "arr": 190048.21,
             "renewal_qtr": "Q3'26",
             "will_renew": "Yes",
-            "projected_arr": 235865.0625
+            "projected_arr": 237560.26249999998
           }
         ],
-        "rank": 41,
-        "pct_of_total": 0.5832143760266886
+        "rank": 32,
+        "pct_of_total": 0.6593644379438692
       },
       {
         "customer_name": "TATA Communications (America) Inc.",
@@ -717,219 +635,204 @@
             "projected_arr": 226170.0
           }
         ],
-        "rank": 42,
-        "pct_of_total": 0.5592417716632202
+        "rank": 33,
+        "pct_of_total": 0.6277500006120127
       },
       {
         "customer_name": "AARP Services, Inc.",
-        "rr": 177543.25,
+        "rr": 177543.3,
         "nrr": 0,
-        "total": 177543.25,
+        "total": 177543.3,
         "subscriptions": [
           {
             "sub_id": 1780083.0,
-            "arr": 177543.25,
+            "arr": 177543.3,
             "renewal_qtr": "Q4'26",
             "will_renew": "Yes",
-            "projected_arr": 221929.0625
+            "projected_arr": 221929.125
           }
         ],
-        "rank": 43,
-        "pct_of_total": 0.5487553702792479
+        "rank": 34,
+        "pct_of_total": 0.6159791676817148
       },
       {
         "customer_name": "Hubexo South UK Ltd",
-        "rr": 173411.91,
+        "rr": 177474.29,
         "nrr": 0,
-        "total": 173411.91,
+        "total": 177474.29,
         "subscriptions": [
           {
             "sub_id": 1752312.0,
-            "arr": 173411.91,
+            "arr": 177474.29,
             "renewal_qtr": "Q3'26",
-            "will_renew": "No",
+            "will_renew": "No (SF)",
             "projected_arr": 0.0
           }
         ],
-        "rank": 44,
-        "pct_of_total": 0.5359861153993837
-      },
-      {
-        "customer_name": "ELPEDISON SA",
-        "rr": 154744.45,
-        "nrr": 0,
-        "total": 154744.45,
-        "subscriptions": [
-          {
-            "sub_id": 1558391.0,
-            "arr": 125310.89,
-            "renewal_qtr": "Q3'26",
-            "will_renew": "Yes",
-            "projected_arr": 250621.78
-          },
-          {
-            "sub_id": 1785892.0,
-            "arr": 29433.56,
-            "renewal_qtr": "Q3'26",
-            "will_renew": "Yes",
-            "projected_arr": 58867.12
-          }
-        ],
-        "rank": 45,
-        "pct_of_total": 0.47828823657564334
+        "rank": 35,
+        "pct_of_total": 0.6157397403287158
       },
       {
         "customer_name": "Sky Italia",
-        "rr": 151282.16,
+        "rr": 152369.45,
         "nrr": 0,
-        "total": 151282.16,
+        "total": 152369.45,
         "subscriptions": [
           {
             "sub_id": 1664228.0,
-            "arr": 151282.16,
-            "renewal_qtr": "Next Yr",
+            "arr": 152369.45,
+            "renewal_qtr": "Q1'27",
             "will_renew": "Yes",
-            "projected_arr": 189102.7
+            "projected_arr": 190461.8125
           }
         ],
-        "rank": 46,
-        "pct_of_total": 0.46758689912145035
+        "rank": 36,
+        "pct_of_total": 0.5286395318275636
       },
       {
         "customer_name": "RCS Media Group",
-        "rr": 151115.71,
+        "rr": 152201.8,
         "nrr": 0,
-        "total": 151115.71,
+        "total": 152201.8,
         "subscriptions": [
           {
-            "sub_id": 1558408.0,
-            "arr": 151115.71,
-            "renewal_qtr": "Next Yr",
+            "sub_id": 1798104.0,
+            "arr": 152201.8,
+            "renewal_qtr": "Q1'27",
             "will_renew": "Yes",
-            "projected_arr": 188894.63749999998
+            "projected_arr": 190252.25
           }
         ],
-        "rank": 47,
-        "pct_of_total": 0.46707243106151014
+        "rank": 37,
+        "pct_of_total": 0.5280578770568015
       },
       {
         "customer_name": "Ofcom",
-        "rr": 140811.45,
+        "rr": 144110.13,
         "nrr": 0,
-        "total": 140811.45,
+        "total": 144110.13,
         "subscriptions": [
           {
-            "sub_id": 1685865.0,
-            "arr": 140811.45,
+            "sub_id": 1813424.0,
+            "arr": 144110.13,
             "renewal_qtr": "Next Yr",
             "will_renew": "Yes",
-            "projected_arr": 176014.3125
+            "projected_arr": 144110.13
           }
         ],
-        "rank": 48,
-        "pct_of_total": 0.4352237518706446
-      },
-      {
-        "customer_name": "Ntirety (Hosting.com)",
-        "rr": 134556.4,
-        "nrr": 0,
-        "total": 134556.4,
-        "subscriptions": [
-          {
-            "sub_id": 1560662.0,
-            "arr": 134556.4,
-            "renewal_qtr": "Q4'25",
-            "will_renew": "No",
-            "projected_arr": 0.0
-          }
-        ],
-        "rank": 49,
-        "pct_of_total": 0.41589047798461837
+        "rank": 38,
+        "pct_of_total": 0.4999841612266063
       },
       {
         "customer_name": "Il Sole 24 ORE SpA",
-        "rr": 106120.64,
+        "rr": 106883.34,
         "nrr": 0,
-        "total": 106120.64,
+        "total": 106883.34,
         "subscriptions": [
           {
-            "sub_id": 1665228.0,
-            "arr": 106120.64,
+            "sub_id": 1806512.0,
+            "arr": 106883.34,
             "renewal_qtr": "Next Yr",
             "will_renew": "Yes",
-            "projected_arr": 132650.8
+            "projected_arr": 106883.34
           }
         ],
-        "rank": 50,
-        "pct_of_total": 0.328000479305582
+        "rank": 39,
+        "pct_of_total": 0.37082734641206816
       },
       {
         "customer_name": "TV4 AB",
-        "rr": 97241.81,
+        "rr": 97940.7,
         "nrr": 0,
-        "total": 97241.81,
+        "total": 97940.7,
         "subscriptions": [
           {
-            "sub_id": 1665629.0,
-            "arr": 97241.81,
+            "sub_id": 1813824.0,
+            "arr": 97940.7,
             "renewal_qtr": "Next Yr",
             "will_renew": "Yes",
-            "projected_arr": 121552.2625
+            "projected_arr": 97940.7
           }
         ],
-        "rank": 51,
-        "pct_of_total": 0.30055755683854096
+        "rank": 40,
+        "pct_of_total": 0.33980122521190337
       },
       {
         "customer_name": "Unidad Editorial S.A.",
-        "rr": 85056.37,
+        "rr": 85667.68,
         "nrr": 0,
-        "total": 85056.37,
+        "total": 85667.68,
         "subscriptions": [
           {
             "sub_id": 1797003.0,
-            "arr": 85056.37,
+            "arr": 85667.68,
             "renewal_qtr": "Next Yr",
             "will_renew": "Yes",
-            "projected_arr": 85056.37
+            "projected_arr": 85667.68
           }
         ],
-        "rank": 52,
-        "pct_of_total": 0.26289447677655287
+        "rank": 41,
+        "pct_of_total": 0.2972204877549504
       },
       {
         "customer_name": "Rakuten Marketing",
-        "rr": 70421.39,
+        "rr": 70421.4,
         "nrr": 0,
-        "total": 70421.39,
+        "total": 70421.4,
         "subscriptions": [
           {
             "sub_id": 1780081.0,
-            "arr": 70421.39,
-            "renewal_qtr": "Next Yr",
+            "arr": 70421.4,
+            "renewal_qtr": "Q1'27",
             "will_renew": "Yes",
-            "projected_arr": 88026.7375
+            "projected_arr": 88026.75
           }
         ],
-        "rank": 53,
-        "pct_of_total": 0.21766029373141096
+        "rank": 42,
+        "pct_of_total": 0.24432414717413223
       },
       {
-        "customer_name": "Liberty Global Services B.V. (NL)",
-        "rr": 32624.88,
+        "customer_name": "NBN",
+        "rr": 0,
+        "nrr": 68639.0,
+        "total": 68639.0,
+        "subscriptions": [],
+        "rank": 43,
+        "pct_of_total": 0.23814018377773324
+      },
+      {
+        "customer_name": "Liberty Global Technology Services BV",
+        "rr": 44360.15,
         "nrr": 0,
-        "total": 32624.88,
+        "total": 44360.15,
         "subscriptions": [
           {
-            "sub_id": 1558414.0,
-            "arr": 32624.88,
-            "renewal_qtr": "Q2'26",
+            "sub_id": 1887080.0,
+            "arr": 44360.15,
+            "renewal_qtr": "Q2'27",
             "will_renew": "Yes",
-            "projected_arr": 40781.1
+            "projected_arr": 55450.1875
           }
         ],
-        "rank": 54,
-        "pct_of_total": 0.10083784151025754
+        "rank": 44,
+        "pct_of_total": 0.15390571356528815
+      },
+      {
+        "customer_name": "A1 Telekom Austria AG.",
+        "rr": 29818.91,
+        "nrr": 0,
+        "total": 29818.91,
+        "subscriptions": [
+          {
+            "sub_id": 1558395.0,
+            "arr": 29818.91,
+            "renewal_qtr": "Q3'26",
+            "will_renew": "No (SF)",
+            "projected_arr": 0.0
+          }
+        ],
+        "rank": 45,
+        "pct_of_total": 0.10345548022919458
       },
       {
         "customer_name": "Newsday",
@@ -945,16 +848,24 @@
             "projected_arr": 33413.95
           }
         ],
-        "rank": 55,
-        "pct_of_total": 0.08262137593963062
+        "rank": 46,
+        "pct_of_total": 0.09274265876530823
       },
       {
-        "customer_name": "Rcs Media Group",
+        "customer_name": "Various Licenses",
         "rr": 0,
         "nrr": 0,
         "total": 0,
-        "subscriptions": [],
-        "rank": 56,
+        "subscriptions": [
+          {
+            "sub_id": "NEW LICENSES",
+            "arr": 0,
+            "renewal_qtr": null,
+            "will_renew": null,
+            "projected_arr": null
+          }
+        ],
+        "rank": 47,
         "pct_of_total": 0.0
       },
       {
@@ -963,16 +874,16 @@
         "nrr": 0,
         "total": 0,
         "subscriptions": [],
-        "rank": 57,
+        "rank": 48,
         "pct_of_total": 0.0
       },
       {
-        "customer_name": "Ntirety (Hosting.Com)",
+        "customer_name": "Dplay Entertainment Ltd",
         "rr": 0,
         "nrr": 0,
         "total": 0,
         "subscriptions": [],
-        "rank": 58,
+        "rank": 49,
         "pct_of_total": 0.0
       },
       {
@@ -981,78 +892,7 @@
         "nrr": 0,
         "total": 0,
         "subscriptions": [],
-        "rank": 59,
-        "pct_of_total": 0.0
-      },
-      {
-        "customer_name": "Accenture Singapore",
-        "rr": 0,
-        "nrr": 0,
-        "total": 0,
-        "subscriptions": [],
-        "rank": 60,
-        "pct_of_total": 0.0
-      },
-      {
-        "customer_name": "Luminus Hasselt Nv/Sa",
-        "rr": 0,
-        "nrr": 0,
-        "total": 0,
-        "subscriptions": [],
-        "rank": 61,
-        "pct_of_total": 0.0
-      },
-      {
-        "customer_name": "Interxion Headquarters Bv",
-        "rr": 0,
-        "nrr": 0,
-        "total": 0,
-        "subscriptions": [],
-        "rank": 62,
-        "pct_of_total": 0.0
-      },
-      {
-        "customer_name": "Ziggo Services B.V.",
-        "rr": 0,
-        "nrr": 0,
-        "total": 0,
-        "subscriptions": [],
-        "rank": 63,
-        "pct_of_total": 0.0
-      },
-      {
-        "customer_name": "Aarp Services, Inc.",
-        "rr": 0,
-        "nrr": 0,
-        "total": 0,
-        "subscriptions": [],
-        "rank": 64,
-        "pct_of_total": 0.0
-      },
-      {
-        "customer_name": "Various: Incremental Rev from Platinum upsell",
-        "rr": 0,
-        "nrr": 0,
-        "total": 0,
-        "subscriptions": [
-          {
-            "sub_id": "centrrica, others",
-            "arr": 0,
-            "renewal_qtr": null,
-            "will_renew": null,
-            "projected_arr": null
-          }
-        ],
-        "rank": 65,
-        "pct_of_total": 0.0
-      },
-      {
-        "customer_name": "British Telecommunications Plc",
-        "rr": 0,
-        "nrr": 0,
-        "total": 0,
-        "subscriptions": [],
-        "rank": 66,
+        "rank": 50,
         "pct_of_total": 0.0
       },
       {
@@ -1061,92 +901,93 @@
         "nrr": 0,
         "total": 0,
         "subscriptions": [],
-        "rank": 67,
+        "rank": 51,
         "pct_of_total": 0.0
       },
       {
-        "customer_name": "Various: License increments",
+        "customer_name": "Accenture Singapore",
         "rr": 0,
         "nrr": 0,
         "total": 0,
-        "subscriptions": [
-          {
-            "sub_id": "sandboxes",
-            "arr": 0,
-            "renewal_qtr": null,
-            "will_renew": null,
-            "projected_arr": null
-          }
-        ],
-        "rank": 68,
+        "subscriptions": [],
+        "rank": 52,
+        "pct_of_total": 0.0
+      },
+      {
+        "customer_name": "Starhub",
+        "rr": 0,
+        "nrr": 0,
+        "total": 0,
+        "subscriptions": [],
+        "rank": 53,
         "pct_of_total": 0.0
       }
     ],
     "Kandy": [
       {
         "customer_name": "EMIRCOM",
-        "rr": 9586308.0,
+        "rr": 7200000.0,
         "nrr": 0,
-        "total": 9586308.0,
+        "total": 7200000.0,
         "subscriptions": [
           {
             "sub_id": 1599547.0,
-            "arr": 9586308.0,
+            "arr": 7200000.0,
             "renewal_qtr": "Q2'26",
             "will_renew": "Yes",
-            "projected_arr": 9586308.0
+            "projected_arr": 7200000.0
+          },
+          {
+            "sub_id": null,
+            "arr": 0,
+            "renewal_qtr": null,
+            "will_renew": null,
+            "projected_arr": null
           }
         ],
         "rank": 1,
-        "pct_of_total": 70.4731407443919
+        "pct_of_total": 68.39404464327794
       },
       {
         "customer_name": "AT&T SERVICES, INC.",
-        "rr": 2518275.31,
+        "rr": 2212157.0,
         "nrr": 0,
-        "total": 2518275.31,
+        "total": 2212157.0,
         "subscriptions": [
           {
-            "sub_id": 1211972.0,
-            "arr": 1798094.55,
-            "renewal_qtr": "Q1'26",
+            "sub_id": 1213774.0,
+            "arr": 1345908.59,
+            "renewal_qtr": "Next Yr",
             "will_renew": "Yes",
-            "projected_arr": 1798094.55
+            "projected_arr": 1345908.59
           },
           {
             "sub_id": 1248555.0,
-            "arr": 682730.45,
-            "renewal_qtr": "Q1'26",
+            "arr": 588220.45,
+            "renewal_qtr": "Q2'26",
             "will_renew": "Yes",
-            "projected_arr": 682730.45
+            "projected_arr": 735275.5625
           },
           {
-            "sub_id": 1248569.0,
-            "arr": 15120.0,
-            "renewal_qtr": "Q1'26",
+            "sub_id": 1211972.0,
+            "arr": 149903.59,
+            "renewal_qtr": "Q2'26",
             "will_renew": "Yes",
-            "projected_arr": 15120.0
+            "projected_arr": 149903.59
           },
           {
-            "sub_id": 1248553.0,
-            "arr": 13191.14,
-            "renewal_qtr": "Q1'26",
-            "will_renew": "No",
-            "projected_arr": 0.0
+            "sub_id": 1273228.0,
+            "arr": 120885.2,
+            "renewal_qtr": "Next Yr",
+            "will_renew": "Yes",
+            "projected_arr": 120885.2
           },
           {
             "sub_id": 1329832.0,
             "arr": 7239.17,
             "renewal_qtr": "Q3'26",
-            "will_renew": "BU decision required",
-            "projected_arr": 0.0
-          },
-          {
-            "sub_id": 1248559.0,
-            "arr": 1900.0,
-            "renewal_qtr": "Q1'26",
             "will_renew": "Yes",
-            "projected_arr": 1900.0
+            "projected_arr": 7239.17
           },
           {
             "sub_id": null,
@@ -1157,293 +998,371 @@
           }
         ],
         "rank": 2,
-        "pct_of_total": 18.51294266309377
+        "pct_of_total": 21.01366175221386
       },
       {
         "customer_name": "PIONEER TELEPHONE COOPERATIVE (OK)",
-        "rr": 301771.06,
+        "rr": 307566.56,
         "nrr": 0,
-        "total": 301771.06,
+        "total": 307566.56,
         "subscriptions": [
           {
             "sub_id": 1211894.0,
-            "arr": 301771.06,
-            "renewal_qtr": "Q1'26",
+            "arr": 255169.28,
+            "renewal_qtr": "Q2'26",
             "will_renew": "Yes",
-            "projected_arr": 377213.825
+            "projected_arr": 318961.6
+          },
+          {
+            "sub_id": 1221715.0,
+            "arr": 52397.28,
+            "renewal_qtr": "Next Yr",
+            "will_renew": "Yes",
+            "projected_arr": 52397.28
           }
         ],
         "rank": 3,
-        "pct_of_total": 2.2184509807075186
-      },
-      {
-        "customer_name": "ISSQUARED, INC.",
-        "rr": 295121.61,
-        "nrr": 0,
-        "total": 295121.61,
-        "subscriptions": [
-          {
-            "sub_id": 1212274.0,
-            "arr": 295121.61,
-            "renewal_qtr": "Q1'26",
-            "will_renew": "Yes",
-            "projected_arr": 368902.01249999995
-          }
-        ],
-        "rank": 4,
-        "pct_of_total": 2.1695679669630406
+        "pct_of_total": 2.921627921586031
       },
       {
         "customer_name": "HARGRAY COMMUNICATIONS GROUP",
-        "rr": 158226.87,
+        "rr": 143541.87,
         "nrr": 0,
-        "total": 158226.87,
+        "total": 143541.87,
         "subscriptions": [
           {
             "sub_id": 1211883.0,
-            "arr": 158226.87,
-            "renewal_qtr": "Q1'26",
+            "arr": 124889.07,
+            "renewal_qtr": "Q2'26",
             "will_renew": "Yes",
-            "projected_arr": 197783.5875
+            "projected_arr": 156111.33750000002
+          },
+          {
+            "sub_id": 1213075.0,
+            "arr": 18652.8,
+            "renewal_qtr": "Q1'27",
+            "will_renew": "Yes",
+            "projected_arr": 23316.0
+          }
+        ],
+        "rank": 4,
+        "pct_of_total": 1.3635290367999442
+      },
+      {
+        "customer_name": "ISSQUARED, INC.",
+        "rr": 138000.0,
+        "nrr": 0,
+        "total": 138000.0,
+        "subscriptions": [
+          {
+            "sub_id": 1212274.0,
+            "arr": 138000.0,
+            "renewal_qtr": "Q2'26",
+            "will_renew": "Yes",
+            "projected_arr": 138000.0
+          },
+          {
+            "sub_id": 1220198.0,
+            "arr": 0,
+            "renewal_qtr": "Next Yr",
+            "will_renew": "Yes",
+            "projected_arr": 0.0
           }
         ],
         "rank": 5,
-        "pct_of_total": 1.1631948899466404
+        "pct_of_total": 1.3108858556628271
       },
       {
-        "customer_name": "COMPORIUM, INC.",
-        "rr": 127573.75,
+        "customer_name": "YADKIN VALLEY TEL MEMBERSHIP CORP",
+        "rr": 120000.0,
         "nrr": 0,
-        "total": 127573.75,
+        "total": 120000.0,
         "subscriptions": [
           {
-            "sub_id": 1211875.0,
-            "arr": 73104.65,
-            "renewal_qtr": "Q1'26",
-            "will_renew": "No",
+            "sub_id": 1211903.0,
+            "arr": 120000.0,
+            "renewal_qtr": "Q2'26",
+            "will_renew": "Yes",
+            "projected_arr": 120000.0
+          },
+          {
+            "sub_id": 1418220.0,
+            "arr": 0,
+            "renewal_qtr": "Q2'26",
+            "will_renew": "Yes",
             "projected_arr": 0.0
           },
           {
-            "sub_id": 1422393.0,
-            "arr": 54469.1,
-            "renewal_qtr": "Q1'26",
-            "will_renew": "No",
+            "sub_id": 1418222.0,
+            "arr": 0,
+            "renewal_qtr": "Next Yr",
+            "will_renew": "Yes",
+            "projected_arr": 0.0
+          },
+          {
+            "sub_id": 1220806.0,
+            "arr": 0,
+            "renewal_qtr": "Next Yr",
+            "will_renew": "Yes",
             "projected_arr": 0.0
           }
         ],
         "rank": 6,
-        "pct_of_total": 0.9378504048732698
-      },
-      {
-        "customer_name": "YADKIN VALLEY TEL MEMBERSHIP CORP",
-        "rr": 96738.75,
-        "nrr": 0,
-        "total": 96738.75,
-        "subscriptions": [
-          {
-            "sub_id": 1211903.0,
-            "arr": 49606.51,
-            "renewal_qtr": "Q1'26",
-            "will_renew": "Yes",
-            "projected_arr": 62008.137500000004
-          },
-          {
-            "sub_id": 1418220.0,
-            "arr": 47132.24,
-            "renewal_qtr": "Q1'26",
-            "will_renew": "Yes",
-            "projected_arr": 58915.299999999996
-          }
-        ],
-        "rank": 7,
-        "pct_of_total": 0.7111688404114015
+        "pct_of_total": 1.1399007440546323
       },
       {
         "customer_name": "RAZORLINE, LLC",
-        "rr": 82547.3,
+        "rr": 83541.15,
         "nrr": 0,
-        "total": 82547.3,
+        "total": 83541.15,
         "subscriptions": [
           {
             "sub_id": 1211895.0,
-            "arr": 82547.3,
-            "renewal_qtr": "Q1'26",
+            "arr": 68996.0,
+            "renewal_qtr": "Q2'26",
             "will_renew": "Yes",
-            "projected_arr": 103184.125
-          }
-        ],
-        "rank": 8,
-        "pct_of_total": 0.6068412876959034
-      },
-      {
-        "customer_name": "WHOLESALE CARRIER SERVICES INC.",
-        "rr": 73785.88,
-        "nrr": 0,
-        "total": 73785.88,
-        "subscriptions": [
+            "projected_arr": 86245.0
+          },
           {
-            "sub_id": 1211902.0,
-            "arr": 73785.88,
-            "renewal_qtr": "Q1'26",
+            "sub_id": 1224520.0,
+            "arr": 14545.15,
+            "renewal_qtr": "Next Yr",
             "will_renew": "Yes",
-            "projected_arr": 92232.35
+            "projected_arr": 14545.15
           }
         ],
-        "rank": 9,
-        "pct_of_total": 0.542432259237739
+        "rank": 7,
+        "pct_of_total": 0.7935718253681636
       },
       {
         "customer_name": "NUWAVE COMMUNICATIONS, INC.",
-        "rr": 72730.96,
+        "rr": 75426.04,
         "nrr": 0,
-        "total": 72730.96,
+        "total": 75426.04,
         "subscriptions": [
           {
             "sub_id": 1211892.0,
-            "arr": 72730.96,
-            "renewal_qtr": "Q1'26",
+            "arr": 62472.06,
+            "renewal_qtr": "Q2'26",
             "will_renew": "Yes",
-            "projected_arr": 90913.70000000001
+            "projected_arr": 78090.075
+          },
+          {
+            "sub_id": 1228255.0,
+            "arr": 12953.98,
+            "renewal_qtr": "Next Yr",
+            "will_renew": "Yes",
+            "projected_arr": 12953.98
           }
         ],
-        "rank": 10,
-        "pct_of_total": 0.5346770811614584
+        "rank": 8,
+        "pct_of_total": 0.7164849926424538
+      },
+      {
+        "customer_name": "COMPORIUM, INC.",
+        "rr": 58510.880000000005,
+        "nrr": 0,
+        "total": 58510.880000000005,
+        "subscriptions": [
+          {
+            "sub_id": 1422393.0,
+            "arr": 36188.21,
+            "renewal_qtr": "Q2'26",
+            "will_renew": "No",
+            "projected_arr": 0.0
+          },
+          {
+            "sub_id": 1211875.0,
+            "arr": 20177.95,
+            "renewal_qtr": "Q2'26",
+            "will_renew": "No",
+            "projected_arr": 0.0
+          },
+          {
+            "sub_id": 1431679.0,
+            "arr": 1544.67,
+            "renewal_qtr": "Next Yr",
+            "will_renew": "Yes",
+            "projected_arr": 1544.67
+          },
+          {
+            "sub_id": 1213074.0,
+            "arr": 600.05,
+            "renewal_qtr": "Q1'27",
+            "will_renew": "No",
+            "projected_arr": 0.0
+          }
+        ],
+        "rank": 9,
+        "pct_of_total": 0.5558049637274276
       },
       {
         "customer_name": "Juxto - Ontario",
-        "rr": 48793.63,
+        "rr": 39518.68,
         "nrr": 0,
-        "total": 48793.63,
+        "total": 39518.68,
         "subscriptions": [
           {
             "sub_id": 1211888.0,
-            "arr": 48793.63,
-            "renewal_qtr": "Q1'26",
+            "arr": 33661.68,
+            "renewal_qtr": "Q2'26",
             "will_renew": "No",
             "projected_arr": 0.0
+          },
+          {
+            "sub_id": 1221006.0,
+            "arr": 5857.0,
+            "renewal_qtr": "Next Yr",
+            "will_renew": "Yes",
+            "projected_arr": 5857.0
+          }
+        ],
+        "rank": 10,
+        "pct_of_total": 0.3753947728004743
+      },
+      {
+        "customer_name": "WHOLESALE CARRIER SERVICES INC.",
+        "rr": 31283.6,
+        "nrr": 0,
+        "total": 31283.6,
+        "subscriptions": [
+          {
+            "sub_id": 1211902.0,
+            "arr": 26123.2,
+            "renewal_qtr": "Q2'26",
+            "will_renew": "Yes",
+            "projected_arr": 26123.2
+          },
+          {
+            "sub_id": 1220200.0,
+            "arr": 5160.4,
+            "renewal_qtr": "Next Yr",
+            "will_renew": "Yes",
+            "projected_arr": 5160.4
           }
         ],
         "rank": 11,
-        "pct_of_total": 0.3587033041729707
-      },
-      {
-        "customer_name": "VOICEFLEX LIMITED",
-        "rr": 46972.52,
-        "nrr": 0,
-        "total": 46972.52,
-        "subscriptions": [
-          {
-            "sub_id": 1234295.0,
-            "arr": 46972.52,
-            "renewal_qtr": "Q1'26",
-            "will_renew": "Yes",
-            "projected_arr": 58715.649999999994
-          }
-        ],
-        "rank": 12,
-        "pct_of_total": 0.3453155284681822
-      },
-      {
-        "customer_name": "HERTZ EUROPE LIMITED",
-        "rr": 46534.91,
-        "nrr": 0,
-        "total": 46534.91,
-        "subscriptions": [
-          {
-            "sub_id": 1337076.0,
-            "arr": 46534.91,
-            "renewal_qtr": "Q1'26",
-            "will_renew": "No",
-            "projected_arr": 0.0
-          }
-        ],
-        "rank": 13,
-        "pct_of_total": 0.3420984660577993
-      },
-      {
-        "customer_name": "Coordinadora de Carriers SA de CV Vivaro",
-        "rr": 35394.27,
-        "nrr": 0,
-        "total": 35394.27,
-        "subscriptions": [
-          {
-            "sub_id": 1211898.0,
-            "arr": 35394.27,
-            "renewal_qtr": "Q1'26",
-            "will_renew": "Yes",
-            "projected_arr": 44242.837499999994
-          }
-        ],
-        "rank": 14,
-        "pct_of_total": 0.2601987513081165
+        "pct_of_total": 0.2971683243058958
       },
       {
         "customer_name": "CROSS TELEPHONE COMPANY LLC (OK)",
-        "rr": 34655.89,
+        "rr": 27896.149999999998,
         "nrr": 0,
-        "total": 34655.89,
+        "total": 27896.149999999998,
         "subscriptions": [
           {
             "sub_id": 1211877.0,
-            "arr": 34655.89,
-            "renewal_qtr": "Q1'26",
+            "arr": 23296.35,
+            "renewal_qtr": "Q2'26",
             "will_renew": "Yes",
-            "projected_arr": 43319.8625
+            "projected_arr": 29120.4375
+          },
+          {
+            "sub_id": 1213474.0,
+            "arr": 4599.8,
+            "renewal_qtr": "Next Yr",
+            "will_renew": "Yes",
+            "projected_arr": 4599.8
           }
         ],
-        "rank": 15,
-        "pct_of_total": 0.2547705971466975
+        "rank": 12,
+        "pct_of_total": 0.2649903511771636
       },
       {
         "customer_name": "COEO SOLUTIONS LLC",
-        "rr": 22551.22,
+        "rr": 21327.78,
         "nrr": 0,
-        "total": 22551.22,
+        "total": 21327.78,
         "subscriptions": [
           {
             "sub_id": 1211874.0,
-            "arr": 22551.22,
-            "renewal_qtr": "Q1'26",
+            "arr": 17768.78,
+            "renewal_qtr": "Q2'26",
             "will_renew": "Yes",
-            "projected_arr": 28189.025
+            "projected_arr": 22210.975
+          },
+          {
+            "sub_id": 1212875.0,
+            "arr": 3559.0,
+            "renewal_qtr": "Q4'26",
+            "will_renew": "Yes",
+            "projected_arr": 4448.75
           }
         ],
-        "rank": 16,
-        "pct_of_total": 0.16578387644312548
+        "rank": 13,
+        "pct_of_total": 0.2025962690919459
+      },
+      {
+        "customer_name": "Coordinadora de Carriers SA de CV Vivaro",
+        "rr": 20439.62,
+        "nrr": 0,
+        "total": 20439.62,
+        "subscriptions": [
+          {
+            "sub_id": 1211898.0,
+            "arr": 18491.05,
+            "renewal_qtr": "Q2'26",
+            "will_renew": "Yes",
+            "projected_arr": 23113.8125
+          },
+          {
+            "sub_id": 1220199.0,
+            "arr": 1948.57,
+            "renewal_qtr": "Next Yr",
+            "will_renew": "Yes",
+            "projected_arr": 1948.57
+          }
+        ],
+        "rank": 14,
+        "pct_of_total": 0.19415948371828284
       },
       {
         "customer_name": "EVOLUTIO CLOUD ENABLER S.A.",
-        "rr": 20787.42,
+        "rr": 18812.940000000002,
         "nrr": 0,
-        "total": 20787.42,
+        "total": 18812.940000000002,
         "subscriptions": [
           {
             "sub_id": 1234297.0,
-            "arr": 20787.42,
-            "renewal_qtr": "Q1'26",
+            "arr": 16605.54,
+            "renewal_qtr": "Q2'26",
             "will_renew": "Yes",
-            "projected_arr": 25984.274999999998
+            "projected_arr": 20756.925000000003
+          },
+          {
+            "sub_id": 1234303.0,
+            "arr": 2207.4,
+            "renewal_qtr": "Next Yr",
+            "will_renew": "Yes",
+            "projected_arr": 2207.4
           }
         ],
-        "rank": 17,
-        "pct_of_total": 0.15281741160129497
+        "rank": 15,
+        "pct_of_total": 0.178707369198793
       },
       {
         "customer_name": "EMPIRE TELEPHONE CORPORATION",
-        "rr": 16935.51,
+        "rr": 16118.69,
         "nrr": 0,
-        "total": 16935.51,
+        "total": 16118.69,
         "subscriptions": [
           {
             "sub_id": 1211880.0,
-            "arr": 16935.51,
-            "renewal_qtr": "Q1'26",
+            "arr": 13750.09,
+            "renewal_qtr": "Q2'26",
             "will_renew": "Yes",
-            "projected_arr": 21169.387499999997
+            "projected_arr": 17187.6125
+          },
+          {
+            "sub_id": 1212874.0,
+            "arr": 2368.6,
+            "renewal_qtr": "Q3'26",
+            "will_renew": "Yes",
+            "projected_arr": 2960.75
           }
         ],
-        "rank": 18,
-        "pct_of_total": 0.12450033733613151
+        "rank": 16,
+        "pct_of_total": 0.15311422270154967
       },
       {
         "customer_name": "VODAFONE FIJI LIMITED",
@@ -1453,147 +1372,68 @@
         "subscriptions": [
           {
             "sub_id": 1211899.0,
-            "arr": 10823.16,
-            "renewal_qtr": "Q1'26",
+            "arr": 9019.3,
+            "renewal_qtr": "Q2'26",
             "will_renew": "No",
+            "projected_arr": 0.0
+          },
+          {
+            "sub_id": 1220606.0,
+            "arr": 1803.86,
+            "renewal_qtr": "Next Yr",
+            "will_renew": "Yes",
+            "projected_arr": 1803.86
+          }
+        ],
+        "rank": 17,
+        "pct_of_total": 0.10281106780851947
+      },
+      {
+        "customer_name": "AGT",
+        "rr": 2268.2400000000002,
+        "nrr": 0,
+        "total": 2268.2400000000002,
+        "subscriptions": [
+          {
+            "sub_id": 1211871.0,
+            "arr": 1890.2,
+            "renewal_qtr": "Q2'26",
+            "will_renew": "Yes",
+            "projected_arr": 2362.75
+          },
+          {
+            "sub_id": 1212674.0,
+            "arr": 378.04,
+            "renewal_qtr": "Next Yr",
+            "will_renew": "Yes",
+            "projected_arr": 378.04
+          }
+        ],
+        "rank": 18,
+        "pct_of_total": 0.021546403864120663
+      },
+      {
+        "customer_name": "ISSQUARED, Inc.",
+        "rr": 0,
+        "nrr": 0,
+        "total": 0,
+        "subscriptions": [
+          {
+            "sub_id": 1421367.0,
+            "arr": 0,
+            "renewal_qtr": "Q2'26",
+            "will_renew": "No",
+            "projected_arr": 0.0
+          },
+          {
+            "sub_id": 1421374.0,
+            "arr": 0,
+            "renewal_qtr": "Next Yr",
+            "will_renew": "Yes",
             "projected_arr": 0.0
           }
         ],
         "rank": 19,
-        "pct_of_total": 0.07956578048390188
-      },
-      {
-        "customer_name": "ISSQUARED, Inc.",
-        "rr": 3986.16,
-        "nrr": 0,
-        "total": 3986.16,
-        "subscriptions": [
-          {
-            "sub_id": 1421367.0,
-            "arr": 3986.16,
-            "renewal_qtr": "Q1'26",
-            "will_renew": "Yes",
-            "projected_arr": 4982.7
-          }
-        ],
-        "rank": 20,
-        "pct_of_total": 0.02930400470229677
-      },
-      {
-        "customer_name": "AGT",
-        "rr": 2268.24,
-        "nrr": 0,
-        "total": 2268.24,
-        "subscriptions": [
-          {
-            "sub_id": 1211871.0,
-            "arr": 2268.24,
-            "renewal_qtr": "Q1'26",
-            "will_renew": "Yes",
-            "projected_arr": 2835.2999999999997
-          }
-        ],
-        "rank": 21,
-        "pct_of_total": 0.01667482379682141
-      },
-      {
-        "customer_name": "VR3CLOUD INTERNATIONAL, LLC",
-        "rr": 0,
-        "nrr": 0,
-        "total": 0,
-        "subscriptions": [
-          {
-            "sub_id": 1211901.0,
-            "arr": 0,
-            "renewal_qtr": "Q1'26",
-            "will_renew": "No",
-            "projected_arr": 0.0
-          }
-        ],
-        "rank": 22,
-        "pct_of_total": 0.0
-      },
-      {
-        "customer_name": "Los Angeles Public Library",
-        "rr": 0,
-        "nrr": 0,
-        "total": 0,
-        "subscriptions": [
-          {
-            "sub_id": 1211873.0,
-            "arr": 0,
-            "renewal_qtr": "Q1'26",
-            "will_renew": "No (SF)",
-            "projected_arr": 0.0
-          },
-          {
-            "sub_id": 1421164.0,
-            "arr": 0,
-            "renewal_qtr": "Q1'26",
-            "will_renew": "No",
-            "projected_arr": 0.0
-          }
-        ],
-        "rank": 23,
-        "pct_of_total": 0.0
-      },
-      {
-        "customer_name": "Ribbon Communications Operating Company, Inc.",
-        "rr": 0,
-        "nrr": 0,
-        "total": 0,
-        "subscriptions": [],
-        "rank": 24,
-        "pct_of_total": 0.0
-      },
-      {
-        "customer_name": "At&T Services, Inc.",
-        "rr": 0,
-        "nrr": 0,
-        "total": 0,
-        "subscriptions": [],
-        "rank": 25,
-        "pct_of_total": 0.0
-      },
-      {
-        "customer_name": "CITY OF LOS ANGELES",
-        "rr": 0,
-        "nrr": 0,
-        "total": 0,
-        "subscriptions": [
-          {
-            "sub_id": 1211872.0,
-            "arr": 0,
-            "renewal_qtr": "Q1'26",
-            "will_renew": "No (SF)",
-            "projected_arr": 0.0
-          },
-          {
-            "sub_id": 1391684.0,
-            "arr": 0,
-            "renewal_qtr": "Q1'26",
-            "will_renew": "No",
-            "projected_arr": 0.0
-          }
-        ],
-        "rank": 26,
-        "pct_of_total": 0.0
-      },
-      {
-        "customer_name": "DIGITAL SPACE GROUP LIMITED",
-        "rr": 0,
-        "nrr": 0,
-        "total": 0,
-        "subscriptions": [
-          {
-            "sub_id": 1234294.0,
-            "arr": 0,
-            "renewal_qtr": "Q1'26",
-            "will_renew": "No",
-            "projected_arr": 0.0
-          }
-        ],
-        "rank": 27,
         "pct_of_total": 0.0
       }
     ],
@@ -1601,8 +1441,8 @@
       {
         "customer_name": "One Albania",
         "rr": 1620914.02,
-        "nrr": 218000.0,
-        "total": 1838914.02,
+        "nrr": 0,
+        "total": 1620914.02,
         "subscriptions": [
           {
             "sub_id": 1587517.0,
@@ -1610,41 +1450,31 @@
             "renewal_qtr": "Q4'26",
             "will_renew": "No",
             "projected_arr": 0.0
-          }
-        ],
-        "rank": 1,
-        "pct_of_total": 47.40248967969391
-      },
-      {
-        "customer_name": "Commverge Solutions Philippines Inc.",
-        "rr": 346253.1,
-        "nrr": 0,
-        "total": 346253.1,
-        "subscriptions": [
-          {
-            "sub_id": 1442994.0,
-            "arr": 346253.1,
-            "renewal_qtr": "Next Yr",
-            "will_renew": "Yes",
-            "projected_arr": 432816.375
           },
           {
-            "sub_id": "AMC starting in Q4",
+            "sub_id": "offest and temp coverage",
             "arr": 0,
             "renewal_qtr": null,
             "will_renew": null,
             "projected_arr": null
           }
         ],
-        "rank": 2,
-        "pct_of_total": 8.925517354700478
+        "rank": 1,
+        "pct_of_total": 41.21671105843591
       },
       {
         "customer_name": "Teleindia Networks Private Limited",
-        "rr": 116350.34,
-        "nrr": 225000.0,
-        "total": 341350.33999999997,
+        "rr": 755824.78,
+        "nrr": 0,
+        "total": 755824.78,
         "subscriptions": [
+          {
+            "sub_id": 1878799.0,
+            "arr": 588709.68,
+            "renewal_qtr": "Q2'27",
+            "will_renew": "Yes",
+            "projected_arr": 677016.132
+          },
           {
             "sub_id": 1568751.0,
             "arr": 116350.34,
@@ -1653,29 +1483,46 @@
             "projected_arr": 145437.925
           },
           {
-            "sub_id": "MS",
+            "sub_id": 1877497.0,
+            "arr": 50764.76,
+            "renewal_qtr": "Q3'26",
+            "will_renew": "No",
+            "projected_arr": 0.0
+          },
+          {
+            "sub_id": "New AMC",
             "arr": 0,
             "renewal_qtr": null,
             "will_renew": null,
             "projected_arr": null
           },
           {
-            "sub_id": "AMC",
+            "sub_id": "NEW AMC",
             "arr": 0,
             "renewal_qtr": null,
             "will_renew": null,
-            "projected_arr": 51180.0
-          },
+            "projected_arr": null
+          }
+        ],
+        "rank": 2,
+        "pct_of_total": 19.219163498916426
+      },
+      {
+        "customer_name": "Commverge Solutions Philippines Inc.",
+        "rr": 414577.54,
+        "nrr": 0,
+        "total": 414577.54,
+        "subscriptions": [
           {
-            "sub_id": "incorrect numbers above - not subscription revenue. Showijng in teleindia and bharti directly.",
-            "arr": 0,
-            "renewal_qtr": null,
-            "will_renew": null,
-            "projected_arr": 0.0
+            "sub_id": 1442994.0,
+            "arr": 414577.54,
+            "renewal_qtr": "Q1'27",
+            "will_renew": "Yes",
+            "projected_arr": 518221.925
           }
         ],
         "rank": 3,
-        "pct_of_total": 8.799136769325411
+        "pct_of_total": 10.541905657338416
       },
       {
         "customer_name": "PT. Supra Primatama Nusantara",
@@ -1687,29 +1534,36 @@
             "sub_id": 1417507.0,
             "arr": 274722.0,
             "renewal_qtr": "Q4'26",
-            "will_renew": "Yes",
-            "projected_arr": 343402.5
+            "will_renew": "No (SF)",
+            "projected_arr": 0.0
           }
         ],
         "rank": 4,
-        "pct_of_total": 7.081628954998598
+        "pct_of_total": 6.985649550613197
       },
       {
         "customer_name": "Ericsson Telecommunications, Inc.",
-        "rr": 176902.02,
+        "rr": 178845.99000000002,
         "nrr": 0,
-        "total": 176902.02,
+        "total": 178845.99000000002,
         "subscriptions": [
           {
-            "sub_id": 1676954.0,
-            "arr": 176902.02,
-            "renewal_qtr": "Q1'26",
+            "sub_id": 1836969.0,
+            "arr": 158149.29,
+            "renewal_qtr": "Next Yr",
             "will_renew": "Yes",
-            "projected_arr": 221127.525
+            "projected_arr": 158149.29
+          },
+          {
+            "sub_id": 1859747.0,
+            "arr": 20696.7,
+            "renewal_qtr": "Next Yr",
+            "will_renew": "Yes",
+            "projected_arr": 20696.7
           }
         ],
         "rank": 5,
-        "pct_of_total": 4.560080616149201
+        "pct_of_total": 4.547707899885967
       },
       {
         "customer_name": "PT. Sisindokom Lintasbuana",
@@ -1726,157 +1580,109 @@
           }
         ],
         "rank": 6,
-        "pct_of_total": 4.516932022692971
+        "pct_of_total": 4.455712711720543
       },
       {
         "customer_name": "Sterlite Technologies Ltd",
-        "rr": 112721.13,
+        "rr": 113552.73,
         "nrr": 0,
-        "total": 112721.13,
+        "total": 113552.73,
         "subscriptions": [
           {
             "sub_id": 1520263.0,
-            "arr": 112721.13,
-            "renewal_qtr": "Next Yr",
-            "will_renew": "Yes",
-            "projected_arr": 140901.4125
+            "arr": 113552.73,
+            "renewal_qtr": "Q1'27",
+            "will_renew": "No",
+            "projected_arr": 0.0
           }
         ],
         "rank": 7,
-        "pct_of_total": 2.905661789183833
+        "pct_of_total": 2.8874264794788975
       },
       {
         "customer_name": "Asianet Satellite Communications Ltd",
-        "rr": 105869.01,
+        "rr": 104718.26,
         "nrr": 0,
-        "total": 105869.01,
+        "total": 104718.26,
         "subscriptions": [
           {
-            "sub_id": 1698412.0,
-            "arr": 0,
-            "renewal_qtr": "Q2'26",
-            "will_renew": "Yes",
-            "projected_arr": 0.0
-          },
-          {
             "sub_id": 1698413.0,
-            "arr": 105869.01,
+            "arr": 104718.26,
             "renewal_qtr": "Q4'26",
             "will_renew": "No (SF)",
             "projected_arr": 0.0
           }
         ],
         "rank": 8,
-        "pct_of_total": 2.7290316998749136
-      },
-      {
-        "customer_name": "MTN Zambia",
-        "rr": 97500.0,
-        "nrr": 0,
-        "total": 97500.0,
-        "subscriptions": [
-          {
-            "sub_id": 1641950.0,
-            "arr": 97500.0,
-            "renewal_qtr": "Q1'26",
-            "will_renew": "No (SF)",
-            "projected_arr": 0.0
-          }
-        ],
-        "rank": 9,
-        "pct_of_total": 2.5133000746658922
+        "pct_of_total": 2.66278298028551
       },
       {
         "customer_name": "Synaptic Technologies",
-        "rr": 74388.59,
+        "rr": 85704.42,
         "nrr": 0,
-        "total": 74388.59,
+        "total": 85704.42,
         "subscriptions": [
           {
             "sub_id": 1512236.0,
-            "arr": 74388.59,
+            "arr": 85704.42,
             "renewal_qtr": "Next Yr",
             "will_renew": "Yes",
-            "projected_arr": 92985.73749999999
+            "projected_arr": 107130.525
           }
         ],
-        "rank": 10,
-        "pct_of_total": 1.9175471671927222
-      },
-      {
-        "customer_name": "Bharti Airtel Limited - Mumbai",
-        "rr": 62556.12,
-        "nrr": 0,
-        "total": 62556.12,
-        "subscriptions": [
-          {
-            "sub_id": 1603669.0,
-            "arr": 35356.12,
-            "renewal_qtr": "Q1'26",
-            "will_renew": "No",
-            "projected_arr": 0.0
-          },
-          {
-            "sub_id": 1758832.0,
-            "arr": 27200.0,
-            "renewal_qtr": "Q3'26",
-            "will_renew": "No",
-            "projected_arr": 0.0
-          }
-        ],
-        "rank": 11,
-        "pct_of_total": 1.612536421198036
-      },
-      {
-        "customer_name": "HITACHI SYSTEMS INDIA PRIVATE LIMITED",
-        "rr": 46611.5,
-        "nrr": 0,
-        "total": 46611.5,
-        "subscriptions": [
-          {
-            "sub_id": 1674848.0,
-            "arr": 46611.5,
-            "renewal_qtr": "Next Yr",
-            "will_renew": "Yes",
-            "projected_arr": 58264.375
-          }
-        ],
-        "rank": 12,
-        "pct_of_total": 1.2015249890286075
+        "rank": 9,
+        "pct_of_total": 2.179297773962641
       },
       {
         "customer_name": "Tata Teleservices Limited",
-        "rr": 43015.58,
+        "rr": 53769.48,
         "nrr": 0,
-        "total": 43015.58,
+        "total": 53769.48,
         "subscriptions": [
           {
-            "sub_id": 1520262.0,
-            "arr": 43015.58,
-            "renewal_qtr": "Q4'25",
-            "will_renew": "No (SF)",
+            "sub_id": 1816831.0,
+            "arr": 53769.48,
+            "renewal_qtr": "Q4'26",
+            "will_renew": "No",
             "projected_arr": 0.0
           }
         ],
-        "rank": 13,
-        "pct_of_total": 1.1088313889825299
+        "rank": 10,
+        "pct_of_total": 1.3672539650945514
       },
       {
         "customer_name": "ERICSSON (THAILAND) LTD",
-        "rr": 38000.0,
+        "rr": 47500.0,
         "nrr": 0,
-        "total": 38000.0,
+        "total": 47500.0,
         "subscriptions": [
           {
-            "sub_id": 1673648.0,
-            "arr": 38000.0,
-            "renewal_qtr": "Q1'26",
+            "sub_id": 1843101.0,
+            "arr": 47500.0,
+            "renewal_qtr": "Q1'27",
             "will_renew": "Yes",
-            "projected_arr": 47500.0
+            "projected_arr": 59375.0
           }
         ],
-        "rank": 14,
-        "pct_of_total": 0.9795425932031169
+        "rank": 11,
+        "pct_of_total": 1.2078332046728215
+      },
+      {
+        "customer_name": "HITACHI SYSTEMS INDIA PRIVATE LIMITED",
+        "rr": 46104.86,
+        "nrr": 0,
+        "total": 46104.86,
+        "subscriptions": [
+          {
+            "sub_id": 1674848.0,
+            "arr": 46104.86,
+            "renewal_qtr": "Q1'27",
+            "will_renew": "No",
+            "projected_arr": 0.0
+          }
+        ],
+        "rank": 12,
+        "pct_of_total": 1.1723574906271954
       },
       {
         "customer_name": "Bharti Airtel Limited - Chennai",
@@ -1892,102 +1698,25 @@
             "projected_arr": 0.0
           }
         ],
-        "rank": 15,
-        "pct_of_total": 0.8764328465501573
+        "rank": 13,
+        "pct_of_total": 0.8645542938710723
       },
       {
-        "customer_name": "Bharti Airtel Limited - Gurgaon",
-        "rr": 33450.14,
+        "customer_name": "Bharti Airtel Limited - Mumbai",
+        "rr": 27200.0,
         "nrr": 0,
-        "total": 33450.14,
+        "total": 27200.0,
         "subscriptions": [
           {
-            "sub_id": 1619999.0,
-            "arr": 33450.14,
-            "renewal_qtr": "Q1'26",
-            "will_renew": "No",
-            "projected_arr": 0.0
-          }
-        ],
-        "rank": 16,
-        "pct_of_total": 0.8622588652265081
-      },
-      {
-        "customer_name": "Atom Myanmar Ltd",
-        "rr": 32000.0,
-        "nrr": 0,
-        "total": 32000.0,
-        "subscriptions": [
-          {
-            "sub_id": 1565589.0,
-            "arr": 32000.0,
-            "renewal_qtr": "Q4'25",
-            "will_renew": "No (SF)",
-            "projected_arr": 0.0
-          }
-        ],
-        "rank": 17,
-        "pct_of_total": 0.8248779732236774
-      },
-      {
-        "customer_name": "Wipro Ltd.",
-        "rr": 24375.0,
-        "nrr": 0,
-        "total": 24375.0,
-        "subscriptions": [
-          {
-            "sub_id": 1738672.0,
-            "arr": 24375.0,
-            "renewal_qtr": "Q2'26",
-            "will_renew": "No",
-            "projected_arr": 0.0
-          }
-        ],
-        "rank": 18,
-        "pct_of_total": 0.6283250186664731
-      },
-      {
-        "customer_name": "Mavenir Systems Private Limited",
-        "rr": 21505.0,
-        "nrr": 0,
-        "total": 21505.0,
-        "subscriptions": [
-          {
-            "sub_id": 1759834.0,
-            "arr": 21505.0,
-            "renewal_qtr": "Q2'26",
-            "will_renew": "No",
-            "projected_arr": 0.0
-          }
-        ],
-        "rank": 19,
-        "pct_of_total": 0.5543437754429744
-      },
-      {
-        "customer_name": "MTN Sudan Company Limited",
-        "rr": 0,
-        "nrr": 0,
-        "total": 0,
-        "subscriptions": [
-          {
-            "sub_id": 1384348.0,
-            "arr": 0,
+            "sub_id": 1758832.0,
+            "arr": 27200.0,
             "renewal_qtr": "Q3'26",
             "will_renew": "No",
             "projected_arr": 0.0
           }
         ],
-        "rank": 20,
-        "pct_of_total": 0.0
-      },
-      {
-        "customer_name": "4iG",
-        "rr": 0,
-        "nrr": 0,
-        "total": 0,
-        "subscriptions": [],
-        "rank": 21,
-        "pct_of_total": 0.0
+        "rank": 14,
+        "pct_of_total": 0.6916434350968578
       }
     ],
     "NewNet": [
@@ -2000,104 +1729,61 @@
           {
             "sub_id": 1434525.0,
             "arr": 2412645.0,
-            "renewal_qtr": "Next Yr",
+            "renewal_qtr": "Q2'27",
             "will_renew": "Yes",
             "projected_arr": 3015806.25
           },
           {
             "sub_id": 1432999.0,
             "arr": 43456.0,
-            "renewal_qtr": "Next Yr",
+            "renewal_qtr": "Q2'27",
             "will_renew": "Yes",
             "projected_arr": 54320.0
           }
         ],
         "rank": 1,
-        "pct_of_total": 33.24210487709689
-      },
-      {
-        "customer_name": "HCL TECHNOLOGIES UK LIMITED",
-        "rr": 2082880.43,
-        "nrr": 0,
-        "total": 2082880.43,
-        "subscriptions": [
-          {
-            "sub_id": 1642857.0,
-            "arr": 2082880.43,
-            "renewal_qtr": "Q2'26",
-            "will_renew": "No",
-            "projected_arr": 0.0
-          }
-        ],
-        "rank": 2,
-        "pct_of_total": 28.190750177013356
-      },
-      {
-        "customer_name": "Vodafone GmbH",
-        "rr": 482727.54,
-        "nrr": 0,
-        "total": 482727.54,
-        "subscriptions": [
-          {
-            "sub_id": 1619199.0,
-            "arr": 482727.54,
-            "renewal_qtr": "Q2'26",
-            "will_renew": "Yes",
-            "projected_arr": 603409.4249999999
-          }
-        ],
-        "rank": 3,
-        "pct_of_total": 6.533477048274068
-      },
-      {
-        "customer_name": "Mobile Interim Company 1 S.A.L. (MIC1)",
-        "rr": 277875.1,
-        "nrr": 0,
-        "total": 277875.1,
-        "subscriptions": [
-          {
-            "sub_id": 1717984.0,
-            "arr": 138937.55,
-            "renewal_qtr": "Q1'26",
-            "will_renew": "No (SF)",
-            "projected_arr": 0.0
-          },
-          {
-            "sub_id": 1717984.0,
-            "arr": 138937.55,
-            "renewal_qtr": null,
-            "will_renew": null,
-            "projected_arr": 138938.0
-          }
-        ],
-        "rank": 4,
-        "pct_of_total": 3.7609012076188186
-      },
-      {
-        "customer_name": "Vodafone Egypt",
-        "rr": 0,
-        "nrr": 274576.0,
-        "total": 274576.0,
-        "subscriptions": [],
-        "rank": 5,
-        "pct_of_total": 3.716249530753726
+        "pct_of_total": 60.742953861646086
       },
       {
         "customer_name": "Nokia Solutions and Networks Oy",
-        "rr": 215951.11,
+        "rr": 271878.99,
         "nrr": 0,
-        "total": 215951.11,
+        "total": 271878.99,
         "subscriptions": [
           {
-            "sub_id": 1596237.0,
-            "arr": 215951.11,
-            "renewal_qtr": "Q4'25",
+            "sub_id": 1796903.0,
+            "arr": 271878.99,
+            "renewal_qtr": "Q4'26",
             "will_renew": "Yes",
-            "projected_arr": 269938.88749999995
+            "projected_arr": 339848.7375
           }
         ],
-        "rank": 6,
-        "pct_of_total": 2.9227908163978142
+        "rank": 2,
+        "pct_of_total": 6.7239632838881365
+      },
+      {
+        "customer_name": "Telenet Group",
+        "rr": 207068.06,
+        "nrr": 0,
+        "total": 207068.06,
+        "subscriptions": [
+          {
+            "sub_id": 1824940.0,
+            "arr": 203195.02,
+            "renewal_qtr": "Q4'26",
+            "will_renew": "Yes",
+            "projected_arr": 253993.775
+          },
+          {
+            "sub_id": 1624908.0,
+            "arr": 3873.04,
+            "renewal_qtr": "Q4'26",
+            "will_renew": "Yes",
+            "projected_arr": 4841.3
+          }
+        ],
+        "rank": 3,
+        "pct_of_total": 5.121094618991875
       },
       {
         "customer_name": "Telecom Argentina S.A.",
@@ -2108,97 +1794,47 @@
           {
             "sub_id": 1553713.0,
             "arr": 200000.0,
-            "renewal_qtr": "Next Yr",
+            "renewal_qtr": "Q1'27",
             "will_renew": "Yes",
             "projected_arr": 250000.0
           }
         ],
-        "rank": 7,
-        "pct_of_total": 2.7069004798334353
-      },
-      {
-        "customer_name": "Vodafone Egypt Telecommunications SA",
-        "rr": 176059.5,
-        "nrr": 0,
-        "total": 176059.5,
-        "subscriptions": [
-          {
-            "sub_id": 1599149.0,
-            "arr": 176059.5,
-            "renewal_qtr": "Q2'26",
-            "will_renew": "Yes",
-            "projected_arr": 255286.275
-          }
-        ],
-        "rank": 8,
-        "pct_of_total": 2.382877725146173
+        "rank": 4,
+        "pct_of_total": 4.946291203956684
       },
       {
         "customer_name": "Bell-TSII Limited",
-        "rr": 158501.2,
+        "rr": 159640.37,
         "nrr": 0,
-        "total": 158501.2,
+        "total": 159640.37,
         "subscriptions": [
           {
             "sub_id": 1520361.0,
-            "arr": 158501.2,
-            "renewal_qtr": "Next Yr",
+            "arr": 159640.37,
+            "renewal_qtr": "Q2'27",
             "will_renew": "Yes",
-            "projected_arr": 198126.5
+            "projected_arr": 199550.4625
           }
         ],
-        "rank": 9,
-        "pct_of_total": 2.1452348716708767
+        "rank": 5,
+        "pct_of_total": 3.948138789636953
       },
       {
-        "customer_name": "New License Sales - Skyvera",
-        "rr": 0,
-        "nrr": 150000.02999999997,
-        "total": 150000.02999999997,
-        "subscriptions": [],
-        "rank": 10,
-        "pct_of_total": 2.030175765910148
-      },
-      {
-        "customer_name": "Telenet Group",
-        "rr": 144508.82,
+        "customer_name": "Odido Netherlands B.V.",
+        "rr": 113258.41,
         "nrr": 0,
-        "total": 144508.82,
+        "total": 113258.41,
         "subscriptions": [
           {
-            "sub_id": 1591133.0,
-            "arr": 140663.42,
-            "renewal_qtr": "Q4'25",
+            "sub_id": 1815125.0,
+            "arr": 113258.41,
+            "renewal_qtr": "Q1'27",
             "will_renew": "Yes",
-            "projected_arr": 175829.27500000002
-          },
-          {
-            "sub_id": 1624908.0,
-            "arr": 3845.4,
-            "renewal_qtr": "Q4'26",
-            "will_renew": "No",
-            "projected_arr": 0.0
+            "projected_arr": 141573.0125
           }
         ],
-        "rank": 11,
-        "pct_of_total": 1.9558549709908175
-      },
-      {
-        "customer_name": "Pelephone Communications Ltd",
-        "rr": 129426.54,
-        "nrr": 0,
-        "total": 129426.54,
-        "subscriptions": [
-          {
-            "sub_id": 1691493.0,
-            "arr": 129426.54,
-            "renewal_qtr": "Q1'26",
-            "will_renew": "No (SF)",
-            "projected_arr": 0.0
-          }
-        ],
-        "rank": 12,
-        "pct_of_total": 1.7517238161459063
+        "rank": 6,
+        "pct_of_total": 2.801045385785599
       },
       {
         "customer_name": "Sierra Wireless America",
@@ -2214,100 +1850,124 @@
             "projected_arr": 104304.17
           }
         ],
-        "rank": 13,
-        "pct_of_total": 1.4117050391081407
+        "rank": 7,
+        "pct_of_total": 2.5795939930350134
       },
       {
         "customer_name": "Nokia Operations de Mexico, SA de CV",
-        "rr": 94718.04999999999,
+        "rr": 95399.39,
         "nrr": 0,
-        "total": 94718.04999999999,
+        "total": 95399.39,
         "subscriptions": [
           {
-            "sub_id": 1617482.0,
-            "arr": 66935.18,
-            "renewal_qtr": "Q1'26",
+            "sub_id": 1783087.0,
+            "arr": 67416.84,
+            "renewal_qtr": "Q1'27",
             "will_renew": "Yes",
-            "projected_arr": 83668.97499999999
+            "projected_arr": 84271.04999999999
           },
           {
-            "sub_id": 1672842.0,
-            "arr": 27782.87,
-            "renewal_qtr": "Q1'26",
+            "sub_id": 1783187.0,
+            "arr": 27982.55,
+            "renewal_qtr": "Q1'27",
             "will_renew": "Yes",
-            "projected_arr": 40285.161499999995
+            "projected_arr": 34978.1875
           }
         ],
-        "rank": 14,
-        "pct_of_total": 1.2819616749694362
-      },
-      {
-        "customer_name": "DIGIS Squared Limited",
-        "rr": 79731.51,
-        "nrr": 0,
-        "total": 79731.51,
-        "subscriptions": [
-          {
-            "sub_id": 1433521.0,
-            "arr": 79731.51,
-            "renewal_qtr": "Next Yr",
-            "will_renew": "Yes",
-            "projected_arr": 99664.3875
-          }
-        ],
-        "rank": 15,
-        "pct_of_total": 1.0791263133842215
-      },
-      {
-        "customer_name": "Odido Netherlands B.V.",
-        "rr": 77551.87,
-        "nrr": 0,
-        "total": 77551.87,
-        "subscriptions": [
-          {
-            "sub_id": 1581097.0,
-            "arr": 77551.87,
-            "renewal_qtr": "Q1'26",
-            "will_renew": "Yes",
-            "projected_arr": 96939.8375
-          }
-        ],
-        "rank": 16,
-        "pct_of_total": 1.0496259705749007
+        "rank": 8,
+        "pct_of_total": 2.359365818099166
       },
       {
         "customer_name": "Somtel GSM FZCO",
-        "rr": 62945.58,
+        "rr": 87172.23,
         "nrr": 0,
-        "total": 62945.58,
+        "total": 87172.23,
         "subscriptions": [
           {
-            "sub_id": 1544665.0,
-            "arr": 62945.58,
-            "renewal_qtr": "Q1'26",
-            "will_renew": "Yes",
-            "projected_arr": 78681.975
+            "sub_id": 1822837.0,
+            "arr": 87172.23,
+            "renewal_qtr": "Q1'27",
+            "will_renew": "No",
+            "projected_arr": 0.0
           }
         ],
-        "rank": 17,
-        "pct_of_total": 0.8519371035269693
+        "rank": 9,
+        "pct_of_total": 2.155896172391445
+      },
+      {
+        "customer_name": "DIGIS Squared Limited",
+        "rr": 81187.03,
+        "nrr": 0,
+        "total": 81187.03,
+        "subscriptions": [
+          {
+            "sub_id": 1433521.0,
+            "arr": 81187.03,
+            "renewal_qtr": "Q2'27",
+            "will_renew": "Yes",
+            "projected_arr": 101483.7875
+          }
+        ],
+        "rank": 10,
+        "pct_of_total": 2.0078734618218372
+      },
+      {
+        "customer_name": "Vodafone Egypt Telecommunications SA",
+        "rr": 66739.19,
+        "nrr": 0,
+        "total": 66739.19,
+        "subscriptions": [
+          {
+            "sub_id": 1849415.0,
+            "arr": 66739.19,
+            "renewal_qtr": "Q1'27",
+            "will_renew": "Yes",
+            "projected_arr": 83423.9875
+          },
+          {
+            "sub_id": null,
+            "arr": 0,
+            "renewal_qtr": null,
+            "will_renew": null,
+            "projected_arr": null
+          }
+        ],
+        "rank": 11,
+        "pct_of_total": 1.6505573422809696
+      },
+      {
+        "customer_name": "Telekom Romania Mobile Communications S.A. (Formerly COSMOTE ROMANIAN TELECOM)",
+        "rr": 57015.91,
+        "nrr": 0,
+        "total": 57015.91,
+        "subscriptions": [
+          {
+            "sub_id": 1848012.0,
+            "arr": 57015.91,
+            "renewal_qtr": "Q4'26",
+            "will_renew": "Yes",
+            "projected_arr": 71269.88750000001
+          }
+        ],
+        "rank": 12,
+        "pct_of_total": 1.41008647059293
       },
       {
         "customer_name": "D G Square for Technology Services",
-        "rr": 52265.39,
+        "rr": 52068.84,
         "nrr": 0,
-        "total": 52265.39,
+        "total": 52068.84,
         "subscriptions": [
           {
             "sub_id": 1657604.0,
-            "arr": 52265.39,
-            "renewal_qtr": "Next Yr",
+            "arr": 52068.84,
+            "renewal_qtr": "Q2'27",
             "will_renew": "Yes",
-            "projected_arr": 65331.7375
+            "projected_arr": 65086.049999999996
           }
         ],
-        "rank": 18,
-        "pct_of_total": 0.7073860463484081
+        "rank": 13,
+        "pct_of_total": 1.2877382264611397
       },
       {
         "customer_name": "Bell TSII Ltd Merkezi Ingiltere Istanbul Merkez Subesi",
@@ -2323,25 +1983,8 @@
             "projected_arr": 62500.0
           }
         ],
-        "rank": 19,
-        "pct_of_total": 0.6767251199583588
-      },
-      {
-        "customer_name": "Telekom Romania Mobile Communications S.A. (Formerly COSMOTE ROMANIAN TELECOM)",
-        "rr": 45287.24,
-        "nrr": 0,
-        "total": 45287.24,
-        "subscriptions": [
-          {
-            "sub_id": 1090809.0,
-            "arr": 45287.24,
-            "renewal_qtr": "Q4'25",
-            "will_renew": "Yes",
-            "projected_arr": 45287.24
-          }
-        ],
-        "rank": 20,
-        "pct_of_total": 0.6129402584316596
+        "rank": 14,
+        "pct_of_total": 1.236572800989171
       },
       {
         "customer_name": "Syniverse Technologies Asia Pacific Ltd",
@@ -2352,147 +1995,123 @@
           {
             "sub_id": 1603969.0,
             "arr": 41600.0,
-            "renewal_qtr": "Next Yr",
+            "renewal_qtr": "Q1'27",
             "will_renew": "Yes",
             "projected_arr": 52000.0
           }
         ],
-        "rank": 21,
-        "pct_of_total": 0.5630352998053544
-      },
-      {
-        "customer_name": "Taifon Computer Co Ltd",
-        "rr": 31513.23,
-        "nrr": 0,
-        "total": 31513.23,
-        "subscriptions": [
-          {
-            "sub_id": 1581596.0,
-            "arr": 31513.23,
-            "renewal_qtr": "Q2'26",
-            "will_renew": "No",
-            "projected_arr": 0.0
-          }
-        ],
-        "rank": 22,
-        "pct_of_total": 0.42651588704050697
-      },
-      {
-        "customer_name": "Nomia Uk Limited",
-        "rr": 0,
-        "nrr": 0,
-        "total": 0,
-        "subscriptions": [],
-        "rank": 23,
-        "pct_of_total": 0.0
-      },
-      {
-        "customer_name": "Ns Solutions Corporation",
-        "rr": 0,
-        "nrr": 0,
-        "total": 0,
-        "subscriptions": [],
-        "rank": 24,
-        "pct_of_total": 0.0
+        "rank": 15,
+        "pct_of_total": 1.0288285704229903
       }
     ]
   },
   "financials": {
     "Cloudsense": {
       "bu": "Cloudsense",
-      "totalRR": 6370100.838226027,
-      "totalNRR": 1703661.58,
-      "totalRevenue": 8073762.418226027,
-      "hcCogs": 619263.186369424,
-      "nhcCogs": 1208184.9346575344,
-      "cfCogs": 232973.01410223043,
-      "totalCogs": 2060421.1351291887,
-      "grossProfit": 6013341.283096839,
-      "grossMargin": 74.48003757854067,
-      "hcExpenses": 120984.95311139355,
-      "nhcExpenses": 324300.2,
-      "revenueWriteOff": 40368.81209113014,
-      "cfExpenses": 302750.0,
-      "coreAllocation": 444056.93300243147,
-      "totalExpenses": 1232460.898204955,
-      "netProfit": 4780880.3848918835,
-      "netMargin": 59.21502438688729,
-      "marginTarget": 63.56999999999999,
-      "deltaToMargin": -351610.38437440153,
-      "ebitda": 4780880.3848918835,
-      "customerCount": 68
+      "totalRR": 6312956.5726278545,
+      "totalNRR": 995138.99,
+      "rrPriorPlan": 6480543.3129863,
+      "totalRevenuePriorPlan": 7498543.302986301,
+      "totalRevenue": 7308095.562627855,
+      "hcCogs": 422037.35021989985,
+      "nhcCogs": 1049717.5,
+      "cfCogs": 305985.34545996995,
+      "totalCogs": 1777740.1956798697,
+      "grossProfit": 5530355.366947985,
+      "grossMargin": 75.67437124425577,
+      "hcExpenses": 145114.8547168738,
+      "nhcExpenses": 352383.18,
+      "revenueWriteOff": 36540.477813139274,
+      "cfExpenses": 235859.59915798152,
+      "coreAllocation": 401945.25594453205,
+      "totalExpenses": 1171843.3676325267,
+      "netProfit": 4358511.999315458,
+      "netMargin": 59.63950473778724,
+      "marginTarget": 60.0,
+      "deltaToMargin": -26345.33826125413,
+      "ebitda": 4358511.999315458,
+      "customerCount": 53
     },
     "Kandy": {
       "bu": "Kandy",
-      "totalRR": 3322466.067630137,
+      "totalRR": 2866929.680273972,
       "totalNRR": 0.0,
-      "totalRevenue": 3322466.067630137,
-      "hcCogs": 93552.0,
-      "nhcCogs": 497613.43789,
-      "cfCogs": 42735.0,
-      "totalCogs": 633900.43789,
-      "grossProfit": 2688565.6297401367,
-      "grossMargin": 80.9207851942894,
-      "hcExpenses": 93002.36079690853,
-      "nhcExpenses": 39733.205,
-      "revenueWriteOff": 16612.330338150685,
-      "cfExpenses": 255050.0,
-      "coreAllocation": 182735.63371965752,
-      "totalExpenses": 587133.5298547167,
-      "netProfit": 2101432.09988542,
-      "netMargin": 63.249166646398244,
-      "marginTarget": 75.0,
-      "deltaToMargin": -390417.4508371828,
-      "ebitda": 2101432.09988542,
-      "customerCount": 27
+      "rrPriorPlan": 3397626.5675068493,
+      "totalRevenuePriorPlan": 3397626.5675068493,
+      "totalRevenue": 2866929.680273972,
+      "hcCogs": 182060.0,
+      "nhcCogs": 432233.0285000001,
+      "cfCogs": 102067.3189116692,
+      "totalCogs": 716360.3474116692,
+      "grossProfit": 2150569.3328623027,
+      "grossMargin": 75.01297808800068,
+      "hcExpenses": 82696.7623100532,
+      "nhcExpenses": 19682.170000000002,
+      "revenueWriteOff": 14334.648401369861,
+      "cfExpenses": 178919.05003943617,
+      "coreAllocation": 157681.13241506845,
+      "totalExpenses": 453313.76316592767,
+      "netProfit": 1697255.569696375,
+      "netMargin": 59.20115799750555,
+      "marginTarget": 60.0,
+      "deltaToMargin": -22902.238468008116,
+      "ebitda": 1697255.569696375,
+      "customerCount": 19
     },
     "STL": {
       "bu": "STL",
-      "totalRR": 804031.7910958903,
-      "totalNRR": 143000.0,
-      "totalRevenue": 947031.7910958903,
-      "hcCogs": 51979.0060951117,
-      "nhcCogs": 57537.25,
-      "cfCogs": 49667.25,
-      "totalCogs": 159183.5060951117,
-      "grossProfit": 787848.2850007786,
-      "grossMargin": 83.19132392473256,
-      "hcExpenses": 15270.676401552197,
-      "nhcExpenses": 132717.0,
-      "revenueWriteOff": 4735.158955479452,
-      "cfExpenses": 3600.0,
-      "coreAllocation": 52086.74851027397,
-      "totalExpenses": 208409.5838673056,
-      "netProfit": 579438.7011334731,
-      "netMargin": 61.18471487244961,
-      "marginTarget": 75.00000000000001,
-      "deltaToMargin": -130835.14218844473,
-      "ebitda": 579438.7011334731,
-      "customerCount": 21
+      "totalRR": 645411.5397260276,
+      "totalNRR": 146790.01,
+      "rrPriorPlan": 675056.8471963473,
+      "totalRevenuePriorPlan": 800056.8571963473,
+      "totalRevenue": 792201.5497260276,
+      "hcCogs": 62253.48165601732,
+      "nhcCogs": 77278.49999999999,
+      "cfCogs": 49846.85971428943,
+      "totalCogs": 189378.84137030673,
+      "grossProfit": 602822.7083557209,
+      "grossMargin": 76.09461362000606,
+      "hcExpenses": 11885.76053662543,
+      "nhcExpenses": 96487.01999999999,
+      "revenueWriteOff": 3961.0077486301384,
+      "cfExpenses": 4259.111515752065,
+      "coreAllocation": 43571.085234931525,
+      "totalExpenses": 160163.98503593914,
+      "netProfit": 442658.7233197817,
+      "netMargin": 55.87703324651022,
+      "marginTarget": 75.0,
+      "deltaToMargin": -151492.43897473905,
+      "ebitda": 442658.7233197817,
+      "customerCount": 14
     },
     "Skyvera": {
       "bu": "Skyvera",
-      "totalRR": 12594360.549123287,
-      "totalNRR": 2121237.58,
-      "totalRevenue": 14715598.129123287,
-      "hcCogs": 908344.7,
-      "nhcCogs": 1802811.0775475344,
-      "cfCogs": 417621.76410223043,
-      "totalCogs": 3128777.541649765,
-      "grossProfit": 11586820.587473523,
-      "grossMargin": 78.73835970379162,
-      "hcExpenses": 269100.0,
-      "nhcExpenses": 498750.405,
-      "revenueWriteOff": 73577.99064561643,
-      "cfExpenses": 740175.0,
-      "coreAllocation": 809357.8971017807,
-      "totalExpenses": 2390961.2927473974,
-      "netProfit": 9195859.294726126,
-      "netMargin": 62.49055739383655,
-      "marginTarget": 68.72889204838448,
-      "deltaToMargin": -918008.2577131055,
-      "ebitda": 9195859.294726126,
-      "customerCount": 116
+      "totalRR": 11290249.606737442,
+      "totalNRR": 1430481.0,
+      "rrPriorPlan": 12081268.759688128,
+      "totalRevenuePriorPlan": 13370268.759688128,
+      "totalRevenue": 12720730.606737442,
+      "hcCogs": 800663.0,
+      "nhcCogs": 1625580.9885,
+      "cfCogs": 531759.0240651326,
+      "totalCogs": 2958003.0125651327,
+      "grossProfit": 9762727.59417231,
+      "grossMargin": 76.74659495580822,
+      "hcExpenses": 268056.8,
+      "nhcExpenses": 470552.38,
+      "revenueWriteOff": 63603.65303368722,
+      "cfExpenses": 445550.0,
+      "coreAllocation": 699640.1833705594,
+      "totalExpenses": 1947403.0164042464,
+      "netProfit": 7815324.577768063,
+      "netMargin": 61.43770212088866,
+      "marginTarget": 63.001838623743,
+      "deltaToMargin": -198969.59084974416,
+      "ebitda": 7815324.577768063,
+      "customerCount": 86,
+      "arAgingOver90": 9807771.119999997,
+      "arrYoYChangePct": -20.40969824101517,
+      "ruleOf40": 41.02800387987349
     }
   }
 }

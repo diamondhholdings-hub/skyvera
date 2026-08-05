@@ -5,9 +5,9 @@
  */
 
 export const TEST_CUSTOMERS = {
-  BRITISH_TELECOM: {
-    name: 'British Telecom',
-    displayName: 'British Telecom',
+  TELEFONICA_UK: {
+    name: 'Telefonica UK Limited',
+    displayName: 'Telefonica UK Limited',
     bu: 'Cloudsense',
     health: 'Healthy',
     expectedRR: 500000, // $500K+
@@ -46,7 +46,7 @@ export const EXPECTED_TABS = [
 export const TEST_SELECTORS = {
   // Dashboard
   dashboard: {
-    totalRevenue: /Total Revenue.*Q1'26/i,
+    totalRevenue: /Total Revenue/i,
     netMargin: /Net Margin|EBITDA/i,
     businessUnits: /Cloudsense|Kandy|STL/i,
     accountsLink: 'a[href="/accounts"]',

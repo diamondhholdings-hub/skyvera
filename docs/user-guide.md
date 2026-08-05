@@ -26,7 +26,7 @@ The Skyvera Executive Intelligence System is an AI-powered platform for portfoli
 - **AI-Powered Queries**: Ask questions in plain English about your business
 - **Scenario Planning**: Model pricing changes, churn, and expansion opportunities
 - **Product Intelligence**: AI-driven pattern detection for product opportunities
-- **Account Planning**: Comprehensive 7-tab account plans with OSINT intelligence
+- **Account Planning**: Comprehensive 8-tab account plans with OSINT intelligence
 
 ---
 
@@ -179,11 +179,33 @@ The Accounts section provides comprehensive intelligence on all 140+ enterprise 
 3. Filter by "At Risk" to focus on retention
 4. Click any customer to view detailed account plan
 
+### Data Completeness Scoring
+
+Each account card displays a **0–100% completeness badge** covering 7 dimensions: stakeholders, pain points, competitors, opportunities, actions, intelligence reports, and enrichment data. Use this to prioritize which accounts need attention before key meetings.
+
+### Last-Enriched Badge
+
+Account detail pages show when the account data was last refreshed from external sources (RapidAPI + OpenCorporates). If an account hasn't been enriched recently, the badge will indicate it.
+
+### Bulk Enrichment
+
+Accounts can be enriched in bulk from the command line (requires `RAPIDAPI_KEY` and optionally `OPENCORPORATES_API_KEY` in `.env.local`):
+
+```bash
+npm run enrich:accounts              # All 140 accounts (~19 min)
+npm run enrich:accounts -- --limit 10   # First 10 only
+npm run enrich:accounts -- --bu Cloudsense  # One BU only
+```
+
+Results are cached to `data/enrichment/{slug}.json`. If API keys are missing, the pipeline runs in degraded mode — sections are marked `skipped` rather than failing.
+
 ---
 
 ## Account Plans
 
-Each customer has a comprehensive 7-tab account plan with OSINT-powered intelligence.
+Each customer has a comprehensive 8-tab account plan with OSINT-powered intelligence. Tabs are accessible via URL (`?tab=overview`, `?tab=key-executives`, etc.) — links are bookmarkable and shareable.
+
+**Tabs:** Overview · Key Executives · Org Structure · Pain Points · Competitive · Action Plan · Financials · Intelligence
 
 ### Tab 1: Overview
 
@@ -206,7 +228,22 @@ Each customer has a comprehensive 7-tab account plan with OSINT-powered intellig
 - Share with sales/CS teams
 - Track relationship strength over time
 
-### Tab 2: Financials
+### Tab 2: Key Executives
+
+**Decision-maker profiles:**
+- Executive name, title, and LinkedIn profile
+- Contact intelligence (email, phone where available)
+- Relationship strength with your team (1–5 stars)
+- Engagement history (last contact, cadence)
+- Notes on communication style and priorities
+
+**How to use:**
+- Review before executive meetings or QBRs
+- Identify gaps (roles with no contact established)
+- Track multi-threaded relationships across the account
+- Note changes after leadership transitions (flagged in Intelligence tab)
+
+### Tab 3: Financials
 
 **Revenue Analysis:**
 - Historical revenue trends (last 12 months)
@@ -227,7 +264,7 @@ Each customer has a comprehensive 7-tab account plan with OSINT-powered intellig
 - Forecast renewals accurately
 - Identify upsell opportunities based on usage
 
-### Tab 3: Organization
+### Tab 4: Org Structure
 
 **Org Chart:**
 - Reporting structure
@@ -247,7 +284,7 @@ Each customer has a comprehensive 7-tab account plan with OSINT-powered intellig
 - Understand decision flow
 - Target right stakeholders for initiatives
 
-### Tab 4: Strategy
+### Tab 5: Pain Points
 
 **Business Priorities:**
 - Strategic initiatives (current year)
@@ -267,7 +304,7 @@ Each customer has a comprehensive 7-tab account plan with OSINT-powered intellig
 - Position value based on their goals
 - Anticipate future needs
 
-### Tab 5: Competitive
+### Tab 6: Competitive
 
 **Competitive Landscape:**
 - Known competitors in the account
@@ -287,7 +324,7 @@ Each customer has a comprehensive 7-tab account plan with OSINT-powered intellig
 - Address concerns proactively
 - Build switching costs (integration, training)
 
-### Tab 6: Intelligence (OSINT-Powered)
+### Tab 8: Intelligence (OSINT-Powered)
 
 **News & Market Intelligence:**
 - Recent company news
@@ -307,7 +344,7 @@ Each customer has a comprehensive 7-tab account plan with OSINT-powered intellig
 - Adjust strategy based on financial performance
 - Identify expansion opportunities from growth signals
 
-### Tab 7: Action Items
+### Tab 7: Action Plan
 
 **Kanban Board with columns:**
 - **Backlog**: Future tasks

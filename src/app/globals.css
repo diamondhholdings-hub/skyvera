@@ -198,6 +198,75 @@ h4 { font-size: 1.125rem; }
 .animate-delay-400 { animation-delay: 0.26s; opacity: 0; }
 .animate-delay-500 { animation-delay: 0.34s; opacity: 0; }
 
+/* ── Reduced Motion ─────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in,
+  .animate-fade-in-up,
+  .animate-scale-in,
+  .animate-delay-100,
+  .animate-delay-200,
+  .animate-delay-300,
+  .animate-delay-400,
+  .animate-delay-500 {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* ── Metric Card (severity-based, single critical gradient) ── */
+.metric-card {
+  position: relative;
+  padding: 25px;
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  color: var(--ink);
+}
+.metric-card .metric-value {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+.metric-card--primary    { border-top: 4px solid var(--secondary); }
+.metric-card--success    { border-top: 4px solid var(--success); }
+.metric-card--warning    { border-top: 4px solid var(--warning); }
+.metric-card--critical {
+  background: linear-gradient(135deg, var(--critical) 0%, var(--accent) 100%);
+  color: #FFFFFF;
+  border: none;
+  box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4);
+}
+
+/* ── Alert Box (tokenized variants) ─────────────────────── */
+.alert-box {
+  padding: 20px;
+  border-radius: var(--radius-md);
+  margin: 20px 0;
+  font-weight: 500;
+  border-left: 5px solid;
+}
+.alert-critical {
+  background: #FEF2F2;
+  border-left-color: var(--critical);
+  color: #991B1B;
+}
+.alert-warning {
+  background: #FFFBEB;
+  border-left-color: var(--warning);
+  color: #92400E;
+}
+.alert-info {
+  background: var(--highlight);
+  border-left-color: var(--secondary);
+  color: #1E3A8A;
+}
+.alert-success {
+  background: #ECFDF5;
+  border-left-color: var(--success);
+  color: #065F46;
+}
+
 /* ── Loading Skeleton ───────────────────────────────────── */
 
 .skeleton {
@@ -264,6 +333,44 @@ h4 { font-size: 1.125rem; }
   outline: 2px solid var(--accent);
   outline-offset: 2px;
   border-radius: 3px;
+  scroll-margin-top: 80px;
+}
+
+/* ── Dashboard Section Override ──────────────────────────── */
+/* Section files have inline `display: none` as a fallback for legacy
+   client-side toggling. When we render the active section server-side
+   inside [data-active-section], force it visible. */
+[data-active-section] > section {
+  display: block !important;
+}
+
+/* ── Dashboard Nav Tabs (a11y-friendly) ─────────────────── */
+.dashboard-tab {
+  display: inline-block;
+  padding: 0.625rem 1.125rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-decoration: none;
+  color: var(--muted);
+  background: transparent;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+.dashboard-tab:hover {
+  background: rgba(30, 58, 138, 0.1);
+  color: var(--ink);
+}
+.dashboard-tab:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.dashboard-tab[aria-current="page"] {
+  background: var(--secondary);
+  color: var(--paper);
+}
+.dashboard-tab[aria-current="page"]:hover {
+  background: var(--secondary);
+  color: var(--paper);
 }
 
 /* ── Scrollbar Styling ───────────────────────────────────── */
