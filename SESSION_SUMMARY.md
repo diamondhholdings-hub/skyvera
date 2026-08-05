@@ -1,6 +1,6 @@
-# Session Summary - Q3'26 Data Refresh & Dashboard Bug Fixes
+# Session Summary - Q3'26 Data Refresh, Full Documentation Audit, Adversarial Review & Autonomous Fixes
 **Date:** 2026-08-05
-**Objective:** Refresh the platform's underlying budget data from the stale Q1'26 workbook to the current Q3'26 workbook, wire real financial metrics in place of hardcoded benchmarks, fix a CI-blocking lockfile drift bug, close out all remaining beads issues, and merge the result to main.
+**Objective:** Refresh the platform's underlying budget data, wire real financial metrics in place of hardcoded benchmarks, fix a CI-blocking bug, close out all beads issues, and merge to main (Part 1) — then run a full documentation audit with adversarial security/quality review (Part 2), fix every confirmed finding plus additional autonomous items (npm audit, mobile responsiveness, repo hygiene) with the user's explicit "execute YOLO" authorization (Part 3), and correct documentation staleness the later parts introduced into CLAUDE.md, WAITING_ON.md, and this file (Part 4).
 
 ## Completed Work
 
@@ -36,6 +36,39 @@ Replaced hardcoded benchmarks with live values pulled from the Excel P&L sheets:
 ### Test Fixture Updates
 - Smoke/E2E "hero account" fixture `British Telecommunications PLC` no longer exists in the Q3'26 customer list (accounts churn between quarters) — replaced with `Telefonica UK Limited` (highest-revenue customer with full curated account-plan content)
 - Fixed a quarter-hardcoded test locator
+
+## Part 2: Documentation Audit + Adversarial Review
+
+Run as a 17-agent parallel Workflow (user explicitly requested "Agent Teams... execute in parallel," the required opt-in for multi-agent orchestration).
+
+- Updated CHANGELOG, WAITING_ON, README, docs/user-guide.md, PRODUCT, COMPETITIVE_ANALYSIS, `.planning/STATE.md` + `.planning/ROADMAP.md`; rescored TOP_1_PERCENT.md; wrote a new SYSTEM_REVIEW_2026-08-05.md
+- Created SECURITY.md and ONBOARDING.md — previously missing from the doc stack
+- Ran an adversarial security + code-quality review (finder → verifier pattern): 14 findings, **all 14 adversarially confirmed real**. Most severe: a confirmed SOQL injection in `src/lib/salesforce/sync.ts`, an unauthenticated `POST /api/seed` that unconditionally wiped all Customer/Subscription data
+- TOP_1_PERCENT.md and SYSTEM_REVIEW_2026-08-05.md scored the platform at this point in time: B+ 88/100, down from A- 94/100 — both carry an explicit "not re-run post-fix" addendum since Part 3 below fixed nearly everything that drove the drop
+
+## Part 3: Autonomous Fixes ("execute on all autonomous items YOLO")
+
+All 8 items the user asked for, completed and deployed:
+
+1. **npm audit** — all 14 vulnerabilities (1 critical, 11 high, 1 moderate, 1 low) fixed via `npm audit fix`, in-range patch/minor bumps only, 0 remain
+2. **SOQL injection + `/api/seed` data-wipe** — backslash-safe escaping added; `/api/seed` now returns 403 outside non-production environments
+3. **Missing rate limiting/validation** — added to 5 routes: `/api/salesforce/sync/[accountName]`, `/api/scenarios/conversation/[id]/{refine,compare}`, `/api/product-agent/generate-prd`, `/api/dm-strategy/{accept,defer}-recommendation`
+4. **`/api/health` info disclosure + rate limiter IP-spoofing + `aggregateByBU` dead code** — health endpoint no longer discloses per-adapter/integration-key detail to unauthenticated callers; rate limiter now trusts Vercel's `request.ip`/`x-real-ip` over the spoofable first entry of `X-Forwarded-For`; `aggregateByBU()` was dead code always returning an empty map — now actually groups/aggregates by BU (widened its param type to `CustomerWithHealth` since plain `Customer` has no `.bu` field), with a new test
+5. **DM Tracker Vercel bug (found during deploy verification, not previously known)** — it shells out to `python3`/`openpyxl` at request time, which doesn't exist on Vercel serverless, so every production request was silently falling back to a hardcoded March 2026 snapshot. Fixed: `getDMTrackerData()` now reads a pre-built `src/data/dm-tracker-snapshot.json` first, mirroring the `ExcelAdapter` pattern
+6. **CSV export** — new `GET /api/export/accounts` (rate limited) + download button on the accounts page
+7. **Repo hygiene** — 21 superseded one-off root markdown files moved (`git mv`, reversible) to `docs/archive/`; 100+ stray `' 2'`-suffixed duplicate files deleted (confirmed untracked/identical first)
+8. **Mobile responsiveness audit** — found and fixed 169px of real horizontal overflow on the dashboard (unwrapped nav icon row + 7 raw `<table>` elements), a genuine bug where an inline `style={{display:'flex'}}` was defeating a `hidden lg:flex` Tailwind class, and added `overflow-x:hidden` on `html`/`body` as a backstop. Verified via actual `scrollLeft` after a forced scroll (not just screenshots) on every main page
+
+Deployed to Vercel production after this batch; live-verified (CSV export, correct $12.7M dashboard figures, zero horizontal scroll). CI green.
+
+## Part 4: Documentation Staleness Correction
+
+A follow-up check ("has all information been documented in memory or CLAUDE.md or WAITING_ON?") found that Parts 2-3 had left CLAUDE.md, WAITING_ON.md, and this file stale:
+- CLAUDE.md's Beads "Open Issues" table still listed 3 issues closed hours earlier; its "Business Context" section still had Q1'26-era financial figures even though README/PRODUCT/COMPETITIVE_ANALYSIS had already been updated
+- WAITING_ON.md still listed npm audit as "Pending Human Action" after it had been fully resolved, and had no entry at all for 7 of the 8 Part 3 fixes
+- This file (rewritten now) only covered Part 1
+
+All four corrected. **Lesson:** after a long multi-part session, re-check "living" docs specifically for staleness introduced by *later* parts of the *same* session — updating them once partway through doesn't mean they're still accurate at the end.
 
 ### Beads Issues Closed
 | ID | Title | Resolution |
@@ -79,20 +112,20 @@ Replaced hardcoded benchmarks with live values pulled from the Excel P&L sheets:
 | Open beads issues | 4 | 0 |
 | CI status | Failing (lockfile drift) | Green |
 
-## Remaining (Low Priority / Known Debt)
+## Remaining (all require Todd's input — nothing autonomous left)
 - SQLite in production on Vercel serverless (ephemeral filesystem, write-concurrency risk) — Supabase migration decided but not yet executed
-- Rate limiter is in-memory per-process — does not share state across serverless instances/regions
+- Rate limiter's IP-spoofing was fixed, but it's still in-memory per-process — does not share state across serverless instances/regions; a real fix needs a distributed store (Vercel KV/Upstash)
 - No error monitoring (Sentry) configured
-- `npm audit` reports 14 vulnerabilities (1 low, 1 moderate, 11 high, 1 critical) — not yet triaged
-- Repo hygiene: `.git` is ~196MB (large committed binaries), 38+ markdown files at repo root with overlapping/superseded content, several untracked tooling directories of unknown purpose in the working tree
-- `aggregateByBU()` in `src/lib/data/adapters/excel/transforms.ts` builds a Map that is never populated (documented tech debt)
+- Repo hygiene, partially done: 21 root markdown files archived and 100+ stray duplicates deleted, but `.git` is still ~196MB (needs a history rewrite — breaks other clones, needs sign-off) and several untracked tooling directories (`.agents/`, `.cortex/`, `.claude/skills/`) are still of unconfirmed purpose
+- `/api/health` still has a low-severity info-disclosure characteristic beyond what was trimmed (documented, not further reduced)
 - No authentication system (on hold by design, not a defect)
-- Mobile responsiveness not audited/hardened
 - Headcount (58 FTEs) still hardcoded, not wired to HC Budget Input sheet
+
+**Fixed since the table above was first written** (see Part 3): npm audit (0 vulnerabilities now), `aggregateByBU()` (now functional), mobile responsiveness (audited and fixed).
 
 ---
 
-**Session Status:** COMPLETE
-**Tests Passing:** 210/210 (161 unit + 49 smoke)
+**Session Status:** COMPLETE — 4 parts, all committed and pushed, deployed to Vercel production, CI green throughout
+**Tests Passing:** 210/210 (161 unit + 49 smoke), tsc 0 errors, npm audit 0 vulnerabilities
 **Beads Issues Closed:** 4/4 (0 open remain)
-**Merged:** PR #2 → `main` @ `efc01d0`
+**Commits:** PR #2 → `main` @ `efc01d0`, plus 6 further commits through `6c5e5f8` (npm audit, security hardening, DM Tracker + CSV export, repo hygiene, mobile fixes, doc staleness correction)

@@ -103,8 +103,10 @@ Currently: `tsc` is at 0 errors, and both unit and smoke suites are fully green.
 - **`arr: customer.rr` in `src/lib/semantic/resolver.ts`** — the field is named `rr` but the
   value stored there is already an annual figure. The `arr` alias exists because of this; it's
   documented, not a bug, but it will confuse you the first time you read it.
-- **`aggregateByBU()` in `src/lib/data/adapters/excel/transforms.ts` is dead code** — it builds
-  a `Map` keyed by business unit that is never populated. Known tech debt, not wired to anything.
+- **`aggregateByBU()` in `src/lib/data/adapters/excel/transforms.ts` has zero live callers** —
+  it works correctly (fixed 2026-08-05, groups/aggregates by BU as intended), but nothing in the
+  app currently invokes it. Fine to use if you need this exact aggregation; just verify it still
+  behaves as expected since it's untested by any live code path.
 - **SQLite in production on Vercel** — the app runs SQLite (`file:./dev.db`) even in the
   deployed Vercel serverless environment. Vercel's filesystem is ephemeral and serverless
   functions don't share writable state, so this is a real constraint, not just a "fine for now."

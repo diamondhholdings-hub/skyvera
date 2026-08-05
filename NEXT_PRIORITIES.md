@@ -24,10 +24,8 @@ Since then, a fresh adversarially-verified code review (2026-08-05) surfaced a n
 ### ~~3. Rate limiting on the 4 unprotected routes~~ — FIXED same-session (2026-08-05)
 All four now call `rateLimit()` matching sibling routes: `/api/scenarios/conversation/[conversationId]/refine` and `/compare` (10 req/min), `/api/product-agent/generate-prd` (5 req/min, plus a new Zod schema replacing the untyped interface-cast body), and `/api/dm-strategy/accept-recommendation` + `/defer-recommendation` (20 req/min, plus new Zod schemas).
 
-### 4. Triage npm audit — 14 vulnerabilities (1 critical, 11 high)
-**Confirmed** via `npm audit --json`: `{info:0, low:1, moderate:1, high:11, critical:1, total:14}`. Not yet triaged as of this session.
-**Effort:** 1–3 hours depending on how many require breaking major-version bumps.
-**Action:** Run `npm audit` for full detail, resolve the critical and high findings first (patch, upgrade, or documented accept-risk with justification), re-run to confirm.
+### ~~4. Triage npm audit~~ — FIXED same-session (2026-08-05)
+All 14 vulnerabilities resolved via `npm audit fix` — every fix was an in-range patch/minor bump to a transitive dependency, no `package.json` changes, no semver-major bumps needed. `npm audit` now reports 0 vulnerabilities.
 
 ---
 
@@ -115,8 +113,8 @@ Biggest competitive gap for enterprise positioning. Do not start until there's a
 ### 18. White-Labeling
 Relevant only if Skyvera becomes a product sold to other companies. Premature without product-market-fit signal.
 
-### 19. Resolve `aggregateByBU` Tech Debt
-`byBU` map in `src/lib/data/adapters/excel/transforms.ts` is never populated. Documented tech debt. Fix when BU-level aggregation is needed for a specific feature.
+### ~~19. Resolve `aggregateByBU` Tech Debt~~ — FIXED same-session (2026-08-05)
+`byBU` in `src/lib/data/adapters/excel/transforms.ts` now actually groups by BU instead of always returning an empty map. Still has zero live callers (nothing in the app currently invokes it), but it's correct if something wires it up.
 
 ### 20. Audit Log
 Required for enterprise compliance ("who queried what when"). Build after auth exists — audit logs are meaningless without user identity.
@@ -157,7 +155,7 @@ Required for enterprise compliance ("who queried what when"). Build after auth e
 - High, FIXED: 4 routes missing rate limiting/validation now have it.
 - High, STILL OPEN: `/api/health` discloses integration config to unauthenticated callers; rate limiter trusts spoofable `X-Forwarded-For` and doesn't share state across Vercel instances (item 6 and item 9 above).
 - Medium, FIXED: live DM% inconsistency bug on `/dm-strategy`; both dormant double-counting/merge-order recurrences.
-- Critical, STILL OPEN: 14 npm audit vulnerabilities (1 critical, 11 high) — not yet triaged (item 4 above, now the single highest-priority remaining item from this review).
+- Critical, FIXED same-session: 14 npm audit vulnerabilities (1 critical, 11 high) — all resolved via `npm audit fix` (item 4 above). This was the last item from this review; nothing critical/high remains open from the adversarial review.
 - Full detail in `SYSTEM_REVIEW_2026-08-05.md` (has a post-fix addendum) and `WAITING_ON.md`.
 
 **Current real Q3'26 financial figures** (for reference — do not use stale Q1'26 numbers in any future doc):
@@ -175,9 +173,10 @@ Required for enterprise compliance ("who queried what when"). Build after auth e
 - No error monitoring (Sentry not yet installed).
 - Overall system score at time of review: B+ (88/100), down from A- (94/100) on 2026-05-08. Most of what drove the drop (SOQL injection, data-wipe endpoint, missing rate limiting, DM% bug, dormant double-count bugs) was fixed in the same session — see the addendum in `SYSTEM_REVIEW_2026-08-05.md` and `TOP_1_PERCENT.md` for the post-fix picture; neither score has been formally re-run.
 
-**The highest-impact items for next session, in order:**
-1. npm audit triage (1-3 hrs, closes 1 critical + 11 high dependency vulnerabilities — the only critical/high item left open from this review)
-2. Supabase migration (3-4 hrs, biggest standing production-reliability risk)
-3. `/api/health` info disclosure + rate limiter architecture (item 6 + item 9, ~30 min + 2-4 hrs)
+**The highest-impact items for next session, in order** (updated after the "execute all autonomous items YOLO" pass — npm audit, mobile responsiveness, DM Tracker's Vercel bug, CSV export, and repo hygiene round 2 are now all done too; everything below requires Todd's input, nothing autonomous remains):
+1. Supabase migration (3-4 hrs, biggest standing production-reliability risk — needs a tier decision and provisioning)
+2. Sentry error monitoring (~1 hr — needs a Sentry account/DSN)
+3. `/api/health` remaining low-severity info disclosure + rate limiter's distributed-store architecture (item 6 + item 9, ~30 min + 2-4 hrs)
+4. `.git` history size (~196MB) and the untracked `.agents/`/`.cortex/`/`.claude/skills/` directories — both need a conversation with Todd, not autonomous cleanup
 
-Run `bd ready` at the start of next session — 0 open beads issues currently, so file new ones for item 1 (and any of 2-3 you want to start) before starting work on them.
+Run `bd ready` at the start of next session — 0 open beads issues currently, so file new ones for whichever of the above you want to start before working on them.
