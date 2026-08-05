@@ -5,11 +5,20 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { syncAccountFromSalesforce } from '@/lib/salesforce/sync'
 import { revalidatePath } from 'next/cache'
+import { rateLimit, rateLimitHeaders } from '@/lib/middleware/rate-limit'
 
 export async function POST(
-  _request: NextRequest,
+  request: NextRequest,
   { params }: { params: Promise<{ accountName: string }> }
 ) {
+  const rl = rateLimit(request, { limit: 5, window: 60_000 })
+  if (!rl.success) {
+    return NextResponse.json(
+      { error: 'Too many requests', retryAfter: rl.reset },
+      { status: 429, headers: rateLimitHeaders(rl) }
+    )
+  }
+
   const { accountName } = await params
   const decodedName = decodeURIComponent(accountName)
 

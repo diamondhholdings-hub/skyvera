@@ -87,8 +87,12 @@ export default function PortfolioDashboard({ businessUnits, recommendations }: P
     .filter(r => r.status === 'accepted')
     .reduce((sum, r) => sum + r.arrImpact, 0);
 
-  const currentDM = businessUnits.reduce((sum, bu) => sum + bu.currentDM, 0) / businessUnits.length;
+  // ARR-weighted, not a straight per-BU average — an unweighted mean would
+  // let a small BU's DM% swing the portfolio figure as much as a large one.
   const currentARR = businessUnits.reduce((sum, bu) => sum + bu.arr, 0);
+  const currentDM = currentARR > 0
+    ? businessUnits.reduce((sum, bu) => sum + bu.currentDM * bu.arr, 0) / currentARR
+    : 0;
 
   const projection: ImpactProjection = {
     currentDM,

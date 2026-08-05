@@ -3,26 +3,35 @@
  * Defer a recommendation with a reason
  */
 
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
+import { z } from 'zod'
 import { prisma } from '@/lib/db/prisma'
+import { rateLimit, rateLimitHeaders } from '@/lib/middleware/rate-limit'
 
-export async function POST(request: Request) {
+const deferRecommendationSchema = z.object({
+  recommendationId: z.string().min(1),
+  reason: z.string().min(1),
+})
+
+export async function POST(request: NextRequest) {
+  const rl = rateLimit(request, { limit: 20, window: 60_000 })
+  if (!rl.success) {
+    return NextResponse.json(
+      { error: 'Too many requests', retryAfter: rl.reset },
+      { status: 429, headers: rateLimitHeaders(rl) }
+    )
+  }
+
   try {
-    const { recommendationId, reason } = await request.json()
-
-    if (!recommendationId) {
+    const body = await request.json()
+    const validation = deferRecommendationSchema.safeParse(body)
+    if (!validation.success) {
       return NextResponse.json(
-        { error: 'recommendationId is required' },
+        { error: 'Invalid request', issues: validation.error.issues },
         { status: 400 }
       )
     }
-
-    if (!reason) {
-      return NextResponse.json(
-        { error: 'reason is required when deferring' },
-        { status: 400 }
-      )
-    }
+    const { recommendationId, reason } = validation.data
 
     // Fetch recommendation
     const recommendation = await prisma.dMRecommendation.findUnique({

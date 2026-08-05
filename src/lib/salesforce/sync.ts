@@ -24,7 +24,12 @@ export interface SalesforceSyncResult {
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 async function findAccount(conn: any, accountName: string) {
-  const safeName = accountName.replace(/'/g, "\\'")
+  // Escape backslashes BEFORE quotes — escaping quotes first lets an input
+  // ending in a literal backslash (e.g. "foo\") turn into "foo\\'" after the
+  // naive quote-only replace, which most SOQL/SQL parsers read as an escaped
+  // backslash followed by an unescaped closing quote, breaking out of the
+  // string literal.
+  const safeName = accountName.replace(/\\/g, '\\\\').replace(/'/g, "\\'")
   const result = await conn.query(
     `SELECT Id, Name, Industry, AnnualRevenue, NumberOfEmployees, 
      BillingCity, BillingCountry, Website, Description,

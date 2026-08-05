@@ -3,6 +3,17 @@ import { prisma } from '@/lib/db/prisma';
 import { getAllCustomersWithHealth } from '@/lib/data/server/account-data';
 
 export async function POST() {
+  // This endpoint deletes every Customer/Subscription row unconditionally.
+  // There is no auth system yet (by design — see WAITING_ON.md), so the only
+  // guard available is blocking it outright once deployed. It's a local/dev
+  // seeding tool, not something that should ever run against production data.
+  if (process.env.VERCEL_ENV === 'production' || process.env.NODE_ENV === 'production') {
+    return NextResponse.json(
+      { success: false, error: 'Seeding is disabled in production' },
+      { status: 403 }
+    );
+  }
+
   try {
     console.log('[Seed] Loading customers from Excel...');
     const result = await getAllCustomersWithHealth();

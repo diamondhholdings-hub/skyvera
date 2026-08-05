@@ -377,9 +377,14 @@ export class ExcelAdapter implements DataAdapter {
         (sum, customers) => sum + customers.length,
         0
       ),
-      totalRevenue: Array.from(this.financialsByBU.values()).reduce(
-        (sum, f) => sum + f.totalRevenue,
-        0
+      // Exclude the consolidated 'Skyvera' rollup entry — it duplicates the
+      // per-BU entries already in this map (same bug class as the dashboard
+      // double-counting fix in dashboard-data.ts).
+      totalRevenue: Array.from(this.financialsByBU.values())
+        .filter((f) => f.bu !== 'Skyvera')
+        .reduce(
+          (sum, f) => sum + f.totalRevenue,
+          0
       ),
     }
   }

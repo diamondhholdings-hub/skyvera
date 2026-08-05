@@ -3,19 +3,28 @@
  * Compare multiple versions of a scenario
  */
 
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 import { z } from 'zod'
 import { getConversationManager, type ScenarioVersionData } from '@/lib/intelligence/scenarios/conversation-manager'
 import { prisma } from '@/lib/db/prisma'
+import { rateLimit, rateLimitHeaders } from '@/lib/middleware/rate-limit'
 
 const compareSchema = z.object({
   versionNumbers: z.array(z.number()).min(2, 'Must compare at least 2 versions'),
 })
 
 export async function POST(
-  request: Request,
+  request: NextRequest,
   { params }: { params: Promise<{ conversationId: string }> }
 ) {
+  const rl = rateLimit(request, { limit: 10, window: 60_000 })
+  if (!rl.success) {
+    return NextResponse.json(
+      { error: 'Too many requests', retryAfter: rl.reset },
+      { status: 429, headers: rateLimitHeaders(rl) }
+    )
+  }
+
   try {
     const { conversationId } = await params
 

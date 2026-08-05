@@ -131,11 +131,13 @@ export class DataValidator {
         cache: 4,
       }
 
-      // Sort sources by priority
+      // Sort sources lowest-priority first so Object.assign below applies
+      // them first — the last assignment wins, so the highest-priority
+      // source (lowest priority number) must be applied last.
       const sortedSources = Array.from(sources.entries()).sort((a, b) => {
         const priorityA = priority[a[0].toLowerCase()] || 999
         const priorityB = priority[b[0].toLowerCase()] || 999
-        return priorityA - priorityB
+        return priorityB - priorityA
       })
 
       // Merge data, with higher priority sources overwriting lower priority

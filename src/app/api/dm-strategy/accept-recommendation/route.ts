@@ -5,22 +5,43 @@
  * status moves to 'in_progress' without an action item attached.
  */
 
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
+import { z } from 'zod'
 import { prisma } from '@/lib/db/prisma'
+import { rateLimit, rateLimitHeaders } from '@/lib/middleware/rate-limit'
 
-export async function POST(request: Request) {
+const acceptRecommendationSchema = z.object({
+  recommendationId: z.string().min(1),
+  actionItem: z
+    .object({
+      assignedTo: z.string().min(1),
+      dueDate: z.string().min(1),
+      priority: z.string().min(1),
+      board: z.string().min(1),
+      notes: z.string().optional(),
+    })
+    .optional(),
+})
+
+export async function POST(request: NextRequest) {
+  const rl = rateLimit(request, { limit: 20, window: 60_000 })
+  if (!rl.success) {
+    return NextResponse.json(
+      { error: 'Too many requests', retryAfter: rl.reset },
+      { status: 429, headers: rateLimitHeaders(rl) }
+    )
+  }
+
   try {
-    const {
-      recommendationId,
-      actionItem
-    } = await request.json()
-
-    if (!recommendationId) {
+    const body = await request.json()
+    const validation = acceptRecommendationSchema.safeParse(body)
+    if (!validation.success) {
       return NextResponse.json(
-        { error: 'recommendationId is required' },
+        { error: 'Invalid request', issues: validation.error.issues },
         { status: 400 }
       )
     }
+    const { recommendationId, actionItem } = validation.data
 
     // Fetch recommendation
     const recommendation = await prisma.dMRecommendation.findUnique({

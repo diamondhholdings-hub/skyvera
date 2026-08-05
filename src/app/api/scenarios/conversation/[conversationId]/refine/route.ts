@@ -3,19 +3,28 @@
  * Get AI-powered refinement suggestions for current scenario
  */
 
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 import { z } from 'zod'
 import { getConversationManager } from '@/lib/intelligence/scenarios/conversation-manager'
 import { prisma } from '@/lib/db/prisma'
+import { rateLimit, rateLimitHeaders } from '@/lib/middleware/rate-limit'
 
 const refineSchema = z.object({
   feedback: z.string().optional(),
 })
 
 export async function POST(
-  request: Request,
+  request: NextRequest,
   { params }: { params: Promise<{ conversationId: string }> }
 ) {
+  const rl = rateLimit(request, { limit: 10, window: 60_000 })
+  if (!rl.success) {
+    return NextResponse.json(
+      { error: 'Too many requests', retryAfter: rl.reset },
+      { status: 429, headers: rateLimitHeaders(rl) }
+    )
+  }
+
   try {
     const { conversationId } = await params
 

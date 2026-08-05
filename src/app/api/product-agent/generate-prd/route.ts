@@ -1,19 +1,36 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { z } from 'zod';
 import { prisma } from '@/lib/db/prisma';
 import Anthropic from '@anthropic-ai/sdk';
+import { rateLimit, rateLimitHeaders } from '@/lib/middleware/rate-limit';
 
 const anthropic = new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY,
 });
 
-interface GeneratePRDRequest {
-  patternId: string;
-}
+const generatePRDSchema = z.object({
+  patternId: z.string().min(1),
+});
 
 export async function POST(request: NextRequest) {
+  const rl = rateLimit(request, { limit: 5, window: 60_000 });
+  if (!rl.success) {
+    return NextResponse.json(
+      { error: 'Too many requests', retryAfter: rl.reset },
+      { status: 429, headers: rateLimitHeaders(rl) }
+    );
+  }
+
   try {
-    const body: GeneratePRDRequest = await request.json();
-    const { patternId } = body;
+    const body = await request.json();
+    const validation = generatePRDSchema.safeParse(body);
+    if (!validation.success) {
+      return NextResponse.json(
+        { error: 'Invalid request', issues: validation.error.issues },
+        { status: 400 }
+      );
+    }
+    const { patternId } = validation.data;
 
     console.log('[PRD Generation] Starting for pattern:', patternId);
 
