@@ -78,19 +78,14 @@ Not started. Executives demo platforms on phones — if Skyvera breaks on mobile
 ### ~~11. Dormant double-counting / merge-order bugs~~ — FIXED same-session (2026-08-05)
 Both fixed even though neither had a live caller (cheap, zero-risk, and closes a credibility gap the rescored TOP_1_PERCENT.md called out explicitly): `ExcelAdapter.getStats()` now excludes the `'Skyvera'` rollup entry from its `totalRevenue` sum; `DataValidator.reconcile()` now applies sources highest-priority-last so Excel correctly wins over cache on overlapping fields.
 
-### 12. Repo Hygiene
-Lower priority than every production-risk item above, but compounding: `.git` is ~196MB (large committed binaries — budget xlsx, HTML dashboard exports), and 38+ markdown files sit at repo root with overlapping/superseded content (`HANDOFF.md`, `HANDOFF_RESOLVED.md`, old `SESSION_SUMMARY` content, etc.). **The 100+ stray `' 2'`-suffixed duplicate files were deleted same-session (2026-08-05)** — all confirmed byte-identical to their originals (or empty directories) via diff before removal, none were git-tracked. Still outstanding: several untracked tooling directories of unclear purpose sitting in the working tree (`.agents/`, `.cortex/`, `.claude/skills/`, `skills-lock.json`, ~9 screenshot PNGs at root) — purpose unconfirmed, needs Todd's input before touching.
-**Effort:** 2–3 hours remaining.
-- Consolidate root-level markdown into `docs/` or archive superseded handoff/session files.
-- `git filter-repo` or fresh-history approach to shrink `.git` if the large binaries are no longer needed in history (coordinate with Todd before rewriting history).
-- Clarify or remove the untracked tooling directories (ask Todd — don't guess).
+### ~~12. Repo Hygiene~~ — PARTIALLY FIXED same-session (2026-08-05)
+The 100+ stray `' 2'`-suffixed duplicate files were deleted (confirmed byte-identical/empty before removal, none were git-tracked). 21 clearly-superseded one-off root markdown files (`HANDOFF.md`, `HANDOFF_RESOLVED.md`, `TODO.md`, and 18 more DM-pipeline/OSINT/account-generation build-completion summaries with current equivalents already living under `docs/`) were moved — not deleted — to `docs/archive/` via `git mv`, fully reversible. Still outstanding, deliberately not touched:
+- `.git` is still ~196MB — shrinking it means rewriting history, which needs Todd's explicit sign-off (breaks other clones/forks).
+- The untracked tooling directories (`.agents/`, `.cortex/`, `.claude/skills/`, `skills-lock.json`, ~9 screenshot PNGs at root) — purpose still unconfirmed, still needs Todd's input before touching.
+**Effort remaining:** whatever it takes to have that conversation with Todd about the two items above — no more autonomous cleanup to do here.
 
-### 13. Data Export (CSV download)
-No export path exists from any page. Executives need to pull data into Excel for board prep.
-**Effort:** 2–3 hours.
-- Add export endpoint `/api/export/accounts` returning CSV.
-- Add download button to accounts page (hidden from print view).
-- Consider scenario-results export too.
+### ~~13. Data Export (CSV download)~~ — FIXED same-session (2026-08-05)
+`GET /api/export/accounts` (rate limited) + a download button on the accounts page, hidden from print view. Not done: scenario-results export — a smaller follow-up if it's ever wanted.
 
 ### 14. Alerting / Scheduled Delivery
 The platform is currently pull-only. A weekly digest email (top 3 at-risk accounts, RR movement, key OSINT alerts) would drive retention.
