@@ -27,6 +27,7 @@ export async function TopCustomersSection() {
         Top 20 Customers by Revenue
       </h2>
 
+      <div style={{ overflowX: 'auto' }}>
       <table style={{ width: '100%', borderCollapse: 'collapse', borderRadius: '0.5rem', overflow: 'hidden', boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)', margin: '1.25rem 0' }}>
         <thead>
           <tr style={{ backgroundColor: '#1e3c72', color: 'white', textAlign: 'left' }}>
@@ -86,6 +87,7 @@ export async function TopCustomersSection() {
           })}
         </tbody>
       </table>
+      </div>
     </section>
   )
 }

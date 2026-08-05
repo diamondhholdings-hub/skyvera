@@ -118,6 +118,7 @@ export async function FinancialSummarySection() {
           1. Margin Gap: -${Math.abs(marginGap / 1e3).toFixed(0)}K (
           {marginGapPct.toFixed(1)} percentage points)
         </div>
+        <div className="overflow-x-auto">
         <table
           className="w-full border-collapse rounded-[10px] overflow-hidden"
           style={{ boxShadow: '0 2px 10px rgba(0,0,0,0.1)' }}
@@ -168,6 +169,7 @@ export async function FinancialSummarySection() {
             </tr>
           </tbody>
         </table>
+        </div>
       </div>
 
       {/* Issue 2: RR Declining */}
@@ -176,6 +178,7 @@ export async function FinancialSummarySection() {
           2. Recurring Revenue {totalRRVariance < 0 ? 'Declining' : 'Growing'}: {totalRRVariance > 0 ? '+' : '-'}$
           {Math.abs(totalRRVariance / 1e3).toFixed(0)}K
         </div>
+        <div className="overflow-x-auto">
         <table
           className="w-full border-collapse rounded-[10px] overflow-hidden"
           style={{ boxShadow: '0 2px 10px rgba(0,0,0,0.1)' }}
@@ -216,6 +219,7 @@ export async function FinancialSummarySection() {
             })}
           </tbody>
         </table>
+        </div>
       </div>
 
       {/* Issue 3: Salesforce Contract */}

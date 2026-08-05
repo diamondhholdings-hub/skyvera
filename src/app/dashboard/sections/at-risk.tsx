@@ -54,6 +54,7 @@ export async function AtRiskSection() {
         representing ${(totalAtRiskARR / 1e6).toFixed(1)}M in Revenue
       </div>
 
+      <div style={{ overflowX: 'auto' }}>
       <table style={{
         width: '100%',
         borderCollapse: 'collapse',
@@ -145,6 +146,7 @@ export async function AtRiskSection() {
           })}
         </tbody>
       </table>
+      </div>
     </section>
   )
 }

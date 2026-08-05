@@ -69,6 +69,11 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  /* Backstop against horizontal page scroll on narrow viewports. Wide
+     content (tables, tab strips) should scroll in its own overflow-x:auto
+     container — this catches anything that doesn't, rather than letting
+     the whole page shift sideways on mobile. */
+  overflow-x: hidden;
 }
 
 body {
@@ -78,6 +83,7 @@ body {
   line-height: 1.6;
   font-weight: 400;
   letter-spacing: -0.01em;
+  overflow-x: hidden;
 }
 
 /* ── Typography ─────────────────────────────────────────── */

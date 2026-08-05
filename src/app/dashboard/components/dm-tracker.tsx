@@ -184,6 +184,7 @@ export async function DMTracker() {
         >
           DM% Detailed Breakdown
         </div>
+        <div style={{ overflowX: 'auto' }}>
         <table
           style={{
             width: '100%',
@@ -346,6 +347,7 @@ export async function DMTracker() {
             </tr>
           </tbody>
         </table>
+        </div>
       </div>
 
       {/* Trend Visualization */}
@@ -389,6 +391,7 @@ export async function DMTracker() {
           <strong>Average Quarterly Decline Rate:</strong>{' '}
           {data.forecast.avg_quarterly_decline_rate.toFixed(2)}%
         </div>
+        <div style={{ overflowX: 'auto' }}>
         <table
           style={{
             width: '100%',
@@ -472,6 +475,7 @@ export async function DMTracker() {
             ))}
           </tbody>
         </table>
+        </div>
       </div>
     </section>
   )

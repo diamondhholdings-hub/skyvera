@@ -17,6 +17,7 @@ interface BUPerformanceTableProps {
 export function BUPerformanceTable({ buSummaries }: BUPerformanceTableProps) {
   const router = useRouter()
   return (
+    <div style={{ overflowX: 'auto' }}>
     <table style={{
       width: '100%',
       borderCollapse: 'collapse',
@@ -88,5 +89,6 @@ export function BUPerformanceTable({ buSummaries }: BUPerformanceTableProps) {
         })}
       </tbody>
     </table>
+    </div>
   )
 }

@@ -36,14 +36,15 @@ export function NavBar() {
       }}
     >
       <div
+        className="px-4 lg:px-8"
         style={{
           maxWidth: '1400px',
           margin: '0 auto',
-          padding: '0 2rem',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
           height: '56px',
+          gap: '8px',
         }}
       >
         {/* Brand */}
@@ -83,12 +84,16 @@ export function NavBar() {
           </span>
         </Link>
 
-        {/* Navigation Links */}
+        {/* Navigation Links — horizontally scrollable on narrow viewports
+            instead of forcing the whole page to scroll sideways */}
         <div
           style={{
             display: 'flex',
             alignItems: 'center',
             gap: '2px',
+            overflowX: 'auto',
+            scrollbarWidth: 'none',
+            minWidth: 0,
           }}
         >
           {links.map((link) => {
@@ -106,6 +111,7 @@ export function NavBar() {
                   alignItems: 'center',
                   gap: '6px',
                   padding: '8px 12px',
+                  flexShrink: 0,
                   borderRadius: '6px 6px 0 0',
                   textDecoration: 'none',
                   fontFamily: 'var(--font-body)',
@@ -140,16 +146,19 @@ export function NavBar() {
           })}
         </div>
 
-        {/* Right side — live indicator */}
+        {/* Right side — live indicator. display intentionally omitted from
+            the inline style so the "hidden lg:flex" classes control
+            visibility — an inline display value would always win over the
+            Tailwind classes and defeat the mobile hidden state. */}
         <div
           style={{
-            display: 'flex',
             alignItems: 'center',
             gap: '8px',
             fontSize: '0.7rem',
             color: 'rgba(100,116,139,0.7)',
             fontFamily: 'var(--font-mono)',
             letterSpacing: '0.02em',
+            flexShrink: 0,
           }}
           className="hidden lg:flex"
         >

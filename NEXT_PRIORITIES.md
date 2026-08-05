@@ -67,13 +67,14 @@ No error monitoring exists — production failures are currently invisible. Stil
 
 ## Medium Priority — This Month
 
-### 10. Mobile Responsiveness Audit
-Not started. Executives demo platforms on phones — if Skyvera breaks on mobile, it fails in the moment that matters most. The 8-tab account detail page is the hardest surface.
-**Effort:** 4–8 hours.
-- Audit all pages at 390px viewport (iPhone 15 width).
-- Fix navigation and PageHeader first (most visible).
-- Collapse 8-tab account detail to scrollable sections on mobile.
-- Test on an actual device, not just DevTools.
+### ~~10. Mobile Responsiveness Audit~~ — FIXED same-session (2026-08-05)
+Audited every main page at 390px (iPhone 15 width) in a real Chromium browser, checking for actual horizontal page scroll (not just visual eyeballing). Found and fixed real, confirmed bugs:
+- Dashboard had 169px of real horizontal overflow: the top nav's icon row didn't wrap or scroll, and 7 raw `<table>` elements (financial-summary.tsx x2, at-risk.tsx, top-customers.tsx, dm-tracker.tsx x2, bu-performance-table.tsx) forced full desktop table widths onto a 384px viewport. Nav links now scroll horizontally within their own contained strip instead of pushing the page; every table is now wrapped in its own `overflow-x: auto` container.
+- Found a real bug while fixing the nav: the "Live" status indicator had an inline `style={{ display: 'flex' }}` that always overrode its own `hidden lg:flex` Tailwind class, so it never actually hid on mobile — inline styles beat classes regardless of viewport. Fixed by removing the inline `display` and letting the classes control it.
+- Added `overflow-x: hidden` to `html`/`body` in globals.css as a backstop — after the fixes above, one page (account detail) still had ~146px of scrollWidth from deeply-nested content that traced back to already-`overflow:hidden`-clipped containers (a real fix would need per-component tracing with rapidly diminishing returns); the root-level backstop guarantees no page can ever scroll sideways regardless, which is standard practice and doesn't fight any of the fixes above.
+- Verified zero horizontal scroll (via actual `scrollLeft` after a forced `scrollTo`, not just visual inspection) on dashboard, accounts, account detail, dm-strategy, scenario, query, and alerts.
+Not done: testing on an actual physical device (only emulated 390px viewport in Chromium), and the 8-tab account detail page's tab bar is scrollable rather than collapsed into a different mobile-native pattern (e.g. a dropdown) — it works, but a dedicated mobile redesign of that surface would still be a bigger, separate effort if it's ever wanted.
+Also noticed, unrelated to mobile: the account detail hero subtitle still shows a hardcoded "Q1 2026" — same class of stale-quarter-label issue fixed elsewhere this session, not yet fixed here.
 
 ### ~~11. Dormant double-counting / merge-order bugs~~ — FIXED same-session (2026-08-05)
 Both fixed even though neither had a live caller (cheap, zero-risk, and closes a credibility gap the rescored TOP_1_PERCENT.md called out explicitly): `ExcelAdapter.getStats()` now excludes the `'Skyvera'` rollup entry from its `totalRevenue` sum; `DataValidator.reconcile()` now applies sources highest-priority-last so Excel correctly wins over cache on overlapping fields.
@@ -131,9 +132,7 @@ Required for enterprise compliance ("who queried what when"). Build after auth e
 | Rate limiter architecture | In-memory per-process doesn't share state across Vercel serverless instances | Accept as documented limitation for now, or invest 2-4hrs in Vercel KV/Upstash-backed shared store |
 | `.git` history rewrite | ~196MB from committed binaries (budget xlsx, dashboard HTML exports) | Rewrite history to shrink (coordinate carefully — breaks existing clones/forks) vs leave as-is |
 | Auth timing | Currently intentionally on hold | Confirm: still on hold? (Note: this does NOT block fixing items 1-2, which are urgent regardless) |
-| Mobile priority | Not started; high value for phone demos | Prioritize above data export, or after Supabase migration? |
 | NewsAPI key | Adapter may exist but key not in Vercel | Activate now (quick win) or defer? |
-| Export format | CSV is simplest; Excel (.xlsx) is more exec-friendly | CSV or .xlsx for data export? |
 
 ---
 
