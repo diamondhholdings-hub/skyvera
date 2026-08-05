@@ -29,10 +29,12 @@ export async function FinancialSummarySection() {
   const arr = data.totalRR * 4
   const marginGap = data.ebitda - data.ebitdaTarget
   const marginGapPct = data.netMarginPct - data.netMarginTarget
-  // TODO(skyvera-9at): wire to data layer — currently static benchmarks from CLAUDE.md
-  const arrYoYChange = -11.9
-  const ruleOf40 = 50.6
-  const arAging = 11.5e6
+  // Real values from the Excel Comparison-to-PP and AR Aging sheets — null
+  // only if the source workbook is missing that data for this quarter.
+  const arrYoYChange = data.arrYoYChangePct
+  const ruleOf40 = data.ruleOf40
+  const arAging = data.arAgingOver90
+  const totalRRVariance = data.totalRR - data.rrTarget
 
   return (
     <section id="financial-summary" style={{ display: 'none' }}>
@@ -49,8 +51,9 @@ export async function FinancialSummarySection() {
         <div className="mt-2 leading-7">
           Skyvera demonstrates strong profitability metrics ({data.netMarginPct.toFixed(1)}% EBITDA
           margin, ${(data.ebitda / 1e6).toFixed(1)}M quarterly EBITDA) but faces significant
-          structural challenges with declining recurring revenue ({arrYoYChange}% YoY) and margin
-          compression (-${Math.abs(marginGap / 1e3).toFixed(0)}K gap to target).
+          structural challenges with declining recurring revenue (
+          {arrYoYChange !== null ? `${Math.abs(arrYoYChange).toFixed(1)}% YoY` : 'YoY change unavailable'}
+          ) and margin compression (-${Math.abs(marginGap / 1e3).toFixed(0)}K gap to target).
         </div>
       </AlertBox>
 
@@ -58,7 +61,7 @@ export async function FinancialSummarySection() {
       <div className="grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-5 my-8">
         <MetricCard
           variant="primary"
-          label="Total Revenue (Q1'26)"
+          label="Total Revenue (Current Quarter)"
           value={`$${(data.totalRevenue / 1e6).toFixed(1)}M`}
           subtitle={`${rrPercentage.toFixed(0)}% Recurring`}
         />
@@ -78,24 +81,31 @@ export async function FinancialSummarySection() {
           variant="danger"
           label="ARR (Annualized)"
           value={`$${(arr / 1e6).toFixed(1)}M`}
-          subtitle={`DOWN ${Math.abs(arrYoYChange)}% YoY`}
+          subtitle={
+            arrYoYChange !== null
+              ? `${arrYoYChange < 0 ? 'DOWN' : 'UP'} ${Math.abs(arrYoYChange).toFixed(1)}% YoY`
+              : 'YoY change unavailable'
+          }
         />
         <MetricCard
-          variant="success"
+          variant={ruleOf40 !== null && ruleOf40 >= 40 ? 'success' : 'danger'}
           label="Rule of 40"
-          value={`${ruleOf40.toFixed(1)}%`}
-          subtitle="PASSING"
+          value={ruleOf40 !== null ? `${ruleOf40.toFixed(1)}%` : 'N/A'}
+          subtitle={ruleOf40 === null ? 'DATA UNAVAILABLE' : ruleOf40 >= 40 ? 'PASSING' : 'FAILING'}
         />
         <MetricCard
           variant="danger"
           label="AR >90 Days"
-          value={`$${(arAging / 1e6).toFixed(1)}M`}
-          subtitle={`${((arAging / arr) * 100).toFixed(1)}% of ARR`}
+          value={arAging !== null ? `$${(arAging / 1e6).toFixed(1)}M` : 'N/A'}
+          subtitle={arAging !== null ? `${((arAging / arr) * 100).toFixed(1)}% of ARR` : 'DATA UNAVAILABLE'}
         />
       </div>
-      <p className="text-xs italic text-[var(--muted)] -mt-4 mb-8">
-        Note: ARR YoY change, Rule of 40, and AR &gt;90 Days are static benchmarks — not live data.
-      </p>
+      {(arrYoYChange === null || ruleOf40 === null || arAging === null) && (
+        <p className="text-xs italic text-[var(--muted)] -mt-4 mb-8">
+          Note: one or more of ARR YoY change, Rule of 40, and AR &gt;90 Days could not be computed
+          from the current workbook and are shown as unavailable rather than estimated.
+        </p>
+      )}
 
       {/* Critical Financial Issues */}
       <h3 className="font-display text-xl font-medium text-[var(--ink)] mt-8 mb-4">
@@ -163,11 +173,9 @@ export async function FinancialSummarySection() {
       {/* Issue 2: RR Declining */}
       <div className="bg-[var(--highlight)] rounded-[15px] p-5 my-4 border-l-[5px] border-l-[var(--secondary)]">
         <div className="text-lg font-bold text-[var(--secondary)] mb-2">
-          2. Recurring Revenue Declining: -$336K
+          2. Recurring Revenue {totalRRVariance < 0 ? 'Declining' : 'Growing'}: {totalRRVariance > 0 ? '+' : '-'}$
+          {Math.abs(totalRRVariance / 1e3).toFixed(0)}K
         </div>
-        <p className="text-xs italic text-[var(--muted)] mb-4">
-          Note: Prior Plan column uses static benchmarks — not live data.
-        </p>
         <table
           className="w-full border-collapse rounded-[10px] overflow-hidden"
           style={{ boxShadow: '0 2px 10px rgba(0,0,0,0.1)' }}
@@ -175,29 +183,32 @@ export async function FinancialSummarySection() {
           <thead>
             <tr className="bg-[var(--secondary)] text-[var(--paper)] text-left">
               <th className="p-[15px] font-semibold text-sm">Business Unit</th>
-              <th className="p-[15px] font-semibold text-sm">Q1&apos;26 Plan</th>
+              <th className="p-[15px] font-semibold text-sm">Current Plan</th>
               <th className="p-[15px] font-semibold text-sm">Prior Plan</th>
               <th className="p-[15px] font-semibold text-sm">Variance</th>
             </tr>
           </thead>
           <tbody className="bg-white">
             {buSummaries.slice(0, 3).map((bu) => {
-              // TODO(skyvera-9at): wire to data layer — static benchmark, not live
-              const variance = bu.bu === 'Cloudsense' ? -355000 : bu.bu === 'Kandy' ? -75000 : 146000
-              const priorPlan = bu.totalRR - variance
+              const priorPlan = bu.rrPriorPlan
+              const variance = priorPlan !== undefined ? bu.totalRR - priorPlan : null
               const variantColorClass =
-                variance < 0 ? 'bg-[var(--critical)]' : 'bg-[var(--success)]'
+                variance === null ? 'bg-[var(--muted)]' : variance < 0 ? 'bg-[var(--critical)]' : 'bg-[var(--success)]'
 
               return (
                 <tr key={bu.bu} className="border-b border-[var(--border)]">
                   <td className="p-3 text-sm">{bu.bu}</td>
                   <td className="p-3 text-sm">${(bu.totalRR / 1e6).toFixed(2)}M</td>
-                  <td className="p-3 text-sm">${(priorPlan / 1e6).toFixed(2)}M</td>
+                  <td className="p-3 text-sm">
+                    {priorPlan !== undefined ? `$${(priorPlan / 1e6).toFixed(2)}M` : 'N/A'}
+                  </td>
                   <td className="p-3 text-sm">
                     <span
                       className={`inline-block px-3 py-1 rounded-[15px] ${variantColorClass} text-white text-xs font-semibold`}
                     >
-                      {variance > 0 ? '+' : ''}${(variance / 1e3).toFixed(0)}K
+                      {variance === null
+                        ? 'N/A'
+                        : `${variance > 0 ? '+' : ''}$${(variance / 1e3).toFixed(0)}K`}
                     </span>
                   </td>
                 </tr>

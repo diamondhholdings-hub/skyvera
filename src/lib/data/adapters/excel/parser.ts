@@ -31,6 +31,15 @@ interface FinancialSummary {
   ebitda: number
   netMargin: number
   customerCount: number
+  // Real values from the Excel P&L sheets (present on every BU entry)
+  marginTarget?: number
+  deltaToMargin?: number
+  rrPriorPlan?: number
+  totalRevenuePriorPlan?: number
+  // Company-wide metrics, only present on the consolidated 'Skyvera' entry
+  arAgingOver90?: number | null
+  arrYoYChangePct?: number | null
+  ruleOf40?: number | null
 }
 
 /**

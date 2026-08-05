@@ -21,7 +21,7 @@ This repository is **both** a business analysis tool and a full AI-powered execu
 
 ### Business Analysis Files
 The repository also contains the original financial analysis files:
-- Excel budget file: `2025-12-11 Skyvera - Budget - Q1'26 - For Todd.xlsx`
+- Excel budget file: `2026-07-02 Skyvera - Budget - Q3'26 - Final - For Todd.xlsx`
 - `Business_Analysis_Dashboard.html` — standalone Chart.js executive dashboard
 
 ## Platform Architecture
@@ -131,7 +131,7 @@ Results written to `data/enrichment/{slug}.json`. Corporate registry sections re
 ## Key Files
 
 ### Budget Data
-- **`2025-12-11 Skyvera - Budget - Q1'26 - For Todd.xlsx`** - Master budget file containing:
+- **`2026-07-02 Skyvera - Budget - Q3'26 - Final - For Todd.xlsx`** - Master budget file containing:
   - Multiple business unit P&Ls (Cloudsense, Kandy, STL)
   - Recurring Revenue (RR) and Non-Recurring Revenue (NRR) forecasts
   - Headcount (HC) budget and planning
@@ -163,7 +163,7 @@ Use `openpyxl` library for Excel file manipulation:
 ```python
 from openpyxl import load_workbook
 
-file_path = "2025-12-11 Skyvera - Budget - Q1'26 - For Todd.xlsx"
+file_path = "2026-07-02 Skyvera - Budget - Q3'26 - Final - For Todd.xlsx"
 wb = load_workbook(file_path, data_only=True)  # data_only=True for calculated values
 
 # Access specific sheet

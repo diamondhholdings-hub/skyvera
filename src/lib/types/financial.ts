@@ -54,5 +54,8 @@ export const BUFinancialSummarySchema = z.object({
   netMarginPct: z.number().min(0).max(100),
   netMarginTarget: z.number().min(0).max(100),
   ebitda: z.number(),
+  // Real Prior Plan comparison from the Excel P&L sheets — undefined if the
+  // source workbook didn't have a Prior Plan column for this BU.
+  rrPriorPlan: z.number().optional(),
 })
 export type BUFinancialSummary = z.infer<typeof BUFinancialSummarySchema>
