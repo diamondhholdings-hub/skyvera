@@ -3,16 +3,19 @@
 /**
  * BU Performance Table
  * Hover via CSS `.table-row-hover` (defined in globals.css).
+ * Rows navigate to the accounts list filtered to that BU.
  */
 
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import type { BUFinancialSummary } from '@/lib/types/financial'
 
 interface BUPerformanceTableProps {
   buSummaries: BUFinancialSummary[]
 }
 
-// TODO(skyvera-9at): make rows navigable to BU detail
 export function BUPerformanceTable({ buSummaries }: BUPerformanceTableProps) {
+  const router = useRouter()
   return (
     <table style={{
       width: '100%',
@@ -36,15 +39,24 @@ export function BUPerformanceTable({ buSummaries }: BUPerformanceTableProps) {
       <tbody>
         {buSummaries.map((bu) => {
           const delta = bu.ebitda - (bu.totalRevenue * bu.netMarginTarget) / 100
+          const href = `/accounts?bu=${encodeURIComponent(bu.bu)}`
 
           return (
             <tr
               key={bu.bu}
               className="table-row-hover"
-              style={{ borderBottom: '1px solid var(--border)' }}
+              onClick={() => router.push(href)}
+              style={{ borderBottom: '1px solid var(--border)', cursor: 'pointer' }}
             >
               <td style={{ padding: '12px 15px', fontSize: '0.9em', fontWeight: 600 }}>
-                {bu.bu}
+                <Link
+                  href={href}
+                  onClick={(e) => e.stopPropagation()}
+                  style={{ color: 'inherit', textDecoration: 'none' }}
+                  className="hover:underline"
+                >
+                  {bu.bu}
+                </Link>
               </td>
               <td style={{ padding: '12px 15px', fontSize: '0.9em' }}>
                 ${(bu.totalRevenue / 1e6).toFixed(2)}M
