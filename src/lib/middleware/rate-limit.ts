@@ -67,20 +67,27 @@ function maybePrune(windowMs: number): void {
 // --------------------------------------------------------------------------
 
 function getClientIp(request: NextRequest): string {
-  // Vercel sets x-forwarded-for; fallback chain for other environments
-  const forwarded = request.headers.get('x-forwarded-for')
-  if (forwarded) {
-    // May be comma-separated list; take the first (originating client)
-    const first = forwarded.split(',')[0].trim()
-    if (first) return first
-  }
+  // Next.js/Vercel runtime-populated IP, when available — not settable by
+  // the client, so this is the most trustworthy source when present.
+  const reqIp = (request as NextRequest & { ip?: string }).ip
+  if (reqIp) return reqIp
 
+  // x-real-ip is set directly by Vercel's edge to the real connecting IP.
   const realIp = request.headers.get('x-real-ip')
   if (realIp) return realIp.trim()
 
-  // Next.js 16 exposes request.ip on some runtimes
-  const reqIp = (request as NextRequest & { ip?: string }).ip
-  if (reqIp) return reqIp
+  // x-forwarded-for is a comma-separated hop chain where each proxy APPENDS
+  // the address it observed the request from. A client can set this header
+  // to anything and prepend fake entries, but cannot control what Vercel's
+  // own edge appends after receiving the connection — so the LAST entry is
+  // the one to trust, not the first. Taking the first entry (the old,
+  // vulnerable behavior here) let any caller set their own rate-limit key.
+  const forwarded = request.headers.get('x-forwarded-for')
+  if (forwarded) {
+    const parts = forwarded.split(',').map((p) => p.trim()).filter(Boolean)
+    const last = parts[parts.length - 1]
+    if (last) return last
+  }
 
   return 'anonymous'
 }

@@ -38,30 +38,35 @@ export async function GET() {
     // Get orchestrator stats
     const orchestratorStats = getOrchestratorStats()
 
-    // Build response
-    const response = {
-      status: 'ok',
-      timestamp: new Date().toISOString(),
+    const allHealthy = Array.from(adapterHealth.values()).every(Boolean)
+
+    // Full diagnostic detail (per-adapter status, which integration keys are
+    // configured) goes to server logs only — this endpoint is unauthenticated
+    // and public, so the HTTP response stays minimal to avoid handing an
+    // unauthenticated caller a map of exactly which attack surfaces are live.
+    console.log('[Health] Diagnostic detail:', {
       adapters: Object.fromEntries(
         Array.from(adapterHealth.entries()).map(([name, healthy]) => [
           name,
-          {
-            healthy,
-            status: adapterStatus.get(name) || 'unknown',
-          },
+          { healthy, status: adapterStatus.get(name) || 'unknown' },
         ])
       ),
-      cache: {
-        size: cacheStats.size,
-        hitRate: cacheStats.hitRate,
-        missRate: cacheStats.missRate,
-      },
       orchestrator: orchestratorStats,
       environment: {
         anthropicKeyConfigured: !!process.env.ANTHROPIC_API_KEY,
         newsApiKeyConfigured: !!process.env.NEWSAPI_KEY,
         databaseUrl: process.env.DATABASE_URL ? 'configured' : 'missing',
         nodeEnv: process.env.NODE_ENV || 'development',
+      },
+    })
+
+    const response = {
+      status: allHealthy ? 'ok' : 'degraded',
+      timestamp: new Date().toISOString(),
+      cache: {
+        size: cacheStats.size,
+        hitRate: cacheStats.hitRate,
+        missRate: cacheStats.missRate,
       },
     }
 

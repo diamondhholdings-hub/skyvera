@@ -4,7 +4,7 @@
  */
 
 import { ok, err, type Result } from '@/lib/types/result'
-import type { Customer } from '@/lib/types/customer'
+import type { Customer, CustomerWithHealth } from '@/lib/types/customer'
 import type { FinancialMetrics, BUFinancialSummary, BU } from '@/lib/types/financial'
 import { CustomerSchema } from '@/lib/types/customer'
 import { FinancialMetricsSchema, BUFinancialSummarySchema } from '@/lib/types/financial'
@@ -83,11 +83,19 @@ export function transformRawFinancials(raw: Record<string, unknown>): Result<Fin
  * @param customers  Flat list of customers (currently expected to be pre-grouped externally)
  * @returns          Map from BU name to its aggregated BUFinancialSummary
  */
-export function aggregateByBU(customers: Customer[]): Map<BU, BUFinancialSummary> {
-  const byBU = new Map<BU, Customer[]>()
+export function aggregateByBU(customers: CustomerWithHealth[]): Map<BU, BUFinancialSummary> {
+  const byBU = new Map<BU, CustomerWithHealth[]>()
 
-  // Group customers by BU (we'll need to enhance customer data with BU field in real implementation)
-  // For now, this is a placeholder that assumes customers are already grouped
+  // Group customers by their annotated BU field.
+  for (const customer of customers) {
+    const bu = customer.bu as BU
+    const existing = byBU.get(bu)
+    if (existing) {
+      existing.push(customer)
+    } else {
+      byBU.set(bu, [customer])
+    }
+  }
 
   const summaryMap = new Map<BU, BUFinancialSummary>()
 

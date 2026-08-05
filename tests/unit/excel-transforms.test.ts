@@ -10,7 +10,7 @@ import {
   aggregateByBU,
 } from '../../src/lib/data/adapters/excel/transforms'
 import { calculateARR } from '../../src/lib/types/financial'
-import type { Customer } from '../../src/lib/types/customer'
+import type { Customer, CustomerWithHealth } from '../../src/lib/types/customer'
 
 // ── calculateARR (financial helper) ──────────────────────────────────────────
 
@@ -181,12 +181,15 @@ describe('transformRawFinancials', () => {
 // ── aggregateByBU ──────────────────────────────────────────────────────────────
 
 describe('aggregateByBU', () => {
-  const makeCustomer = (overrides: Partial<Customer> = {}): Customer => ({
+  const makeCustomer = (overrides: Partial<CustomerWithHealth> = {}): CustomerWithHealth => ({
     customer_name: 'Test Co',
     rr: 100_000,
     nrr: 10_000,
     total: 110_000,
     subscriptions: [],
+    bu: 'Cloudsense',
+    healthScore: 'green',
+    healthFactors: [],
     ...overrides,
   })
 
@@ -195,18 +198,25 @@ describe('aggregateByBU', () => {
     expect(result.size).toBe(0)
   })
 
-  it('returns an empty map when customers have no BU grouping', () => {
-    // aggregateByBU groups by BU from the internal map — with plain Customer[]
-    // and no bu field on Customer, the internal byBU map stays empty
-    const customers = [makeCustomer(), makeCustomer({ customer_name: 'Beta LLC', rr: 200_000 })]
+  it('groups customers by their bu field and aggregates RR/NRR/revenue per BU', () => {
+    const customers = [
+      makeCustomer({ customer_name: 'Alpha Inc', rr: 100_000, nrr: 10_000, bu: 'Cloudsense' }),
+      makeCustomer({ customer_name: 'Beta LLC', rr: 200_000, nrr: 20_000, bu: 'Cloudsense' }),
+      makeCustomer({ customer_name: 'Gamma Co', rr: 50_000, nrr: 5_000, bu: 'Kandy' }),
+    ]
     const result = aggregateByBU(customers)
-    // No BU assignment on plain Customer type → result is empty
-    expect(result.size).toBe(0)
+
+    expect(result.size).toBe(2)
+    const cloudsense = result.get('Cloudsense')
+    expect(cloudsense?.totalRR).toBe(300_000)
+    expect(cloudsense?.totalNRR).toBe(30_000)
+    expect(cloudsense?.customerCount).toBe(2)
+    expect(result.get('Kandy')?.customerCount).toBe(1)
   })
 
   it('result map values pass BUFinancialSummarySchema validation when populated', () => {
-    // aggregateByBU iterates an internal byBU Map — with no BU-annotated entries
-    // the implementation produces an empty result; verify no exceptions are thrown
-    expect(() => aggregateByBU([])).not.toThrow()
+    const result = aggregateByBU([makeCustomer()])
+    expect(result.size).toBe(1)
+    expect(() => aggregateByBU([makeCustomer()])).not.toThrow()
   })
 })
