@@ -852,24 +852,16 @@
         "pct_of_total": 0.09274265876530823
       },
       {
-        "customer_name": "Various Licenses",
+        "customer_name": "Starhub",
         "rr": 0,
         "nrr": 0,
         "total": 0,
-        "subscriptions": [
-          {
-            "sub_id": "NEW LICENSES",
-            "arr": 0,
-            "renewal_qtr": null,
-            "will_renew": null,
-            "projected_arr": null
-          }
-        ],
+        "subscriptions": [],
         "rank": 47,
         "pct_of_total": 0.0
       },
       {
-        "customer_name": "Hcl Australia Services Pty. Ltd",
+        "customer_name": "Accenture Singapore",
         "rr": 0,
         "nrr": 0,
         "total": 0,
@@ -878,7 +870,7 @@
         "pct_of_total": 0.0
       },
       {
-        "customer_name": "Dplay Entertainment Ltd",
+        "customer_name": "Hcl Australia Services Pty. Ltd",
         "rr": 0,
         "nrr": 0,
         "total": 0,
@@ -905,7 +897,7 @@
         "pct_of_total": 0.0
       },
       {
-        "customer_name": "Accenture Singapore",
+        "customer_name": "Dplay Entertainment Ltd",
         "rr": 0,
         "nrr": 0,
         "total": 0,
@@ -914,11 +906,19 @@
         "pct_of_total": 0.0
       },
       {
-        "customer_name": "Starhub",
+        "customer_name": "Various Licenses",
         "rr": 0,
         "nrr": 0,
         "total": 0,
-        "subscriptions": [],
+        "subscriptions": [
+          {
+            "sub_id": "NEW LICENSES",
+            "arr": 0,
+            "renewal_qtr": null,
+            "will_renew": null,
+            "projected_arr": null
+          }
+        ],
         "rank": 53,
         "pct_of_total": 0.0
       }

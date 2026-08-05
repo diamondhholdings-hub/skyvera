@@ -5,6 +5,7 @@ DM% = (Current Year Revenue / Prior Year Revenue) × 100
 Target: ≥90% (retain at least 90% of last year's revenue)
 """
 
+import re
 import sys
 import json
 from pathlib import Path
@@ -13,6 +14,21 @@ from datetime import datetime
 
 # File path
 EXCEL_FILE = "2026-07-02 Skyvera - Budget - Q3'26 - Final - For Todd.xlsx"
+
+
+def _detect_fiscal_quarter(wb):
+    """Read the current quarter label (e.g. "Q3'26") from a P&Ls sheet header
+    instead of hardcoding it — the header cell reads like "Q3'26 BU Plan"."""
+    for bu_name in ("Cloudsense", "Kandy", "STL"):
+        sheet_name = f"P&Ls - {bu_name}"
+        if sheet_name not in wb.sheetnames:
+            continue
+        header = wb[sheet_name].cell(row=4, column=3).value
+        match = re.match(r"Q[1-4]'\d{2}", str(header or ''))
+        if match:
+            return match.group(0)
+    return "Unknown"
+
 
 def extract_dm_data():
     """Extract revenue data and calculate DM% for each BU"""
@@ -35,7 +51,7 @@ def extract_dm_data():
             "business_units": [],
             "consolidated": {},
             "extracted_at": datetime.now().isoformat(),
-            "fiscal_quarter": "Q1'26"
+            "fiscal_quarter": _detect_fiscal_quarter(wb)
         }
 
         # Try to extract from RR Summary sheet first

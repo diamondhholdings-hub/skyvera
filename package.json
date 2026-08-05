@@ -10,7 +10,7 @@
     "postinstall": "prisma generate",
     "prisma:generate": "prisma generate",
     "prisma:push": "prisma db push",
-    "refresh-data": "python3 scripts/parse_excel_to_json.py --type all 2>/dev/null > src/data/skyvera-snapshot.json && echo 'Snapshot updated: src/data/skyvera-snapshot.json'",
+    "refresh-data": "python3 scripts/parse_excel_to_json.py --type all 2>/dev/null > src/data/skyvera-snapshot.json && python3 scripts/extract_dm_data.py 2>/dev/null > src/data/dm-tracker-snapshot.json && echo 'Snapshots updated: src/data/skyvera-snapshot.json, src/data/dm-tracker-snapshot.json'",
     "generate-demo-data": "npx tsx scripts/generate-demo-data.ts",
     "warmup": "npx tsx scripts/warmup-cache.ts",
     "enrich:accounts": "npx tsx scripts/enrich-accounts.ts",

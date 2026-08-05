@@ -7,6 +7,7 @@
 import { getAllCustomersWithHealth, getCustomerCount } from '@/lib/data/server/account-data'
 import { getCompletenessScores } from '@/lib/data/server/account-plan-data'
 import { RefreshButton } from '@/components/ui/refresh-button'
+import { ExportButton } from '@/components/ui/export-button'
 import { AccountStats } from './components/account-stats'
 import { AccountTable } from './components/account-table'
 import { AccountsSearch } from '@/components/accounts-search'
@@ -122,7 +123,12 @@ export default async function AccountsPage({ searchParams }: AccountsPageProps) 
       <PageHeader
         title="Customer Account Plans"
         subtitle={bu ? `${bu} Business Unit · Filtered View` : 'All Business Units · Customer Directory'}
-        action={<RefreshButton />}
+        action={
+          <div className="flex items-center gap-4">
+            <ExportButton />
+            <RefreshButton />
+          </div>
+        }
         centered
       >
         <AccountStats stats={stats} totalRevenue={totalRevenue} />
