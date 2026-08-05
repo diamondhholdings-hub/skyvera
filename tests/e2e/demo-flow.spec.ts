@@ -42,7 +42,7 @@ test.describe('Demo Flow E2E', () => {
     await expect(accounts.accountTable).toBeVisible()
 
     // Step 3: Search for hero account (British Telecom)
-    await accounts.searchByName('British')
+    await accounts.searchByName('Telefonica')
 
     // Verify results appear
     await expect(accounts.firstAccountRow).toBeVisible()
@@ -147,7 +147,7 @@ test.describe('Demo Flow E2E', () => {
         await expect(accounts.pageTitle).toBeVisible()
 
         // Search for British Telecom
-        await accounts.searchByName('British')
+        await accounts.searchByName('Telefonica')
         await expect(accounts.firstAccountRow).toBeVisible()
 
         // Open account plan

@@ -6,8 +6,10 @@
 import { test, expect } from '@playwright/test'
 import { AccountPlanPage } from '../pages/account-plan.page'
 
-// Hero account for testing
-const HERO_ACCOUNT = 'British Telecommunications PLC'
+// Hero account for testing — must exist in the current Excel snapshot AND
+// have full curated account-plan content (data/account-plans/*) so all tabs
+// render real content, not just an empty page.
+const HERO_ACCOUNT = 'Telefonica UK Limited'
 
 test.describe('Account Plan Smoke Tests', () => {
   test('Account plan page loads for hero account', async ({ page }) => {
@@ -16,7 +18,7 @@ test.describe('Account Plan Smoke Tests', () => {
 
     // Verify customer name displays
     await expect(accountPlan.customerName).toBeVisible()
-    await expect(accountPlan.customerName).toContainText('British')
+    await expect(accountPlan.customerName).toContainText('Telefonica')
 
     // Verify back link
     await expect(accountPlan.backLink).toBeVisible()
@@ -74,8 +76,10 @@ test.describe('Account Plan Smoke Tests', () => {
     // Verify URL updated
     await expect(page).toHaveURL(/tab=org-structure/)
 
-    // Verify org content appears (stakeholders, org chart)
-    await expect(page.getByText(/stakeholder|contact|role/i).first()).toBeVisible({ timeout: 5000 })
+    // Verify org content appears (stakeholders, org chart). Matches the
+    // heading rendered for real stakeholder data — not just the "no data"
+    // empty-state copy, which also happens to contain "stakeholder"/"role".
+    await expect(page.getByText(/Organizational Structure|Decision Makers|Decision Hierarchy/i).first()).toBeVisible({ timeout: 5000 })
   })
 
   test('Tab switching works - Strategy', async ({ page }) => {
