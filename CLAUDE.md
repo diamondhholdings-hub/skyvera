@@ -11,7 +11,7 @@ This repository is **both** a business analysis tool and a full AI-powered execu
 
 ### Platform (Next.js App)
 - **Stack:** Next.js 16 + TypeScript + Tailwind + Prisma (SQLite) + Claude (Haiku 5.5 / Sonnet 5.5 — model IDs live only in `src/lib/intelligence/claude/models.ts`)
-- **Deployed:** https://skyvera.vercel.app
+- **Deployed:** https://skyvera.vercel.app — deploy with `vercel --prod` from this repo. The Vercel project has **no Git integration**: until 2026-10-21 it was wrongly connected to `valkyrie-revival-bot/InvestorCRM` (which has its own project, `valhros-crm`), so InvestorCRM pushes were building into this project. If Git auto-deploy is ever wanted, connect `diamondhholdings-hub/skyvera` only
 - **Repo:** https://github.com/diamondhholdings-hub/skyvera.git
 - **Pages:** dashboard, /accounts, /accounts/[name] (8-tab), /query, /scenario, /dm-strategy, /alerts
 - **API routes:** `src/app/api/` — 22 routes covering query, scenarios, dm-strategy, enrichment, account chat, account plan CRUD
