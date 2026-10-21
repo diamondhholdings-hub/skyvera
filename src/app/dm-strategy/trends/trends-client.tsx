@@ -12,26 +12,27 @@ interface DMTrendsClientProps {
 }
 
 export default function DMTrendsClient({ businessUnits }: DMTrendsClientProps) {
-  // Build portfolio-wide weighted-average history across all BUs that have history
+  // Portfolio history: total RR over total year-earlier RR per quarter, which
+  // matches the consolidated TTM figure. (Averaging the BU ratios weighted by
+  // current revenue would overstate retention when a large BU is shrinking.)
   const busWithHistory = businessUnits.filter(bu => bu.history && bu.history.length > 0);
 
   const portfolioHistory: MonthlyDMData[] = [];
   if (busWithHistory.length > 0) {
-    const monthCount = busWithHistory[0].history!.length;
-    for (let i = 0; i < monthCount; i++) {
+    for (const { month } of busWithHistory[0].history!) {
       let totalRevenue = 0;
-      let weightedDM = 0;
+      let yearAgoRevenue = 0;
       for (const bu of busWithHistory) {
-        const point = bu.history![i];
-        if (point) {
+        const point = bu.history!.find(p => p.month === month);
+        if (point && point.dmPercent > 0) {
           totalRevenue += point.revenue;
-          weightedDM += point.dmPercent * point.revenue;
+          yearAgoRevenue += point.revenue / (point.dmPercent / 100);
         }
       }
-      if (totalRevenue > 0) {
+      if (yearAgoRevenue > 0) {
         portfolioHistory.push({
-          month: busWithHistory[0].history![i].month,
-          dmPercent: weightedDM / totalRevenue,
+          month,
+          dmPercent: (totalRevenue / yearAgoRevenue) * 100,
           revenue: totalRevenue,
           targetDM: 95.0,
         });
@@ -60,7 +61,7 @@ export default function DMTrendsClient({ businessUnits }: DMTrendsClientProps) {
     <div>
       <PageHeader
         title="Retention trends"
-        subtitle={`DM% by month for ${businessUnits.length} business units. Monthly points are interpolated from quarterly tracker data.`}
+        subtitle={`Recurring revenue retained year over year, by quarter, for ${businessUnits.length} business units. Each point is a quarter's RR against the same quarter a year earlier, from the budget workbook.`}
         action={
           <Link href="/dm-strategy" className="btn">
             <ArrowLeft className="h-4 w-4" aria-hidden="true" />
@@ -74,7 +75,7 @@ export default function DMTrendsClient({ businessUnits }: DMTrendsClientProps) {
         {portfolioHistory.length > 0 && (
           <DMTrendChart
             data={portfolioHistory}
-            title={`Portfolio DM%, revenue-weighted across ${busWithHistory.length} business units`}
+            title={`Portfolio across ${busWithHistory.length} business units`}
             color="var(--secondary)"
             targetDM={95.0}
             showTarget={true}

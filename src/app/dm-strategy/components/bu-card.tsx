@@ -78,6 +78,9 @@ export default function BUCard({ metrics, isActive = false, onClick }: BUCardPro
           {metrics.quarterlyDM.toFixed(1)}%
         </span>
       </td>
+      <td className="num text-sm" style={{ textAlign: 'right', color: 'var(--ink)' }}>
+        {metrics.currentDM.toFixed(1)}%
+      </td>
       <td className="text-sm" style={{ color: 'var(--ink-2)', whiteSpace: 'nowrap' }}>
         {scenario?.label ?? <span style={{ color: 'var(--muted)' }}>Unclassified</span>}
       </td>
@@ -115,13 +118,14 @@ export function BUTable({ businessUnits, selectedBU, onSelect }: BUTableProps) {
         </p>
       </div>
       <div className="overflow-x-auto">
-        <table className="data-table" style={{ minWidth: '52rem' }}>
+        <table className="data-table" style={{ minWidth: '58rem' }}>
           <thead>
             <tr>
               <th scope="col">Business unit</th>
               <th scope="col" style={{ textAlign: 'right' }}>TTM DM%</th>
               <th scope="col">Status</th>
-              <th scope="col" style={{ textAlign: 'right' }}>Latest quarter</th>
+              <th scope="col" style={{ textAlign: 'right' }}>Vs prior quarter</th>
+              <th scope="col" style={{ textAlign: 'right' }}>Vs prior plan</th>
               <th scope="col">Scenario</th>
               <th scope="col" style={{ textAlign: 'right' }}>ARR</th>
               <th scope="col" style={{ textAlign: 'right' }}>Trend</th>

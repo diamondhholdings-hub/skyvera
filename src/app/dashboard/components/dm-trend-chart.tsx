@@ -71,7 +71,7 @@ export function DMTrendChart({ data }: DMTrendChartProps) {
           labels: allQuarters,
           datasets: [
             {
-              label: 'Consolidated DM% (historical)',
+              label: 'Consolidated, vs a year earlier',
               data: [
                 ...historicalDM,
                 ...Array(data.forecast.quarters.length).fill(null),
@@ -86,7 +86,7 @@ export function DMTrendChart({ data }: DMTrendChartProps) {
               pointHoverRadius: 5,
             },
             {
-              label: 'Consolidated DM% (forecast)',
+              label: 'Consolidated, budget plan',
               data: [
                 ...Array(data.consolidated.ttm_quarters.length - 1).fill(null),
                 ...forecastDM,

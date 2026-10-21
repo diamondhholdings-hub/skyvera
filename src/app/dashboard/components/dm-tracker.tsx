@@ -58,7 +58,7 @@ export async function DMTracker() {
       {/* Consolidated DM% Alert */}
       <AlertBox variant={data.consolidated.meets_target ? 'success' : 'critical'}>
         <div className="font-semibold">
-          Consolidated DM%: <span className="num">{data.consolidated.dm_pct.toFixed(2)}%</span>,{' '}
+          Consolidated DM% vs prior plan: <span className="num">{data.consolidated.dm_pct.toFixed(2)}%</span>,{' '}
           {data.consolidated.meets_target ? 'passing' : 'failing'}
         </div>
         <div className="mt-1">
@@ -133,7 +133,7 @@ export async function DMTracker() {
 
       {/* Trend Visualization */}
       <div className="mt-6">
-        <Panel title="TTM DM% trend and forecast" description="Consolidated and per business unit, with the 90% target">
+        <Panel title="Year-over-year RR retention" description="Each quarter's recurring revenue against the same quarter a year earlier, consolidated and per business unit, with the 90% target. Dashed: the budget plan for coming quarters.">
           <DMTrendChart data={data} />
         </Panel>
       </div>
@@ -141,10 +141,10 @@ export async function DMTracker() {
       {/* Forecast Summary */}
       <div className="mt-6">
         <Panel
-          title={`Forecast (${data.forecast.method})`}
+          title={data.forecast.method === 'budget_plan' ? 'Budget plan, coming quarters' : `Forecast (${data.forecast.method})`}
           description={
             <>
-              Average quarterly decline rate:{' '}
+              Average quarter-over-quarter change in RR:{' '}
               <span className="num" style={{ color: 'var(--ink)' }}>
                 {data.forecast.avg_quarterly_decline_rate.toFixed(2)}%
               </span>
@@ -157,8 +157,8 @@ export async function DMTracker() {
               <thead>
                 <tr>
                   <th>Quarter</th>
-                  <th style={right}>Forecasted RR</th>
-                  <th style={right}>Forecasted DM%</th>
+                  <th style={right}>Planned RR</th>
+                  <th style={right}>Vs a year earlier</th>
                   <th>Confidence</th>
                 </tr>
               </thead>

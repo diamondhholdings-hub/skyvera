@@ -256,7 +256,10 @@ When analyzing the business:
 - **RR (Recurring Revenue)**: Predictable subscription revenue, the foundation metric
 - **NRR (Non-Recurring Revenue)**: One-time revenue (services, licenses)
 - **ARR (Annual Recurring Revenue)**: RR × 4 quarters
-- **DM% (Decline/Maintenance Rate)**: Natural attrition rate for RR
+- **DM% (Decline/Maintenance Rate)**: Natural attrition rate for RR. The app shows two measures; don't mix them up:
+  - **DM% vs prior plan** (`dm_pct` on each BU / consolidated in `dm-tracker-snapshot.json`): current-quarter BU Plan RR ÷ Prior BU Plan RR from the P&L sheets. Drives scenario classification and recommendations. Q4'26 consolidated: 88.2%
+  - **TTM DM%** (`ttm_quarters[].dm_pct`): a quarter's real RR ÷ the same quarter a year earlier, from the `<BU> - Comparison to PP` sheets (first, Current Plan block of row 4). Q4'26 consolidated: 77.9%. "Vs prior quarter" is RR ÷ previous quarter's RR. There is no monthly data; monthly figures are the rate that compounds to the quarterly one
+  - The DM forecast is the workbook's own plan RR for coming quarters (`method: "budget_plan"`), not an extrapolation. Before 2026-10-21 the history was invented (prior × 0.97/0.99/1.0)
 - **EBITDA**: Earnings before interest, taxes, depreciation, amortization
 - **HC (Headcount)**: Full-time employee count and costs
 - **NHC (Non-Headcount)**: Non-salary expenses

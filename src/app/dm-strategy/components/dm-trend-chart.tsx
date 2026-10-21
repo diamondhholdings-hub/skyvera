@@ -84,7 +84,7 @@ export default function DMTrendChart({
       color: latestBelowTarget ? 'var(--critical-ink)' : 'var(--success-ink)',
       context: latestBelowTarget ? `Below ${targetDM}% target` : `At or above ${targetDM}% target`,
     },
-    { label: `${data.length}-month average`, value: `${(dmValues.reduce((s, v) => s + v, 0) / data.length).toFixed(1)}%` },
+    { label: `${data.length}-quarter average`, value: `${(dmValues.reduce((s, v) => s + v, 0) / data.length).toFixed(1)}%` },
     { label: 'Peak', value: `${Math.max(...dmValues).toFixed(1)}%` },
     { label: 'Trough', value: `${Math.min(...dmValues).toFixed(1)}%` },
   ];
@@ -124,7 +124,7 @@ export default function DMTrendChart({
             }}
             labelStyle={{ fontWeight: 600, marginBottom: 4, color: tokens['--ink'] }}
             formatter={(value: number | undefined) =>
-              value !== undefined ? [`${value.toFixed(1)}%`, 'DM%'] : ['N/A', 'DM%']
+              value !== undefined ? [`${value.toFixed(1)}%`, 'RR vs a year earlier'] : ['N/A', 'RR vs a year earlier']
             }
           />
 

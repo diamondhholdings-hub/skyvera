@@ -46,7 +46,12 @@ export default function DMStrategyHero({ stats, quarter, subtitle }: DMStrategyH
       ...dmStatus(stats.ttmDM, annualFloor, annualTarget, ''),
     },
     {
-      label: quarter ? `${quarter} DM%` : 'Latest quarter DM%',
+      label: 'DM% vs prior plan',
+      value: `${stats.currentDM.toFixed(1)}%`,
+      ...dmStatus(stats.currentDM, annualFloor, annualTarget, ''),
+    },
+    {
+      label: quarter ? `${quarter} vs prior quarter` : 'Latest quarter vs prior',
       value: `${stats.quarterlyDM.toFixed(1)}%`,
       ...dmStatus(stats.quarterlyDM, qFloor, qTarget, 'quarterly '),
     },
@@ -63,7 +68,7 @@ export default function DMStrategyHero({ stats, quarter, subtitle }: DMStrategyH
     {
       label: 'Accounts analyzed',
       value: stats.totalAccounts,
-      context: 'Fixed per-BU counts',
+      context: 'In the business units tracked',
     },
     {
       label: 'Business units below floor',

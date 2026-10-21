@@ -79,58 +79,36 @@ function calculateTrend(quarters: DMQuarterData[]): { direction: TrendDirection;
 }
 
 /**
- * Transform quarterly data to monthly format for charts
- * Note: Backend provides quarterly data, frontend expects monthly
- * We interpolate to provide smooth trend lines
+ * One chart point per tracked quarter. The tracker has no monthly data, so
+ * nothing is interpolated; `month` carries the quarter label (e.g. "Q4'26").
+ * dmPercent is year-over-year RR retention for that quarter.
  */
-function transformToMonthlyData(quarters: DMQuarterData[], targetDM: number): MonthlyDMData[] {
-  if (quarters.length === 0) return []
-
-  const monthlyData: MonthlyDMData[] = []
-
-  // For each quarter, create 3 monthly data points with interpolation
-  for (let i = 0; i < quarters.length; i++) {
-    const quarter = quarters[i]
-    const nextQuarter = quarters[i + 1]
-
-    // Parse quarter string (e.g., "Q1'25" -> month names)
-    const [q, year] = quarter.quarter.split("'")
-    const quarterNum = parseInt(q.replace('Q', ''))
-    const monthNames = getMonthsForQuarter(quarterNum, year)
-
-    // If we have next quarter, interpolate; otherwise use current value
-    const startDM = quarter.dm_pct
-    const endDM = nextQuarter ? nextQuarter.dm_pct : startDM
-    const startRevenue = quarter.rr
-    const endRevenue = nextQuarter ? nextQuarter.rr : startRevenue
-
-    for (let m = 0; m < 3; m++) {
-      const progress = m / 3 // 0, 0.33, 0.67
-      monthlyData.push({
-        month: monthNames[m],
-        dmPercent: startDM + (endDM - startDM) * progress,
-        revenue: startRevenue + (endRevenue - startRevenue) * progress,
-        targetDM,
-      })
-    }
-  }
-
-  // Return last 12 months
-  return monthlyData.slice(-12)
+function transformToChartData(quarters: DMQuarterData[], targetDM: number): MonthlyDMData[] {
+  return quarters.map(q => ({
+    month: q.quarter,
+    dmPercent: q.dm_pct,
+    revenue: q.rr,
+    targetDM,
+  }))
 }
 
 /**
- * Get month names for a given quarter
+ * DM% over three periods from the tracker's quarterly history:
+ * - ttm: latest quarter's RR vs the same quarter a year earlier
+ * - quarterly: latest quarter's RR vs the previous quarter
+ * - monthly: the monthly rate that compounds to the quarterly one (no monthly data exists)
+ * Each falls back to the plan comparison when the history is too short.
  */
-function getMonthsForQuarter(quarterNum: number, year: string): string[] {
-  const months = [
-    ['Jan', 'Feb', 'Mar'],
-    ['Apr', 'May', 'Jun'],
-    ['Jul', 'Aug', 'Sep'],
-    ['Oct', 'Nov', 'Dec'],
-  ]
-
-  return months[quarterNum - 1].map(m => `${m} ${year}`)
+export function calculatePeriodDMs(
+  quarters: DMQuarterData[],
+  planDM: number
+): { ttmDM: number; quarterlyDM: number; monthlyDM: number } {
+  const latest = quarters[quarters.length - 1]
+  const previous = quarters[quarters.length - 2]
+  const ttmDM = latest ? latest.dm_pct : planDM
+  const quarterlyDM = latest && previous && previous.rr > 0 ? (latest.rr / previous.rr) * 100 : planDM
+  const monthlyDM = Math.cbrt(quarterlyDM / 100) * 100
+  return { ttmDM, quarterlyDM, monthlyDM }
 }
 
 /**
@@ -145,20 +123,15 @@ export function adaptBUToBusinessUnitMetrics(
   const trend = calculateTrend(bu.ttm_quarters)
   const targetDM = 95.0 // Standard target
 
-  // Calculate three-period DM%
-  const ttmDM = bu.dm_pct // Trailing 12 months
-  const quarterlyDM = bu.ttm_quarters.length > 0
-    ? bu.ttm_quarters[bu.ttm_quarters.length - 1].dm_pct
-    : bu.dm_pct
-  const monthlyDM = quarterlyDM // Most recent quarter as proxy for monthly
-
-  const annualDM = ttmDM
+  // Scenarios stay keyed to the plan comparison (current-quarter plan vs prior plan)
+  const annualDM = bu.dm_pct
+  const { ttmDM, quarterlyDM, monthlyDM } = calculatePeriodDMs(bu.ttm_quarters, annualDM)
   const scenario = classifyDMScenario(annualDM)
   const thresholdViolations = checkThresholdViolations(monthlyDM, quarterlyDM, annualDM)
 
   return {
     name,
-    currentDM: ttmDM,
+    currentDM: annualDM,
     monthlyDM,
     quarterlyDM,
     ttmDM,
@@ -170,7 +143,7 @@ export function adaptBUToBusinessUnitMetrics(
     accountCount,
     recommendationCount,
     color: getBUColor(name),
-    history: transformToMonthlyData(bu.ttm_quarters, targetDM),
+    history: transformToChartData(bu.ttm_quarters, targetDM),
     scenario,
     thresholdViolations,
   }
@@ -186,18 +159,15 @@ export function adaptTrackerDataToDashboardStats(
 ): DashboardStats {
   const consolidated = dmData.consolidated
 
-  // Calculate three-period DM%
-  const ttmDM = consolidated.dm_pct
-  const recentQuarters = consolidated.ttm_quarters.slice(-2)
-  const quarterlyDM = recentQuarters.length > 0 ? recentQuarters[recentQuarters.length - 1].dm_pct : ttmDM
-  const monthlyDM = quarterlyDM // Most recent quarter as proxy for monthly
+  const planDM = consolidated.dm_pct
+  const { ttmDM, quarterlyDM, monthlyDM } = calculatePeriodDMs(consolidated.ttm_quarters, planDM)
 
   // Calculate potential ARR impact from all pending recommendations
   const potentialARR = recommendations
     .filter(r => r.status === 'pending')
     .reduce((sum, r) => sum + (r.estimatedARRImpact || 0), 0)
 
-  // Count at-risk accounts (BUs below 90% annual floor)
+  // Business units below the 90% floor on the plan comparison (the UI labels it that way)
   const atRiskAccounts = dmData.business_units.filter(bu => !bu.meets_target).length
 
   // Compute scenario breakdown (count of BUs per A/B/C/D scenario)
@@ -208,7 +178,7 @@ export function adaptTrackerDataToDashboardStats(
   }
 
   return {
-    currentDM: ttmDM,
+    currentDM: planDM,
     monthlyDM,
     quarterlyDM,
     ttmDM,
@@ -317,7 +287,8 @@ export function adaptDMDataForUI(
   })
 
   // Transform dashboard stats
-  const totalAccounts = Object.values(accountCounts).reduce((sum, count) => sum + count, 0)
+  // Only the business units the tracker analyzes
+  const totalAccounts = dmData.business_units.reduce((sum, bu) => sum + (accountCounts[bu.bu] || 0), 0)
   const dashboardStats = adaptTrackerDataToDashboardStats(dmData, recommendations, totalAccounts)
 
   // Transform recommendations
