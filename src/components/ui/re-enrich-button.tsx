@@ -45,23 +45,7 @@ export function ReEnrichButton({ customerName }: ReEnrichButtonProps) {
       <button
         onClick={handleReEnrich}
         disabled={state === 'loading'}
-        style={{
-          display: 'inline-flex',
-          alignItems: 'center',
-          gap: '0.35rem',
-          padding: '0.25rem 0.625rem',
-          background: 'transparent',
-          color: state === 'loading' ? 'var(--muted)' : 'var(--secondary)',
-          border: '1px solid var(--secondary)',
-          borderRadius: '3px',
-          fontSize: '0.75rem',
-          fontWeight: 600,
-          letterSpacing: '0.03em',
-          cursor: state === 'loading' ? 'not-allowed' : 'pointer',
-          opacity: state === 'loading' ? 0.6 : 1,
-          transition: 'opacity 0.15s',
-          whiteSpace: 'nowrap',
-        }}
+        className="btn btn-sm"
       >
         {state === 'loading' ? (
           <>

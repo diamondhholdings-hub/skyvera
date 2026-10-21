@@ -2,9 +2,8 @@ import { FileQuestion } from 'lucide-react'
 import Link from 'next/link'
 
 /**
- * Reusable empty state component for missing data scenarios
- * Used across account plan tabs when no data is available
- * Editorial theme: highlight background, editorial border, accent button
+ * Empty state for missing data: says what's missing and how to get it.
+ * Used across account plan tabs when no data is available.
  */
 
 interface EmptyStateProps {
@@ -18,48 +17,21 @@ interface EmptyStateProps {
   }
 }
 
-export function EmptyState({
-  icon,
-  title,
-  description,
-  action,
-}: EmptyStateProps) {
-  const defaultIcon = <FileQuestion className="h-12 w-12 text-muted" />
-
+export function EmptyState({ icon, title, description, action }: EmptyStateProps) {
   return (
-    <div className="flex flex-col items-center justify-center min-h-[300px] space-y-4 p-8 bg-highlight/30 rounded-lg border-2 border-dashed border-[var(--border)]">
-      {/* Icon */}
-      <div className="flex items-center justify-center">
-        {icon || defaultIcon}
-      </div>
-
-      {/* Title */}
-      <h3 className="font-display text-lg font-semibold text-ink">
-        {title}
-      </h3>
-
-      {/* Description */}
-      <p className="text-sm text-muted max-w-md text-center">
-        {description}
-      </p>
-
-      {/* Optional action button */}
+    <div
+      className="flex flex-col items-start gap-2 p-6"
+      style={{ border: '1px solid var(--border)', borderRadius: 'var(--radius-md)', background: 'var(--surface-2)' }}
+    >
+      <div style={{ color: 'var(--muted)' }}>{icon || <FileQuestion className="h-5 w-5" aria-hidden="true" />}</div>
+      <h3 className="m-0 text-sm font-semibold">{title}</h3>
+      <p className="m-0 max-w-prose text-sm" style={{ color: 'var(--muted)' }}>{description}</p>
       {action && (
-        <div className="pt-2">
+        <div className="pt-1">
           {action.href ? (
-            <Link
-              href={action.href}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-accent text-white text-sm font-medium rounded-md hover:bg-accent/90 transition-colors"
-            >
-              {action.label}
-            </Link>
+            <Link href={action.href} className="btn btn-primary">{action.label}</Link>
           ) : (
-            <button
-              onClick={action.onClick}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-accent text-white text-sm font-medium rounded-md hover:bg-accent/90 transition-colors"
-            >
-              {action.label}
-            </button>
+            <button type="button" onClick={action.onClick} className="btn btn-primary">{action.label}</button>
           )}
         </div>
       )}
