@@ -117,10 +117,15 @@ export class NotionAdapter implements DataAdapter {
   }
 
   /**
-   * Health check - return true if API key configured and connection working
+   * Health check - Notion is optional, so an unconfigured adapter (no API key)
+   * is healthy, matching NewsAPI/OpenCorporates. Unhealthy only when a key is
+   * configured but the connection fails.
    */
   async healthCheck(): Promise<boolean> {
-    if (this.degraded || !this.config) {
+    if (!this.config) {
+      return true
+    }
+    if (this.degraded) {
       return false
     }
 
