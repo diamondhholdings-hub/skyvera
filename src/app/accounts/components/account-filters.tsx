@@ -1,7 +1,7 @@
 'use client'
 
 /**
- * AccountFilters - Filter buttons for BU and health status
+ * AccountFilters - Segmented filters for BU and health status
  * Client Component - uses callbacks to update table filters
  */
 
@@ -19,67 +19,51 @@ export function AccountFilters({
   activeHealth,
 }: AccountFiltersProps) {
   const buOptions = ['All', 'Cloudsense', 'Kandy', 'STL', 'NewNet']
-  const healthOptions = ['All', 'Healthy', 'At Risk & Critical', 'Critical']
+  const healthOptions = ['All', 'Healthy', 'At risk or critical', 'Critical']
 
   const healthScoreMap: Record<string, string> = {
     Healthy: 'green',
-    'At Risk & Critical': 'at-risk', // matches both yellow + red (non-healthy)
+    'At risk or critical': 'at-risk', // matches both yellow + red (non-healthy)
     Critical: 'red',
   }
 
   return (
-    <div className="flex flex-col sm:flex-row gap-4 mb-6">
-      {/* BU Filter */}
-      <fieldset className="flex flex-col gap-2 border-0 p-0 m-0">
-        <legend className="text-sm font-medium text-ink p-0 mb-0">Business Unit</legend>
-        <div className="flex gap-2 flex-wrap">
-          {buOptions.map((bu) => (
-            <button
-              key={bu}
-              onClick={() => onBUFilter(bu === 'All' ? null : bu)}
-              className={`px-3 py-1.5 rounded text-sm font-medium transition-colors border button-press ${
-                (bu === 'All' && activeBU === null) || activeBU === bu
-                  ? 'bg-accent text-white border-accent'
-                  : 'bg-highlight text-ink border-[var(--border)] hover:border-accent'
-              }`}
-            >
-              {bu}
-            </button>
-          ))}
+    <div className="flex flex-wrap items-end gap-x-6 gap-y-3">
+      <fieldset className="m-0 flex min-w-0 flex-col gap-1.5 border-0 p-0">
+        <legend className="section-label mb-1.5 p-0">Business unit</legend>
+        <div className="max-w-full overflow-x-auto">
+          <div className="segmented">
+            {buOptions.map((bu) => (
+              <button
+                key={bu}
+                type="button"
+                onClick={() => onBUFilter(bu === 'All' ? null : bu)}
+                aria-pressed={(bu === 'All' && activeBU === null) || activeBU === bu}
+              >
+                {bu}
+              </button>
+            ))}
+          </div>
         </div>
       </fieldset>
 
-      {/* Health Filter */}
-      <fieldset className="flex flex-col gap-2 border-0 p-0 m-0">
-        <legend className="text-sm font-medium text-ink p-0 mb-0">Health Status</legend>
-        <div className="flex gap-2 flex-wrap">
-          {healthOptions.map((health) => {
-            const isActive =
-              (health === 'All' && activeHealth === null) ||
-              activeHealth === healthScoreMap[health]
-
-            return (
+      <fieldset className="m-0 flex min-w-0 flex-col gap-1.5 border-0 p-0">
+        <legend className="section-label mb-1.5 p-0">Health</legend>
+        <div className="max-w-full overflow-x-auto">
+          <div className="segmented">
+            {healthOptions.map((health) => (
               <button
                 key={health}
-                onClick={() =>
-                  onHealthFilter(health === 'All' ? null : healthScoreMap[health])
+                type="button"
+                onClick={() => onHealthFilter(health === 'All' ? null : healthScoreMap[health])}
+                aria-pressed={
+                  (health === 'All' && activeHealth === null) || activeHealth === healthScoreMap[health]
                 }
-                className={`px-3 py-1.5 rounded text-sm font-medium transition-colors border button-press ${
-                  isActive
-                    ? health === 'Healthy'
-                      ? 'bg-[var(--success)] text-white border-[var(--success)]'
-                      : health === 'At Risk & Critical'
-                        ? 'bg-[var(--warning)] text-white border-[var(--warning)]'
-                        : health === 'Critical'
-                          ? 'bg-[var(--critical)] text-white border-[var(--critical)]'
-                          : 'bg-accent text-white border-accent'
-                    : 'bg-highlight text-ink border-[var(--border)] hover:border-accent'
-                }`}
               >
                 {health}
               </button>
-            )
-          })}
+            ))}
+          </div>
         </div>
       </fieldset>
     </div>

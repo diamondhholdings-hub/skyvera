@@ -1,7 +1,6 @@
 /**
- * Metric Card Component
- * Severity-based: gradient reserved for `danger`/critical only.
- * Other variants use neutral surface with a colored top-border.
+ * Metric Card Component (legacy; the dashboard now uses KpiStrip)
+ * Flat bordered panel; `danger`/`warning` get a status tint.
  */
 
 type MetricCardVariant = 'primary' | 'success' | 'warning' | 'danger'
@@ -31,15 +30,15 @@ export function MetricCard({ variant, label, value, subtitle }: MetricCardProps)
   const ariaLabel = `${label}, ${variantSeverityWord[variant]}: ${value}`
   return (
     <div
-      className={`${variantClass[variant]} card-hover animate-fade-in`}
+      className={variantClass[variant]}
       role="group"
       aria-label={ariaLabel}
     >
-      <div style={{ fontSize: '0.85em', opacity: 0.9, marginBottom: '10px' }}>{label}</div>
-      <div className="metric-value" style={{ fontSize: '2.3em', fontWeight: 700 }}>
+      <div style={{ fontSize: '0.8125rem', fontWeight: 500, color: 'var(--muted)' }}>{label}</div>
+      <div className="metric-value num" style={{ fontSize: '1.375rem', fontWeight: 600, marginTop: '0.25rem' }}>
         {value}
       </div>
-      <div style={{ fontSize: '0.8em', opacity: 0.85, marginTop: '5px' }}>{subtitle}</div>
+      <div style={{ fontSize: '0.75rem', color: 'var(--muted)', marginTop: '0.125rem' }}>{subtitle}</div>
     </div>
   )
 }

@@ -3,22 +3,22 @@
  * Displays revenue, RR/NRR split, margin vs target for each BU
  */
 
+import { CircleCheck, CircleX } from 'lucide-react'
 import { getBUSummaries } from '@/lib/data/server/dashboard-data'
+import { AlertBox } from './alert-box'
+import { Panel } from './panel'
 
 export async function BUBreakdown() {
   const result = await getBUSummaries()
 
   if (!result.success) {
     return (
-      <div className="bg-white/5 border border-white/10 rounded-[15px] p-6">
-        <h3 className="text-[#00d4ff] text-xl font-bold mb-6 pb-3 border-b border-white/10">
-          Business Unit Breakdown
-        </h3>
-        <div className="bg-[#e74c3c]/10 border border-[#e74c3c]/30 rounded-[8px] p-4">
-          <p className="text-[#e74c3c] font-medium">Unable to load BU data</p>
-          <p className="text-[#e74c3c]/80 text-sm mt-1">{result.error.message}</p>
-        </div>
-      </div>
+      <Panel title="Business unit breakdown">
+        <AlertBox variant="critical">
+          <p className="m-0 font-medium">Unable to load BU data</p>
+          <p className="m-0 mt-1 text-sm">{result.error.message}</p>
+        </AlertBox>
+      </Panel>
     )
   }
 
@@ -30,11 +30,8 @@ export async function BUBreakdown() {
   )
 
   return (
-    <div className="bg-white/5 border border-white/10 rounded-[15px] p-6">
-      <h3 className="text-[#00d4ff] text-xl font-bold mb-6 pb-3 border-b border-white/10">
-        Business Unit Breakdown
-      </h3>
-      <div className="space-y-4">
+    <Panel title="Business unit breakdown" flush>
+      <ul className="m-0 list-none p-0">
         {mainBUs.map((buSummary) => {
           const rrPercent = buSummary.totalRevenue > 0
             ? (buSummary.totalRR / buSummary.totalRevenue) * 100
@@ -42,75 +39,68 @@ export async function BUBreakdown() {
           const nrrPercent = 100 - rrPercent
 
           const marginMeetsTarget = buSummary.netMarginPct >= buSummary.netMarginTarget
-          const marginColor = marginMeetsTarget ? 'text-[#2ecc71]' : 'text-[#e74c3c]'
+          const marginColor = marginMeetsTarget ? 'var(--success-ink)' : 'var(--critical-ink)'
+          const MarginIcon = marginMeetsTarget ? CircleCheck : CircleX
 
           return (
-            <div
+            <li
               key={buSummary.bu}
-              className="bg-white/5 border border-white/10 rounded-[10px] p-5 card-hover animate-fade-in-up"
+              className="border-b px-5 py-4 last:border-b-0"
+              style={{ borderColor: 'var(--border)' }}
             >
               {/* BU Header */}
-              <div className="flex items-center justify-between mb-3">
-                <h3 className="text-lg font-bold text-white">
-                  {buSummary.bu}
-                </h3>
-                <span className="px-3 py-1 bg-[#00d4ff]/20 text-[#00d4ff] rounded-full text-sm">
+              <div className="mb-3 flex items-center justify-between">
+                <h4 className="m-0">{buSummary.bu}</h4>
+                <span className="text-xs" style={{ color: 'var(--muted)' }}>
                   {buSummary.customerCount} customer{buSummary.customerCount !== 1 ? 's' : ''}
                 </span>
               </div>
 
-              {/* Revenue */}
-              <div className="mb-3">
-                <p className="text-sm text-[#aaa] mb-1">Total Revenue</p>
-                <p className="text-2xl font-bold text-[#00d4ff]">
-                  ${(buSummary.totalRevenue / 1000000).toFixed(1)}M
-                </p>
-              </div>
+              <div className="grid gap-4 sm:grid-cols-3">
+                {/* Revenue */}
+                <div>
+                  <p className="m-0 text-[13px]" style={{ color: 'var(--muted)' }}>Total revenue</p>
+                  <p className="num m-0 text-xl font-semibold">
+                    ${(buSummary.totalRevenue / 1000000).toFixed(1)}M
+                  </p>
+                </div>
 
-              {/* RR/NRR Split Bar */}
-              <div className="mb-3">
-                <p className="text-sm text-[#aaa] mb-2">Revenue Mix</p>
-                <div className="flex h-8 rounded-[8px] overflow-hidden">
+                {/* RR/NRR Split Bar */}
+                <div>
+                  <p className="m-0 mb-1.5 text-[13px]" style={{ color: 'var(--muted)' }}>Revenue mix</p>
                   <div
-                    className="bg-gradient-to-r from-[#27ae60] to-[#2ecc71] flex items-center justify-center text-white text-xs font-medium"
-                    style={{ width: `${rrPercent}%` }}
+                    className="flex h-2 overflow-hidden"
+                    style={{ borderRadius: 'var(--radius-xs)', background: 'var(--surface-3)' }}
+                    role="img"
+                    aria-label={`Recurring ${rrPercent.toFixed(0)}%, non-recurring ${nrrPercent.toFixed(0)}%`}
                   >
-                    {rrPercent > 15 && `RR ${rrPercent.toFixed(0)}%`}
+                    <div style={{ width: `${rrPercent}%`, background: 'var(--secondary)' }} />
+                    <div style={{ width: `${nrrPercent}%`, background: 'var(--accent)' }} />
                   </div>
-                  <div
-                    className="bg-gradient-to-r from-[#e67e22] to-[#f39c12] flex items-center justify-center text-white text-xs font-medium"
-                    style={{ width: `${nrrPercent}%` }}
-                  >
-                    {nrrPercent > 15 && `NRR ${nrrPercent.toFixed(0)}%`}
+                  <div className="num mt-1 flex justify-between text-xs" style={{ color: 'var(--muted)' }}>
+                    <span>RR ${(buSummary.totalRR / 1000000).toFixed(1)}M</span>
+                    <span>NRR ${(buSummary.totalNRR / 1000000).toFixed(1)}M</span>
                   </div>
                 </div>
-                <div className="flex justify-between text-xs text-[#aaa] mt-1">
-                  <span>RR: ${(buSummary.totalRR / 1000000).toFixed(1)}M</span>
-                  <span>NRR: ${(buSummary.totalNRR / 1000000).toFixed(1)}M</span>
-                </div>
-              </div>
 
-              {/* Net Margin */}
-              <div className="flex items-center justify-between">
-                <p className="text-sm text-[#aaa]">Net Margin</p>
-                <div className="flex items-center gap-2">
-                  <span className={`text-lg font-bold ${marginColor}`}>
-                    {buSummary.netMarginPct.toFixed(1)}%
-                  </span>
-                  <span className="text-sm text-[#aaa]">
-                    (target: {buSummary.netMarginTarget.toFixed(1)}%)
-                  </span>
-                  {marginMeetsTarget ? (
-                    <span className="text-[#2ecc71]">✓</span>
-                  ) : (
-                    <span className="text-[#e74c3c]">✕</span>
-                  )}
+                {/* Net Margin */}
+                <div>
+                  <p className="m-0 text-[13px]" style={{ color: 'var(--muted)' }}>Net margin</p>
+                  <p className="m-0 flex items-center gap-1.5">
+                    <MarginIcon className="h-4 w-4" style={{ color: marginColor }} aria-hidden="true" />
+                    <span className="num text-xl font-semibold" style={{ color: marginColor }}>
+                      {buSummary.netMarginPct.toFixed(1)}%
+                    </span>
+                    <span className="num text-xs" style={{ color: 'var(--muted)' }}>
+                      target {buSummary.netMarginTarget.toFixed(1)}%
+                    </span>
+                  </p>
                 </div>
               </div>
-            </div>
+            </li>
           )
         })}
-      </div>
-    </div>
+      </ul>
+    </Panel>
   )
 }

@@ -4,13 +4,14 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 import type { BusinessUnitMetrics, Recommendation, FilterOption, ImpactProjection } from '../types';
-import BUCard from './bu-card';
+import { BUTable } from './bu-card';
 import RecommendationCard from './recommendation-card';
 import RecommendationFilters from './recommendation-filters';
 import ImpactCalculator from './impact-calculator';
 import AcceptRecommendationModal from './accept-modal';
 import { DM_SENSITIVITY_TABLE, DM_THRESHOLDS } from '@/lib/intelligence/dm-strategy/constants';
-import '../styles.css';
+import { ArrowLeft, X } from 'lucide-react';
+import { useDialogFocus } from './use-dialog-focus';
 
 interface PortfolioDashboardProps {
   businessUnits: BusinessUnitMetrics[];
@@ -66,13 +67,13 @@ export default function PortfolioDashboard({ businessUnits, recommendations }: P
     },
     {
       id: 'high-impact',
-      label: 'High Impact',
+      label: 'High impact',
       count: recommendations.filter(r => r.status === 'pending' && r.arrImpact >= 500000).length,
       active: activeFilter === 'high-impact'
     },
     {
       id: 'quick-wins',
-      label: 'Quick Wins',
+      label: 'Quick wins',
       count: recommendations.filter(r => r.status === 'pending' && r.risk === 'Low' && r.arrImpact >= 100000).length,
       active: activeFilter === 'quick-wins'
     }
@@ -118,7 +119,7 @@ export default function PortfolioDashboard({ businessUnits, recommendations }: P
     const rec = recommendations.find(r => r.id === id);
     if (!rec) return;
     if (!rec.accountName || rec.accountName === 'Portfolio-wide') {
-      toast.info(`This is a portfolio-wide recommendation for ${rec.businessUnit} — no single account page.`);
+      toast.info(`This is a portfolio-wide recommendation for ${rec.businessUnit}, so there is no single account page.`);
       return;
     }
     router.push(`/accounts/${encodeURIComponent(rec.accountName)}`);
@@ -163,6 +164,7 @@ export default function PortfolioDashboard({ businessUnits, recommendations }: P
     setDeferringId(null);
     setDeferReason('');
   };
+  const deferDialogRef = useDialogFocus<HTMLDivElement>(deferringId !== null, handleDeferCancel);
 
   const handleModalSubmit = async (actionItem: any) => {
     if (!selectedRecommendation) return;
@@ -180,7 +182,7 @@ export default function PortfolioDashboard({ businessUnits, recommendations }: P
       const data = await response.json();
 
       if (data.success) {
-        toast.success('Recommendation accepted and action item created!');
+        toast.success('Recommendation accepted and action item created.');
         window.location.reload();
       } else {
         toast.error(`Error: ${data.error || 'Failed to accept recommendation'}`);
@@ -191,119 +193,109 @@ export default function PortfolioDashboard({ businessUnits, recommendations }: P
     }
   };
 
-  return (
-    <div>
-      {/* BU Cards — horizontal columns across the full width */}
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
-        gap: 'var(--space-md)',
-        marginBottom: 'var(--space-xl)',
-      }}>
-        {businessUnits.map((bu) => (
-          <BUCard
-            key={bu.name}
-            metrics={bu}
-            isActive={selectedBU === bu.name}
-            onClick={(buName) => setSelectedBU(buName === selectedBU ? null : buName)}
-          />
-        ))}
-      </div>
+  const hasExtraFilters = Boolean(selectedCategory || selectedPriority || selectedBU);
 
-      {/* Defer Reason Inline Dialog */}
+  return (
+    <div className="space-y-6">
+      {/* Business units: one row per BU, click to filter recommendations */}
+      <BUTable
+        businessUnits={businessUnits}
+        selectedBU={selectedBU}
+        onSelect={(buName) => setSelectedBU(buName === selectedBU ? null : buName)}
+      />
+
+      {/* Defer reason dialog */}
       {deferringId && (
         <div
-          style={{
-            position: 'fixed',
-            inset: 0,
-            background: 'rgba(0,0,0,0.5)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            zIndex: 1000,
-            padding: 'var(--space-lg)'
-          }}
+          className="fixed inset-0 z-[1000] flex items-center justify-center p-4"
+          style={{ background: 'color-mix(in oklch, var(--ink) 40%, transparent)' }}
         >
           <div
+            ref={deferDialogRef}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="defer-dialog-title"
+            aria-describedby="defer-dialog-desc"
+            className="w-full max-w-[480px] p-5"
             style={{
-              background: '#FFFFFF',
+              background: 'var(--surface)',
+              border: '1px solid var(--border)',
               borderRadius: 'var(--radius-lg)',
-              padding: 'var(--space-xl)',
-              maxWidth: '480px',
-              width: '100%',
-              boxShadow: 'var(--shadow-xl)'
+              boxShadow: 'var(--shadow-lg)',
             }}
           >
-            <h3 className="dm-h4" style={{ marginBottom: 'var(--space-md)' }}>
-              Defer Recommendation
+            <h3 id="defer-dialog-title" className="m-0 text-base font-semibold">
+              Defer recommendation
             </h3>
-            <p className="dm-body-sm" style={{ color: 'var(--muted)', marginBottom: 'var(--space-md)' }}>
-              Please provide a reason for deferring this recommendation:
-            </p>
+            <label id="defer-dialog-desc" htmlFor="defer-reason" className="mb-3 mt-1 block text-sm" style={{ color: 'var(--muted)' }}>
+              Give a reason for deferring this recommendation.
+            </label>
             <textarea
-              className="dm-form-textarea"
+              id="defer-reason"
+              className="input"
+              style={{ height: 'auto', padding: '0.5rem 0.75rem' }}
               value={deferReason}
               onChange={(e) => setDeferReason(e.target.value)}
-              placeholder="Enter reason..."
+              placeholder="Enter reason"
               rows={3}
-              style={{ marginBottom: 'var(--space-md)' }}
             />
-            <div className="dm-flex dm-gap-sm dm-justify-end">
-              <button
-                className="dm-btn dm-btn-tertiary dm-btn-md"
-                onClick={handleDeferCancel}
-              >
+            <div className="mt-4 flex justify-end gap-2">
+              <button type="button" className="btn" onClick={handleDeferCancel}>
                 Cancel
               </button>
               <button
-                className="dm-btn dm-btn-primary dm-btn-md"
+                type="button"
+                className="btn btn-primary"
                 onClick={handleDeferSubmit}
                 disabled={!deferReason.trim()}
               >
-                Confirm Defer
+                Defer
               </button>
             </div>
           </div>
         </div>
       )}
 
-      {/* Recommendations + Sidebar — two-column layout below */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 320px', gap: 'var(--space-xl)', alignItems: 'start' }}>
+      {/* Recommendations + sidebar */}
+      <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,1fr)_320px]">
 
-        {/* Left — Recommendation Feed */}
-        <div>
+        {/* Left: recommendation feed */}
+        <section aria-labelledby="recs-heading" className="min-w-0">
+          <div className="mb-3 flex flex-wrap items-baseline justify-between gap-2">
+            <h2 id="recs-heading" className="m-0 text-lg font-semibold">
+              Recommendations{selectedBU ? ` for ${selectedBU}` : ''}
+            </h2>
+            <p className="m-0 text-xs" style={{ color: 'var(--muted)' }}>
+              Pending only · ranked by ARR impact and confidence
+            </p>
+          </div>
+
           {selectedBU && (
-            <div style={{ marginBottom: 'var(--space-md)' }}>
-              <button
-                className="dm-btn dm-btn-tertiary dm-btn-sm"
-                onClick={() => setSelectedBU(null)}
-              >
-                ← All Business Units
+            <div className="mb-3">
+              <button type="button" className="btn btn-ghost btn-sm" onClick={() => setSelectedBU(null)}>
+                <ArrowLeft className="h-3.5 w-3.5" aria-hidden="true" />
+                All business units
               </button>
             </div>
           )}
 
-          <RecommendationFilters
-            filters={filterOptions}
-            onFilterChange={setActiveFilter}
-          />
+          {/* Filters */}
+          <fieldset className="m-0 mb-4 flex flex-wrap items-center gap-2 border-0 p-0">
+            <legend className="sr-only">Filter recommendations</legend>
+            <RecommendationFilters
+              filters={filterOptions}
+              onFilterChange={setActiveFilter}
+            />
 
-          {/* Additional Filters */}
-          <div style={{ display: 'flex', gap: 'var(--space-md)', marginBottom: 'var(--space-lg)', flexWrap: 'wrap' }}>
             {/* Category Filter */}
             <select
+              aria-label="Category"
+              className="input"
+              style={{ width: 'auto', height: '2rem' }}
               value={selectedCategory || ''}
               onChange={(e) => setSelectedCategory(e.target.value || null)}
-              style={{
-                padding: 'var(--space-sm) var(--space-md)',
-                border: '1px solid var(--border)',
-                borderRadius: 'var(--radius-sm)',
-                fontSize: '0.875rem',
-                background: 'white',
-                cursor: 'pointer'
-              }}
             >
-              <option value="">All Categories</option>
+              <option value="">All categories</option>
               <option value="Retention">Retention</option>
               <option value="Expansion">Expansion</option>
               <option value="Pricing">Pricing</option>
@@ -314,18 +306,13 @@ export default function PortfolioDashboard({ businessUnits, recommendations }: P
 
             {/* Priority Filter */}
             <select
+              aria-label="Priority"
+              className="input"
+              style={{ width: 'auto', height: '2rem' }}
               value={selectedPriority || ''}
               onChange={(e) => setSelectedPriority(e.target.value || null)}
-              style={{
-                padding: 'var(--space-sm) var(--space-md)',
-                border: '1px solid var(--border)',
-                borderRadius: 'var(--radius-sm)',
-                fontSize: '0.875rem',
-                background: 'white',
-                cursor: 'pointer'
-              }}
             >
-              <option value="">All Priorities</option>
+              <option value="">All priorities</option>
               <option value="critical">Critical</option>
               <option value="high">High</option>
               <option value="medium">Medium</option>
@@ -333,42 +320,32 @@ export default function PortfolioDashboard({ businessUnits, recommendations }: P
             </select>
 
             {/* Clear Filters Button */}
-            {(selectedCategory || selectedPriority || selectedBU) && (
+            {hasExtraFilters && (
               <button
+                type="button"
+                className="btn btn-ghost btn-sm"
                 onClick={() => {
                   setSelectedCategory(null);
                   setSelectedPriority(null);
                   setSelectedBU(null);
                   setActiveFilter('all');
                 }}
-                style={{
-                  padding: 'var(--space-sm) var(--space-md)',
-                  background: 'var(--paper)',
-                  border: '1px solid var(--border)',
-                  borderRadius: 'var(--radius-sm)',
-                  fontSize: '0.875rem',
-                  cursor: 'pointer',
-                  color: 'var(--muted)'
-                }}
               >
-                ✕ Clear All Filters
+                <X className="h-3.5 w-3.5" aria-hidden="true" />
+                Clear filters
               </button>
             )}
-          </div>
+          </fieldset>
 
           {filteredRecommendations.length === 0 ? (
             <div
-              className="dm-card"
-              style={{
-                textAlign: 'center',
-                padding: 'var(--space-xl)',
-                color: 'var(--muted)'
-              }}
+              className="p-6 text-sm"
+              style={{ background: 'var(--surface-2)', border: '1px solid var(--border)', borderRadius: 'var(--radius-md)', color: 'var(--muted)' }}
             >
-              <p className="dm-body">No recommendations match your filters.</p>
+              No recommendations match these filters.
             </div>
           ) : (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-md)' }}>
+            <div className="space-y-3">
               {filteredRecommendations.map((rec) => (
                 <RecommendationCard
                   key={rec.id}
@@ -380,10 +357,10 @@ export default function PortfolioDashboard({ businessUnits, recommendations }: P
               ))}
             </div>
           )}
-        </div>
+        </section>
 
-        {/* Right Sidebar - Impact Calculator + Sensitivity Reference */}
-        <div>
+        {/* Right sidebar: impact calculator + sensitivity reference */}
+        <div className="space-y-4 lg:sticky lg:top-20">
           <ImpactCalculator
             projection={projection}
             onAcceptAll={() => {
@@ -391,77 +368,55 @@ export default function PortfolioDashboard({ businessUnits, recommendations }: P
             }}
           />
 
-          {/* Sensitivity Reference Panel */}
-          <div className="dm-card" style={{ marginTop: 'var(--space-md)' }}>
-            <h3 className="dm-h4" style={{ marginBottom: 'var(--space-xs)', fontSize: '0.875rem' }}>
-              DM% Sensitivity Reference
-            </h3>
-            <p style={{ fontSize: '0.7rem', color: 'var(--muted)', marginBottom: 'var(--space-sm)' }}>
-              Annual DM compounded to quarterly &amp; monthly rates
-            </p>
-
-            {/* Thresholds Legend */}
-            <div style={{
-              display: 'flex',
-              gap: '8px',
-              marginBottom: 'var(--space-sm)',
-              flexWrap: 'wrap'
-            }}>
-              <span style={{ fontSize: '0.65rem', color: 'var(--muted)' }}>
-                M floor: <strong>{DM_THRESHOLDS.monthly.floor}%</strong>
-              </span>
-              <span style={{ fontSize: '0.65rem', color: 'var(--muted)' }}>
-                Q floor: <strong>{DM_THRESHOLDS.quarterly.floor}%</strong>
-              </span>
-              <span style={{ fontSize: '0.65rem', color: 'var(--muted)' }}>
-                TTM floor: <strong>{DM_THRESHOLDS.annual.floor}%</strong>
-              </span>
+          {/* Sensitivity reference */}
+          <section className="card overflow-hidden" aria-labelledby="sensitivity-heading">
+            <div className="px-5 pb-3 pt-4">
+              <h2 id="sensitivity-heading" className="m-0 text-base font-semibold">DM% sensitivity</h2>
+              <p className="m-0 mt-0.5 text-xs" style={{ color: 'var(--muted)' }}>
+                Annual DM compounded to quarterly and monthly rates. Floors: monthly{' '}
+                <span className="num">{DM_THRESHOLDS.monthly.floor}%</span>, quarterly{' '}
+                <span className="num">{DM_THRESHOLDS.quarterly.floor}%</span>, TTM{' '}
+                <span className="num">{DM_THRESHOLDS.annual.floor}%</span>.
+              </p>
             </div>
 
-            {/* Table */}
-            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.7rem' }}>
-              <thead>
-                <tr style={{ borderBottom: '2px solid var(--border)' }}>
-                  <th style={{ textAlign: 'left', padding: '4px 4px', color: 'var(--muted)', fontWeight: 600 }}>Annual</th>
-                  <th style={{ textAlign: 'right', padding: '4px 4px', color: 'var(--muted)', fontWeight: 600 }}>Quarterly</th>
-                  <th style={{ textAlign: 'right', padding: '4px 4px', color: 'var(--muted)', fontWeight: 600 }}>Monthly</th>
-                  <th style={{ textAlign: 'right', padding: '4px 4px', color: 'var(--muted)', fontWeight: 600 }}>Verdict</th>
-                </tr>
-              </thead>
-              <tbody>
-                {DM_SENSITIVITY_TABLE.map((row) => {
-                  const isFloor = row.annualDM === 90;
-                  const isBreakeven = row.annualDM === 100;
-                  return (
-                    <tr
-                      key={row.annualDM}
-                      style={{
-                        borderBottom: '1px solid var(--border)',
-                        background: isFloor ? '#FEF9C3' : isBreakeven ? '#F0FDF4' : 'transparent',
-                        fontWeight: (isFloor || isBreakeven) ? 700 : 400
-                      }}
-                    >
-                      <td style={{ padding: '4px 4px' }}>{row.annualDM}%</td>
-                      <td style={{ padding: '4px 4px', textAlign: 'right' }}>
-                        {row.quarterlyDM.toFixed(1)}%
-                      </td>
-                      <td style={{ padding: '4px 4px', textAlign: 'right' }}>
-                        {row.monthlyDM.toFixed(1)}%
-                      </td>
-                      <td style={{
-                        padding: '4px 4px',
-                        textAlign: 'right',
-                        color: isFloor ? '#B45309' : isBreakeven ? '#065F46' : 'var(--muted)',
-                        fontSize: '0.65rem'
-                      }}>
-                        {row.verdict}
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
+            <div className="overflow-x-auto">
+              <table className="data-table text-xs">
+                <thead>
+                  <tr>
+                    <th scope="col">Annual</th>
+                    <th scope="col" style={{ textAlign: 'right' }}>Quarterly</th>
+                    <th scope="col" style={{ textAlign: 'right' }}>Monthly</th>
+                    <th scope="col">Verdict</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {DM_SENSITIVITY_TABLE.map((row) => {
+                    const isFloor = row.annualDM === 90;
+                    const isBreakeven = row.annualDM === 100;
+                    const isMarker = isFloor || isBreakeven;
+                    return (
+                      <tr
+                        key={row.annualDM}
+                        style={{ background: isMarker ? 'var(--surface-2)' : undefined, fontWeight: isMarker ? 600 : 400 }}
+                      >
+                        <td className="num" style={{ padding: '0.375rem 0.75rem' }}>{row.annualDM}%</td>
+                        <td className="num" style={{ padding: '0.375rem 0.75rem', textAlign: 'right' }}>
+                          {row.quarterlyDM.toFixed(1)}%
+                        </td>
+                        <td className="num" style={{ padding: '0.375rem 0.75rem', textAlign: 'right' }}>
+                          {row.monthlyDM.toFixed(1)}%
+                        </td>
+                        <td style={{ padding: '0.375rem 0.75rem', color: isMarker ? 'var(--ink)' : 'var(--muted)' }}>
+                          {isFloor ? 'Floor' : row.verdict}
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </section>
         </div>
       </div>
 

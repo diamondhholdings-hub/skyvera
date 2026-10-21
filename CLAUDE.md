@@ -87,10 +87,13 @@ tests/
 - **Zod v4**: use `z.record(z.string(), z.unknown())` not `z.record(z.unknown())`; use `error:` not `errorMap:` for custom enum messages
 
 ### Design System
-- `PRODUCT.md` — product register, target users, anti-references (required by impeccable skill)
-- `DESIGN.md` — design tokens (24 colors, 8 typography, 16 components), Editorial Datafeed register
-- Primary color: brick-red `#C84B31` (`--accent`)
-- CSS token vars in use: `var(--accent)`, `var(--accent-hover)`, `var(--surface)`, `var(--critical)`, `var(--warning)`, `var(--success)`, `var(--radius-md)` — never use hardcoded hex values in component files
+- `DESIGN.md` is the spec (redesigned 2026-10-21): light neutral product UI, white surfaces, Inter only, OKLCH tokens in `src/app/globals.css`. Read its **Hard bans** before any UI work: no cream/off-white backgrounds, no italic accent words in headings, no numbered 01/02/03 labels, no monospace (labels or figures), no pill-shaped buttons; also no side-stripe borders, uppercase tracked labels, emoji, gradients/blur/glow, or "AI-powered" copy
+- `PRODUCT.md` — users, brand personality, anti-references (required by the impeccable skill)
+- Build pages from `PageHeader` + `KpiStrip` + `.card` panels + `.data-table`; buttons `.btn` / `.btn btn-primary` (one per view); filters `.segmented`; figures `.num` (tabular sans)
+- Brick red `--accent` is only for primary actions, the active nav/tab underline and focus rings. Status colors always pair with an icon or word
+- Never hardcode hex/rgb in components — use the CSS variables
+- **Tailwind v4 gotcha:** `globals.css` must use `@import "tailwindcss"` (not v3 `@tailwind base/...` directives) and keep custom CSS inside `@layer base`/`@layer components`. Before 2026-10-21 the v3 directives silently generated **zero** utilities, so every `className` did nothing. The theme lives in `@theme inline` in globals.css (no tailwind.config.ts); never map a theme variable to a token with the same name (`--shadow-sm: var(--shadow-sm)` is a cycle)
+- Playwright: the main nav has text labels inside `<nav aria-label="Main">`; scope nav clicks to it (bare `getByRole('link', {name:'Accounts'})` matches more than one link)
 
 ## Testing
 

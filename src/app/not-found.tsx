@@ -1,4 +1,3 @@
-import { FileQuestion } from 'lucide-react'
 import Link from 'next/link'
 
 /**
@@ -6,27 +5,18 @@ import Link from 'next/link'
  */
 export default function NotFound() {
   return (
-    <div className="min-h-[400px] flex flex-col items-center justify-center p-8">
-      <div className="max-w-md text-center space-y-6">
-        <div className="w-16 h-16 mx-auto rounded-full bg-yellow-50 flex items-center justify-center">
-          <FileQuestion className="h-8 w-8 text-yellow-500" />
+    <div className="mx-auto max-w-[1400px] px-4 py-16 lg:px-8">
+      <div className="max-w-xl">
+        <p className="section-label m-0">Error 404</p>
+        <h1 className="m-0 mt-1">Page not found</h1>
+        <p className="m-0 mt-2 text-sm" style={{ color: 'var(--muted)' }}>
+          The page you are looking for does not exist or has been moved.
+        </p>
+        <div className="mt-6">
+          <Link href="/dashboard" className="btn btn-primary">
+            Back to Overview
+          </Link>
         </div>
-
-        <div>
-          <h1 className="text-2xl font-semibold text-slate-900 mb-2">
-            Page not found
-          </h1>
-          <p className="text-sm text-gray-600">
-            The page you're looking for doesn't exist or has been moved.
-          </p>
-        </div>
-
-        <Link
-          href="/dashboard"
-          className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 transition-colors"
-        >
-          Return to Dashboard
-        </Link>
       </div>
     </div>
   )

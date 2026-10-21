@@ -25,6 +25,8 @@ import { SalesforceSyncButton } from '@/components/ui/salesforce-sync-button'
 import { PrintButton } from '@/components/ui/print-button'
 import { AccountChatPanel } from '@/components/account-chat-panel'
 import { ErrorBoundary } from '@/components/ui/error-boundary'
+import { KpiStrip } from '@/components/ui/kpi-strip'
+import { ChevronLeft, CircleAlert } from 'lucide-react'
 
 interface AccountPlanPageProps {
   params: Promise<{ name: string }>
@@ -56,12 +58,7 @@ export default async function AccountPlanPage({ params, searchParams }: AccountP
 
   if (!accountDataResult.success) {
     return (
-      <div className="p-6">
-        <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-          <h1 className="text-lg font-semibold text-red-800">Unable to load account data</h1>
-          <p className="text-sm text-red-600 mt-2">{accountDataResult.error.message}</p>
-        </div>
-      </div>
+      <LoadError title="Unable to load account data" message={accountDataResult.error.message} />
     )
   }
 
@@ -73,12 +70,7 @@ export default async function AccountPlanPage({ params, searchParams }: AccountP
 
   if (!customersResult.success) {
     return (
-      <div className="p-6">
-        <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-          <h1 className="text-lg font-semibold text-red-800">Unable to load customer data</h1>
-          <p className="text-sm text-red-600 mt-2">{customersResult.error.message}</p>
-        </div>
-      </div>
+      <LoadError title="Unable to load customer data" message={customersResult.error.message} />
     )
   }
 
@@ -97,98 +89,61 @@ export default async function AccountPlanPage({ params, searchParams }: AccountP
   const arr = totalRevenue // rr + nrr; for NRR-only accounts rr=0 so use total
 
 
-  return (
-    <div style={{ background: 'var(--paper)', minHeight: '100vh' }}>
-      {/* Back link */}
-      <div className="max-w-[1400px] mx-auto px-8 pt-4" data-print="hide">
-        <Link
-          href="/accounts"
-          className="inline-flex items-center text-sm text-accent hover:text-accent/80 hover:underline"
-        >
-          ← Back to Accounts
-        </Link>
-      </div>
+  const healthLabel = { green: 'Healthy', yellow: 'At risk', red: 'Critical' }[customer.healthScore]
+  const healthTone = ({ green: 'success', yellow: 'warning', red: 'critical' } as const)[customer.healthScore]
 
-      {/* Hero Header — matches Telstra: gradient secondary→#1a2332, subtle SVG grid, glass stat cards */}
-      <div
-        style={{
-          background: 'linear-gradient(135deg, var(--secondary) 0%, #1a2332 100%)',
-          color: 'var(--paper)',
-          padding: '4rem 2rem 3rem',
-          position: 'relative',
-          overflow: 'hidden',
-        }}
-      >
-        {/* Telstra-style subtle SVG grid overlay — right 60%, very low opacity stroke */}
-        <div
-          style={{
-            position: 'absolute',
-            top: 0,
-            right: 0,
-            width: '60%',
-            height: '100%',
-            pointerEvents: 'none',
-            opacity: 0.5,
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='grid' width='20' height='20' patternUnits='userSpaceOnUse'%3E%3Cpath d='M 20 0 L 0 0 0 20' fill='none' stroke='rgba(255,255,255,0.06)' stroke-width='1'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100' height='100' fill='url(%23grid)'/%3E%3C/svg%3E")`,
-          }}
-        />
-        <div style={{ maxWidth: '1400px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1.5rem' }}>
-            <div>
-              <h1 id="account-page-title" style={{ fontFamily: 'var(--font-display, "Cormorant Garamond", serif)', fontSize: '3.5rem', fontWeight: 300, letterSpacing: '-0.02em', color: 'var(--paper)', lineHeight: 1.1 }}>
+  return (
+    <div>
+      <header className="border-b" style={{ borderColor: 'var(--border)' }}>
+        <div className="mx-auto max-w-[1400px] px-4 pb-5 pt-5 lg:px-8">
+          <div data-print="hide">
+            <Link href="/accounts" className="account-back-link inline-flex items-center gap-1 text-[0.8125rem] font-medium">
+              <ChevronLeft className="h-4 w-4" aria-hidden="true" />
+              Back to accounts
+            </Link>
+          </div>
+
+          <div className="mt-3 flex flex-wrap items-start justify-between gap-4">
+            <div className="min-w-0">
+              <h1 id="account-page-title" className="m-0 break-words">
                 {customer.customer_name}
               </h1>
-              <p style={{ fontSize: '1.1rem', opacity: 0.85, marginTop: '0.5rem' }}>
-                {[`${customer.bu} Business Unit`, 'Skyvera', quarterLabel].filter(Boolean).join(' | ')}
+              <p className="m-0 mt-1 text-sm" style={{ color: 'var(--muted)' }}>
+                {[`${customer.bu} business unit`, 'Skyvera', quarterLabel].filter(Boolean).join(' · ')}
               </p>
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', alignItems: 'flex-end' }} data-print="hide">
+            <div className="flex shrink-0 flex-wrap items-center gap-2" data-print="hide">
               <PrintButton customerName={customerName} />
-              <RefreshButton label="Refresh Data" />
+              <RefreshButton label="Refresh data" />
               <SalesforceSyncButton accountName={customerName} />
             </div>
           </div>
 
-          {/* Glass stat cards — Telstra: rgba(255,255,255,0.08), blur(10px), 4px radius */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '2rem', marginTop: '2rem' }}>
-            {[
-              {
-                label: 'Annual Revenue',
-                value: arr >= 1_000_000 ? `$${(arr / 1_000_000).toFixed(1)}M` : `$${(arr / 1000).toFixed(0)}K`,
-                sub: customer.rr > 0 ? 'Recurring + Non-Recurring' : 'Non-Recurring Revenue',
-              },
-              {
-                label: 'Health Score',
-                value: customer.healthScore.charAt(0).toUpperCase() + customer.healthScore.slice(1),
-                sub: 'Account health status',
-              },
-              { label: 'Business Unit', value: customer.bu, sub: 'Skyvera Platform' },
-              { label: 'Account Status', value: 'Active', sub: quarterLabel || 'Current quarter' },
-            ].map(({ label, value, sub }) => (
-              <div
-                key={label}
-                style={{
-                  background: 'rgba(255,255,255,0.08)',
-                  backdropFilter: 'blur(10px)',
-                  padding: '1.5rem',
-                  borderRadius: '4px',
-                  border: '1px solid rgba(255,255,255,0.1)',
-                }}
-              >
-                <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.1em', opacity: 0.7, marginBottom: '0.5rem' }}>
-                  {label}
-                </div>
-                <div style={{ fontSize: '2rem', fontFamily: 'var(--font-display, "Cormorant Garamond", serif)', fontWeight: 600 }}>
-                  {value}
-                </div>
-                <div style={{ fontSize: '0.8rem', marginTop: '0.5rem', opacity: 0.7 }}>
-                  {sub}
-                </div>
-              </div>
-            ))}
+          <div className="mt-5">
+            <KpiStrip
+              items={[
+                {
+                  label: 'Annual revenue',
+                  value: arr >= 1_000_000 ? `$${(arr / 1_000_000).toFixed(1)}M` : `$${(arr / 1000).toFixed(0)}K`,
+                  context: customer.rr > 0 ? 'Recurring and non-recurring' : 'Non-recurring revenue',
+                },
+                {
+                  label: 'Health score',
+                  value: healthLabel,
+                  context: customer.healthFactors.length > 0 ? customer.healthFactors[0] : 'Account health status',
+                  tone: healthTone,
+                },
+                { label: 'Business unit', value: customer.bu, context: customer.rank ? `Rank ${customer.rank} by revenue` : 'Skyvera platform' },
+                { label: 'Account status', value: 'Active', context: quarterLabel || 'Current quarter' },
+              ]}
+            />
           </div>
         </div>
-      </div>
+        <style>{`
+          .account-back-link { color: var(--secondary); text-decoration: none; }
+          .account-back-link:hover { text-decoration: underline; text-underline-offset: 2px; }
+        `}</style>
+      </header>
 
       {/* Tab Navigation */}
       <div data-print="hide">
@@ -196,7 +151,7 @@ export default async function AccountPlanPage({ params, searchParams }: AccountP
       </div>
 
       {/* Tab Content */}
-      <main id="tab-panel" aria-labelledby="account-page-title" className="max-w-[1400px] mx-auto px-8 py-6">
+      <main id="tab-panel" aria-labelledby="account-page-title" className="mx-auto max-w-[1400px] px-4 py-6 pb-24 lg:px-8">
         {activeTab === 'overview' && (
           <Suspense fallback={<TabSkeleton />}>
             <OverviewTab
@@ -266,21 +221,23 @@ export default async function AccountPlanPage({ params, searchParams }: AccountP
       </main>
 
       {/* W1-P3-004: Page footer */}
-      <footer className="bg-[var(--secondary)] text-[var(--paper)] text-center py-8 mt-16">
-        <p className="text-sm opacity-80">
-          {customer.customer_name} Strategic Account Plan | {customer.bu} Business Unit | Skyvera
-        </p>
-        <p className="text-xs opacity-60 mt-1">
-          Generated{' '}
-          {new Date().toLocaleDateString('en-US', {
-            month: 'long',
-            day: 'numeric',
-            year: 'numeric',
-          })}{' '}
-          | Confidential — Internal Use Only
-        </p>
+      <footer className="border-t" style={{ borderColor: 'var(--border)' }}>
+        <div className="mx-auto max-w-[1400px] px-4 py-6 text-xs lg:px-8" style={{ color: 'var(--muted)' }}>
+          <p className="m-0">
+            {customer.customer_name} account plan · {customer.bu} business unit · Skyvera
+          </p>
+          <p className="m-0 mt-1">
+            Generated{' '}
+            {new Date().toLocaleDateString('en-US', {
+              month: 'long',
+              day: 'numeric',
+              year: 'numeric',
+            })}
+            {' '}· Confidential, internal use only
+          </p>
+        </div>
       </footer>
-      {/* Floating AI chat panel — error boundary prevents chat crash from killing the page */}
+      {/* Floating account chat panel: error boundary prevents a chat crash from killing the page */}
       <ErrorBoundary>
         <AccountChatPanel customerName={customerName} bu={customer.bu} />
       </ErrorBoundary>
@@ -293,13 +250,30 @@ export default async function AccountPlanPage({ params, searchParams }: AccountP
  */
 function TabSkeleton() {
   return (
-    <div className="animate-pulse space-y-4">
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        {[1, 2, 3, 4].map((i) => (
-          <div key={i} className="h-32 bg-slate-200 rounded-lg"></div>
-        ))}
+    <div className="space-y-6" aria-busy="true">
+      <div className="card space-y-3 p-5">
+        <div className="skeleton h-5 w-48" />
+        <div className="skeleton h-4 w-full" />
+        <div className="skeleton h-4 w-2/3" />
       </div>
-      <div className="h-64 bg-slate-200 rounded-lg"></div>
+      <div className="grid gap-6 lg:grid-cols-2">
+        <div className="skeleton h-64" />
+        <div className="skeleton h-64" />
+      </div>
+    </div>
+  )
+}
+
+function LoadError({ title, message }: { title: string; message: string }) {
+  return (
+    <div className="mx-auto max-w-[1400px] px-4 py-6 lg:px-8">
+      <div className="alert-box alert-critical flex items-start gap-3" role="alert">
+        <CircleAlert className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
+        <div>
+          <h1 className="m-0 text-base font-semibold" style={{ color: 'inherit' }}>{title}</h1>
+          <p className="m-0 mt-1 text-sm">{message}</p>
+        </div>
+      </div>
     </div>
   )
 }

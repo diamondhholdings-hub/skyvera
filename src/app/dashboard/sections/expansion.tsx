@@ -3,23 +3,19 @@
  * Upsell and cross-sell opportunities
  */
 
+import { TrendingUp } from 'lucide-react'
+import { EmptyState } from '@/components/ui/empty-state'
+import { SectionHeading } from '../components/panel'
+
 export async function ExpansionSection() {
   return (
     <section id="expansion" style={{ display: 'none' }}>
-      <h2 style={{
-        fontSize: '1.8em',
-        color: '#1e3c72',
-        fontWeight: 'semibold',
-        margin: '30px 0 20px 0',
-        paddingBottom: '10px',
-        borderBottom: '3px solid #667eea'
-      }}>
-        Expansion Pipeline
-      </h2>
-      <div style={{ color: '#64748b', textAlign: 'center', padding: '50px 0' }}>
-        <p style={{ fontSize: '1.1em' }}>Upsell opportunities, cross-sell analysis, and growth potential</p>
-        <p style={{ fontSize: '0.9em', marginTop: '10px' }}>Coming in next implementation phase</p>
-      </div>
+      <SectionHeading title="Expansion pipeline" />
+      <EmptyState
+        icon={<TrendingUp className="h-5 w-5" aria-hidden="true" />}
+        title="Not built yet"
+        description="Upsell opportunities, cross-sell analysis and growth potential are planned for the next implementation phase."
+      />
     </section>
   )
 }

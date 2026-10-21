@@ -14,7 +14,7 @@ const links = [
 ]
 
 interface NavBarProps {
-  /** Quarter label of the loaded budget snapshot, e.g. "Q4'26" */
+  /** Quarter label of the loaded budget snapshot, e.g. "Q4 2026" */
   fiscalQuarter?: string | null
 }
 

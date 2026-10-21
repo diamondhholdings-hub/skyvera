@@ -1,16 +1,14 @@
 'use client';
 
 import React from 'react';
-import Link from 'next/link';
 import DMStrategyHero from '../components/dm-strategy-hero';
 import PortfolioDashboard from '../components/portfolio-dashboard';
 import { sampleBusinessUnits } from './demo-data';
 import type { Recommendation, DashboardStats } from '../types';
-import '../styles.css';
 
 /**
  * Demo Client - Shows all DM% Strategy Components with Sample Data
- * This demonstrates the complete UI component library with Skyvera branding
+ * Renders the retention page components against sample data
  */
 
 // Sample Data
@@ -236,44 +234,18 @@ const sampleRecommendations: Recommendation[] = [
 
 export default function DemoClient() {
   return (
-    <div style={{ minHeight: '100vh', background: 'var(--paper)' }}>
-      {/* Hero Section */}
-      <DMStrategyHero stats={sampleStats} />
-
-      {/* Trends Link Banner */}
-      <div style={{
-        maxWidth: '1400px',
-        margin: '0 auto var(--space-lg) auto',
-        padding: '0 var(--space-lg)'
-      }}>
-        <Link
-          href="/dm-strategy/trends"
-          className="block rounded-lg text-white shadow-lg hover:shadow-xl transition-shadow"
-          style={{
-            background: 'linear-gradient(135deg, var(--secondary) 0%, #1a2332 100%)',
-            padding: 'var(--space-lg)',
-            textDecoration: 'none',
-          }}
-        >
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <div>
-              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.25rem' }}>
-                View 12-Month DM% Trend Charts
-              </h3>
-              <p style={{ opacity: 0.9, fontSize: '0.875rem' }}>
-                Visualize retention trends with interactive charts for each business unit and portfolio-wide analysis
-              </p>
-            </div>
-            <span style={{ fontSize: '2rem' }}>→</span>
-          </div>
-        </Link>
-      </div>
-
-      {/* Portfolio Dashboard */}
-      <PortfolioDashboard
-        businessUnits={sampleBusinessUnits}
-        recommendations={sampleRecommendations}
+    <div>
+      <DMStrategyHero
+        stats={sampleStats}
+        subtitle="Demo page with sample data. Recommendations ranked by ARR impact and confidence."
       />
+
+      <div className="mx-auto max-w-[1400px] px-4 py-6 lg:px-8">
+        <PortfolioDashboard
+          businessUnits={sampleBusinessUnits}
+          recommendations={sampleRecommendations}
+        />
+      </div>
     </div>
   );
 }

@@ -6,6 +6,7 @@
 
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts'
 import type { Subscription } from '@/lib/types/customer'
+import { CHART_VARS, TOOLTIP_STYLE } from './chart-colors'
 
 interface RevenueGrowthChartProps {
   subscriptions: Subscription[]
@@ -37,17 +38,18 @@ export function RevenueGrowthChart({ subscriptions }: RevenueGrowthChartProps) {
   return (
     <ResponsiveContainer width="100%" height={300}>
       <BarChart data={data} margin={{ top: 5, right: 20, left: 10, bottom: 5 }}>
-        <CartesianGrid strokeDasharray="3 3" stroke="#e8e6e1" />
-        <XAxis dataKey="name" tick={{ fontSize: 11, fill: '#8b8b8b' }} />
-        <YAxis tickFormatter={formatK} tick={{ fontSize: 11, fill: '#8b8b8b' }} />
+        <CartesianGrid stroke={CHART_VARS.grid} vertical={false} />
+        <XAxis dataKey="name" tick={{ fontSize: 11, fill: CHART_VARS.axis }} axisLine={{ stroke: CHART_VARS.grid }} tickLine={false} />
+        <YAxis tickFormatter={formatK} tick={{ fontSize: 11, fill: CHART_VARS.axis }} axisLine={{ stroke: CHART_VARS.grid }} tickLine={false} />
         <Tooltip
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           formatter={(value: any) => formatK(value as number)}
-          contentStyle={{ border: '1px solid var(--border)', borderRadius: 2, fontSize: '0.8rem' }}
+          contentStyle={TOOLTIP_STYLE}
+          cursor={{ fill: 'var(--highlight)' }}
         />
-        <Legend wrapperStyle={{ fontSize: '0.8rem' }} />
-        <Bar dataKey="current" name="Current ARR" fill="#2d4263" radius={[2, 2, 0, 0]} />
-        <Bar dataKey="projected" name="Projected ARR" fill="#c84b31" radius={[2, 2, 0, 0]} />
+        <Legend iconType="square" iconSize={10} wrapperStyle={{ fontSize: '0.8125rem', color: 'var(--ink-2)' }} />
+        <Bar dataKey="current" name="Current ARR" fill={CHART_VARS.series1} radius={[2, 2, 0, 0]} />
+        <Bar dataKey="projected" name="Projected ARR" fill={CHART_VARS.series2} radius={[2, 2, 0, 0]} />
       </BarChart>
     </ResponsiveContainer>
   )

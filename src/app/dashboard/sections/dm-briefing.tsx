@@ -1,5 +1,5 @@
 /**
- * DM% Strategy Briefing Section for Executive Dashboard
+ * DM% Strategy Briefing Section for the dashboard
  * Shows top revenue retention recommendations
  */
 
@@ -17,7 +17,7 @@ export async function DMBriefingSection() {
   const { recommendations } = result.value
 
   return (
-    <div style={{ marginBottom: '40px' }}>
+    <div className="mt-8">
       <DMBriefingWidget recommendations={recommendations} maxItems={5} />
     </div>
   )

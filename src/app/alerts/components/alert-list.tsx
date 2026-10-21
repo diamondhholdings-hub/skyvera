@@ -1,11 +1,11 @@
 /**
- * AlertList - Alert cards with severity indicators, descriptions, affected accounts
- * Server Component - renders alert cards from alert-data.ts
- * Pattern from 02-RESEARCH.md Example 3
+ * AlertList - Alerts as a table: leading status icon + word, description,
+ * affected account, metric value against its threshold
+ * Server Component - renders rows from alert-data.ts
  */
 
 import type { Alert } from '@/lib/data/server/alert-data'
-import { HealthIndicator } from '@/components/ui/health-indicator'
+import { CircleCheck, CircleX, TriangleAlert } from 'lucide-react'
 import { formatDistanceToNow } from 'date-fns'
 
 interface AlertListProps {
@@ -15,23 +15,12 @@ interface AlertListProps {
 export function AlertList({ alerts }: AlertListProps) {
   if (alerts.length === 0) {
     return (
-      <div className="bg-[var(--success)]/10 border border-[var(--success)]/30 rounded p-8 text-center">
-        <svg
-          className="w-16 h-16 text-[var(--success)] mx-auto mb-4"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
-        <p className="text-lg font-display font-semibold text-[var(--ink)]">All metrics within expected ranges</p>
-        <p className="text-sm text-[var(--muted)] mt-2">No active alerts at this time</p>
+      <div className="alert-box alert-success flex items-start gap-3" role="status">
+        <CircleCheck className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
+        <div>
+          <p className="m-0 text-sm font-semibold">All metrics within expected ranges</p>
+          <p className="m-0 mt-0.5 text-sm">No active alerts at this time.</p>
+        </div>
       </div>
     )
   }
@@ -49,57 +38,68 @@ export function AlertList({ alerts }: AlertListProps) {
   })
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-      {sortedAlerts.map((alert) => (
-        <AlertCard key={alert.id} alert={alert} />
-      ))}
-    </div>
+    <section className="card overflow-hidden" aria-labelledby="alert-list-heading">
+      <div className="flex items-center justify-between gap-4 border-b px-5 py-3" style={{ borderColor: 'var(--border)' }}>
+        <h2 id="alert-list-heading" className="m-0 text-base font-semibold">Open alerts</h2>
+        <span className="num text-sm" style={{ color: 'var(--muted)' }}>{sortedAlerts.length} total</span>
+      </div>
+      <div className="overflow-x-auto">
+        <table className="data-table" style={{ minWidth: '56rem' }}>
+          <thead>
+            <tr>
+              <th scope="col" style={{ width: '7.5rem' }}>Status</th>
+              <th scope="col">Alert</th>
+              <th scope="col">Account</th>
+              <th scope="col">Metric</th>
+              <th scope="col" style={{ textAlign: 'right' }}>Value</th>
+              <th scope="col" style={{ textAlign: 'right' }}>Threshold</th>
+              <th scope="col" style={{ textAlign: 'right' }}>Raised</th>
+            </tr>
+          </thead>
+          <tbody>
+            {sortedAlerts.map((alert) => (
+              <AlertRow key={alert.id} alert={alert} />
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
   )
 }
 
 /**
- * Individual alert card
+ * Individual alert row
  */
-function AlertCard({ alert }: { alert: Alert }) {
-  const severityColor = alert.severity === 'red' ? 'border-l-[var(--critical)]' : 'border-l-[var(--warning)]'
-  const severityBg = alert.severity === 'red' ? 'bg-[var(--critical)]/5' : 'bg-[var(--warning)]/5'
+function AlertRow({ alert }: { alert: Alert }) {
+  const isCritical = alert.severity === 'red'
+  const Icon = isCritical ? CircleX : TriangleAlert
+  const color = isCritical ? 'var(--critical-ink)' : 'var(--warning-ink)'
 
   return (
-    <div
-      className={`bg-white border border-[var(--border)] rounded shadow-sm p-6 border-l-4 ${severityColor} ${severityBg}`}
-    >
-      <div className="flex items-start justify-between">
-        <div className="flex-1">
-          {/* Title with health indicator */}
-          <div className="flex items-center gap-3 mb-2">
-            <HealthIndicator score={alert.severity} label="" />
-            <h3 className="font-display text-lg font-semibold text-[var(--ink)]">{alert.title}</h3>
-          </div>
-
-          {/* Description */}
-          <p className="text-sm text-[var(--muted)] mb-3">{alert.description}</p>
-
-          {/* Account Name */}
-          {alert.accountName && (
-            <div className="text-sm mb-2">
-              <span className="text-[var(--muted)]">Account:</span>{' '}
-              <span className="font-medium text-[var(--ink)]">{alert.accountName}</span>
-            </div>
-          )}
-
-          {/* Metric Details */}
-          <div className="text-sm">
-            <span className="text-[var(--muted)]">{alert.metricName}:</span>{' '}
-            <span className="font-display font-bold text-[var(--ink)]">{alert.currentValue}</span>
-            <span className="text-[var(--muted)]"> (threshold: {alert.threshold})</span>
-          </div>
-        </div>
-
-        {/* Timestamp */}
-        <div className="text-xs text-[var(--muted)] ml-4">
-          {formatDistanceToNow(alert.timestamp, { addSuffix: true })}
-        </div>
-      </div>
-    </div>
+    <tr style={{ verticalAlign: 'top' }}>
+      <td>
+        <span className="inline-flex items-center gap-1.5 text-sm font-medium" style={{ color }}>
+          <Icon className="h-4 w-4 shrink-0" aria-hidden="true" />
+          {isCritical ? 'Critical' : 'Warning'}
+        </span>
+      </td>
+      <td style={{ maxWidth: '28rem' }}>
+        <p className="m-0 text-sm font-medium" style={{ color: 'var(--ink)' }}>{alert.title}</p>
+        <p className="m-0 mt-0.5 text-sm" style={{ color: 'var(--muted)' }}>{alert.description}</p>
+      </td>
+      <td className="text-sm" style={{ color: 'var(--ink)' }}>
+        {alert.accountName ?? <span style={{ color: 'var(--muted)' }}>Portfolio</span>}
+      </td>
+      <td className="text-sm" style={{ color: 'var(--ink-2)' }}>{alert.metricName}</td>
+      <td className="num text-sm font-medium" style={{ textAlign: 'right', color: 'var(--ink)', whiteSpace: 'nowrap' }}>
+        {alert.currentValue}
+      </td>
+      <td className="num text-sm" style={{ textAlign: 'right', color: 'var(--muted)', whiteSpace: 'nowrap' }}>
+        {alert.threshold}
+      </td>
+      <td className="text-xs" style={{ textAlign: 'right', color: 'var(--muted)', whiteSpace: 'nowrap' }}>
+        {formatDistanceToNow(alert.timestamp, { addSuffix: true })}
+      </td>
+    </tr>
   )
 }

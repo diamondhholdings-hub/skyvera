@@ -33,14 +33,14 @@ export class AccountPlanPage {
     this.backLink = page.getByText(/back to accounts/i)
 
     // Tab navigation - <a> links on desktop (post-a11y refactor), select dropdown on mobile
-    this.overviewTab = page.locator('#tab-select').or(page.getByRole('link', { name: /Overview/i }))
-    this.financialsTab = page.locator('#tab-select').or(page.getByRole('link', { name: /Financial/i }))
-    this.organizationTab = page.locator('#tab-select').or(page.getByRole('link', { name: /Org Structure/i }))
-    this.strategyTab = page.locator('#tab-select').or(page.getByRole('link', { name: /Pain Points/i }))
-    this.competitiveTab = page.locator('#tab-select').or(page.getByRole('link', { name: /Competitive/i }))
-    this.intelligenceTab = page.locator('#tab-select').or(page.getByRole('link', { name: /Intelligence/i }))
-    this.actionItemsTab = page.locator('#tab-select').or(page.getByRole('link', { name: /Action Plan/i }))
-    this.retentionTab = page.locator('#tab-select').or(page.getByRole('link', { name: /Action Plan/i }))
+    this.overviewTab = page.locator('#tab-select').or(page.getByRole('navigation', { name: /account sections/i }).getByRole('link', { name: /Overview/i }))
+    this.financialsTab = page.locator('#tab-select').or(page.getByRole('navigation', { name: /account sections/i }).getByRole('link', { name: /Financial/i }))
+    this.organizationTab = page.locator('#tab-select').or(page.getByRole('navigation', { name: /account sections/i }).getByRole('link', { name: /Org Structure/i }))
+    this.strategyTab = page.locator('#tab-select').or(page.getByRole('navigation', { name: /account sections/i }).getByRole('link', { name: /Pain Points/i }))
+    this.competitiveTab = page.locator('#tab-select').or(page.getByRole('navigation', { name: /account sections/i }).getByRole('link', { name: /Competitive/i }))
+    this.intelligenceTab = page.locator('#tab-select').or(page.getByRole('navigation', { name: /account sections/i }).getByRole('link', { name: /Intelligence/i }))
+    this.actionItemsTab = page.locator('#tab-select').or(page.getByRole('navigation', { name: /account sections/i }).getByRole('link', { name: /Action Plan/i }))
+    this.retentionTab = page.locator('#tab-select').or(page.getByRole('navigation', { name: /account sections/i }).getByRole('link', { name: /Action Plan/i }))
 
     // Tab content container
     this.tabContent = page.locator('main').or(page.locator('[role="tabpanel"]'))

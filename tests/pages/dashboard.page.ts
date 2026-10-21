@@ -26,7 +26,7 @@ export class DashboardPage {
     this.page = page
 
     // Main elements
-    this.pageTitle = page.getByRole('heading', { name: /Executive Intelligence Report/i, level: 1 })
+    this.pageTitle = page.getByRole('heading', { name: /Portfolio overview/i, level: 1 })
     this.refreshButton = page.getByRole('button', { name: /refresh/i })
     // Icon-based navigation - use role link with title to avoid ambiguity
     this.accountsNavLink = page.getByRole('link', { name: 'Accounts' })

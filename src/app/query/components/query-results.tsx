@@ -1,79 +1,127 @@
 /**
  * Query Results Component
- * Displays answer, clarification dialog, or empty state
+ * Displays answer, clarification prompt, unavailable notice, or empty state
  */
 
 'use client'
 
+import { AlertTriangle, CheckCircle2, ChevronRight, CircleAlert, HelpCircle, Loader2, XCircle } from 'lucide-react'
 import { QueryResult } from '@/lib/intelligence/nlq/types'
+import { Badge } from '@/components/ui/badge'
 
 interface QueryResultsProps {
   result: QueryResult | null
+  isLoading?: boolean
   onClarificationSelect: (option: string) => void
   onFollowUp: (question: string) => void
 }
 
+const rowStyles = `
+  .answer-option {
+    width: 100%;
+    border: 0;
+    background: transparent;
+    color: var(--ink);
+    text-align: left;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: background-color 150ms;
+  }
+  .answer-option:hover { background: var(--highlight); }
+`
+
+/**
+ * The NLQ engine degrades to a canned "unavailable" answer (or the client
+ * records an "Error: ..." answer) instead of failing the request. Detect those
+ * so they render as a notice rather than as a real answer.
+ */
+function getUnavailableReason(answer: string | null | undefined): 'not-configured' | 'unavailable' | 'error' | null {
+  if (!answer) return null
+  if (answer.startsWith('Error:')) return 'error'
+  if (/not configured/i.test(answer)) return 'not-configured'
+  if (/temporarily unavailable/i.test(answer)) return 'unavailable'
+  return null
+}
+
 export function QueryResults({
   result,
+  isLoading = false,
   onClarificationSelect,
   onFollowUp,
 }: QueryResultsProps) {
+  if (isLoading) {
+    return (
+      <div
+        className="flex items-center gap-2 px-4 py-6 text-sm"
+        style={{ border: '1px solid var(--border)', borderRadius: 'var(--radius-md)', color: 'var(--muted)' }}
+        role="status"
+      >
+        <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
+        Calculating the answer
+      </div>
+    )
+  }
+
   // Empty state
   if (!result) {
     return (
-      <div className="border-2 border-dashed border-[var(--border)] rounded-lg p-12">
-        <div className="text-center text-[var(--muted)]">
-          <svg
-            width="64"
-            height="64"
-            className="mx-auto mb-4 text-[var(--muted)]"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={1.5}
-              d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
-            />
-          </svg>
-          <p className="text-lg font-display font-medium mb-1 text-[var(--ink)]">Ready to answer your questions</p>
-          <p className="text-sm">Select a common question or type your own to get started</p>
-        </div>
+      <div
+        className="px-5 py-6"
+        style={{ background: 'var(--surface-2)', border: '1px solid var(--border)', borderRadius: 'var(--radius-md)' }}
+      >
+        <p className="m-0 text-sm font-medium" style={{ color: 'var(--ink)' }}>No question asked yet</p>
+        <p className="m-0 mt-1 text-sm" style={{ color: 'var(--muted)' }}>
+          Type a question above, or pick one of the suggested questions.
+        </p>
       </div>
     )
   }
 
   const { response } = result
+  const unavailable = response.needsClarification ? null : getUnavailableReason(response.answer)
+
+  // Answer could not be produced
+  if (unavailable) {
+    const message =
+      unavailable === 'not-configured'
+        ? 'Answers are not set up on this deployment. Add an ANTHROPIC_API_KEY to enable them.'
+        : unavailable === 'error'
+          ? response.answer!.replace(/^Error:\s*/, '')
+          : 'Answers are temporarily unavailable. Try again in a moment.'
+
+    return (
+      <div className="alert-box alert-warning m-0 flex items-start gap-3" role="status">
+        <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
+        <div className="min-w-0 flex-1">
+          <p className="m-0 text-sm font-semibold">Could not answer this question</p>
+          <p className="m-0 mt-1 text-sm" style={{ color: 'var(--ink-2)' }}>{message}</p>
+          <p className="m-0 mt-2 text-xs" style={{ color: 'var(--muted)' }}>
+            Question: {result.query}
+          </p>
+          {unavailable !== 'not-configured' && (
+            <button type="button" onClick={() => onFollowUp(result.query)} className="btn btn-sm mt-3">
+              Try again
+            </button>
+          )}
+        </div>
+      </div>
+    )
+  }
 
   // Clarification needed
   if (response.needsClarification) {
     return (
-      <div className="bg-[var(--warning)]/10 border border-[var(--warning)]/30 rounded-lg p-6 space-y-4">
+      <div className="card p-5">
+        <style>{rowStyles}</style>
         <div className="flex items-start gap-3">
-          <svg
-            width="24"
-            height="24"
-            className="text-[var(--warning)] flex-shrink-0 mt-0.5"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-            />
-          </svg>
-          <div className="flex-1">
-            <h3 className="font-display font-semibold text-[var(--warning)] mb-1">Need clarification</h3>
-            <p className="text-sm text-[var(--ink)] mb-3">
-              I think you&apos;re asking about: <strong>{response.interpretation}</strong>
+          <HelpCircle className="mt-0.5 h-4 w-4 shrink-0" style={{ color: 'var(--warning-ink)' }} aria-hidden="true" />
+          <div className="min-w-0 flex-1">
+            <h3 className="m-0 text-base font-semibold">Which one do you mean?</h3>
+            <p className="m-0 mt-1 text-sm" style={{ color: 'var(--ink-2)' }}>
+              Interpreted as: <span style={{ color: 'var(--ink)' }}>{response.interpretation}</span>
             </p>
             {response.clarificationQuestion && (
-              <p className="text-sm text-[var(--ink)] font-medium mb-3">
+              <p className="m-0 mt-2 text-sm font-medium" style={{ color: 'var(--ink)' }}>
                 {response.clarificationQuestion}
               </p>
             )}
@@ -82,20 +130,24 @@ export function QueryResults({
 
         {/* Clarification options */}
         {response.clarificationOptions && response.clarificationOptions.length > 0 && (
-          <div className="space-y-2">
+          <ul
+            className="m-0 mt-4 list-none overflow-hidden p-0"
+            style={{ border: '1px solid var(--border)', borderRadius: 'var(--radius-md)' }}
+          >
             {response.clarificationOptions.map((option, idx) => (
-              <button
-                key={idx}
-                onClick={() => onClarificationSelect(option)}
-                className="w-full text-left px-4 py-3 bg-white border border-[var(--border)] rounded-lg
-                           hover:border-[var(--accent)] hover:shadow-sm
-                           transition-all
-                           text-sm text-[var(--ink)]"
-              >
-                {option}
-              </button>
+              <li key={idx} className="border-b last:border-b-0" style={{ borderColor: 'var(--border)' }}>
+                <button
+                  type="button"
+                  onClick={() => onClarificationSelect(option)}
+                  className="answer-option flex items-center justify-between gap-3 px-3 py-2 text-sm"
+                  style={{ borderRadius: 0 }}
+                >
+                  <span>{option}</span>
+                  <ChevronRight className="h-4 w-4 shrink-0" style={{ color: 'var(--muted)' }} aria-hidden="true" />
+                </button>
+              </li>
             ))}
-          </div>
+          </ul>
         )}
       </div>
     )
@@ -103,63 +155,55 @@ export function QueryResults({
 
   // Normal answer display
   return (
-    <div className="bg-white border border-[var(--border)] rounded shadow-sm">
+    <div className="card">
+      <style>{rowStyles}</style>
       {/* Header with confidence badge */}
-      <div className="px-6 py-4 border-b border-[var(--border)] flex items-center justify-between">
-        <h3 className="font-display font-semibold text-[var(--secondary)]">Answer</h3>
+      <div className="flex items-center justify-between gap-3 border-b px-5 py-3" style={{ borderColor: 'var(--border)' }}>
+        <h3 className="m-0 text-base font-semibold">Answer</h3>
         <ConfidenceBadge level={response.confidence} />
       </div>
 
-      {/* Answer content */}
-      <div className="px-6 py-4 space-y-4">
+      <div className="flex flex-col gap-5 px-5 py-4">
         {/* Interpretation */}
         <div>
-          <p className="text-xs font-bold text-[var(--muted)] uppercase tracking-wide mb-1">
-            You asked
-          </p>
-          <p className="text-sm text-[var(--muted)] italic">{response.interpretation}</p>
+          <p className="section-label m-0 mb-0.5">Interpreted as</p>
+          <p className="m-0 text-sm" style={{ color: 'var(--ink-2)' }}>{response.interpretation}</p>
         </div>
 
         {/* Answer */}
         {response.answer && (
-          <div>
-            <p className="font-display text-lg text-[var(--ink)] leading-relaxed">{response.answer}</p>
-          </div>
+          <p className="m-0 text-base leading-relaxed" style={{ color: 'var(--ink)' }}>{response.answer}</p>
         )}
 
         {/* Data points */}
         {response.dataPoints && Object.keys(response.dataPoints).length > 0 && (
-          <div className="bg-[var(--highlight)] rounded-lg p-4">
-            <p className="text-xs font-medium text-[var(--muted)] uppercase tracking-wide mb-3">
-              Key Metrics
-            </p>
-            <dl className="space-y-2">
-              {Object.entries(response.dataPoints).map(([key, value]) => (
-                <div key={key} className="flex justify-between items-baseline">
-                  <dt className="text-sm text-[var(--ink)]">{key}</dt>
-                  <dd className="text-sm font-display font-semibold text-[var(--ink)]">
-                    {formatValue(value)}
-                  </dd>
-                </div>
-              ))}
-            </dl>
+          <div className="overflow-x-auto" style={{ border: '1px solid var(--border)', borderRadius: 'var(--radius-md)' }}>
+            <table className="data-table text-sm">
+              <thead>
+                <tr>
+                  <th scope="col">Figure</th>
+                  <th scope="col" style={{ textAlign: 'right' }}>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                {Object.entries(response.dataPoints).map(([key, value]) => (
+                  <tr key={key}>
+                    <td>{key}</td>
+                    <td className="num font-medium" style={{ textAlign: 'right' }}>{formatValue(value)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         )}
 
         {/* Sources */}
         {response.sources && response.sources.length > 0 && (
           <div>
-            <p className="text-xs font-bold text-[var(--muted)] uppercase tracking-wide mb-2">
-              Data Sources
-            </p>
-            <ul className="space-y-1">
+            <p className="section-label m-0 mb-1">Sources</p>
+            <ul className="m-0 list-disc space-y-0.5 pl-5 text-sm" style={{ color: 'var(--muted)' }}>
               {response.sources.map((source, idx) => (
-                <li key={idx} className="text-sm text-[var(--muted)] flex items-start gap-2">
-                  <svg width="16" height="16" className="text-[var(--muted)] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
-                  </svg>
-                  {source}
-                </li>
+                <li key={idx}>{source}</li>
               ))}
             </ul>
           </div>
@@ -168,23 +212,20 @@ export function QueryResults({
         {/* Suggested follow-ups */}
         {response.suggestedFollowUps && response.suggestedFollowUps.length > 0 && (
           <div>
-            <p className="text-xs font-medium text-[var(--muted)] uppercase tracking-wide mb-2">
-              Suggested Follow-ups
-            </p>
-            <div className="space-y-2">
+            <p className="section-label m-0 mb-1">Related questions</p>
+            <ul className="m-0 -mx-2 list-none space-y-0.5 p-0">
               {response.suggestedFollowUps.map((question, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => onFollowUp(question)}
-                  className="block w-full text-left px-3 py-2 text-sm text-[var(--accent)]
-                             bg-[var(--accent)]/5 border border-[var(--border)] rounded-md
-                             hover:border-[var(--accent)] hover:shadow-sm
-                             transition-all"
-                >
-                  {question}
-                </button>
+                <li key={idx}>
+                  <button
+                    type="button"
+                    onClick={() => onFollowUp(question)}
+                    className="answer-option block px-2 py-1.5 text-sm"
+                  >
+                    {question}
+                  </button>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         )}
       </div>
@@ -193,55 +234,22 @@ export function QueryResults({
 }
 
 /**
- * Confidence badge component - WCAG AA compliant with color + icon + text
+ * Confidence badge - color + icon + text
  */
 function ConfidenceBadge({ level }: { level: 'HIGH' | 'MEDIUM' | 'LOW' }) {
   const config = {
-    HIGH: {
-      bg: 'bg-[var(--success)]/10',
-      text: 'text-[var(--success)]',
-      border: 'border-[var(--success)]/30',
-      icon: (
-        <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
-          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-        </svg>
-      ),
-      label: 'High Confidence',
-    },
-    MEDIUM: {
-      bg: 'bg-[var(--warning)]/10',
-      text: 'text-[var(--warning)]',
-      border: 'border-[var(--warning)]/30',
-      icon: (
-        <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
-          <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
-        </svg>
-      ),
-      label: 'Medium Confidence',
-    },
-    LOW: {
-      bg: 'bg-[var(--critical)]/10',
-      text: 'text-[var(--critical)]',
-      border: 'border-[var(--critical)]/30',
-      icon: (
-        <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
-          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
-        </svg>
-      ),
-      label: 'Low Confidence',
-    },
+    HIGH: { variant: 'success' as const, Icon: CheckCircle2, label: 'High confidence' },
+    MEDIUM: { variant: 'warning' as const, Icon: CircleAlert, label: 'Medium confidence' },
+    LOW: { variant: 'danger' as const, Icon: XCircle, label: 'Low confidence' },
   }
 
-  const { bg, text, border, icon, label } = config[level]
+  const { variant, Icon, label } = config[level]
 
   return (
-    <div
-      className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border ${bg} ${text} ${border}`}
-      aria-label={label}
-    >
-      {icon}
-      <span className="text-xs font-medium">{level}</span>
-    </div>
+    <Badge variant={variant}>
+      <Icon className="h-3.5 w-3.5" aria-hidden="true" />
+      {label}
+    </Badge>
   )
 }
 

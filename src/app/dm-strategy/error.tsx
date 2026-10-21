@@ -1,10 +1,12 @@
 'use client'
 
 /**
- * Error boundary for DM Strategy page
+ * Error boundary for the revenue retention page
  */
 
 import { useEffect } from 'react'
+import Link from 'next/link'
+import { CircleX } from 'lucide-react'
 
 export default function Error({
   error,
@@ -18,34 +20,24 @@ export default function Error({
   }, [error])
 
   return (
-    <div className="min-h-screen bg-[var(--paper)] flex items-center justify-center px-6">
-      <div className="max-w-md w-full">
-        <div className="bg-white rounded-lg border border-red-200 shadow-lg p-8 text-center">
-          <div className="text-6xl mb-4">⚠️</div>
-          <h2 className="text-2xl font-bold text-[var(--critical)] mb-3">
-            Something went wrong
-          </h2>
-          <p className="text-[var(--muted)] mb-6">
-            Failed to load DM Strategy page. This might be a temporary issue.
+    <div className="mx-auto max-w-[1400px] px-4 py-10 lg:px-8">
+      <div className="alert-box alert-critical flex max-w-xl items-start gap-3" role="alert">
+        <CircleX className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
+        <div className="min-w-0">
+          <h1 className="m-0 text-base font-semibold">Something went wrong</h1>
+          <p className="m-0 mt-1 text-sm">
+            Failed to load revenue retention. This might be a temporary issue.
           </p>
-          <div className="bg-red-50 border border-red-200 rounded p-4 mb-6 text-left">
-            <p className="text-sm font-mono text-red-800 break-words">
-              {error.message || 'Unknown error'}
-            </p>
-          </div>
-          <div className="flex gap-3">
-            <button
-              onClick={reset}
-              className="flex-1 py-3 bg-[var(--accent)] text-white font-semibold rounded-lg hover:opacity-90 transition-opacity"
-            >
-              Try Again
+          <p className="m-0 mt-1 break-words text-sm" style={{ color: 'var(--ink-2)' }}>
+            {error.message || 'Unknown error'}
+          </p>
+          <div className="mt-3 flex flex-wrap gap-2">
+            <button type="button" onClick={reset} className="btn btn-sm">
+              Try again
             </button>
-            <a
-              href="/dashboard"
-              className="flex-1 py-3 bg-slate-100 text-[var(--ink)] font-semibold rounded-lg hover:bg-slate-200 transition-colors text-center"
-            >
-              Go to Dashboard
-            </a>
+            <Link href="/dashboard" className="btn btn-ghost btn-sm">
+              Go to dashboard
+            </Link>
           </div>
         </div>
       </div>

@@ -5,16 +5,17 @@
 
 import { getDashboardData } from '@/lib/data/server/dashboard-data'
 import { KPICard } from '@/components/ui/kpi-card'
+import { AlertBox } from './alert-box'
 
 export async function KPISection() {
   const result = await getDashboardData()
 
   if (!result.success) {
     return (
-      <div className="bg-[#e74c3c]/10 border border-[#e74c3c]/30 rounded-[15px] p-6">
-        <p className="text-[#e74c3c] font-medium">Unable to load financial data</p>
-        <p className="text-[#e74c3c]/80 text-sm mt-1">{result.error.message}</p>
-      </div>
+      <AlertBox variant="critical">
+        <p className="m-0 font-medium">Unable to load financial data</p>
+        <p className="m-0 mt-1 text-sm">{result.error.message}</p>
+      </AlertBox>
     )
   }
 
@@ -33,7 +34,7 @@ export async function KPISection() {
 
   return (
     <div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
         <KPICard
           title="Total Revenue"
           value={data.totalRevenue}
@@ -59,7 +60,7 @@ export async function KPISection() {
           format="currency"
         />
       </div>
-      <p className="text-sm text-[#888] mt-4">Last updated: {updateText}</p>
+      <p className="mt-3 text-xs" style={{ color: 'var(--muted)' }}>Last updated: {updateText}</p>
     </div>
   )
 }

@@ -17,45 +17,33 @@ export default function QueryError({
 
   // Detect error type
   const errorMessage = error.message.toLowerCase()
-  let userMessage = 'Something went wrong while processing your query'
+  let userMessage = 'Something went wrong while processing your question.'
 
   if (errorMessage.includes('429') || errorMessage.includes('rate limit')) {
-    userMessage = 'High demand right now. Please wait a moment and try again.'
+    userMessage = 'Too many requests right now. Wait a moment and try again.'
   } else if (errorMessage.includes('timeout') || errorMessage.includes('claude')) {
-    userMessage = 'Data temporarily unavailable. Please try again in a moment.'
+    userMessage = 'Answers are temporarily unavailable. Try again in a moment.'
   } else if (errorMessage.includes('econnrefused') || errorMessage.includes('fetch')) {
-    userMessage = 'Service temporarily offline. Please try again shortly.'
+    userMessage = 'The service is temporarily offline. Try again shortly.'
   }
 
   return (
-    <div className="min-h-[400px] flex flex-col items-center justify-center p-8">
-      <div className="max-w-md text-center space-y-6">
-        <div className="w-16 h-16 mx-auto rounded-full bg-yellow-50 flex items-center justify-center">
-          <AlertCircle className="h-8 w-8 text-yellow-500" />
-        </div>
-
-        <div>
-          <h1 className="text-2xl font-semibold text-slate-900 mb-2">
-            Unable to process query
-          </h1>
-          <p className="text-sm text-gray-600">
-            {userMessage}
-          </p>
-        </div>
-
-        <div className="flex gap-3 justify-center">
-          <button
-            onClick={reset}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 transition-colors"
-          >
-            Try again
-          </button>
-          <Link
-            href="/dashboard"
-            className="inline-flex items-center gap-2 px-4 py-2 bg-white text-gray-700 text-sm font-medium rounded-md border border-gray-300 hover:bg-gray-50 transition-colors"
-          >
-            Return to Dashboard
-          </Link>
+    <div className="mx-auto max-w-[1400px] px-4 py-8 lg:px-8">
+      <div className="alert-box alert-critical flex max-w-2xl items-start gap-3" role="alert">
+        <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
+        <div className="min-w-0 space-y-3">
+          <div>
+            <h1 className="m-0 text-base font-semibold">Unable to process question</h1>
+            <p className="m-0 mt-1 text-sm" style={{ color: 'var(--ink-2)' }}>{userMessage}</p>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            <button type="button" onClick={reset} className="btn btn-primary">
+              Try again
+            </button>
+            <Link href="/dashboard" className="btn">
+              Back to Overview
+            </Link>
+          </div>
         </div>
       </div>
     </div>

@@ -1,214 +1,202 @@
 'use client'
 
 /**
- * ImpactDisplay - Before/after metric comparison with Claude analysis
+ * ImpactDisplay - Before/after metric comparison with written analysis
  * Shows accessible change indicators (color + icon + text + aria-label)
  */
 
-import { ArrowUp, ArrowDown, CheckCircle, AlertCircle, XCircle } from 'lucide-react'
+import { ArrowUp, ArrowDown, CheckCircle, AlertCircle, AlertTriangle, XCircle } from 'lucide-react'
 import type { ImpactMetric, ScenarioImpactResponse } from '@/lib/intelligence/scenarios/types'
+import { KpiStrip } from '@/components/ui/kpi-strip'
+import { Badge } from '@/components/ui/badge'
 
 interface ImpactDisplayProps {
   calculatedMetrics: ImpactMetric[]
   claudeAnalysis: ScenarioImpactResponse | null
 }
 
+type Level = 'HIGH' | 'MEDIUM' | 'LOW'
+
+const levelVariant = (level: Level, high: 'danger' | 'success') =>
+  level === 'HIGH' ? high : level === 'MEDIUM' ? ('warning' as const) : ('default' as const)
+
+const sentence = (value: string) => value.charAt(0) + value.slice(1).toLowerCase().replace(/_/g, ' ')
+
 export default function ImpactDisplay({ calculatedMetrics, claudeAnalysis }: ImpactDisplayProps) {
+  const headline = calculatedMetrics.slice(0, 4).map((metric) => {
+    const isPercentage = metric.name.includes('%')
+    return {
+      label: metric.name,
+      value: formatValue(metric.after, isPercentage),
+      context: `${metric.changePercent > 0 ? '+' : ''}${metric.changePercent.toFixed(1)}% vs ${formatValue(metric.before, isPercentage)} today`,
+    }
+  })
+
   return (
     <div className="space-y-6">
-      {/* Metrics Comparison Table */}
-      <div className="bg-white rounded shadow-sm border border-[var(--border)] overflow-hidden">
-        <div className="px-6 py-4 bg-[var(--highlight)] border-b border-[var(--border)]">
-          <h2 className="text-lg font-display font-semibold text-[var(--secondary)]">Impact Analysis</h2>
-        </div>
-        <div className="overflow-x-auto">
-          <table className="w-full">
-            <thead className="bg-[var(--highlight)] border-b border-[var(--border)]">
-              <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-[var(--muted)] uppercase tracking-wider">
-                  Metric
-                </th>
-                <th className="px-6 py-3 text-right text-xs font-medium text-[var(--muted)] uppercase tracking-wider">
-                  Current
-                </th>
-                <th className="px-6 py-3 text-right text-xs font-medium text-[var(--muted)] uppercase tracking-wider">
-                  Projected
-                </th>
-                <th className="px-6 py-3 text-right text-xs font-medium text-[var(--muted)] uppercase tracking-wider">
-                  Change
-                </th>
-                <th className="px-6 py-3 text-right text-xs font-medium text-[var(--muted)] uppercase tracking-wider">
-                  % Change
-                </th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-[var(--border)]">
-              {calculatedMetrics.map((metric, index) => {
-                const isPositive = metric.change > 0
-                const isNegative = metric.change < 0
-                const isPercentage = metric.name.includes('%')
+      <section aria-labelledby="impact-heading" className="flex flex-col gap-3">
+        <h2 id="impact-heading" className="m-0 text-lg font-semibold">Projected impact</h2>
+        {headline.length > 0 && <KpiStrip items={headline} />}
 
-                return (
-                  <tr key={index} className="hover:bg-[var(--highlight)]/30">
-                    <td className="px-6 py-4 text-sm font-medium text-[var(--ink)]">
-                      {metric.name}
-                    </td>
-                    <td className="px-6 py-4 text-sm text-[var(--ink)] text-right">
-                      {formatValue(metric.before, isPercentage)}
-                    </td>
-                    <td className="px-6 py-4 text-sm text-[var(--ink)] text-right">
-                      {formatValue(metric.after, isPercentage)}
-                    </td>
-                    <td
-                      className="px-6 py-4 text-sm text-right"
-                      aria-label={`${isPositive ? 'Increased' : isNegative ? 'Decreased' : 'Unchanged'} by ${formatValue(Math.abs(metric.change), isPercentage)}`}
-                    >
-                      <span
-                        className={`inline-flex items-center space-x-1 font-display font-semibold ${
-                          isPositive ? 'text-[var(--success)]' : isNegative ? 'text-[var(--critical)]' : 'text-[var(--muted)]'
-                        }`}
+        {/* Metrics Comparison Table */}
+        <div className="card overflow-hidden">
+          <div className="overflow-x-auto">
+            <table className="data-table text-sm">
+              <thead>
+                <tr>
+                  <th scope="col">Metric</th>
+                  <th scope="col" style={{ textAlign: 'right' }}>Current</th>
+                  <th scope="col" style={{ textAlign: 'right' }}>Projected</th>
+                  <th scope="col" style={{ textAlign: 'right' }}>Change</th>
+                  <th scope="col" style={{ textAlign: 'right' }}>% change</th>
+                </tr>
+              </thead>
+              <tbody>
+                {calculatedMetrics.map((metric, index) => {
+                  const isPositive = metric.change > 0
+                  const isNegative = metric.change < 0
+                  const isPercentage = metric.name.includes('%')
+                  const changeColor = isPositive
+                    ? 'var(--success-ink)'
+                    : isNegative
+                      ? 'var(--critical-ink)'
+                      : 'var(--muted)'
+
+                  return (
+                    <tr key={index}>
+                      <td className="font-medium">{metric.name}</td>
+                      <td className="num" style={{ textAlign: 'right' }}>
+                        {formatValue(metric.before, isPercentage)}
+                      </td>
+                      <td className="num" style={{ textAlign: 'right' }}>
+                        {formatValue(metric.after, isPercentage)}
+                      </td>
+                      <td
+                        style={{ textAlign: 'right' }}
+                        aria-label={`${isPositive ? 'Increased' : isNegative ? 'Decreased' : 'Unchanged'} by ${formatValue(Math.abs(metric.change), isPercentage)}`}
                       >
-                        {isPositive && <ArrowUp className="w-4 h-4" />}
-                        {isNegative && <ArrowDown className="w-4 h-4" />}
-                        <span>{formatValue(Math.abs(metric.change), isPercentage)}</span>
-                        <span className="sr-only">
-                          {isPositive ? 'increase' : isNegative ? 'decrease' : 'no change'}
+                        <span className="num inline-flex items-center gap-1 font-medium" style={{ color: changeColor }}>
+                          {isPositive && <ArrowUp className="h-3.5 w-3.5" aria-hidden="true" />}
+                          {isNegative && <ArrowDown className="h-3.5 w-3.5" aria-hidden="true" />}
+                          <span>{formatValue(Math.abs(metric.change), isPercentage)}</span>
+                          <span className="sr-only">
+                            {isPositive ? 'increase' : isNegative ? 'decrease' : 'no change'}
+                          </span>
                         </span>
-                      </span>
-                    </td>
-                    <td
-                      className="px-6 py-4 text-sm text-right"
-                      aria-label={`${Math.abs(metric.changePercent).toFixed(1)} percent ${isPositive ? 'increase' : isNegative ? 'decrease' : 'change'}`}
-                    >
-                      <span
-                        className={`font-display font-semibold ${
-                          isPositive ? 'text-[var(--success)]' : isNegative ? 'text-[var(--critical)]' : 'text-[var(--muted)]'
-                        }`}
+                      </td>
+                      <td
+                        style={{ textAlign: 'right' }}
+                        aria-label={`${Math.abs(metric.changePercent).toFixed(1)} percent ${isPositive ? 'increase' : isNegative ? 'decrease' : 'change'}`}
                       >
-                        {metric.changePercent > 0 ? '+' : ''}
-                        {metric.changePercent.toFixed(1)}%
-                      </span>
-                    </td>
-                  </tr>
-                )
-              })}
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      {/* Claude Analysis Section */}
-      {claudeAnalysis ? (
-        <div className="space-y-4">
-          {/* Impact Summary */}
-          <div className="bg-[var(--highlight)] border-l-4 border-[var(--accent)] p-6 rounded">
-            <h3 className="text-sm font-display font-semibold text-[var(--secondary)] mb-2">Impact Summary</h3>
-            <p className="text-sm text-[var(--ink)]">{claudeAnalysis.impactSummary}</p>
+                        <span className="num font-medium" style={{ color: changeColor }}>
+                          {metric.changePercent > 0 ? '+' : ''}
+                          {metric.changePercent.toFixed(1)}%
+                        </span>
+                      </td>
+                    </tr>
+                  )
+                })}
+              </tbody>
+            </table>
           </div>
+        </div>
+      </section>
 
-          {/* Recommendation */}
-          <div className="bg-white rounded shadow-sm border border-[var(--border)] p-6 space-y-4">
-            <div className="flex items-start justify-between">
-              <div>
-                <h3 className="text-lg font-display font-semibold text-[var(--secondary)]">Recommendation</h3>
-                <div className="mt-2 flex items-center space-x-3">
-                  {/* Recommendation badge */}
-                  <span
-                    className={`inline-flex items-center space-x-1 px-3 py-1 rounded-full text-sm font-medium ${
-                      claudeAnalysis.recommendation === 'APPROVE'
-                        ? 'bg-[var(--success)]/10 text-[var(--success)]'
-                        : claudeAnalysis.recommendation === 'APPROVE_WITH_CONDITIONS'
-                          ? 'bg-[var(--warning)]/10 text-[var(--warning)]'
-                          : 'bg-[var(--critical)]/10 text-[var(--critical)]'
-                    }`}
-                  >
-                    {claudeAnalysis.recommendation === 'APPROVE' && (
-                      <CheckCircle className="w-4 h-4" />
-                    )}
-                    {claudeAnalysis.recommendation === 'APPROVE_WITH_CONDITIONS' && (
-                      <AlertCircle className="w-4 h-4" />
-                    )}
-                    {claudeAnalysis.recommendation === 'REJECT' && <XCircle className="w-4 h-4" />}
-                    <span>{claudeAnalysis.recommendation.replace(/_/g, ' ')}</span>
-                  </span>
-
-                  {/* Confidence badge */}
-                  <span
-                    className={`px-2 py-1 rounded text-xs font-medium ${
-                      claudeAnalysis.confidence === 'HIGH'
-                        ? 'bg-[var(--success)]/10 text-[var(--success)]'
-                        : claudeAnalysis.confidence === 'MEDIUM'
-                          ? 'bg-[var(--warning)]/10 text-[var(--warning)]'
-                          : 'bg-[var(--muted)]/10 text-[var(--muted)]'
-                    }`}
-                  >
-                    {claudeAnalysis.confidence} confidence
-                  </span>
-                </div>
+      {/* Written analysis */}
+      {claudeAnalysis ? (
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+          {/* Summary + recommendation */}
+          <section className="card space-y-4 p-5" aria-labelledby="recommendation-heading">
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <h3 id="recommendation-heading" className="m-0 text-base font-semibold">Recommendation</h3>
+              <div className="flex flex-wrap items-center gap-2">
+                <Badge
+                  variant={
+                    claudeAnalysis.recommendation === 'APPROVE'
+                      ? 'success'
+                      : claudeAnalysis.recommendation === 'APPROVE_WITH_CONDITIONS'
+                        ? 'warning'
+                        : 'danger'
+                  }
+                >
+                  {claudeAnalysis.recommendation === 'APPROVE' && <CheckCircle className="h-3.5 w-3.5" aria-hidden="true" />}
+                  {claudeAnalysis.recommendation === 'APPROVE_WITH_CONDITIONS' && (
+                    <AlertCircle className="h-3.5 w-3.5" aria-hidden="true" />
+                  )}
+                  {claudeAnalysis.recommendation === 'REJECT' && <XCircle className="h-3.5 w-3.5" aria-hidden="true" />}
+                  {sentence(claudeAnalysis.recommendation)}
+                </Badge>
+                <Badge variant={levelVariant(claudeAnalysis.confidence as Level, 'success')}>
+                  {sentence(claudeAnalysis.confidence)} confidence
+                </Badge>
               </div>
             </div>
 
-            {/* Reasoning */}
             <div>
-              <h4 className="text-sm font-semibold text-[var(--secondary)] mb-2">Reasoning</h4>
-              <p className="text-sm text-[var(--ink)]">{claudeAnalysis.reasoning}</p>
+              <p className="section-label m-0 mb-1">Summary</p>
+              <p className="m-0 text-sm" style={{ color: 'var(--ink)' }}>{claudeAnalysis.impactSummary}</p>
             </div>
 
-            {/* Conditions (if any) */}
+            <div>
+              <p className="section-label m-0 mb-1">Reasoning</p>
+              <p className="m-0 text-sm" style={{ color: 'var(--ink)' }}>{claudeAnalysis.reasoning}</p>
+            </div>
+
             {claudeAnalysis.conditions.length > 0 && (
               <div>
-                <h4 className="text-sm font-semibold text-[var(--secondary)] mb-2">Conditions</h4>
-                <ul className="list-disc list-inside space-y-1">
+                <p className="section-label m-0 mb-1">Conditions</p>
+                <ul className="m-0 list-disc space-y-1 pl-5">
                   {claudeAnalysis.conditions.map((condition, index) => (
-                    <li key={index} className="text-sm text-[var(--ink)]">
+                    <li key={index} className="text-sm" style={{ color: 'var(--ink)' }}>
                       {condition}
                     </li>
                   ))}
                 </ul>
               </div>
             )}
-          </div>
+          </section>
 
           {/* Risks */}
           {claudeAnalysis.risks.length > 0 && (
-            <div className="bg-white rounded shadow-sm border border-[var(--border)] p-6">
-              <h3 className="text-lg font-display font-semibold text-[var(--secondary)] mb-4">Risk Assessment</h3>
-              <div className="space-y-3">
+            <section className="card overflow-hidden" aria-labelledby="risks-heading">
+              <div className="border-b px-5 py-3" style={{ borderColor: 'var(--border)' }}>
+                <h3 id="risks-heading" className="m-0 text-base font-semibold">Risks</h3>
+              </div>
+              <ul className="m-0 list-none p-0">
                 {claudeAnalysis.risks.map((risk, index) => (
-                  <div key={index} className="border-l-4 border-[var(--warning)] pl-4">
-                    <div className="flex items-start justify-between">
-                      <p className="text-sm font-medium text-[var(--ink)]">{risk.description}</p>
-                      <div className="flex space-x-2 ml-4">
-                        <span
-                          className={`px-2 py-1 rounded text-xs font-medium ${
-                            risk.severity === 'HIGH'
-                              ? 'bg-[var(--critical)]/10 text-[var(--critical)]'
-                              : risk.severity === 'MEDIUM'
-                                ? 'bg-[var(--warning)]/10 text-[var(--warning)]'
-                                : 'bg-[var(--muted)]/10 text-[var(--muted)]'
-                          }`}
-                        >
-                          {risk.severity}
-                        </span>
-                        <span className="px-2 py-1 rounded text-xs font-medium bg-[var(--muted)]/10 text-[var(--muted)]">
-                          {risk.likelihood} likelihood
-                        </span>
+                  <li
+                    key={index}
+                    className="flex flex-col gap-1 border-b px-5 py-3 last:border-b-0"
+                    style={{ borderColor: 'var(--border)' }}
+                  >
+                    <div className="flex flex-wrap items-start justify-between gap-2">
+                      <p className="m-0 min-w-0 flex-1 text-sm font-medium" style={{ color: 'var(--ink)' }}>
+                        {risk.description}
+                      </p>
+                      <div className="flex shrink-0 gap-1.5">
+                        <Badge variant={levelVariant(risk.severity as Level, 'danger')}>
+                          {sentence(risk.severity)} severity
+                        </Badge>
+                        <Badge>{sentence(risk.likelihood)} likelihood</Badge>
                       </div>
                     </div>
-                    <p className="mt-1 text-sm text-[var(--ink)]">
+                    <p className="m-0 text-sm" style={{ color: 'var(--ink-2)' }}>
                       <span className="font-medium">Mitigation:</span> {risk.mitigation}
                     </p>
-                  </div>
+                  </li>
                 ))}
-              </div>
-            </div>
+              </ul>
+            </section>
           )}
         </div>
       ) : (
-        <div className="bg-[var(--highlight)] border border-[var(--border)] rounded-lg p-4">
-          <p className="text-sm text-[var(--ink)]">
-            <span className="font-medium">Claude analysis unavailable.</span> Configure ANTHROPIC_API_KEY
-            for AI-powered impact analysis and recommendations.
+        <div className="alert-box alert-warning m-0 flex items-start gap-3" role="status">
+          <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
+          <p className="m-0 text-sm">
+            <span className="font-medium">Recommendation and risk review are unavailable right now.</span>{' '}
+            <span style={{ color: 'var(--ink-2)' }}>
+              The figures above are calculated directly from the budget and are not affected.
+            </span>
           </p>
         </div>
       )}

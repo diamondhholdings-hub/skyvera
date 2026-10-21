@@ -1,5 +1,5 @@
 /**
- * FinancialsTab - Full contract table, charts, strategic impact, expansion opportunities
+ * FinancialsTab - revenue KPIs, contract table, revenue mix, charts, strategic impact
  * Server Component — chart subcomponents are 'use client'
  */
 
@@ -7,6 +7,7 @@ import { Suspense } from 'react'
 import type { CustomerWithHealth } from '@/lib/types/customer'
 import { RevenueGrowthChart } from '@/components/charts/revenue-growth-chart'
 import { TopCustomersChart } from '@/components/charts/top-customers-chart'
+import { KpiStrip } from '@/components/ui/kpi-strip'
 
 interface FinancialsTabProps {
   customer: CustomerWithHealth
@@ -22,21 +23,19 @@ function BadgeGrowth({ current, projected }: { current: number; projected: numbe
   const pct = ((projected - current) / current) * 100
   const isPositive = pct >= 0
   return (
-    <span style={{
-      display: 'inline-block',
-      padding: '0.2rem 0.6rem',
-      borderRadius: '2px',
-      fontSize: '0.75rem',
-      fontWeight: 600,
-      textTransform: 'uppercase',
-      letterSpacing: '0.05em',
-      background: isPositive ? 'var(--success, #4caf50)' : 'var(--critical, #e53935)',
-      color: 'white',
-    }}>
+    <span className="num font-medium" style={{ color: isPositive ? 'var(--success-ink)' : 'var(--critical-ink)' }}>
       {isPositive ? '+' : ''}{pct.toFixed(0)}%
     </span>
   )
 }
+
+function renewClass(willRenew: string | null | undefined): string {
+  if (willRenew === 'Yes') return 'badge-success'
+  if (willRenew?.startsWith('No')) return 'badge-critical'
+  return 'badge-warning'
+}
+
+const tagClass = 'inline-flex items-center whitespace-nowrap px-1.5 py-0.5 text-xs font-medium'
 
 export function FinancialsTab({ customer, allBuCustomers = [] }: FinancialsTabProps) {
   const totalCurrentARR = customer.subscriptions.reduce((sum, s) => sum + (s.arr ?? 0), 0)
@@ -48,153 +47,160 @@ export function FinancialsTab({ customer, allBuCustomers = [] }: FinancialsTabPr
   const buTotal = allBuCustomers.reduce((sum, c) => sum + c.rr + c.nrr, 0)
   const buPct = buTotal > 0 ? (((customer.rr + customer.nrr) / buTotal) * 100).toFixed(1) : '—'
 
-  return (
-    <div className="space-y-8">
+  const impactRows = [
+    { label: 'If account churned', value: `-${formatCurrency(Math.round((customer.rr + customer.nrr) / 4))}`, sub: 'Quarterly revenue impact' },
+    { label: 'Share of BU revenue', value: buPct !== '—' ? `${buPct}%` : '—', sub: `Share of ${customer.bu} total` },
+    { label: 'Subscription count', value: `${customer.subscriptions.length}`, sub: 'Active subscriptions tracked' },
+    { label: 'Upsell potential', value: totalProjectedARR > totalCurrentARR ? `+${formatCurrency(totalProjectedARR - totalCurrentARR)}` : '—', sub: 'If projected ARR executes' },
+    { label: 'Health score', value: customer.healthScore.charAt(0).toUpperCase() + customer.healthScore.slice(1), sub: 'Current account health' },
+    { label: 'Rank in BU', value: customer.rank ? `${customer.rank}` : '—', sub: 'By total revenue' },
+  ]
 
-      {/* Metric Row */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1rem' }}>
-        {[
-          { label: customer.rr > 0 ? 'ARR' : 'Annual Rev', value: formatCurrency(customer.rr > 0 ? customer.rr : customer.nrr), sub: customer.rr > 0 ? 'Annual Recurring Revenue' : 'Non-Recurring Revenue' },
-          { label: 'Recurring Revenue', value: formatCurrency(customer.rr), sub: 'Quarterly recurring' },
-          { label: 'Non-Recurring', value: formatCurrency(customer.nrr), sub: 'One-time revenue' },
-          { label: 'Total Revenue', value: formatCurrency(customer.total), sub: 'Combined this period' },
-        ].map(({ label, value, sub }) => (
-          <div key={label} style={{ background: 'var(--highlight)', padding: '1.5rem', borderLeft: '3px solid var(--accent)' }}>
-            <div style={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--muted)', marginBottom: '0.4rem' }}>{label}</div>
-            <div style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: '2rem', fontWeight: 600, color: 'var(--secondary)' }}>{value}</div>
-            <div style={{ fontSize: '0.75rem', color: 'var(--muted)', marginTop: '0.25rem' }}>{sub}</div>
-          </div>
-        ))}
+  return (
+    <div className="space-y-6">
+
+      {/* Wrapped: KpiStrip sets an inline margin:0 that would cancel space-y */}
+      <div>
+      <KpiStrip
+        items={[
+          { label: customer.rr > 0 ? 'ARR' : 'Annual revenue', value: formatCurrency(customer.rr > 0 ? customer.rr : customer.nrr), context: customer.rr > 0 ? 'Annual recurring revenue' : 'Non-recurring revenue' },
+          { label: 'Recurring revenue', value: formatCurrency(customer.rr), context: 'Recurring this period' },
+          { label: 'Non-recurring', value: formatCurrency(customer.nrr), context: 'One-time revenue' },
+          { label: 'Total revenue', value: formatCurrency(customer.total), context: 'Combined this period' },
+        ]}
+      />
       </div>
 
       {/* Contract / Subscription Table */}
-      <div>
-        <h2 style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: '1.75rem', fontWeight: 600, color: 'var(--secondary)', marginBottom: '1rem', paddingBottom: '0.5rem', borderBottom: '2px solid var(--border)' }}>
-          Contract Summary
-        </h2>
-        <div style={{ background: 'white', border: '1px solid var(--border)', boxShadow: '0 1px 3px rgba(0,0,0,0.04)', overflow: 'hidden' }}>
-          <style>{`.sub-row:hover { background: var(--highlight) !important; }`}</style>
-          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.875rem' }}>
+      <section className="card overflow-hidden" aria-labelledby="fin-contracts">
+        <div className="px-5 py-4" style={{ borderBottom: '1px solid var(--border)' }}>
+          <h2 id="fin-contracts" className="m-0">Contract summary</h2>
+        </div>
+        <div className="overflow-x-auto">
+          <table className="data-table" style={{ minWidth: '820px' }}>
             <thead>
-              <tr style={{ background: 'var(--secondary)', color: 'white' }}>
-                {['Sub ID', 'Start Date', 'End Date', 'Current ARR', 'Projected ARR', 'Growth', 'Renewal', 'Status'].map(h => (
-                  <th key={h} style={{ padding: '1rem', textAlign: 'left', fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 600 }}>{h}</th>
-                ))}
+              <tr>
+                <th scope="col">Subscription ID</th>
+                <th scope="col">Start date</th>
+                <th scope="col">End date</th>
+                <th scope="col" style={{ textAlign: 'right' }}>Current ARR</th>
+                <th scope="col" style={{ textAlign: 'right' }}>Projected ARR</th>
+                <th scope="col" style={{ textAlign: 'right' }}>Growth</th>
+                <th scope="col">Renewal</th>
+                <th scope="col">Will renew</th>
               </tr>
             </thead>
             <tbody>
               {customer.subscriptions.length > 0 ? customer.subscriptions.map((sub, i) => (
-                <tr key={i} className="sub-row" style={{ borderBottom: '1px solid var(--border)' }}>
-                  <td style={{ padding: '1rem', fontWeight: 500, color: 'var(--secondary)' }}>{sub.sub_id ?? '—'}</td>
-                  <td style={{ padding: '1rem', color: 'var(--muted)' }}>{sub.startDate ?? '—'}</td>
-                  <td style={{ padding: '1rem', color: 'var(--muted)' }}>{sub.endDate ?? '—'}</td>
-                  <td style={{ padding: '1rem', color: 'var(--ink)' }}>{sub.arr != null ? formatCurrency(sub.arr) : '—'}</td>
-                  <td style={{ padding: '1rem', color: 'var(--ink)' }}>{sub.projected_arr != null ? formatCurrency(sub.projected_arr) : '—'}</td>
-                  <td style={{ padding: '1rem' }}>
+                <tr key={i}>
+                  <td className="font-medium">{sub.sub_id ?? '—'}</td>
+                  <td className="num" style={{ color: 'var(--ink-2)' }}>{sub.startDate ?? '—'}</td>
+                  <td className="num" style={{ color: 'var(--ink-2)' }}>{sub.endDate ?? '—'}</td>
+                  <td className="num" style={{ textAlign: 'right' }}>{sub.arr != null ? formatCurrency(sub.arr) : '—'}</td>
+                  <td className="num" style={{ textAlign: 'right' }}>{sub.projected_arr != null ? formatCurrency(sub.projected_arr) : '—'}</td>
+                  <td style={{ textAlign: 'right' }}>
                     {sub.arr && sub.projected_arr
                       ? <BadgeGrowth current={sub.arr} projected={sub.projected_arr} />
                       : <span style={{ color: 'var(--muted)' }}>—</span>}
                   </td>
-                  <td style={{ padding: '1rem', color: 'var(--muted)' }}>{sub.renewal_qtr ?? '—'}</td>
-                  <td style={{ padding: '1rem' }}>
-                    <span style={{
-                      display: 'inline-block', padding: '0.2rem 0.6rem', borderRadius: '2px',
-                      fontSize: '0.7rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em',
-                      background: sub.will_renew === 'Yes' ? 'var(--success, #4caf50)' : sub.will_renew?.startsWith('No') ? 'var(--critical, #e53935)' : 'var(--warning, #ff9800)',
-                      color: 'white',
-                    }}>
+                  <td style={{ color: 'var(--ink-2)' }}>{sub.renewal_qtr ?? '—'}</td>
+                  <td>
+                    <span className={`${tagClass} ${renewClass(sub.will_renew)}`} style={{ borderRadius: 'var(--radius-xs)' }}>
                       {sub.will_renew ?? 'TBD'}
                     </span>
                   </td>
                 </tr>
               )) : (
-                <tr><td colSpan={8} style={{ padding: '2rem', textAlign: 'center', color: 'var(--muted)' }}>No subscription data</td></tr>
+                <tr><td colSpan={8} className="py-8 text-center" style={{ color: 'var(--muted)' }}>No subscription data</td></tr>
               )}
             </tbody>
             {customer.subscriptions.length > 1 && (
               <tfoot>
-                <tr style={{ background: 'var(--highlight)', fontWeight: 700 }}>
-                  <td colSpan={3} style={{ padding: '1rem', fontWeight: 700, color: 'var(--secondary)' }}>TOTAL</td>
-                  <td style={{ padding: '1rem', color: 'var(--secondary)' }}><strong>{formatCurrency(totalCurrentARR)}</strong></td>
-                  <td style={{ padding: '1rem', color: 'var(--secondary)' }}><strong>{formatCurrency(totalProjectedARR)}</strong></td>
-                  <td style={{ padding: '1rem' }}><BadgeGrowth current={totalCurrentARR} projected={totalProjectedARR} /></td>
+                <tr style={{ background: 'var(--surface-2)', borderTop: '1px solid var(--border)' }}>
+                  <td colSpan={3} className="font-semibold">Total</td>
+                  <td className="num font-semibold" style={{ textAlign: 'right' }}>{formatCurrency(totalCurrentARR)}</td>
+                  <td className="num font-semibold" style={{ textAlign: 'right' }}>{formatCurrency(totalProjectedARR)}</td>
+                  <td style={{ textAlign: 'right' }}><BadgeGrowth current={totalCurrentARR} projected={totalProjectedARR} /></td>
                   <td colSpan={2} />
                 </tr>
               </tfoot>
             )}
           </table>
         </div>
-      </div>
+      </section>
 
       {/* Revenue Breakdown bar */}
-      <div style={{ background: 'white', border: '1px solid var(--border)', boxShadow: '0 1px 3px rgba(0,0,0,0.04)', padding: '2rem' }}>
-        <h2 style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: '1.75rem', fontWeight: 600, color: 'var(--secondary)', marginBottom: '1rem' }}>Revenue Breakdown</h2>
-        <div style={{ display: 'flex', height: '2rem', borderRadius: 0, overflow: 'hidden', border: '1px solid var(--border)', marginBottom: '1.25rem' }}>
-          {rrPercent > 0 && (
-            <div style={{ width: `${rrPercent}%`, background: 'var(--accent)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontSize: '0.75rem', fontWeight: 500 }}>
-              {rrPercent > 10 && `${rrPercent.toFixed(0)}%`}
-            </div>
-          )}
-          {nrrPercent > 0 && (
-            <div style={{ width: `${nrrPercent}%`, background: 'var(--secondary)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontSize: '0.75rem', fontWeight: 500 }}>
-              {nrrPercent > 10 && `${nrrPercent.toFixed(0)}%`}
-            </div>
-          )}
+      <section className="card p-5" aria-labelledby="fin-breakdown">
+        <h2 id="fin-breakdown" className="m-0 mb-4">Revenue breakdown</h2>
+        <div
+          className="mb-4 flex h-2.5 overflow-hidden"
+          style={{ background: 'var(--surface-3)', borderRadius: 'var(--radius-xs)' }}
+          role="img"
+          aria-label={`Recurring ${rrPercent.toFixed(0)}%, non-recurring ${nrrPercent.toFixed(0)}%`}
+        >
+          {rrPercent > 0 && <div style={{ width: `${rrPercent}%`, background: 'var(--secondary)' }} />}
+          {nrrPercent > 0 && <div style={{ width: `${nrrPercent}%`, background: 'var(--accent)' }} />}
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-            <div style={{ width: '1rem', height: '1rem', background: 'var(--accent)', flexShrink: 0 }} />
+        <div className="grid gap-4 sm:grid-cols-2">
+          <div className="flex items-start gap-2.5">
+            <span className="mt-1.5 h-2.5 w-2.5 shrink-0" style={{ background: 'var(--secondary)', borderRadius: '2px' }} aria-hidden="true" />
             <div>
-              <p style={{ fontSize: '0.875rem', fontWeight: 500 }}>Recurring Revenue: {formatCurrency(customer.rr)}</p>
-              <p style={{ fontSize: '0.75rem', color: 'var(--muted)' }}>{rrPercent.toFixed(1)}% of total</p>
+              <p className="m-0 text-sm font-medium">Recurring revenue: <span className="num">{formatCurrency(customer.rr)}</span></p>
+              <p className="m-0 text-xs" style={{ color: 'var(--muted)' }}><span className="num">{rrPercent.toFixed(1)}%</span> of total</p>
             </div>
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-            <div style={{ width: '1rem', height: '1rem', background: 'var(--secondary)', flexShrink: 0 }} />
+          <div className="flex items-start gap-2.5">
+            <span className="mt-1.5 h-2.5 w-2.5 shrink-0" style={{ background: 'var(--accent)', borderRadius: '2px' }} aria-hidden="true" />
             <div>
-              <p style={{ fontSize: '0.875rem', fontWeight: 500 }}>Non-Recurring: {formatCurrency(customer.nrr)}</p>
-              <p style={{ fontSize: '0.75rem', color: 'var(--muted)' }}>{nrrPercent.toFixed(1)}% of total</p>
+              <p className="m-0 text-sm font-medium">Non-recurring: <span className="num">{formatCurrency(customer.nrr)}</span></p>
+              <p className="m-0 text-xs" style={{ color: 'var(--muted)' }}><span className="num">{nrrPercent.toFixed(1)}%</span> of total</p>
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* Charts row */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '2rem' }}>
-        <div style={{ background: 'white', border: '1px solid var(--border)', boxShadow: '0 1px 3px rgba(0,0,0,0.04)', padding: '2rem' }}>
-          <h2 style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: '1.75rem', fontWeight: 600, color: 'var(--secondary)', marginBottom: '1rem' }}>Revenue Growth Projection</h2>
-          <Suspense fallback={<div style={{ height: 300, background: 'var(--highlight)', opacity: 0.4 }} />}>
+      <div className="grid gap-6 lg:grid-cols-2">
+        <section className="card min-w-0 p-5" aria-labelledby="fin-growth">
+          <h2 id="fin-growth" className="m-0 mb-4">Revenue growth projection</h2>
+          <Suspense fallback={<div className="skeleton" style={{ height: 300 }} />}>
             <RevenueGrowthChart subscriptions={customer.subscriptions} />
           </Suspense>
-        </div>
-        <div style={{ background: 'white', border: '1px solid var(--border)', boxShadow: '0 1px 3px rgba(0,0,0,0.04)', padding: '2rem' }}>
-          <h2 style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: '1.75rem', fontWeight: 600, color: 'var(--secondary)', marginBottom: '1rem' }}>Top Customers — {customer.bu}</h2>
-          <Suspense fallback={<div style={{ height: 320, background: 'var(--highlight)', opacity: 0.4 }} />}>
+        </section>
+        <section className="card min-w-0 p-5" aria-labelledby="fin-top">
+          <h2 id="fin-top" className="m-0 mb-4">Top customers in {customer.bu}</h2>
+          <Suspense fallback={<div className="skeleton" style={{ height: 320 }} />}>
             <TopCustomersChart allBuCustomers={allBuCustomers} currentCustomerName={customer.customer_name} />
           </Suspense>
-        </div>
+        </section>
       </div>
 
       {/* Strategic Impact Analysis */}
-      <div style={{ background: 'white', border: '1px solid var(--border)', boxShadow: '0 1px 3px rgba(0,0,0,0.04)', padding: '2rem' }}>
-        <h2 style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: '1.75rem', fontWeight: 600, color: 'var(--secondary)', marginBottom: '1.5rem' }}>Strategic Impact Analysis</h2>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem' }}>
-          {[
-            { label: 'If Account Churned', value: `-${formatCurrency(Math.round((customer.rr + customer.nrr) / 4))}`, sub: 'Quarterly revenue impact' },
-            { label: '% of BU Revenue', value: buPct !== '—' ? `${buPct}%` : '—', sub: `Share of ${customer.bu} total` },
-            { label: 'Subscription Count', value: `${customer.subscriptions.length}`, sub: 'Active subscriptions tracked' },
-            { label: 'Upsell Potential', value: totalProjectedARR > totalCurrentARR ? `+${formatCurrency(totalProjectedARR - totalCurrentARR)}` : '—', sub: 'If projected ARR executes' },
-            { label: 'Health Score', value: customer.healthScore.charAt(0).toUpperCase() + customer.healthScore.slice(1), sub: 'Current account health' },
-            { label: 'Rank in BU', value: customer.rank ? `#${customer.rank}` : '—', sub: 'By total revenue' },
-          ].map(({ label, value, sub }) => (
-            <div key={label} style={{ background: 'var(--highlight)', padding: '1.5rem', borderLeft: '3px solid var(--accent)' }}>
-              <div style={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--muted)', marginBottom: '0.4rem' }}>{label}</div>
-              <div style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: '1.8rem', fontWeight: 600, color: 'var(--secondary)' }}>{value}</div>
-              <p style={{ fontSize: '0.8rem', color: 'var(--muted)', marginTop: '0.3rem' }}>{sub}</p>
-            </div>
-          ))}
+      <section className="card overflow-hidden" aria-labelledby="fin-impact">
+        <div className="px-5 py-4" style={{ borderBottom: '1px solid var(--border)' }}>
+          <h2 id="fin-impact" className="m-0">Strategic impact</h2>
         </div>
-      </div>
+        <div className="overflow-x-auto">
+          <table className="data-table">
+            <thead>
+              <tr>
+                <th scope="col">Measure</th>
+                <th scope="col" style={{ textAlign: 'right' }}>Value</th>
+                <th scope="col">Basis</th>
+              </tr>
+            </thead>
+            <tbody>
+              {impactRows.map(({ label, value, sub }) => (
+                <tr key={label}>
+                  <td className="font-medium">{label}</td>
+                  <td className="num font-semibold" style={{ textAlign: 'right' }}>{value}</td>
+                  <td style={{ color: 'var(--muted)' }}>{sub}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
 
     </div>
   )

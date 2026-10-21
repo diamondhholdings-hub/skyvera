@@ -5,6 +5,11 @@
 
 import { getAllCustomersWithHealth } from '@/lib/data/server/account-data'
 import Link from 'next/link'
+import { HealthIndicator } from '@/components/ui/health-indicator'
+import { AlertBox } from '../components/alert-box'
+import { Panel, SectionHeading } from '../components/panel'
+
+const right = { textAlign: 'right' as const }
 
 export async function AtRiskSection() {
   const customersResult = await getAllCustomersWithHealth()
@@ -12,7 +17,7 @@ export async function AtRiskSection() {
   if (!customersResult.success) {
     return (
       <section id="at-risk" style={{ display: 'none' }}>
-        <p style={{ textAlign: 'center', color: '#64748b' }}>Failed to load customer data</p>
+        <p style={{ textAlign: 'center', color: 'var(--muted)' }}>Failed to load customer data</p>
       </section>
     )
   }
@@ -30,123 +35,63 @@ export async function AtRiskSection() {
 
   return (
     <section id="at-risk" style={{ display: 'none' }}>
-      <h2 style={{
-        fontSize: '1.875rem',
-        fontWeight: 600,
-        color: '#1e3c72',
-        marginBottom: '1.25rem',
-        paddingBottom: '0.625rem',
-        borderBottom: '3px solid #667eea'
-      }}>
-        At-Risk Accounts
-      </h2>
+      <SectionHeading title="At-risk accounts" />
 
-      <div style={{
-        backgroundColor: '#ffe5e5',
-        borderLeft: '5px solid #f5576c',
-        color: '#c92a2a',
-        padding: '1.25rem',
-        borderRadius: '0.5rem',
-        margin: '1.25rem 0',
-        fontWeight: 500
-      }}>
-        <strong>IMMEDIATE ACTION REQUIRED:</strong> {atRiskCustomers.length} accounts at risk
-        representing ${(totalAtRiskARR / 1e6).toFixed(1)}M in Revenue
-      </div>
+      <AlertBox variant="critical">
+        <strong>Action needed.</strong> {atRiskCustomers.length} accounts at risk, representing{' '}
+        <span className="num">${(totalAtRiskARR / 1e6).toFixed(1)}M</span> in revenue.
+      </AlertBox>
 
-      <div style={{ overflowX: 'auto' }}>
-      <table style={{
-        width: '100%',
-        borderCollapse: 'collapse',
-        borderRadius: '0.5rem',
-        overflow: 'hidden',
-        boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
-        margin: '1.25rem 0'
-      }}>
-        <thead>
-          <tr style={{ backgroundColor: '#1e3c72', color: 'white', textAlign: 'left' }}>
-            <th style={{ padding: '1rem', fontWeight: 600, fontSize: '0.875rem' }}>Priority</th>
-            <th style={{ padding: '1rem', fontWeight: 600, fontSize: '0.875rem' }}>Customer</th>
-            <th style={{ padding: '1rem', fontWeight: 600, fontSize: '0.875rem' }}>BU</th>
-            <th style={{ padding: '1rem', fontWeight: 600, fontSize: '0.875rem' }}>Revenue at Risk</th>
-            <th style={{ padding: '1rem', fontWeight: 600, fontSize: '0.875rem' }}>Health</th>
-            <th style={{ padding: '1rem', fontWeight: 600, fontSize: '0.875rem' }}>Risk Factors</th>
-            <th style={{ padding: '1rem', fontWeight: 600, fontSize: '0.875rem' }}>Actions</th>
-          </tr>
-        </thead>
-        <tbody style={{ backgroundColor: 'white' }}>
-          {atRiskCustomers.map((customer, index) => {
-            const arr = customer.rr + customer.nrr
-            const healthBgColor = customer.healthScore === 'red' ? '#ef4444' : '#f59e0b'
-            const healthLabel = customer.healthScore === 'red' ? 'CRITICAL' : 'AT RISK'
-
-            return (
-              <tr
-                key={customer.customer_name}
-                className="hover:bg-slate-50 transition-colors"
-                style={{
-                  borderBottom: '1px solid #e2e8f0'
-                }}
-              >
-                <td style={{ padding: '0.75rem', fontSize: '0.875rem', fontWeight: 700, color: '#f5576c' }}>{index + 1}</td>
-                <td style={{ padding: '0.75rem', fontSize: '0.875rem' }}>
-                  <Link
-                    href={`/accounts/${encodeURIComponent(customer.customer_name)}`}
-                    className="hover:underline hover:text-purple-600 transition-colors"
-                    style={{
-                      color: '#667eea',
-                      fontWeight: 500,
-                      textDecoration: 'none',
-                      cursor: 'pointer'
-                    }}
-                  >
-                    {customer.customer_name}
-                  </Link>
-                </td>
-                <td style={{ padding: '0.75rem', fontSize: '0.875rem' }}>{customer.bu}</td>
-                <td style={{ padding: '0.75rem', fontSize: '0.875rem', fontWeight: 600 }}>${(arr / 1e6).toFixed(2)}M</td>
-                <td style={{ padding: '0.75rem', fontSize: '0.875rem' }}>
-                  <span
-                    style={{
-                      display: 'inline-block',
-                      paddingLeft: '0.75rem',
-                      paddingRight: '0.75rem',
-                      paddingTop: '0.25rem',
-                      paddingBottom: '0.25rem',
-                      borderRadius: '9999px',
-                      color: 'white',
-                      fontSize: '0.75rem',
-                      fontWeight: 600,
-                      backgroundColor: healthBgColor
-                    }}
-                  >
-                    {healthLabel}
-                  </span>
-                </td>
-                <td style={{ padding: '0.75rem', fontSize: '0.875rem', color: '#4b5563' }}>
-                  {customer.healthScore === 'red' ? 'Payment delays, declining usage' : 'Some concerns'}
-                </td>
-                <td style={{ padding: '0.75rem', fontSize: '0.875rem' }}>
-                  <Link
-                    href={`/accounts/${encodeURIComponent(customer.customer_name)}`}
-                    className="hover:underline hover:text-purple-600 transition-colors"
-                    style={{
-                      color: '#667eea',
-                      fontSize: '0.75rem',
-                      fontWeight: 500,
-                      textDecoration: 'none',
-                      cursor: 'pointer'
-                    }}
-                  >
-                    View Plan →
-                  </Link>
-                </td>
+      <Panel title="Accounts" description="Critical first, then by revenue" flush>
+        <div className="relative overflow-x-auto">
+          <table className="data-table">
+            <thead>
+              <tr>
+                <th style={right}>Priority</th>
+                <th>Customer</th>
+                <th>BU</th>
+                <th style={right}>Revenue at risk</th>
+                <th>Health</th>
+                <th>Risk factors</th>
+                <th><span className="sr-only">Actions</span></th>
               </tr>
-            )
-          })}
-        </tbody>
-      </table>
-      </div>
+            </thead>
+            <tbody>
+              {atRiskCustomers.map((customer, index) => {
+                const arr = customer.rr + customer.nrr
+                const href = `/accounts/${encodeURIComponent(customer.customer_name)}`
+
+                return (
+                  <tr key={customer.customer_name}>
+                    <td className="num" style={{ ...right, color: 'var(--muted)' }}>{index + 1}</td>
+                    <td>
+                      <Link href={href} className="font-medium hover:underline" style={{ color: 'var(--secondary)', textDecoration: 'none' }}>
+                        {customer.customer_name}
+                      </Link>
+                    </td>
+                    <td style={{ color: 'var(--ink-2)' }}>{customer.bu}</td>
+                    <td className="num font-medium" style={right}>${(arr / 1e6).toFixed(2)}M</td>
+                    <td>
+                      <HealthIndicator
+                        score={customer.healthScore === 'red' ? 'red' : 'yellow'}
+                        label={customer.healthScore === 'red' ? 'Critical' : 'At risk'}
+                      />
+                    </td>
+                    <td style={{ color: 'var(--ink-2)' }}>
+                      {customer.healthScore === 'red' ? 'Payment delays, declining usage' : 'Some concerns'}
+                    </td>
+                    <td style={right}>
+                      <Link href={href} className="btn btn-ghost btn-sm">
+                        View plan
+                      </Link>
+                    </td>
+                  </tr>
+                )
+              })}
+            </tbody>
+          </table>
+        </div>
+      </Panel>
     </section>
   )
 }

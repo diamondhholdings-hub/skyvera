@@ -64,7 +64,7 @@ export function ReEnrichButton({ customerName }: ReEnrichButtonProps) {
         )}
       </button>
       {state === 'error' && errorMessage && (
-        <span style={{ fontSize: '0.7rem', color: 'var(--critical, #dc2626)' }}>
+        <span style={{ fontSize: '0.7rem', color: 'var(--critical-ink)' }}>
           {errorMessage}
         </span>
       )}

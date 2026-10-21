@@ -1,31 +1,41 @@
 /**
  * Accounts page loading skeleton
- * Shows search bar and table rows placeholders
+ * Mirrors the page: header with KPI strip, search, filter toolbar, table rows
  */
 
 export default function AccountsLoading() {
   return (
-    <div className="p-6">
-      {/* Header skeleton */}
-      <div className="h-10 w-64 bg-[var(--border)] animate-pulse rounded-lg mb-6" />
+    <div aria-busy="true" aria-label="Loading accounts">
+      <div className="border-b" style={{ borderColor: 'var(--border)' }}>
+        <div className="mx-auto max-w-[1400px] px-4 pb-5 pt-7 lg:px-8">
+          <div className="skeleton h-7 w-72" />
+          <div className="skeleton mt-2 h-4 w-56" />
+          <div className="mt-5 grid grid-cols-2 gap-px overflow-hidden md:grid-cols-4" style={{ border: '1px solid var(--border)', borderRadius: 'var(--radius-md)', background: 'var(--border)' }}>
+            {[...Array(4)].map((_, i) => (
+              <div key={i} className="space-y-2 p-4" style={{ background: 'var(--surface)' }}>
+                <div className="skeleton h-3 w-24" />
+                <div className="skeleton h-6 w-16" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
 
-      {/* Search bar skeleton */}
-      <div className="h-10 w-full bg-[var(--border)] animate-pulse rounded-lg mb-4" />
-
-      {/* Table skeleton */}
-      <div className="bg-white rounded-lg shadow-sm border border-[var(--border)] overflow-hidden">
-        {/* Table header */}
-        <div className="bg-[var(--highlight)] border-b border-[var(--border)] h-12" />
-
-        {/* Table rows */}
-        <div className="divide-y divide-[var(--border)]">
+      <div className="mx-auto max-w-[1400px] space-y-4 px-4 py-6 lg:px-8">
+        <div className="skeleton h-9 max-w-md" />
+        <div className="flex flex-wrap gap-6">
+          <div className="skeleton h-8 w-80" />
+          <div className="skeleton h-8 w-72" />
+        </div>
+        <div className="card overflow-hidden">
+          <div className="h-9" style={{ background: 'var(--surface-2)', borderBottom: '1px solid var(--border)' }} />
           {[...Array(8)].map((_, i) => (
-            <div key={i} className="h-16 px-6 flex items-center space-x-4">
-              <div className="h-4 bg-[var(--border)] animate-pulse rounded flex-1" />
-              <div className="h-4 bg-[var(--border)] animate-pulse rounded w-24" />
-              <div className="h-4 bg-[var(--border)] animate-pulse rounded w-24" />
-              <div className="h-4 bg-[var(--border)] animate-pulse rounded w-32" />
-              <div className="h-4 bg-[var(--border)] animate-pulse rounded w-20" />
+            <div key={i} className="flex items-center gap-4 px-3 py-3" style={{ borderTop: i ? '1px solid var(--border)' : undefined }}>
+              <div className="skeleton h-4 flex-1" />
+              <div className="skeleton h-4 w-20" />
+              <div className="skeleton h-4 w-24" />
+              <div className="skeleton h-4 w-16" />
+              <div className="skeleton h-4 w-16" />
             </div>
           ))}
         </div>

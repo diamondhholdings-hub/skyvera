@@ -13,6 +13,7 @@ import { AccountTable } from './components/account-table'
 import { AccountsSearch } from '@/components/accounts-search'
 import { PageHeader } from '@/components/ui/page-header'
 import { Suspense } from 'react'
+import { CircleAlert } from 'lucide-react'
 
 export const metadata = {
   title: 'Customer Accounts - Skyvera',
@@ -22,12 +23,31 @@ export const metadata = {
 // Loading skeleton component
 function TableSkeleton() {
   return (
-    <div className="animate-pulse">
-      <div className="h-12 rounded mb-4" style={{ background: 'var(--border)' }}></div>
-      <div className="space-y-3">
-        {[...Array(5)].map((_, i) => (
-          <div key={i} className="h-16 rounded" style={{ background: 'var(--surface-2)' }}></div>
+    <div className="card overflow-hidden">
+      <div className="skeleton h-9" style={{ borderRadius: 0 }} />
+      <div className="space-y-px p-0">
+        {[...Array(8)].map((_, i) => (
+          <div key={i} className="flex items-center gap-4 px-3 py-3" style={{ borderTop: '1px solid var(--border)' }}>
+            <div className="skeleton h-4 flex-1" />
+            <div className="skeleton h-4 w-20" />
+            <div className="skeleton h-4 w-24" />
+            <div className="skeleton h-4 w-16" />
+          </div>
         ))}
+      </div>
+    </div>
+  )
+}
+
+function LoadError({ title, message }: { title: string; message: string }) {
+  return (
+    <div className="mx-auto max-w-[1400px] px-4 py-6 lg:px-8">
+      <div className="alert-box alert-critical flex items-start gap-3" role="alert">
+        <CircleAlert className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
+        <div>
+          <h1 className="m-0 text-base font-semibold" style={{ color: 'inherit' }}>{title}</h1>
+          <p className="m-0 mt-1 text-sm">{message}</p>
+        </div>
       </div>
     </div>
   )
@@ -48,49 +68,11 @@ export default async function AccountsPage({ searchParams }: AccountsPageProps) 
 
   // Handle errors
   if (!customersResult.success) {
-    return (
-      <div className="p-6">
-        <div
-          style={{
-            background: 'rgba(220,38,38,0.04)',
-            border: '1px solid rgba(220,38,38,0.25)',
-            borderLeft: '4px solid var(--critical)',
-            borderRadius: 'var(--radius-md)',
-            padding: '1.25rem 1.5rem',
-          }}
-        >
-          <h1 style={{ fontSize: '1.0625rem', fontWeight: 600, color: 'var(--critical)', margin: '0 0 0.5rem' }}>
-            Unable to load customer data
-          </h1>
-          <p style={{ fontSize: '0.875rem', color: 'var(--muted)', margin: 0 }}>
-            {customersResult.error.message}
-          </p>
-        </div>
-      </div>
-    )
+    return <LoadError title="Unable to load customer data" message={customersResult.error.message} />
   }
 
   if (!statsResult.success) {
-    return (
-      <div className="p-6">
-        <div
-          style={{
-            background: 'rgba(220,38,38,0.04)',
-            border: '1px solid rgba(220,38,38,0.25)',
-            borderLeft: '4px solid var(--critical)',
-            borderRadius: 'var(--radius-md)',
-            padding: '1.25rem 1.5rem',
-          }}
-        >
-          <h1 style={{ fontSize: '1.0625rem', fontWeight: 600, color: 'var(--critical)', margin: '0 0 0.5rem' }}>
-            Unable to load statistics
-          </h1>
-          <p style={{ fontSize: '0.875rem', color: 'var(--muted)', margin: 0 }}>
-            {statsResult.error.message}
-          </p>
-        </div>
-      </div>
-    )
+    return <LoadError title="Unable to load statistics" message={statsResult.error.message} />
   }
 
   const customers = customersResult.value
@@ -117,33 +99,37 @@ export default async function AccountsPage({ searchParams }: AccountsPageProps) 
   // Compute total revenue from all customer totals
   const totalRevenue = customers.reduce((sum, c) => sum + (c.total || 0), 0)
 
+  const subtitle = [
+    bu ? `${bu} business unit` : 'All business units',
+    `${filtered.length} of ${customers.length} customers`,
+    searchQuery ? `matching "${search?.trim()}"` : null,
+  ]
+    .filter(Boolean)
+    .join(' · ')
+
   return (
     <div>
-      {/* Gradient Header */}
       <PageHeader
         title="Customer Account Plans"
-        subtitle={bu ? `${bu} Business Unit · Filtered View` : 'All Business Units · Customer Directory'}
+        subtitle={subtitle}
         action={
-          <div className="flex items-center gap-4">
+          <>
             <ExportButton />
             <RefreshButton />
-          </div>
+          </>
         }
-        centered
       >
         <AccountStats stats={stats} totalRevenue={totalRevenue} />
       </PageHeader>
 
-      {/* Content Container */}
-      <div className="max-w-[1400px] mx-auto py-8 px-8">
-        {/* Search bar — needs Suspense because it uses useSearchParams() */}
-        <div style={{ marginBottom: '20px' }}>
-          <Suspense fallback={null}>
+      <div className="mx-auto max-w-[1400px] px-4 py-6 lg:px-8">
+        {/* URL-driven search (?search=), server-side filtered. Suspense because it uses useSearchParams() */}
+        <div className="mb-4 max-w-md">
+          <Suspense fallback={<div className="skeleton h-9" />}>
             <AccountsSearch />
           </Suspense>
         </div>
 
-        {/* Customer Table */}
         <Suspense fallback={<TableSkeleton />}>
           <AccountTable customers={filtered} completenessScores={scores} />
         </Suspense>

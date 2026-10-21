@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { NavBar } from "@/components/ui/nav-bar";
 import { Toaster } from "sonner";
-import { getFiscalQuarter } from "@/lib/data/server/fiscal-quarter";
+import { getFiscalQuarterLabel } from "@/lib/data/server/fiscal-quarter";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 
@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <body>
-        <NavBar fiscalQuarter={getFiscalQuarter()} />
+        <NavBar fiscalQuarter={getFiscalQuarterLabel() || null} />
         <main className="min-h-screen">
           {children}
         </main>

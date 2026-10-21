@@ -27,14 +27,13 @@ const toneColor: Record<KpiTone, string> = {
 export function KpiStrip({ items }: { items: KpiItem[] }) {
   return (
     <dl
-      className="grid overflow-hidden"
+      className="m-0 grid overflow-hidden"
       style={{
         gridTemplateColumns: `repeat(auto-fit, minmax(min(100%, 10.5rem), 1fr))`,
         border: '1px solid var(--border)',
         borderRadius: 'var(--radius-md)',
         gap: '1px',
         background: 'var(--border)',
-        margin: 0,
       }}
     >
       {items.map((item) => (

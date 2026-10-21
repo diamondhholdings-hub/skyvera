@@ -6,6 +6,8 @@
 import { getRevenueTrendData, getBUSummaries } from '@/lib/data/server/dashboard-data'
 import { RevenueChart } from './revenue-chart'
 import { MarginComparison } from './margin-comparison'
+import { AlertBox } from './alert-box'
+import { Panel } from './panel'
 
 /**
  * Server wrapper for RevenueChart
@@ -16,13 +18,12 @@ export async function RevenueChartWrapper() {
 
   if (!result.success) {
     return (
-      <div className="bg-white/5 rounded-[15px] border border-white/10 p-6">
-        <h2 className="text-[#00d4ff] text-lg font-bold mb-4">Revenue Trend</h2>
-        <div className="bg-[#e74c3c]/10 border border-[#e74c3c]/30 rounded-[8px] p-4">
-          <p className="text-[#e74c3c] font-medium">Unable to load revenue trend</p>
-          <p className="text-[#e74c3c]/80 text-sm mt-1">{result.error.message}</p>
-        </div>
-      </div>
+      <Panel title="Revenue trend">
+        <AlertBox variant="critical">
+          <p className="m-0 font-medium">Unable to load revenue trend</p>
+          <p className="m-0 mt-1 text-sm">{result.error.message}</p>
+        </AlertBox>
+      </Panel>
     )
   }
 
@@ -38,13 +39,12 @@ export async function MarginComparisonWrapper() {
 
   if (!result.success) {
     return (
-      <div className="bg-white/5 rounded-[15px] border border-white/10 p-6">
-        <h2 className="text-[#00d4ff] text-lg font-bold mb-4">Margin Comparison by BU</h2>
-        <div className="bg-[#e74c3c]/10 border border-[#e74c3c]/30 rounded-[8px] p-4">
-          <p className="text-[#e74c3c] font-medium">Unable to load margin data</p>
-          <p className="text-[#e74c3c]/80 text-sm mt-1">{result.error.message}</p>
-        </div>
-      </div>
+      <Panel title="Margin by business unit">
+        <AlertBox variant="critical">
+          <p className="m-0 font-medium">Unable to load margin data</p>
+          <p className="m-0 mt-1 text-sm">{result.error.message}</p>
+        </AlertBox>
+      </Panel>
     )
   }
 

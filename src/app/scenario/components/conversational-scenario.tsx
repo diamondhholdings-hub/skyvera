@@ -2,13 +2,13 @@
 
 /**
  * Conversational Scenario Interface
- * AI-powered chat interface for what-if scenario modeling
+ * Guided, step-by-step interface for what-if scenario modeling
  * Uses CSS design tokens — no generic Tailwind color classes
  */
 
 import { useState, useRef, useEffect } from 'react'
 import { toast } from 'sonner'
-import { Send, Sparkles, RotateCcw, TrendingUp, GitCompare, Loader2 } from 'lucide-react'
+import { RotateCcw, TrendingUp, GitCompare, Loader2 } from 'lucide-react'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import ImpactDisplay from './impact-display'
@@ -204,211 +204,208 @@ export default function ConversationalScenario({ baseline }: ConversationalScena
     }
   }
 
+  const examples = [
+    'What if we raise prices by 15% but lose 10% of customers?',
+    'What if we lose our top 3 customers?',
+    'What if we acquire a company with $5M ARR and 20 employees?',
+    'What if we reduce headcount by 10 people in Cloudsense?',
+  ]
+
   return (
     <div className="space-y-6">
-      {/* Header */}
-      <div className="bg-gradient-to-r from-[var(--secondary)]/5 to-[var(--secondary)]/10 rounded-lg p-6 border border-[var(--secondary)]/20">
-        <div className="flex items-start justify-between">
-          <div>
-            <div className="flex items-center space-x-2">
-              <Sparkles className="w-6 h-6 text-[var(--accent)]" />
-              <h2 className="font-display text-2xl font-semibold text-[var(--ink)]">
-                Conversational Scenario Planning
-              </h2>
-            </div>
-            <p className="mt-2 text-[var(--muted)]">
-              Describe what you want to explore in natural language. I&apos;ll ask clarifying questions and help you
-              refine your scenario.
-            </p>
-          </div>
-          {conversationId && (
-            <button
-              onClick={handleReset}
-              className="flex items-center space-x-2 px-4 py-2 bg-white border border-[var(--border)] rounded hover:bg-[var(--highlight)] transition-colors"
-            >
-              <RotateCcw className="w-4 h-4" />
-              <span>New Scenario</span>
-            </button>
-          )}
-        </div>
-      </div>
-
-      {/* Example prompts (shown when no conversation) */}
-      {!conversationId && (
-        <div className="bg-white rounded-lg shadow-sm border border-[var(--border)] p-6">
-          <h3 className="text-sm font-semibold text-[var(--ink)] mb-3">Try asking:</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-            {[
-              'What if we raise prices by 15% but lose 10% of customers?',
-              'What if we lose our top 3 customers?',
-              'What if we acquire a company with $5M ARR and 20 employees?',
-              'What if we reduce headcount by 10 people in Cloudsense?',
-            ].map((example, i) => (
-              <button
-                key={i}
-                onClick={() => setInput(example)}
-                className="text-left p-3 bg-[var(--highlight)] rounded border border-[var(--border)] hover:bg-[var(--highlight)] hover:border-[var(--accent)]/50 transition-colors text-sm text-[var(--ink)]"
-              >
-                &quot;{example}&quot;
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+        {/* Conversation panel */}
+        <div className={`card flex min-w-0 flex-col ${conversationId ? 'h-[520px] lg:col-span-3 lg:h-[600px]' : 'h-[320px] lg:col-span-2'}`}>
+          <div className="flex items-center justify-between gap-3 border-b px-4 py-3" style={{ borderColor: 'var(--border)' }}>
+            <h2 className="m-0 text-base font-semibold">Scenario</h2>
+            {conversationId && (
+              <button type="button" onClick={handleReset} className="btn btn-sm">
+                <RotateCcw className="h-3.5 w-3.5" aria-hidden="true" />
+                <span>New scenario</span>
               </button>
-            ))}
+            )}
           </div>
-        </div>
-      )}
 
-      {/* Chat Interface */}
-      <div className="bg-white rounded-lg shadow-sm border border-[var(--border)] flex flex-col" style={{ height: '600px' }}>
-        {/* Messages */}
-        <div className="flex-1 overflow-y-auto p-6 space-y-4">
-          {messages.length === 0 && !conversationId ? (
-            <div className="flex items-center justify-center h-full text-[var(--muted)]/60">
-              <div className="text-center">
-                <Sparkles className="w-12 h-12 mx-auto mb-3 opacity-50" />
-                <p>Start by describing your scenario below</p>
+          {/* Messages */}
+          <div className="flex-1 space-y-4 overflow-y-auto p-4" aria-live="polite">
+            {messages.length === 0 && !conversationId ? (
+              <p className="m-0 text-sm" style={{ color: 'var(--muted)' }}>
+                Describe a scenario below to start. You can refine it with follow-up messages.
+              </p>
+            ) : (
+              <>
+                {messages.map((message) => {
+                  const isUser = message.role === 'user'
+                  return (
+                    <div key={message.id} className={`flex ${isUser ? 'justify-end' : 'justify-start'}`}>
+                      <div className="min-w-0 max-w-[85%]">
+                        <p
+                          className={`section-label m-0 mb-1 text-xs ${isUser ? 'text-right' : ''}`}
+                        >
+                          {isUser ? 'You' : 'Response'}
+                        </p>
+                        <div
+                          className="px-3 py-2 text-sm"
+                          style={{
+                            border: '1px solid var(--border)',
+                            borderRadius: 'var(--radius-md)',
+                            background: isUser ? 'var(--surface-2)' : 'var(--surface)',
+                            color: 'var(--ink)',
+                          }}
+                        >
+                          <div className="prose prose-sm max-w-none [&_li]:ml-4 [&_p:last-child]:mb-0 [&_p]:mb-2 [&_ul]:mb-2">
+                            <ReactMarkdown remarkPlugins={[remarkGfm]}>{message.content}</ReactMarkdown>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )
+                })}
+                <div ref={messagesEndRef} />
+              </>
+            )}
+          </div>
+
+          {/* Action Buttons (when applicable) */}
+          {currentResponse && (
+            <div className="border-t px-4 py-2" style={{ borderColor: 'var(--border)', background: 'var(--surface-2)' }}>
+              <div className="flex flex-wrap items-center gap-2">
+                {currentResponse.type === 'analysis' && versions.length > 0 && (
+                  <>
+                    <button type="button" onClick={handleRefine} disabled={loading} className="btn btn-sm">
+                      <TrendingUp className="h-3.5 w-3.5" aria-hidden="true" />
+                      <span>Refine scenario</span>
+                    </button>
+                    {versions.length >= 2 && (
+                      <button type="button" onClick={handleCompare} disabled={loading} className="btn btn-sm">
+                        <GitCompare className="h-3.5 w-3.5" aria-hidden="true" />
+                        <span>
+                          Compare versions (<span className="num">{versions.length}</span>)
+                        </span>
+                      </button>
+                    )}
+                  </>
+                )}
+                {currentResponse.suggestedActions && currentResponse.suggestedActions.length > 0 && (
+                  <span className="text-xs" style={{ color: 'var(--muted)' }}>
+                    Suggested: {currentResponse.suggestedActions.join(' · ')}
+                  </span>
+                )}
               </div>
             </div>
-          ) : (
-            <>
-              {messages.map((message) => (
-                <div
-                  key={message.id}
-                  className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
-                >
-                  <div
-                    className={`max-w-[80%] rounded-lg px-4 py-3 ${
-                      message.role === 'user'
-                        ? 'bg-[var(--secondary)] text-[var(--paper)]'
-                        : 'bg-[var(--highlight)] text-[var(--ink)] border border-[var(--border)]'
-                    }`}
-                  >
-                    {message.role === 'assistant' && (
-                      <div className="flex items-center space-x-2 mb-2 text-sm font-medium text-[var(--muted)]">
-                        <Sparkles className="w-4 h-4" />
-                        <span>AI Advisor</span>
-                      </div>
-                    )}
-                    <div className="prose prose-sm max-w-none [&_p]:mb-2 [&_ul]:mb-2 [&_li]:ml-4">
-                      <ReactMarkdown remarkPlugins={[remarkGfm]}>{message.content}</ReactMarkdown>
-                    </div>
-                  </div>
-                </div>
-              ))}
-              <div ref={messagesEndRef} />
-            </>
           )}
-        </div>
 
-        {/* Action Buttons (when applicable) */}
-        {currentResponse && (
-          <div className="border-t border-[var(--border)] px-6 py-3 bg-[var(--highlight)]">
-            <div className="flex items-center space-x-3">
-              {currentResponse.type === 'analysis' && versions.length > 0 && (
-                <>
-                  <button
-                    onClick={handleRefine}
-                    disabled={loading}
-                    className="flex items-center space-x-2 px-3 py-2 bg-white border border-[var(--border)] rounded hover:bg-[var(--highlight)] disabled:opacity-50 text-sm"
-                  >
-                    <TrendingUp className="w-4 h-4" />
-                    <span>Refine Scenario</span>
-                  </button>
-                  {versions.length >= 2 && (
-                    <button
-                      onClick={handleCompare}
-                      disabled={loading}
-                      className="flex items-center space-x-2 px-3 py-2 bg-white border border-[var(--border)] rounded hover:bg-[var(--highlight)] disabled:opacity-50 text-sm"
-                    >
-                      <GitCompare className="w-4 h-4" />
-                      <span>Compare Versions ({versions.length})</span>
-                    </button>
-                  )}
-                </>
-              )}
-              {currentResponse.suggestedActions && currentResponse.suggestedActions.length > 0 && (
-                <span className="text-xs text-[var(--muted)]">
-                  Suggested: {currentResponse.suggestedActions.join(' • ')}
-                </span>
-              )}
+          {/* Input Area */}
+          <div className="border-t p-3" style={{ borderColor: 'var(--border)' }}>
+            <div className="flex items-center gap-2">
+              <input
+                ref={inputRef}
+                type="text"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                onKeyPress={handleKeyPress}
+                placeholder={conversationId ? 'Add a follow-up or change a parameter' : 'Describe a what-if scenario'}
+                aria-label={conversationId ? 'Follow-up message' : 'Describe a scenario'}
+                disabled={loading}
+                className="input h-9 min-w-0 flex-1 disabled:opacity-60"
+              />
+              <button
+                type="button"
+                onClick={conversationId ? handleSendMessage : handleStart}
+                disabled={loading || !input.trim()}
+                className="btn btn-primary h-9 shrink-0 px-4"
+              >
+                {loading ? (
+                  <>
+                    <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
+                    <span>Working</span>
+                  </>
+                ) : (
+                  <span>{conversationId ? 'Send' : 'Start'}</span>
+                )}
+              </button>
             </div>
           </div>
-        )}
-
-        {/* Input Area */}
-        <div className="border-t border-[var(--border)] p-4">
-          <div className="flex items-end space-x-3">
-            <input
-              ref={inputRef}
-              type="text"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              onKeyPress={handleKeyPress}
-              placeholder={
-                conversationId
-                  ? 'Continue the conversation...'
-                  : 'Describe your scenario (e.g., "What if we raise prices 10%?")'
-              }
-              disabled={loading}
-              className="flex-1 px-4 py-3 border-2 border-[var(--border)] rounded-lg focus:outline-none focus:border-[var(--accent)] focus:ring-2 focus:ring-[var(--accent)]/20 disabled:opacity-50 disabled:bg-[var(--highlight)]"
-            />
-            <button
-              onClick={conversationId ? handleSendMessage : handleStart}
-              disabled={loading || !input.trim()}
-              className="px-6 py-3 bg-[var(--secondary)] text-[var(--paper)] font-semibold rounded-lg hover:bg-[var(--secondary)]/90 focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center space-x-2"
-            >
-              {loading ? (
-                <>
-                  <Loader2 className="w-5 h-5 animate-spin" />
-                  <span>Processing...</span>
-                </>
-              ) : (
-                <>
-                  <Send className="w-5 h-5" />
-                  <span>{conversationId ? 'Send' : 'Start'}</span>
-                </>
-              )}
-            </button>
-          </div>
         </div>
+
+        {/* Example prompts (shown when no conversation) */}
+        {!conversationId && (
+          <section aria-labelledby="scenario-examples-heading" className="min-w-0">
+            <h2 id="scenario-examples-heading" className="m-0 mb-2 text-base font-semibold">
+              Examples
+            </h2>
+            <p className="m-0 mb-2 text-xs" style={{ color: 'var(--muted)' }}>
+              Pick one to fill in the scenario, then edit it if you like.
+            </p>
+            <ul className="m-0 -mx-2 list-none p-0">
+              {examples.map((example, i) => (
+                <li key={i}>
+                  <button
+                    type="button"
+                    onClick={() => setInput(example)}
+                    className="example-row block w-full px-2 py-1.5 text-left text-sm"
+                  >
+                    {example}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
       </div>
 
       {/* Results Display */}
       {currentResponse && currentResponse.type === 'analysis' && currentResponse.data && (
-        <div className="mt-6">
-          <ImpactDisplay
-            calculatedMetrics={currentResponse.data.calculatedMetrics}
-            claudeAnalysis={currentResponse.data.claudeAnalysis}
-          />
-        </div>
+        <ImpactDisplay
+          calculatedMetrics={currentResponse.data.calculatedMetrics}
+          claudeAnalysis={currentResponse.data.claudeAnalysis}
+        />
       )}
 
       {/* Version History */}
       {versions.length > 0 && (
-        <div className="bg-white rounded-lg shadow-sm border border-[var(--border)] p-6">
-          <h3 className="font-display text-lg font-semibold text-[var(--ink)] mb-4">Scenario Versions</h3>
-          <div className="space-y-3">
-            {versions.map((version) => (
-              <div
-                key={version.versionNumber}
-                className="p-4 bg-[var(--highlight)] rounded border border-[var(--border)] hover:border-[var(--accent)]/50 transition-colors"
-              >
-                <div className="flex items-center justify-between">
-                  <div>
-                    <span className="font-semibold text-[var(--ink)]">
+        <div className="card overflow-hidden">
+          <div className="border-b px-5 py-3" style={{ borderColor: 'var(--border)' }}>
+            <h3 className="m-0 text-base font-semibold">Scenario versions</h3>
+          </div>
+          <div className="overflow-x-auto">
+            <table className="data-table text-sm">
+              <thead>
+                <tr>
+                  <th scope="col">Version</th>
+                  <th scope="col">Impact</th>
+                  <th scope="col" style={{ textAlign: 'right' }}>Created</th>
+                </tr>
+              </thead>
+              <tbody>
+                {versions.map((version) => (
+                  <tr key={version.versionNumber}>
+                    <td className="font-medium" style={{ whiteSpace: 'nowrap' }}>
                       {version.label || `Version ${version.versionNumber}`}
-                    </span>
-                    {version.impactSummary && (
-                      <p className="text-sm text-[var(--muted)] mt-1">{version.impactSummary}</p>
-                    )}
-                  </div>
-                  <span className="text-xs text-[var(--muted)]">
-                    {new Date(version.createdAt).toLocaleString()}
-                  </span>
-                </div>
-              </div>
-            ))}
+                    </td>
+                    <td style={{ color: 'var(--ink-2)' }}>{version.impactSummary || ''}</td>
+                    <td className="num" style={{ textAlign: 'right', whiteSpace: 'nowrap', color: 'var(--muted)' }}>
+                      {new Date(version.createdAt).toLocaleString()}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       )}
+
+      <style>{`
+        .example-row {
+          border: 0;
+          background: transparent;
+          color: var(--ink);
+          border-radius: var(--radius-sm);
+          cursor: pointer;
+          transition: background-color 150ms;
+        }
+        .example-row:hover { background: var(--highlight); }
+      `}</style>
     </div>
   )
 }

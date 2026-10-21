@@ -1,9 +1,9 @@
 'use client';
 
 import React from 'react';
-import type { BusinessUnitMetrics, DMThresholdViolation } from '../types';
-import { DM_SCENARIOS } from '@/lib/intelligence/dm-strategy/constants';
-import '../styles.css';
+import { ArrowDownRight, ArrowRight, ArrowUpRight, CircleCheck, CircleX, TriangleAlert } from 'lucide-react';
+import type { BusinessUnitMetrics } from '../types';
+import { DM_SCENARIOS, DM_THRESHOLDS } from '@/lib/intelligence/dm-strategy/constants';
 
 interface BUCardProps {
   metrics: BusinessUnitMetrics;
@@ -11,116 +11,130 @@ interface BUCardProps {
   onClick?: (bu: string) => void;
 }
 
-function StatusDot({ violation }: { violation: DMThresholdViolation }) {
-  if (violation.isRedFlag) return <span title={`${violation.value.toFixed(1)}% — red flag`} style={{ color: '#DC2626', fontSize: '0.7rem', fontWeight: 700 }}>✗</span>;
-  if (violation.isViolation) return <span title={`${violation.value.toFixed(1)}% — below floor`} style={{ color: '#F59E0B', fontSize: '0.7rem', fontWeight: 700 }}>⚠</span>;
-  if (violation.value >= violation.target) return <span title={`${violation.value.toFixed(1)}% — on target`} style={{ color: '#10B981', fontSize: '0.7rem', fontWeight: 700 }}>✓</span>;
-  return <span title={`${violation.value.toFixed(1)}% — above floor`} style={{ color: '#6366F1', fontSize: '0.7rem', fontWeight: 700 }}>~</span>;
+const formatARR = (v: number) =>
+  v >= 1000000 ? `$${(v / 1000000).toFixed(1)}M` : v >= 1000 ? `$${(v / 1000).toFixed(0)}K` : `$${v}`;
+
+/** TTM status vs the annual floor and the BU's target: icon + word, never color alone */
+function ttmStatus(metrics: BusinessUnitMetrics) {
+  if (metrics.ttmDM < DM_THRESHOLDS.annual.floor) {
+    return { Icon: CircleX, label: 'Below floor', color: 'var(--critical-ink)' };
+  }
+  if (metrics.ttmDM < metrics.targetDM) {
+    return { Icon: TriangleAlert, label: 'Below target', color: 'var(--warning-ink)' };
+  }
+  return { Icon: CircleCheck, label: 'On target', color: 'var(--success-ink)' };
 }
 
+/**
+ * One business unit as a table row. Clicking the row (or its name button)
+ * filters the recommendations below to that BU.
+ */
 export default function BUCard({ metrics, isActive = false, onClick }: BUCardProps) {
   const scenario = metrics.scenario ? DM_SCENARIOS[metrics.scenario] : null;
-  const isOnTarget = metrics.ttmDM >= metrics.targetDM;
+  const status = ttmStatus(metrics);
+  const quarterly = metrics.thresholdViolations?.find((v) => v.period === 'quarterly');
 
-  const trendIcon = metrics.trend === 'up' ? '↑' : metrics.trend === 'down' ? '↓' : '→';
-  const trendColor = metrics.trend === 'up' ? '#10B981' : metrics.trend === 'down' ? '#DC2626' : '#6B7280';
-
-  const formatARR = (v: number) =>
-    v >= 1000000 ? `$${(v / 1000000).toFixed(1)}M` : v >= 1000 ? `$${(v / 1000).toFixed(0)}K` : `$${v}`;
+  const TrendIcon = metrics.trend === 'up' ? ArrowUpRight : metrics.trend === 'down' ? ArrowDownRight : ArrowRight;
+  const trendColor = metrics.trend === 'up' ? 'var(--success-ink)' : metrics.trend === 'down' ? 'var(--critical-ink)' : 'var(--muted)';
 
   return (
-    <div
-      className="dm-card"
-      style={{
-        borderTop: `3px solid ${metrics.color}`,
-        borderLeft: 'none',
-        cursor: onClick ? 'pointer' : 'default',
-        background: isActive ? `${metrics.color}08` : '#FFFFFF',
-        outline: isActive ? `2px solid ${metrics.color}40` : 'none',
-        transition: 'all 0.15s ease',
-        padding: '12px 14px',
-      }}
+    <tr
       onClick={() => onClick?.(metrics.name)}
+      style={{ cursor: onClick ? 'pointer' : 'default', background: isActive ? 'var(--highlight)' : undefined }}
     >
-      {/* Row 1: Name + badge + rec count */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
-        <span style={{ fontWeight: 700, fontSize: '0.85rem', color: metrics.color }}>{metrics.name}</span>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-          {scenario && (
-            <span style={{
-              background: `${scenario.color}18`,
-              color: scenario.color,
-              border: `1px solid ${scenario.color}50`,
-              borderRadius: '3px',
-              padding: '1px 5px',
-              fontSize: '0.6rem',
-              fontWeight: 800,
-              letterSpacing: '0.3px',
-            }}>
-              {scenario.key}
-            </span>
-          )}
-          {metrics.recommendationCount > 0 && (
-            <span style={{
-              background: '#DC2626',
-              color: '#FFF',
-              borderRadius: '10px',
-              padding: '1px 6px',
-              fontSize: '0.65rem',
-              fontWeight: 700,
-            }}>
-              {metrics.recommendationCount}
-            </span>
-          )}
-        </div>
-      </div>
-
-      {/* Row 2: TTM DM% — big number */}
-      <div style={{ textAlign: 'center', margin: '6px 0 8px' }}>
-        <div style={{
-          fontSize: '1.75rem',
-          fontWeight: 800,
-          color: isOnTarget ? '#10B981' : '#DC2626',
-          lineHeight: 1,
-        }}>
-          {metrics.ttmDM.toFixed(1)}%
-        </div>
-        <div style={{ fontSize: '0.6rem', color: '#6B7280', marginTop: '2px', fontWeight: 600 }}>TTM DM%</div>
-      </div>
-
-      {/* Row 3: M / Q / TTM threshold status pills */}
-      {metrics.thresholdViolations?.length > 0 && (
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '4px', marginBottom: '8px' }}>
-          {metrics.thresholdViolations.map((v) => (
-            <div key={v.period} style={{
-              textAlign: 'center',
-              background: v.isRedFlag ? '#FEF2F2' : v.isViolation ? '#FFFBEB' : '#F0FDF4',
-              borderRadius: '4px',
-              padding: '3px 2px',
-            }}>
-              <StatusDot violation={v} />
-              <div style={{ fontSize: '0.55rem', color: '#6B7280', fontWeight: 600, marginTop: '1px' }}>
-                {v.period === 'annual' ? 'TTM' : v.period === 'monthly' ? 'Mo' : 'Qtr'}
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
-
-      {/* Row 4: ARR + trend */}
-      <div style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        borderTop: '1px solid #F3F4F6',
-        paddingTop: '6px',
-        fontSize: '0.7rem',
-      }}>
-        <span style={{ color: '#6B7280', fontWeight: 600 }}>{formatARR(metrics.arr)}</span>
-        <span style={{ color: trendColor, fontWeight: 700 }}>
-          {trendIcon} {metrics.trendValue >= 0 ? '+' : ''}{metrics.trendValue.toFixed(1)}%
+      <td>
+        <button
+          type="button"
+          aria-pressed={isActive}
+          onClick={(e) => {
+            e.stopPropagation();
+            onClick?.(metrics.name);
+          }}
+          className="text-sm font-medium"
+          style={{ background: 'none', border: 0, padding: 0, color: 'var(--ink)', cursor: 'pointer', textAlign: 'left' }}
+        >
+          {metrics.name}
+        </button>
+      </td>
+      <td className="num text-sm font-semibold" style={{ textAlign: 'right', color: status.color }}>
+        {metrics.ttmDM.toFixed(1)}%
+      </td>
+      <td>
+        <span className="inline-flex items-center gap-1.5 whitespace-nowrap text-sm" style={{ color: status.color }}>
+          <status.Icon className="h-4 w-4 shrink-0" aria-hidden="true" />
+          {status.label}
         </span>
+      </td>
+      <td className="num text-sm" style={{ textAlign: 'right', color: 'var(--ink)' }}>
+        <span className="inline-flex items-center justify-end gap-1.5 whitespace-nowrap">
+          {quarterly?.isViolation && (
+            <span
+              className={`px-1.5 py-0.5 text-xs font-medium ${quarterly.isRedFlag ? 'badge-critical' : 'badge-warning'}`}
+              style={{ borderRadius: 'var(--radius-xs)' }}
+            >
+              {quarterly.isRedFlag ? 'Red flag' : 'Below floor'}
+            </span>
+          )}
+          {metrics.quarterlyDM.toFixed(1)}%
+        </span>
+      </td>
+      <td className="text-sm" style={{ color: 'var(--ink-2)', whiteSpace: 'nowrap' }}>
+        {scenario?.label ?? <span style={{ color: 'var(--muted)' }}>Unclassified</span>}
+      </td>
+      <td className="num text-sm" style={{ textAlign: 'right', color: 'var(--ink)' }}>
+        {formatARR(metrics.arr)}
+      </td>
+      <td className="num text-sm" style={{ textAlign: 'right', color: trendColor, whiteSpace: 'nowrap' }}>
+        <span className="relative inline-flex items-center justify-end gap-1">
+          <TrendIcon className="h-3.5 w-3.5" aria-hidden="true" />
+          <span className="sr-only">{metrics.trend === 'up' ? 'Up' : metrics.trend === 'down' ? 'Down' : 'Flat'}</span>
+          {metrics.trendValue >= 0 ? '+' : ''}{metrics.trendValue.toFixed(1)} pts
+        </span>
+      </td>
+      <td className="num text-sm" style={{ textAlign: 'right', color: 'var(--ink)' }}>
+        {metrics.recommendationCount}
+      </td>
+    </tr>
+  );
+}
+
+interface BUTableProps {
+  businessUnits: BusinessUnitMetrics[];
+  selectedBU: string | null;
+  onSelect: (bu: string) => void;
+}
+
+/** Business units panel: one row per BU, click a row to filter recommendations */
+export function BUTable({ businessUnits, selectedBU, onSelect }: BUTableProps) {
+  return (
+    <section className="card overflow-hidden" aria-labelledby="bu-table-heading">
+      <div className="flex flex-wrap items-baseline justify-between gap-2 border-b px-5 py-3" style={{ borderColor: 'var(--border)' }}>
+        <h2 id="bu-table-heading" className="m-0 text-base font-semibold">Business units</h2>
+        <p className="m-0 text-xs" style={{ color: 'var(--muted)' }}>
+          Select a row to filter recommendations · TTM floor {DM_THRESHOLDS.annual.floor}% · target {DM_THRESHOLDS.annual.target}%
+        </p>
       </div>
-    </div>
+      <div className="overflow-x-auto">
+        <table className="data-table" style={{ minWidth: '52rem' }}>
+          <thead>
+            <tr>
+              <th scope="col">Business unit</th>
+              <th scope="col" style={{ textAlign: 'right' }}>TTM DM%</th>
+              <th scope="col">Status</th>
+              <th scope="col" style={{ textAlign: 'right' }}>Latest quarter</th>
+              <th scope="col">Scenario</th>
+              <th scope="col" style={{ textAlign: 'right' }}>ARR</th>
+              <th scope="col" style={{ textAlign: 'right' }}>Trend</th>
+              <th scope="col" style={{ textAlign: 'right' }}>Recs</th>
+            </tr>
+          </thead>
+          <tbody>
+            {businessUnits.map((bu) => (
+              <BUCard key={bu.name} metrics={bu} isActive={selectedBU === bu.name} onClick={onSelect} />
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
   );
 }

@@ -1,6 +1,6 @@
 /**
  * MarginComparison - Client Component using Recharts for BU margin comparison
- * Shows actual vs target margins as grouped bars with color coding
+ * Shows actual vs target margins as grouped bars; actual bars are status-coded
  */
 
 'use client'
@@ -17,6 +17,7 @@ import {
   Cell,
 } from 'recharts'
 import type { BUFinancialSummary } from '@/lib/types/financial'
+import { CHART_VARS, TOOLTIP_STYLE } from '@/components/charts/chart-colors'
 
 interface MarginComparisonProps {
   buSummaries: BUFinancialSummary[]
@@ -33,55 +34,24 @@ export function MarginComparison({ buSummaries }: MarginComparisonProps) {
       meetsTarget: bu.netMarginPct >= bu.netMarginTarget,
     }))
 
+  const tick = { fontSize: 11, fill: CHART_VARS.axis }
+
   return (
-    <div className="bg-white/5 border border-white/10 rounded-[15px] p-6">
-      <h3 className="text-[#00d4ff] text-lg font-bold mb-6 pb-3 border-b border-white/10">
-        Margin Comparison by BU
-      </h3>
+    <div className="card p-5">
+      <h3 className="m-0 mb-4">Margin by business unit</h3>
       <ResponsiveContainer width="100%" height={250}>
-        <BarChart
-          data={chartData}
-          margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-        >
-          <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
-          <XAxis
-            dataKey="bu"
-            stroke="#888"
-            style={{ fontSize: '12px', fill: '#888' }}
-          />
-          <YAxis
-            domain={[0, 100]}
-            tickFormatter={(value) => `${value}%`}
-            stroke="#888"
-            style={{ fontSize: '12px', fill: '#888' }}
-          />
-          <Tooltip
-            formatter={(value) => `${value}%`}
-            contentStyle={{
-              backgroundColor: 'rgba(26, 26, 46, 0.95)',
-              border: '1px solid rgba(255,255,255,0.1)',
-              borderRadius: '8px',
-              padding: '8px 12px',
-              color: '#e8e8e8',
-            }}
-          />
-          <Legend
-            wrapperStyle={{ fontSize: '14px', color: '#e8e8e8' }}
-          />
-          <Bar dataKey="actual" name="Actual Margin" radius={[4, 4, 0, 0]}>
+        <BarChart data={chartData} margin={{ top: 5, right: 20, left: 10, bottom: 5 }}>
+          <CartesianGrid stroke={CHART_VARS.grid} vertical={false} />
+          <XAxis dataKey="bu" tick={tick} axisLine={{ stroke: CHART_VARS.grid }} tickLine={false} />
+          <YAxis domain={[0, 100]} tickFormatter={(value) => `${value}%`} tick={tick} axisLine={false} tickLine={false} />
+          <Tooltip formatter={(value) => `${value}%`} contentStyle={TOOLTIP_STYLE} cursor={{ fill: 'var(--highlight)' }} />
+          <Legend iconType="square" iconSize={10} wrapperStyle={{ fontSize: '0.8125rem', color: 'var(--ink-2)' }} />
+          <Bar dataKey="actual" name="Actual margin" fill={CHART_VARS.series1} radius={[2, 2, 0, 0]}>
             {chartData.map((entry, index) => (
-              <Cell
-                key={`cell-${index}`}
-                fill={entry.meetsTarget ? '#2ecc71' : '#e74c3c'}
-              />
+              <Cell key={`cell-${index}`} fill={entry.meetsTarget ? 'var(--success-ink)' : 'var(--critical-ink)'} />
             ))}
           </Bar>
-          <Bar
-            dataKey="target"
-            name="Target Margin"
-            fill="#f39c12"
-            radius={[4, 4, 0, 0]}
-          />
+          <Bar dataKey="target" name="Target margin" fill={CHART_VARS.series3} radius={[2, 2, 0, 0]} />
         </BarChart>
       </ResponsiveContainer>
     </div>

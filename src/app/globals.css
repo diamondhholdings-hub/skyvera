@@ -1,5 +1,26 @@
 @import "tailwindcss";
-@config "../../tailwind.config.ts";
+
+/* Tailwind theme mapped onto the design tokens below, so utility classes
+   (bg-accent, text-muted, font-display, ...) and inline var(--*)
+   styles always agree. font-display / font-mono resolve to the one sans. */
+@theme inline {
+  --color-ink: var(--ink);
+  --color-paper: var(--paper);
+  --color-accent: var(--accent);
+  --color-secondary: var(--secondary);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-highlight: var(--highlight);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-nav-bg: var(--nav-bg);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-critical: var(--critical);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-body);
+  --font-mono: var(--font-body);
+}
 
 /*
  * Skyvera design tokens. Light, neutral product UI: true-white surfaces,
@@ -190,6 +211,7 @@
   .badge-warning  { background: var(--warning-tint);  color: var(--warning-ink);  border: 1px solid oklch(0.88 0.08 80); }
   .badge-success  { background: var(--success-tint);  color: var(--success-ink);  border: 1px solid oklch(0.87 0.06 158); }
   .badge-info     { background: var(--info-tint);     color: var(--info-ink);     border: 1px solid oklch(0.87 0.04 262); }
+  .badge-neutral  { background: var(--surface-2);     color: var(--ink-2);        border: 1px solid var(--border); }
 
   /* ── Metric card (legacy class, now flat) ───────────── */
   .metric-card {
