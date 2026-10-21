@@ -24,7 +24,7 @@ const DATA = path.join(ROOT, 'data')
 const PLANS = path.join(DATA, 'account-plans')
 
 const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
-const MODEL = 'claude-haiku-4-5-20251001'
+const MODEL = 'claude-haiku-5-5'
 const BATCH_SIZE = 8
 const INTELLIGENCE_BATCH_SIZE = 4 // larger prompts, smaller batch
 
@@ -107,7 +107,7 @@ async function generate(prompt, systemPrompt) {
     system: systemPrompt,
     messages: [{ role: 'user', content: prompt }],
   })
-  const text = msg.content[0].text.trim()
+  const text = (msg.content.find((b) => b.type === 'text')?.text ?? '').trim()
   // Extract JSON from response
   const jsonMatch = text.match(/```json\n?([\s\S]*?)\n?```/) || text.match(/(\[[\s\S]*\]|\{[\s\S]*\})/s)
   if (jsonMatch) return JSON.parse(jsonMatch[1])
@@ -227,7 +227,7 @@ Return ONLY the markdown report, starting with # ${customer.customer_name} Intel
     system: 'You are a senior B2B SaaS customer intelligence analyst specializing in telecom. Write detailed, realistic intelligence reports.',
     messages: [{ role: 'user', content: prompt }],
   })
-  return msg.content[0].text.trim()
+  return (msg.content.find((b) => b.type === 'text')?.text ?? '').trim()
 }
 
 // --- Main ---

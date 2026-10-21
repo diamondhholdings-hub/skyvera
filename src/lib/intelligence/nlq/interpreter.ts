@@ -92,7 +92,6 @@ export async function interpretQuery(
       systemPrompt,
       priority: 'HIGH',
       maxTokens: 2048,
-      temperature: 0.5,
     })
 
     // Handle orchestrator errors (e.g., no API key)
@@ -100,8 +99,7 @@ export async function interpretQuery(
       // Return mock response for graceful degradation
       return ok({
         interpretation: query,
-        answer:
-          'Claude AI is not configured. Please set ANTHROPIC_API_KEY in your environment to enable natural language queries.',
+        answer: unavailableAnswer(response.error),
         needsClarification: false,
         sources: [],
         confidence: 'LOW',
@@ -180,15 +178,13 @@ Use the data above to provide specific, accurate answers to the user's query.
       systemPrompt,
       priority: 'HIGH',
       maxTokens: 2048,
-      temperature: 0.5,
     })
 
     // Handle orchestrator errors
     if (!response.success) {
       return ok({
         interpretation: query,
-        answer:
-          'Claude AI is not configured. Please set ANTHROPIC_API_KEY in your environment to enable natural language queries.',
+        answer: unavailableAnswer(response.error),
         needsClarification: false,
         sources: [],
         confidence: 'LOW',
@@ -217,4 +213,17 @@ Use the data above to provide specific, accurate answers to the user's query.
       error instanceof Error ? error : new Error('Unknown error during query interpretation')
     )
   }
+}
+
+/**
+ * User-facing answer when the orchestrator fails. Only a missing key is reported
+ * as "not configured" — anything else (an invalid key, an outage) is logged, so a
+ * real failure isn't disguised as a configuration gap.
+ */
+function unavailableAnswer(error: Error): string {
+  if (error.message.includes('not configured')) {
+    return 'Claude AI is not configured. Please set ANTHROPIC_API_KEY in your environment to enable natural language queries.'
+  }
+  console.error('[NLQ] Claude request failed:', error)
+  return 'Claude AI is temporarily unavailable. Please try again shortly.'
 }

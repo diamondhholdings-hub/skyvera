@@ -44,7 +44,6 @@ export async function analyzeScenarioWithClaude(
       prompt,
       priority: 'HIGH',
       maxTokens: 4096,
-      temperature: 0.7,
     })
 
     if (!response.success) {

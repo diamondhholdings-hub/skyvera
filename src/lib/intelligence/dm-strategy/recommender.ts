@@ -72,7 +72,6 @@ export async function generateRecommendations(
       systemPrompt: DM_STRATEGY_SYSTEM_PROMPT,
       priority: 'MEDIUM',
       maxTokens: 4096,
-      temperature: 0.8, // Higher temperature for creative recommendations
       cacheKey: `dm-recommendations:${accountName}:${Date.now()}`, // No caching for recommendations
     })
 
@@ -207,7 +206,6 @@ Return JSON only (no markdown, no text outside JSON).`
       systemPrompt: DM_STRATEGY_SYSTEM_PROMPT,
       priority: 'MEDIUM',
       maxTokens: 4096,
-      temperature: 0.8,
     })
 
     if (!response.success) {

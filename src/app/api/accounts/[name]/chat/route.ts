@@ -6,6 +6,7 @@
 
 import { NextRequest } from 'next/server'
 import Anthropic from '@anthropic-ai/sdk'
+import { REASONING_MODEL, FALLBACK_BETA } from '@/lib/intelligence/claude/models'
 import { getAccountPlanData } from '@/lib/data/server/account-plan-data'
 import { getAllCustomersWithHealth } from '@/lib/data/server/account-data'
 import { rateLimit, rateLimitHeaders } from '@/lib/middleware/rate-limit'
@@ -127,9 +128,13 @@ Answer questions concisely and strategically. Focus on actionable insights.`
     const stream = new ReadableStream({
       async start(controller) {
         try {
-          const messageStream = anthropic.messages.stream({
-            model: 'claude-sonnet-4-6',
-            max_tokens: 1024,
+          const messageStream = anthropic.beta.messages.stream({
+            model: REASONING_MODEL,
+            // Room for adaptive thinking plus the reply; thinking counts toward max_tokens.
+            max_tokens: 4096,
+            output_config: { effort: 'low' },
+            betas: [FALLBACK_BETA],
+            fallbacks: 'default',
             system: systemPrompt,
             messages,
           })

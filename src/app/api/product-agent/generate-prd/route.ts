@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { prisma } from '@/lib/db/prisma';
 import Anthropic from '@anthropic-ai/sdk';
+import { REASONING_MODEL, FALLBACK_BETA, extractText } from '@/lib/intelligence/claude/models';
 import { rateLimit, rateLimitHeaders } from '@/lib/middleware/rate-limit';
 
 const anthropic = new Anthropic({
@@ -238,9 +239,11 @@ Return ONLY a JSON object with this structure:
 
 Make it outcome-driven, data-backed, and actionable. Use the Skyvera context (B2B SaaS portfolio company with multiple business units).`;
 
-  const message = await anthropic.messages.create({
-    model: 'claude-sonnet-4-20250514',
+  const message = await anthropic.beta.messages.create({
+    model: REASONING_MODEL,
     max_tokens: 16000,
+    betas: [FALLBACK_BETA],
+    fallbacks: 'default',
     messages: [
       {
         role: 'user',
@@ -249,7 +252,11 @@ Make it outcome-driven, data-backed, and actionable. Use the Skyvera context (B2
     ]
   });
 
-  const responseText = message.content[0].type === 'text' ? message.content[0].text : '';
+  if (message.stop_reason === 'refusal') {
+    throw new Error('Claude declined to generate this PRD');
+  }
+
+  const responseText = extractText(message.content);
 
   // Extract JSON from response (handle both raw JSON and markdown code blocks)
   let jsonStr = responseText.trim();

@@ -105,19 +105,18 @@ Respond in JSON format:
 
   try {
     const message = await anthropic.messages.create({
-      model: 'claude-sonnet-4-20250514',
-      max_tokens: 2000,
+      model: 'claude-sonnet-5-5',
+      max_tokens: 8000,
       messages: [
         {
           role: 'user',
           content: prompt
         }
-      ],
-      temperature: 0.7
+      ]
     });
 
     // Extract JSON from response
-    const content = message.content[0].type === 'text' ? message.content[0].text : '';
+    const content = message.content.find((b) => b.type === 'text')?.text ?? '';
 
     // Try to parse JSON (Claude might wrap it in markdown)
     let jsonStr = content;

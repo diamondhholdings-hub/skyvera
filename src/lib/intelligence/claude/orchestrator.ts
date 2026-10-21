@@ -4,6 +4,7 @@
  */
 
 import Anthropic from '@anthropic-ai/sdk'
+import { FAST_MODEL, extractText } from './models'
 import { CacheManager, CACHE_TTL } from '@/lib/cache/manager'
 import { ClaudeRateLimiter } from './rate-limiter'
 import { Result, ok, err } from '@/lib/types/result'
@@ -14,7 +15,6 @@ export interface ClaudeRequest {
   priority: 'HIGH' | 'MEDIUM' | 'LOW'
   context?: Record<string, unknown>
   maxTokens?: number
-  temperature?: number
   cacheKey?: string // Custom cache key, defaults to prompt hash
 }
 
@@ -258,8 +258,8 @@ export class ClaudeOrchestrator {
    * plus up to 1 second of random jitter to avoid retry storms. Other error codes
    * (4xx/5xx) fail immediately without retrying.
    *
-   * Uses `claude-haiku-4-5-20251001` — the fast, low-cost model appropriate for
-   * high-volume NLQ and enrichment tasks. Switch to Sonnet for higher reasoning tasks.
+   * Uses FAST_MODEL (see ./models.ts) — the fast, low-cost model appropriate for
+   * high-volume NLQ and enrichment tasks. Switch to REASONING_MODEL for higher reasoning tasks.
    *
    * @param request  The Claude request to execute
    * @returns        Result wrapping the response content and token usage counts
@@ -278,9 +278,10 @@ export class ClaudeOrchestrator {
     for (let attempt = 0; attempt <= maxRetries; attempt++) {
       try {
         const response = await this.client.messages.create({
-          model: 'claude-haiku-4-5-20251001',
+          model: FAST_MODEL,
+          // Thinking tokens count toward max_tokens on current models.
           max_tokens: request.maxTokens || 4096,
-          temperature: request.temperature || 0.7,
+          output_config: { effort: 'medium' },
           system: request.systemPrompt,
           messages: [
             {
@@ -292,11 +293,12 @@ export class ClaudeOrchestrator {
 
         this.stats.apiCalls++
 
+        if (response.stop_reason === 'refusal') {
+          return err(new Error('Claude declined this request'))
+        }
+
         return ok({
-          content:
-            response.content[0].type === 'text'
-              ? response.content[0].text
-              : '',
+          content: extractText(response.content),
           model: response.model,
           inputTokens: response.usage.input_tokens,
           outputTokens: response.usage.output_tokens,

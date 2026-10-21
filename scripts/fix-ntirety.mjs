@@ -37,11 +37,11 @@ const tasks = [
 
 for (const { type, prompt } of tasks) {
   const msg = await client.messages.create({
-    model: 'claude-haiku-4-5-20251001',
-    max_tokens: 1024,
+    model: 'claude-haiku-5-5',
+    max_tokens: 4096,
     messages: [{ role: 'user', content: prompt }],
   })
-  const data = parseJSON(msg.content[0].text.trim())
+  const data = parseJSON((msg.content.find((b) => b.type === 'text')?.text ?? '').trim())
   fs.writeFileSync(`data/account-plans/${type}/${slug}.json`, JSON.stringify(data, null, 2))
   console.log(`${type}: OK`)
 }
