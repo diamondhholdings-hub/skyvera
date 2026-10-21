@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('DM Strategy Page', () => {
   test('should load with recommendations', async ({ page }) => {
-    await page.goto('http://localhost:3000/dm-strategy');
+    await page.goto('/dm-strategy');
 
     // Wait for page to load - look for live data indicator
     await page.waitForSelector('text=Live Data', { timeout: 10000 });
@@ -16,7 +16,7 @@ test.describe('DM Strategy Page', () => {
   });
 
   test('should filter by business unit', async ({ page }) => {
-    await page.goto('http://localhost:3000/dm-strategy');
+    await page.goto('/dm-strategy');
     await page.waitForSelector('text=Live Data');
 
     // Verify BU cards/sections are present
@@ -27,7 +27,7 @@ test.describe('DM Strategy Page', () => {
   });
 
   test('should show recommendation details', async ({ page }) => {
-    await page.goto('http://localhost:3000/dm-strategy');
+    await page.goto('/dm-strategy');
     await page.waitForSelector('text=Live Data');
 
     // Check for numeric values (ARR, DM%, etc.)

@@ -5,6 +5,10 @@
 
 import { defineConfig, devices } from '@playwright/test'
 
+// Override when port 3000 is taken by another process (reuseExistingServer would
+// otherwise attach to it): PLAYWRIGHT_PORT=3100 npx playwright test
+const PORT = process.env.PLAYWRIGHT_PORT || '3000'
+
 export default defineConfig({
   testDir: './tests',
 
@@ -26,7 +30,7 @@ export default defineConfig({
   // Shared settings for all tests
   use: {
     // Base URL for navigation
-    baseURL: 'http://localhost:3000',
+    baseURL: `http://localhost:${PORT}`,
 
     // Trace on first retry and on failure
     trace: 'retain-on-failure',
@@ -63,8 +67,8 @@ export default defineConfig({
 
   // Web server configuration - start Next.js dev server before tests
   webServer: {
-    command: 'npm run dev',
-    url: 'http://localhost:3000',
+    command: `npm run dev -- --port ${PORT}`,
+    url: `http://localhost:${PORT}`,
     timeout: 120000, // 2 minutes to start
     reuseExistingServer: true, // Don't restart if already running
     stdout: 'ignore',
