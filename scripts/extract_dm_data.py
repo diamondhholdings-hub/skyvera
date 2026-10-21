@@ -13,7 +13,7 @@ from openpyxl import load_workbook
 from datetime import datetime
 
 # File path
-EXCEL_FILE = "2026-07-02 Skyvera - Budget - Q3'26 - Final - For Todd.xlsx"
+EXCEL_FILE = "2026-09-24 Skyvera Budget P&L - Q4'26 - Final for Todd.xlsx"
 
 
 def _detect_fiscal_quarter(wb):
@@ -30,6 +30,16 @@ def _detect_fiscal_quarter(wb):
     return "Unknown"
 
 
+def _shift_quarter(label, offset):
+    """Shift a quarter label like "Q4'26" by `offset` quarters ("Q4'26", -1 -> "Q3'26").
+    Returns the label unchanged if it can't be parsed."""
+    match = re.match(r"Q([1-4])'(\d{2})", label or '')
+    if not match:
+        return label
+    index = int(match.group(2)) * 4 + int(match.group(1)) - 1 + offset
+    return f"Q{index % 4 + 1}'{index // 4:02d}"
+
+
 def extract_dm_data():
     """Extract revenue data and calculate DM% for each BU"""
     try:
@@ -43,15 +53,16 @@ def extract_dm_data():
         wb = load_workbook(file_path, data_only=True)
 
         # We need to extract data from RR Summary sheet which contains:
-        # - Current period revenue (Q1'26 Plan)
+        # - Current period revenue (current-quarter Plan)
         # - Prior period revenue (Prior Plan)
         # - DM% calculations
 
+        fiscal_quarter = _detect_fiscal_quarter(wb)
         dm_data = {
             "business_units": [],
             "consolidated": {},
             "extracted_at": datetime.now().isoformat(),
-            "fiscal_quarter": _detect_fiscal_quarter(wb)
+            "fiscal_quarter": fiscal_quarter
         }
 
         # Try to extract from RR Summary sheet first
@@ -146,22 +157,22 @@ def extract_dm_data():
                         "meets_target": dm_pct >= 90.0,
                         "ttm_quarters": [
                             {
-                                "quarter": "Q2'25",
+                                "quarter": _shift_quarter(fiscal_quarter, -3),
                                 "rr": prior_rr * 0.97,  # Simulated historical data
                                 "dm_pct": 97.0
                             },
                             {
-                                "quarter": "Q3'25",
+                                "quarter": _shift_quarter(fiscal_quarter, -2),
                                 "rr": prior_rr * 0.99,
                                 "dm_pct": 99.0
                             },
                             {
-                                "quarter": "Q4'25",
+                                "quarter": _shift_quarter(fiscal_quarter, -1),
                                 "rr": prior_rr,
                                 "dm_pct": 100.0
                             },
                             {
-                                "quarter": "Q1'26",
+                                "quarter": _shift_quarter(fiscal_quarter, 0),
                                 "rr": current_rr,
                                 "dm_pct": dm_pct
                             }
@@ -187,22 +198,22 @@ def extract_dm_data():
                 "target": 90.0,
                 "ttm_quarters": [
                     {
-                        "quarter": "Q2'25",
+                        "quarter": _shift_quarter(fiscal_quarter, -3),
                         "rr": total_prior_revenue * 0.97,
                         "dm_pct": 97.0
                     },
                     {
-                        "quarter": "Q3'25",
+                        "quarter": _shift_quarter(fiscal_quarter, -2),
                         "rr": total_prior_revenue * 0.99,
                         "dm_pct": 99.0
                     },
                     {
-                        "quarter": "Q4'25",
+                        "quarter": _shift_quarter(fiscal_quarter, -1),
                         "rr": total_prior_revenue,
                         "dm_pct": 100.0
                     },
                     {
-                        "quarter": "Q1'26",
+                        "quarter": _shift_quarter(fiscal_quarter, 0),
                         "rr": total_current_revenue,
                         "dm_pct": consolidated_dm_pct
                     }
@@ -221,7 +232,7 @@ def extract_dm_data():
             avg_decline_rate = total_decline_rate / len(dm_data["business_units"])
 
             # Forecast next 4 quarters
-            forecast_quarters = ["Q2'26", "Q3'26", "Q4'26", "Q1'27"]
+            forecast_quarters = [_shift_quarter(fiscal_quarter, i) for i in range(1, 5)]
 
             dm_data["forecast"] = {
                 "method": "linear_trend",

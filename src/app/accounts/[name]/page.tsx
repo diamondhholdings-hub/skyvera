@@ -10,6 +10,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { getAccountPlanData } from '@/lib/data/server/account-plan-data'
 import { getAllCustomersWithHealth } from '@/lib/data/server/account-data'
+import { getFiscalQuarterLabel } from '@/lib/data/server/fiscal-quarter'
 import { TabNavigation } from './_components/tab-navigation'
 import { OverviewTab } from './_components/overview-tab'
 import { FinancialsTab } from './_components/financials-tab'
@@ -51,6 +52,7 @@ export default async function AccountPlanPage({ params, searchParams }: AccountP
 
   // Fetch account plan data
   const accountDataResult = await getAccountPlanData(customerName)
+  const quarterLabel = getFiscalQuarterLabel()
 
   if (!accountDataResult.success) {
     return (
@@ -137,7 +139,7 @@ export default async function AccountPlanPage({ params, searchParams }: AccountP
                 {customer.customer_name}
               </h1>
               <p style={{ fontSize: '1.1rem', opacity: 0.85, marginTop: '0.5rem' }}>
-                {customer.bu} Business Unit | Skyvera | Q1 2026
+                {[`${customer.bu} Business Unit`, 'Skyvera', quarterLabel].filter(Boolean).join(' | ')}
               </p>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', alignItems: 'flex-end' }} data-print="hide">
@@ -161,7 +163,7 @@ export default async function AccountPlanPage({ params, searchParams }: AccountP
                 sub: 'Account health status',
               },
               { label: 'Business Unit', value: customer.bu, sub: 'Skyvera Platform' },
-              { label: 'Account Status', value: 'Active', sub: 'Q1 2026' },
+              { label: 'Account Status', value: 'Active', sub: quarterLabel || 'Current quarter' },
             ].map(({ label, value, sub }) => (
               <div
                 key={label}

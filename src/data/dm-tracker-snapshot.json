@@ -2,153 +2,153 @@
   "business_units": [
     {
       "bu": "Cloudsense",
-      "current_rr": 6312956.5726278545,
-      "prior_rr": 6480543.3129863,
-      "dm_pct": 97.41400169299664,
-      "variance": -167586.7403584458,
+      "current_rr": 6150756.288061645,
+      "prior_rr": 6277472.550671236,
+      "dm_pct": 97.98141271687375,
+      "variance": -126716.26260959078,
       "meets_target": true,
       "ttm_quarters": [
         {
-          "quarter": "Q2'25",
-          "rr": 6286127.013596711,
+          "quarter": "Q1'26",
+          "rr": 6089148.374151099,
           "dm_pct": 97.0
         },
         {
-          "quarter": "Q3'25",
-          "rr": 6415737.879856437,
+          "quarter": "Q2'26",
+          "rr": 6214697.825164523,
           "dm_pct": 99.0
         },
         {
-          "quarter": "Q4'25",
-          "rr": 6480543.3129863,
+          "quarter": "Q3'26",
+          "rr": 6277472.550671236,
           "dm_pct": 100.0
         },
         {
-          "quarter": "Q1'26",
-          "rr": 6312956.5726278545,
-          "dm_pct": 97.41400169299664
+          "quarter": "Q4'26",
+          "rr": 6150756.288061645,
+          "dm_pct": 97.98141271687375
         }
       ]
     },
     {
       "bu": "Kandy",
-      "current_rr": 2866929.680273972,
-      "prior_rr": 3397626.5675068493,
-      "dm_pct": 84.38036444887177,
-      "variance": -530696.8872328773,
+      "current_rr": 1569411.6170958898,
+      "prior_rr": 2623853.498767123,
+      "dm_pct": 59.81323339253938,
+      "variance": -1054441.8816712333,
       "meets_target": false,
       "ttm_quarters": [
         {
-          "quarter": "Q2'25",
-          "rr": 3295697.7704816437,
+          "quarter": "Q1'26",
+          "rr": 2545137.893804109,
           "dm_pct": 97.0
         },
         {
-          "quarter": "Q3'25",
-          "rr": 3363650.301831781,
+          "quarter": "Q2'26",
+          "rr": 2597614.963779452,
           "dm_pct": 99.0
         },
         {
-          "quarter": "Q4'25",
-          "rr": 3397626.5675068493,
+          "quarter": "Q3'26",
+          "rr": 2623853.498767123,
           "dm_pct": 100.0
         },
         {
-          "quarter": "Q1'26",
-          "rr": 2866929.680273972,
-          "dm_pct": 84.38036444887177
+          "quarter": "Q4'26",
+          "rr": 1569411.6170958898,
+          "dm_pct": 59.81323339253938
         }
       ]
     },
     {
       "bu": "STL",
-      "current_rr": 645411.5397260276,
-      "prior_rr": 675056.8471963473,
-      "dm_pct": 95.60847244295901,
-      "variance": -29645.307470319676,
+      "current_rr": 703054.036675799,
+      "prior_rr": 651345.1061826483,
+      "dm_pct": 107.93879158718215,
+      "variance": 51708.93049315072,
       "meets_target": true,
       "ttm_quarters": [
         {
-          "quarter": "Q2'25",
-          "rr": 654805.1417804569,
+          "quarter": "Q1'26",
+          "rr": 631804.7529971689,
           "dm_pct": 97.0
         },
         {
-          "quarter": "Q3'25",
-          "rr": 668306.2787243838,
+          "quarter": "Q2'26",
+          "rr": 644831.6551208219,
           "dm_pct": 99.0
         },
         {
-          "quarter": "Q4'25",
-          "rr": 675056.8471963473,
+          "quarter": "Q3'26",
+          "rr": 651345.1061826483,
           "dm_pct": 100.0
         },
         {
-          "quarter": "Q1'26",
-          "rr": 645411.5397260276,
-          "dm_pct": 95.60847244295901
+          "quarter": "Q4'26",
+          "rr": 703054.036675799,
+          "dm_pct": 107.93879158718215
         }
       ]
     }
   ],
   "consolidated": {
-    "current_rr": 9825297.792627854,
-    "prior_rr": 10553226.727689497,
-    "dm_pct": 93.10230933301465,
-    "variance": -727928.9350616429,
-    "meets_target": true,
+    "current_rr": 8423221.941833334,
+    "prior_rr": 9552671.155621007,
+    "dm_pct": 88.17661368859035,
+    "variance": -1129449.213787673,
+    "meets_target": false,
     "target": 90.0,
     "ttm_quarters": [
       {
-        "quarter": "Q2'25",
-        "rr": 10236629.925858812,
+        "quarter": "Q1'26",
+        "rr": 9266091.020952377,
         "dm_pct": 97.0
       },
       {
-        "quarter": "Q3'25",
-        "rr": 10447694.460412603,
+        "quarter": "Q2'26",
+        "rr": 9457144.444064798,
         "dm_pct": 99.0
       },
       {
-        "quarter": "Q4'25",
-        "rr": 10553226.727689497,
+        "quarter": "Q3'26",
+        "rr": 9552671.155621007,
         "dm_pct": 100.0
       },
       {
-        "quarter": "Q1'26",
-        "rr": 9825297.792627854,
-        "dm_pct": 93.10230933301465
+        "quarter": "Q4'26",
+        "rr": 8423221.941833334,
+        "dm_pct": 88.17661368859035
       }
     ]
   },
-  "extracted_at": "2026-08-05T09:07:59.142909",
-  "fiscal_quarter": "Q3'26",
+  "extracted_at": "2026-10-21T07:16:12.926654",
+  "fiscal_quarter": "Q4'26",
   "forecast": {
     "method": "linear_trend",
-    "avg_quarterly_decline_rate": -7.53238713839086,
+    "avg_quarterly_decline_rate": -11.42218743446824,
     "quarters": [
       {
-        "quarter": "Q2'26",
-        "forecasted_rr": 8777539.410161994,
-        "forecasted_dm_pct": 89.33611576381921,
+        "quarter": "Q1'27",
+        "forecasted_rr": 6946253.772674228,
+        "forecasted_dm_pct": 82.46551997135623,
         "confidence": "medium"
       },
       {
-        "quarter": "Q3'26",
-        "forecasted_rr": 8407499.676541742,
-        "forecasted_dm_pct": 85.56992219462379,
+        "quarter": "Q2'27",
+        "forecasted_rr": 6465195.673565499,
+        "forecasted_dm_pct": 76.75442625412211,
         "confidence": "medium"
       },
       {
-        "quarter": "Q4'26",
-        "forecasted_rr": 8037459.942921493,
-        "forecasted_dm_pct": 81.80372862542836,
+        "quarter": "Q3'27",
+        "forecasted_rr": 5984137.57445677,
+        "forecasted_dm_pct": 71.04333253688799,
         "confidence": "low"
       },
       {
-        "quarter": "Q1'27",
-        "forecasted_rr": 7667420.209301241,
-        "forecasted_dm_pct": 78.03753505623293,
+        "quarter": "Q4'27",
+        "forecasted_rr": 5503079.4753480395,
+        "forecasted_dm_pct": 65.33223881965387,
         "confidence": "low"
       }
     ]

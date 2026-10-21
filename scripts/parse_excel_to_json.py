@@ -17,7 +17,7 @@ from pathlib import Path
 from openpyxl import load_workbook
 
 # Excel file path relative to project root
-EXCEL_FILE = "2026-07-02 Skyvera - Budget - Q3'26 - Final - For Todd.xlsx"
+EXCEL_FILE = "2026-09-24 Skyvera Budget P&L - Q4'26 - Final for Todd.xlsx"
 
 def log(message):
     """Log progress to stderr (so it doesn't contaminate JSON output)"""
@@ -83,10 +83,9 @@ def extract_nrr_customers(wb, class_filter):
 
         customer_name = row[1]
         class_col = row[2] if len(row) > 2 else None
-        q1_26 = row[8] if len(row) > 8 else 0
-        q2_26 = row[9] if len(row) > 9 else 0
-        q3_26 = row[10] if len(row) > 10 else 0
-        q4_26 = row[11] if len(row) > 11 else 0
+        # Columns I-L are a rolling 4-quarter forward window starting at the
+        # current quarter (e.g. Q4'26..Q3'27 in the Q4'26 workbook), not a fixed FY.
+        next_4_quarters = row[8:12] if len(row) > 8 else ()
 
         if not class_col or class_filter not in class_col:
             continue
@@ -99,11 +98,11 @@ def extract_nrr_customers(wb, class_filter):
         if not customer_name:
             continue
 
-        fy26_nrr = (q1_26 or 0) + (q2_26 or 0) + (q3_26 or 0) + (q4_26 or 0)
+        forward_nrr = sum(_safe_num(v) for v in next_4_quarters)
 
         if customer_name not in customers:
             customers[customer_name] = 0
-        customers[customer_name] += fy26_nrr
+        customers[customer_name] += forward_nrr
 
     return customers
 
@@ -114,23 +113,28 @@ def extract_bu_customers(wb, bu_name, company_filter, class_filter):
     rr_customers = extract_rr_customers(wb, company_filter)
     nrr_data = extract_nrr_customers(wb, class_filter)
 
-    # Merge RR and NRR data
-    all_customer_names = set(rr_customers.keys()) | set(nrr_data.keys())
+    # Merge RR and NRR data. Names are matched case-insensitively because the
+    # workbook spells the same customer differently across (and within) sheets
+    # — e.g. "AT&T SERVICES, INC." in RR Input vs "At&T Services, Inc." in
+    # NRR Input — and exact-string keys split one customer into two rows.
+    # The RR-side spelling wins as the display name.
+    merged = {}
+    for name, data in rr_customers.items():
+        entry = merged.setdefault(name.strip().casefold(), {
+            'customer_name': name, 'rr': 0, 'nrr': 0, 'subscriptions': []
+        })
+        entry['rr'] += data['rr']
+        entry['subscriptions'].extend(data['subscriptions'])
+    for name, nrr in nrr_data.items():
+        entry = merged.setdefault(name.strip().casefold(), {
+            'customer_name': name, 'rr': 0, 'nrr': 0, 'subscriptions': []
+        })
+        entry['nrr'] += nrr
 
     customers = []
-    for name in all_customer_names:
-        rr = rr_customers.get(name, {}).get('rr', 0)
-        nrr = nrr_data.get(name, 0)
-        total = rr + nrr
-
-        customer = {
-            'customer_name': name,
-            'rr': rr,
-            'nrr': nrr,
-            'total': total,
-            'subscriptions': rr_customers.get(name, {}).get('subscriptions', [])
-        }
-        customers.append(customer)
+    for entry in merged.values():
+        entry['total'] = entry['rr'] + entry['nrr']
+        customers.append(entry)
 
     # Sort by total revenue descending
     customers.sort(key=lambda x: x['total'], reverse=True)
@@ -266,6 +270,15 @@ def _read_bu_pnl(wb, sheet_name, bu_name):
         'deltaToMargin': delta_to_margin,
         'ebitda': ebitda,
     }
+
+
+def detect_fiscal_quarter(wb):
+    """Read the current quarter label (e.g. "Q4'26") from the consolidated P&Ls
+    header, which reads like "Q4'26 BU Plan". Returns None if not found."""
+    if 'P&Ls' not in wb.sheetnames:
+        return None
+    match = re.match(r"Q[1-4]'\d{2}", str(wb['P&Ls'].cell(row=4, column=3).value or ''))
+    return match.group(0) if match else None
 
 
 def extract_ar_aging(wb):
@@ -448,21 +461,15 @@ def main():
         sys.exit(1)
 
     # Extract data based on type
-    result = {}
+    result = {'fiscalQuarter': detect_fiscal_quarter(wb)}
 
     if args.type in ['customers', 'all']:
         customers = extract_all_customers(wb)
-        if args.type == 'customers':
-            result = {'customers': customers}
-        else:
-            result['customers'] = customers
+        result['customers'] = customers
 
     if args.type in ['financials', 'all']:
         financials = extract_financials(wb)
-        if args.type == 'financials':
-            result = {'financials': financials}
-        else:
-            result['financials'] = financials
+        result['financials'] = financials
 
     # Output JSON to stdout
     log("\n✓ Extraction complete, outputting JSON...")
