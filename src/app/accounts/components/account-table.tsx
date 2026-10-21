@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useMemo } from 'react'
 import Link from 'next/link'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { ArrowDown, ArrowUp, ChevronLeft, ChevronRight } from 'lucide-react'
 import {
   useReactTable,
@@ -23,6 +24,9 @@ interface AccountTableProps {
 }
 
 const PAGE_SIZE = 24
+
+// Canonical business unit names, for matching ?bu= case-insensitively
+const BU_OPTIONS = ['Cloudsense', 'Kandy', 'STL', 'NewNet']
 
 function formatCurrency(value: number): string {
   if (value >= 1_000_000) return `$${(value / 1_000_000).toFixed(1)}M`
@@ -83,11 +87,19 @@ export function AccountTable({ customers, completenessScores = {} }: AccountTabl
     getFilteredRowModel: getFilteredRowModel(),
   })
 
+  // Business unit lives in the URL (?bu=), which the server page already
+  // filters on, so a filtered view is bookmarkable and the control always
+  // reflects it. Filtering it again client-side would run against the
+  // already-filtered list and empty the table when switching units.
+  const router = useRouter()
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
   const handleBUFilter = (bu: string | null) => {
-    setColumnFilters(prev => bu === null
-      ? prev.filter(f => f.id !== 'bu')
-      : [...prev.filter(f => f.id !== 'bu'), { id: 'bu', value: bu }]
-    )
+    const params = new URLSearchParams(searchParams.toString())
+    if (bu === null) params.delete('bu')
+    else params.set('bu', bu)
+    const query = params.toString()
+    router.push(query ? `${pathname}?${query}` : pathname, { scroll: false })
   }
 
   const handleHealthFilter = (health: string | null) => {
@@ -97,7 +109,8 @@ export function AccountTable({ customers, completenessScores = {} }: AccountTabl
     )
   }
 
-  const activeBU = columnFilters.find(f => f.id === 'bu')?.value as string | null
+  const urlBU = searchParams.get('bu')
+  const activeBU = BU_OPTIONS.find(b => b.toLowerCase() === urlBU?.toLowerCase()) ?? null
   const activeHealth = columnFilters.find(f => f.id === 'healthScore')?.value as string | null
 
   const allRows = table.getRowModel().rows
