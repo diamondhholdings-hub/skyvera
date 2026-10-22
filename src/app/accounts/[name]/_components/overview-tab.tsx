@@ -1,12 +1,12 @@
 /**
- * OverviewTab - Telstra-style overview with charts, alert, priorities, account status, risk summary
+ * OverviewTab - risk alert, 90-day priorities, account status, risk summary, charts
  * Server Component — chart subcomponents are 'use client' wrapped in Suspense
  */
 
 import { Suspense } from 'react'
 import type { CustomerWithHealth } from '@/lib/types/customer'
 import type { PainPoint, Opportunity } from '@/lib/types/account-plan'
-import { AlertTriangle } from 'lucide-react'
+import { CircleAlert, TriangleAlert, Clock } from 'lucide-react'
 import { ARRBreakdownChart } from '@/components/charts/arr-breakdown-chart'
 import { TopCustomersChart } from '@/components/charts/top-customers-chart'
 
@@ -31,11 +31,13 @@ function parseRenewalQtr(qtr: string): Date | null {
   return new Date(parseInt(match[2], 10), quarterMonth, 1)
 }
 
-/** Return renewal display value and colour for the Account Status table. */
+type RenewalTone = 'default' | 'success' | 'warning' | 'critical'
+
+/** Return renewal display value and tone for the Account Status table. */
 function getRenewalDisplay(
   subscriptions: Array<{ renewal_qtr: string | null; endDate?: string }>
-): { text: string; color: string } {
-  if (!subscriptions.length) return { text: '—', color: 'var(--ink)' }
+): { text: string; tone: RenewalTone } {
+  if (!subscriptions.length) return { text: '—', tone: 'default' }
 
   const today = new Date()
   let soonestMs = Infinity
@@ -64,20 +66,25 @@ function getRenewalDisplay(
     }
   }
 
-  if (!soonestDate) return { text: '—', color: 'var(--ink)' }
+  if (!soonestDate) return { text: '—', tone: 'default' }
 
   const daysUntil = Math.round(soonestMs / (1000 * 60 * 60 * 24))
 
-  if (daysUntil < 0) return { text: '⚠️ Renewal overdue', color: '#dc2626' }
+  if (daysUntil < 0) return { text: 'Renewal overdue', tone: 'critical' }
 
   const label = soonestQtrLabel || soonestDate.toLocaleDateString('en-US', { month: 'short', year: 'numeric' })
 
-  if (daysUntil < 90) return { text: `🚨 ${label} (${daysUntil} days)`, color: '#dc2626' }
-  if (daysUntil <= 180) return { text: `⚠️ ${label} (${daysUntil} days)`, color: '#d97706' }
-  return { text: `${label} (${daysUntil} days)`, color: '#16a34a' }
+  if (daysUntil < 90) return { text: `${label} (${daysUntil} days)`, tone: 'critical' }
+  if (daysUntil <= 180) return { text: `${label} (${daysUntil} days)`, tone: 'warning' }
+  return { text: `${label} (${daysUntil} days)`, tone: 'success' }
 }
 
-const priorityLabels = ['#1 Priority', '#2 Priority', '#3 Priority']
+const renewalToneColor: Record<RenewalTone, string> = {
+  default: 'var(--ink)',
+  success: 'var(--success-ink)',
+  warning: 'var(--warning-ink)',
+  critical: 'var(--critical-ink)',
+}
 
 export function OverviewTab({
   customer,
@@ -87,152 +94,130 @@ export function OverviewTab({
 }: OverviewTabProps) {
   const arr = customer.rr + customer.nrr
   const hasAlert = customer.healthScore === 'red' || customer.healthScore === 'yellow'
+  const isCritical = customer.healthScore === 'red'
   const topPainPoints = painPoints.slice(0, 3)
   const topOpportunities = opportunities.slice(0, 3)
   const renewal = getRenewalDisplay(customer.subscriptions)
 
   const defaultPriorities = [
-    { label: '#1 Priority', title: 'Strengthen Executive Engagement' },
-    {
-      label: '#2 Priority',
-      title: customer.subscriptions.length > 0
-        ? `Secure ${customer.subscriptions.length} Subscription Renewal${customer.subscriptions.length > 1 ? 's' : ''}`
-        : 'Identify Expansion Opportunities',
-    },
-    { label: '#3 Priority', title: 'Execute Upsell Strategy' },
+    'Strengthen executive engagement',
+    customer.subscriptions.length > 0
+      ? `Secure ${customer.subscriptions.length} subscription renewal${customer.subscriptions.length > 1 ? 's' : ''}`
+      : 'Identify expansion opportunities',
+    'Execute upsell strategy',
   ]
 
-  const priorities = topPainPoints.length >= 3
-    ? topPainPoints.map((pp, i) => ({ label: priorityLabels[i], title: pp.title }))
-    : defaultPriorities
+  const priorities = topPainPoints.length >= 3 ? topPainPoints.map((pp) => pp.title) : defaultPriorities
+
+  const statusRows: { label: string; value: React.ReactNode; numeric?: boolean }[] = [
+    { label: 'Customer', value: customer.customer_name },
+    { label: 'Business unit', value: customer.bu },
+    { label: 'Rank', value: customer.rank ? customer.rank : '—', numeric: true },
+    { label: customer.rr > 0 ? 'ARR' : 'Annual revenue', value: formatCurrency(arr), numeric: true },
+    { label: 'Health score', value: customer.healthScore.charAt(0).toUpperCase() + customer.healthScore.slice(1) },
+    { label: 'Share of revenue', value: customer.pct_of_total != null ? `${customer.pct_of_total.toFixed(2)}%` : '—', numeric: true },
+    { label: 'Subscriptions', value: customer.subscriptions.length > 0 ? `${customer.subscriptions.length} active` : '—', numeric: true },
+  ]
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6">
 
-      {/* Critical Alert Banner */}
+      {/* Risk alert */}
       {hasAlert && (
-        <div style={{
-          background: 'linear-gradient(135deg, #e53935 0%, #c62828 100%)',
-          color: 'white',
-          padding: '1.5rem 2rem',
-          marginBottom: '1rem',
-          borderLeft: '4px solid #8b1a1a',
-          boxShadow: '0 4px 12px rgba(197,75,49,0.2)',
-        }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', fontWeight: 700, fontSize: '1.05rem', marginBottom: '0.5rem' }}>
-            <AlertTriangle size={20} />
-            {customer.healthScore === 'red' ? '🚨 ACCOUNT AT RISK — IMMEDIATE ACTION REQUIRED' : '⚠️ ACCOUNT RISK ALERT'}
+        <div className={`alert-box ${isCritical ? 'alert-critical' : 'alert-warning'} m-0 flex items-start gap-3`} role="status">
+          {isCritical
+            ? <CircleAlert className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
+            : <TriangleAlert className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />}
+          <div>
+            <p className="m-0 text-sm font-semibold">
+              {isCritical ? 'Account at risk: immediate action required' : 'Account risk alert'}
+            </p>
+            <p className="m-0 mt-1 text-sm">
+              {isCritical
+                ? 'This account needs executive attention. Review the risk factors below and escalate to account leadership.'
+                : 'This account shows moderate-risk indicators that need proactive management.'}
+              {customer.healthFactors.length > 0 && ` Key concerns: ${customer.healthFactors.slice(0, 2).join(', ')}.`}
+            </p>
           </div>
-          <p style={{ opacity: 0.9, fontSize: '0.9rem', lineHeight: 1.6 }}>
-            {customer.healthScore === 'red'
-              ? 'This account requires immediate executive attention. Review risk factors below and escalate to account leadership.'
-              : 'This account shows moderate-risk indicators requiring proactive management.'}
-            {customer.healthFactors.length > 0 && ` Key concerns: ${customer.healthFactors.slice(0, 2).join(', ')}.`}
-          </p>
         </div>
       )}
 
-      {/* Keys to Success — 3 metric boxes */}
-      <div style={{ background: 'white', border: '1px solid var(--border)', boxShadow: '0 1px 3px rgba(0,0,0,0.04)', padding: '2rem' }}>
-        <h2 style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: '1.75rem', fontWeight: 600, color: 'var(--secondary)', marginBottom: '1.5rem' }}>
-          Keys to Success in Next 90 Days
-        </h2>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem' }}>
-          {priorities.map(({ label, title }) => (
-            <div key={label} style={{ background: 'var(--highlight)', padding: '1.5rem', borderLeft: '3px solid var(--accent)' }}>
-              <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--muted)', marginBottom: '0.5rem' }}>
-                {label}
-              </div>
-              <div style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: '1.15rem', fontWeight: 600, color: 'var(--secondary)', lineHeight: 1.3 }}>
-                {title}
-              </div>
-            </div>
+      {/* Keys to success */}
+      <section className="card p-5" aria-labelledby="overview-priorities">
+        <h2 id="overview-priorities" className="m-0">Keys to success in the next 90 days</h2>
+        <ol className="m-0 mt-3 list-decimal space-y-1.5 pl-5 text-sm" style={{ color: 'var(--ink)' }}>
+          {priorities.map((title) => (
+            <li key={title} className="pl-1 font-medium">{title}</li>
           ))}
-        </div>
-      </div>
+        </ol>
+      </section>
 
-      {/* 2-col: Account Status + Risk & Opportunity */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '2rem' }}>
-        {/* Account Status */}
-        <div style={{ background: 'white', border: '1px solid var(--border)', boxShadow: '0 1px 3px rgba(0,0,0,0.04)', padding: '2rem' }}>
-          <h2 style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: '1.75rem', fontWeight: 600, color: 'var(--secondary)', marginBottom: '1.5rem' }}>Account Status</h2>
-          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem' }}>
-            <tbody>
-              {[
-                { label: 'Customer', value: customer.customer_name },
-                { label: 'Business Unit', value: customer.bu },
-                { label: 'Rank', value: customer.rank ? `#${customer.rank}` : '—' },
-                { label: customer.rr > 0 ? 'ARR' : 'Annual Rev', value: formatCurrency(arr) },
-                { label: 'Health Score', value: customer.healthScore.charAt(0).toUpperCase() + customer.healthScore.slice(1) },
-                { label: '% of Revenue', value: customer.pct_of_total != null ? `${customer.pct_of_total.toFixed(2)}%` : '—' },
-                { label: 'Subscriptions', value: customer.subscriptions.length > 0 ? `${customer.subscriptions.length} active` : '—' },
-              ].map(({ label, value }) => (
-                <tr key={label} style={{ borderBottom: '1px solid var(--border)' }}>
-                  <td style={{ padding: '0.75rem 1rem 0.75rem 0', fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--muted)', fontWeight: 600, width: '9rem' }}>
-                    {label}
-                  </td>
-                  <td style={{ padding: '0.75rem 0', color: 'var(--ink)', fontWeight: 500 }}>{value}</td>
-                </tr>
-              ))}
-              {/* Next Renewal row rendered separately for custom colour */}
-              <tr style={{ borderBottom: '1px solid var(--border)' }}>
-                <td style={{ padding: '0.75rem 1rem 0.75rem 0', fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--muted)', fontWeight: 600, width: '9rem' }}>
-                  Next Renewal
-                </td>
-                <td style={{ padding: '0.75rem 0', color: renewal.color, fontWeight: 500 }}>
-                  {renewal.text}
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+      {/* Account status + risk & opportunity summary */}
+      <div className="grid gap-6 lg:grid-cols-2">
+        <section className="card p-5" aria-labelledby="overview-status">
+          <h2 id="overview-status" className="m-0">Account status</h2>
+          <dl className="m-0 mt-3 text-sm">
+            {statusRows.map(({ label, value, numeric }) => (
+              <div key={label} className="flex items-baseline justify-between gap-4 py-2" style={{ borderBottom: '1px solid var(--border)' }}>
+                <dt style={{ color: 'var(--muted)' }}>{label}</dt>
+                <dd className={`m-0 text-right font-medium ${numeric ? 'num' : ''}`}>{value}</dd>
+              </div>
+            ))}
+            <div className="flex items-baseline justify-between gap-4 py-2">
+              <dt style={{ color: 'var(--muted)' }}>Next renewal</dt>
+              <dd className="num m-0 inline-flex items-center gap-1.5 text-right font-medium" style={{ color: renewalToneColor[renewal.tone] }}>
+                {(renewal.tone === 'critical' || renewal.tone === 'warning') && <Clock className="h-3.5 w-3.5" aria-hidden="true" />}
+                {renewal.text}
+              </dd>
+            </div>
+          </dl>
+        </section>
 
-        {/* Risk & Opportunity Summary */}
-        <div style={{ background: 'white', border: '1px solid var(--border)', boxShadow: '0 1px 3px rgba(0,0,0,0.04)', padding: '2rem' }}>
-          <h2 style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: '1.75rem', fontWeight: 600, color: 'var(--secondary)', marginBottom: '1.5rem' }}>Risk & Opportunity Summary</h2>
+        <section className="card p-5" aria-labelledby="overview-risk">
+          <h2 id="overview-risk" className="m-0">Risk and opportunity summary</h2>
           {painPoints.length > 0 && (
             <>
-              <h3 style={{ color: 'var(--critical, #e53935)', fontFamily: '"Cormorant Garamond", serif', fontSize: '1.1rem', marginBottom: '0.75rem' }}>Top Risks</h3>
-              <ul style={{ marginLeft: '1.25rem', marginBottom: '1.5rem', fontSize: '0.875rem', lineHeight: 1.8 }}>
+              <h3 className="m-0 mt-4">Top risks</h3>
+              <ul className="m-0 mt-2 list-disc space-y-1.5 pl-5 text-sm">
                 {painPoints.slice(0, 3).map(pp => (
-                  <li key={pp.id}><strong>{pp.title}:</strong> {pp.description.slice(0, 80)}{pp.description.length > 80 ? '…' : ''}</li>
+                  <li key={pp.id}><span className="font-medium">{pp.title}:</span> <span style={{ color: 'var(--ink-2)' }}>{pp.description.slice(0, 80)}{pp.description.length > 80 ? '…' : ''}</span></li>
                 ))}
               </ul>
             </>
           )}
           {topOpportunities.length > 0 && (
             <>
-              <h3 style={{ color: 'var(--success, #4caf50)', fontFamily: '"Cormorant Garamond", serif', fontSize: '1.1rem', marginBottom: '0.75rem' }}>Top Opportunities</h3>
-              <ul style={{ marginLeft: '1.25rem', fontSize: '0.875rem', lineHeight: 1.8 }}>
+              <h3 className="m-0 mt-4">Top opportunities</h3>
+              <ul className="m-0 mt-2 list-disc space-y-1.5 pl-5 text-sm">
                 {topOpportunities.map(opp => (
                   <li key={opp.id}>
-                    <strong>{opp.title}{opp.estimatedValue ? ` (+${formatCurrency(opp.estimatedValue)})` : ''}:</strong>{' '}
-                    {opp.description.slice(0, 80)}{opp.description.length > 80 ? '…' : ''}
+                    <span className="font-medium">{opp.title}{opp.estimatedValue ? <> (<span className="num">+{formatCurrency(opp.estimatedValue)}</span>)</> : ''}:</span>{' '}
+                    <span style={{ color: 'var(--ink-2)' }}>{opp.description.slice(0, 80)}{opp.description.length > 80 ? '…' : ''}</span>
                   </li>
                 ))}
               </ul>
             </>
           )}
           {painPoints.length === 0 && opportunities.length === 0 && (
-            <p style={{ color: 'var(--muted)', fontSize: '0.875rem' }}>No risk or opportunity data available yet.</p>
+            <p className="m-0 mt-3 text-sm" style={{ color: 'var(--muted)' }}>No risk or opportunity data yet.</p>
           )}
-        </div>
+        </section>
       </div>
 
-      {/* 2-col charts */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '2rem' }}>
-        <div style={{ background: 'white', border: '1px solid var(--border)', boxShadow: '0 1px 3px rgba(0,0,0,0.04)', padding: '2rem' }}>
-          <h2 style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: '1.75rem', fontWeight: 600, color: 'var(--secondary)', marginBottom: '1rem' }}>ARR Breakdown</h2>
-          <Suspense fallback={<div style={{ height: 300, background: 'var(--highlight)', opacity: 0.4 }} />}>
+      {/* Charts */}
+      <div className="grid gap-6 lg:grid-cols-2">
+        <section className="card min-w-0 p-5" aria-labelledby="overview-arr">
+          <h2 id="overview-arr" className="m-0 mb-4">ARR breakdown</h2>
+          <Suspense fallback={<div className="skeleton" style={{ height: 300 }} />}>
             <ARRBreakdownChart rr={customer.rr} nrr={customer.nrr} />
           </Suspense>
-        </div>
-        <div style={{ background: 'white', border: '1px solid var(--border)', boxShadow: '0 1px 3px rgba(0,0,0,0.04)', padding: '2rem' }}>
-          <h2 style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: '1.75rem', fontWeight: 600, color: 'var(--secondary)', marginBottom: '1rem' }}>Top Customers — {customer.bu}</h2>
-          <Suspense fallback={<div style={{ height: 320, background: 'var(--highlight)', opacity: 0.4 }} />}>
+        </section>
+        <section className="card min-w-0 p-5" aria-labelledby="overview-top">
+          <h2 id="overview-top" className="m-0 mb-4">Top customers in {customer.bu}</h2>
+          <Suspense fallback={<div className="skeleton" style={{ height: 320 }} />}>
             <TopCustomersChart allBuCustomers={allBuCustomers} currentCustomerName={customer.customer_name} />
           </Suspense>
-        </div>
+        </section>
       </div>
 
     </div>

@@ -5,6 +5,7 @@
 
 import { CANNED_QUERIES } from '@/lib/intelligence/nlq/canned-queries'
 import { METRIC_DEFINITIONS } from '@/lib/semantic/schema/financial'
+import { getFiscalQuarterLabel } from '@/lib/data/server/fiscal-quarter'
 import { QueryPageClient } from './components/query-page-client'
 
 export default function QueryPage() {
@@ -17,7 +18,12 @@ export default function QueryPage() {
     })
   )
 
+  const quarter = getFiscalQuarterLabel()
+  const subtitle = quarter
+    ? `Answers are calculated from the ${quarter} budget and account data`
+    : 'Answers are calculated from the current budget and account data'
+
   return (
-    <QueryPageClient cannedQueries={CANNED_QUERIES} metrics={serializableMetrics} />
+    <QueryPageClient cannedQueries={CANNED_QUERIES} metrics={serializableMetrics} subtitle={subtitle} />
   )
 }

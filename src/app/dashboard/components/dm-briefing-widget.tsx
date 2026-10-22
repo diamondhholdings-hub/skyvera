@@ -3,8 +3,8 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { toast } from 'sonner';
+import { ArrowRight, CircleAlert, TriangleAlert } from 'lucide-react';
 import type { Recommendation } from '@/app/dm-strategy/types';
-import '@/app/dm-strategy/styles.css';
 
 interface DMBriefingWidgetProps {
   recommendations: Recommendation[];
@@ -66,189 +66,112 @@ export default function DMBriefingWidget({ recommendations, maxItems = 5 }: DMBr
     return `$${value.toFixed(0)}`;
   };
 
-  const getPriorityColor = (priority: string): string => {
-    switch (priority) {
-      case 'critical':
-        return 'var(--critical)';
-      case 'high':
-        return 'var(--warning)';
-      default:
-        return 'var(--text-light)';
-    }
-  };
-
   return (
-    <div
-      className="dm-card"
-      style={{
-        background: 'var(--white)',
-        border: '1px solid var(--border)',
-        borderRadius: 'var(--radius-md)',
-        boxShadow: 'var(--shadow-sm)',
-        overflow: 'hidden'
-      }}
-    >
+    <div className="card overflow-hidden">
       {/* Header */}
       <div
-        style={{
-          background: 'var(--primary-blue)',
-          color: 'var(--white)',
-          padding: 'var(--space-lg)',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center'
-        }}
+        className="flex flex-wrap items-start justify-between gap-3 border-b px-5 py-4"
+        style={{ borderColor: 'var(--border)' }}
       >
-        <h3 className="dm-h4" style={{ margin: 0, color: 'var(--white)' }}>
-          <span aria-hidden="true">💡</span> Revenue Retention Briefing
-        </h3>
-        <Link
-          href="/dm-strategy"
-          style={{
-            fontSize: '0.875rem',
-            color: 'var(--paper)',
-            textDecoration: 'none',
-            fontWeight: 600,
-            display: 'flex',
-            alignItems: 'center',
-            gap: 'var(--space-xs)'
-          }}
-        >
-          View All <span aria-hidden="true">→</span>
+        <div className="min-w-0">
+          <h3 className="m-0">Revenue retention priorities</h3>
+          <p className="m-0 mt-0.5 text-[13px]" style={{ color: 'var(--muted)' }}>
+            Pending critical and high-priority recommendations, by ARR impact
+          </p>
+        </div>
+        <Link href="/dm-strategy" className="btn btn-sm">
+          View all
+          <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
         </Link>
       </div>
 
       {/* Recommendations List */}
-      <div style={{ padding: 'var(--space-lg)' }}>
-        {urgentRecommendations.length === 0 ? (
-          <div style={{ textAlign: 'center', padding: 'var(--space-xl)', color: 'var(--text-light)' }}>
-            <p className="dm-body">No urgent recommendations at this time.</p>
-            <p className="dm-caption" style={{ marginTop: 'var(--space-xs)' }}>
-              All accounts are on track with retention targets.
-            </p>
-          </div>
-        ) : (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-sm)' }}>
-            {urgentRecommendations.map((rec) => (
-              <div
-                key={rec.id}
-                style={{
-                  padding: 'var(--space-md)',
-                  background: 'var(--background)',
-                  borderRadius: 'var(--radius-sm)',
-                  borderLeft: `4px solid ${getPriorityColor(rec.priority)}`,
-                  transition: 'all 0.2s ease'
-                }}
-              >
-                {/* Priority & Account */}
-                <div className="dm-flex dm-items-center dm-gap-sm dm-mb-xs">
-                  <div
-                    style={{
-                      width: '8px',
-                      height: '8px',
-                      borderRadius: '50%',
-                      background: getPriorityColor(rec.priority)
-                    }}
-                  />
-                  <span className="dm-body-sm" style={{ fontWeight: 600, color: 'var(--text-dark)' }}>
-                    {rec.accountName}
-                  </span>
-                  <span
-                    className="dm-badge"
-                    style={{
-                      background: 'var(--highlight)',
-                      color: 'var(--secondary)',
-                      fontSize: '0.625rem',
-                      padding: '2px 6px'
-                    }}
-                  >
-                    {rec.businessUnit}
-                  </span>
-                </div>
+      {urgentRecommendations.length === 0 ? (
+        <div className="px-5 py-8 text-center" style={{ color: 'var(--muted)' }}>
+          <p className="m-0 text-sm">No urgent recommendations at this time.</p>
+          <p className="m-0 mt-1 text-xs">All accounts are on track with retention targets.</p>
+        </div>
+      ) : (
+        <ul className="m-0 list-none p-0">
+          {urgentRecommendations.map((rec) => {
+            const isCritical = rec.priority === 'critical';
+            const PriorityIcon = isCritical ? CircleAlert : TriangleAlert;
+            const priorityColor = isCritical ? 'var(--critical-ink)' : 'var(--warning-ink)';
 
-                {/* Title (truncated) */}
-                <p
-                  className="dm-body-sm dm-truncate"
-                  style={{
-                    color: 'var(--text-dark)',
-                    marginBottom: 'var(--space-sm)',
-                    maxWidth: '100%'
-                  }}
+            return (
+              <li
+                key={rec.id}
+                className="flex flex-wrap items-center gap-x-4 gap-y-2 border-b px-5 py-3"
+                style={{ borderColor: 'var(--border)' }}
+              >
+                {/* Priority */}
+                <span
+                  className="flex w-[4.5rem] shrink-0 items-center gap-1.5 text-xs font-medium"
+                  style={{ color: priorityColor }}
                 >
-                  {rec.title}
-                </p>
+                  <PriorityIcon className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+                  {isCritical ? 'Critical' : 'High'}
+                </span>
+
+                {/* Account & title */}
+                <div className="min-w-0 flex-1 basis-64">
+                  <div className="flex items-center gap-2">
+                    <span className="truncate text-sm font-medium" style={{ color: 'var(--ink)' }}>
+                      {rec.accountName}
+                    </span>
+                    <span className="shrink-0 text-xs" style={{ color: 'var(--muted)' }}>
+                      {rec.businessUnit}
+                    </span>
+                  </div>
+                  <p className="m-0 truncate text-[13px]" style={{ color: 'var(--ink-2)' }}>
+                    {rec.title}
+                  </p>
+                </div>
 
                 {/* Impact & Actions */}
-                <div className="dm-flex dm-justify-between dm-items-center">
-                  <span
-                    style={{
-                      fontSize: '0.875rem',
-                      fontWeight: 700,
-                      color: rec.arrImpact > 0 ? 'var(--success)' : 'var(--text-light)'
-                    }}
+                <span
+                  className="num shrink-0 text-right text-sm font-medium"
+                  style={{ minWidth: '6.5rem', color: rec.arrImpact > 0 ? 'var(--success-ink)' : 'var(--muted)' }}
+                >
+                  {formatCurrency(rec.arrImpact)} ARR
+                </span>
+                <div className="flex shrink-0 gap-1.5">
+                  <button
+                    type="button"
+                    className="btn btn-sm"
+                    disabled={pendingId === rec.id}
+                    aria-disabled={pendingId === rec.id}
+                    onClick={() => handleAccept(rec.id)}
+                    style={{ cursor: pendingId === rec.id ? 'wait' : undefined }}
                   >
-                    {formatCurrency(rec.arrImpact)} ARR
-                  </span>
-                  <div className="dm-flex dm-gap-xs">
-                    <button
-                      className="dm-btn dm-btn-primary dm-btn-sm"
-                      disabled={pendingId === rec.id}
-                      aria-disabled={pendingId === rec.id}
-                      onClick={() => handleAccept(rec.id)}
-                      style={{
-                        fontSize: '0.75rem',
-                        padding: '4px 8px',
-                        cursor: pendingId === rec.id ? 'wait' : 'pointer',
-                        opacity: pendingId === rec.id ? 0.6 : 1,
-                      }}
-                    >
-                      Accept
-                    </button>
-                    <Link href={`/dm-strategy?rec=${rec.id}`}>
-                      <button
-                        className="dm-btn dm-btn-secondary dm-btn-sm"
-                        style={{ fontSize: '0.75rem', padding: '4px 8px' }}
-                      >
-                        Details
-                      </button>
-                    </Link>
-                  </div>
+                    Accept
+                  </button>
+                  <Link href={`/dm-strategy?rec=${rec.id}`} className="btn btn-ghost btn-sm">
+                    Details
+                  </Link>
                 </div>
-              </div>
-            ))}
-          </div>
-        )}
+              </li>
+            );
+          })}
+        </ul>
+      )}
 
-        {/* Summary Footer */}
-        {urgentRecommendations.length > 0 && (
-          <div
-            style={{
-              marginTop: 'var(--space-lg)',
-              padding: 'var(--space-md)',
-              background: 'var(--highlight)',
-              borderRadius: 'var(--radius-sm)',
-              border: '1px solid var(--border)'
-            }}
-          >
-            <div className="dm-flex dm-justify-between dm-items-center">
-              <span className="dm-body-sm" style={{ color: 'var(--text-light)' }}>
-                Total Potential Impact
-              </span>
-              <span
-                style={{
-                  fontSize: '1.125rem',
-                  fontWeight: 700,
-                  color: 'var(--secondary)'
-                }}
-              >
-                {formatCurrency(
-                  urgentRecommendations.reduce((sum, r) => sum + r.arrImpact, 0)
-                )}
-              </span>
-            </div>
-          </div>
-        )}
-      </div>
+      {/* Summary Footer */}
+      {urgentRecommendations.length > 0 && (
+        <div
+          className="flex items-center justify-between px-5 py-3"
+          style={{ background: 'var(--surface-2)' }}
+        >
+          <span className="text-[13px]" style={{ color: 'var(--muted)' }}>
+            Total potential impact
+          </span>
+          <span className="num text-base font-semibold" style={{ color: 'var(--ink)' }}>
+            {formatCurrency(
+              urgentRecommendations.reduce((sum, r) => sum + r.arrImpact, 0)
+            )}
+          </span>
+        </div>
+      )}
     </div>
   );
 }

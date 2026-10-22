@@ -33,7 +33,7 @@ test.describe('Demo Flow E2E', () => {
     await expect(page.getByText('Unable to load')).not.toBeVisible()
 
     // Step 2: Navigate to Accounts via sidebar link
-    await page.getByRole('link', { name: 'Accounts' }).click()
+    await page.getByRole('navigation', { name: 'Main' }).getByRole('link', { name: 'Accounts' }).click()
     const accounts = new AccountsPage(page)
     await accounts.waitForTableLoaded()
 
@@ -71,10 +71,10 @@ test.describe('Demo Flow E2E', () => {
     await accountPlan.waitForTabContent()
     await expect(page).toHaveURL(/tab=financials/)
 
-    // Navigate to Strategy tab
+    // Navigate to Pain points tab (the page object calls it 'strategy'; its URL id is pain-points)
     await accountPlan.clickTab('strategy')
     await accountPlan.waitForTabContent()
-    await expect(page).toHaveURL(/tab=strategy/)
+    await expect(page).toHaveURL(/tab=pain-points/)
 
     // Navigate to Intelligence tab (Claude API call - longer timeout)
     await accountPlan.clickTab('intelligence')
@@ -118,8 +118,10 @@ test.describe('Demo Flow E2E', () => {
     const nav = page.locator('nav').first()
     await expect(nav).toBeVisible({ timeout: 10000 })
 
-    // Step 5: Switch to the Financials tab via button click
-    const financialsBtn = page.getByRole('button', { name: /financial/i })
+    // Step 5: Switch to the Financials tab (tabs are links inside the account-sections nav)
+    const financialsBtn = page
+      .getByRole('navigation', { name: /account sections/i })
+      .getByRole('link', { name: /financial/i })
     await expect(financialsBtn).toBeVisible({ timeout: 10000 })
     await financialsBtn.click()
 
@@ -141,7 +143,7 @@ test.describe('Demo Flow E2E', () => {
         await expect(dashboard.pageTitle).toBeVisible()
 
         // Navigate to Accounts via sidebar link
-        await page.getByRole('link', { name: 'Accounts' }).click()
+        await page.getByRole('navigation', { name: 'Main' }).getByRole('link', { name: 'Accounts' }).click()
         const accounts = new AccountsPage(page)
         await accounts.waitForTableLoaded()
         await expect(accounts.pageTitle).toBeVisible()

@@ -1,20 +1,20 @@
 'use client'
 
 /**
- * AccountChatPanel — floating per-account AI chat widget
- * Anchored bottom-right of viewport; collapsed = round button, expanded = full panel
+ * AccountChatPanel — floating per-account question panel
+ * Anchored bottom-right of viewport; collapsed = "Ask about this account" button, expanded = panel
  * Uses streaming fetch to /api/accounts/[name]/chat
  *
  * a11y:
  * - Expanded panel is a labeled modal dialog (role=dialog, aria-modal, aria-labelledby).
- * - Escape closes it and returns focus to the FAB.
+ * - Escape closes it and returns focus to the trigger button.
  * - Tab cycles through focusable elements inside the panel (focus trap, no library).
  * - Hover swaps moved to CSS so keyboard users get matching :focus-visible feedback.
  * - Typing-indicator animation honors prefers-reduced-motion.
  */
 
 import { useState, useRef, useEffect, useCallback } from 'react'
-import { MessageCircle, X, Send } from 'lucide-react'
+import { MessageSquare, X, Send } from 'lucide-react'
 
 interface Message {
   role: 'user' | 'assistant'
@@ -204,70 +204,83 @@ export function AccountChatPanel({ customerName, bu: _bu }: AccountChatPanelProp
     loading && messages.length > 0 && messages[messages.length - 1].role === 'assistant'
   const showTypingIndicator = isLastMessageStreaming && messages[messages.length - 1].content === ''
 
+  const canSend = !!input.trim() && !loading
+
   return (
-    <div
-      style={{
-        position: 'fixed',
-        bottom: '2rem',
-        right: '2rem',
-        zIndex: 1000,
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'flex-end',
-      }}
-    >
-      {/* Component-scoped styles — replaces JS hover handlers and gates the
-          typing-indicator animation behind prefers-reduced-motion. */}
+    <div className="chat-root" data-print="hide">
+      {/* Component-scoped styles: hover/focus in CSS (no JS hover handlers) and the
+          typing-indicator animation gated behind prefers-reduced-motion. */}
       <style>{`
+        .chat-root {
+          position: fixed;
+          bottom: 1.5rem;
+          right: 1.5rem;
+          z-index: 1000;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          max-width: calc(100vw - 2rem);
+        }
+        @media (max-width: 480px) {
+          .chat-root { bottom: 1rem; right: 1rem; }
+        }
+        .chat-trigger { box-shadow: var(--shadow-md); }
+        .chat-panel {
+          width: 380px;
+          max-width: calc(100vw - 2rem);
+          height: min(540px, calc(100vh - 6rem));
+          display: flex;
+          flex-direction: column;
+          background: var(--surface);
+          border: 1px solid var(--border);
+          border-radius: var(--radius-md);
+          box-shadow: var(--shadow-lg);
+          margin-bottom: 0.75rem;
+          overflow: hidden;
+        }
         .chat-suggestion-btn {
-          background: var(--highlight, #ecdbba);
-          border: 1px solid var(--border, #e8e6e1);
-          border-radius: 8px;
-          padding: 0.6rem 0.75rem;
-          font-size: 0.8rem;
-          color: var(--ink, #1a1a1a);
+          background: var(--surface);
+          border: 1px solid var(--border);
+          border-radius: var(--radius-sm);
+          padding: 0.5rem 0.75rem;
+          font: inherit;
+          font-size: 0.8125rem;
+          color: var(--ink);
           cursor: pointer;
           text-align: left;
           line-height: 1.4;
-          transition: background 0.15s;
+          transition: background-color 150ms var(--ease-out), border-color 150ms var(--ease-out);
         }
         .chat-suggestion-btn:hover,
         .chat-suggestion-btn:focus-visible {
-          background: #e0ccaa;
+          background: var(--highlight);
+          border-color: var(--border-strong);
         }
-        .chat-fab {
-          width: 48px;
-          height: 48px;
-          border-radius: 50%;
-          background: var(--accent, #c84b31);
-          border: none;
-          color: #ffffff;
-          cursor: pointer;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          box-shadow: 0 4px 16px rgba(200,75,49,0.4);
-          transition: background 0.15s, box-shadow 0.15s;
-        }
-        .chat-fab:hover,
-        .chat-fab:focus-visible {
-          background: #b03d25;
+        .chat-input {
+          flex: 1;
+          resize: none;
+          height: auto;
+          min-height: 2.25rem;
+          max-height: 96px;
+          padding: 0.45rem 0.75rem;
+          line-height: 1.5;
+          overflow-y: auto;
         }
         .chat-typing-dot {
           width: 6px;
           height: 6px;
           border-radius: 50%;
-          background: var(--secondary, #2d4263);
+          background: var(--muted);
           display: inline-block;
         }
         @media (prefers-reduced-motion: no-preference) {
           .chat-typing-dot {
-            animation: chatDotBounce 1.2s ease-in-out infinite;
+            animation: chatDotPulse 1.2s ease-in-out infinite;
           }
         }
-        @keyframes chatDotBounce {
-          0%, 80%, 100% { transform: translateY(0); opacity: 0.4; }
-          40% { transform: translateY(-6px); opacity: 1; }
+        @keyframes chatDotPulse {
+          0%, 80%, 100% { opacity: 0.3; }
+          40% { opacity: 1; }
         }
       `}</style>
 
@@ -278,95 +291,46 @@ export function AccountChatPanel({ customerName, bu: _bu }: AccountChatPanelProp
           role="dialog"
           aria-modal="true"
           aria-labelledby="chat-title"
-          style={{
-            width: '360px',
-            height: '520px',
-            display: 'flex',
-            flexDirection: 'column',
-            background: '#ffffff',
-            borderRadius: '12px',
-            boxShadow: '0 20px 60px rgba(0,0,0,0.18), 0 4px 16px rgba(0,0,0,0.12)',
-            marginBottom: '0.75rem',
-            overflow: 'hidden',
-            border: '1px solid var(--border, #e8e6e1)',
-          }}
+          aria-describedby="chat-description"
+          className="chat-panel"
         >
           {/* Header */}
           <div
-            style={{
-              background: 'var(--secondary, #2d4263)',
-              color: '#ffffff',
-              padding: '1rem 1.25rem',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              flexShrink: 0,
-            }}
+            className="flex shrink-0 items-start justify-between gap-3 px-4 py-3"
+            style={{ borderBottom: '1px solid var(--border)' }}
           >
-            <div>
-              <div
-                id="chat-title"
-                style={{
-                  fontFamily: '"Cormorant Garamond", serif',
-                  fontSize: '1.1rem',
-                  fontWeight: 600,
-                  lineHeight: 1.2,
-                }}
-              >
+            <div className="min-w-0">
+              <h2 id="chat-title" className="m-0 truncate text-[0.9375rem] font-semibold">
                 Ask about {customerName}
-              </div>
-              <div style={{ fontSize: '0.7rem', opacity: 0.7, marginTop: '2px' }}>
-                AI Account Strategist
-              </div>
+              </h2>
+              <p id="chat-description" className="m-0 mt-0.5 text-xs" style={{ color: 'var(--muted)' }}>
+                Answers draw on this account&apos;s plan and budget data.
+              </p>
             </div>
             <button
               ref={closeBtnRef}
+              type="button"
               onClick={closePanel}
-              style={{
-                background: 'transparent',
-                border: 'none',
-                color: '#ffffff',
-                cursor: 'pointer',
-                padding: '4px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                borderRadius: '4px',
-                opacity: 0.8,
-              }}
+              className="btn btn-ghost btn-sm shrink-0"
+              style={{ padding: '0 0.375rem' }}
               aria-label="Close chat"
             >
-              <X size={18} />
+              <X className="h-4 w-4" aria-hidden="true" />
             </button>
           </div>
 
           {/* Messages area */}
-          <div
-            style={{
-              flex: 1,
-              overflowY: 'auto',
-              padding: '1rem',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '0.75rem',
-            }}
-          >
+          <div className="flex flex-1 flex-col gap-3 overflow-y-auto p-4" aria-live="polite">
             {messages.length === 0 && (
               <div>
-                <p
-                  style={{
-                    fontSize: '0.8rem',
-                    color: 'var(--muted, #8b8b8b)',
-                    marginBottom: '0.75rem',
-                    textAlign: 'center',
-                  }}
-                >
-                  Ask me anything about this account
+                <p className="m-0 mb-2 text-[0.8125rem]" style={{ color: 'var(--muted)' }}>
+                  Try one of these:
                 </p>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                <div className="flex flex-col gap-2">
                   {SUGGESTIONS.map((suggestion) => (
                     <button
                       key={suggestion}
+                      type="button"
                       onClick={() => handleSuggestion(suggestion)}
                       className="chat-suggestion-btn"
                     >
@@ -383,29 +347,18 @@ export function AccountChatPanel({ customerName, bu: _bu }: AccountChatPanelProp
                 !isUser && idx === messages.length - 1 && showTypingIndicator
 
               return (
-                <div
-                  key={idx}
-                  style={{
-                    display: 'flex',
-                    justifyContent: isUser ? 'flex-end' : 'flex-start',
-                  }}
-                >
+                <div key={idx} className={`flex ${isUser ? 'justify-end' : 'justify-start'}`}>
                   <div
+                    className="max-w-[85%] whitespace-pre-wrap break-words px-3 py-2 text-[0.8125rem]"
                     style={{
-                      maxWidth: '82%',
-                      padding: '0.6rem 0.85rem',
-                      borderRadius: isUser
-                        ? '12px 12px 2px 12px'
-                        : '12px 12px 12px 2px',
-                      background: isUser
-                        ? 'var(--accent, #c84b31)'
-                        : 'var(--highlight, #ecdbba)',
-                      color: isUser ? '#ffffff' : 'var(--ink, #1a1a1a)',
-                      fontSize: '0.83rem',
+                      borderRadius: 'var(--radius-md)',
                       lineHeight: 1.55,
-                      wordBreak: 'break-word',
+                      background: isUser ? 'var(--secondary-tint)' : 'var(--surface-2)',
+                      border: '1px solid var(--border)',
+                      color: 'var(--ink)',
                     }}
                   >
+                    {isUser && <span className="sr-only">You: </span>}
                     {isStreamingThis ? <TypingIndicator /> : msg.content}
                   </div>
                 </div>
@@ -417,39 +370,18 @@ export function AccountChatPanel({ customerName, bu: _bu }: AccountChatPanelProp
 
           {/* Input area */}
           <div
-            style={{
-              borderTop: '1px solid var(--border, #e8e6e1)',
-              padding: '0.75rem',
-              background: '#ffffff',
-              flexShrink: 0,
-              display: 'flex',
-              gap: '0.5rem',
-              alignItems: 'flex-end',
-            }}
+            className="flex shrink-0 items-end gap-2 p-3"
+            style={{ borderTop: '1px solid var(--border)' }}
           >
             <textarea
               ref={textareaRef}
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
-              placeholder="Ask a question..."
+              placeholder="Ask a question"
               aria-label="Ask a question about this account"
               rows={1}
-              style={{
-                flex: 1,
-                resize: 'none',
-                border: '1px solid var(--border, #e8e6e1)',
-                borderRadius: '8px',
-                padding: '0.5rem 0.75rem',
-                fontSize: '0.83rem',
-                lineHeight: 1.5,
-                fontFamily: 'DM Sans, sans-serif',
-                color: 'var(--ink, #1a1a1a)',
-                background: '#fafaf8',
-                outline: 'none',
-                maxHeight: '96px',
-                overflowY: 'auto',
-              }}
+              className="input chat-input"
               onInput={(e) => {
                 const el = e.currentTarget
                 el.style.height = 'auto'
@@ -457,42 +389,32 @@ export function AccountChatPanel({ customerName, bu: _bu }: AccountChatPanelProp
               }}
             />
             <button
+              type="button"
               onClick={() => sendMessage(input)}
-              disabled={!input.trim() || loading}
+              disabled={!canSend}
               aria-label="Send message"
-              style={{
-                background:
-                  !input.trim() || loading
-                    ? 'var(--muted, #8b8b8b)'
-                    : 'var(--accent, #c84b31)',
-                border: 'none',
-                borderRadius: '8px',
-                color: '#ffffff',
-                cursor: !input.trim() || loading ? 'not-allowed' : 'pointer',
-                padding: '0.5rem',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                flexShrink: 0,
-                transition: 'background 0.15s',
-              }}
+              className="btn btn-primary shrink-0"
+              style={{ height: '2.25rem', width: '2.25rem', padding: 0 }}
             >
-              <Send size={16} />
+              <Send className="h-4 w-4" aria-hidden="true" />
             </button>
           </div>
         </div>
       )}
 
-      {/* Toggle button (collapsed state) */}
+      {/* Trigger button (collapsed state) */}
       {!open && (
         <button
           ref={fabRef}
+          type="button"
           onClick={() => setOpen(true)}
-          aria-label="Open account chat"
           aria-expanded={open}
-          className="chat-fab"
+          aria-haspopup="dialog"
+          className="btn chat-trigger"
+          style={{ height: '2.5rem', padding: '0 1rem' }}
         >
-          <MessageCircle size={22} />
+          <MessageSquare className="h-4 w-4" aria-hidden="true" />
+          Ask about this account
         </button>
       )}
     </div>
@@ -504,7 +426,8 @@ function TypingIndicator() {
   return (
     <div
       style={{ display: 'flex', gap: '4px', alignItems: 'center', height: '20px' }}
-      aria-label="Thinking..."
+      role="status"
+      aria-label="Writing an answer"
     >
       {[0, 1, 2].map((i) => (
         <span

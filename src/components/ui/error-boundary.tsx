@@ -35,30 +35,26 @@ interface ErrorBoundaryState {
 
 function DefaultFallback({ error }: { error: Error | null }) {
   return (
-    <div className="flex flex-col items-center justify-center gap-3 rounded-lg border border-red-800/40 bg-neutral-800/60 px-6 py-8 text-center">
-      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-red-900/40">
-        {/* Exclamation icon — inline SVG avoids any import issues */}
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth={2}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="h-5 w-5 text-red-400"
-          aria-hidden="true"
-        >
-          <circle cx="12" cy="12" r="10" />
-          <line x1="12" y1="8" x2="12" y2="12" />
-          <line x1="12" y1="16" x2="12.01" y2="16" />
-        </svg>
-      </div>
+    <div role="alert" className="alert-box alert-critical flex items-start gap-2.5">
+      {/* Inline SVG avoids any import issues */}
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="mt-0.5 h-4 w-4 shrink-0"
+        aria-hidden="true"
+      >
+        <circle cx="12" cy="12" r="10" />
+        <line x1="12" y1="8" x2="12" y2="12" />
+        <line x1="12" y1="16" x2="12.01" y2="16" />
+      </svg>
       <div>
-        <p className="text-sm font-semibold text-neutral-100">Something went wrong</p>
-        {error?.message && (
-          <p className="mt-1 max-w-xs text-xs text-neutral-400">{error.message}</p>
-        )}
+        <p className="m-0 text-sm font-semibold">This section could not load</p>
+        {error?.message && <p className="m-0 mt-0.5 text-xs">{error.message}</p>}
       </div>
     </div>
   )

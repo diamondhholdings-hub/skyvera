@@ -2,35 +2,37 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { ArrowDownRight, ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react';
+import { PageHeader } from '@/components/ui/page-header';
 import DMTrendChart from '../components/dm-trend-chart';
 import type { BusinessUnitMetrics, MonthlyDMData } from '../types';
-import '../styles.css';
 
 interface DMTrendsClientProps {
   businessUnits: BusinessUnitMetrics[];
 }
 
 export default function DMTrendsClient({ businessUnits }: DMTrendsClientProps) {
-  // Build portfolio-wide weighted-average history across all BUs that have history
+  // Portfolio history: total RR over total year-earlier RR per quarter, which
+  // matches the consolidated TTM figure. (Averaging the BU ratios weighted by
+  // current revenue would overstate retention when a large BU is shrinking.)
   const busWithHistory = businessUnits.filter(bu => bu.history && bu.history.length > 0);
 
   const portfolioHistory: MonthlyDMData[] = [];
   if (busWithHistory.length > 0) {
-    const monthCount = busWithHistory[0].history!.length;
-    for (let i = 0; i < monthCount; i++) {
+    for (const { month } of busWithHistory[0].history!) {
       let totalRevenue = 0;
-      let weightedDM = 0;
+      let yearAgoRevenue = 0;
       for (const bu of busWithHistory) {
-        const point = bu.history![i];
-        if (point) {
+        const point = bu.history!.find(p => p.month === month);
+        if (point && point.dmPercent > 0) {
           totalRevenue += point.revenue;
-          weightedDM += point.dmPercent * point.revenue;
+          yearAgoRevenue += point.revenue / (point.dmPercent / 100);
         }
       }
-      if (totalRevenue > 0) {
+      if (yearAgoRevenue > 0) {
         portfolioHistory.push({
-          month: busWithHistory[0].history![i].month,
-          dmPercent: weightedDM / totalRevenue,
+          month,
+          dmPercent: (totalRevenue / yearAgoRevenue) * 100,
           revenue: totalRevenue,
           targetDM: 95.0,
         });
@@ -44,109 +46,98 @@ export default function DMTrendsClient({ businessUnits }: DMTrendsClientProps) {
     const first = bu.history[0];
     const last = bu.history[bu.history.length - 1];
     const delta = last.dmPercent - first.dmPercent;
-    const trend = delta > 1 ? 'improving' : delta < -1 ? 'declining' : 'stable';
+    const trend: 'improving' | 'declining' | 'stable' = delta > 1 ? 'improving' : delta < -1 ? 'declining' : 'stable';
     const onTarget = last.dmPercent >= bu.targetDM;
     return { bu, first, last, delta, trend, onTarget };
   }).filter(Boolean);
 
+  const trendMeta = {
+    improving: { Icon: ArrowUpRight, word: 'Improving', color: 'var(--success-ink)' },
+    declining: { Icon: ArrowDownRight, word: 'Declining', color: 'var(--critical-ink)' },
+    stable: { Icon: ArrowRight, word: 'Stable', color: 'var(--ink-2)' },
+  } as const;
+
   return (
-    <div style={{ minHeight: '100vh', background: 'var(--paper)', padding: 'var(--space-xl)' }}>
-      <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
+    <div>
+      <PageHeader
+        title="Retention trends"
+        subtitle={`Recurring revenue retained year over year, by quarter, for ${businessUnits.length} business units. Each point is a quarter's RR against the same quarter a year earlier, from the budget workbook.`}
+        action={
+          <Link href="/dm-strategy" className="btn">
+            <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+            Revenue retention
+          </Link>
+        }
+      />
 
-        {/* Header */}
-        <div style={{ marginBottom: 'var(--space-2xl)' }}>
-          <h1 style={{ fontSize: '2.5rem', fontWeight: 700, color: 'var(--secondary)', marginBottom: 'var(--space-sm)' }}>
-            DM% Retention Trends
-          </h1>
-          <p style={{ fontSize: '1.125rem', color: 'var(--muted)', marginBottom: 'var(--space-md)' }}>
-            12-month trailing analysis showing revenue retention patterns across {businessUnits.length} business units
-          </p>
-          <div style={{ fontSize: '0.875rem', color: 'var(--muted)' }}>
-            <Link href="/dm-strategy" style={{ color: 'var(--secondary)', textDecoration: 'none' }}>DM Strategy</Link>
-            {' / '}
-            <span style={{ color: 'var(--ink)', fontWeight: 600 }}>Trends</span>
-          </div>
-        </div>
-
-        {/* Portfolio-Wide Chart */}
+      <div className="mx-auto max-w-[1400px] space-y-6 px-4 py-6 lg:px-8">
+        {/* Portfolio-wide chart */}
         {portfolioHistory.length > 0 && (
-          <div style={{
-            background: 'linear-gradient(135deg, var(--secondary) 0%, #1a2332 100%)',
-            borderRadius: 'var(--radius-lg)',
-            padding: 'var(--space-xl)',
-            marginBottom: 'var(--space-2xl)',
-            boxShadow: '0 4px 16px rgba(45, 66, 99, 0.2)',
-          }}>
-            <div style={{ background: 'white', borderRadius: 'var(--radius-lg)', padding: 'var(--space-lg)' }}>
-              <DMTrendChart
-                data={portfolioHistory}
-                title={`Portfolio-Wide DM% Trend (${businessUnits.length} Business Units)`}
-                color="var(--secondary)"
-                targetDM={95.0}
-                showTarget={true}
-              />
-            </div>
-          </div>
+          <DMTrendChart
+            data={portfolioHistory}
+            title={`Portfolio across ${busWithHistory.length} business units`}
+            color="var(--secondary)"
+            targetDM={95.0}
+            showTarget={true}
+          />
         )}
 
-        {/* Per-BU Charts */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(480px, 1fr))',
-          gap: 'var(--space-xl)',
-          marginBottom: 'var(--space-2xl)',
-        }}>
+        {/* Per-BU charts */}
+        <div className="grid gap-6 lg:grid-cols-2">
           {businessUnits.map((bu) => (
             <DMTrendChart
               key={bu.name}
               data={bu.history || []}
-              title={`${bu.name} — DM% Trend`}
-              color={bu.color}
+              title={bu.name}
+              color="var(--secondary)"
               targetDM={bu.targetDM}
               showTarget={true}
             />
           ))}
         </div>
 
-        {/* Key Insights — generated from real data */}
-        <div style={{
-          background: 'white',
-          borderRadius: 'var(--radius-lg)',
-          padding: 'var(--space-xl)',
-          boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
-        }}>
-          <h2 style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--ink)', marginBottom: 'var(--space-lg)' }}>
-            Key Insights
-          </h2>
-          <div style={{ display: 'grid', gap: 'var(--space-md)' }}>
-            {insights.map((insight) => {
-              if (!insight) return null;
-              const { bu, first, last, delta, trend, onTarget } = insight;
-              const borderColor = trend === 'improving' ? 'var(--success)' : trend === 'declining' ? 'var(--critical)' : 'var(--warning)';
-              const trendLabel = trend === 'improving'
-                ? `Strong improvement (+${delta.toFixed(1)}pp)`
-                : trend === 'declining'
-                ? `Declining trend (${delta.toFixed(1)}pp)`
-                : 'Relatively stable';
-              return (
-                <div key={bu.name} style={{ padding: 'var(--space-md)', borderLeft: `4px solid ${borderColor}`, background: 'var(--highlight)' }}>
-                  <h3 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '6px', color: 'var(--ink)' }}>
-                    {bu.name}: {trendLabel} ({first.dmPercent.toFixed(1)}% → {last.dmPercent.toFixed(1)}%)
-                  </h3>
-                  <p style={{ color: 'var(--muted)', fontSize: '0.875rem', lineHeight: 1.5, margin: 0 }}>
-                    {onTarget
-                      ? `Currently above ${bu.targetDM}% target. `
-                      : `Currently ${(last.dmPercent - bu.targetDM).toFixed(1)}pp below ${bu.targetDM}% target. `}
-                    TTM DM%: <strong style={{ color: bu.color }}>{bu.ttmDM.toFixed(1)}%</strong>
-                    {' · '}ARR: <strong>${(bu.arr / 1000000).toFixed(1)}M</strong>
-                    {' · '}Scenario <strong>{bu.scenario}</strong>
-                  </p>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-
+        {/* Key insights, generated from the data */}
+        {insights.length > 0 && (
+          <section className="card overflow-hidden" aria-labelledby="insights-heading">
+            <div className="border-b px-5 py-3" style={{ borderColor: 'var(--border)' }}>
+              <h2 id="insights-heading" className="m-0 text-base font-semibold">Key insights</h2>
+            </div>
+            <ul className="m-0 list-none p-0">
+              {insights.map((insight) => {
+                if (!insight) return null;
+                const { bu, first, last, delta, trend, onTarget } = insight;
+                const meta = trendMeta[trend];
+                const trendLabel = trend === 'improving'
+                  ? `+${delta.toFixed(1)} pts`
+                  : trend === 'declining'
+                  ? `${delta.toFixed(1)} pts`
+                  : 'within 1 pt';
+                return (
+                  <li key={bu.name} className="flex items-start gap-3 border-b px-5 py-3 last:border-b-0" style={{ borderColor: 'var(--border)' }}>
+                    <span className="inline-flex w-28 shrink-0 items-center gap-1.5 text-sm font-medium" style={{ color: meta.color }}>
+                      <meta.Icon className="h-4 w-4" aria-hidden="true" />
+                      {meta.word}
+                    </span>
+                    <div className="min-w-0">
+                      <p className="m-0 text-sm font-medium" style={{ color: 'var(--ink)' }}>
+                        {bu.name}: <span className="num">{first.dmPercent.toFixed(1)}%</span> to{' '}
+                        <span className="num">{last.dmPercent.toFixed(1)}%</span>{' '}
+                        <span className="num" style={{ color: 'var(--muted)', fontWeight: 400 }}>({trendLabel})</span>
+                      </p>
+                      <p className="m-0 mt-0.5 text-sm" style={{ color: 'var(--muted)' }}>
+                        {onTarget
+                          ? `At or above ${bu.targetDM}% target. `
+                          : `${(bu.targetDM - last.dmPercent).toFixed(1)} pts below ${bu.targetDM}% target. `}
+                        TTM DM% <span className="num" style={{ color: 'var(--ink)' }}>{bu.ttmDM.toFixed(1)}%</span>
+                        {' · '}ARR <span className="num" style={{ color: 'var(--ink)' }}>${(bu.arr / 1000000).toFixed(1)}M</span>
+                      </p>
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
+          </section>
+        )}
       </div>
     </div>
   );

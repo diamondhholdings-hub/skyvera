@@ -1,6 +1,6 @@
 'use client'
 
-import { AlertCircle } from 'lucide-react'
+import { CircleAlert, RotateCw } from 'lucide-react'
 import Link from 'next/link'
 
 /**
@@ -17,7 +17,7 @@ export default function DashboardError({
 
   // Detect error type
   const errorMessage = error.message.toLowerCase()
-  let userMessage = 'Something went wrong while loading the dashboard'
+  let userMessage = 'Something went wrong while loading the dashboard.'
 
   if (errorMessage.includes('429') || errorMessage.includes('rate limit')) {
     userMessage = 'High demand right now. Please wait a moment and try again.'
@@ -28,34 +28,23 @@ export default function DashboardError({
   }
 
   return (
-    <div className="min-h-[400px] flex flex-col items-center justify-center p-8">
-      <div className="max-w-md text-center space-y-6">
-        <div className="w-16 h-16 mx-auto rounded-full bg-yellow-50 flex items-center justify-center">
-          <AlertCircle className="h-8 w-8 text-yellow-500" />
-        </div>
-
-        <div>
-          <h1 className="text-2xl font-semibold text-slate-900 mb-2">
+    <div className="mx-auto max-w-[1400px] px-4 py-10 lg:px-8">
+      <div className="alert-box alert-critical flex max-w-xl items-start gap-3" role="alert">
+        <CircleAlert className="mt-0.5 h-5 w-5 shrink-0" aria-hidden="true" />
+        <div className="min-w-0">
+          <h1 className="m-0 text-base" style={{ color: 'inherit' }}>
             Unable to load dashboard
           </h1>
-          <p className="text-sm text-gray-600">
-            {userMessage}
-          </p>
-        </div>
-
-        <div className="flex gap-3 justify-center">
-          <button
-            onClick={reset}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 transition-colors"
-          >
-            Try again
-          </button>
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 px-4 py-2 bg-white text-gray-700 text-sm font-medium rounded-md border border-gray-300 hover:bg-gray-50 transition-colors"
-          >
-            Go to Home
-          </Link>
+          <p className="m-0 mt-1 text-sm">{userMessage}</p>
+          <div className="mt-4 flex flex-wrap gap-2">
+            <button type="button" onClick={reset} className="btn btn-primary">
+              <RotateCw className="h-3.5 w-3.5" aria-hidden="true" />
+              Try again
+            </button>
+            <Link href="/" className="btn">
+              Go to home
+            </Link>
+          </div>
         </div>
       </div>
     </div>

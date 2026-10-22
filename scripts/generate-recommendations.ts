@@ -6,7 +6,8 @@
 
 import * as fs from 'fs';
 import * as path from 'path';
-import Anthropic from '@anthropic-ai/sdk';
+import type Anthropic from '@anthropic-ai/sdk';
+import { createClaudeClient, resolveModel } from '../src/lib/intelligence/claude/client';
 import type { Opportunity, OpportunityReport } from './analyze-dm-opportunities';
 
 interface GeneratedRecommendation {
@@ -105,7 +106,7 @@ Respond in JSON format:
 
   try {
     const message = await anthropic.messages.create({
-      model: 'claude-sonnet-5-5',
+      model: resolveModel('claude-sonnet-5-5'),
       max_tokens: 8000,
       messages: [
         {
@@ -188,12 +189,10 @@ async function generateRecommendations(limit?: number): Promise<RecommendationRe
 
   console.error(`Generating recommendations for ${opportunities.length} opportunities...`);
 
-  const apiKey = process.env.ANTHROPIC_API_KEY;
-  if (!apiKey) {
-    throw new Error('ANTHROPIC_API_KEY environment variable not set');
+  const anthropic = createClaudeClient();
+  if (!anthropic) {
+    throw new Error('Set TFY_API_KEY (TrueFoundry gateway) or ANTHROPIC_API_KEY');
   }
-
-  const anthropic = new Anthropic({ apiKey });
 
   const recommendations: GeneratedRecommendation[] = [];
   let processed = 0;

@@ -37,8 +37,8 @@ async function testConversationalScenarios() {
 
   if (!conversationResult.success) {
     console.error('❌ Failed to start conversation:', conversationResult.error.message)
-    if (conversationResult.error.message.includes('ANTHROPIC_API_KEY')) {
-      console.log('\n💡 Tip: Make sure ANTHROPIC_API_KEY is set in .env.local')
+    if (conversationResult.error.message.includes('Claude API not configured')) {
+      console.log('\n💡 Tip: Make sure TFY_API_KEY is set in .env.local')
     }
     return
   }

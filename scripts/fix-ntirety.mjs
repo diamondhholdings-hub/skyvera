@@ -1,4 +1,4 @@
-import Anthropic from '@anthropic-ai/sdk'
+import { createClaudeClient, resolveModel } from '../src/lib/intelligence/claude/client.ts'
 import fs from 'fs'
 
 // Load env
@@ -7,7 +7,8 @@ for (const line of fs.readFileSync('.env', 'utf8').split('\n')) {
   if (m && !process.env[m[1]]) process.env[m[1]] = m[2].trim()
 }
 
-const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
+const client = createClaudeClient()
+if (!client) throw new Error('Set TFY_API_KEY (TrueFoundry gateway) or ANTHROPIC_API_KEY')
 
 function parseJSON(text) {
   const m = text.match(/```json\n?([\s\S]*?)\n?```/) || text.match(/(\[[\s\S]*\]|\{[\s\S]*\})/s)
@@ -37,7 +38,7 @@ const tasks = [
 
 for (const { type, prompt } of tasks) {
   const msg = await client.messages.create({
-    model: 'claude-haiku-5-5',
+    model: resolveModel('claude-haiku-5-5'),
     max_tokens: 4096,
     messages: [{ role: 'user', content: prompt }],
   })

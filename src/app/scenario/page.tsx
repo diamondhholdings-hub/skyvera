@@ -1,12 +1,13 @@
 /**
  * Scenario Modeling Page - Server Component
- * Fetches baseline metrics and renders scenario interface (conversational or form-based)
+ * Fetches baseline metrics and renders scenario interface (guided or form-based)
  */
 
 import { Suspense } from 'react'
+import { AlertCircle } from 'lucide-react'
 import { getBaselineMetrics } from '@/lib/data/server/scenario-data'
 import ScenarioModeSelector from './components/scenario-mode-selector'
-import ScenarioLoading from './loading'
+import { ScenarioLoadingBody } from './loading'
 import { RefreshButton } from '@/components/ui/refresh-button'
 import { PageHeader } from '@/components/ui/page-header'
 
@@ -16,25 +17,18 @@ export default async function ScenarioPage() {
 
   if (!baselineResult.success) {
     return (
-      <div className="p-6">
-        <div
-          style={{
-            background: 'rgba(220,38,38,0.04)',
-            border: '1px solid rgba(220,38,38,0.25)',
-            borderLeft: '4px solid var(--critical)',
-            borderRadius: 'var(--radius-md)',
-            padding: '1.25rem 1.5rem',
-          }}
-        >
-          <h2 style={{ fontSize: '1.0625rem', fontWeight: 600, color: 'var(--critical)', margin: '0 0 0.5rem' }}>
-            Failed to load baseline metrics
-          </h2>
-          <p style={{ fontSize: '0.875rem', color: 'var(--muted)', margin: '0 0 0.75rem' }}>
-            {baselineResult.error.message}
-          </p>
-          <p style={{ fontSize: '0.8125rem', color: 'var(--muted)', margin: 0 }}>
-            Please try refreshing the page. If the issue persists, check your data connections.
-          </p>
+      <div className="mx-auto max-w-[1400px] px-4 py-8 lg:px-8">
+        <div className="alert-box alert-critical flex max-w-2xl items-start gap-3" role="alert">
+          <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
+          <div className="min-w-0">
+            <h2 className="m-0 text-base font-semibold">Failed to load baseline metrics</h2>
+            <p className="m-0 mt-1 text-sm" style={{ color: 'var(--ink-2)' }}>
+              {baselineResult.error.message}
+            </p>
+            <p className="m-0 mt-2 text-sm" style={{ color: 'var(--ink-2)' }}>
+              Try refreshing the page. If the issue persists, check your data connections.
+            </p>
+          </div>
         </div>
       </div>
     )
@@ -44,17 +38,14 @@ export default async function ScenarioPage() {
 
   return (
     <div>
-      {/* Editorial Header */}
       <PageHeader
-        title="Scenario Modeling"
-        subtitle="Model what-if scenarios with AI-powered conversational analysis or traditional form-based input"
-        action={<RefreshButton label="Refresh Data" />}
+        title="Scenarios"
+        subtitle="Model the effect of pricing, churn, headcount or acquisition changes on revenue and margin"
+        action={<RefreshButton label="Refresh data" />}
       />
 
-      {/* Content */}
-      <div className="max-w-[1400px] mx-auto px-8 py-8">
-        {/* Scenario Interface */}
-        <Suspense fallback={<ScenarioLoading />}>
+      <div className="mx-auto max-w-[1400px] px-4 py-6 lg:px-8">
+        <Suspense fallback={<ScenarioLoadingBody />}>
           <ScenarioModeSelector baseline={baseline} />
         </Suspense>
       </div>

@@ -21,10 +21,10 @@ const CATEGORY_ORDER: Array<CannedQuery['category']> = [
 ]
 
 const CATEGORY_LABELS: Record<CannedQuery['category'], string> = {
-  performance: 'PERFORMANCE',
-  customers: 'CUSTOMERS',
-  financials: 'FINANCIALS',
-  comparisons: 'COMPARISONS',
+  performance: 'Performance',
+  customers: 'Customers',
+  financials: 'Financials',
+  comparisons: 'Comparisons',
 }
 
 const BU_OPTIONS = ['Cloudsense', 'Kandy', 'STL']
@@ -68,64 +68,59 @@ export function CannedQueries({ queries, onQuerySelect }: CannedQueriesProps) {
   }
 
   return (
-    <div className="space-y-6">
-      <h2 className="text-lg font-display font-semibold text-[var(--secondary)]">Common Questions</h2>
+    <section aria-labelledby="suggested-questions-heading" className="flex flex-col gap-3">
+      <h2 id="suggested-questions-heading" className="m-0 text-base font-semibold">
+        Suggested questions
+      </h2>
 
       {CATEGORY_ORDER.map((category) => {
         const categoryQueries = groupedQueries[category]
         if (categoryQueries.length === 0) return null
 
         return (
-          <div key={category} className="space-y-2">
+          <div key={category}>
             {/* Category header */}
-            <h3 className="text-xs font-bold text-[var(--accent)] uppercase tracking-wide">
-              {CATEGORY_LABELS[category]}
-            </h3>
+            <h3 className="section-label m-0 mb-1 mt-1">{CATEGORY_LABELS[category]}</h3>
 
-            {/* Query cards */}
-            <div className="space-y-2">
+            <ul className="m-0 -mx-2 list-none p-0">
               {categoryQueries.map((query) => {
                 const isExpanded = selectedQueryId === query.id
                 const requiresFilters = query.requiredFilters && query.requiredFilters.length > 0
                 const requiresBU = query.requiredFilters?.includes('bu')
 
                 return (
-                  <div key={query.id}>
-                    {/* Query card */}
+                  <li key={query.id}>
                     <button
+                      type="button"
                       onClick={() => handleQueryClick(query)}
-                      className="w-full text-left p-4 bg-white border border-[var(--border)] rounded
-                                 cursor-pointer hover:border-[var(--accent)] hover:shadow-sm
-                                 transition-all
-                                 group"
+                      aria-expanded={requiresBU ? isExpanded : undefined}
+                      className="suggestion-row flex w-full items-start justify-between gap-2 px-2 py-1.5 text-left text-sm"
                     >
-                      <div className="flex items-start justify-between gap-2">
-                        <span className="font-display text-base font-semibold text-[var(--secondary)] group-hover:text-[var(--accent)]">
-                          {query.label}
+                      <span>{query.label}</span>
+                      {requiresFilters && (
+                        <span
+                          className="badge-warning shrink-0 px-1.5 py-0.5 text-xs font-medium"
+                          style={{ borderRadius: 'var(--radius-xs)' }}
+                        >
+                          Pick a unit
                         </span>
-                        {requiresFilters && (
-                          <span className="text-xs px-2 py-0.5 bg-[var(--warning)]/10 text-[var(--warning)] rounded-full flex-shrink-0">
-                            requires filters
-                          </span>
-                        )}
-                      </div>
+                      )}
                     </button>
 
                     {/* Filter selection (shown when expanded) */}
                     {isExpanded && requiresBU && (
-                      <div className="mt-2 p-3 bg-[var(--highlight)] border border-[var(--border)] rounded-lg space-y-3">
+                      <div
+                        className="mx-2 mb-2 mt-1 space-y-3 p-3"
+                        style={{ background: 'var(--surface-2)', border: '1px solid var(--border)', borderRadius: 'var(--radius-md)' }}
+                      >
                         <label className="block">
-                          <span className="text-xs font-medium text-[var(--ink)] uppercase tracking-wide">
-                            Select Business Unit
-                          </span>
+                          <span className="section-label">Business unit</span>
                           <select
                             value={selectedBU}
                             onChange={(e) => setSelectedBU(e.target.value)}
-                            className="mt-1 block w-full px-3 py-2 border-2 border-[var(--border)] rounded-md
-                                       focus:border-[var(--accent)] focus:ring-1 focus:ring-[var(--accent)]
-                                       text-sm"
+                            className="input mt-1"
                           >
-                            <option value="">Choose...</option>
+                            <option value="">Choose a unit</option>
                             {BU_OPTIONS.map((bu) => (
                               <option key={bu} value={bu}>
                                 {bu}
@@ -136,38 +131,45 @@ export function CannedQueries({ queries, onQuerySelect }: CannedQueriesProps) {
 
                         <div className="flex gap-2">
                           <button
+                            type="button"
                             onClick={() => handleFilterSubmit(query)}
                             disabled={!selectedBU}
-                            className="flex-1 px-3 py-1.5 bg-[var(--accent)] text-white rounded-md
-                                       hover:bg-[var(--accent)]/90 disabled:bg-[var(--muted)]
-                                       disabled:cursor-not-allowed
-                                       text-sm font-medium
-                                       transition-colors"
+                            className="btn btn-sm"
                           >
-                            Run Query
+                            Run
                           </button>
                           <button
+                            type="button"
                             onClick={() => {
                               setSelectedQueryId(null)
                               setSelectedBU('')
                             }}
-                            className="px-3 py-1.5 border border-[var(--border)] text-[var(--ink)] rounded-md
-                                       hover:bg-[var(--highlight)]
-                                       text-sm font-medium
-                                       transition-colors"
+                            className="btn btn-sm"
                           >
                             Cancel
                           </button>
                         </div>
                       </div>
                     )}
-                  </div>
+                  </li>
                 )
               })}
-            </div>
+            </ul>
           </div>
         )
       })}
-    </div>
+
+      <style>{`
+        .suggestion-row {
+          border: 0;
+          background: transparent;
+          color: var(--ink);
+          border-radius: var(--radius-sm);
+          cursor: pointer;
+          transition: background-color 150ms;
+        }
+        .suggestion-row:hover { background: var(--highlight); }
+      `}</style>
+    </section>
   )
 }

@@ -9,6 +9,7 @@
 import 'dotenv/config'
 import { getCacheManager, CACHE_TTL } from '../src/lib/cache/manager'
 import { getOrchestrator } from '../src/lib/intelligence/claude/orchestrator'
+import { isClaudeConfigured } from '../src/lib/intelligence/claude/client'
 import { getAccountPlanData } from '../src/lib/data/server/account-plan-data'
 
 // Hero accounts - use exact names from customer JSON files
@@ -38,10 +39,10 @@ async function generateIntelligence(
 ): Promise<{ success: boolean; error?: string }> {
   try {
     // Check if Claude API key is available
-    if (!process.env.ANTHROPIC_API_KEY) {
+    if (!isClaudeConfigured()) {
       return {
         success: false,
-        error: 'ANTHROPIC_API_KEY not configured'
+        error: 'Claude API not configured'
       }
     }
 

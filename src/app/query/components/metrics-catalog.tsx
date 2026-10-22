@@ -6,6 +6,7 @@
 'use client'
 
 import { useState, useMemo } from 'react'
+import { ChevronDown, Search } from 'lucide-react'
 import { MetricDefinition } from '@/lib/semantic/schema/financial'
 
 // Serializable metric definition without the calculate function
@@ -35,133 +36,107 @@ export function MetricsCatalog({ metrics }: MetricsCatalogProps) {
   }, [metricsList, searchTerm])
 
   return (
-    <div className="border border-[var(--border)] rounded overflow-hidden">
+    <div className="card overflow-hidden">
       {/* Header - always visible */}
       <button
+        type="button"
         onClick={() => setIsExpanded(!isExpanded)}
-        className="w-full px-4 py-3 bg-[var(--highlight)] hover:bg-[var(--highlight)]/70
-                   flex items-center justify-between
-                   transition-colors"
+        aria-expanded={isExpanded}
+        aria-controls="metric-definitions"
+        className="catalog-toggle flex w-full items-center justify-between gap-2 px-4 py-3 text-left"
       >
-        <h2 className="font-display text-lg font-semibold text-[var(--secondary)]">Browse Metrics Catalog</h2>
-        <svg
-          width="20"
-          height="20"
-          className={`text-[var(--muted)] transition-transform ${
-            isExpanded ? 'rotate-180' : ''
-          }`}
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M19 9l-7 7-7-7"
-          />
-        </svg>
+        <span>
+          <span className="block text-sm font-semibold" style={{ color: 'var(--ink)' }}>Metric definitions</span>
+          <span className="block text-xs" style={{ color: 'var(--muted)' }}>
+            How each figure in an answer is calculated
+          </span>
+        </span>
+        <ChevronDown
+          className={`h-4 w-4 shrink-0 transition-transform ${isExpanded ? 'rotate-180' : ''}`}
+          style={{ color: 'var(--muted)' }}
+          aria-hidden="true"
+        />
       </button>
 
       {/* Expanded content */}
       {isExpanded && (
-        <div className="p-4 space-y-4 max-h-[600px] overflow-y-auto">
+        <div
+          id="metric-definitions"
+          className="flex max-h-[600px] flex-col gap-3 overflow-y-auto border-t p-4"
+          style={{ borderColor: 'var(--border)' }}
+        >
           {/* Search input */}
           <div className="relative">
+            <Search
+              className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2"
+              style={{ color: 'var(--muted)' }}
+              aria-hidden="true"
+            />
             <input
               type="text"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              placeholder="Search metrics..."
-              className="w-full px-3 py-2 pl-9 border-2 border-[var(--border)] rounded-md
-                         focus:border-[var(--accent)] focus:ring-1 focus:ring-[var(--accent)]
-                         text-sm"
+              placeholder="Search metrics"
+              aria-label="Search metrics"
+              className="input pl-9"
             />
-            <svg
-              width="16"
-              height="16"
-              className="text-[var(--muted)] absolute left-3 top-1/2 -translate-y-1/2"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-              />
-            </svg>
           </div>
 
           {/* Results count */}
-          <p className="text-xs text-[var(--muted)]">
-            Showing {filteredMetrics.length} of {metricsList.length} metrics
+          <p className="m-0 text-xs" style={{ color: 'var(--muted)' }}>
+            Showing <span className="num">{filteredMetrics.length}</span> of{' '}
+            <span className="num">{metricsList.length}</span> metrics
           </p>
 
-          {/* Metric cards */}
-          <div className="space-y-3">
+          <ul className="m-0 list-none p-0">
             {filteredMetrics.map((metric) => (
               <MetricCard key={metric.name} metric={metric} />
             ))}
-          </div>
+          </ul>
 
           {/* No results */}
           {filteredMetrics.length === 0 && (
-            <div className="text-center py-8 text-[var(--muted)]">
-              <p className="text-sm">No metrics found matching &quot;{searchTerm}&quot;</p>
-            </div>
+            <p className="m-0 py-6 text-sm" style={{ color: 'var(--muted)' }}>
+              No metrics match &quot;{searchTerm}&quot;
+            </p>
           )}
         </div>
       )}
+
+      <style>{`
+        .catalog-toggle { border: 0; background: var(--surface); cursor: pointer; transition: background-color 150ms; }
+        .catalog-toggle:hover { background: var(--highlight); }
+      `}</style>
     </div>
   )
 }
 
+const UNIT_LABELS: Record<SerializableMetricDefinition['unit'], string> = {
+  currency: 'Currency',
+  percentage: 'Percent',
+  count: 'Count',
+  ratio: 'Ratio',
+}
+
 /**
- * Individual metric card
+ * Individual metric definition
  */
 function MetricCard({ metric }: { metric: SerializableMetricDefinition }) {
-  const unitBadgeConfig = {
-    currency: { bg: 'bg-[var(--success)]/10', text: 'text-[var(--success)]', label: '$' },
-    percentage: { bg: 'bg-[var(--accent)]/10', text: 'text-[var(--accent)]', label: '%' },
-    count: { bg: 'bg-[var(--secondary)]/10', text: 'text-[var(--secondary)]', label: '#' },
-    ratio: { bg: 'bg-[var(--warning)]/10', text: 'text-[var(--warning)]', label: 'x' },
-  }
-
-  const badge = unitBadgeConfig[metric.unit]
-
   return (
-    <div className="p-3 bg-[var(--highlight)]/30 border border-[var(--border)] rounded space-y-2">
-      {/* Header with name and unit badge */}
-      <div className="flex items-start justify-between gap-2">
-        <h3 className="font-semibold text-[var(--ink)] text-sm">{metric.displayName}</h3>
-        <span
-          className={`px-2 py-0.5 rounded text-xs font-medium ${badge.bg} ${badge.text} flex-shrink-0`}
-        >
-          {badge.label}
-        </span>
+    <li className="flex flex-col gap-1.5 border-b py-3 last:border-b-0" style={{ borderColor: 'var(--border)' }}>
+      <div className="flex items-baseline justify-between gap-2">
+        <h3 className="m-0 text-sm font-semibold" style={{ color: 'var(--ink)' }}>{metric.displayName}</h3>
+        <span className="shrink-0 text-xs" style={{ color: 'var(--muted)' }}>{UNIT_LABELS[metric.unit]}</span>
       </div>
 
-      {/* Description */}
-      <p className="text-xs text-[var(--muted)] leading-relaxed">{metric.description}</p>
+      <p className="m-0 text-xs leading-relaxed" style={{ color: 'var(--ink-2)' }}>{metric.description}</p>
 
-      {/* Formula */}
-      <div className="pt-2 border-t border-[var(--border)]">
-        <p className="text-xs text-[var(--muted)] mb-1">Formula</p>
-        <code className="text-xs bg-[var(--secondary)] text-[var(--paper)] px-2 py-1 rounded font-mono">
-          {metric.formula}
-        </code>
-      </div>
-
-      {/* Source */}
-      <div className="flex items-center gap-1.5 text-xs text-[var(--muted)]">
-        <svg width="14" height="14" fill="currentColor" viewBox="0 0 20 20">
-          <path d="M9 2a2 2 0 00-2 2v8a2 2 0 002 2h6a2 2 0 002-2V6.414A2 2 0 0016.414 5L14 2.586A2 2 0 0012.586 2H9z" />
-          <path d="M3 8a2 2 0 012-2v10h8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z" />
-        </svg>
-        <span>{metric.source}</span>
-      </div>
-    </div>
+      <dl className="m-0 grid grid-cols-[auto_1fr] gap-x-3 gap-y-0.5 text-xs">
+        <dt style={{ color: 'var(--muted)' }}>Formula</dt>
+        <dd className="m-0" style={{ color: 'var(--ink)' }}>{metric.formula}</dd>
+        <dt style={{ color: 'var(--muted)' }}>Source</dt>
+        <dd className="m-0" style={{ color: 'var(--ink-2)' }}>{metric.source}</dd>
+      </dl>
+    </li>
   )
 }

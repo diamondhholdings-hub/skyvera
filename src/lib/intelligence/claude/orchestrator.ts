@@ -3,7 +3,8 @@
  * Handles request routing, priority queue, rate limiting, response caching, and error handling
  */
 
-import Anthropic from '@anthropic-ai/sdk'
+import type Anthropic from '@anthropic-ai/sdk'
+import { createClaudeClient } from './client'
 import { FAST_MODEL, extractText } from './models'
 import { CacheManager, CACHE_TTL } from '@/lib/cache/manager'
 import { ClaudeRateLimiter } from './rate-limiter'
@@ -55,14 +56,12 @@ export class ClaudeOrchestrator {
   }
 
   constructor(cache: CacheManager) {
-    // Check for ANTHROPIC_API_KEY, if missing log warning but don't crash
-    const apiKey = process.env.ANTHROPIC_API_KEY
-    if (!apiKey) {
+    // Missing key: log a warning but don't crash; requests return an error
+    this.client = createClaudeClient()
+    if (!this.client) {
       console.warn(
-        'ANTHROPIC_API_KEY not configured. Claude API requests will fail. Set the key in .env.local'
+        'Claude API not configured. Set TFY_API_KEY (TrueFoundry gateway) or ANTHROPIC_API_KEY in .env.local'
       )
-    } else {
-      this.client = new Anthropic({ apiKey })
     }
 
     this.cache = cache
@@ -269,7 +268,7 @@ export class ClaudeOrchestrator {
   ): Promise<Result<ClaudeResponse>> {
     // Check if API key is configured
     if (!this.client) {
-      return err(new Error('ANTHROPIC_API_KEY not configured'))
+      return err(new Error('Claude API not configured'))
     }
 
     const maxRetries = 3

@@ -5,6 +5,10 @@
 
 import { getAllCustomersWithHealth } from '@/lib/data/server/account-data'
 import Link from 'next/link'
+import { HealthIndicator } from '@/components/ui/health-indicator'
+import { Panel, SectionHeading } from '../components/panel'
+
+const right = { textAlign: 'right' as const }
 
 export async function TopCustomersSection() {
   const customersResult = await getAllCustomersWithHealth()
@@ -12,7 +16,7 @@ export async function TopCustomersSection() {
   if (!customersResult.success) {
     return (
       <section id="top-customers" style={{ display: 'none' }}>
-        <p style={{ textAlign: 'center', color: '#64748b' }}>Failed to load customer data</p>
+        <p style={{ textAlign: 'center', color: 'var(--muted)' }}>Failed to load customer data</p>
       </section>
     )
   }
@@ -23,71 +27,55 @@ export async function TopCustomersSection() {
 
   return (
     <section id="top-customers" style={{ display: 'none' }}>
-      <h2 style={{ fontSize: '1.875rem', fontWeight: '600', color: '#1e3c72', marginBottom: '1.25rem', paddingBottom: '0.625rem', borderBottom: '3px solid #667eea' }}>
-        Top 20 Customers by Revenue
-      </h2>
+      <SectionHeading title="Top 20 customers by revenue" />
 
-      <div style={{ overflowX: 'auto' }}>
-      <table style={{ width: '100%', borderCollapse: 'collapse', borderRadius: '0.5rem', overflow: 'hidden', boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)', margin: '1.25rem 0' }}>
-        <thead>
-          <tr style={{ backgroundColor: '#1e3c72', color: 'white', textAlign: 'left' }}>
-            <th style={{ padding: '1rem', fontWeight: '600', fontSize: '0.875rem' }}>Rank</th>
-            <th style={{ padding: '1rem', fontWeight: '600', fontSize: '0.875rem' }}>Customer</th>
-            <th style={{ padding: '1rem', fontWeight: '600', fontSize: '0.875rem' }}>BU</th>
-            <th style={{ padding: '1rem', fontWeight: '600', fontSize: '0.875rem' }}>Total Revenue</th>
-            <th style={{ padding: '1rem', fontWeight: '600', fontSize: '0.875rem' }}>RR</th>
-            <th style={{ padding: '1rem', fontWeight: '600', fontSize: '0.875rem' }}>NRR</th>
-            <th style={{ padding: '1rem', fontWeight: '600', fontSize: '0.875rem' }}>Health</th>
-            <th style={{ padding: '1rem', fontWeight: '600', fontSize: '0.875rem' }}>Actions</th>
-          </tr>
-        </thead>
-        <tbody style={{ backgroundColor: 'white' }}>
-          {topCustomers.map((customer, index) => {
-            const total = customer.rr + customer.nrr
-            const healthColor =
-              customer.healthScore === 'green'
-                ? '#22c55e'
-                : customer.healthScore === 'yellow'
-                  ? '#f59e0b'
-                  : '#ef4444'
-
-            return (
-              <tr key={`${customer.customer_name}-${index}`} style={{ borderBottom: '1px solid #e2e8f0', transition: 'background-color 0.15s ease-in-out' }}>
-                <td style={{ padding: '0.75rem', fontSize: '0.875rem', fontWeight: '600' }}>{index + 1}</td>
-                <td style={{ padding: '0.75rem', fontSize: '0.875rem' }}>
-                  <Link
-                    href={`/accounts/${encodeURIComponent(customer.customer_name)}`}
-                    className="hover:text-purple-600 hover:underline transition-colors"
-                    style={{ color: '#667eea', fontWeight: '500', textDecoration: 'none' }}
-                  >
-                    {customer.customer_name}
-                  </Link>
-                </td>
-                <td style={{ padding: '0.75rem', fontSize: '0.875rem' }}>{customer.bu}</td>
-                <td style={{ padding: '0.75rem', fontSize: '0.875rem', fontWeight: '600' }}>${(total / 1e6).toFixed(2)}M</td>
-                <td style={{ padding: '0.75rem', fontSize: '0.875rem' }}>${(customer.rr / 1e6).toFixed(2)}M</td>
-                <td style={{ padding: '0.75rem', fontSize: '0.875rem' }}>${(customer.nrr / 1e6).toFixed(2)}M</td>
-                <td style={{ padding: '0.75rem', fontSize: '0.875rem' }}>
-                  <span
-                    style={{ display: 'inline-block', width: '0.75rem', height: '0.75rem', borderRadius: '9999px', backgroundColor: healthColor }}
-                    aria-label={customer.healthScore}
-                  />
-                </td>
-                <td style={{ padding: '0.75rem', fontSize: '0.875rem' }}>
-                  <Link
-                    href={`/accounts/${encodeURIComponent(customer.customer_name)}`}
-                    className="hover:text-purple-600 hover:underline transition-colors"
-                    style={{ color: '#667eea', fontSize: '0.75rem', fontWeight: '500', textDecoration: 'none' }}
-                  >
-                    View Plan →
-                  </Link>
-                </td>
+      <Panel title="Customers" description="Ranked by total revenue (RR + NRR)" flush>
+        <div className="relative overflow-x-auto">
+          <table className="data-table">
+            <thead>
+              <tr>
+                <th style={right}>Rank</th>
+                <th>Customer</th>
+                <th>BU</th>
+                <th style={right}>Total revenue</th>
+                <th style={right}>RR</th>
+                <th style={right}>NRR</th>
+                <th>Health</th>
+                <th><span className="sr-only">Actions</span></th>
               </tr>
-            )
-          })}
-        </tbody>
-      </table>
-      </div>
+            </thead>
+            <tbody>
+              {topCustomers.map((customer, index) => {
+                const total = customer.rr + customer.nrr
+                const href = `/accounts/${encodeURIComponent(customer.customer_name)}`
+
+                return (
+                  <tr key={`${customer.customer_name}-${index}`}>
+                    <td className="num" style={{ ...right, color: 'var(--muted)' }}>{index + 1}</td>
+                    <td>
+                      <Link href={href} className="font-medium hover:underline" style={{ color: 'var(--secondary)', textDecoration: 'none' }}>
+                        {customer.customer_name}
+                      </Link>
+                    </td>
+                    <td style={{ color: 'var(--ink-2)' }}>{customer.bu}</td>
+                    <td className="num font-medium" style={right}>${(total / 1e6).toFixed(2)}M</td>
+                    <td className="num" style={right}>${(customer.rr / 1e6).toFixed(2)}M</td>
+                    <td className="num" style={right}>${(customer.nrr / 1e6).toFixed(2)}M</td>
+                    <td>
+                      <HealthIndicator score={customer.healthScore} label={customer.healthScore === 'yellow' ? 'At risk' : undefined} />
+                    </td>
+                    <td style={right}>
+                      <Link href={href} className="btn btn-ghost btn-sm">
+                        View plan
+                      </Link>
+                    </td>
+                  </tr>
+                )
+              })}
+            </tbody>
+          </table>
+        </div>
+      </Panel>
     </section>
   )
 }

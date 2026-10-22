@@ -567,34 +567,74 @@ export async function getAccountRetentionStrategy(
   }
 }
 
+// Fixed text written by scripts/generate-demo-data.ts. A section that still
+// holds only this template has not been researched, so it scores as empty.
+const TEMPLATE_STAKEHOLDER_NAME = 'Chief Technology Officer'
+const TEMPLATE_PAIN_POINT_TITLE = 'Legacy system modernization needs'
+const TEMPLATE_COMPETITOR_SUFFIX = 'competes with Skyvera for BSS/OSS platform business.'
+
+const PLAN_SECTIONS = ['stakeholders', 'strategy', 'actions', 'competitors', 'intelligence'] as const
+type PlanSection = (typeof PLAN_SECTIONS)[number]
+
+function asArray(value: unknown): Record<string, unknown>[] {
+  return Array.isArray(value) ? (value as Record<string, unknown>[]) : []
+}
+
 /**
- * Get data completeness scores for a list of customers (0-100).
- * Checks presence of intelligence JSON files for each account.
+ * True when a plan section holds account-specific content: present, non-empty,
+ * and not the untouched demo template.
+ */
+export function hasRealPlanContent(section: PlanSection, data: unknown): boolean {
+  if (data == null) return false
+  switch (section) {
+    case 'stakeholders': {
+      const people = asArray(data)
+      return people.length > 0 && people[0].name !== TEMPLATE_STAKEHOLDER_NAME
+    }
+    case 'strategy': {
+      const s = data as { painPoints?: unknown; opportunities?: unknown }
+      const painPoints = asArray(s.painPoints)
+      const opportunities = asArray(s.opportunities)
+      if (painPoints.length === 0 && opportunities.length === 0) return false
+      return painPoints[0]?.title !== TEMPLATE_PAIN_POINT_TITLE
+    }
+    case 'actions':
+      return asArray(data).length > 0
+    case 'competitors': {
+      const competitors = asArray(data)
+      return competitors.length > 0 &&
+        !competitors.every(c => typeof c.description === 'string' && c.description.endsWith(TEMPLATE_COMPETITOR_SUFFIX))
+    }
+    case 'intelligence': {
+      const raw = (data as { raw?: unknown }).raw
+      return typeof raw === 'string' && raw.trim().length > 0
+    }
+  }
+}
+
+/**
+ * Get data completeness scores for a list of customers (0-100): the share of
+ * plan sections in data/account-plans/<section>/<slug>.json with real content.
  */
 export async function getCompletenessScores(
   customerNames: string[]
 ): Promise<Record<string, number>> {
   const scores: Record<string, number> = {}
-  const intelligenceDir = path.join(process.cwd(), 'data', 'intelligence')
+  const plansDir = path.join(process.cwd(), 'data', 'account-plans')
 
   await Promise.all(
     customerNames.map(async (name) => {
-      try {
-        const slug = slugifyCustomerName(name)
-        const files = ['stakeholders', 'strategy', 'actions', 'competitors', 'intelligence']
-        let found = 0
-        for (const file of files) {
-          try {
-            await readFile(path.join(intelligenceDir, slug, `${file}.json`), 'utf-8')
-            found++
-          } catch {
-            // file missing — counts as 0
-          }
+      const slug = slugifyCustomerName(name)
+      let found = 0
+      for (const section of PLAN_SECTIONS) {
+        try {
+          const data = JSON.parse(await readFile(path.join(plansDir, section, `${slug}.json`), 'utf-8'))
+          if (hasRealPlanContent(section, data)) found++
+        } catch {
+          // missing or unreadable file counts as an empty section
         }
-        scores[name] = Math.round((found / files.length) * 100)
-      } catch {
-        scores[name] = 0
       }
+      scores[name] = Math.round((found / PLAN_SECTIONS.length) * 100)
     })
   )
 

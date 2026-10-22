@@ -54,47 +54,29 @@ export function SalesforceSyncButton({ accountName }: SalesforceSyncButtonProps)
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '0.25rem' }}>
-      <button
-        onClick={handleSync}
-        disabled={status === 'syncing'}
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '0.5rem',
-          padding: '0.5rem 1rem',
-          background: status === 'success' ? 'rgba(255,255,255,0.15)' : 'rgba(255,255,255,0.1)',
-          border: '1px solid rgba(255,255,255,0.2)',
-          borderRadius: '4px',
-          color: 'white',
-          fontSize: '0.8rem',
-          fontWeight: 500,
-          cursor: status === 'syncing' ? 'not-allowed' : 'pointer',
-          opacity: status === 'syncing' ? 0.7 : 1,
-          transition: 'all 0.2s',
-        }}
-      >
+      <button type="button" onClick={handleSync} disabled={status === 'syncing'} className="btn">
         {status === 'syncing' ? (
-          <RefreshCw size={14} style={{ animation: 'spin 1s linear infinite' }} />
+          <RefreshCw size={14} className="animate-spin" aria-hidden="true" />
         ) : status === 'success' ? (
-          <CheckCircle size={14} />
+          <CheckCircle size={14} style={{ color: 'var(--success-ink)' }} aria-hidden="true" />
         ) : status === 'error' ? (
-          <AlertCircle size={14} />
+          <AlertCircle size={14} style={{ color: 'var(--critical-ink)' }} aria-hidden="true" />
         ) : (
-          <Cloud size={14} />
+          <Cloud size={14} aria-hidden="true" />
         )}
         {status === 'syncing'
-          ? 'Syncing...'
+          ? 'Syncing…'
           : status === 'success'
-          ? 'Synced!'
+          ? 'Synced'
           : status === 'error'
-          ? 'Failed'
+          ? 'Sync failed'
           : 'Sync from Salesforce'}
       </button>
       {message && (
         <span
           style={{
             fontSize: '0.7rem',
-            color: 'rgba(255,255,255,0.7)',
+            color: 'var(--muted)',
             maxWidth: '200px',
             textAlign: 'right',
           }}

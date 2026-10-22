@@ -1,10 +1,11 @@
 /**
- * OrgStructureTab - Visual org-node hierarchy with decision hierarchy numbered list
- * Server Component — pure display, no interactivity needed
- * Matches Telstra HTML org-chart section: bordered cards, CEO style, target/advocate variants
+ * OrgStructureTab - Org hierarchy (by reportsTo, or grouped by role) plus the decision hierarchy
+ * Server Component: pure display, no interactivity needed
  */
 
 import type { Stakeholder } from '@/lib/types/account-plan'
+import { Badge } from '@/components/ui/badge'
+import { EmptyState } from '@/components/ui/empty-state'
 
 interface OrgStructureTabProps {
   stakeholders: Stakeholder[]
@@ -12,49 +13,51 @@ interface OrgStructureTabProps {
   bu: string
 }
 
+type BadgeVariant = 'default' | 'success' | 'warning' | 'danger'
+
+const roleBadge: Record<Stakeholder['role'], { label: string; variant: BadgeVariant }> = {
+  champion: { label: 'Internal advocate', variant: 'success' },
+  'decision-maker': { label: 'Key target', variant: 'default' },
+  influencer: { label: 'Influencer', variant: 'default' },
+  blocker: { label: 'Potential risk', variant: 'danger' },
+  user: { label: 'End user', variant: 'default' },
+}
+
 function OrgNode({ stakeholder }: { stakeholder: Stakeholder }) {
-  const isChampion = stakeholder.role === 'champion'
-  const isDecisionMaker = stakeholder.role === 'decision-maker'
-  const isBlocker = stakeholder.role === 'blocker'
-
-  const borderColor = isChampion ? 'var(--success, #4caf50)' : isDecisionMaker ? 'var(--accent)' : isBlocker ? 'var(--critical, #e53935)' : 'var(--secondary)'
-  const borderWidth = isChampion || isDecisionMaker ? '3px' : '2px'
-  const bgColor = isChampion ? 'rgba(76,175,80,0.05)' : isDecisionMaker ? 'rgba(200,75,49,0.04)' : 'white'
-
-  const badgeLabel = { champion: 'INTERNAL ADVOCATE', 'decision-maker': 'KEY TARGET', influencer: 'INFLUENCER', blocker: 'POTENTIAL RISK', user: 'END USER' }[stakeholder.role] ?? ''
-  const badgeBg = { champion: 'var(--success, #4caf50)', 'decision-maker': 'var(--critical, #e53935)', influencer: 'var(--warning, #ff9800)', blocker: 'var(--critical, #e53935)', user: 'var(--muted)' }[stakeholder.role] ?? 'var(--muted)'
+  const badge = roleBadge[stakeholder.role]
+  const isKey = stakeholder.role === 'champion' || stakeholder.role === 'decision-maker'
 
   return (
-    <div style={{
-      background: bgColor,
-      border: `${borderWidth} solid ${borderColor}`,
-      padding: '1.25rem',
-      margin: '0.5rem',
-      borderRadius: '3px',
-      minWidth: '220px',
-      maxWidth: '260px',
-      boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
-    }}>
-      <div style={{ fontWeight: 700, color: 'var(--secondary)', fontSize: '1rem', marginBottom: '0.25rem' }}>
+    <li
+      className="w-full list-none p-4 sm:w-64"
+      style={{
+        background: 'var(--surface)',
+        border: `1px solid ${isKey ? 'var(--border-strong)' : 'var(--border)'}`,
+        borderRadius: 'var(--radius-md)',
+      }}
+    >
+      <p className="m-0 text-sm font-semibold" style={{ color: 'var(--ink)' }}>
         {stakeholder.title || stakeholder.role}
-      </div>
-      <div style={{ fontSize: '0.875rem', color: 'var(--muted)', marginBottom: '0.5rem' }}>
-        {stakeholder.name}
-        {isChampion && ' ✅'}
-        {isDecisionMaker && ' ⭐'}
-      </div>
-      <span style={{
-        display: 'inline-block', padding: '0.15rem 0.6rem', borderRadius: '2px',
-        fontSize: '0.65rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em',
-        background: badgeBg, color: 'white',
-      }}>
-        {badgeLabel}
-      </span>
+      </p>
+      <p className="m-0 mt-0.5 text-sm" style={{ color: 'var(--ink-2)' }}>{stakeholder.name}</p>
+      {badge && <div className="mt-2"><Badge variant={badge.variant}>{badge.label}</Badge></div>}
       {stakeholder.notes && (
-        <div style={{ marginTop: '0.4rem', fontSize: '0.75rem', color: 'var(--muted)' }}>
+        <p className="m-0 mt-2 text-xs" style={{ color: 'var(--muted)' }}>
           {stakeholder.notes.slice(0, 70)}{stakeholder.notes.length > 70 ? '…' : ''}
-        </div>
+        </p>
       )}
+    </li>
+  )
+}
+
+function NodeGroup({ title, items }: { title?: string; items: Stakeholder[] }) {
+  if (items.length === 0) return null
+  return (
+    <div>
+      {title && <h3 className="m-0 mb-3 text-sm" style={{ color: 'var(--ink-2)' }}>{title}</h3>}
+      <ul className="m-0 flex flex-wrap gap-3 p-0">
+        {items.map(s => <OrgNode key={s.id} stakeholder={s} />)}
+      </ul>
     </div>
   )
 }
@@ -62,10 +65,10 @@ function OrgNode({ stakeholder }: { stakeholder: Stakeholder }) {
 export function OrgStructureTab({ stakeholders, customerName, bu }: OrgStructureTabProps) {
   if (stakeholders.length === 0) {
     return (
-      <div style={{ padding: '4rem 0', textAlign: 'center', color: 'var(--muted)' }}>
-        <div style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: '1.5rem', marginBottom: '0.5rem', color: 'var(--secondary)' }}>No org structure data</div>
-        <p style={{ fontSize: '0.875rem' }}>Add stakeholder data with role classifications to visualize the org hierarchy.</p>
-      </div>
+      <EmptyState
+        title="No org structure data"
+        description="Add stakeholder data with role classifications to see the org hierarchy."
+      />
     )
   }
 
@@ -83,86 +86,48 @@ export function OrgStructureTab({ stakeholders, customerName, bu }: OrgStructure
   const blockers = stakeholders.filter(s => s.role === 'blocker')
 
   return (
-    <div className="space-y-8">
-      <h2 style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: '1.75rem', fontWeight: 600, color: 'var(--secondary)' }}>
-        {customerName} Organizational Structure
-      </h2>
-      <p style={{ fontSize: '1rem', color: 'var(--muted)', marginTop: '-1rem' }}>
-        Decision-making hierarchy for {bu} platform systems. Green borders indicate primary engagement targets.
-      </p>
+    <div className="space-y-6">
+      <section className="card overflow-hidden" aria-labelledby="org-title">
+        <div className="px-5 py-4" style={{ borderBottom: '1px solid var(--border)' }}>
+          <h2 id="org-title" className="m-0">{customerName} organizational structure</h2>
+          <p className="m-0 mt-1 text-sm" style={{ color: 'var(--muted)' }}>
+            Decision-making hierarchy for {bu} platform systems. Tags mark internal advocates and key targets.
+          </p>
+        </div>
 
-      {/* Org chart */}
-      <div style={{ padding: '2rem', background: 'var(--paper)', border: '1px solid var(--border)' }}>
-        {useRoleGrouping ? (
-          // Role-based grouping when no hierarchy data
-          <>
-            {decisionMakers.length > 0 && (
-              <div style={{ marginBottom: '2rem' }}>
-                <div style={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--muted)', marginBottom: '1rem', textAlign: 'center' }}>Decision Makers</div>
-                <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap' }}>
-                  {decisionMakers.map(s => <OrgNode key={s.id} stakeholder={s} />)}
-                </div>
-              </div>
-            )}
-            {champions.length > 0 && (
-              <div style={{ marginBottom: '2rem' }}>
-                <div style={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--muted)', marginBottom: '1rem', textAlign: 'center' }}>Champions & Advocates</div>
-                <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap' }}>
-                  {champions.map(s => <OrgNode key={s.id} stakeholder={s} />)}
-                </div>
-              </div>
-            )}
-            {influencers.length > 0 && (
-              <div style={{ marginBottom: '2rem' }}>
-                <div style={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--muted)', marginBottom: '1rem', textAlign: 'center' }}>Influencers</div>
-                <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap' }}>
-                  {influencers.map(s => <OrgNode key={s.id} stakeholder={s} />)}
-                </div>
-              </div>
-            )}
-            {(users.length > 0 || blockers.length > 0) && (
-              <div>
-                <div style={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--muted)', marginBottom: '1rem', textAlign: 'center' }}>Operational / Other</div>
-                <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap' }}>
-                  {[...users, ...blockers].map(s => <OrgNode key={s.id} stakeholder={s} />)}
-                </div>
-              </div>
-            )}
-          </>
-        ) : (
-          // Tree-based hierarchy from reportsTo
-          <>
-            <div style={{ marginBottom: '2rem', textAlign: 'center' }}>
-              <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap' }}>
-                {roots.map(s => <OrgNode key={s.id} stakeholder={s} />)}
-              </div>
-            </div>
-            {roots.map(root => {
-              const children = getChildren(root.id)
-              if (children.length === 0) return null
-              return (
-                <div key={root.id} style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '2rem' }}>
-                  {children.map(s => <OrgNode key={s.id} stakeholder={s} />)}
-                </div>
-              )
-            })}
-          </>
-        )}
-      </div>
+        <div className="space-y-6 p-5">
+          {useRoleGrouping ? (
+            // Role-based grouping when no hierarchy data
+            <>
+              <NodeGroup title="Decision makers" items={decisionMakers} />
+              <NodeGroup title="Champions and advocates" items={champions} />
+              <NodeGroup title="Influencers" items={influencers} />
+              <NodeGroup title="Operational and other" items={[...users, ...blockers]} />
+            </>
+          ) : (
+            // Tree-based hierarchy from reportsTo
+            <>
+              <NodeGroup title="Leadership" items={roots} />
+              {roots.map(root => {
+                const children = getChildren(root.id)
+                if (children.length === 0) return null
+                return <NodeGroup key={root.id} title={`Reports to ${root.name}`} items={children} />
+              })}
+            </>
+          )}
+        </div>
+      </section>
 
       {/* Decision Hierarchy */}
-      <div style={{ padding: '1.5rem 2rem', background: 'rgba(200,75,49,0.05)', borderLeft: '4px solid var(--accent)' }}>
-        <h4 style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: '1.2rem', fontWeight: 600, color: 'var(--secondary)', marginBottom: '1rem' }}>
-          Decision Hierarchy for Platform Systems:
-        </h4>
-        <ol style={{ marginLeft: '1.5rem', lineHeight: 2, fontSize: '0.875rem', color: 'var(--ink)' }}>
-          <li><strong>Level 1 — Strategic Direction:</strong> Decision Makers (business needs, strategic sponsorship)</li>
-          <li><strong>Level 2 — Technical/Architectural:</strong> IT Function, platform teams, technical champions</li>
-          <li><strong>Level 3 — Procurement & Budget:</strong> CFO/Finance, Chief Procurement Officer</li>
-          <li><strong>Level 4 — Implementation & Ops:</strong> Internal advocates, business analysts, end users</li>
+      <section className="card p-5" aria-labelledby="org-hierarchy">
+        <h2 id="org-hierarchy" className="m-0">Decision hierarchy for platform systems</h2>
+        <ol className="m-0 mt-3 list-decimal space-y-1.5 pl-5 text-sm">
+          <li className="pl-1"><span className="font-medium">Strategic direction:</span> decision makers (business needs, strategic sponsorship)</li>
+          <li className="pl-1"><span className="font-medium">Technical and architectural:</span> IT function, platform teams, technical champions</li>
+          <li className="pl-1"><span className="font-medium">Procurement and budget:</span> CFO or finance, chief procurement officer</li>
+          <li className="pl-1"><span className="font-medium">Implementation and operations:</span> internal advocates, business analysts, end users</li>
         </ol>
-      </div>
-
+      </section>
     </div>
   )
 }

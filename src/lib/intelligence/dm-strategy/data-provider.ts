@@ -11,6 +11,7 @@
 import { ok, err, type Result } from '@/lib/types/result'
 import { getDMTrackerData } from '@/lib/data/server/dm-tracker-data'
 import { getDMRecommendations } from '@/lib/data/server/dm-strategy-data'
+import { getCustomerCount } from '@/lib/data/server/account-data'
 import { adaptDMDataForUI } from './adapters'
 import { classifyDMScenario } from './analyzer'
 import type { BusinessUnitMetrics, DashboardStats, Recommendation, DMScenarioKey } from '@/app/dm-strategy/types'
@@ -22,22 +23,6 @@ export interface DMStrategyUIData {
   businessUnits: BusinessUnitMetrics[]
   dashboardStats: DashboardStats
   recommendations: Recommendation[]
-}
-
-/**
- * Account counts by business unit
- * TODO: Replace with actual database query when account data is available
- */
-const ACCOUNT_COUNTS: { [bu: string]: number } = {
-  Cloudsense: 65,
-  Kandy: 45,
-  STL: 30,
-  NewNet: 28,
-  voltDelta: 38,
-  'Service Gateway': 14,
-  Mobilogy: 12,
-  Peerapp: 22,
-  Responsetek: 18,
 }
 
 /**
@@ -56,9 +41,10 @@ const ACCOUNT_COUNTS: { [bu: string]: number } = {
 export async function getDMStrategyUIData(): Promise<Result<DMStrategyUIData, Error>> {
   try {
     // 1. Fetch raw backend data
-    const [dmTrackerResult, recommendationsResult] = await Promise.all([
+    const [dmTrackerResult, recommendationsResult, customerCountResult] = await Promise.all([
       getDMTrackerData(),
       getDMRecommendations(),
+      getCustomerCount(),
     ])
 
     // 2. Check for errors
@@ -74,7 +60,12 @@ export async function getDMStrategyUIData(): Promise<Result<DMStrategyUIData, Er
     const dmData = dmTrackerResult.value
     const recommendations = recommendationsResult.value
 
-    const uiData = adaptDMDataForUI(dmData, recommendations, ACCOUNT_COUNTS)
+    // Real per-BU account counts from the budget snapshot
+    if (!customerCountResult.success) {
+      return err(new Error(`Failed to count accounts: ${customerCountResult.error.message}`))
+    }
+
+    const uiData = adaptDMDataForUI(dmData, recommendations, customerCountResult.value.byBU)
 
     // 4. Return transformed data
     return ok(uiData)
@@ -115,7 +106,7 @@ export async function getDMStrategyUIDataForBU(
   scenarioBreakdown[buScenario] = 1
 
   const dashboardStats: DashboardStats = {
-    currentDM: bu.ttmDM,
+    currentDM: bu.currentDM,
     monthlyDM: bu.monthlyDM,
     quarterlyDM: bu.quarterlyDM,
     ttmDM: bu.ttmDM,
@@ -124,7 +115,8 @@ export async function getDMStrategyUIDataForBU(
       .reduce((sum, r) => sum + r.arrImpact, 0),
     activeRecommendations: buRecommendations.filter(r => r.status === 'pending').length,
     totalAccounts: bu.accountCount,
-    atRiskAccounts: bu.ttmDM < bu.targetDM ? 1 : 0,
+    // Same rule as the portfolio view: below the 90% floor on the plan comparison
+    atRiskAccounts: bu.annualDM < 90 ? 1 : 0,
     scenarioBreakdown,
   }
 

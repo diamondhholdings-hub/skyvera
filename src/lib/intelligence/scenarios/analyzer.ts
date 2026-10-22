@@ -48,7 +48,7 @@ export async function analyzeScenarioWithClaude(
 
     if (!response.success) {
       // If Claude unavailable (no API key), return mock analysis
-      if (response.error.message.includes('ANTHROPIC_API_KEY not configured')) {
+      if (response.error.message.includes('Claude API not configured')) {
         return ok(createMockAnalysis(calculatedMetrics))
       }
       return err(response.error)
@@ -109,7 +109,7 @@ function extractParameters(input: ScenarioInput): Record<string, number> {
  */
 function createMockAnalysis(calculatedMetrics: ImpactMetric[]): ScenarioImpactResponse {
   return {
-    impactSummary: 'Claude analysis unavailable - displaying calculated metrics only. Configure ANTHROPIC_API_KEY for AI-powered impact analysis.',
+    impactSummary: 'Claude analysis unavailable - displaying calculated metrics only. Configure TFY_API_KEY for AI impact analysis.',
     affectedMetrics: calculatedMetrics.map((m) => ({
       name: m.name,
       before: m.before,

@@ -6,13 +6,14 @@
  */
 
 import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from 'recharts'
+import { CHART_VARS, TOOLTIP_STYLE } from './chart-colors'
 
 interface ARRBreakdownChartProps {
   rr: number
   nrr: number
 }
 
-const COLORS = ['#c84b31', '#2d4263']
+const COLORS = [CHART_VARS.series1, CHART_VARS.series2]
 
 function formatCurrency(value: number): string {
   if (value >= 1_000_000) return `$${(value / 1_000_000).toFixed(2)}M`
@@ -44,6 +45,7 @@ export function ARRBreakdownChart({ rr, nrr }: ARRBreakdownChartProps) {
           innerRadius={70}
           outerRadius={110}
           paddingAngle={2}
+          stroke={CHART_VARS.surface}
           dataKey="value"
         >
           {data.map((_, index) => (
@@ -53,12 +55,12 @@ export function ARRBreakdownChart({ rr, nrr }: ARRBreakdownChartProps) {
         <Tooltip
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           formatter={(value: any) => formatCurrency(value as number)}
-          contentStyle={{ border: '1px solid var(--border)', borderRadius: 2, fontSize: '0.8rem' }}
+          contentStyle={TOOLTIP_STYLE}
         />
         <Legend
-          iconType="circle"
+          iconType="square"
           iconSize={10}
-          wrapperStyle={{ fontSize: '0.8rem', paddingTop: '1rem' }}
+          wrapperStyle={{ fontSize: '0.8125rem', paddingTop: '1rem', color: 'var(--ink-2)' }}
         />
       </PieChart>
     </ResponsiveContainer>

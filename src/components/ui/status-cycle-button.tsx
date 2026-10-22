@@ -17,23 +17,28 @@ interface StatusCycleButtonProps {
   onUpdate?: (newStatus: string) => void
 }
 
-// Color map for pain point statuses
-const PAIN_POINT_COLORS: Record<string, string> = {
-  active: 'bg-[var(--critical,#c62828)] text-white',
-  monitoring: 'bg-[var(--warning,#e65100)] text-white',
-  resolved: 'bg-[var(--success,#2e7d32)] text-white',
+// Tag style per status (tint + ink, never a saturated fill)
+const PAIN_POINT_CLASSES: Record<string, string> = {
+  active: 'badge-critical',
+  monitoring: 'badge-warning',
+  resolved: 'badge-success',
 }
 
-// Color map for action statuses
-const ACTION_COLORS: Record<string, string> = {
-  todo: 'bg-[var(--muted,#8b8b8b)] text-white',
-  'in-progress': 'bg-[#1565c0] text-white',
-  done: 'bg-[var(--success,#2e7d32)] text-white',
+const ACTION_CLASSES: Record<string, string> = {
+  todo: 'badge-neutral',
+  'in-progress': 'badge-info',
+  done: 'badge-success',
 }
 
 function getBadgeClass(status: string, type: 'pain-point' | 'action'): string {
-  const map = type === 'pain-point' ? PAIN_POINT_COLORS : ACTION_COLORS
-  return map[status] ?? 'bg-[var(--muted,#8b8b8b)] text-white'
+  const map = type === 'pain-point' ? PAIN_POINT_CLASSES : ACTION_CLASSES
+  return map[status] ?? 'badge-neutral'
+}
+
+/** "in-progress" -> "In progress" */
+function statusLabel(status: string): string {
+  const words = status.replace(/[-_]/g, ' ')
+  return words.charAt(0).toUpperCase() + words.slice(1)
 }
 
 export function StatusCycleButton({
@@ -98,15 +103,13 @@ export function StatusCycleButton({
   return (
     <div className="relative inline-flex flex-col items-start gap-1">
       <button
+        type="button"
         onClick={handleClick}
         disabled={isSaving}
         title={`Click to cycle status (current: ${currentStatus})`}
-        className={`
-          inline-flex items-center gap-1.5 px-3 py-1 rounded-sm text-xs font-semibold
-          uppercase tracking-wide cursor-pointer select-none
-          transition-opacity hover:opacity-80 disabled:cursor-not-allowed disabled:opacity-60
-          ${badgeClass}
-        `}
+        aria-label={`Status: ${statusLabel(currentStatus)}. Click to change.`}
+        className={`inline-flex cursor-pointer select-none items-center gap-1.5 whitespace-nowrap px-1.5 py-0.5 text-xs font-medium transition-opacity hover:opacity-80 disabled:cursor-not-allowed disabled:opacity-60 ${badgeClass}`}
+        style={{ borderRadius: 'var(--radius-xs)' }}
       >
         {isSaving ? (
           <>
@@ -124,10 +127,10 @@ export function StatusCycleButton({
                 d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
               />
             </svg>
-            <span>{currentStatus}</span>
+            <span>{statusLabel(currentStatus)}</span>
           </>
         ) : (
-          <span>{currentStatus}</span>
+          <span>{statusLabel(currentStatus)}</span>
         )}
       </button>
 
@@ -135,7 +138,8 @@ export function StatusCycleButton({
       {errorMsg && (
         <span
           role="alert"
-          className="absolute top-full mt-1 left-0 z-50 whitespace-nowrap text-[10px] font-medium text-white bg-[var(--critical,#c62828)] px-2 py-0.5 rounded shadow-md"
+          className="badge-critical absolute left-0 top-full z-50 mt-1 whitespace-nowrap px-1.5 py-0.5 text-xs font-medium shadow-sm"
+          style={{ borderRadius: 'var(--radius-xs)' }}
         >
           {errorMsg}
         </span>

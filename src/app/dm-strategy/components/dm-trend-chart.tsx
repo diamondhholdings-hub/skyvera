@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   LineChart,
   Line,
@@ -8,29 +8,47 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
   ResponsiveContainer,
   ReferenceLine,
 } from 'recharts';
 import type { MonthlyDMData } from '../types';
 
-const DESIGN_TOKENS = {
-  success: '#4caf50',
-  critical: '#e53935',
-  warning: '#f59e0b',
-  secondary: '#2d4263',
-  accent: '#c84b31',
-  muted: '#8b8b8b',
-  border: '#e8e6e1',
-  ink: '#1a1a1a',
-}
-
 interface DMTrendChartProps {
   data: MonthlyDMData[];
   title: string;
-  color: string;
+  /** Series color: a CSS color or `var(--token)`; tokens are resolved at runtime for SVG attributes */
+  color?: string;
   targetDM: number;
   showTarget?: boolean;
+}
+
+const TOKEN_NAMES = ['--secondary', '--success-ink', '--critical-ink', '--muted', '--border', '--ink', '--surface'] as const;
+type TokenName = (typeof TOKEN_NAMES)[number];
+
+/**
+ * SVG presentation attributes don't resolve `var(--x)`, so read the design
+ * tokens from :root once mounted and hand Recharts concrete color strings.
+ */
+function useTokens(): Record<TokenName, string> {
+  const [tokens, setTokens] = useState<Record<TokenName, string>>(
+    () => Object.fromEntries(TOKEN_NAMES.map((n) => [n, `var(${n})`])) as Record<TokenName, string>
+  );
+  useEffect(() => {
+    const css = getComputedStyle(document.documentElement);
+    setTokens(
+      Object.fromEntries(
+        TOKEN_NAMES.map((n) => [n, css.getPropertyValue(n).trim() || `var(${n})`])
+      ) as Record<TokenName, string>
+    );
+  }, []);
+  return tokens;
+}
+
+function resolveColor(color: string | undefined, tokens: Record<TokenName, string>): string {
+  if (!color) return tokens['--secondary'];
+  const match = color.match(/^var\((--[a-z0-9-]+)\)$/i);
+  if (match && (TOKEN_NAMES as readonly string[]).includes(match[1])) return tokens[match[1] as TokenName];
+  return color;
 }
 
 export default function DMTrendChart({
@@ -40,94 +58,88 @@ export default function DMTrendChart({
   targetDM,
   showTarget = true,
 }: DMTrendChartProps) {
+  const tokens = useTokens();
+  const series = resolveColor(color, tokens);
+
+  if (data.length === 0) {
+    return (
+      <section className="card p-5">
+        <h3 className="m-0 text-base font-semibold">{title}</h3>
+        <p className="m-0 mt-2 text-sm" style={{ color: 'var(--muted)' }}>No history available for this business unit.</p>
+      </section>
+    );
+  }
+
   // Calculate min/max for Y-axis (with padding)
   const dmValues = data.map((d) => d.dmPercent);
   const minDM = Math.min(...dmValues, targetDM) - 2;
   const maxDM = Math.max(...dmValues, targetDM) + 2;
+  const latest = data[data.length - 1];
+  const latestBelowTarget = latest.dmPercent < targetDM;
+
+  const stats = [
+    {
+      label: `Latest (${latest.month})`,
+      value: `${latest.dmPercent.toFixed(1)}%`,
+      color: latestBelowTarget ? 'var(--critical-ink)' : 'var(--success-ink)',
+      context: latestBelowTarget ? `Below ${targetDM}% target` : `At or above ${targetDM}% target`,
+    },
+    { label: `${data.length}-quarter average`, value: `${(dmValues.reduce((s, v) => s + v, 0) / data.length).toFixed(1)}%` },
+    { label: 'Peak', value: `${Math.max(...dmValues).toFixed(1)}%` },
+    { label: 'Trough', value: `${Math.min(...dmValues).toFixed(1)}%` },
+  ];
 
   return (
-    <div
-      style={{
-        background: '#FFFFFF',
-        borderRadius: 'var(--radius-lg)',
-        padding: 'var(--space-lg)',
-        boxShadow: '0 2px 8px rgba(0, 0, 0, 0.08)',
-        marginBottom: 'var(--space-lg)',
-      }}
-    >
-      {/* Chart Title */}
-      <h3
-        style={{
-          fontSize: '1.25rem',
-          fontWeight: 700,
-          color: color,
-          marginBottom: 'var(--space-md)',
-          paddingBottom: 'var(--space-sm)',
-          borderBottom: `2px solid ${color}20`,
-        }}
-      >
-        {title}
-      </h3>
+    <section className="card p-5">
+      <h3 className="m-0 mb-4 text-base font-semibold">{title}</h3>
 
-      {/* Chart */}
-      <ResponsiveContainer width="100%" height={300}>
-        <LineChart
-          data={data}
-          margin={{ top: 10, right: 30, left: 10, bottom: 10 }}
-        >
-          <CartesianGrid strokeDasharray="3 3" stroke={DESIGN_TOKENS.border} />
+      <ResponsiveContainer width="100%" height={280}>
+        <LineChart data={data} margin={{ top: 10, right: 16, left: 0, bottom: 0 }}>
+          <CartesianGrid stroke={tokens['--border']} vertical={false} />
 
           <XAxis
             dataKey="month"
-            tick={{ fontSize: 12, fill: DESIGN_TOKENS.muted }}
-            tickLine={{ stroke: DESIGN_TOKENS.border }}
-            axisLine={{ stroke: DESIGN_TOKENS.border }}
+            tick={{ fontSize: 12, fill: tokens['--muted'] }}
+            tickLine={false}
+            axisLine={{ stroke: tokens['--border'] }}
+            minTickGap={16}
           />
 
           <YAxis
             domain={[minDM, maxDM]}
-            tick={{ fontSize: 12, fill: DESIGN_TOKENS.muted }}
-            tickLine={{ stroke: DESIGN_TOKENS.border }}
-            axisLine={{ stroke: DESIGN_TOKENS.border }}
-            tickFormatter={(value) => `${value.toFixed(1)}%`}
+            tick={{ fontSize: 12, fill: tokens['--muted'] }}
+            tickLine={false}
+            axisLine={false}
+            width={52}
+            tickFormatter={(value) => `${value.toFixed(0)}%`}
           />
 
           <Tooltip
             contentStyle={{
-              background: 'white',
-              border: `1px solid ${DESIGN_TOKENS.border}`,
-              borderRadius: '8px',
-              padding: '12px',
+              background: tokens['--surface'],
+              border: `1px solid ${tokens['--border']}`,
+              borderRadius: '6px',
+              padding: '8px 10px',
+              fontSize: 12,
             }}
-            labelStyle={{
-              fontWeight: 600,
-              marginBottom: '8px',
-              color: DESIGN_TOKENS.ink,
-            }}
+            labelStyle={{ fontWeight: 600, marginBottom: 4, color: tokens['--ink'] }}
             formatter={(value: number | undefined) =>
-              value !== undefined ? [`${value.toFixed(1)}%`, 'DM%'] : ['N/A', 'DM%']
+              value !== undefined ? [`${value.toFixed(1)}%`, 'RR vs a year earlier'] : ['N/A', 'RR vs a year earlier']
             }
-          />
-
-          <Legend
-            wrapperStyle={{
-              paddingTop: '20px',
-            }}
           />
 
           {/* Target Line */}
           {showTarget && (
             <ReferenceLine
               y={targetDM}
-              stroke={DESIGN_TOKENS.success}
-              strokeDasharray="5 5"
-              strokeWidth={2}
+              stroke={tokens['--success-ink']}
+              strokeDasharray="4 4"
+              strokeWidth={1}
               label={{
-                value: `Target: ${targetDM}%`,
-                position: 'right',
-                fill: DESIGN_TOKENS.success,
-                fontSize: 12,
-                fontWeight: 600,
+                value: `Target ${targetDM}%`,
+                position: 'insideTopRight',
+                fill: tokens['--success-ink'],
+                fontSize: 11,
               }}
             />
           )}
@@ -136,119 +148,29 @@ export default function DMTrendChart({
           <Line
             type="monotone"
             dataKey="dmPercent"
-            stroke={color}
-            strokeWidth={3}
-            dot={{
-              fill: color,
-              strokeWidth: 2,
-              r: 4,
-            }}
-            activeDot={{
-              fill: color,
-              stroke: 'white',
-              strokeWidth: 2,
-              r: 6,
-            }}
+            stroke={series}
+            strokeWidth={2}
+            dot={{ fill: series, stroke: series, r: 2.5 }}
+            activeDot={{ fill: series, stroke: tokens['--surface'], strokeWidth: 2, r: 5 }}
             name="DM%"
+            isAnimationActive={false}
           />
         </LineChart>
       </ResponsiveContainer>
 
-      {/* Summary Stats */}
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
-          gap: 'var(--space-md)',
-          marginTop: 'var(--space-lg)',
-          paddingTop: 'var(--space-md)',
-          borderTop: `1px solid ${DESIGN_TOKENS.border}`,
-        }}
+      {/* Summary stats */}
+      <dl
+        className="m-0 mt-4 grid gap-4 border-t pt-4"
+        style={{ borderColor: 'var(--border)', gridTemplateColumns: 'repeat(auto-fit, minmax(7.5rem, 1fr))' }}
       >
-        <div>
-          <div
-            style={{
-              fontSize: '0.75rem',
-              color: DESIGN_TOKENS.muted,
-              marginBottom: '4px',
-            }}
-          >
-            Latest (Jan '26)
+        {stats.map((s) => (
+          <div key={s.label}>
+            <dt className="text-xs font-medium" style={{ color: 'var(--muted)' }}>{s.label}</dt>
+            <dd className="num m-0 mt-0.5 text-lg font-semibold" style={{ color: s.color ?? 'var(--ink)' }}>{s.value}</dd>
+            {s.context && <dd className="m-0 text-xs" style={{ color: 'var(--muted)' }}>{s.context}</dd>}
           </div>
-          <div
-            style={{
-              fontSize: '1.25rem',
-              fontWeight: 700,
-              color: data[data.length - 1].dmPercent >= targetDM ? DESIGN_TOKENS.success : DESIGN_TOKENS.critical,
-            }}
-          >
-            {data[data.length - 1].dmPercent.toFixed(1)}%
-          </div>
-        </div>
-
-        <div>
-          <div
-            style={{
-              fontSize: '0.75rem',
-              color: DESIGN_TOKENS.muted,
-              marginBottom: '4px',
-            }}
-          >
-            12-Month Avg
-          </div>
-          <div
-            style={{
-              fontSize: '1.25rem',
-              fontWeight: 700,
-              color: color,
-            }}
-          >
-            {(data.reduce((sum, d) => sum + d.dmPercent, 0) / data.length).toFixed(1)}%
-          </div>
-        </div>
-
-        <div>
-          <div
-            style={{
-              fontSize: '0.75rem',
-              color: DESIGN_TOKENS.muted,
-              marginBottom: '4px',
-            }}
-          >
-            Peak
-          </div>
-          <div
-            style={{
-              fontSize: '1.25rem',
-              fontWeight: 700,
-              color: DESIGN_TOKENS.success,
-            }}
-          >
-            {Math.max(...dmValues).toFixed(1)}%
-          </div>
-        </div>
-
-        <div>
-          <div
-            style={{
-              fontSize: '0.75rem',
-              color: DESIGN_TOKENS.muted,
-              marginBottom: '4px',
-            }}
-          >
-            Trough
-          </div>
-          <div
-            style={{
-              fontSize: '1.25rem',
-              fontWeight: 700,
-              color: DESIGN_TOKENS.critical,
-            }}
-          >
-            {Math.min(...dmValues).toFixed(1)}%
-          </div>
-        </div>
-      </div>
-    </div>
+        ))}
+      </dl>
+    </section>
   );
 }

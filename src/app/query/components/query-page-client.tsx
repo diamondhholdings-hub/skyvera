@@ -12,7 +12,6 @@ import { QueryInput } from './query-input'
 import { CannedQueries } from './canned-queries'
 import { QueryResults } from './query-results'
 import { MetricsCatalog } from './metrics-catalog'
-import { RefreshButton } from '@/components/ui/refresh-button'
 import { PageHeader } from '@/components/ui/page-header'
 
 // Serializable metric definition without the calculate function
@@ -21,9 +20,10 @@ type SerializableMetricDefinition = Omit<MetricDefinition, 'calculate'>
 interface QueryPageClientProps {
   cannedQueries: CannedQuery[]
   metrics: Record<string, SerializableMetricDefinition>
+  subtitle: string
 }
 
-export function QueryPageClient({ cannedQueries, metrics }: QueryPageClientProps) {
+export function QueryPageClient({ cannedQueries, metrics, subtitle }: QueryPageClientProps) {
   const [currentResult, setCurrentResult] = useState<QueryResult | null>(null)
   const [isLoading, setIsLoading] = useState(false)
   const [conversationHistory, setConversationHistory] = useState<string[]>([])
@@ -147,29 +147,23 @@ export function QueryPageClient({ cannedQueries, metrics }: QueryPageClientProps
 
   return (
     <div>
-      {/* Editorial Header */}
-      <PageHeader
-        title="Business Intelligence Query"
-        subtitle="Query your business data using natural language"
-        action={<RefreshButton label="Refresh Data" />}
-      />
+      <PageHeader title="Ask a question" subtitle={subtitle} />
 
-      {/* Content */}
-      <div className="max-w-[1400px] mx-auto px-8 py-8">
-        {/* Two-column layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="mx-auto max-w-[1400px] px-4 py-6 lg:px-8">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           {/* Left column - Input and results (2/3 width) */}
-          <div className="lg:col-span-2 space-y-6">
+          <div className="min-w-0 space-y-4 lg:col-span-2">
             <QueryInput onSubmit={handleFreeFormQuery} isLoading={isLoading} />
             <QueryResults
               result={currentResult}
+              isLoading={isLoading}
               onClarificationSelect={handleClarificationSelect}
               onFollowUp={handleFollowUp}
             />
           </div>
 
-          {/* Right column - Canned queries and catalog (1/3 width) */}
-          <div className="space-y-6">
+          {/* Right column - Suggested questions and metric definitions (1/3 width) */}
+          <div className="min-w-0 space-y-6">
             <CannedQueries queries={cannedQueries} onQuerySelect={handleCannedQuery} />
             <MetricsCatalog metrics={metrics} />
           </div>

@@ -40,6 +40,46 @@ def _shift_quarter(label, offset):
     return f"Q{index % 4 + 1}'{index // 4:02d}"
 
 
+def _read_rr_history(wb, bu_name):
+    """Quarterly recurring revenue by quarter label from '<BU> - Comparison to PP'.
+
+    Row 4 holds the quarter headers; the first run of them is the Current Plan
+    (Hybrid) block (actuals for past quarters), later repeats are the
+    Performance Plan, so only the first occurrence of each label is kept."""
+    sheet_name = f"{bu_name} - Comparison to PP"
+    if sheet_name not in wb.sheetnames:
+        return {}
+    ws = wb[sheet_name]
+    rr_row = next(
+        (r for r in range(1, 40) if any(str(ws.cell(r, c).value or '').strip() == 'Recurring Revenue' for c in (1, 2))),
+        None,
+    )
+    if rr_row is None:
+        return {}
+    history = {}
+    for col in range(3, ws.max_column + 1):
+        label = str(ws.cell(4, col).value or '').strip()
+        value = ws.cell(rr_row, col).value
+        if re.fullmatch(r"Q[1-4]'\d{2}", label) and label not in history and isinstance(value, (int, float)):
+            history[label] = float(value)
+    return history
+
+
+def _ttm_quarters(history, fiscal_quarter, current_rr):
+    """The last four quarters of real RR, each with year-over-year retention
+    (RR / RR four quarters earlier). The current quarter uses the P&L plan RR
+    so it matches the headline figures. Quarters without data are omitted."""
+    quarters = []
+    for offset in range(-3, 1):
+        label = _shift_quarter(fiscal_quarter, offset)
+        rr = current_rr if offset == 0 else history.get(label)
+        year_ago = history.get(_shift_quarter(label, -4))
+        if rr is None or not year_ago:
+            continue
+        quarters.append({"quarter": label, "rr": rr, "dm_pct": rr / year_ago * 100})
+    return quarters
+
+
 def extract_dm_data():
     """Extract revenue data and calculate DM% for each BU"""
     try:
@@ -107,6 +147,8 @@ def extract_dm_data():
         bu_names = ["Cloudsense", "Kandy", "STL"]
         total_current_revenue = 0
         total_prior_revenue = 0
+        # Sum of the BUs' quarterly RR, for the consolidated history
+        consolidated_history = {}
 
         for bu_name in bu_names:
             sheet_name = f"P&Ls - {bu_name}"
@@ -142,6 +184,9 @@ def extract_dm_data():
             # Calculate DM% if we have both values
             if current_rr is not None and prior_rr is not None:
                 try:
+                    history = _read_rr_history(wb, bu_name)
+                    for label, rr in history.items():
+                        consolidated_history[label] = consolidated_history.get(label, 0.0) + rr
                     current_rr = float(current_rr) if current_rr else 0
                     prior_rr = float(prior_rr) if prior_rr else 0
 
@@ -155,28 +200,7 @@ def extract_dm_data():
                         "dm_pct": dm_pct,
                         "variance": variance,
                         "meets_target": dm_pct >= 90.0,
-                        "ttm_quarters": [
-                            {
-                                "quarter": _shift_quarter(fiscal_quarter, -3),
-                                "rr": prior_rr * 0.97,  # Simulated historical data
-                                "dm_pct": 97.0
-                            },
-                            {
-                                "quarter": _shift_quarter(fiscal_quarter, -2),
-                                "rr": prior_rr * 0.99,
-                                "dm_pct": 99.0
-                            },
-                            {
-                                "quarter": _shift_quarter(fiscal_quarter, -1),
-                                "rr": prior_rr,
-                                "dm_pct": 100.0
-                            },
-                            {
-                                "quarter": _shift_quarter(fiscal_quarter, 0),
-                                "rr": current_rr,
-                                "dm_pct": dm_pct
-                            }
-                        ]
+                        "ttm_quarters": _ttm_quarters(history, fiscal_quarter, current_rr),
                     })
 
                     total_current_revenue += current_rr
@@ -196,60 +220,38 @@ def extract_dm_data():
                 "variance": total_current_revenue - total_prior_revenue,
                 "meets_target": consolidated_dm_pct >= 90.0,
                 "target": 90.0,
-                "ttm_quarters": [
-                    {
-                        "quarter": _shift_quarter(fiscal_quarter, -3),
-                        "rr": total_prior_revenue * 0.97,
-                        "dm_pct": 97.0
-                    },
-                    {
-                        "quarter": _shift_quarter(fiscal_quarter, -2),
-                        "rr": total_prior_revenue * 0.99,
-                        "dm_pct": 99.0
-                    },
-                    {
-                        "quarter": _shift_quarter(fiscal_quarter, -1),
-                        "rr": total_prior_revenue,
-                        "dm_pct": 100.0
-                    },
-                    {
-                        "quarter": _shift_quarter(fiscal_quarter, 0),
-                        "rr": total_current_revenue,
-                        "dm_pct": consolidated_dm_pct
-                    }
-                ]
+                "ttm_quarters": _ttm_quarters(consolidated_history, fiscal_quarter, total_current_revenue),
             }
 
-        # Add forecasting data (simple linear regression based on trend)
-        if dm_data["business_units"]:
-            # Calculate trend from last 4 quarters
-            # For now, use simple average decline rate
-            total_decline_rate = 0
-            for bu in dm_data["business_units"]:
-                decline_rate = bu["dm_pct"] - 100
-                total_decline_rate += decline_rate
-
-            avg_decline_rate = total_decline_rate / len(dm_data["business_units"])
-
-            # Forecast next 4 quarters
-            forecast_quarters = [_shift_quarter(fiscal_quarter, i) for i in range(1, 5)]
+        # Forecast: the workbook's own plan RR for the coming quarters (the
+        # Current Plan block in the Comparison to PP sheets), each with
+        # year-over-year retention against the real RR a year earlier.
+        # Quarters the plan doesn't cover are left out rather than extrapolated.
+        if dm_data["business_units"] and "ttm_quarters" in dm_data["consolidated"]:
+            forecast_quarters = []
+            previous_rr = total_current_revenue
+            qoq_changes = []
+            for i in range(1, 5):
+                label = _shift_quarter(fiscal_quarter, i)
+                planned_rr = consolidated_history.get(label)
+                year_ago_rr = consolidated_history.get(_shift_quarter(label, -4))
+                if planned_rr is None or not year_ago_rr:
+                    break
+                qoq_changes.append((planned_rr / previous_rr - 1) * 100 if previous_rr else 0)
+                previous_rr = planned_rr
+                forecast_quarters.append({
+                    "quarter": label,
+                    "forecasted_rr": planned_rr,
+                    "forecasted_dm_pct": planned_rr / year_ago_rr * 100,
+                    "confidence": "medium" if i < 2 else "low",
+                })
 
             dm_data["forecast"] = {
-                "method": "linear_trend",
-                "avg_quarterly_decline_rate": avg_decline_rate,
-                "quarters": []
+                "method": "budget_plan",
+                # Average quarter-over-quarter % change in planned RR (negative = decline)
+                "avg_quarterly_decline_rate": sum(qoq_changes) / len(qoq_changes) if qoq_changes else 0,
+                "quarters": forecast_quarters,
             }
-
-            for i, quarter in enumerate(forecast_quarters):
-                forecasted_dm = dm_data["consolidated"]["dm_pct"] + (avg_decline_rate * (i + 1) * 0.5)
-                forecasted_rr = total_current_revenue * (forecasted_dm / 100)
-
-                dm_data["forecast"]["quarters"].append({
-                    "quarter": quarter,
-                    "forecasted_rr": forecasted_rr,
-                    "forecasted_dm_pct": forecasted_dm,
-                    "confidence": "medium" if i < 2 else "low"
-                })
 
         # Output JSON
         print(json.dumps(dm_data, indent=2))

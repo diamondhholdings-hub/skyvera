@@ -6,8 +6,19 @@
  */
 
 import { getDMTrackerData } from '@/lib/data/server/dm-tracker-data'
+import { KpiStrip } from '@/components/ui/kpi-strip'
+import { Badge } from '@/components/ui/badge'
 import { AlertBox } from './alert-box'
 import { DMTrendChart } from './dm-trend-chart'
+import { Panel, SectionHeading, SignedFigure } from './panel'
+
+const right = { textAlign: 'right' as const }
+
+function PassFail({ pass }: { pass: boolean }) {
+  return <Badge variant={pass ? 'success' : 'danger'}>{pass ? 'Pass' : 'Fail'}</Badge>
+}
+
+const confidenceVariant = { high: 'success', medium: 'default', low: 'warning' } as const
 
 export async function DMTracker() {
   const result = await getDMTrackerData()
@@ -15,12 +26,12 @@ export async function DMTracker() {
   if (!result.success) {
     return (
       <div
+        className="p-10 text-center text-sm"
         style={{
-          padding: '40px',
-          textAlign: 'center',
-          color: '#64748b',
-          background: '#f8fafc',
-          borderRadius: '15px',
+          color: 'var(--muted)',
+          background: 'var(--surface-2)',
+          border: '1px solid var(--border)',
+          borderRadius: 'var(--radius-md)',
         }}
       >
         Failed to load DM% tracking data: {result.error.message}
@@ -29,453 +40,150 @@ export async function DMTracker() {
   }
 
   const data = result.value
+  const money = (v: number) => `$${(v / 1e6).toFixed(2)}M`
+  const signedK = (v: number) => `${v >= 0 ? '+' : '-'}$${Math.abs(v / 1e3).toFixed(0)}K`
 
   return (
-    <section id="dm-tracker" style={{ marginTop: '40px' }}>
-      {/* Section Header */}
-      <h2
-        style={{
-          fontSize: '1.8em',
-          color: '#1e3c72',
-          fontWeight: 'semibold' as any,
-          margin: '30px 0 20px 0',
-          paddingBottom: '10px',
-          borderBottom: '3px solid #667eea',
-        }}
-      >
-        DM% Tracking & Forecasting
-      </h2>
-
-      <div
-        style={{
-          fontSize: '0.95em',
-          color: '#64748b',
-          marginBottom: '20px',
-          lineHeight: 1.6,
-        }}
-      >
-        <strong>DM% (Decline/Maintenance Rate)</strong> measures revenue retention by
-        comparing current period revenue to prior period. Target: ≥90%. Values below 90%
-        indicate revenue contraction.
-      </div>
+    <section id="dm-tracker">
+      <SectionHeading
+        title="DM% tracking and forecast"
+        description={
+          <>
+            DM% (decline/maintenance rate) measures revenue retention by comparing current period
+            revenue to the prior period. Target is ≥90%; lower values mean revenue is contracting.
+          </>
+        }
+      />
 
       {/* Consolidated DM% Alert */}
-      <AlertBox
-        variant={data.consolidated.meets_target ? 'success' : 'critical'}
-      >
-        <div style={{ fontSize: '1.1em' }}>
-          <strong>
-            Consolidated DM%: {data.consolidated.dm_pct.toFixed(2)}%{' '}
-            {data.consolidated.meets_target ? '(PASSING)' : '(FAILING)'}
-          </strong>
+      <AlertBox variant={data.consolidated.meets_target ? 'success' : 'critical'}>
+        <div className="font-semibold">
+          Consolidated DM% vs prior plan: <span className="num">{data.consolidated.dm_pct.toFixed(2)}%</span>,{' '}
+          {data.consolidated.meets_target ? 'passing' : 'failing'}
         </div>
-        <div style={{ marginTop: '10px', lineHeight: 1.7 }}>
-          {data.consolidated.meets_target ? (
-            <>
-              Revenue retention is above target. Current quarter RR is $
-              {(data.consolidated.current_rr / 1e6).toFixed(2)}M vs. prior period $
-              {(data.consolidated.prior_rr / 1e6).toFixed(2)}M (variance: $
-              {(data.consolidated.variance / 1e3).toFixed(0)}K).
-            </>
-          ) : (
-            <>
-              CRITICAL: Revenue retention below 90% target. Current quarter RR is $
-              {(data.consolidated.current_rr / 1e6).toFixed(2)}M vs. prior period $
-              {(data.consolidated.prior_rr / 1e6).toFixed(2)}M (variance: -$
-              {Math.abs(data.consolidated.variance / 1e3).toFixed(0)}K). Immediate action
-              required.
-            </>
-          )}
+        <div className="mt-1">
+          {data.consolidated.meets_target
+            ? 'Revenue retention is above target.'
+            : 'Revenue retention is below the 90% target and needs action.'}{' '}
+          Current quarter RR is <span className="num">{money(data.consolidated.current_rr)}</span> vs.{' '}
+          <span className="num">{money(data.consolidated.prior_rr)}</span> in the prior period (variance{' '}
+          <span className="num">{signedK(data.consolidated.variance)}</span>).
         </div>
       </AlertBox>
 
       {/* Business Unit Breakdown */}
-      <h3
-        style={{
-          fontSize: '1.5em',
-          fontWeight: 700,
-          color: '#2a5298',
-          marginTop: '30px',
-          marginBottom: '15px',
-          paddingBottom: '10px',
-          borderBottom: '2px solid #e2e8f0',
-        }}
-      >
-        Business Unit DM% Performance
-      </h3>
-
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-          gap: '20px',
-          margin: '20px 0',
-        }}
-      >
-        {data.business_units.map((bu) => {
-          const isSuccess = bu.meets_target
-          const bgGradient = isSuccess
-            ? 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)'
-            : 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)'
-
-          return (
-            <div
-              key={bu.bu}
-              style={{
-                background: bgGradient,
-                color: 'white',
-                padding: '25px',
-                borderRadius: '15px',
-                boxShadow: isSuccess
-                  ? '0 4px 15px rgba(79, 172, 254, 0.4)'
-                  : '0 4px 15px rgba(240, 147, 251, 0.4)',
-              }}
-            >
-              <div style={{ fontSize: '0.85em', opacity: 0.9, marginBottom: '10px' }}>
-                {bu.bu}
-              </div>
-              <div style={{ fontSize: '2.3em', fontWeight: 700 }}>
-                {bu.dm_pct.toFixed(1)}%
-              </div>
-              <div style={{ fontSize: '0.8em', opacity: 0.85, marginTop: '5px' }}>
-                {isSuccess ? 'PASSING' : 'FAILING'} • Target: ≥90%
-              </div>
-              <div
-                style={{
-                  marginTop: '15px',
-                  paddingTop: '15px',
-                  borderTop: '1px solid rgba(255,255,255,0.3)',
-                  fontSize: '0.85em',
-                }}
-              >
-                <div style={{ marginBottom: '5px' }}>
-                  Current RR: ${(bu.current_rr / 1e6).toFixed(2)}M
-                </div>
-                <div style={{ marginBottom: '5px' }}>
-                  Prior RR: ${(bu.prior_rr / 1e6).toFixed(2)}M
-                </div>
-                <div>
-                  Variance: {bu.variance >= 0 ? '+' : ''}$
-                  {(bu.variance / 1e3).toFixed(0)}K
-                </div>
-              </div>
-            </div>
-          )
-        })}
-      </div>
+      <h3 className="m-0 mb-3 mt-6">DM% by business unit</h3>
+      <KpiStrip
+        items={data.business_units.map((bu) => ({
+          label: bu.bu,
+          value: `${bu.dm_pct.toFixed(1)}%`,
+          context: `${bu.meets_target ? 'Passing' : 'Failing'} · target ≥90%`,
+          tone: bu.meets_target ? 'success' : 'critical',
+        }))}
+      />
 
       {/* Detailed Table */}
-      <div
-        style={{
-          background: '#f8fafc',
-          borderRadius: '15px',
-          padding: '20px',
-          margin: '20px 0',
-          borderLeft: '5px solid #667eea',
-        }}
-      >
-        <div
-          style={{
-            fontSize: '1.2em',
-            fontWeight: 700,
-            color: '#1e3c72',
-            marginBottom: '15px',
-          }}
-        >
-          DM% Detailed Breakdown
-        </div>
-        <div style={{ overflowX: 'auto' }}>
-        <table
-          style={{
-            width: '100%',
-            borderCollapse: 'collapse',
-            borderRadius: '10px',
-            overflow: 'hidden',
-            boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
-          }}
-        >
-          <thead>
-            <tr
-              style={{
-                background: '#1e3c72',
-                color: 'white',
-                textAlign: 'left' as const,
-              }}
-            >
-              <th style={{ padding: '15px', fontWeight: 600, fontSize: '0.9em' }}>
-                Business Unit
-              </th>
-              <th style={{ padding: '15px', fontWeight: 600, fontSize: '0.9em' }}>
-                Current RR
-              </th>
-              <th style={{ padding: '15px', fontWeight: 600, fontSize: '0.9em' }}>
-                Prior RR
-              </th>
-              <th style={{ padding: '15px', fontWeight: 600, fontSize: '0.9em' }}>
-                DM%
-              </th>
-              <th style={{ padding: '15px', fontWeight: 600, fontSize: '0.9em' }}>
-                Variance
-              </th>
-              <th style={{ padding: '15px', fontWeight: 600, fontSize: '0.9em' }}>
-                Status
-              </th>
-            </tr>
-          </thead>
-          <tbody style={{ background: 'white' }}>
-            {data.business_units.map((bu, idx) => (
-              <tr
-                key={bu.bu}
-                style={{
-                  borderBottom:
-                    idx < data.business_units.length - 1
-                      ? '1px solid #e2e8f0'
-                      : 'none',
-                }}
-              >
-                <td style={{ padding: '12px', fontSize: '0.9em', fontWeight: 600 }}>
-                  {bu.bu}
-                </td>
-                <td style={{ padding: '12px', fontSize: '0.9em' }}>
-                  ${(bu.current_rr / 1e6).toFixed(2)}M
-                </td>
-                <td style={{ padding: '12px', fontSize: '0.9em' }}>
-                  ${(bu.prior_rr / 1e6).toFixed(2)}M
-                </td>
-                <td
-                  style={{
-                    padding: '12px',
-                    fontSize: '0.9em',
-                    fontWeight: 700,
-                    color: bu.meets_target ? '#10b981' : '#f5576c',
-                  }}
-                >
-                  {bu.dm_pct.toFixed(2)}%
-                </td>
-                <td style={{ padding: '12px', fontSize: '0.9em' }}>
-                  <span
-                    style={{
-                      display: 'inline-block',
-                      padding: '5px 12px',
-                      borderRadius: '15px',
-                      background: bu.variance >= 0 ? '#4facfe' : '#f5576c',
-                      color: 'white',
-                      fontSize: '0.8em',
-                      fontWeight: 600,
-                    }}
-                  >
-                    {bu.variance >= 0 ? '+' : ''}${(bu.variance / 1e3).toFixed(0)}K
-                  </span>
-                </td>
-                <td style={{ padding: '12px', fontSize: '0.9em' }}>
-                  <span
-                    style={{
-                      display: 'inline-block',
-                      padding: '5px 12px',
-                      borderRadius: '15px',
-                      background: bu.meets_target ? '#10b981' : '#f5576c',
-                      color: 'white',
-                      fontSize: '0.8em',
-                      fontWeight: 600,
-                    }}
-                  >
-                    {bu.meets_target ? 'PASS' : 'FAIL'}
-                  </span>
-                </td>
-              </tr>
-            ))}
-            {/* Consolidated Row */}
-            <tr
-              style={{
-                borderTop: '2px solid #1e3c72',
-                background: '#f8fafc',
-                fontWeight: 700,
-              }}
-            >
-              <td style={{ padding: '12px', fontSize: '0.9em' }}>
-                CONSOLIDATED
-              </td>
-              <td style={{ padding: '12px', fontSize: '0.9em' }}>
-                ${(data.consolidated.current_rr / 1e6).toFixed(2)}M
-              </td>
-              <td style={{ padding: '12px', fontSize: '0.9em' }}>
-                ${(data.consolidated.prior_rr / 1e6).toFixed(2)}M
-              </td>
-              <td
-                style={{
-                  padding: '12px',
-                  fontSize: '0.9em',
-                  color: data.consolidated.meets_target ? '#10b981' : '#f5576c',
-                }}
-              >
-                {data.consolidated.dm_pct.toFixed(2)}%
-              </td>
-              <td style={{ padding: '12px', fontSize: '0.9em' }}>
-                <span
-                  style={{
-                    display: 'inline-block',
-                    padding: '5px 12px',
-                    borderRadius: '15px',
-                    background:
-                      data.consolidated.variance >= 0 ? '#4facfe' : '#f5576c',
-                    color: 'white',
-                    fontSize: '0.8em',
-                    fontWeight: 600,
-                  }}
-                >
-                  {data.consolidated.variance >= 0 ? '+' : ''}$
-                  {(data.consolidated.variance / 1e3).toFixed(0)}K
-                </span>
-              </td>
-              <td style={{ padding: '12px', fontSize: '0.9em' }}>
-                <span
-                  style={{
-                    display: 'inline-block',
-                    padding: '5px 12px',
-                    borderRadius: '15px',
-                    background: data.consolidated.meets_target
-                      ? '#10b981'
-                      : '#f5576c',
-                    color: 'white',
-                    fontSize: '0.8em',
-                    fontWeight: 600,
-                  }}
-                >
-                  {data.consolidated.meets_target ? 'PASS' : 'FAIL'}
-                </span>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        </div>
+      <div className="mt-6">
+        <Panel title="Detailed breakdown" flush>
+          <div className="overflow-x-auto">
+            <table className="data-table">
+              <thead>
+                <tr>
+                  <th>Business unit</th>
+                  <th style={right}>Current RR</th>
+                  <th style={right}>Prior RR</th>
+                  <th style={right}>DM%</th>
+                  <th style={right}>Variance</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {data.business_units.map((bu) => (
+                  <tr key={bu.bu}>
+                    <td className="font-medium">{bu.bu}</td>
+                    <td className="num" style={right}>{money(bu.current_rr)}</td>
+                    <td className="num" style={right}>{money(bu.prior_rr)}</td>
+                    <td style={right}>
+                      <SignedFigure value={`${bu.dm_pct.toFixed(2)}%`} good={bu.meets_target} />
+                    </td>
+                    <td style={right}>
+                      <SignedFigure value={signedK(bu.variance)} good={bu.variance >= 0} />
+                    </td>
+                    <td><PassFail pass={bu.meets_target} /></td>
+                  </tr>
+                ))}
+                {/* Consolidated Row */}
+                <tr style={{ background: 'var(--surface-2)', borderTop: '1px solid var(--border-strong)' }}>
+                  <td className="font-semibold">Consolidated</td>
+                  <td className="num font-semibold" style={right}>{money(data.consolidated.current_rr)}</td>
+                  <td className="num font-semibold" style={right}>{money(data.consolidated.prior_rr)}</td>
+                  <td style={right}>
+                    <SignedFigure value={`${data.consolidated.dm_pct.toFixed(2)}%`} good={data.consolidated.meets_target} />
+                  </td>
+                  <td style={right}>
+                    <SignedFigure value={signedK(data.consolidated.variance)} good={data.consolidated.variance >= 0} />
+                  </td>
+                  <td><PassFail pass={data.consolidated.meets_target} /></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </Panel>
       </div>
 
       {/* Trend Visualization */}
-      <h3
-        style={{
-          fontSize: '1.5em',
-          fontWeight: 700,
-          color: '#2a5298',
-          marginTop: '30px',
-          marginBottom: '15px',
-          paddingBottom: '10px',
-          borderBottom: '2px solid #e2e8f0',
-        }}
-      >
-        TTM DM% Trend & Forecast
-      </h3>
-
-      <DMTrendChart data={data} />
+      <div className="mt-6">
+        <Panel title="Year-over-year RR retention" description="Each quarter's recurring revenue against the same quarter a year earlier, consolidated and per business unit, with the 90% target. Dashed: the budget plan for coming quarters.">
+          <DMTrendChart data={data} />
+        </Panel>
+      </div>
 
       {/* Forecast Summary */}
-      <div
-        style={{
-          background: '#f8fafc',
-          borderRadius: '15px',
-          padding: '20px',
-          margin: '20px 0',
-          borderLeft: '5px solid #667eea',
-        }}
-      >
-        <div
-          style={{
-            fontSize: '1.2em',
-            fontWeight: 700,
-            color: '#1e3c72',
-            marginBottom: '15px',
-          }}
+      <div className="mt-6">
+        <Panel
+          title={data.forecast.method === 'budget_plan' ? 'Budget plan, coming quarters' : `Forecast (${data.forecast.method})`}
+          description={
+            <>
+              Average quarter-over-quarter change in RR:{' '}
+              <span className="num" style={{ color: 'var(--ink)' }}>
+                {data.forecast.avg_quarterly_decline_rate.toFixed(2)}%
+              </span>
+            </>
+          }
+          flush
         >
-          Forecast Analysis ({data.forecast.method})
-        </div>
-        <div style={{ lineHeight: 1.7, marginBottom: '15px' }}>
-          <strong>Average Quarterly Decline Rate:</strong>{' '}
-          {data.forecast.avg_quarterly_decline_rate.toFixed(2)}%
-        </div>
-        <div style={{ overflowX: 'auto' }}>
-        <table
-          style={{
-            width: '100%',
-            borderCollapse: 'collapse',
-            borderRadius: '10px',
-            overflow: 'hidden',
-            boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
-          }}
-        >
-          <thead>
-            <tr
-              style={{
-                background: '#1e3c72',
-                color: 'white',
-                textAlign: 'left' as const,
-              }}
-            >
-              <th style={{ padding: '15px', fontWeight: 600, fontSize: '0.9em' }}>
-                Quarter
-              </th>
-              <th style={{ padding: '15px', fontWeight: 600, fontSize: '0.9em' }}>
-                Forecasted RR
-              </th>
-              <th style={{ padding: '15px', fontWeight: 600, fontSize: '0.9em' }}>
-                Forecasted DM%
-              </th>
-              <th style={{ padding: '15px', fontWeight: 600, fontSize: '0.9em' }}>
-                Confidence
-              </th>
-            </tr>
-          </thead>
-          <tbody style={{ background: 'white' }}>
-            {data.forecast.quarters.map((quarter, idx) => (
-              <tr
-                key={quarter.quarter}
-                style={{
-                  borderBottom:
-                    idx < data.forecast.quarters.length - 1
-                      ? '1px solid #e2e8f0'
-                      : 'none',
-                }}
-              >
-                <td style={{ padding: '12px', fontSize: '0.9em', fontWeight: 600 }}>
-                  {quarter.quarter}
-                </td>
-                <td style={{ padding: '12px', fontSize: '0.9em' }}>
-                  ${(quarter.forecasted_rr / 1e6).toFixed(2)}M
-                </td>
-                <td
-                  style={{
-                    padding: '12px',
-                    fontSize: '0.9em',
-                    fontWeight: 700,
-                    color: quarter.forecasted_dm_pct >= 90 ? '#10b981' : '#f5576c',
-                  }}
-                >
-                  {quarter.forecasted_dm_pct.toFixed(2)}%
-                </td>
-                <td style={{ padding: '12px', fontSize: '0.9em' }}>
-                  <span
-                    style={{
-                      display: 'inline-block',
-                      padding: '5px 12px',
-                      borderRadius: '15px',
-                      background:
-                        quarter.confidence === 'high'
-                          ? '#10b981'
-                          : quarter.confidence === 'medium'
-                          ? '#4facfe'
-                          : '#fa709a',
-                      color: 'white',
-                      fontSize: '0.8em',
-                      fontWeight: 600,
-                      textTransform: 'uppercase' as const,
-                    }}
-                  >
-                    {quarter.confidence}
-                  </span>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        </div>
+          <div className="overflow-x-auto">
+            <table className="data-table">
+              <thead>
+                <tr>
+                  <th>Quarter</th>
+                  <th style={right}>Planned RR</th>
+                  <th style={right}>Vs a year earlier</th>
+                  <th>Confidence</th>
+                </tr>
+              </thead>
+              <tbody>
+                {data.forecast.quarters.map((quarter) => (
+                  <tr key={quarter.quarter}>
+                    <td className="font-medium">{quarter.quarter}</td>
+                    <td className="num" style={right}>{money(quarter.forecasted_rr)}</td>
+                    <td style={right}>
+                      <SignedFigure
+                        value={`${quarter.forecasted_dm_pct.toFixed(2)}%`}
+                        good={quarter.forecasted_dm_pct >= 90}
+                      />
+                    </td>
+                    <td>
+                      <Badge variant={confidenceVariant[quarter.confidence as keyof typeof confidenceVariant] ?? 'default'}>
+                        {quarter.confidence.charAt(0).toUpperCase() + quarter.confidence.slice(1)}
+                      </Badge>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </Panel>
       </div>
     </section>
   )

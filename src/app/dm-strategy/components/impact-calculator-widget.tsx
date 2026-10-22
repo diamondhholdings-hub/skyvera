@@ -77,46 +77,33 @@ export function ImpactCalculator({
   }
 
   return (
-    <div className="sticky top-6 bg-white rounded-lg border border-[var(--border)] shadow-lg">
-      <div className="p-6 border-b border-[var(--border)] bg-gradient-to-r from-[#0066A1] to-[#0080C8] text-white rounded-t-lg">
-        <h2 className="text-xl font-semibold mb-1">Impact Calculator</h2>
-        <p className="text-sm opacity-90">Project outcomes from your action plan</p>
+    <section className="card sticky top-6" aria-labelledby="impact-widget-heading">
+      <div className="border-b p-5" style={{ borderColor: 'var(--border)' }}>
+        <h2 id="impact-widget-heading" className="m-0 text-base font-semibold">Impact calculator</h2>
+        <p className="m-0 mt-0.5 text-sm" style={{ color: 'var(--muted)' }}>Project outcomes from your action plan</p>
       </div>
 
-      <div className="p-6 space-y-6">
+      <div className="space-y-5 p-5">
         {/* Quick Actions */}
         <div className="flex gap-2">
-          <button
-            onClick={selectCritical}
-            className="flex-1 px-3 py-2 text-xs font-medium bg-red-50 text-red-700 rounded hover:bg-red-100 transition-colors"
-          >
-            Critical Only
-          </button>
-          <button
-            onClick={selectAll}
-            className="flex-1 px-3 py-2 text-xs font-medium bg-blue-50 text-blue-700 rounded hover:bg-blue-100 transition-colors"
-          >
-            Select All
-          </button>
-          <button
-            onClick={clearAll}
-            className="flex-1 px-3 py-2 text-xs font-medium bg-slate-50 text-slate-700 rounded hover:bg-slate-100 transition-colors"
-          >
-            Clear
-          </button>
+          <button type="button" onClick={selectCritical} className="btn btn-sm flex-1">Critical only</button>
+          <button type="button" onClick={selectAll} className="btn btn-sm flex-1">Select all</button>
+          <button type="button" onClick={clearAll} className="btn btn-ghost btn-sm flex-1">Clear</button>
         </div>
 
         {/* Selection List */}
-        <div className="max-h-64 overflow-y-auto space-y-2 border border-[var(--border)] rounded-lg p-3">
+        <fieldset className="m-0 max-h-64 space-y-1 overflow-y-auto p-2" style={{ border: '1px solid var(--border)', borderRadius: 'var(--radius-sm)' }}>
+          <legend className="sr-only">Recommendations to include</legend>
           {recommendations.length === 0 ? (
-            <p className="text-sm text-[var(--muted)] text-center py-4">
+            <p className="m-0 py-4 text-center text-sm" style={{ color: 'var(--muted)' }}>
               No recommendations available
             </p>
           ) : (
             recommendations.map((rec) => (
               <label
                 key={rec.id}
-                className="flex items-start gap-2 p-2 hover:bg-slate-50 rounded cursor-pointer"
+                className="flex cursor-pointer items-start gap-2 p-2 hover:bg-[var(--highlight)]"
+                style={{ borderRadius: 'var(--radius-xs)' }}
               >
                 <input
                   type="checkbox"
@@ -124,82 +111,66 @@ export function ImpactCalculator({
                   onChange={() => toggleRecommendation(rec.id)}
                   className="mt-1"
                 />
-                <div className="flex-1 min-w-0">
-                  <div className="text-sm font-medium text-[var(--ink)] truncate">
-                    {rec.title}
-                  </div>
-                  <div className="text-xs text-[var(--muted)]">
-                    {rec.bu} • ${(rec.estimatedARRImpact / 1e6).toFixed(2)}M ARR
+                <div className="min-w-0 flex-1">
+                  <div className="truncate text-sm font-medium">{rec.title}</div>
+                  <div className="num text-xs" style={{ color: 'var(--muted)' }}>
+                    {rec.bu} · ${(rec.estimatedARRImpact / 1e6).toFixed(2)}M ARR
                   </div>
                 </div>
               </label>
             ))
           )}
-        </div>
+        </fieldset>
 
         {/* Impact Summary */}
-        <div className="space-y-4 pt-4 border-t border-[var(--border)]">
+        <dl className="m-0 space-y-3 border-t pt-4" style={{ borderColor: 'var(--border)' }}>
           <div>
-            <div className="text-xs text-[var(--muted)] mb-1">Selected Recommendations</div>
-            <div className="text-2xl font-bold text-[var(--ink)]">{impact.selectedCount}</div>
+            <dt className="text-xs" style={{ color: 'var(--muted)' }}>Selected recommendations</dt>
+            <dd className="num m-0 text-xl font-semibold">{impact.selectedCount}</dd>
           </div>
-
           <div>
-            <div className="text-xs text-[var(--muted)] mb-1">Total ARR Impact</div>
-            <div className="text-2xl font-bold text-[var(--success)]">
-              ${(impact.totalARRImpact / 1e6).toFixed(2)}M
-            </div>
+            <dt className="text-xs" style={{ color: 'var(--muted)' }}>Total ARR impact</dt>
+            <dd className="num m-0 text-xl font-semibold">${(impact.totalARRImpact / 1e6).toFixed(2)}M</dd>
           </div>
-
           <div>
-            <div className="text-xs text-[var(--muted)] mb-1">Total DM% Improvement</div>
-            <div className="text-2xl font-bold text-[#00B8D4]">
-              +{impact.totalDMImpact.toFixed(1)}pts
-            </div>
+            <dt className="text-xs" style={{ color: 'var(--muted)' }}>Total DM% improvement</dt>
+            <dd className="num m-0 text-xl font-semibold">+{impact.totalDMImpact.toFixed(1)} pts</dd>
           </div>
-
           <div>
-            <div className="text-xs text-[var(--muted)] mb-1">Projected DM%</div>
-            <div className="flex items-baseline gap-2">
-              <div className="text-2xl font-bold text-[var(--ink)]">
-                {impact.projectedDM.toFixed(1)}%
-              </div>
+            <dt className="text-xs" style={{ color: 'var(--muted)' }}>Projected DM%</dt>
+            <dd className="m-0 flex items-baseline gap-2">
+              <span className="num text-xl font-semibold">{impact.projectedDM.toFixed(1)}%</span>
               {impact.projectedDM >= targetDM && (
-                <span className="text-xs font-medium text-[var(--success)]">✓ On Target</span>
+                <span className="text-xs font-medium" style={{ color: 'var(--success-ink)' }}>On target</span>
               )}
-            </div>
+            </dd>
           </div>
 
           {currentDM < targetDM && (
             <div>
-              <div className="text-xs text-[var(--muted)] mb-2">Gap Closure</div>
-              <div className="w-full bg-slate-200 rounded-full h-3 overflow-hidden">
-                <div
-                  className="bg-gradient-to-r from-[#0066A1] to-[#00B8D4] h-full transition-all duration-500"
-                  style={{ width: `${Math.min(100, impact.dmGapClosure)}%` }}
-                />
-              </div>
-              <div className="text-sm font-medium text-[var(--ink)] mt-1">
-                {impact.dmGapClosure.toFixed(0)}% of gap
-              </div>
+              <dt className="mb-1 text-xs" style={{ color: 'var(--muted)' }}>Gap closure</dt>
+              <dd className="m-0">
+                <div className="h-1.5 w-full overflow-hidden" style={{ background: 'var(--surface-3)', borderRadius: 'var(--radius-xs)' }}>
+                  <div className="h-full" style={{ width: `${Math.min(100, impact.dmGapClosure)}%`, background: 'var(--secondary)' }} />
+                </div>
+                <div className="num mt-1 text-sm font-medium">{impact.dmGapClosure.toFixed(0)}% of gap</div>
+              </dd>
             </div>
           )}
 
           <div>
-            <div className="text-xs text-[var(--muted)] mb-1">Estimated Timeframe</div>
-            <div className="text-sm font-semibold text-[var(--ink)]">
-              {impact.estimatedTimeframe}
-            </div>
+            <dt className="text-xs" style={{ color: 'var(--muted)' }}>Estimated timeframe</dt>
+            <dd className="m-0 text-sm font-medium">{impact.estimatedTimeframe}</dd>
           </div>
-        </div>
+        </dl>
 
         {/* CTA */}
         {impact.selectedCount > 0 && (
-          <button className="w-full py-3 bg-[var(--accent)] text-white font-semibold rounded-lg hover:opacity-90 transition-opacity">
-            Export Action Plan ({impact.selectedCount} items)
+          <button type="button" className="btn btn-primary w-full">
+            Export action plan ({impact.selectedCount} items)
           </button>
         )}
       </div>
-    </div>
+    </section>
   )
 }

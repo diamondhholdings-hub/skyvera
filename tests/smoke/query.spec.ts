@@ -11,7 +11,7 @@ test.describe('Query Page Smoke Tests', () => {
 
     // PageHeader renders the title as an h1
     await expect(
-      page.getByRole('heading', { name: /Business Intelligence Query/i })
+      page.getByRole('heading', { name: /Ask a question/i })
     ).toBeVisible({ timeout: 10000 })
   })
 
@@ -49,16 +49,16 @@ test.describe('Query Page Smoke Tests', () => {
   test('Canned queries section is visible', async ({ page }) => {
     await page.goto('/query')
 
-    // CannedQueries component renders an h2 "Common Questions"
+    // CannedQueries component renders an h2 "Suggested questions"
     await expect(
-      page.getByRole('heading', { name: /Common Questions/i })
+      page.getByRole('heading', { name: /Suggested questions/i })
     ).toBeVisible({ timeout: 10000 })
   })
 
   test('No error messages on load', async ({ page }) => {
     await page.goto('/query')
 
-    await expect(page.getByRole('heading', { name: /Business Intelligence Query/i })).toBeVisible({ timeout: 10000 })
+    await expect(page.getByRole('heading', { name: /Ask a question/i })).toBeVisible({ timeout: 10000 })
     await expect(page.getByText('Unable to load')).not.toBeVisible()
     await expect(page.getByText('Error')).not.toBeVisible()
   })

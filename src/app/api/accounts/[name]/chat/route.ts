@@ -5,7 +5,7 @@
  */
 
 import { NextRequest } from 'next/server'
-import Anthropic from '@anthropic-ai/sdk'
+import { createClaudeClient } from '@/lib/intelligence/claude/client'
 import { REASONING_MODEL, FALLBACK_BETA } from '@/lib/intelligence/claude/models'
 import { getAccountPlanData } from '@/lib/data/server/account-plan-data'
 import { getAllCustomersWithHealth } from '@/lib/data/server/account-data'
@@ -121,8 +121,13 @@ Answer questions concisely and strategically. Focus on actionable insights.`
       { role: 'user' as const, content: message },
     ]
 
-    // Initialize Anthropic client
-    const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
+    const anthropic = createClaudeClient()
+    if (!anthropic) {
+      return new Response(
+        JSON.stringify({ error: 'Claude API not configured' }),
+        { status: 503, headers: { 'Content-Type': 'application/json' } }
+      )
+    }
 
     // Create streaming response
     const stream = new ReadableStream({

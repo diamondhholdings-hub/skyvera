@@ -1,10 +1,11 @@
 /**
- * Alerts Page - Proactive alerts dashboard showing at-risk accounts and anomalies
+ * Alerts Page - Alerts dashboard showing at-risk accounts and anomalies
  * Server Component - fetches alerts directly from alert-data.ts
  * Satisfies requirement DASH-02
  */
 
 import { Suspense } from 'react'
+import { CircleX } from 'lucide-react'
 import { getProactiveAlerts } from '@/lib/data/server/alert-data'
 import { RefreshButton } from '@/components/ui/refresh-button'
 import { AlertSummary } from './components/alert-summary'
@@ -12,7 +13,7 @@ import { AlertList } from './components/alert-list'
 import { PageHeader } from '@/components/ui/page-header'
 
 export const metadata = {
-  title: 'Proactive Alerts - Skyvera',
+  title: 'Alerts - Skyvera',
   description: 'At-risk accounts and metric anomalies requiring attention',
 }
 
@@ -23,22 +24,16 @@ export default async function AlertsPage() {
   // Handle errors
   if (!alertsResult.success) {
     return (
-      <div className="p-6">
-        <div
-          style={{
-            background: 'rgba(220,38,38,0.04)',
-            border: '1px solid rgba(220,38,38,0.25)',
-            borderLeft: '4px solid var(--critical)',
-            borderRadius: 'var(--radius-md)',
-            padding: '1.25rem 1.5rem',
-          }}
-        >
-          <h2 style={{ fontSize: '1.0625rem', fontWeight: 600, color: 'var(--critical)', margin: '0 0 0.5rem' }}>
-            Unable to load alerts
-          </h2>
-          <p style={{ fontSize: '0.875rem', color: 'var(--muted)', margin: 0 }}>
-            {alertsResult.error.message}
-          </p>
+      <div>
+        <PageHeader title="Alerts" subtitle="At-risk accounts and metric anomalies" />
+        <div className="mx-auto max-w-[1400px] px-4 py-6 lg:px-8">
+          <div className="alert-box alert-critical flex items-start gap-3" role="alert">
+            <CircleX className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
+            <div>
+              <h2 className="m-0 text-sm font-semibold">Unable to load alerts</h2>
+              <p className="m-0 mt-0.5 text-sm">{alertsResult.error.message}</p>
+            </div>
+          </div>
         </div>
       </div>
     )
@@ -48,19 +43,15 @@ export default async function AlertsPage() {
 
   return (
     <div>
-      {/* Editorial Header */}
       <PageHeader
-        title="Proactive Alerts"
-        subtitle="At-risk accounts and metric anomalies requiring attention"
+        title="Alerts"
+        subtitle="At-risk accounts and metric anomalies that cross a threshold"
         action={<RefreshButton />}
-      />
-
-      {/* Content */}
-      <div className="max-w-[1400px] mx-auto px-8 py-8">
-        {/* Alert Summary */}
+      >
         <AlertSummary alerts={alerts} />
+      </PageHeader>
 
-        {/* Alert Cards */}
+      <div className="mx-auto max-w-[1400px] px-4 py-6 lg:px-8">
         <Suspense fallback={<AlertsSkeleton />}>
           <AlertList alerts={alerts} />
         </Suspense>
@@ -74,26 +65,13 @@ export default async function AlertsPage() {
  */
 function AlertsSkeleton() {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-      {[1, 2, 3, 4].map((i) => (
-        <div
-          key={i}
-          className="animate-pulse"
-          style={{
-            background: 'var(--surface)',
-            borderRadius: 'var(--radius-md)',
-            boxShadow: 'var(--shadow-sm)',
-            border: '1px solid var(--border)',
-            padding: '1.5rem',
-          }}
-        >
-          <div className="space-y-3">
-            <div className="h-5 rounded w-3/4" style={{ background: 'var(--border)' }}></div>
-            <div className="h-4 rounded w-full" style={{ background: 'var(--surface-2)' }}></div>
-            <div className="h-4 rounded w-2/3" style={{ background: 'var(--surface-2)' }}></div>
-          </div>
-        </div>
-      ))}
+    <div className="card p-5">
+      <div className="skeleton mb-4 h-5 w-32" />
+      <div className="space-y-3">
+        {[1, 2, 3, 4].map((i) => (
+          <div key={i} className="skeleton h-10 w-full" />
+        ))}
+      </div>
     </div>
   )
 }

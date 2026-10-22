@@ -6,6 +6,7 @@
 
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from 'recharts'
 import type { CustomerWithHealth } from '@/lib/types/customer'
+import { CHART_VARS, TOOLTIP_STYLE } from './chart-colors'
 
 interface TopCustomersChartProps {
   allBuCustomers: CustomerWithHealth[]
@@ -39,19 +40,20 @@ export function TopCustomersChart({ allBuCustomers, currentCustomerName }: TopCu
   return (
     <ResponsiveContainer width="100%" height={320}>
       <BarChart data={top10} layout="vertical" margin={{ top: 5, right: 40, left: 10, bottom: 5 }}>
-        <CartesianGrid strokeDasharray="3 3" stroke="#e8e6e1" horizontal={false} />
-        <XAxis type="number" tickFormatter={formatK} tick={{ fontSize: 11, fill: '#8b8b8b' }} />
-        <YAxis type="category" dataKey="name" width={110} tick={{ fontSize: 11, fill: '#8b8b8b' }} />
+        <CartesianGrid stroke={CHART_VARS.grid} horizontal={false} />
+        <XAxis type="number" tickFormatter={formatK} tick={{ fontSize: 11, fill: CHART_VARS.axis }} axisLine={{ stroke: CHART_VARS.grid }} tickLine={false} />
+        <YAxis type="category" dataKey="name" width={110} tick={{ fontSize: 11, fill: CHART_VARS.axis }} axisLine={false} tickLine={false} />
         <Tooltip
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           formatter={(value: any, _name: any, props: any) => [formatK(value as number), props.payload.fullName]}
-          contentStyle={{ border: '1px solid var(--border)', borderRadius: 2, fontSize: '0.8rem' }}
+          contentStyle={TOOLTIP_STYLE}
+          cursor={{ fill: 'var(--highlight)' }}
         />
         <Bar dataKey="arr" name="ARR" radius={[0, 2, 2, 0]}>
           {top10.map((entry, index) => (
             <Cell
               key={`cell-${index}`}
-              fill={entry.isCurrent ? '#c84b31' : '#2d4263'}
+              fill={entry.isCurrent ? CHART_VARS.series2 : CHART_VARS.series1}
               opacity={entry.isCurrent ? 1 : 0.65}
             />
           ))}

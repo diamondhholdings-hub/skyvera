@@ -1,8 +1,8 @@
 'use client';
 
 import React from 'react';
+import { Check, CircleX, Eye, Minus, Pause, TriangleAlert, type LucideIcon } from 'lucide-react';
 import type { Recommendation } from '../types';
-import '../styles.css';
 
 interface RecommendationCardProps {
   recommendation: Recommendation;
@@ -11,50 +11,33 @@ interface RecommendationCardProps {
   onDefer?: (id: string) => void;
 }
 
-const DESIGN_TOKENS = {
-  success: '#4caf50',
-  critical: '#e53935',
-  warning: '#f59e0b',
-  secondary: '#2d4263',
-  accent: '#c84b31',
-  muted: '#8b8b8b',
-  border: '#e8e6e1',
-  ink: '#1a1a1a',
-}
-
-const priorityConfig = {
-  critical: {
-    color: DESIGN_TOKENS.critical,
-    label: 'Critical',
-    icon: '🔴'
-  },
-  high: {
-    color: DESIGN_TOKENS.warning,
-    label: 'High',
-    icon: '🟠'
-  },
-  medium: {
-    color: DESIGN_TOKENS.success,
-    label: 'Medium',
-    icon: '🟢'
-  },
-  low: {
-    color: DESIGN_TOKENS.muted,
-    label: 'Low',
-    icon: '⚪'
-  }
+const priorityConfig: Record<Recommendation['priority'], { label: string; Icon: LucideIcon; color: string }> = {
+  critical: { label: 'Critical', Icon: CircleX, color: 'var(--critical-ink)' },
+  high: { label: 'High', Icon: TriangleAlert, color: 'var(--warning-ink)' },
+  medium: { label: 'Medium', Icon: Minus, color: 'var(--ink-2)' },
+  low: { label: 'Low', Icon: Minus, color: 'var(--muted)' },
 };
 
-const buConfig: Record<string, string> = {
-  Cloudsense: DESIGN_TOKENS.secondary,
-  Kandy: DESIGN_TOKENS.accent,
-  STL: DESIGN_TOKENS.success,
-  NewNet: '#7C3AED',
-  voltDelta: '#EA580C',
-  'Service Gateway': '#0891B2',
-  Mobilogy: '#BE185D',
-  Peerapp: '#15803D',
-  Responsetek: '#B45309',
+const statusLabel: Record<Recommendation['status'], string> = {
+  pending: 'Pending',
+  accepted: 'Accepted',
+  deferred: 'Deferred',
+  in_progress: 'In progress',
+  completed: 'Completed',
+};
+
+const formatCurrency = (value: number): string => {
+  if (value >= 1000000) {
+    return `$${(value / 1000000).toFixed(2)}M`;
+  }
+  if (value >= 1000) {
+    return `$${(value / 1000).toFixed(1)}K`;
+  }
+  return `$${value.toFixed(0)}`;
+};
+
+const formatPercentage = (value: number): string => {
+  return `${value >= 0 ? '+' : ''}${value.toFixed(1)}%`;
 };
 
 export default function RecommendationCard({
@@ -63,174 +46,85 @@ export default function RecommendationCard({
   onReview,
   onDefer
 }: RecommendationCardProps) {
-  const priorityInfo = priorityConfig[recommendation.priority];
-  const buColor = buConfig[recommendation.businessUnit];
+  const priority = priorityConfig[recommendation.priority];
 
-  const formatCurrency = (value: number): string => {
-    if (value >= 1000000) {
-      return `$${(value / 1000000).toFixed(2)}M`;
-    }
-    if (value >= 1000) {
-      return `$${(value / 1000).toFixed(1)}K`;
-    }
-    return `$${value.toFixed(0)}`;
-  };
-
-  const formatPercentage = (value: number): string => {
-    return `${value >= 0 ? '+' : ''}${value.toFixed(1)}%`;
-  };
+  const facts: Array<{ label: string; value: React.ReactNode; num?: boolean }> = [
+    { label: 'DM% impact', value: formatPercentage(recommendation.dmImpact), num: true },
+    { label: 'ARR impact', value: formatCurrency(recommendation.arrImpact), num: true },
+    { label: 'Confidence', value: `${recommendation.confidence}%`, num: true },
+    { label: 'Timeline', value: recommendation.timeline },
+    { label: 'Risk', value: recommendation.risk },
+    ...(recommendation.owner ? [{ label: 'Owner', value: recommendation.owner }] : []),
+    ...(recommendation.category ? [{ label: 'Category', value: recommendation.category }] : []),
+  ];
 
   return (
-    <div
-      className="dm-card card-hover animate-fade-in-up"
-      style={{
-        borderLeft: `4px solid ${priorityInfo.color}`,
-        position: 'relative'
-      }}
-    >
-      {/* Priority Badge */}
-      <div className="dm-flex dm-justify-between dm-items-start dm-mb-md">
-        <span
-          className="dm-priority-badge"
-          style={{
-            background: priorityInfo.color,
-            color: '#FFFFFF'
-          }}
-        >
-          {priorityInfo.icon} {priorityInfo.label}
-        </span>
+    <article className="card p-5">
+      {/* Priority, BU, account */}
+      <div className="flex flex-wrap items-center justify-between gap-2">
+        <p className="m-0 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm" style={{ color: 'var(--muted)' }}>
+          <span className="inline-flex items-center gap-1 font-medium" style={{ color: priority.color }}>
+            <priority.Icon className="h-3.5 w-3.5" aria-hidden="true" />
+            {priority.label} priority
+          </span>
+          <span aria-hidden="true">·</span>
+          <span>{recommendation.businessUnit}</span>
+          <span aria-hidden="true">·</span>
+          <span style={{ color: 'var(--ink-2)' }}>{recommendation.accountName}</span>
+        </p>
+        {recommendation.status !== 'pending' && (
+          <span className="badge-info px-1.5 py-0.5 text-xs font-medium" style={{ borderRadius: 'var(--radius-xs)' }}>
+            {statusLabel[recommendation.status]}
+          </span>
+        )}
       </div>
 
-      {/* Account & BU */}
-      <div className="dm-flex dm-items-center dm-gap-sm dm-mb-sm">
-        <span className="dm-h4" style={{ margin: 0 }}>
-          {recommendation.accountName}
-        </span>
-        <span
-          className="dm-badge"
-          style={{
-            background: `${buColor}15`,
-            color: buColor,
-            fontWeight: 600
-          }}
-        >
-          {recommendation.businessUnit}
-        </span>
-      </div>
-
-      {/* Recommendation Title */}
-      <h3 className="dm-h3" style={{ marginTop: 'var(--space-sm)', marginBottom: 'var(--space-md)' }}>
+      {/* Recommendation */}
+      <h3 className="m-0 mt-2 text-base font-semibold" style={{ color: 'var(--ink)' }}>
         {recommendation.title}
       </h3>
-
-      {/* Description */}
-      <p className="dm-body-sm" style={{ color: 'var(--muted)', marginBottom: 'var(--space-lg)' }}>
+      <p className="m-0 mt-1 text-sm" style={{ color: 'var(--ink-2)', lineHeight: 1.55 }}>
         {recommendation.description}
       </p>
 
-      {/* Impact Metrics */}
-      <div style={{ marginBottom: 'var(--space-lg)' }}>
-        <div className="dm-metric-row">
-          <span className="dm-metric-label">DM% Impact</span>
-          <span
-            className="dm-metric-value"
-            style={{
-              color: recommendation.dmImpact > 0 ? 'var(--success)' : 'var(--critical)',
-              fontWeight: 700
-            }}
-          >
-            {formatPercentage(recommendation.dmImpact)}
-          </span>
-        </div>
-        <div className="dm-metric-row">
-          <span className="dm-metric-label">ARR Impact</span>
-          <span
-            className="dm-metric-value"
-            style={{
-              color: recommendation.arrImpact > 0 ? 'var(--success)' : 'var(--critical)',
-              fontWeight: 700
-            }}
-          >
-            {formatCurrency(recommendation.arrImpact)}
-          </span>
-        </div>
-        <div className="dm-metric-row">
-          <span className="dm-metric-label">Confidence</span>
-          <span className="dm-metric-value">
-            {recommendation.confidence}%
-          </span>
-        </div>
-      </div>
+      {/* Impact and metadata */}
+      <dl
+        className="m-0 mt-4 grid gap-x-6 gap-y-3 border-t pt-4"
+        style={{ borderColor: 'var(--border)', gridTemplateColumns: 'repeat(auto-fill, minmax(7.5rem, 1fr))' }}
+      >
+        {facts.map((f) => (
+          <div key={f.label}>
+            <dt className="text-xs font-medium" style={{ color: 'var(--muted)' }}>{f.label}</dt>
+            <dd className={`m-0 mt-0.5 text-sm font-medium${f.num ? ' num' : ''}`} style={{ color: 'var(--ink)' }}>
+              {f.value}
+            </dd>
+          </div>
+        ))}
+      </dl>
 
-      {/* Metadata Tags */}
-      <div className="dm-flex dm-flex-wrap dm-gap-sm dm-mb-lg">
-        {recommendation.owner && (
-          <span className="dm-tag">
-            👤 {recommendation.owner}
-          </span>
-        )}
-        <span className="dm-tag">
-          📅 {recommendation.timeline}
-        </span>
-        <span className="dm-tag">
-          ⚠️ {recommendation.risk} Risk
-        </span>
-        {recommendation.category && (
-          <span className="dm-tag">
-            🏷️ {recommendation.category}
-          </span>
-        )}
-      </div>
-
-      {/* Action Buttons */}
-      <div className="dm-flex dm-gap-sm dm-flex-wrap">
-        {onAccept && (
-          <button
-            className="dm-btn dm-btn-primary dm-btn-md button-press"
-            onClick={() => onAccept(recommendation.id)}
-            style={{ flex: '1 1 auto' }}
-          >
-            ✓ Accept & Create Action
-          </button>
-        )}
-        {onReview && (
-          <button
-            className="dm-btn dm-btn-secondary dm-btn-md button-press"
-            onClick={() => onReview(recommendation.id)}
-            style={{ flex: '1 1 auto' }}
-          >
-            👁️ Review Details
-          </button>
-        )}
-        {onDefer && (
-          <button
-            className="dm-btn dm-btn-tertiary dm-btn-md button-press"
-            onClick={() => onDefer(recommendation.id)}
-          >
-            ⏸️ Defer
-          </button>
-        )}
-      </div>
-
-      {/* Status Indicator (if not pending) */}
-      {recommendation.status !== 'pending' && (
-        <div
-          style={{
-            position: 'absolute',
-            top: 'var(--space-md)',
-            right: 'var(--space-md)',
-            padding: '4px 8px',
-            background: 'var(--paper)',
-            borderRadius: 'var(--radius-sm)',
-            fontSize: '0.75rem',
-            fontWeight: 600,
-            color: 'var(--muted)',
-            textTransform: 'uppercase'
-          }}
-        >
-          {recommendation.status}
+      {/* Actions */}
+      {(onAccept || onReview || onDefer) && (
+        <div className="mt-4 flex flex-wrap gap-2">
+          {onAccept && (
+            <button type="button" className="btn btn-sm" onClick={() => onAccept(recommendation.id)}>
+              <Check className="h-3.5 w-3.5" aria-hidden="true" />
+              Accept and create action
+            </button>
+          )}
+          {onReview && (
+            <button type="button" className="btn btn-ghost btn-sm" onClick={() => onReview(recommendation.id)}>
+              <Eye className="h-3.5 w-3.5" aria-hidden="true" />
+              Review details
+            </button>
+          )}
+          {onDefer && (
+            <button type="button" className="btn btn-ghost btn-sm" onClick={() => onDefer(recommendation.id)}>
+              <Pause className="h-3.5 w-3.5" aria-hidden="true" />
+              Defer
+            </button>
+          )}
         </div>
       )}
-    </div>
+    </article>
   );
 }

@@ -6,6 +6,7 @@
 'use client'
 
 import { useState, FormEvent, KeyboardEvent } from 'react'
+import { Loader2, Search, X } from 'lucide-react'
 
 interface QueryInputProps {
   onSubmit: (query: string) => void
@@ -39,116 +40,64 @@ export function QueryInput({ onSubmit, isLoading }: QueryInputProps) {
 
   return (
     <form onSubmit={handleSubmit} className="w-full">
-      <div className="relative">
-        <input
-          type="text"
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
-          onKeyDown={handleKeyDown}
-          disabled={isLoading}
-          placeholder="Ask anything about your business data..."
-          aria-label="Natural language query input"
-          className="w-full px-6 py-4 pr-24 text-lg border-2 border-[var(--border)] rounded-lg
-                     focus:border-[var(--accent)] focus:ring-1 focus:ring-[var(--accent)]
-                     disabled:bg-[var(--highlight)] disabled:cursor-not-allowed"
-          maxLength={500}
-        />
+      <div className="flex items-center gap-2">
+        <div className="relative min-w-0 flex-1">
+          <Search
+            className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2"
+            style={{ color: 'var(--muted)' }}
+            aria-hidden="true"
+          />
+          <input
+            type="text"
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+            onKeyDown={handleKeyDown}
+            disabled={isLoading}
+            placeholder="Ask about revenue, margins, customers or business units"
+            aria-label="Natural language query input"
+            className="input pl-9 pr-9 disabled:cursor-not-allowed disabled:opacity-60"
+            maxLength={500}
+          />
 
-        {/* Clear button */}
-        {inputValue.length > 0 && !isLoading && (
-          <button
-            type="button"
-            onClick={handleClear}
-            className="absolute right-20 top-1/2 -translate-y-1/2
-                       text-[var(--muted)] hover:text-[var(--ink)]
-                       transition-colors"
-            aria-label="Clear input"
-          >
-            <svg
-              width="20"
-              height="20"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+          {inputValue.length > 0 && !isLoading && (
+            <button
+              type="button"
+              onClick={handleClear}
+              className="query-clear absolute right-2 top-1/2 inline-flex h-6 w-6 -translate-y-1/2 items-center justify-center"
+              style={{ borderRadius: 'var(--radius-xs)' }}
+              aria-label="Clear input"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          </button>
-        )}
+              <X className="h-4 w-4" aria-hidden="true" />
+            </button>
+          )}
+        </div>
 
-        {/* Submit button */}
-        <button
-          type="submit"
-          disabled={!isValid || isLoading}
-          className="absolute right-2 top-1/2 -translate-y-1/2
-                     px-4 py-1.5 bg-[var(--accent)] text-white rounded-md
-                     hover:bg-[var(--accent)]/90 disabled:bg-[var(--muted)]
-                     disabled:cursor-not-allowed
-                     transition-colors
-                     flex items-center gap-2"
-        >
+        <button type="submit" disabled={!isValid || isLoading} className="btn btn-primary h-9 shrink-0 px-4">
           {isLoading ? (
             <>
-              <svg
-                width="16"
-                height="16"
-                className="animate-spin"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-              >
-                <circle
-                  className="opacity-25"
-                  cx="12"
-                  cy="12"
-                  r="10"
-                  stroke="currentColor"
-                  strokeWidth="4"
-                />
-                <path
-                  className="opacity-75"
-                  fill="currentColor"
-                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                />
-              </svg>
-              <span className="text-sm">Thinking...</span>
+              <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
+              <span>Asking</span>
             </>
           ) : (
-            <>
-              <svg
-                width="16"
-                height="16"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                />
-              </svg>
-              <span className="text-sm">Ask</span>
-            </>
+            'Ask'
           )}
         </button>
       </div>
 
       {/* Character counter */}
       {inputValue.length > 0 && (
-        <div className="mt-1 text-xs text-[var(--muted)] text-right">
-          {inputValue.length}/500 characters
+        <div className="mt-1 text-right text-xs" style={{ color: 'var(--muted)' }}>
+          <span className="num">{inputValue.length}/500</span> characters
           {inputValue.trim().length < 3 && inputValue.trim().length > 0 && (
-            <span className="text-[var(--critical)] ml-2">Minimum 3 characters</span>
+            <span className="ml-2" style={{ color: 'var(--critical-ink)' }}>Minimum 3 characters</span>
           )}
         </div>
       )}
+
+      <style>{`
+        .query-clear { color: var(--muted); transition: color 150ms, background-color 150ms; }
+        .query-clear:hover { color: var(--ink); background: var(--surface-2); }
+      `}</style>
     </form>
   )
 }

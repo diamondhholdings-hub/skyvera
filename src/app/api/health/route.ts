@@ -6,6 +6,7 @@
 import { NextResponse } from 'next/server'
 import { getConnectorFactory } from '@/lib/data/registry/connector-factory'
 import { getCacheManager } from '@/lib/cache/manager'
+import { isClaudeConfigured, usesGateway } from '@/lib/intelligence/claude/client'
 
 // Stub for orchestrator stats (will be implemented after Claude orchestrator is fully integrated)
 function getOrchestratorStats() {
@@ -53,7 +54,8 @@ export async function GET() {
       ),
       orchestrator: orchestratorStats,
       environment: {
-        anthropicKeyConfigured: !!process.env.ANTHROPIC_API_KEY,
+        claudeConfigured: isClaudeConfigured(),
+        claudeViaGateway: usesGateway(),
         newsApiKeyConfigured: !!process.env.NEWSAPI_KEY,
         databaseUrl: process.env.DATABASE_URL ? 'configured' : 'missing',
         nodeEnv: process.env.NODE_ENV || 'development',

@@ -1,36 +1,42 @@
 /**
  * Scenario modeling loading skeleton
- * Shows pulse-animated placeholders for scenario type selector, form, and impact area
+ * Placeholders for the mode control, example prompts, and the conversation panel
  */
+
+/** Content-area placeholder; also the Suspense fallback inside page.tsx */
+export function ScenarioLoadingBody() {
+  return (
+    <div className="space-y-6">
+      <div className="space-y-2">
+        <div className="skeleton h-8 w-40" />
+        <div className="skeleton h-4 w-80 max-w-full" />
+      </div>
+
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+        <div className="skeleton h-[480px] lg:col-span-2" />
+        <div className="space-y-2">
+          <div className="skeleton h-5 w-32" />
+          {[...Array(4)].map((_, i) => (
+            <div key={i} className="skeleton h-8" />
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}
 
 export default function ScenarioLoading() {
   return (
-    <div className="p-6 space-y-6">
-      {/* Header skeleton */}
-      <div className="space-y-2">
-        <div className="h-8 w-64 bg-[var(--border)] animate-pulse rounded-lg" />
-        <div className="h-4 w-96 bg-[var(--border)] animate-pulse rounded-lg" />
+    <div>
+      <div className="border-b" style={{ borderColor: 'var(--border)' }}>
+        <div className="mx-auto max-w-[1400px] space-y-2 px-4 pb-5 pt-7 lg:px-8">
+          <div className="skeleton h-7 w-40" />
+          <div className="skeleton h-4 w-[32rem] max-w-full" />
+        </div>
       </div>
-
-      {/* Scenario type selector skeleton */}
-      <div className="flex space-x-4">
-        {[...Array(3)].map((_, i) => (
-          <div key={i} className="h-10 w-32 bg-[var(--border)] animate-pulse rounded-lg" />
-        ))}
+      <div className="mx-auto max-w-[1400px] px-4 py-6 lg:px-8">
+        <ScenarioLoadingBody />
       </div>
-
-      {/* Form skeleton */}
-      <div className="space-y-4 max-w-2xl">
-        {[...Array(4)].map((_, i) => (
-          <div key={i} className="h-16 bg-[var(--border)] animate-pulse rounded-lg" />
-        ))}
-      </div>
-
-      {/* Submit button skeleton */}
-      <div className="h-12 w-40 bg-[var(--border)] animate-pulse rounded-lg" />
-
-      {/* Impact area skeleton */}
-      <div className="h-96 bg-[var(--border)] animate-pulse rounded-lg" />
     </div>
   )
 }

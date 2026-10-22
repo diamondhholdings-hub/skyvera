@@ -1,8 +1,6 @@
 /**
- * Badge - Small pill-shaped badge with color-coded background
+ * Badge - small status/label tag (4px corners, never pill-shaped)
  * Server Component - no interactivity needed
- * Used for BU labels, status tags
- * Editorial theme: compact badges with editorial color palette
  */
 
 import type { ReactNode } from 'react'
@@ -12,17 +10,18 @@ interface BadgeProps {
   children: ReactNode
 }
 
-const variantStyles = {
-  default: 'bg-secondary/10 text-secondary',
-  success: 'bg-[var(--success)]/20 text-[#2e7d32]',
-  warning: 'bg-[var(--warning)]/20 text-[#e65100]',
-  danger: 'bg-[var(--critical)]/20 text-[#c62828]',
+const variantClass = {
+  default: 'badge-info',
+  success: 'badge-success',
+  warning: 'badge-warning',
+  danger: 'badge-critical',
 }
 
 export function Badge({ variant = 'default', children }: BadgeProps) {
   return (
     <span
-      className={`inline-flex items-center px-3 py-1 rounded text-xs font-semibold ${variantStyles[variant]}`}
+      className={`inline-flex items-center gap-1 whitespace-nowrap px-1.5 py-0.5 text-xs font-medium ${variantClass[variant]}`}
+      style={{ borderRadius: 'var(--radius-xs)' }}
     >
       {children}
     </span>
