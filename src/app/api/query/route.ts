@@ -7,6 +7,8 @@ import { NextRequest, NextResponse } from 'next/server'
 import { nlqRequestSchema } from '@/lib/intelligence/nlq/types'
 import { interpretQuery, interpretQueryWithData } from '@/lib/intelligence/nlq/interpreter'
 import { getQueryDataContext } from '@/lib/intelligence/nlq/data-context'
+import { answerQueryWithTools } from '@/lib/intelligence/nlq/agent'
+import { isClaudeConfigured } from '@/lib/intelligence/claude/client'
 import {
   getCannedQueryById,
   expandTemplate,
@@ -60,11 +62,18 @@ export async function POST(request: NextRequest) {
       processedQuery = expandTemplate(cannedQuery.template, filters || {})
     }
 
-    // Answer from the loaded budget's figures; without them Claude has no data
-    const dataContext = getQueryDataContext()
-    const result = dataContext
-      ? await interpretQueryWithData(processedQuery, dataContext, conversationContext)
-      : await interpretQuery(processedQuery, conversationContext)
+    // Claude answers by calling data tools over every snapshot. If that fails,
+    // fall back to one call with the P&L summary injected, then to no data.
+    let result = isClaudeConfigured()
+      ? await answerQueryWithTools(processedQuery, conversationContext)
+      : null
+    if (!result?.success) {
+      if (result) console.error('[NLQ] Tool-use answer failed, falling back:', result.error)
+      const dataContext = getQueryDataContext()
+      result = dataContext
+        ? await interpretQueryWithData(processedQuery, dataContext, conversationContext)
+        : await interpretQuery(processedQuery, conversationContext)
+    }
 
     if (!result.success) {
       return NextResponse.json(

@@ -12,8 +12,7 @@ ${bu ? `You are currently analyzing the ${bu} business unit.` : ''}
 
 BUSINESS CONTEXT:
 - Skyvera has 3 BUs: Cloudsense (~$8M quarterly), Kandy (~$3.3M quarterly), STL (~$1M quarterly)
-- Q1'26 budget cycle, fiscal year aligned to calendar year
-- Key concern: FY'25 EBITDA test FAILED, RR declining $336K, margin gap $918K
+- Fiscal year aligned to calendar year
 
 METRIC DEFINITIONS (use ONLY these definitions):
 ${metricDefinitions}

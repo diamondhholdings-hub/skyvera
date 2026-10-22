@@ -8,6 +8,8 @@ import { getConnectorFactory } from '../registry/connector-factory'
 import type { BU, BUFinancialSummary } from '@/lib/types/financial'
 import { ok, err, type Result } from '@/lib/types/result'
 import { getCacheManager, getActiveTTL } from '@/lib/cache/manager'
+import { getIntelligence, isAtRiskRenewal, type IntelligenceSnapshot, type Renewal } from './intelligence-data'
+import { getFiscalQuarter } from './fiscal-quarter'
 
 /**
  * Dashboard overview data
@@ -21,11 +23,69 @@ export interface DashboardData {
   ebitdaTarget: number
   netMarginPct: number
   netMarginTarget: number // Real blended Margin Target from the Excel P&L sheet
-  headcount: number
+  headcount: number // Quarter-end headcount from the HC sheets (0 when the intelligence snapshot is missing)
+  headcountPriorQuarter: number | null
+  headcountCost: number | null // Quarterly headcount cost for the current quarter
   arAgingOver90: number | null // Real AR > 90 days total from the 'AR Aging' sheet
   arrYoYChangePct: number | null // Real YoY revenue change from the Comparison-to-PP sheets
   ruleOf40: number | null // arrYoYChangePct + netMarginPct
+  arrAtRisk: ArrAtRisk | null // Renewals marked "No" / "No (SF)" in the next 4 quarters
   lastUpdated: Date
+}
+
+/** ARR on subscriptions marked as not renewing within a quarter window. */
+export interface ArrAtRisk {
+  quarters: string[]
+  arr: number
+  subscriptions: number
+  customers: number
+}
+
+/** Shift a "Q4'26"-style label by n quarters ("Q4'26" + 1 = "Q1'27"). Null if unparseable. */
+export function shiftQuarter(label: string, n: number): string | null {
+  const m = label.match(/^Q([1-4])'(\d{2})$/)
+  if (!m) return null
+  const index = Number(m[2]) * 4 + (Number(m[1]) - 1) + n
+  const year = Math.floor(index / 4)
+  return `Q${(index % 4) + 1}'${String(year).padStart(2, '0')}`
+}
+
+/** `count` consecutive quarter labels starting at `start`. */
+export function quarterWindow(start: string, count: number): string[] {
+  const quarters: string[] = []
+  for (let i = 0; i < count; i++) {
+    const q = shiftQuarter(start, i)
+    if (q) quarters.push(q)
+  }
+  return quarters
+}
+
+/** At-risk ARR on renewals whose renewal quarter falls inside `quarters`. */
+export function computeArrAtRisk(renewals: Renewal[], quarters: string[]): ArrAtRisk {
+  const window = new Set(quarters)
+  const atRisk = renewals.filter((r) => r.renewalQuarter && window.has(r.renewalQuarter) && isAtRiskRenewal(r))
+  return {
+    quarters,
+    arr: atRisk.reduce((sum, r) => sum + r.arr, 0),
+    subscriptions: atRisk.length,
+    customers: new Set(atRisk.map((r) => r.customer)).size,
+  }
+}
+
+/** Quarter-end headcount, prior quarter headcount and quarterly cost from the HC sheets. */
+export function headcountFromIntelligence(
+  intel: Pick<IntelligenceSnapshot, 'headcount'>,
+  quarter: string | null
+): { headcount: number; headcountPriorQuarter: number | null; headcountCost: number | null } {
+  const summary = intel.headcount.summary?.['Total XO']
+  const total = intel.headcount.total
+  const firstQuarter = intel.headcount.quarters?.[0]
+  const costKey = quarter && total.cost[quarter] !== undefined ? quarter : firstQuarter
+  return {
+    headcount: summary?.headcountEndOfQuarter ?? total.headcount,
+    headcountPriorQuarter: summary?.priorQuarterHeadcount ?? null,
+    headcountCost: summary?.cost ?? (costKey ? total.cost[costKey] ?? null : null),
+  }
 }
 
 /**
@@ -111,8 +171,19 @@ export async function getDashboardData(): Promise<Result<DashboardData, Error>> 
         const netMarginTarget = consolidated.marginTarget ?? netMarginPct
         const ebitdaTarget = (totalRevenue * netMarginTarget) / 100
 
-        // Headcount is not yet extracted from the Excel HC Budget Input sheet.
-        const headcount = 58
+        // Headcount and at-risk renewals come from the intelligence snapshot
+        // (HC sheets and renewal tracker of the same workbook).
+        const intel = getIntelligence()
+        const quarter = getFiscalQuarter()
+        const hc = intel
+          ? headcountFromIntelligence(intel, quarter)
+          : { headcount: 0, headcountPriorQuarter: null, headcountCost: null }
+        const startQuarter = quarter ?? intel?.headcount.quarters?.[0] ?? null
+        const arrAtRisk =
+          intel && startQuarter ? computeArrAtRisk(intel.renewals, quarterWindow(startQuarter, 4)) : null
+        const arAgingOver90 =
+          consolidated.arAgingOver90 ??
+          (intel ? intel.receivables.reduce((sum, r) => sum + r.arOver90, 0) : null)
 
         return ok({
           totalRevenue,
@@ -123,10 +194,11 @@ export async function getDashboardData(): Promise<Result<DashboardData, Error>> 
           ebitdaTarget,
           netMarginPct,
           netMarginTarget,
-          headcount,
-          arAgingOver90: consolidated.arAgingOver90 ?? null,
+          ...hc,
+          arAgingOver90,
           arrYoYChangePct: consolidated.arrYoYChangePct ?? null,
           ruleOf40: consolidated.ruleOf40 ?? null,
+          arrAtRisk,
           lastUpdated: new Date(),
         })
       } catch (error) {

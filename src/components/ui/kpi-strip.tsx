@@ -29,15 +29,20 @@ export function KpiStrip({ items }: { items: KpiItem[] }) {
     <dl
       className="m-0 grid overflow-hidden"
       style={{
-        gridTemplateColumns: `repeat(auto-fit, minmax(min(100%, 10.5rem), 1fr))`,
+        // More than six figures: two even rows on wide screens rather than one
+        // overflowing row. Separators are drawn per tile (outline), so a
+        // partly filled last row leaves blank surface, not a grey block.
+        gridTemplateColumns:
+          items.length > 6
+            ? `repeat(auto-fit, minmax(min(100%, max(10.5rem, calc(${100 / Math.ceil(items.length / 2)}% - 1px))), 1fr))`
+            : `repeat(auto-fit, minmax(min(100%, 10.5rem), 1fr))`,
         border: '1px solid var(--border)',
         borderRadius: 'var(--radius-md)',
-        gap: '1px',
-        background: 'var(--border)',
+        background: 'var(--surface)',
       }}
     >
       {items.map((item) => (
-        <div key={item.label} style={{ background: 'var(--surface)', padding: '0.875rem 1rem' }}>
+        <div key={item.label} style={{ background: 'var(--surface)', padding: '0.875rem 1rem', outline: '1px solid var(--border)' }}>
           <dt style={{ fontSize: '0.8125rem', fontWeight: 500, color: 'var(--muted)' }}>{item.label}</dt>
           <dd
             className="num"
