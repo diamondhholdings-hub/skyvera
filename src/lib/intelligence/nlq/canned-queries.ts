@@ -15,7 +15,7 @@ export const CANNED_QUERIES: CannedQuery[] = [
     label: 'What is the ARR for each business unit?',
     category: 'financials',
     template:
-      "Get Annual Recurring Revenue (ARR) breakdown by business unit for Q1'26",
+      "Get Annual Recurring Revenue (ARR) breakdown by business unit this quarter",
     requiredFilters: [],
   },
   {
@@ -33,7 +33,7 @@ export const CANNED_QUERIES: CannedQuery[] = [
     label: 'Why are we missing our margin target?',
     category: 'performance',
     template:
-      "Analyze the margin gap between actual ({netMarginPct}%) and target ({netMarginTarget}%) for {bu} in Q1'26, identifying top cost drivers",
+      "Analyze the margin gap between actual ({netMarginPct}%) and target ({netMarginTarget}%) for {bu} this quarter, identifying top cost drivers",
     requiredFilters: ['bu'],
   },
   {
@@ -69,7 +69,7 @@ export const CANNED_QUERIES: CannedQuery[] = [
     label: 'Compare performance across business units',
     category: 'comparisons',
     template:
-      "Compare revenue, margin, and EBITDA across Cloudsense, Kandy, and STL for Q1'26",
+      "Compare revenue, margin, and EBITDA across Cloudsense, Kandy, and STL this quarter",
     requiredFilters: [],
   },
 ]

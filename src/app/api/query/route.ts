@@ -5,7 +5,8 @@
 
 import { NextRequest, NextResponse } from 'next/server'
 import { nlqRequestSchema } from '@/lib/intelligence/nlq/types'
-import { interpretQuery } from '@/lib/intelligence/nlq/interpreter'
+import { interpretQuery, interpretQueryWithData } from '@/lib/intelligence/nlq/interpreter'
+import { getQueryDataContext } from '@/lib/intelligence/nlq/data-context'
 import {
   getCannedQueryById,
   expandTemplate,
@@ -59,8 +60,11 @@ export async function POST(request: NextRequest) {
       processedQuery = expandTemplate(cannedQuery.template, filters || {})
     }
 
-    // Interpret the query using Claude
-    const result = await interpretQuery(processedQuery, conversationContext)
+    // Answer from the loaded budget's figures; without them Claude has no data
+    const dataContext = getQueryDataContext()
+    const result = dataContext
+      ? await interpretQueryWithData(processedQuery, dataContext, conversationContext)
+      : await interpretQuery(processedQuery, conversationContext)
 
     if (!result.success) {
       return NextResponse.json(

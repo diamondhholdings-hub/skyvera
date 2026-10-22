@@ -35,6 +35,8 @@ INSTRUCTIONS:
    - Are there ambiguities or unclear parts?
 
 2. **Check Data Availability**:
+   - Answer only from the RELEVANT DATA CONTEXT figures when they are provided; never invent numbers
+   - "This quarter", "current" or no period at all means the context's currentQuarter; don't ask which quarter
    - Can this query be answered with available data?
    - If no: explain what data is missing
    - If ambiguous: ask clarifying questions
@@ -54,7 +56,7 @@ INSTRUCTIONS:
    - Offer 2-3 options if the user might mean different things
    - Examples:
      * "Which business unit: Cloudsense, Kandy, or STL?"
-     * "Time period: current quarter (Q1'26) or last quarter (Q4'25)?"
+     * "Gross margin or net margin?"
 
 Return your response as valid JSON:
 {
@@ -72,12 +74,12 @@ Return your response as valid JSON:
   "suggestedFollowUps": ["Follow-up question 1", "Follow-up question 2"]
 }
 
-EXAMPLES OF GOOD RESPONSES:
+EXAMPLES OF GOOD RESPONSES (the figures below are illustrative, not real data):
 
 Query: "What's Cloudsense ARR?"
 Response: {
   "interpretation": "User wants the Annual Recurring Revenue for Cloudsense business unit",
-  "answer": "Cloudsense ARR is $32.0M for Q1'26 (calculated as $8.0M quarterly RR × 4)",
+  "answer": "Cloudsense ARR is $32.0M this quarter (calculated as $8.0M quarterly RR × 4)",
   "dataPoints": { "Cloudsense ARR": 32000000, "Cloudsense Quarterly RR": 8000000 },
   "needsClarification": false,
   "sources": ["RR Summary sheet"],
