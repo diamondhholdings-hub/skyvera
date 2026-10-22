@@ -4,6 +4,7 @@
  * heading renders immediately.
  */
 
+import Link from 'next/link'
 import { getDashboardData } from '@/lib/data/server/dashboard-data'
 import { KpiStrip, type KpiItem } from '@/components/ui/kpi-strip'
 
@@ -27,6 +28,13 @@ export async function HeadlineKpis() {
   const arrYoYChange = data.arrYoYChangePct
   const ruleOf40 = data.ruleOf40
   const arAging = data.arAgingOver90
+  const atRisk = data.arrAtRisk
+  const atRiskRange =
+    atRisk && atRisk.quarters.length > 0
+      ? `${atRisk.quarters[0]} to ${atRisk.quarters[atRisk.quarters.length - 1]}`
+      : ''
+  const hcChange =
+    data.headcountPriorQuarter !== null ? data.headcount - data.headcountPriorQuarter : null
 
   const items: KpiItem[] = [
     {
@@ -66,8 +74,44 @@ export async function HeadlineKpis() {
     {
       label: 'AR > 90 days',
       value: arAging !== null ? `$${(arAging / 1e6).toFixed(1)}M` : 'N/A',
-      context: arAging !== null ? `${((arAging / arr) * 100).toFixed(1)}% of ARR` : 'Data unavailable',
+      context:
+        arAging !== null ? (
+          <>
+            {((arAging / arr) * 100).toFixed(1)}% of ARR. <KpiLink href="/revenue-risk">Receivables</KpiLink>
+          </>
+        ) : (
+          'Data unavailable'
+        ),
       tone: arAging !== null ? 'critical' : 'default',
+    },
+    {
+      label: 'ARR at risk (next 4 quarters)',
+      value: atRisk ? `$${(atRisk.arr / 1e6).toFixed(1)}M` : 'N/A',
+      context: atRisk ? (
+        <>
+          {atRisk.subscriptions} subscriptions not renewing, {atRiskRange}.{' '}
+          <KpiLink href="/revenue-risk">Renewals</KpiLink>
+        </>
+      ) : (
+        'Renewal tracker unavailable'
+      ),
+      tone: atRisk && atRisk.arr > 0 ? 'critical' : 'default',
+    },
+    {
+      label: 'Headcount',
+      value: data.headcountCost !== null ? data.headcount : 'N/A',
+      context:
+        data.headcountCost !== null ? (
+          <>
+            ${(data.headcountCost / 1e6).toFixed(2)}M cost this quarter
+            {hcChange !== null && hcChange !== 0
+              ? `, ${hcChange < 0 ? 'down' : 'up'} ${Math.abs(hcChange)} from last quarter`
+              : ''}
+            . <KpiLink href="/costs">Costs</KpiLink>
+          </>
+        ) : (
+          'Headcount data unavailable'
+        ),
     },
   ]
 
@@ -81,6 +125,14 @@ export async function HeadlineKpis() {
         </p>
       )}
     </div>
+  )
+}
+
+function KpiLink({ href, children }: { href: string; children: React.ReactNode }) {
+  return (
+    <Link href={href} className="font-medium hover:underline" style={{ color: 'var(--secondary)', textDecoration: 'none' }}>
+      {children}
+    </Link>
   )
 }
 

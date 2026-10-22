@@ -47,6 +47,10 @@ def extract_rr_customers(wb, company_filter):
 
         if company != company_filter or not customer_name:
             continue
+        # Manual adjustment lines below the subscriptions carry a note
+        # ("NEW LICENSES", "Adj to new contract") instead of a subscription ID
+        if not isinstance(sub_id, (int, float)):
+            continue
 
         if customer_name not in customers:
             customers[customer_name] = {
@@ -87,7 +91,9 @@ def extract_nrr_customers(wb, class_filter):
         # current quarter (e.g. Q4'26..Q3'27 in the Q4'26 workbook), not a fixed FY.
         next_4_quarters = row[8:12] if len(row) > 8 else ()
 
-        if not class_col or class_filter not in class_col:
+        # Classes read "STL Consulting", "NewNet Product"...; match the BU
+        # prefix case-insensitively (an exact "Stl" substring never matched)
+        if not class_col or not class_col.casefold().startswith(class_filter.casefold()):
             continue
 
         # Extract customer name from <name> format

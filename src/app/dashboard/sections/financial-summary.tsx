@@ -8,6 +8,40 @@ import { getDashboardData, getBUSummaries } from '@/lib/data/server/dashboard-da
 import { AlertBox } from '../components/alert-box'
 import { BUPerformanceTable } from '../components/bu-performance-table'
 import { Panel, SectionHeading, SignedFigure } from '../components/panel'
+import { getIntelligence } from '@/lib/data/server/intelligence-data'
+
+const signedK = (n: number) => `${n >= 0 ? '+' : '-'}$${Math.abs(n / 1e3).toFixed(0)}K`
+
+/**
+ * The margin gap broken down by product line: each line's net profit against
+ * its own margin target (revenue x target %). The lines sum to the company gap.
+ */
+function getMarginDrivers() {
+  const intel = getIntelligence()
+  if (!intel) return []
+  const period = Object.keys(intel.products)[0]
+  const targetUsd = new Map<string, number>()
+  for (const l of intel.marginTargets.lines) {
+    targetUsd.set(l.vertical, (targetUsd.get(l.vertical) ?? 0) + (l.revenue * l.targetMarginPct) / 100)
+  }
+  return (intel.products[period] ?? [])
+    .map((p) => {
+      const target = targetUsd.get(p.product) ?? 0
+      const delta = p.netProfit - target
+      const targetPct = p.totalRevenue > 0 ? (target / p.totalRevenue) * 100 : null
+      return {
+        driver: p.product,
+        delta,
+        impact: signedK(delta),
+        good: delta >= 0,
+        explanation: p.totalRevenue > 0 && targetPct !== null
+          ? `${p.netMarginPct.toFixed(1)}% net margin vs ${targetPct.toFixed(1)}% target`
+          : 'Costs with no revenue this quarter',
+      }
+    })
+    .filter((d) => Math.abs(d.delta) >= 1_000)
+    .sort((a, b) => Math.abs(b.delta) - Math.abs(a.delta))
+}
 
 export async function FinancialSummarySection() {
   const dashboardResult = await getDashboardData()
@@ -32,12 +66,7 @@ export async function FinancialSummarySection() {
   const arrYoYChange = data.arrYoYChangePct
   const totalRRVariance = data.totalRR - data.rrTarget
 
-  const marginDrivers = [
-    { driver: 'HC COGS increase', impact: '+$779K', good: false, explanation: '43 new XO contractors hired' },
-    { driver: 'RR decline', impact: '-$336K', good: false, explanation: 'Recurring revenue down vs. prior plan' },
-    { driver: 'NHC expenses up', impact: '+$177K', good: false, explanation: 'Software and professional services' },
-    { driver: 'CF COGS down', impact: '-$920K', good: true, explanation: 'Vendor optimization (positive)' },
-  ]
+  const marginDrivers = getMarginDrivers()
 
   return (
     <section id="financial-summary" style={{ display: 'none' }}>
@@ -61,16 +90,16 @@ export async function FinancialSummarySection() {
         {/* Margin gap */}
         <Panel
           title={`Margin gap: -$${Math.abs(marginGap / 1e3).toFixed(0)}K`}
-          description={`${marginGapPct.toFixed(1)} percentage points vs. target`}
+          description={`${marginGapPct.toFixed(1)} percentage points vs. target. Net profit vs each product line's margin target`}
           flush
         >
           <div className="overflow-x-auto">
             <table className="data-table">
               <thead>
                 <tr>
-                  <th>Driver</th>
-                  <th style={{ textAlign: 'right' }}>Impact</th>
-                  <th>Explanation</th>
+                  <th>Product line</th>
+                  <th style={{ textAlign: 'right' }}>Vs target</th>
+                  <th>Margin</th>
                 </tr>
               </thead>
               <tbody>

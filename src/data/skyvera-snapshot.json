@@ -760,29 +760,12 @@
         "pct_of_total": 0.09556965349090074
       },
       {
-        "customer_name": "Various Licenses",
-        "rr": 0,
-        "nrr": 0,
-        "subscriptions": [
-          {
-            "sub_id": "NEW LICENSES",
-            "arr": 0,
-            "renewal_qtr": null,
-            "will_renew": null,
-            "projected_arr": null
-          }
-        ],
-        "total": 0,
-        "rank": 44,
-        "pct_of_total": 0.0
-      },
-      {
         "customer_name": "A1 Telekom Austria Ag.",
         "rr": 0,
         "nrr": 0.0,
         "subscriptions": [],
         "total": 0.0,
-        "rank": 45,
+        "rank": 44,
         "pct_of_total": 0.0
       },
       {
@@ -791,7 +774,7 @@
         "nrr": 0.0,
         "subscriptions": [],
         "total": 0.0,
-        "rank": 46,
+        "rank": 45,
         "pct_of_total": 0.0
       },
       {
@@ -800,7 +783,7 @@
         "nrr": 0.0,
         "subscriptions": [],
         "total": 0.0,
-        "rank": 47,
+        "rank": 46,
         "pct_of_total": 0.0
       },
       {
@@ -809,7 +792,7 @@
         "nrr": 0.0,
         "subscriptions": [],
         "total": 0.0,
-        "rank": 48,
+        "rank": 47,
         "pct_of_total": 0.0
       },
       {
@@ -818,7 +801,7 @@
         "nrr": 0.0,
         "subscriptions": [],
         "total": 0.0,
-        "rank": 49,
+        "rank": 48,
         "pct_of_total": 0.0
       },
       {
@@ -827,7 +810,7 @@
         "nrr": 0.0,
         "subscriptions": [],
         "total": 0.0,
-        "rank": 50,
+        "rank": 49,
         "pct_of_total": 0.0
       },
       {
@@ -836,7 +819,7 @@
         "nrr": 0.0,
         "subscriptions": [],
         "total": 0.0,
-        "rank": 51,
+        "rank": 50,
         "pct_of_total": 0.0
       }
     ],
@@ -904,13 +887,6 @@
             "renewal_qtr": "Q3'26",
             "will_renew": "Yes",
             "projected_arr": 7005.65
-          },
-          {
-            "sub_id": null,
-            "arr": 0,
-            "renewal_qtr": null,
-            "will_renew": null,
-            "projected_arr": null
           }
         ],
         "total": 2146362.05,
@@ -1348,7 +1324,7 @@
       {
         "customer_name": "One Albania",
         "rr": 1620914.02,
-        "nrr": 0,
+        "nrr": 120000.0,
         "subscriptions": [
           {
             "sub_id": 1587517.0,
@@ -1356,30 +1332,16 @@
             "renewal_qtr": "Q4'26",
             "will_renew": "No",
             "projected_arr": 0.0
-          },
-          {
-            "sub_id": "Adj to new contract",
-            "arr": 0,
-            "renewal_qtr": null,
-            "will_renew": null,
-            "projected_arr": null
-          },
-          {
-            "sub_id": "Volt AMC",
-            "arr": 0,
-            "renewal_qtr": null,
-            "will_renew": null,
-            "projected_arr": null
           }
         ],
-        "total": 1620914.02,
+        "total": 1740914.02,
         "rank": 1,
-        "pct_of_total": 39.796602011419104
+        "pct_of_total": 38.05273161210542
       },
       {
         "customer_name": "Teleindia Networks Private Limited",
         "rr": 906259.4400000001,
-        "nrr": 0,
+        "nrr": 342008.04000000004,
         "subscriptions": [
           {
             "sub_id": 1878799.0,
@@ -1403,14 +1365,14 @@
             "projected_arr": 145437.925
           }
         ],
-        "total": 906259.4400000001,
+        "total": 1248267.48,
         "rank": 2,
-        "pct_of_total": 22.25043759740665
+        "pct_of_total": 27.284510809189282
       },
       {
         "customer_name": "Commverge Solutions Philippines Inc.",
         "rr": 407818.03,
-        "nrr": 0,
+        "nrr": 0.0,
         "subscriptions": [
           {
             "sub_id": 1442994.0,
@@ -1422,7 +1384,7 @@
         ],
         "total": 407818.03,
         "rank": 3,
-        "pct_of_total": 10.012728394434504
+        "pct_of_total": 8.914047370454032
       },
       {
         "customer_name": "PT. Supra Primatama Nusantara",
@@ -1439,7 +1401,7 @@
         ],
         "total": 274722.0,
         "rank": 4,
-        "pct_of_total": 6.744961153325751
+        "pct_of_total": 6.004847116999393
       },
       {
         "customer_name": "Ericsson Telecommunications, Inc.",
@@ -1463,7 +1425,7 @@
         ],
         "total": 176902.00999999998,
         "rank": 5,
-        "pct_of_total": 4.343289526849846
+        "pct_of_total": 3.8667071612025894
       },
       {
         "customer_name": "PT. Sisindokom Lintasbuana",
@@ -1480,7 +1442,7 @@
         ],
         "total": 175228.13,
         "rank": 6,
-        "pct_of_total": 4.302192506679169
+        "pct_of_total": 3.8301196527678707
       },
       {
         "customer_name": "Sterlite Technologies Ltd",
@@ -1497,7 +1459,7 @@
         ],
         "total": 113552.73,
         "rank": 7,
-        "pct_of_total": 2.7879410921006964
+        "pct_of_total": 2.4820246771933467
       },
       {
         "customer_name": "Asianet Satellite Communications Ltd",
@@ -1514,12 +1476,12 @@
         ],
         "total": 104718.26,
         "rank": 8,
-        "pct_of_total": 2.5710376152760457
+        "pct_of_total": 2.288921679582243
       },
       {
         "customer_name": "Synaptic Technologies",
         "rr": 84307.07,
-        "nrr": 0,
+        "nrr": 0.0,
         "subscriptions": [
           {
             "sub_id": 1512236.0,
@@ -1531,7 +1493,7 @@
         ],
         "total": 84307.07,
         "rank": 9,
-        "pct_of_total": 2.069903073291236
+        "pct_of_total": 1.8427758469731805
       },
       {
         "customer_name": "Tata Teleservices Limited",
@@ -1548,7 +1510,7 @@
         ],
         "total": 53769.48,
         "rank": 10,
-        "pct_of_total": 1.3201456520938473
+        "pct_of_total": 1.1752881347709925
       },
       {
         "customer_name": "ERICSSON (THAILAND) LTD",
@@ -1565,7 +1527,7 @@
         ],
         "total": 47500.0,
         "rank": 11,
-        "pct_of_total": 1.1662176847248242
+        "pct_of_total": 1.0382504424744694
       },
       {
         "customer_name": "HITACHI SYSTEMS INDIA PRIVATE LIMITED",
@@ -1582,7 +1544,16 @@
         ],
         "total": 46104.86,
         "rank": 12,
-        "pct_of_total": 1.1319642754476245
+        "pct_of_total": 1.0077556062152309
+      },
+      {
+        "customer_name": "4iG - One Macedonia",
+        "rr": 0,
+        "nrr": 40000.0,
+        "subscriptions": [],
+        "total": 40000.0,
+        "rank": 13,
+        "pct_of_total": 0.8743161620837637
       },
       {
         "customer_name": "Bharti Airtel Limited - Chennai",
@@ -1598,8 +1569,8 @@
           }
         ],
         "total": 34000.0,
-        "rank": 13,
-        "pct_of_total": 0.8347663427504004
+        "rank": 14,
+        "pct_of_total": 0.7431687377711992
       },
       {
         "customer_name": "Bharti Airtel Limited - Mumbai",
@@ -1615,25 +1586,8 @@
           }
         ],
         "total": 27200.0,
-        "rank": 14,
-        "pct_of_total": 0.6678130742003203
-      },
-      {
-        "customer_name": "4iG",
-        "rr": 0,
-        "nrr": 0,
-        "subscriptions": [
-          {
-            "sub_id": "volt for new BOSS install. assume 220/yr RR",
-            "arr": 0,
-            "renewal_qtr": null,
-            "will_renew": null,
-            "projected_arr": 220000.0
-          }
-        ],
-        "total": 0,
         "rank": 15,
-        "pct_of_total": 0.0
+        "pct_of_total": 0.5945349902169593
       }
     ],
     "NewNet": [
@@ -1655,23 +1609,16 @@
             "renewal_qtr": "Q2'27",
             "will_renew": "Yes",
             "projected_arr": 54320.0
-          },
-          {
-            "sub_id": "dropping one system at next renewal (Apr 2027)",
-            "arr": 0,
-            "renewal_qtr": null,
-            "will_renew": null,
-            "projected_arr": -459409.0
           }
         ],
         "total": 2456101.0,
         "rank": 1,
-        "pct_of_total": 55.75230689972437
+        "pct_of_total": 47.09282772748486
       },
       {
         "customer_name": "Vodafone Egypt Telecommunications SA",
         "rr": 444401.98,
-        "nrr": 0,
+        "nrr": 186640.0,
         "subscriptions": [
           {
             "sub_id": 1925032.0,
@@ -1702,9 +1649,35 @@
             "projected_arr": 50425.78
           }
         ],
-        "total": 444401.98,
+        "total": 631041.98,
         "rank": 2,
-        "pct_of_total": 10.087710389680705
+        "pct_of_total": 12.099482575411576
+      },
+      {
+        "customer_name": "Telecom Argentina S.A.",
+        "rr": 200000.0,
+        "nrr": 139426.0,
+        "subscriptions": [
+          {
+            "sub_id": 1553713.0,
+            "arr": 200000.0,
+            "renewal_qtr": "Q1'27",
+            "will_renew": "Yes",
+            "projected_arr": 250000.0
+          }
+        ],
+        "total": 339426.0,
+        "rank": 3,
+        "pct_of_total": 6.5080915419314085
+      },
+      {
+        "customer_name": "New License Sales - Skyvera",
+        "rr": 0,
+        "nrr": 300000.0,
+        "subscriptions": [],
+        "total": 300000.0,
+        "rank": 4,
+        "pct_of_total": 5.752144687146603
       },
       {
         "customer_name": "Nokia Solutions and Networks Oy",
@@ -1720,8 +1693,8 @@
           }
         ],
         "total": 268290.28,
-        "rank": 3,
-        "pct_of_total": 6.090059826030355
+        "rank": 5,
+        "pct_of_total": 5.144148362383582
       },
       {
         "customer_name": "Telenet Group",
@@ -1744,25 +1717,17 @@
           }
         ],
         "total": 204334.83000000002,
-        "rank": 4,
-        "pct_of_total": 4.638301988583941
+        "rank": 6,
+        "pct_of_total": 3.917878355945014
       },
       {
-        "customer_name": "Telecom Argentina S.A.",
-        "rr": 200000.0,
-        "nrr": 0,
-        "subscriptions": [
-          {
-            "sub_id": 1553713.0,
-            "arr": 200000.0,
-            "renewal_qtr": "Q1'27",
-            "will_renew": "Yes",
-            "projected_arr": 250000.0
-          }
-        ],
-        "total": 200000.0,
-        "rank": 5,
-        "pct_of_total": 4.539903440430533
+        "customer_name": "Ps Go-Get Newnet",
+        "rr": 0,
+        "nrr": 183999.96,
+        "subscriptions": [],
+        "total": 183999.96,
+        "rank": 7,
+        "pct_of_total": 3.5279813078306246
       },
       {
         "customer_name": "Bell-TSII Limited",
@@ -1778,13 +1743,13 @@
           }
         ],
         "total": 157533.17,
-        "rank": 6,
-        "pct_of_total": 3.5759269023246407
+        "rank": 8,
+        "pct_of_total": 3.020511956216209
       },
       {
         "customer_name": "Odido Netherlands B.V.",
         "rr": 111763.44,
-        "nrr": 0,
+        "nrr": 0.0,
         "subscriptions": [
           {
             "sub_id": 1815125.0,
@@ -1795,8 +1760,8 @@
           }
         ],
         "total": 111763.44,
-        "rank": 7,
-        "pct_of_total": 2.5369761288517574
+        "rank": 9,
+        "pct_of_total": 2.1429315920440937
       },
       {
         "customer_name": "Sierra Wireless America",
@@ -1812,13 +1777,13 @@
           }
         ],
         "total": 104304.17,
-        "rank": 8,
-        "pct_of_total": 2.367654301171256
+        "rank": 10,
+        "pct_of_total": 1.9999089243757868
       },
       {
         "customer_name": "Nokia Operations de Mexico, SA de CV",
         "rr": 94140.14,
-        "nrr": 0,
+        "nrr": 0.0,
         "subscriptions": [
           {
             "sub_id": 1783087.0,
@@ -1836,8 +1801,8 @@
           }
         ],
         "total": 94140.14,
-        "rank": 9,
-        "pct_of_total": 2.1369357273430603
+        "rank": 11,
+        "pct_of_total": 1.805025687160791
       },
       {
         "customer_name": "Somtel GSM FZCO",
@@ -1853,8 +1818,8 @@
           }
         ],
         "total": 86021.59,
-        "rank": 10,
-        "pct_of_total": 1.9526485619615237
+        "rank": 12,
+        "pct_of_total": 1.649362106328011
       },
       {
         "customer_name": "DIGIS Squared Limited",
@@ -1870,8 +1835,8 @@
           }
         ],
         "total": 79244.55,
-        "rank": 11,
-        "pct_of_total": 1.798813025901847
+        "rank": 13,
+        "pct_of_total": 1.5194203908927444
       },
       {
         "customer_name": "Telekom Romania Mobile Communications S.A. (Formerly COSMOTE ROMANIAN TELECOM)",
@@ -1887,8 +1852,8 @@
           }
         ],
         "total": 56263.32,
-        "rank": 12,
-        "pct_of_total": 1.2771502001902202
+        "rank": 14,
+        "pct_of_total": 1.0787825240640974
       },
       {
         "customer_name": "D G Square for Technology Services",
@@ -1904,8 +1869,8 @@
           }
         ],
         "total": 51381.57,
-        "rank": 13,
-        "pct_of_total": 1.1663368320886114
+        "rank": 15,
+        "pct_of_total": 0.9851807496425042
       },
       {
         "customer_name": "Nomia UK Limited Merkezi Ingiltere Istanbul Merkez Subesi",
@@ -1921,8 +1886,8 @@
           }
         ],
         "total": 50000.0,
-        "rank": 14,
-        "pct_of_total": 1.1349758601076332
+        "rank": 16,
+        "pct_of_total": 0.9586907811911004
       },
       {
         "customer_name": "Syniverse Technologies Asia Pacific Ltd",
@@ -1938,8 +1903,26 @@
           }
         ],
         "total": 41600.0,
-        "rank": 15,
-        "pct_of_total": 0.9442999156095508
+        "rank": 17,
+        "pct_of_total": 0.7976307299509955
+      },
+      {
+        "customer_name": "Altan Redes",
+        "rr": 0,
+        "nrr": 0.0,
+        "subscriptions": [],
+        "total": 0.0,
+        "rank": 18,
+        "pct_of_total": 0.0
+      },
+      {
+        "customer_name": "Nomia Uk Limited",
+        "rr": 0,
+        "nrr": 0.0,
+        "subscriptions": [],
+        "total": 0.0,
+        "rank": 19,
+        "pct_of_total": 0.0
       }
     ]
   },
@@ -1968,7 +1951,7 @@
       "marginTarget": 60.0,
       "deltaToMargin": 331128.8306728648,
       "ebitda": 4652245.597509852,
-      "customerCount": 51
+      "customerCount": 50
     },
     "Kandy": {
       "bu": "Kandy",
@@ -2046,7 +2029,7 @@
       "marginTarget": 63.71100533304155,
       "deltaToMargin": -35900.852234737016,
       "ebitda": 7389383.205652591,
-      "customerCount": 84,
+      "customerCount": 83,
       "arAgingOver90": 9440790.62,
       "arrYoYChangePct": -21.16737609235613,
       "ruleOf40": 42.23558992927908

@@ -26,6 +26,7 @@ const TABS = [
   { id: 'competitive', label: 'Competitive' },
   { id: 'action-plan', label: 'Action plan' },
   { id: 'financials', label: 'Financials' },
+  { id: 'revenue', label: 'Renewals and AR' },
   { id: 'intelligence', label: 'Intelligence' },
 ]
 

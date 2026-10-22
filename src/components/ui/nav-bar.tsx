@@ -7,6 +7,8 @@ import { usePathname } from 'next/navigation'
 const links = [
   { href: '/dashboard',   label: 'Overview' },
   { href: '/accounts',    label: 'Accounts' },
+  { href: '/revenue-risk', label: 'Revenue risk' },
+  { href: '/costs',       label: 'Costs' },
   { href: '/dm-strategy', label: 'Retention' },
   { href: '/scenario',    label: 'Scenarios' },
   { href: '/alerts',      label: 'Alerts' },

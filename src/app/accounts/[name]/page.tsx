@@ -1,5 +1,5 @@
 /**
- * Account Plan Page - Individual customer account details with 8-tab navigation
+ * Account Plan Page - Individual customer account details with 9-tab navigation
  * Server Component - fetches account plan data and customer financials
  * URL format: /accounts/[encoded-name]?tab=overview
  * Next.js 16: params and searchParams are Promises
@@ -14,6 +14,7 @@ import { getFiscalQuarterLabel } from '@/lib/data/server/fiscal-quarter'
 import { TabNavigation } from './_components/tab-navigation'
 import { OverviewTab } from './_components/overview-tab'
 import { FinancialsTab } from './_components/financials-tab'
+import { RevenueTab } from './_components/revenue-tab'
 import { KeyExecutivesTab } from './_components/key-executives-tab'
 import { OrgStructureTab } from './_components/org-structure-tab'
 import { PainPointsTab } from './_components/pain-points-tab'
@@ -205,6 +206,12 @@ export default async function AccountPlanPage({ params, searchParams }: AccountP
         {activeTab === 'financials' && (
           <Suspense fallback={<TabSkeleton />}>
             <FinancialsTab customer={customer} allBuCustomers={customersResult.value.filter(c => c.bu === customer.bu)} />
+          </Suspense>
+        )}
+
+        {activeTab === 'revenue' && (
+          <Suspense fallback={<TabSkeleton />}>
+            <RevenueTab customerName={customer.customer_name} />
           </Suspense>
         )}
 

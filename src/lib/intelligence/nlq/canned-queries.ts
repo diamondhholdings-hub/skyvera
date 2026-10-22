@@ -15,7 +15,7 @@ export const CANNED_QUERIES: CannedQuery[] = [
     label: 'What is the ARR for each business unit?',
     category: 'financials',
     template:
-      "Get Annual Recurring Revenue (ARR) breakdown by business unit this quarter",
+      'Get Annual Recurring Revenue (ARR) breakdown by business unit this quarter',
     requiredFilters: [],
   },
   {
@@ -23,8 +23,24 @@ export const CANNED_QUERIES: CannedQuery[] = [
     label: 'What are our largest vendor costs?',
     category: 'financials',
     template:
-      'List top vendor costs by business unit, focusing on contracts over $50K/quarter',
+      "List the largest vendor costs for {bu} this quarter, how each changed against last quarter's forecast, and every vendor over $50K a quarter",
     requiredFilters: ['bu'],
+  },
+  {
+    id: 'cost-vs-model',
+    label: 'Where are we spending above the cost model?',
+    category: 'financials',
+    template:
+      'Compare each product line\'s cost structure with the cost model and list the biggest overspends in dollars',
+    requiredFilters: [],
+  },
+  {
+    id: 'headcount-cost',
+    label: 'What does our headcount cost, and where?',
+    category: 'financials',
+    template:
+      'Break down headcount and people cost by department, business unit and location, compare with last quarter, and include AI tooling cost against a year ago',
+    requiredFilters: [],
   },
 
   // PERFORMANCE
@@ -41,25 +57,41 @@ export const CANNED_QUERIES: CannedQuery[] = [
     label: 'Why is recurring revenue declining?',
     category: 'performance',
     template:
-      'Analyze the $336K RR decline vs prior plan, break down by business unit and identify root causes',
+      'Explain the recurring revenue change against prior plan this quarter by business unit, and name the customers and renewals driving it',
     requiredFilters: [],
   },
   {
-    id: 'ebitda-test',
-    label: 'Why did we fail the EBITDA test?',
+    id: 'product-margins',
+    label: 'Which product lines miss their margin target?',
     category: 'performance',
     template:
-      "Explain why the FY'25 EBITDA test failed, showing key contributing factors and the gap to target",
+      'For each product line, compare net margin with its margin target this quarter and over the next three budget quarters',
     requiredFilters: [],
   },
 
   // CUSTOMERS
   {
     id: 'customer-churn-risk',
-    label: 'Which customers are at risk of churning?',
+    label: 'Which renewals are at risk?',
     category: 'customers',
     template:
-      'Identify customers with red or yellow health scores, sorted by ARR impact',
+      'List subscriptions marked as not renewing in the next four quarters, sorted by ARR, with any receivables over 90 days for those customers',
+    requiredFilters: [],
+  },
+  {
+    id: 'receivables',
+    label: 'Who owes us the most past 90 days?',
+    category: 'customers',
+    template:
+      'List the largest receivables over 90 days, whether each exceeds 10% of the customer\'s ARR, and the latest collection status',
+    requiredFilters: [],
+  },
+  {
+    id: 'renewal-pipeline',
+    label: 'Where does the renewal pipeline stand?',
+    category: 'customers',
+    template:
+      'Summarize the Salesforce renewal pipeline by stage and owner, and flag large opportunities closing in the next two quarters',
     requiredFilters: [],
   },
 
@@ -70,6 +102,14 @@ export const CANNED_QUERIES: CannedQuery[] = [
     category: 'comparisons',
     template:
       "Compare revenue, margin, and EBITDA across Cloudsense, Kandy, and STL this quarter",
+    requiredFilters: [],
+  },
+  {
+    id: 'margin-trend',
+    label: 'How have revenue and margin trended?',
+    category: 'comparisons',
+    template:
+      'Show revenue and net margin by quarter from the year-ago actuals through the coming budget quarters, and explain the biggest moves',
     requiredFilters: [],
   },
 ]
