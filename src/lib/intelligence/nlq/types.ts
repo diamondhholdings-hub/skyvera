@@ -43,16 +43,28 @@ export type NLQRequest = z.infer<typeof nlqRequestSchema>
 /**
  * NLQ Response schema - validates Claude API responses
  */
+// Claude often writes `null` for a field it has nothing for; treat that as absent.
+const nullAsMissing = <T extends z.ZodType>(schema: T) =>
+  z.preprocess((v) => (v === null ? undefined : v), schema)
+
+const dataPointValue = z.union([z.number(), z.string(), z.array(z.union([z.number(), z.string()]))])
+
 export const nlqResponseSchema = z.object({
   interpretation: z.string(),
   answer: z.string().nullable(),
-  dataPoints: z.record(z.string(), z.union([z.number(), z.string(), z.array(z.union([z.number(), z.string()]))])).nullish(),
+  dataPoints: z.preprocess(
+    (v) =>
+      v && typeof v === 'object' && !Array.isArray(v)
+        ? Object.fromEntries(Object.entries(v).filter(([, value]) => value !== null))
+        : v,
+    z.record(z.string(), dataPointValue).nullish()
+  ),
   needsClarification: z.boolean(),
-  clarificationQuestion: z.string().optional(),
-  clarificationOptions: z.array(z.string()).optional(),
+  clarificationQuestion: nullAsMissing(z.string().optional()),
+  clarificationOptions: nullAsMissing(z.array(z.string()).optional()),
   sources: z.array(z.string()),
   confidence: z.enum(['HIGH', 'MEDIUM', 'LOW']),
-  suggestedFollowUps: z.array(z.string()).optional(),
+  suggestedFollowUps: nullAsMissing(z.array(z.string()).optional()),
 })
 
 export type NLQResponse = z.infer<typeof nlqResponseSchema>
