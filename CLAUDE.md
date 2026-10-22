@@ -120,9 +120,9 @@ CI runs type-check + build + smoke tests automatically on every PR via `.github/
 
 | Variable | `.env.local` | Vercel | Notes |
 |----------|-------------|--------|-------|
-| `TFY_API_KEY` | — | — | Required. TrueFoundry AI gateway key; Claude calls go through `tfy.promptlens.trilogy.com` (2026-10-22). **Not set yet**: AI features are down until it is added (beads P0) |
+| `TFY_API_KEY` | — | ✅ | Required. TrueFoundry AI gateway key; Claude calls go through `tfy.promptlens.trilogy.com`. Vercel Production only (not Preview, so preview deploys have no AI). Verified live 2026-10-22: Haiku query engine and Sonnet streaming chat |
 | `TFY_BASE_URL` / `TFY_MODEL_GROUP` | — | — | Optional; default `https://tfy.promptlens.trilogy.com` and `claude-group` |
-| `ANTHROPIC_API_KEY` | ⚠️ | ⚠️ | Fallback only, used when `TFY_API_KEY` is unset. Both current keys return 401 |
+| `ANTHROPIC_API_KEY` | ⚠️ | — | Fallback only, used when `TFY_API_KEY` is unset. Removed from Vercel 2026-10-22; the `.env.local` key returns 401 |
 | `DATABASE_URL` | ✅ | — | `file:./dev.db` locally; **not set in Vercel** (verified via `vercel env ls` 2026-10-21) |
 | `RAPIDAPI_KEY` | ✅ | ✅ | Enrichment pipeline (5 adapters) |
 | `OPENCORPORATES_API_KEY` | ✅ | ✅ | Corporate registry (directors, legal name, jurisdiction) |
@@ -295,7 +295,7 @@ bd close <id>         # Complete work
 
 ### Open Issues (as of 2026-10-21)
 
-Run `bd ready` for current state — this list goes stale. As of 2026-10-21 the P0 is the invalid production `ANTHROPIC_API_KEY`.
+Run `bd ready` for current state — this list goes stale. AI features came back on 2026-10-22 via the TrueFoundry gateway.
 
 ### Rules
 
