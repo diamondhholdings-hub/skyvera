@@ -7,6 +7,9 @@ import { z } from 'zod'
  */
 
 const envSchema = z.object({
+  TFY_API_KEY: z.string().min(1).optional(),
+  TFY_BASE_URL: z.string().url().optional(),
+  TFY_MODEL_GROUP: z.string().min(1).optional(),
   ANTHROPIC_API_KEY: z.string().min(1).optional(),
   NEWSAPI_KEY: z.string().min(1).optional(),
   DATABASE_URL: z.string().default('file:./dev.db'),

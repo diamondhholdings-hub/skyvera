@@ -64,7 +64,7 @@ const AVAILABLE_DATA_SOURCES = [
  * context so the model understands Skyvera-specific terminology (ARR, DM%, RR, etc.).
  * Validates the response against `nlqResponseSchema` before returning.
  *
- * Degrades gracefully when `ANTHROPIC_API_KEY` is missing: returns a low-confidence
+ * Degrades gracefully when no Claude key (`TFY_API_KEY` or `ANTHROPIC_API_KEY`) is set: returns a low-confidence
  * placeholder response rather than throwing, so the UI can still render.
  *
  * @param query               Free-text question, e.g. "What is Cloudsense ARR this quarter?"
@@ -222,7 +222,7 @@ Use the data above to provide specific, accurate answers to the user's query.
  */
 function unavailableAnswer(error: Error): string {
   if (error.message.includes('not configured')) {
-    return 'Claude AI is not configured. Please set ANTHROPIC_API_KEY in your environment to enable natural language queries.'
+    return 'Claude AI is not configured. Please set TFY_API_KEY in your environment to enable natural language queries.'
   }
   console.error('[NLQ] Claude request failed:', error)
   return 'Claude AI is temporarily unavailable. Please try again shortly.'

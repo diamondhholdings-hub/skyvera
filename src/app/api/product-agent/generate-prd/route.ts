@@ -1,13 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { prisma } from '@/lib/db/prisma';
-import Anthropic from '@anthropic-ai/sdk';
+import { createClaudeClient } from '@/lib/intelligence/claude/client';
 import { REASONING_MODEL, FALLBACK_BETA, extractText } from '@/lib/intelligence/claude/models';
 import { rateLimit, rateLimitHeaders } from '@/lib/middleware/rate-limit';
 
-const anthropic = new Anthropic({
-  apiKey: process.env.ANTHROPIC_API_KEY,
-});
+const anthropic = createClaudeClient();
 
 const generatePRDSchema = z.object({
   patternId: z.string().min(1),
@@ -238,6 +236,8 @@ Return ONLY a JSON object with this structure:
 }
 
 Make it outcome-driven, data-backed, and actionable. Use the Skyvera context (B2B SaaS portfolio company with multiple business units).`;
+
+  if (!anthropic) throw new Error('Claude API not configured');
 
   const message = await anthropic.beta.messages.create({
     model: REASONING_MODEL,

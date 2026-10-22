@@ -7,12 +7,16 @@
  * response can begin with `thinking` blocks). Use `extractText()` for that.
  */
 import type Anthropic from '@anthropic-ai/sdk'
+import { resolveModel } from './client'
 
-/** Fast, low-cost model for high-volume orchestrator work (NLQ, scenarios, DM recommendations). */
-export const FAST_MODEL = 'claude-haiku-5-5'
+/**
+ * Fast, low-cost model for high-volume orchestrator work (NLQ, scenarios, DM recommendations).
+ * Through the TrueFoundry gateway this becomes `claude-group/claude-haiku-5-5`.
+ */
+export const FAST_MODEL = resolveModel('claude-haiku-5-5')
 
 /** Higher-reasoning model for interactive account chat and PRD generation. */
-export const REASONING_MODEL = 'claude-sonnet-5-5'
+export const REASONING_MODEL = resolveModel('claude-sonnet-5-5')
 
 /**
  * Beta header + param for server-side refusal fallback on REASONING_MODEL.

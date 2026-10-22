@@ -4,7 +4,7 @@
  * Runs in parallel batches of 8 to stay within rate limits.
  */
 
-import Anthropic from '@anthropic-ai/sdk'
+import { createClaudeClient, resolveModel } from '../src/lib/intelligence/claude/client.ts'
 import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
@@ -23,8 +23,9 @@ const ROOT = path.join(__dirname, '..')
 const DATA = path.join(ROOT, 'data')
 const PLANS = path.join(DATA, 'account-plans')
 
-const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
-const MODEL = 'claude-haiku-5-5'
+const client = createClaudeClient()
+if (!client) throw new Error('Set TFY_API_KEY (TrueFoundry gateway) or ANTHROPIC_API_KEY')
+const MODEL = resolveModel('claude-haiku-5-5')
 const BATCH_SIZE = 8
 const INTELLIGENCE_BATCH_SIZE = 4 // larger prompts, smaller batch
 

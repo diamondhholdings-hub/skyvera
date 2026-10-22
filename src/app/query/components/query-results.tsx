@@ -84,7 +84,7 @@ export function QueryResults({
   if (unavailable) {
     const message =
       unavailable === 'not-configured'
-        ? 'Answers are not set up on this deployment. Add an ANTHROPIC_API_KEY to enable them.'
+        ? 'Answers are not set up on this deployment. Add a TFY_API_KEY to enable them.'
         : unavailable === 'error'
           ? response.answer!.replace(/^Error:\s*/, '')
           : 'Answers are temporarily unavailable. Try again in a moment.'
