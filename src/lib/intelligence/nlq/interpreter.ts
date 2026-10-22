@@ -47,14 +47,10 @@ export function extractJSON(text: string): unknown {
  * Available data sources in the Skyvera system
  */
 const AVAILABLE_DATA_SOURCES = [
-  'P&L data for Cloudsense, Kandy, STL business units',
-  'Recurring Revenue (RR) by customer and business unit',
-  'Non-Recurring Revenue (NRR) by business unit',
-  'Customer health scores for 140 active customers',
-  'Vendor costs and contract data',
-  'Headcount and salary budget data',
-  'Accounts Receivable aging analysis',
+  'P&L summary for the company and the Cloudsense, Kandy and STL business units (revenue, RR, NRR, margins, EBITDA, prior plan RR)',
   'Margin targets by business unit',
+  'Annual recurring and non-recurring revenue for every customer, including NewNet',
+  'Retention (DM%): vs prior plan, and year over year by quarter',
 ]
 
 /**
